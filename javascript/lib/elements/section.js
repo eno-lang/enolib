@@ -340,6 +340,13 @@ class Section extends ElementBase {
   }
 
   // TODO: Revisit this method name (ensureAllTouched? ... etc.)
+  /**
+   * Assert that all elements inside this section/document have been touched
+   * @param {string} message A static string error message or a message function taking the excess element and returning an error string
+   * @param {object} options
+   * @param {array} options.except An array of element keys to exclude from assertion
+   * @param {array} options.only Specifies to ignore all elements but the ones includes in this array of element keys
+   */
   assertAllTouched(...optional) {
     let message = null;
     let options = {};
@@ -377,6 +384,12 @@ class Section extends ElementBase {
     return this._element(key);
   }
 
+  /**
+   * Returns the elements of this {@link Section} as an array in the original document order.
+   *
+   * @param {string} [key] If provided only elements with the specified key are returned.
+   * @return {Element[]} The elements of this {@link Section}.
+   */
   elements(key = null) {
     this._touched = true;
 
@@ -490,6 +503,11 @@ class Section extends ElementBase {
     return this._section(key, false);
   }
 
+  /**
+   * Returns the parent {@link Section} or null when called on the document.
+   *
+   * @return {?Section} The parent instance or null.
+   */
   parent() {
     if(this._instruction.type === DOCUMENT)
       return null;
@@ -544,6 +562,11 @@ class Section extends ElementBase {
     });
   }
 
+  /**
+   * Returns a debug representation of this {@link Section} in the form of `[object Section key=foo elements=2]`, respectively `[object Section document elements=2]` for the document itself.
+   *
+   * @return {string} A debug representation of this {@link Section}.
+   */
   toString() {
     if(this._instruction.type === DOCUMENT)
       return `[object Section document elements=${this._elements().length}]`;

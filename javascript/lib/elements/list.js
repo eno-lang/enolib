@@ -41,12 +41,22 @@ class List extends ElementBase {
     return untouchedItem ? untouchedItem._instruction : false;
   }
 
+  /**
+   * Returns the items in this {@link List} as an array.
+   *
+   * @return {Field[]} The items in this {@link List}.
+   */
   items() {
     this._touched = true;
 
     return this._items();
   }
 
+  /**
+   * Returns the number of items in this {@link List} as a `number`.
+   *
+   * @return {number} The number of items in this {@link List}.
+   */
   length() {
     this._touched = true;
 
@@ -65,6 +75,11 @@ class List extends ElementBase {
     return this._items().map(item => item.optionalValue(loader));
   }
 
+  /**
+   * Returns the parent {@link Section}.
+   *
+   * @return {Section} The parent section.
+   */
   parent() {
     return this._parent || new Section(this._context, this._instruction.parent);
   }
@@ -81,6 +96,11 @@ class List extends ElementBase {
     return this._items().map(item => item.requiredValue(loader));
   }
 
+  /**
+   * Returns a debug representation of this {@link List} in the form of `[object List key=foo items=2]`.
+   *
+   * @return {string} A debug representation of this {@link List}.
+   */
   toString() {
     return `[object List key=${this._instruction.key} items=${this._items().length}]`;
   }

@@ -102,6 +102,13 @@ class Fieldset extends ElementBase {
     this._allEntriesRequired = required;
   }
 
+  /**
+   * Assert that all entries inside this fieldset have been touched
+   * @param {string} message A static string error message or a message function taking the excess element and returning an error string
+   * @param {object} options
+   * @param {array} options.except An array of entry keys to exclude from assertion
+   * @param {array} options.only Specifies to ignore all entries but the ones includes in this array of element keys
+   */
   assertAllTouched(...optional) {
     let message = null;
     let options = {};
@@ -132,6 +139,12 @@ class Fieldset extends ElementBase {
     }
   }
 
+  /**
+   * Returns the entries of this {@link Fieldset} as an array in the original document order.
+   *
+   * @param {string} [key] If provided only entries with the specified key are returned.
+   * @return {Field[]} The entries of this {@link Fieldset}.
+   */
   entries(key = null) {
     this._touched = true;
 
@@ -149,6 +162,12 @@ class Fieldset extends ElementBase {
     }
   }
 
+  /**
+   * Returns the entry with the specified `key`.
+   *
+   * @param {string} [key] The key of the entry to return. Can be left out to validate and query a single entry with an arbitrary key.
+   * @return {Field|MissingField} The entry with the specified key, if available, or a {@link MissingField} proxy instance.
+   */
   entry(key = null) {
     return this._entry(key);
   }
@@ -157,6 +176,11 @@ class Fieldset extends ElementBase {
     return this._entry(key, false);
   }
 
+  /**
+   * Returns the parent {@link Section}.
+   *
+   * @return {Section} The parent section.
+   */
   parent() {
     return this._parent || new Section(this._context, this._instruction.parent);
   }
@@ -165,6 +189,11 @@ class Fieldset extends ElementBase {
     return this._entry(key, true);
   }
 
+  /**
+   * Returns a debug representation of this {@link Fieldset} in the form of `[object Fieldset key=foo entries=2]`.
+   *
+   * @return {string} A debug representation of this {@link Fieldset}.
+   */
   toString() {
     return `[object Fieldset key=${this._instruction.key} entries=${this._entries().length}]`;
   }
