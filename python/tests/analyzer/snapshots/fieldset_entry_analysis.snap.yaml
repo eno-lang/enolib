@@ -1,0 +1,129 @@
+document: &id002
+  elements:
+  - &id001
+    entries:
+    - key: entry
+      line: 1
+      parent: *id001
+      ranges:
+        entry_operator: !!python/tuple
+        - 16
+        - 17
+        key: !!python/tuple
+        - 10
+        - 15
+        line: !!python/tuple
+        - 10
+        - 23
+        value: !!python/tuple
+        - 18
+        - 23
+      type: Fieldset Entry
+      value: value
+    - key: entry
+      line: 2
+      parent: *id001
+      ranges:
+        entry_operator: !!python/tuple
+        - 33
+        - 34
+        key: !!python/tuple
+        - 24
+        - 29
+        line: !!python/tuple
+        - 24
+        - 40
+        value: !!python/tuple
+        - 35
+        - 40
+      type: Fieldset Entry
+      value: value
+    - key: entry
+      line: 3
+      parent: *id001
+      ranges:
+        entry_operator: !!python/tuple
+        - 51
+        - 52
+        key: !!python/tuple
+        - 45
+        - 50
+        line: !!python/tuple
+        - 41
+        - 58
+        value: !!python/tuple
+        - 53
+        - 58
+      type: Fieldset Entry
+      value: value
+    - key: entry
+      line: 4
+      parent: *id001
+      ranges:
+        entry_operator: !!python/tuple
+        - 72
+        - 73
+        key: !!python/tuple
+        - 63
+        - 68
+        line: !!python/tuple
+        - 59
+        - 79
+        value: !!python/tuple
+        - 74
+        - 79
+      type: Fieldset Entry
+      value: value
+    - key: entry
+      line: 5
+      parent: *id001
+      ranges:
+        entry_operator: !!python/tuple
+        - 93
+        - 94
+        key: !!python/tuple
+        - 84
+        - 89
+        line: !!python/tuple
+        - 80
+        - 103
+        value: !!python/tuple
+        - 98
+        - 103
+      type: Fieldset Entry
+      value: value
+    - key: entry
+      line: 6
+      parent: *id001
+      ranges:
+        entry_operator: !!python/tuple
+        - 110
+        - 111
+        key: !!python/tuple
+        - 104
+        - 109
+        line: !!python/tuple
+        - 104
+        - 117
+        value: !!python/tuple
+        - 112
+        - 117
+      type: Fieldset Entry
+      value: value
+    key: fieldset
+    line: 0
+    parent: *id002
+    ranges:
+      element_operator: !!python/tuple
+      - 8
+      - 9
+      key: !!python/tuple
+      - 0
+      - 8
+      line: !!python/tuple
+      - 0
+      - 9
+    type: Fieldset
+  type: Document
+line_count: 7
+meta: []

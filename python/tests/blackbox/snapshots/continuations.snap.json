@@ -1,0 +1,57 @@
+{
+  "type": "document",
+  "elements": [
+    {
+      "type": "field",
+      "key": "Field",
+      "value": "Value Spaced line continuationDirect line continuation"
+    },
+    {
+      "type": "fieldset",
+      "key": "Fieldset",
+      "entries": [
+        {
+          "type": "fieldset_entry",
+          "key": "Entry",
+          "value": "Value Spaced line continuationDirect line continuation"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "key": "List",
+      "items": [
+        {
+          "type": "list_item",
+          "value": "Value Spaced line continuationDirect line continuation"
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "key": "Empty field",
+      "value": "Spaced line continuationDirect line continuation"
+    },
+    {
+      "type": "fieldset",
+      "key": "Fieldset with empty entry",
+      "entries": [
+        {
+          "type": "fieldset_entry",
+          "key": "Empty entry",
+          "value": "Spaced line continuationDirect line continuation"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "key": "List with empty item",
+      "items": [
+        {
+          "type": "list_item",
+          "value": "Spaced line continuationDirect line continuation"
+        }
+      ]
+    }
+  ]
+}

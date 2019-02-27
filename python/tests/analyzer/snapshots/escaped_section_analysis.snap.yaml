@@ -1,0 +1,113 @@
+document: &id004
+  elements:
+  - &id003
+    elements:
+    - &id002
+      elements:
+      - &id001
+        elements:
+        - elements: []
+          key: '`key`'
+          line: 6
+          parent: *id001
+          ranges:
+            escape_begin_operator: !!python/tuple
+            - 48
+            - 50
+            escape_end_operator: !!python/tuple
+            - 57
+            - 59
+            key: !!python/tuple
+            - 51
+            - 56
+            line: !!python/tuple
+            - 39
+            - 59
+            section_operator: !!python/tuple
+            - 43
+            - 47
+          type: Section
+        key: k``ey
+        line: 4
+        parent: *id002
+        ranges:
+          escape_begin_operator: !!python/tuple
+          - 26
+          - 29
+          escape_end_operator: !!python/tuple
+          - 34
+          - 37
+          key: !!python/tuple
+          - 29
+          - 34
+          line: !!python/tuple
+          - 22
+          - 37
+          section_operator: !!python/tuple
+          - 22
+          - 25
+        type: Section
+      key: ke`y
+      line: 2
+      parent: *id003
+      ranges:
+        escape_begin_operator: !!python/tuple
+        - 12
+        - 14
+        escape_end_operator: !!python/tuple
+        - 18
+        - 20
+        key: !!python/tuple
+        - 14
+        - 18
+        line: !!python/tuple
+        - 9
+        - 20
+        section_operator: !!python/tuple
+        - 9
+        - 11
+      type: Section
+    key: key
+    line: 0
+    parent: *id004
+    ranges:
+      escape_begin_operator: !!python/tuple
+      - 2
+      - 3
+      escape_end_operator: !!python/tuple
+      - 6
+      - 7
+      key: !!python/tuple
+      - 3
+      - 6
+      line: !!python/tuple
+      - 0
+      - 7
+      section_operator: !!python/tuple
+      - 0
+      - 1
+    type: Section
+  - elements: []
+    key: key
+    line: 8
+    parent: *id004
+    ranges:
+      escape_begin_operator: !!python/tuple
+      - 63
+      - 64
+      escape_end_operator: !!python/tuple
+      - 67
+      - 68
+      key: !!python/tuple
+      - 64
+      - 67
+      line: !!python/tuple
+      - 61
+      - 68
+      section_operator: !!python/tuple
+      - 61
+      - 62
+    type: Section
+  type: Document
+line_count: 9
+meta: []

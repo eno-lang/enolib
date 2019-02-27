@@ -1,0 +1,179 @@
+document: &id001
+  elements:
+  - end:
+      line: 2
+      ranges:
+        key: !!python/tuple
+        - 16
+        - 19
+        line: !!python/tuple
+        - 13
+        - 19
+        multiline_field_operator: !!python/tuple
+        - 13
+        - 15
+      type: MULTILINE_FIELD_END
+    key: key
+    line: 0
+    lines:
+    - line: 1
+      ranges:
+        line: !!python/tuple
+        - 7
+        - 12
+        value: !!python/tuple
+        - 7
+        - 12
+      type: Multiline Field Value
+    parent: *id001
+    ranges:
+      key: !!python/tuple
+      - 3
+      - 6
+      line: !!python/tuple
+      - 0
+      - 6
+      multiline_field_operator: !!python/tuple
+      - 0
+      - 2
+    type: Multiline Field Begin
+  - end:
+      line: 8
+      ranges:
+        key: !!python/tuple
+        - 46
+        - 49
+        line: !!python/tuple
+        - 39
+        - 49
+        multiline_field_operator: !!python/tuple
+        - 43
+        - 45
+      type: MULTILINE_FIELD_END
+    key: key
+    line: 4
+    lines:
+    - line: 5
+      ranges:
+        line: !!python/tuple
+        - 31
+        - 31
+        value: !!python/tuple
+        - 31
+        - 31
+      type: Multiline Field Value
+    - line: 6
+      ranges:
+        line: !!python/tuple
+        - 32
+        - 37
+        value: !!python/tuple
+        - 32
+        - 37
+      type: Multiline Field Value
+    - line: 7
+      ranges:
+        line: !!python/tuple
+        - 38
+        - 38
+        value: !!python/tuple
+        - 38
+        - 38
+      type: Multiline Field Value
+    parent: *id001
+    ranges:
+      key: !!python/tuple
+      - 27
+      - 30
+      line: !!python/tuple
+      - 21
+      - 30
+      multiline_field_operator: !!python/tuple
+      - 21
+      - 23
+    type: Multiline Field Begin
+  - end:
+      line: 14
+      ranges:
+        key: !!python/tuple
+        - 93
+        - 96
+        line: !!python/tuple
+        - 82
+        - 96
+        multiline_field_operator: !!python/tuple
+        - 90
+        - 92
+      type: MULTILINE_FIELD_END
+    key: key
+    line: 10
+    lines:
+    - line: 11
+      ranges:
+        line: !!python/tuple
+        - 65
+        - 70
+        value: !!python/tuple
+        - 65
+        - 70
+      type: Multiline Field Value
+    - line: 12
+      ranges:
+        line: !!python/tuple
+        - 71
+        - 71
+        value: !!python/tuple
+        - 71
+        - 71
+      type: Multiline Field Value
+    - line: 13
+      ranges:
+        line: !!python/tuple
+        - 72
+        - 81
+        value: !!python/tuple
+        - 72
+        - 81
+      type: Multiline Field Value
+    parent: *id001
+    ranges:
+      key: !!python/tuple
+      - 61
+      - 64
+      line: !!python/tuple
+      - 51
+      - 64
+      multiline_field_operator: !!python/tuple
+      - 55
+      - 57
+    type: Multiline Field Begin
+  - end:
+      line: 17
+      ranges:
+        key: !!python/tuple
+        - 108
+        - 111
+        line: !!python/tuple
+        - 105
+        - 111
+        multiline_field_operator: !!python/tuple
+        - 105
+        - 107
+      type: MULTILINE_FIELD_END
+    key: key
+    line: 16
+    parent: *id001
+    ranges:
+      key: !!python/tuple
+      - 101
+      - 104
+      line: !!python/tuple
+      - 98
+      - 104
+      multiline_field_operator: !!python/tuple
+      - 98
+      - 100
+    type: Multiline Field Begin
+  type: Document
+line_count: 18
+meta: []

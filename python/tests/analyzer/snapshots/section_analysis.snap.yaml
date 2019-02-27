@@ -1,0 +1,83 @@
+document: &id004
+  elements:
+  - &id003
+    elements:
+    - &id002
+      elements:
+      - &id001
+        elements:
+        - elements: []
+          key: key
+          line: 3
+          parent: *id001
+          ranges:
+            key: !!python/tuple
+            - 40
+            - 43
+            line: !!python/tuple
+            - 28
+            - 43
+            section_operator: !!python/tuple
+            - 32
+            - 36
+          type: Section
+        key: key
+        line: 2
+        parent: *id002
+        ranges:
+          key: !!python/tuple
+          - 24
+          - 27
+          line: !!python/tuple
+          - 17
+          - 27
+          section_operator: !!python/tuple
+          - 17
+          - 20
+        type: Section
+      key: key
+      line: 1
+      parent: *id003
+      ranges:
+        key: !!python/tuple
+        - 13
+        - 16
+        line: !!python/tuple
+        - 6
+        - 16
+        section_operator: !!python/tuple
+        - 10
+        - 12
+      type: Section
+    key: key
+    line: 0
+    parent: *id004
+    ranges:
+      key: !!python/tuple
+      - 2
+      - 5
+      line: !!python/tuple
+      - 0
+      - 5
+      section_operator: !!python/tuple
+      - 0
+      - 1
+    type: Section
+  - elements: []
+    key: key
+    line: 4
+    parent: *id004
+    ranges:
+      key: !!python/tuple
+      - 46
+      - 49
+      line: !!python/tuple
+      - 44
+      - 49
+      section_operator: !!python/tuple
+      - 44
+      - 45
+    type: Section
+  type: Document
+line_count: 5
+meta: []

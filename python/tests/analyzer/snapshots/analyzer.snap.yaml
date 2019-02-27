@@ -1,0 +1,202 @@
+document: &id001
+  elements:
+  - key: language
+    line: 0
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 8
+      - 9
+      key: !!python/tuple
+      - 0
+      - 8
+      line: !!python/tuple
+      - 0
+      - 13
+      value: !!python/tuple
+      - 10
+      - 13
+    type: Field
+    value: eno
+  - &id002
+    items:
+    - line: 3
+      parent: *id002
+      ranges:
+        item_operator: !!python/tuple
+        - 26
+        - 27
+        line: !!python/tuple
+        - 26
+        - 31
+        value: !!python/tuple
+        - 28
+        - 31
+      type: List Item
+      value: eno
+    - line: 4
+      parent: *id002
+      ranges:
+        item_operator: !!python/tuple
+        - 32
+        - 33
+        line: !!python/tuple
+        - 32
+        - 38
+        value: !!python/tuple
+        - 34
+        - 38
+      type: List Item
+      value: yaml
+    - line: 5
+      parent: *id002
+      ranges:
+        item_operator: !!python/tuple
+        - 39
+        - 40
+        line: !!python/tuple
+        - 39
+        - 40
+      type: List Item
+    key: languages
+    line: 2
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 24
+      - 25
+      key: !!python/tuple
+      - 15
+      - 24
+      line: !!python/tuple
+      - 15
+      - 25
+    type: List
+  - &id003
+    entries:
+    - key: eno
+      line: 8
+      parent: *id003
+      ranges:
+        entry_operator: !!python/tuple
+        - 57
+        - 58
+        key: !!python/tuple
+        - 53
+        - 56
+        line: !!python/tuple
+        - 53
+        - 80
+        value: !!python/tuple
+        - 59
+        - 80
+      type: Fieldset Entry
+      value: eno notation language
+    - key: json
+      line: 9
+      parent: *id003
+      ranges:
+        entry_operator: !!python/tuple
+        - 86
+        - 87
+        key: !!python/tuple
+        - 81
+        - 85
+        line: !!python/tuple
+        - 81
+        - 108
+        value: !!python/tuple
+        - 88
+        - 108
+      type: Fieldset Entry
+      value: json object notation
+    key: languages
+    line: 7
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 51
+      - 52
+      key: !!python/tuple
+      - 42
+      - 51
+      line: !!python/tuple
+      - 42
+      - 52
+    type: Fieldset
+  - end:
+      line: 17
+      ranges:
+        key: !!python/tuple
+        - 142
+        - 151
+        line: !!python/tuple
+        - 139
+        - 151
+        multiline_field_operator: !!python/tuple
+        - 139
+        - 141
+      type: MULTILINE_FIELD_END
+    key: languages
+    line: 11
+    lines:
+    - line: 12
+      ranges:
+        line: !!python/tuple
+        - 123
+        - 126
+        value: !!python/tuple
+        - 123
+        - 126
+      type: Multiline Field Value
+    - line: 13
+      ranges:
+        line: !!python/tuple
+        - 127
+        - 131
+        value: !!python/tuple
+        - 127
+        - 131
+      type: Multiline Field Value
+    - line: 14
+      ranges:
+        line: !!python/tuple
+        - 132
+        - 132
+        value: !!python/tuple
+        - 132
+        - 132
+      type: Multiline Field Value
+    - line: 15
+      ranges:
+        line: !!python/tuple
+        - 133
+        - 137
+        value: !!python/tuple
+        - 133
+        - 137
+      type: Multiline Field Value
+    - line: 16
+      ranges:
+        line: !!python/tuple
+        - 138
+        - 138
+        value: !!python/tuple
+        - 138
+        - 138
+      type: Multiline Field Value
+    parent: *id001
+    ranges:
+      key: !!python/tuple
+      - 113
+      - 122
+      line: !!python/tuple
+      - 110
+      - 122
+      multiline_field_operator: !!python/tuple
+      - 110
+      - 112
+    type: Multiline Field Begin
+  type: Document
+line_count: 18
+meta: []

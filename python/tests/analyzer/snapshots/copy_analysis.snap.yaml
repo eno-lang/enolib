@@ -1,0 +1,73 @@
+document: &id001
+  elements:
+  - key: template
+    line: 0
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 8
+      - 9
+      key: !!python/tuple
+      - 0
+      - 8
+      line: !!python/tuple
+      - 0
+      - 9
+    type: Empty Element
+  - key: key
+    line: 2
+    parent: *id001
+    ranges:
+      copy_operator: !!python/tuple
+      - 15
+      - 16
+      key: !!python/tuple
+      - 11
+      - 14
+      line: !!python/tuple
+      - 11
+      - 25
+      template: !!python/tuple
+      - 17
+      - 25
+    template: template
+    type: Empty Element
+  - key: key
+    line: 3
+    parent: *id001
+    ranges:
+      copy_operator: !!python/tuple
+      - 33
+      - 34
+      key: !!python/tuple
+      - 26
+      - 29
+      line: !!python/tuple
+      - 26
+      - 43
+      template: !!python/tuple
+      - 35
+      - 43
+    template: template
+    type: Empty Element
+  - key: key
+    line: 4
+    parent: *id001
+    ranges:
+      copy_operator: !!python/tuple
+      - 57
+      - 58
+      key: !!python/tuple
+      - 49
+      - 52
+      line: !!python/tuple
+      - 44
+      - 67
+      template: !!python/tuple
+      - 59
+      - 67
+    template: template
+    type: Empty Element
+  type: Document
+line_count: 5
+meta: []

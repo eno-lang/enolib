@@ -1,0 +1,4 @@
+my custom error
+
+   Line | Content
+ >    1 | element:

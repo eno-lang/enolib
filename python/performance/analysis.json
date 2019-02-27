@@ -1,0 +1,29 @@
+{
+  "modifications": {
+    "_evaluated": "2018-07-04 10:57:38.037537",
+    "configuration": {
+      "change": "~0 ips (same)",
+      "ips": 4604
+    },
+    "content": {
+      "change": "~0 ips (same)",
+      "ips": 8678
+    },
+    "hierarchy": {
+      "change": "~0 ips (same)",
+      "ips": 5597
+    },
+    "invoice": {
+      "change": "~0 ips (same)",
+      "ips": 3280
+    },
+    "journey": {
+      "change": "~0 ips (same)",
+      "ips": 2941
+    },
+    "post": {
+      "change": "~0 ips (same)",
+      "ips": 14411
+    }
+  }
+}

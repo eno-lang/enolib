@@ -1,0 +1,95 @@
+document: &id001
+  elements:
+  - key: key
+    line: 0
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 3
+      - 4
+      key: !!python/tuple
+      - 0
+      - 3
+      line: !!python/tuple
+      - 0
+      - 10
+      value: !!python/tuple
+      - 5
+      - 10
+    type: Field
+    value: value
+  - key: key
+    line: 1
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 14
+      - 15
+      key: !!python/tuple
+      - 11
+      - 14
+      line: !!python/tuple
+      - 11
+      - 24
+      value: !!python/tuple
+      - 19
+      - 24
+    type: Field
+    value: value
+  - key: key
+    line: 2
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 32
+      - 33
+      key: !!python/tuple
+      - 25
+      - 28
+      line: !!python/tuple
+      - 25
+      - 39
+      value: !!python/tuple
+      - 34
+      - 39
+    type: Field
+    value: value
+  - key: key
+    line: 3
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 51
+      - 52
+      key: !!python/tuple
+      - 44
+      - 47
+      line: !!python/tuple
+      - 40
+      - 61
+      value: !!python/tuple
+      - 56
+      - 61
+    type: Field
+    value: value
+  - key: key
+    line: 4
+    parent: *id001
+    ranges:
+      element_operator: !!python/tuple
+      - 65
+      - 66
+      key: !!python/tuple
+      - 62
+      - 65
+      line: !!python/tuple
+      - 62
+      - 72
+      value: !!python/tuple
+      - 67
+      - 72
+    type: Field
+    value: value
+  type: Document
+line_count: 5
+meta: []

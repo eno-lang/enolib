@@ -1,0 +1,4 @@
+my custom generated message for element 'element'
+
+   Line | Content
+ >    1 | element:

@@ -3,7 +3,7 @@
 /build/
 /coverage/
 /dist/
-/enopy.egg-info/
+/enolib.egg-info/
 /venv/
 
 .coverage
