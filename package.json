@@ -1,0 +1,25 @@
+{
+  "author": "Simon Repp <simon@fdpl.io>",
+  "bugs": {
+    "url": "https://github.com/eno-lang/enolib/issues"
+  },
+  "dependencies": {
+    "fast-glob": "^2.2.6",
+    "fs-extra": "^7.0.1",
+    "gettext-parser": "^3.1.0",
+    "speakingurl": "^14.0.1"
+  },
+  "description": "Standard library for parsing, validating and inspecting eno documents",
+  "homepage": "https://github.com/eno-lang/enolib#readme",
+  "license": "MIT",
+  "name": "enolib",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eno-lang/enolib.git"
+  },
+  "scripts": {
+    "generate-messages": "node locales/generate.js",
+    "generate-specs": "node specs/generate.js"
+  }
+}
