@@ -1,0 +1,10 @@
+/.hypothesis/
+/.pytest_cache/
+/build/
+/coverage/
+/dist/
+/enopy.egg-info/
+/venv/
+
+.coverage
+__pycache__/
