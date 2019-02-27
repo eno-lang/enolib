@@ -1,0 +1,34 @@
+# Expecting sections but getting an empty element
+
+-- input
+element:
+-- input
+
+-- javascript
+eno.parse(input).sections('element');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->sections('element');
+-- php
+
+-- python
+enolib.parse(input).sections('element')
+-- python
+
+-- ruby
+Eno.parse(input).sections('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only sections with the key 'element' were expected, but an empty element with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | element:
+-- snippet
+
+selection: [0,0] => [0,8]

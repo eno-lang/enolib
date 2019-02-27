@@ -1,0 +1,73 @@
+# Asserting everything was touched when the only present list was not touched
+
+-- input
+list:
+- item
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | list:
+ *    2 | - item
+-- snippet
+
+selection: [0,0] => [1,6]
+
+# Asserting everything was touched when the only present list was touched
+
+-- input
+list:
+- item
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.list('list').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->list('list')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.list('list').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.list('list').touch
+document.assert_all_touched
+-- ruby
+
+## Passes

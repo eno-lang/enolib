@@ -1,0 +1,73 @@
+# Asserting everything was touched when the only present fieldset was not touched
+
+-- input
+fieldset:
+entry = value
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | fieldset:
+ *    2 | entry = value
+-- snippet
+
+selection: [0,0] => [1,13]
+
+# Asserting everything was touched when the only present fieldset was touched
+
+-- input
+fieldset:
+entry = value
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.fieldset('fieldset').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->fieldset('fieldset')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.fieldset('fieldset').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.fieldset('fieldset').touch
+document.assert_all_touched
+-- ruby
+
+## Passes

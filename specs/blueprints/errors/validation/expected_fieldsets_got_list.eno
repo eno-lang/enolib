@@ -1,0 +1,131 @@
+# Expecting fieldsets but getting a list with one item
+
+-- input
+list:
+- item
+-- input
+
+-- javascript
+eno.parse(input).fieldsets('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldsets('list');
+-- php
+
+-- python
+enolib.parse(input).fieldsets('list')
+-- python
+
+-- ruby
+Eno.parse(input).fieldsets('list')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fieldsets with the key 'list' were expected, but a list with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | list:
+ *    2 | - item
+-- snippet
+
+selection: [0,0] => [1,6]
+
+
+# Expecting fieldsets but getting a list with empty lines and multiple items
+
+-- input
+list:
+
+- item
+
+- item
+
+- item
+
+-- input
+
+-- javascript
+eno.parse(input).fieldsets('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldsets('list');
+-- php
+
+-- python
+enolib.parse(input).fieldsets('list')
+-- python
+
+-- ruby
+Eno.parse(input).fieldsets('list')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fieldsets with the key 'list' were expected, but a list with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | list:
+ *    2 | 
+ *    3 | - item
+ *    4 | 
+ *    5 | - item
+ *    6 | 
+ *    7 | - item
+      8 | 
+-- snippet
+
+selection: [0,0] => [6,6]
+
+# Expecting fieldsets but getting a list with two items with comments
+
+-- input
+list:
+> comment
+- item
+
+> comment
+- item
+-- input
+
+-- javascript
+eno.parse(input).fieldsets('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldsets('list');
+-- php
+
+-- python
+enolib.parse(input).fieldsets('list')
+-- python
+
+-- ruby
+Eno.parse(input).fieldsets('list')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fieldsets with the key 'list' were expected, but a list with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | list:
+ *    2 | > comment
+ *    3 | - item
+ *    4 | 
+ *    5 | > comment
+ *    6 | - item
+-- snippet
+
+selection: [0,0] => [5,6]

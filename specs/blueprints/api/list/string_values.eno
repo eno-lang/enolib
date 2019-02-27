@@ -1,0 +1,125 @@
+# Querying existing required string values from a list
+
+-- input
+list:
+- item
+- item
+-- input
+
+-- javascript
+const output = eno.parse(input).list('list').requiredStringValues();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->list('list')->requiredStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).list('list').required_string_values()
+-- python
+
+-- ruby
+output = Eno.parse(input).list('list').required_string_values
+-- ruby
+
+## Result
+
+-- javascript
+['item', 'item']
+-- javascript
+
+-- php
+['item', 'item']
+-- php
+
+-- python
+['item', 'item']
+-- python
+
+-- ruby
+['item', 'item']
+-- ruby
+
+# Querying existing optional string values from a list
+
+-- input
+list:
+- item
+- item
+-- input
+
+-- javascript
+const output = eno.parse(input).list('list').optionalStringValues();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->list('list')->optionalStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).list('list').optional_string_values()
+-- python
+
+-- ruby
+output = Eno.parse(input).list('list').optional_string_values
+-- ruby
+
+## Result
+
+-- javascript
+['item', 'item']
+-- javascript
+
+-- php
+['item', 'item']
+-- php
+
+-- python
+['item', 'item']
+-- python
+
+-- ruby
+['item', 'item']
+-- ruby
+
+# Querying missing optional string values from a list
+
+-- input
+list:
+-
+-
+-- input
+
+-- javascript
+const output = eno.parse(input).list('list').optionalStringValues();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->list('list')->optionalStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).list('list').optional_string_values()
+-- python
+
+-- ruby
+output = Eno.parse(input).list('list').optional_string_values
+-- ruby
+
+## Result
+
+-- javascript
+[null, null]
+-- javascript
+
+-- php
+[null, null]
+-- php
+
+-- python
+[None, None]
+-- python
+
+-- ruby
+[nil, nil]
+-- ruby

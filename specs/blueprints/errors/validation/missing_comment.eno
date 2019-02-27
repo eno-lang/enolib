@@ -1,0 +1,34 @@
+# Querying a section for a required but missing comment 
+
+-- input
+# section
+-- input
+
+-- javascript
+eno.parse(input).section('section').requiredComment();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->section('section')->requiredComment();
+-- php
+
+-- python
+enolib.parse(input).section('section').required_comment
+-- python
+
+-- ruby
+Eno.parse(input).section('section').required_comment
+-- ruby
+
+## ValidationError
+
+-- text
+A required comment for this element is missing.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # section
+-- snippet
+
+selection: [0,0] => [0,0]

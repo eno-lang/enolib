@@ -1,0 +1,24 @@
+# A line without operators
+
+-- input
+list:
+- item
+- item
+illegal
+-- input
+
+## ParseError
+
+-- text
+Line 4 does not follow any specified pattern.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      2 | - item
+      3 | - item
+ >    4 | illegal
+-- snippet
+
+selection: [3,0] => [3,7]

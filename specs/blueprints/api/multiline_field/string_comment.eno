@@ -1,0 +1,161 @@
+# Querying an existing, single-line, required string comment from a field
+
+-- input
+> comment
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+const output = eno.parse(input).field('multiline_field').requiredStringComment();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->field('multiline_field')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).field('multiline_field').required_string_comment()
+-- python
+
+-- ruby
+output = Eno.parse(input).field('multiline_field').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+comment
+-- string
+
+# Querying an existing, two-line, required string comment from a field
+
+-- input
+>comment
+>  comment
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+const output = eno.parse(input).field('multiline_field').requiredStringComment();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->field('multiline_field')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).field('multiline_field').required_string_comment()
+-- python
+
+-- ruby
+output = Eno.parse(input).field('multiline_field').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+comment
+  comment
+-- string
+
+# Querying an existing, required string comment with blank lines from a field
+
+-- input
+>
+>     comment
+>
+>   comment
+>
+> comment
+>
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+const output = eno.parse(input).field('multiline_field').requiredStringComment();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->field('multiline_field')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).field('multiline_field').required_string_comment()
+-- python
+
+-- ruby
+output = Eno.parse(input).field('multiline_field').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+    comment
+
+  comment
+
+comment
+-- string
+
+# Querying an optional, existing string comment from a field
+
+-- input
+> comment
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+const output = eno.parse(input).field('multiline_field').optionalStringComment();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->field('multiline_field')->optionalStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).field('multiline_field').optional_string_comment()
+-- python
+
+-- ruby
+output = Eno.parse(input).field('multiline_field').optional_string_comment
+-- ruby
+
+## Result
+
+-- string
+comment
+-- string
+
+# Querying an optional, missing string comment from a field
+
+-- input
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+const output = eno.parse(input).field('multiline_field').optionalStringComment();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->field('multiline_field')->optionalStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).field('multiline_field').optional_string_comment()
+-- python
+
+-- ruby
+output = Eno.parse(input).field('multiline_field').optional_string_comment
+-- ruby
+
+## Nothing

@@ -1,0 +1,69 @@
+# Querying the document for a required but missing list 
+
+-- input
+
+-- input
+
+-- javascript
+eno.parse(input).requiredList('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->requiredList('list');
+-- php
+
+-- python
+enolib.parse(input).required_list('list')
+-- python
+
+-- ruby
+Eno.parse(input).required_list('list')
+-- ruby
+
+## ValidationError
+
+-- text
+The list 'list' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ ?    1 | 
+-- snippet
+
+selection: [0,0] => [0,0]
+
+# Querying a section for a required but missing list 
+
+-- input
+# section
+-- input
+
+-- javascript
+eno.parse(input).section('section').requiredList('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->section('section')->requiredList('list');
+-- php
+
+-- python
+enolib.parse(input).section('section').required_list('list')
+-- python
+
+-- ruby
+Eno.parse(input).section('section').required_list('list')
+-- ruby
+
+## ValidationError
+
+-- text
+The list 'list' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | # section
+-- snippet
+
+selection: [0,9] => [0,9]

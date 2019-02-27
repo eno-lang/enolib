@@ -1,0 +1,151 @@
+# Querying a fieldset entry for a required but missing value
+
+-- input
+fieldset:
+entry =
+-- input
+
+-- javascript
+eno.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldset('fieldset')->entry('entry')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).fieldset('fieldset').entry('entry').required_string_value()
+-- python
+
+-- ruby
+Eno.parse(input).fieldset('fieldset').entry('entry').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+The fieldset entry 'entry' must contain a value.
+-- text
+
+-- snippet
+   Line | Content
+      1 | fieldset:
+ >    2 | entry =
+-- snippet
+
+selection: [1,7] => [1,7]
+
+# Querying a field for a required but missing value
+
+-- input
+field:
+-- input
+
+-- javascript
+eno.parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Eno.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+The field 'field' must contain a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+-- snippet
+
+selection: [0,6] => [0,6]
+
+# Querying a field with empty line continuations for a required but missing value
+
+-- input
+field:
+|
+
+|
+-- input
+
+-- javascript
+eno.parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Eno.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+The field 'field' must contain a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | |
+ *    3 | 
+ *    4 | |
+-- snippet
+
+selection: [0,6] => [3,1]
+
+# Querying a list with an empty item for required values
+
+-- input
+list:
+- item
+-
+-- input
+
+-- javascript
+eno.parse(input).list('list').requiredStringValues();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('list')->requiredStringValues();
+-- php
+
+-- python
+enolib.parse(input).list('list').required_string_values()
+-- python
+
+-- ruby
+Eno.parse(input).list('list').required_string_values
+-- ruby
+
+## ValidationError
+
+-- text
+The list 'list' may not contain empty items.
+-- text
+
+-- snippet
+   Line | Content
+      1 | list:
+      2 | - item
+ >    3 | -
+-- snippet
+
+selection: [2,1] => [2,1]

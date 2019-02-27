@@ -1,0 +1,38 @@
+# Querying a comment with complex indentation from a section
+
+-- input
+               >
+    > indented 0 spaces
+>
+  >       indented 4 spaces 
+>       indented 2 spaces
+                              > indented 26 spaces
+                                 >
+# section
+-- input
+
+-- javascript
+const output = eno.parse(input).section('section').requiredStringComment();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->section('section')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).section('section').required_string_comment()
+-- python
+
+-- ruby
+output = Eno.parse(input).section('section').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+indented 0 spaces
+
+    indented 4 spaces
+  indented 2 spaces
+                          indented 26 spaces
+-- string

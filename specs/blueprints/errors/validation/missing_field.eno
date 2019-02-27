@@ -1,0 +1,34 @@
+# Querying a section for a required but missing field 
+
+-- input
+# section
+-- input
+
+-- javascript
+eno.parse(input).section('section').requiredField('field');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->section('section')->requiredField('field');
+-- php
+
+-- python
+enolib.parse(input).section('section').required_field('field')
+-- python
+
+-- ruby
+Eno.parse(input).section('section').required_field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+The field 'field' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | # section
+-- snippet
+
+selection: [0,9] => [0,9]

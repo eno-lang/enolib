@@ -1,0 +1,138 @@
+# Querying four entries from a fieldset, all of them copied from another fieldset
+
+-- input
+fieldset:
+1 = 1
+2 = 2
+3 = 3
+4 = 4
+
+copy < fieldset
+-- input
+
+-- javascript
+const output = eno.parse(input).fieldset('copy').entries().map(entry => entry.requiredStringValue());
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->fieldset('copy')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+-- php
+
+-- python
+output = enolib.parse(input).fieldset('copy').entries().required_string_values() TODO: Implement js/rb equivalent
+-- python
+
+-- ruby
+output = Eno.parse(input).fieldset('copy').entries().map { |entry| entry.required_string_value }
+-- ruby
+
+## Result
+
+-- javascript
+['1', '2', '3', '4']
+-- javascript
+
+-- php
+['1', '2', '3', '4']
+-- php
+
+-- python
+['1', '2', '3', '4']
+-- python
+
+-- ruby
+['1', '2', '3', '4']
+-- ruby
+
+
+# Querying four entries from a fieldset, two of them copied from another fieldset
+
+-- input
+fieldset:
+1 = 1
+2 = 2
+
+copy < fieldset
+3 = 3
+4 = 4
+-- input
+
+-- javascript
+const output = eno.parse(input).fieldset('copy').entries().map(entry => entry.requiredStringValue());
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->fieldset('copy')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+-- php
+
+-- python
+output = enolib.parse(input).fieldset('copy').entries().required_string_values() TODO: Implement js/rb equivalent
+-- python
+
+-- ruby
+output = Eno.parse(input).fieldset('copy').entries().map { |entry| entry.required_string_value }
+-- ruby
+
+## Result
+
+-- javascript
+['1', '2', '3', '4']
+-- javascript
+
+-- php
+['1', '2', '3', '4']
+-- php
+
+-- python
+['1', '2', '3', '4']
+-- python
+
+-- ruby
+['1', '2', '3', '4']
+-- ruby
+
+# Querying three entries from a fieldset, one owned, one replaced, one copied
+
+-- input
+fieldset:
+1 = 1
+2 = 0
+
+copy < fieldset
+2 = 2
+3 = 3
+-- input
+
+-- javascript
+const output = eno.parse(input).fieldset('copy').entries().map(entry => entry.requiredStringValue());
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->fieldset('copy')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+-- php
+
+-- python
+output = enolib.parse(input).fieldset('copy').entries().required_string_values() TODO: Implement js/rb equivalent
+-- python
+
+-- ruby
+output = Eno.parse(input).fieldset('copy').entries().map { |entry| entry.required_string_value }
+-- ruby
+
+## Result
+
+-- javascript
+['1', '2', '3']
+-- javascript
+
+-- php
+['1', '2', '3']
+-- php
+
+-- python
+['1', '2', '3']
+-- python
+
+-- ruby
+['1', '2', '3']
+-- ruby

@@ -1,0 +1,69 @@
+# Obtaining and throwing an error with a custom message in the context of a field's value
+
+-- input
+field: value
+-- input
+
+-- javascript
+throw eno.parse(input).field('field').valueError('my message')
+-- javascript
+
+-- php
+throw Eno\Parser::parse($input)->field('field')->valueError('my message');
+-- php
+
+-- python
+raise enolib.parse(input).field('field').value_error('my message')
+-- python
+
+-- ruby
+raise Eno.parse(input).field('field').value_error('my message')
+-- ruby
+
+## ValidationError
+
+-- text
+There is a problem with the value of this element: my message
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,7] => [0,12]
+
+# Obtaining and throwing an error with a custom generated message in the context of a field's value
+
+-- input
+field: value
+-- input
+
+-- javascript
+throw eno.parse(input).field('field').valueError(value => `my generated message for value '${value}'`)
+-- javascript
+
+-- php
+throw Eno\Parser::parse($input)->field('field')->valueError(function($value) { return "my generated message for value '{$value}'"; });
+-- php
+
+-- python
+raise enolib.parse(input).field('field').value_error(lambda value: f"my generated message for value '{value}'")
+-- python
+
+-- ruby
+raise Eno.parse(input).field('field').value_error { |value| "my generated message for value '#{value}'" }
+-- ruby
+
+## ValidationError
+
+-- text
+There is a problem with the value of this element: my generated message for value 'value'
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,7] => [0,12]

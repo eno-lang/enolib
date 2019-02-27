@@ -1,0 +1,178 @@
+# Asserting everything was touched when the only present empty element was not touched
+
+-- input
+element:
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched()
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | element:
+-- snippet
+
+selection: [0,0] => [0,8]
+
+# Asserting everything was touched when the only present empty element was touched
+
+-- input
+element:
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.element('element').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->element('element')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.element('element').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.element('element').touch
+document.assert_all_touched
+-- ruby
+
+## Passes
+
+# Asserting everything was touched when the only present empty element was touched after typecasting to a field
+
+-- input
+field:
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.field('field').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->field('field')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.field('field').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.field('field').touch
+document.assert_all_touched
+-- ruby
+
+## Passes
+
+# Asserting everything was touched when the only present empty element was touched after typecasting to a fieldset
+
+-- input
+fieldset:
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.fieldset('fieldset').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->fieldset('fieldset')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.fieldset('fieldset').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.fieldset('fieldset').touch
+document.assert_all_touched
+-- ruby
+
+## Passes
+
+# Asserting everything was touched when the only present empty element was touched after typecasting to a list
+
+-- input
+list:
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.list('list').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->list('list')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.list('list').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.list('list').touch
+document.assert_all_touched
+-- ruby
+
+## Passes

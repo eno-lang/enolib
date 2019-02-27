@@ -1,0 +1,34 @@
+# Querying a field for a required but missing value 
+
+-- input
+field:
+-- input
+
+-- javascript
+eno.parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Eno.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+The field 'field' must contain a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+-- snippet
+
+selection: [0,6] => [0,6]

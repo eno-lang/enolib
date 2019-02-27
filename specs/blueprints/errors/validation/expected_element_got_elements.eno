@@ -1,0 +1,79 @@
+# Expecting an element but getting two elements
+
+-- input
+element:
+element:
+-- input
+
+-- javascript
+eno.parse(input).element('element');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->element('element');
+-- php
+
+-- python
+enolib.parse(input).element('element')
+-- python
+
+-- ruby
+Eno.parse(input).element('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected single element 'element' several elements with this key were found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | element:
+ >    2 | element:
+-- snippet
+
+selection: [0,0] => [0,8]
+
+# Expecting an element but getting two elements with comments and empty lines
+
+-- input
+> comment
+element:
+
+> comment
+element:
+-- input
+
+-- javascript
+eno.parse(input).element('element');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->element('element');
+-- php
+
+-- python
+enolib.parse(input).element('element')
+-- python
+
+-- ruby
+Eno.parse(input).element('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected single element 'element' several elements with this key were found.
+-- text
+
+-- snippet
+   Line | Content
+      1 | > comment
+ >    2 | element:
+      3 | 
+      4 | > comment
+ >    5 | element:
+-- snippet
+
+selection: [1,0] => [1,8]

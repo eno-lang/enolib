@@ -1,0 +1,76 @@
+# Asserting everything was touched when the only present multiline field was not touched
+
+-- input
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched()
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | -- multiline_field
+ *    2 | value
+ *    3 | -- multiline_field
+-- snippet
+
+selection: [0,0] => [2,18]
+
+# Asserting everything was touched when the only present multiline field was touched
+
+-- input
+-- multiline_field
+value
+-- multiline_field
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.field('multiline_field').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->field('multiline_field')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.field('multiline_field').touch
+document.assert_all_touched
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.field('multiline_field').touch
+document.assert_all_touched
+-- ruby
+
+## Passes

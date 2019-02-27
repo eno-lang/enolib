@@ -1,0 +1,51 @@
+# Copying a field that exists twice
+
+-- input
+field: value
+field: value
+
+copy < field
+-- input
+
+## ParseError
+
+-- text
+There are at least two elements with the key 'field' that qualify for being copied here, it is not clear which to copy.
+-- text
+
+-- snippet
+   Line | Content
+ ?    1 | field: value
+ ?    2 | field: value
+      3 | 
+ >    4 | copy < field
+-- snippet
+
+selection: [3,0] => [3,12]
+
+# Copying a section that exists twice
+
+-- input
+# section
+
+# section
+
+# copy < section
+-- input
+
+## ParseError
+
+-- text
+There are at least two elements with the key 'section' that qualify for being copied here, it is not clear which to copy.
+-- text
+
+-- snippet
+   Line | Content
+ ?    1 | # section
+      2 | 
+ ?    3 | # section
+      4 | 
+ >    5 | # copy < section
+-- snippet
+
+selection: [4,0] => [4,16]

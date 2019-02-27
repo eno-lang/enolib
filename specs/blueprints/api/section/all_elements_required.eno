@@ -1,0 +1,235 @@
+# Querying a missing field on the document when all elements are required
+
+-- input
+
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.allElementsRequired();
+document.field('field');
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->field('field');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.field('field')
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.all_elements_required
+document.field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+The field 'field' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+# Querying a missing fieldset on the document when all elements are required
+
+-- input
+
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.allElementsRequired();
+document.fieldset('fieldset');
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->fieldset('fieldset');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.fieldset('fieldset')
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.all_elements_required
+document.fieldset('fieldset')
+-- ruby
+
+## ValidationError
+
+-- text
+The fieldset 'fieldset' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+# Querying a missing list on the document when all elements are required
+
+-- input
+
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.allElementsRequired();
+document.list('list');
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->list('list');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.list('list')
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.all_elements_required
+document.list('list')
+-- ruby
+
+## ValidationError
+
+-- text
+The list 'list' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+# Querying a missing section on the document when all elements are required
+
+-- input
+
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.allElementsRequired();
+document.section('section');
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->section('section');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.section('section')
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.all_elements_required
+document.section('section')
+-- ruby
+
+## ValidationError
+
+-- text
+The section 'section' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+# Querying a missing field on the document when requiring all elements is explicitly disabled
+
+-- input
+
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.allElementsRequired(false);
+document.field('field');
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->allElementsRequired(false);
+$document->field('field');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required(False)
+document.field('field')
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.all_elements_required(false)
+document.field('field')
+-- ruby
+
+## Passes
+
+# Querying a missing field on the document when requiring all elements is enabled and disabled again
+
+-- input
+
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.allElementsRequired(true);
+document.allElementsRequired(false);
+document.field('field');
+-- javascript
+
+-- php
+$document = Eno\Parser::parse($input);
+
+$document->allElementsRequired(true);
+$document->allElementsRequired(false);
+$document->field('field');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required(True)
+document.all_elements_required(False)
+document.field('field')
+-- python
+
+-- ruby
+document = Eno.parse(input)
+
+document.all_elements_required(true)
+document.all_elements_required(false)
+document.field('field')
+-- ruby
+
+## Passes

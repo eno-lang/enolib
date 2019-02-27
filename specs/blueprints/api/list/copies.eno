@@ -1,0 +1,92 @@
+# Querying four items from a list, all of them copied from another list
+
+-- input
+list:
+- 1
+- 2
+- 3
+- 4
+
+copy < list
+-- input
+
+-- javascript
+const output = eno.parse(input).list('copy').requiredStringValues();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->list('copy')->requiredStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).list('copy').required_string_values()
+-- python
+
+-- ruby
+output = Eno.parse(input).list('copy').required_string_values
+-- ruby
+
+## Result
+
+-- javascript
+['1', '2', '3', '4']
+-- javascript
+
+-- php
+['1', '2', '3', '4']
+-- php
+
+-- python
+['1', '2', '3', '4']
+-- python
+
+-- ruby
+['1', '2', '3', '4']
+-- ruby
+
+
+# Querying four items from a list, two of them copied from another list
+
+-- input
+list:
+- 1
+- 2
+
+copy < list
+- 3
+- 4
+-- input
+
+-- javascript
+const output = eno.parse(input).list('copy').requiredStringValues();
+-- javascript
+
+-- php
+$output = Eno\Parser::parse($input)->list('copy')->requiredStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).list('copy').required_string_values()
+-- python
+
+-- ruby
+output = Eno.parse(input).list('copy').required_string_values
+-- ruby
+
+## Result
+
+-- javascript
+['1', '2', '3', '4']
+-- javascript
+
+-- php
+['1', '2', '3', '4']
+-- php
+
+-- python
+['1', '2', '3', '4']
+-- python
+
+-- ruby
+['1', '2', '3', '4']
+-- ruby

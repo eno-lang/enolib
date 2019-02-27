@@ -1,0 +1,128 @@
+# Asserting everything was touched on an empty document
+
+-- input
+
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## Passes
+
+# Asserting everything was touched on an untouched document containing a single field
+
+-- input
+field: value
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]
+
+# Asserting everything was touched on an untouched document containing a single field, with a custom message
+
+-- input
+field: value
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched('my message');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched('my message');
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched('my message')
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched('my message')
+-- ruby
+
+## ValidationError
+
+-- text
+my message
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]
+
+# Asserting everything was touched on an untouched document containing a single field, with a custom message function
+
+-- input
+field: value
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched(element => `my generated message for unexpected element '${element.stringKey()}'`);
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched(function($element) { return "my generated message for unexpected element '{$element->stringKey()}'"; });
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched(lambda element: f"my generated message for unexpected element '{element.string_key()}'")
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched { |element| "my generated message for unexpected element '#{element.string_key}'" }
+-- ruby
+
+## ValidationError
+
+-- text
+my generated message for unexpected element 'field'
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]

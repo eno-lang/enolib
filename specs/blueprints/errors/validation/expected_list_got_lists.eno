@@ -1,0 +1,93 @@
+# Expecting a list but getting two lists
+
+-- input
+list:
+- item
+list:
+- item
+-- input
+
+-- javascript
+eno.parse(input).list('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('list');
+-- php
+
+-- python
+enolib.parse(input).list('list')
+-- python
+
+-- ruby
+Eno.parse(input).list('list')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected single list 'list' several lists with this key were found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | list:
+ *    2 | - item
+ >    3 | list:
+ *    4 | - item
+-- snippet
+
+selection: [0,0] => [1,6]
+
+# Expecting a list but getting two lists with comments, empty lines and continuations
+
+-- input
+> comment
+list:
+- item
+
+- item
+
+list:
+> comment
+- item
+\ continuation
+-- input
+
+-- javascript
+eno.parse(input).list('list');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('list');
+-- php
+
+-- python
+enolib.parse(input).list('list')
+-- python
+
+-- ruby
+Eno.parse(input).list('list')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected single list 'list' several lists with this key were found.
+-- text
+
+-- snippet
+   Line | Content
+      1 | > comment
+ >    2 | list:
+ *    3 | - item
+ *    4 | 
+ *    5 | - item
+      6 | 
+ >    7 | list:
+ *    8 | > comment
+ *    9 | - item
+ *   10 | \ continuation
+-- snippet
+
+selection: [1,0] => [4,6]

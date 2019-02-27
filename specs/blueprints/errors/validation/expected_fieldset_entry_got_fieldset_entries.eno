@@ -1,0 +1,89 @@
+# Expecting a fieldset entry but getting two fieldset entries
+
+-- input
+fieldset:
+entry = value
+entry = value
+-- input
+
+-- javascript
+eno.parse(input).fieldset('fieldset').entry('entry');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldset('fieldset')->entry('entry');
+-- php
+
+-- python
+enolib.parse(input).fieldset('fieldset').entry('entry')
+-- python
+
+-- ruby
+Eno.parse(input).fieldset('fieldset').entry('entry')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected single fieldset entry 'entry' several fieldset entries with this key were found.
+-- text
+
+-- snippet
+   Line | Content
+      1 | fieldset:
+ >    2 | entry = value
+ >    3 | entry = value
+-- snippet
+
+selection: [1,0] => [1,13]
+
+# Expecting a fieldset entry but getting two fieldset entries with comments, empty lines and continuations
+
+-- input
+fieldset:
+> comment
+entry = value
+\ continuation
+\ continuation
+
+> comment
+entry = value
+| continuation
+-- input
+
+-- javascript
+eno.parse(input).fieldset('fieldset').entry('entry');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldset('fieldset')->entry('entry');
+-- php
+
+-- python
+enolib.parse(input).fieldset('fieldset').entry('entry')
+-- python
+
+-- ruby
+Eno.parse(input).fieldset('fieldset').entry('entry')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected single fieldset entry 'entry' several fieldset entries with this key were found.
+-- text
+
+-- snippet
+   Line | Content
+      1 | fieldset:
+      2 | > comment
+ >    3 | entry = value
+ *    4 | \ continuation
+ *    5 | \ continuation
+      6 | 
+      7 | > comment
+ >    8 | entry = value
+ *    9 | | continuation
+-- snippet
+
+selection: [2,0] => [4,14]

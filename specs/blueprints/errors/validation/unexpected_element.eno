@@ -1,0 +1,69 @@
+# Asserting everything was touched on an untouched document
+
+-- input
+field: value
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched()
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]
+
+# Asserting everything was touched on an untouched document, with a custom message
+
+-- input
+field: value
+-- input
+
+-- javascript
+eno.parse(input).assertAllTouched('my custom message');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->assertAllTouched('my custom message');
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched('my custom message')
+-- python
+
+-- ruby
+Eno.parse(input).assert_all_touched('my custom message')
+-- ruby
+
+## ValidationError
+
+-- text
+my custom message
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]

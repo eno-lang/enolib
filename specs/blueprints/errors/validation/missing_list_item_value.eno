@@ -1,0 +1,73 @@
+# Directly querying a list item for a required but missing value 
+
+-- input
+list:
+-
+-- input
+
+-- javascript
+eno.parse(input).list('list').items()[0].requiredStringValue();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('list')->items()[0]->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).list('list').items()[0].required_string_value()
+-- python
+
+-- ruby
+Eno.parse(input).list('list').items.first.required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+The list 'list' may not contain empty items.
+-- text
+
+-- snippet
+   Line | Content
+      1 | list:
+ >    2 | -
+-- snippet
+
+selection: [1,1] => [1,1]
+
+# Indirectly querying a list with empty items for required values
+
+-- input
+list:
+-
+-- input
+
+-- javascript
+eno.parse(input).list('list').requiredStringValues();
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('list')->requiredStringValues();
+-- php
+
+-- python
+enolib.parse(input).list('list').required_string_values()
+-- python
+
+-- ruby
+Eno.parse(input).list('list').required_string_values
+-- ruby
+
+## ValidationError
+
+-- text
+The list 'list' may not contain empty items.
+-- text
+
+-- snippet
+   Line | Content
+      1 | list:
+ >    2 | -
+-- snippet
+
+selection: [1,1] => [1,1]

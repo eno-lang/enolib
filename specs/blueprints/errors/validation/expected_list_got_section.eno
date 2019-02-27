@@ -1,0 +1,127 @@
+# Expecting a list but getting an empty section
+
+-- input
+# section
+-- input
+
+-- javascript
+eno.parse(input).list('section');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('section');
+-- php
+
+-- python
+enolib.parse(input).list('section')
+-- python
+
+-- ruby
+Eno.parse(input).list('section')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected list 'section' a section with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # section
+-- snippet
+
+selection: [0,0] => [0,9]
+
+
+# Expecting a list but getting a section with a field and a list
+
+-- input
+# section
+
+field: value
+
+list:
+- item
+- item
+-- input
+
+-- javascript
+eno.parse(input).list('section');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('section');
+-- php
+
+-- python
+enolib.parse(input).list('section')
+-- python
+
+-- ruby
+Eno.parse(input).list('section')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected list 'section' a section with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # section
+      2 | 
+      3 | field: value
+   ...
+-- snippet
+
+selection: [0,0] => [6,6]
+
+# Expecting a list but getting a section with subsections
+
+-- input
+# section
+
+## subsection
+
+field: value
+
+## subsection
+
+list:
+- item
+- item
+-- input
+
+-- javascript
+eno.parse(input).list('section');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->list('section');
+-- php
+
+-- python
+enolib.parse(input).list('section')
+-- python
+
+-- ruby
+Eno.parse(input).list('section')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected list 'section' a section with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # section
+      2 | 
+      3 | ## subsection
+   ...
+-- snippet
+
+selection: [0,0] => [10,6]

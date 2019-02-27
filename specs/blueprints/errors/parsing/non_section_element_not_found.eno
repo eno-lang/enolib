@@ -1,0 +1,100 @@
+# Copying a non-section element that does not exist
+
+-- input
+copy < element
+-- input
+
+## ParseError
+
+-- text
+In line 1 the non-section element 'element' should be copied, but it was not found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | copy < element
+-- snippet
+
+selection: [0,0] => [0,14]
+
+# Copying a non-section element whose key only exists on a section
+
+-- input
+# section
+
+# other_section
+
+copy < section
+-- input
+
+## ParseError
+
+-- text
+In line 5 the non-section element 'section' should be copied, but it was not found.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | # other_section
+      4 | 
+ >    5 | copy < section
+-- snippet
+
+selection: [4,0] => [4,14]
+
+# Copying an implied fieldset whose key only exists on a section
+
+-- input
+# section
+
+# other_section
+
+copy < section
+entry = value
+-- input
+
+## ParseError
+
+-- text
+In line 5 the non-section element 'section' should be copied, but it was not found.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | # other_section
+      4 | 
+ >    5 | copy < section
+      6 | entry = value
+-- snippet
+
+selection: [4,0] => [4,14]
+
+# Copying an implied list whose key only exists on a section
+
+-- input
+# section
+
+# other_section
+
+copy < section
+- item
+-- input
+
+## ParseError
+
+-- text
+In line 5 the non-section element 'section' should be copied, but it was not found.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | # other_section
+      4 | 
+ >    5 | copy < section
+      6 | - item
+-- snippet
+
+selection: [4,0] => [4,14]

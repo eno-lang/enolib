@@ -1,0 +1,196 @@
+# Parsing a fieldset entry without a fieldset
+
+-- input
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 1 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | entry = value
+-- snippet
+
+selection: [0,0] => [0,13]
+
+
+# Parsing a fieldset entry preceded by a line continuation
+
+-- input
+field:
+| line_continuation
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 3 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | field:
+      2 | | line_continuation
+ >    3 | entry = value
+-- snippet
+
+selection: [2,0] => [2,13]
+
+
+# Parsing a fieldset entry preceded by a field
+
+-- input
+field: value
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 2 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | field: value
+ >    2 | entry = value
+-- snippet
+
+selection: [1,0] => [1,13]
+
+
+# Parsing a fieldset entry preceded by a list item
+
+-- input
+list:
+- item
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 3 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | list:
+      2 | - item
+ >    3 | entry = value
+-- snippet
+
+selection: [2,0] => [2,13]
+
+
+# Parsing a fieldset entry preceded by a copied field
+
+-- input
+field: value
+
+copy < field
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 4 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      2 | 
+      3 | copy < field
+ >    4 | entry = value
+-- snippet
+
+selection: [3,0] => [3,13]
+
+
+# Parsing a fieldset entry preceded by a copied list
+
+-- input
+list:
+- item
+
+copy < list
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 5 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | 
+      4 | copy < list
+ >    5 | entry = value
+-- snippet
+
+selection: [4,0] => [4,13]
+
+
+# Parsing a fieldset entry preceded by a copied empty multiline field
+
+-- input
+-- multiline field
+-- multiline field
+
+copy < multiline field
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 5 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | 
+      4 | copy < multiline field
+ >    5 | entry = value
+-- snippet
+
+selection: [4,0] => [4,13]
+
+
+# Parsing a fieldset entry preceded by a copied multiline field
+
+-- input
+-- multiline field
+value
+-- multiline field
+
+copy < multiline field
+entry = value
+-- input
+
+## ParseError
+
+-- text
+Line 6 contains a fieldset entry without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      4 | 
+      5 | copy < multiline field
+ >    6 | entry = value
+-- snippet
+
+selection: [5,0] => [5,13]

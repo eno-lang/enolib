@@ -1,0 +1,120 @@
+# Querying an empty fieldset for a required but missing entry 
+
+-- input
+fieldset:
+-- input
+
+-- javascript
+eno.parse(input).fieldset('fieldset').requiredEntry('entry');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldset('fieldset')->requiredEntry('entry');
+-- php
+
+-- python
+enolib.parse(input).fieldset('fieldset').required_entry('entry')
+-- python
+
+-- ruby
+Eno.parse(input).fieldset('fieldset').required_entry('entry')
+-- ruby
+
+## ValidationError
+
+-- text
+The fieldset entry 'entry' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | fieldset:
+-- snippet
+
+selection: [0,9] => [0,9]
+
+# Querying a fieldset with two entries for a required but missing entry 
+
+-- input
+fieldset:
+entry = value
+entry = value
+-- input
+
+-- javascript
+eno.parse(input).fieldset('fieldset').requiredEntry('missing');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldset('fieldset')->requiredEntry('missing');
+-- php
+
+-- python
+enolib.parse(input).fieldset('fieldset').missing('missing')
+-- python
+
+-- ruby
+Eno.parse(input).fieldset('fieldset').missing('missing')
+-- ruby
+
+## ValidationError
+
+-- text
+The fieldset entry 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | fieldset:
+ ?    2 | entry = value
+ ?    3 | entry = value
+-- snippet
+
+selection: [0,9] => [0,9]
+
+# Querying a fieldset with entries, empty lines and comments for a required but missing entry 
+
+-- input
+fieldset:
+
+> comment
+entry = value
+
+> comment
+entry = value
+-- input
+
+-- javascript
+eno.parse(input).fieldset('fieldset').requiredEntry('missing');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->fieldset('fieldset')->requiredEntry('missing');
+-- php
+
+-- python
+enolib.parse(input).fieldset('fieldset').missing('missing')
+-- python
+
+-- ruby
+Eno.parse(input).fieldset('fieldset').missing('missing')
+-- ruby
+
+## ValidationError
+
+-- text
+The fieldset entry 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | fieldset:
+ ?    2 | 
+ ?    3 | > comment
+ ?    4 | entry = value
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | entry = value
+-- snippet
+
+selection: [0,9] => [0,9]

@@ -1,0 +1,131 @@
+# Expecting a section but getting a fieldset with one item
+
+-- input
+fieldset:
+entry = value
+-- input
+
+-- javascript
+eno.parse(input).section('fieldset');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->section('fieldset');
+-- php
+
+-- python
+enolib.parse(input).section('fieldset')
+-- python
+
+-- ruby
+Eno.parse(input).section('fieldset')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected section 'fieldset' a fieldset with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | fieldset:
+ *    2 | entry = value
+-- snippet
+
+selection: [0,0] => [1,13]
+
+
+# Expecting a section but getting a fieldset with empty lines and multiple entries
+
+-- input
+fieldset:
+
+entry = value
+
+entry = value
+
+entry = value
+
+-- input
+
+-- javascript
+eno.parse(input).section('fieldset');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->section('fieldset');
+-- php
+
+-- python
+enolib.parse(input).section('fieldset')
+-- python
+
+-- ruby
+Eno.parse(input).section('fieldset')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected section 'fieldset' a fieldset with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | fieldset:
+ *    2 | 
+ *    3 | entry = value
+ *    4 | 
+ *    5 | entry = value
+ *    6 | 
+ *    7 | entry = value
+      8 | 
+-- snippet
+
+selection: [0,0] => [6,13]
+
+# Expecting a section but getting a fieldset with two entries with comments
+
+-- input
+fieldset:
+> comment
+entry = value
+
+> comment
+entry = value
+-- input
+
+-- javascript
+eno.parse(input).section('fieldset');
+-- javascript
+
+-- php
+Eno\Parser::parse($input)->section('fieldset');
+-- php
+
+-- python
+enolib.parse(input).section('fieldset')
+-- python
+
+-- ruby
+Eno.parse(input).section('fieldset')
+-- ruby
+
+## ValidationError
+
+-- text
+Instead of the expected section 'fieldset' a fieldset with this key was found.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | fieldset:
+ *    2 | > comment
+ *    3 | entry = value
+ *    4 | 
+ *    5 | > comment
+ *    6 | entry = value
+-- snippet
+
+selection: [0,0] => [5,13]

@@ -1,0 +1,174 @@
+# Parsing a list item without any previous element
+
+-- input
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 1 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | - item
+-- snippet
+
+selection: [0,0] => [0,6]
+
+
+# Parsing a list item preceded by a line continuation
+
+-- input
+field:
+| continuation
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 3 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | field:
+      2 | | continuation
+ >    3 | - item
+-- snippet
+
+selection: [2,0] => [2,6]
+
+
+# Parsing a list item preceded by a fieldset entry
+
+-- input
+fieldset:
+entry = value
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 3 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | fieldset:
+      2 | entry = value
+ >    3 | - item
+-- snippet
+
+selection: [2,0] => [2,6]
+
+
+# Parsing a list item preceded by a copied field
+
+-- input
+field: value
+
+copy < field
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 4 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      2 | 
+      3 | copy < field
+ >    4 | - item
+-- snippet
+
+selection: [3,0] => [3,6]
+
+
+# Parsing a list item preceded by a copied fieldset
+
+-- input
+fieldset:
+entry = value
+
+copy < fieldset
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 5 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | 
+      4 | copy < fieldset
+ >    5 | - item
+-- snippet
+
+selection: [4,0] => [4,6]
+
+
+# Parsing a list item preceded by a multiline field
+
+-- input
+-- multiline_field
+value
+-- multiline_field
+
+copy < multiline_field
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 6 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      4 | 
+      5 | copy < multiline_field
+ >    6 | - item
+-- snippet
+
+selection: [5,0] => [5,6]
+
+
+# Parsing a list item preceded by an empty multiline field
+
+-- input
+-- multiline_field
+-- multiline_field
+
+copy < multiline_field
+- item
+-- input
+
+## ParseError
+
+-- text
+Line 5 contains a list item without a list being specified before.
+-- text
+
+-- snippet
+   Line | Content
+   ...
+      3 | 
+      4 | copy < multiline_field
+ >    5 | - item
+-- snippet
+
+selection: [4,0] => [4,6]
