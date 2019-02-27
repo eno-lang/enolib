@@ -1,0 +1,234 @@
+# Message locale 'de' (German)
+#
+# Note to translators:
+# The first message group ('Terminology') contains the wording for the basic building blocks of eno,
+# take extra care to translate these few items exceptionally well, also taking the liberty to partially
+# or fully keep the english terms if there are no deeply meaningful, accurate and customary translations
+# for the given concept in your language.
+#
+# With this foundation laid out well, you will find the rest of the translations to be merely
+# repetitive finger exercises. :)
+#
+# Thank you for your contibution; to success!
+
+# Message group 'Terminology'
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "Empty Element"
+msgstr "Leeres Element"
+
+msgid "Field"
+msgstr "Feld"
+
+msgid "Fieldset"
+msgstr "Fieldset"
+
+msgid "Fieldset Entry"
+msgstr "Fieldset Eintrag"
+
+msgid "Key"
+msgstr "Schlüssel"
+
+msgid "List"
+msgstr "Liste"
+
+msgid "List Item"
+msgstr "Listeneintrag"
+
+msgid "Multiline Field"
+msgstr "Mehrzeilenfeld"
+
+msgid "Section"
+msgstr "Sektion"
+
+msgid "Value"
+msgstr "Wert"
+
+# Message group 'Reporting'
+
+msgid "Content"
+msgstr "Inhalt"
+
+msgid "Line"
+msgstr "Zeile"
+
+# Message group 'Parsing'
+
+msgid "In line [LINE] '[KEY]' is copied into itself."
+msgstr "In Zeile [LINE] wird '[KEY]' in sich selbst kopiert."
+
+msgid "Line [LINE] does not follow any specified pattern."
+msgstr "Zeile [LINE] folgt keinem spezifierten Muster."
+
+msgid "Line [LINE] contains a line continuation without a continuable element being specified before."
+msgstr "Zeile [LINE] enthält eine Zeilenfortsetzung ohne dass davor ein fortsetzbares Element begonnen wurde."
+
+msgid "Line [LINE] contains a fieldset entry without a fieldset being specified before."
+msgstr "Zeile [LINE] enthält einen Fieldset Eintrag ohne dass davor ein Fieldset begonnen wurde."
+
+msgid "Line [LINE] contains a list item without a list being specified before."
+msgstr "Zeile [LINE] enthält einen Listeneintrag ohne dass davor ein eine Liste begonnen wurde."
+
+msgid "In line [LINE] the non-section element '[KEY]' should be copied, but it was not found."
+msgstr "In Zeile [LINE] soll das Nicht-Sektions Element '[KEY]' kopiert werden, es wurde aber nicht gefunden."
+
+msgid "Line [LINE] starts a section that is more than one level deeper than the current one."
+msgstr "Zeile [LINE] beginnt eine Sektion die mehr als eine Ebene tiefer liegt als die aktuelle."
+
+msgid "In line [LINE] the section '[KEY]' should be copied, but it was not found."
+msgstr "In Zeile [LINE] soll die Sektion '[KEY]' kopiert werden, sie wurde aber nicht gefunden."
+
+msgid "There are at least two elements with the key '[KEY]' that qualify for being copied here, it is not clear which to copy."
+msgstr "Es gibt mindestens zwei Elemente mit dem Schlüssel '[KEY]' die hier zum kopieren in Frage kommen, es ist nicht klar welches kopiert werden soll."
+
+msgid "In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line."
+msgstr "In Zeile [LINE] wird der Schlüssel eines Elements escaped, jedoch wird diese Escape Sequenz bis zum Ende der Zeile nicht mehr beendet."
+
+msgid "The multiline field '[KEY]' starting in line [LINE] is not terminated until the end of the document."
+msgstr "Das Mehrzeilenfeld '[KEY]' dass in Zeile [LINE] beginnt wird bis zum Ende des Dokuments nicht mehr beendet."
+
+# Message group 'Validation'
+
+msgid "There is a problem with the comment of this element: [MESSAGE]"
+msgstr "Es gibt ein Problem mit dem Kommentar dieses Elements: [MESSAGE]"
+
+msgid "There is a problem with this element: [MESSAGE]"
+msgstr "Es gibt ein Problem mit diesem Element: [MESSAGE]"
+
+msgid "Instead of the expected single element '[KEY]' several elements with this key were found."
+msgstr "Statt dem erwarteten einzelnen Element '[KEY]' wurden mehrere Elemente mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected single field '[KEY]' several fields with this key were found."
+msgstr "Statt dem erwarteten einzelnen Feld '[KEY]' wurden mehrere Felder mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected field '[KEY]' a fieldset with this key was found."
+msgstr "Statt dem erwarteten Feld '[KEY]' wurde ein Fieldset mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected field '[KEY]' a list with this key was found."
+msgstr "Statt dem erwarteten Feld '[KEY]' wurde eine Liste mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected field '[KEY]' a section with this key was found."
+msgstr "Statt dem erwarteten Feld '[KEY]' wurde eine Sektion mit diesem Schlüssel vorgefunden."
+
+msgid "Only fields with the key '[KEY]' were expected, but a fieldset with this key was found."
+msgstr "Es wurden nur Felder mit dem Schlüssel '[KEY]' erwartet, jedoch ein Fieldset mit diesem Schlüssel vorgefunden."
+
+msgid "Only fields with the key '[KEY]' were expected, but a list with this key was found."
+msgstr "Es wurden nur Felder mit dem Schlüssel '[KEY]' erwartet, jedoch eine Liste mit diesem Schlüssel vorgefunden."
+
+msgid "Only fields with the key '[KEY]' were expected, but a section with this key was found."
+msgstr "Es wurden nur Felder mit dem Schlüssel '[KEY]' erwartet, jedoch eine Sektion mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected single fieldset entry '[KEY]' several fieldset entries with this key were found."
+msgstr "Statt dem erwarteten einzelnen Fieldset Eintrag '[KEY]' wurden mehrere Fieldset Einträge mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected fieldset '[KEY]' a field with this key was found."
+msgstr "Statt dem erwarteten Fieldset '[KEY]' wurde ein Feld mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected single fieldset '[KEY]' several fieldsets with this key were found."
+msgstr "Statt dem erwarteten einzelnen Fieldset '[KEY]' wurden mehrere Fieldsets mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected fieldset '[KEY]' a list with this key was found."
+msgstr "Statt dem erwarteten Fieldset '[KEY]' wurde eine Liste mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected fieldset '[KEY]' a section with this key was found."
+msgstr "Statt dem erwarteten Fieldset '[KEY]' wurde eine Sektion mit diesem Schlüssel vorgefunden."
+
+msgid "Only fieldsets with the key '[KEY]' were expected, but a field with this key was found."
+msgstr "Es wurden nur Fieldsets mit dem Schlüssel '[KEY]' erwartet, jedoch ein Feld mit diesem Schlüssel vorgefunden."
+
+msgid "Only fieldsets with the key '[KEY]' were expected, but a list with this key was found."
+msgstr "Es wurden nur Fieldsets mit dem Schlüssel '[KEY]' erwartet, jedoch eine Liste mit diesem Schlüssel vorgefunden."
+
+msgid "Only fieldsets with the key '[KEY]' were expected, but a section with this key was found."
+msgstr "Es wurden nur Fieldsets mit dem Schlüssel '[KEY]' erwartet, jedoch eine Sektion mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected list '[KEY]' a field with this key was found."
+msgstr "Statt der erwarteten Liste '[KEY]' wurde ein Feld mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected list '[KEY]' a fieldset with this key was found."
+msgstr "Statt der erwarteten Liste '[KEY]' wurde ein Fieldset mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected single list '[KEY]' several lists with this key were found."
+msgstr "Statt der erwarteten einzelnen Liste '[KEY]' wurden mehrere Listen mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected list '[KEY]' a section with this key was found."
+msgstr "Statt der erwarteten Liste '[KEY]' wurde eine Sektion mit diesem Schlüssel vorgefunden."
+
+msgid "Only lists with the key '[KEY]' were expected, but a field with this key was found."
+msgstr "Es wurden nur Listen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Feld mit diesem Schlüssel vorgefunden."
+
+msgid "Only lists with the key '[KEY]' were expected, but a fieldset with this key was found."
+msgstr "Es wurden nur Listen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Fieldset mit diesem Schlüssel vorgefunden."
+
+msgid "Only lists with the key '[KEY]' were expected, but a section with this key was found."
+msgstr "Es wurden nur Listen mit dem Schlüssel '[KEY]' erwartet, jedoch eine Sektion mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected section '[KEY]' an empty element with this key was found."
+msgstr "Statt der erwarteten Sektion '[KEY]' wurde ein leeres Element mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected section '[KEY]' a field with this key was found."
+msgstr "Statt der erwarteten Sektion '[KEY]' wurde ein Feld mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected section '[KEY]' a fieldset with this key was found."
+msgstr "Statt der erwarteten Sektion '[KEY]' wurde ein Fieldset mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected section '[KEY]' a list with this key was found."
+msgstr "Statt der erwarteten Sektion '[KEY]' wurde eine Liste mit diesem Schlüssel vorgefunden."
+
+msgid "Instead of the expected single section '[KEY]' several sections with this key were found."
+msgstr "Statt der erwarteten einzelnen Sektion '[KEY]' wurden mehrere Sektionen mit diesem Schlüssel vorgefunden."
+
+msgid "Only sections with the key '[KEY]' were expected, but an empty element with this key was found."
+msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch ein leeres Element mit diesem Schlüssel vorgefunden."
+
+msgid "Only sections with the key '[KEY]' were expected, but a field with this key was found."
+msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Feld mit diesem Schlüssel vorgefunden."
+
+msgid "Only sections with the key '[KEY]' were expected, but a fieldset with this key was found."
+msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Fieldset mit diesem Schlüssel vorgefunden."
+
+msgid "Only sections with the key '[KEY]' were expected, but a list with this key was found."
+msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch eine Liste mit diesem Schlüssel vorgefunden."
+
+msgid "There is a problem with the key of this element: [MESSAGE]"
+msgstr "Es gibt ein Problem mit dem Schlüssel dieses Elements: [MESSAGE]"
+
+msgid "A required comment for this element is missing."
+msgstr "Ein erforderlicher Kommentar zu diesem Feld fehlt."
+
+msgid "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Das Element '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Das Feld '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "The field '[KEY]' must contain a value."
+msgstr "Das Feld '[KEY]' muss einen Wert enthalten."
+
+msgid "The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Das Fieldset '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Der Fieldset Eintrag '[KEY]' fehlt - falls er angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "The fieldset entry '[KEY]' must contain a value."
+msgstr "Der Fieldset Eintrag '[KEY]' muss einen Wert enthalten."
+
+msgid "The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Die Liste '[KEY]' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "The list '[KEY]' may not contain empty items."
+msgstr "Die Liste '[KEY]' darf keine leeren Einträge enthalten."
+
+msgid "The section '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Die Sektion '[KEY]' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed."
+msgstr "Dieses Element wurde nicht erwartet, prüfe ob es am richtigen Platz ist und dass der Schlüssel keine Tippfehler enthält."
+
+msgid "There is a problem with the value of this element: [MESSAGE]"
+msgstr "Es gibt ein Problem mit dem Wert dieses Elements: [MESSAGE]"
+
