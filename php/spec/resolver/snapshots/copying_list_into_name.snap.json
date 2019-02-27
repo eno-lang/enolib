@@ -1,0 +1,14 @@
+[
+    {
+        "languages": [
+            "eno",
+            "json"
+        ]
+    },
+    {
+        "copy": [
+            "eno",
+            "json"
+        ]
+    }
+]

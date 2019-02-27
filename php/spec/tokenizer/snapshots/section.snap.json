@@ -1,0 +1,74 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "depth": 1,
+        "type": "SECTION",
+        "key": "section",
+        "ranges": {
+            "key": [
+                2,
+                9
+            ],
+            "section_operator": [
+                0,
+                1
+            ]
+        },
+        "length": 9
+    },
+    {
+        "index": 10,
+        "line": 1,
+        "depth": 2,
+        "type": "SECTION",
+        "key": "section",
+        "ranges": {
+            "key": [
+                7,
+                14
+            ],
+            "section_operator": [
+                4,
+                6
+            ]
+        },
+        "length": 14
+    },
+    {
+        "index": 25,
+        "line": 2,
+        "depth": 3,
+        "type": "SECTION",
+        "key": "section",
+        "ranges": {
+            "key": [
+                7,
+                14
+            ],
+            "section_operator": [
+                0,
+                3
+            ]
+        },
+        "length": 14
+    },
+    {
+        "index": 40,
+        "line": 3,
+        "depth": 4,
+        "type": "SECTION",
+        "key": "section",
+        "ranges": {
+            "key": [
+                12,
+                19
+            ],
+            "section_operator": [
+                4,
+                8
+            ]
+        },
+        "length": 19
+    }
+]

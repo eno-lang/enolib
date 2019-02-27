@@ -1,0 +1,12 @@
+--- message
+The field 'url' must contain a value.
+
+   Line | Content
+   ...
+     11 | ok = 3
+     12 | 
+ >   13 | url:
+ *   14 | |
+
+--- selection
+[[12,4],[13,1]]

@@ -1,0 +1,12 @@
+--- message
+Only fields with the key 'language' were expected, but a fieldset with this key was found.
+
+   Line | Content
+ >    1 | language:
+ >    2 | yaml = yaml ain't markup language
+      3 | 
+      4 | language:
+   ...
+
+--- selection
+[[0,0],[1,33]]

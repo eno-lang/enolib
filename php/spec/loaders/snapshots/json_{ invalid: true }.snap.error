@@ -1,0 +1,8 @@
+--- message
+'value' must contain valid JSON - the parser returned: 'Syntax error, malformed JSON'.
+
+   Line | Content
+ >    1 | value: { invalid: true }
+
+--- selection
+[[0,7],[0,24]]

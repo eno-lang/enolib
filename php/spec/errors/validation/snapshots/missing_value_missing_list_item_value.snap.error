@@ -1,0 +1,10 @@
+--- message
+The list 'values required' may not contain empty items.
+
+   Line | Content
+      1 | values required:
+      2 | - value
+ >    3 | -
+
+--- selection
+[[2,1],[2,1]]

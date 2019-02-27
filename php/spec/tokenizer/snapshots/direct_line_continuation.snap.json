@@ -1,0 +1,92 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                1,
+                6
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "value",
+        "length": 6
+    },
+    {
+        "index": 7,
+        "line": 1,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                7
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "value",
+        "length": 7
+    },
+    {
+        "index": 15,
+        "line": 2,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                5,
+                10
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "value",
+        "length": 10
+    },
+    {
+        "index": 26,
+        "line": 3,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                4,
+                5
+            ],
+            "value": [
+                6,
+                11
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "value",
+        "length": 11
+    },
+    {
+        "index": 38,
+        "line": 4,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                4,
+                5
+            ],
+            "value": [
+                9,
+                14
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "value",
+        "length": 14
+    }
+]

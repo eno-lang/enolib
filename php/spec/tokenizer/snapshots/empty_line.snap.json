@@ -1,0 +1,56 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 1,
+        "line": 1,
+        "type": "EMPTY_LINE",
+        "length": 1
+    },
+    {
+        "index": 3,
+        "line": 2,
+        "type": "EMPTY_LINE",
+        "length": 2
+    },
+    {
+        "index": 6,
+        "line": 3,
+        "type": "EMPTY_LINE",
+        "length": 3
+    },
+    {
+        "index": 10,
+        "line": 4,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 11,
+        "line": 5,
+        "type": "EMPTY_LINE",
+        "length": 1
+    },
+    {
+        "index": 13,
+        "line": 6,
+        "type": "EMPTY_LINE",
+        "length": 2
+    },
+    {
+        "index": 16,
+        "line": 7,
+        "type": "EMPTY_LINE",
+        "length": 3
+    },
+    {
+        "index": 20,
+        "length": 0,
+        "line": 8,
+        "type": "NOOP"
+    }
+]

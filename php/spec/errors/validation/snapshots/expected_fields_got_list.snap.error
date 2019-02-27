@@ -1,0 +1,13 @@
+--- message
+Only fields with the key 'language' were expected, but a list with this key was found.
+
+   Line | Content
+ >    1 | language:
+ >    2 | - yml
+ >    3 | - yaml
+      4 | 
+      5 | language:
+   ...
+
+--- selection
+[[0,0],[2,6]]

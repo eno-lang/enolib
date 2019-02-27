@@ -1,0 +1,134 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "copy",
+        "ranges": {
+            "copy_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                4
+            ],
+            "template": [
+                7,
+                15
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 15
+    },
+    {
+        "index": 16,
+        "line": 1,
+        "key": "copy",
+        "ranges": {
+            "copy_operator": [
+                5,
+                7
+            ],
+            "key": [
+                0,
+                4
+            ],
+            "template": [
+                8,
+                16
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 16
+    },
+    {
+        "index": 33,
+        "line": 2,
+        "key": "copy",
+        "ranges": {
+            "copy_operator": [
+                8,
+                9
+            ],
+            "key": [
+                0,
+                4
+            ],
+            "template": [
+                10,
+                18
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 18
+    },
+    {
+        "index": 52,
+        "line": 3,
+        "key": "copy",
+        "ranges": {
+            "copy_operator": [
+                8,
+                10
+            ],
+            "key": [
+                0,
+                4
+            ],
+            "template": [
+                11,
+                19
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 19
+    },
+    {
+        "index": 72,
+        "line": 4,
+        "key": "copy",
+        "ranges": {
+            "copy_operator": [
+                14,
+                15
+            ],
+            "key": [
+                5,
+                9
+            ],
+            "template": [
+                16,
+                24
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 24
+    },
+    {
+        "index": 97,
+        "line": 5,
+        "key": "copy",
+        "ranges": {
+            "copy_operator": [
+                14,
+                16
+            ],
+            "key": [
+                5,
+                9
+            ],
+            "template": [
+                17,
+                25
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 25
+    }
+]

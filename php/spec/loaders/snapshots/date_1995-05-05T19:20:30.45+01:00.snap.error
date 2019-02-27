@@ -1,0 +1,8 @@
+--- message
+'value' must contain a valid date, for instance '1993-11-18'.
+
+   Line | Content
+ >    1 | value: 1995-05-05T19:20:30.45+01:00
+
+--- selection
+[[0,7],[0,35]]

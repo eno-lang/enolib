@@ -1,0 +1,8 @@
+--- message
+'value' must contain a decimal number, for instance '13.0', '-9.159' or '42'.
+
+   Line | Content
+ >    1 | value: fortytwo
+
+--- selection
+[[0,7],[0,15]]

@@ -1,0 +1,70 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "element",
+        "ranges": {
+            "element_operator": [
+                7,
+                8
+            ],
+            "key": [
+                0,
+                7
+            ]
+        },
+        "type": "ELEMENT",
+        "length": 8
+    },
+    {
+        "index": 9,
+        "line": 1,
+        "key": "element",
+        "ranges": {
+            "element_operator": [
+                11,
+                12
+            ],
+            "key": [
+                4,
+                11
+            ]
+        },
+        "type": "ELEMENT",
+        "length": 12
+    },
+    {
+        "index": 22,
+        "line": 2,
+        "key": "element",
+        "ranges": {
+            "element_operator": [
+                11,
+                12
+            ],
+            "key": [
+                0,
+                7
+            ]
+        },
+        "type": "ELEMENT",
+        "length": 12
+    },
+    {
+        "index": 35,
+        "line": 3,
+        "key": "element",
+        "ranges": {
+            "element_operator": [
+                15,
+                16
+            ],
+            "key": [
+                4,
+                11
+            ]
+        },
+        "type": "ELEMENT",
+        "length": 16
+    }
+]

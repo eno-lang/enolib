@@ -1,0 +1,25 @@
+[
+    {
+        "languages": [
+            {
+                "eno": "error notation"
+            },
+            {
+                "json": "json object notation"
+            }
+        ]
+    },
+    {
+        "copy": [
+            {
+                "eno": "error notation"
+            },
+            {
+                "json": "json object notation"
+            },
+            {
+                "yaml": "yaml ain't markup language"
+            }
+        ]
+    }
+]

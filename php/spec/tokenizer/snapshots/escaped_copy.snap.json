@@ -1,0 +1,122 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "key",
+        "ranges": {
+            "copy_operator": [
+                6,
+                7
+            ],
+            "escape_begin_operator": [
+                0,
+                1
+            ],
+            "escape_end_operator": [
+                4,
+                5
+            ],
+            "key": [
+                1,
+                4
+            ],
+            "template": [
+                8,
+                16
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 16
+    },
+    {
+        "index": 17,
+        "line": 1,
+        "key": "ke`y",
+        "ranges": {
+            "copy_operator": [
+                9,
+                10
+            ],
+            "escape_begin_operator": [
+                0,
+                2
+            ],
+            "escape_end_operator": [
+                6,
+                8
+            ],
+            "key": [
+                2,
+                6
+            ],
+            "template": [
+                11,
+                19
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 19
+    },
+    {
+        "index": 37,
+        "line": 2,
+        "key": "k``ey",
+        "ranges": {
+            "copy_operator": [
+                15,
+                16
+            ],
+            "escape_begin_operator": [
+                0,
+                3
+            ],
+            "escape_end_operator": [
+                8,
+                11
+            ],
+            "key": [
+                3,
+                8
+            ],
+            "template": [
+                17,
+                25
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 25
+    },
+    {
+        "index": 63,
+        "line": 3,
+        "key": "`key`",
+        "ranges": {
+            "copy_operator": [
+                19,
+                20
+            ],
+            "escape_begin_operator": [
+                4,
+                6
+            ],
+            "escape_end_operator": [
+                13,
+                15
+            ],
+            "key": [
+                7,
+                12
+            ],
+            "template": [
+                21,
+                29
+            ]
+        },
+        "template": "template",
+        "type": "ELEMENT",
+        "length": 29
+    }
+]

@@ -1,0 +1,11 @@
+--- message
+Only sections with the key 'languages' were expected, but a list with this key was found.
+
+   Line | Content
+ >    1 | languages:
+ >    2 | - eno (eno notation)
+ >    3 | - json (javascript object notation)
+ >    4 | - yaml (yaml ain't markup language)
+
+--- selection
+[[0,0],[3,35]]

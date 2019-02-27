@@ -1,0 +1,22 @@
+[
+    {
+        "languages": [
+            {
+                "eno": "error notation"
+            },
+            {
+                "json": "json object notation"
+            }
+        ]
+    },
+    {
+        "copy": [
+            {
+                "json": "json object notation"
+            },
+            {
+                "eno": "eno notation"
+            }
+        ]
+    }
+]

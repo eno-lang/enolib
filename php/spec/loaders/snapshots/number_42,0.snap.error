@@ -1,0 +1,8 @@
+--- message
+'value' must contain an integer, for instance '42' or '-21'.
+
+   Line | Content
+ >    1 | value: 42,0
+
+--- selection
+[[0,7],[0,11]]

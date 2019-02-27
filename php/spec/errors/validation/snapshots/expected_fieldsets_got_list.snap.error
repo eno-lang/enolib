@@ -1,0 +1,12 @@
+--- message
+Only fieldsets with the key 'languages' were expected, but a list with this key was found.
+
+   Line | Content
+   ...
+      5 | json = JavaScript Object Notation
+      6 | 
+ >    7 | languages:
+ >    8 | - yaml (YAML Ain't Markup Language)
+
+--- selection
+[[6,0],[7,35]]

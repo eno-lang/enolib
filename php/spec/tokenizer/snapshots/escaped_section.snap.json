@@ -1,0 +1,106 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "depth": 1,
+        "type": "SECTION",
+        "key": "key",
+        "ranges": {
+            "escape_begin_operator": [
+                2,
+                3
+            ],
+            "escape_end_operator": [
+                6,
+                7
+            ],
+            "key": [
+                3,
+                6
+            ],
+            "section_operator": [
+                0,
+                1
+            ]
+        },
+        "length": 7
+    },
+    {
+        "index": 8,
+        "line": 1,
+        "depth": 2,
+        "type": "SECTION",
+        "key": "ke`y",
+        "ranges": {
+            "escape_begin_operator": [
+                3,
+                5
+            ],
+            "escape_end_operator": [
+                9,
+                11
+            ],
+            "key": [
+                5,
+                9
+            ],
+            "section_operator": [
+                0,
+                2
+            ]
+        },
+        "length": 11
+    },
+    {
+        "index": 20,
+        "line": 2,
+        "depth": 3,
+        "type": "SECTION",
+        "key": "k``ey",
+        "ranges": {
+            "escape_begin_operator": [
+                4,
+                7
+            ],
+            "escape_end_operator": [
+                12,
+                15
+            ],
+            "key": [
+                7,
+                12
+            ],
+            "section_operator": [
+                0,
+                3
+            ]
+        },
+        "length": 15
+    },
+    {
+        "index": 36,
+        "line": 3,
+        "depth": 4,
+        "type": "SECTION",
+        "key": "`key`",
+        "ranges": {
+            "escape_begin_operator": [
+                9,
+                11
+            ],
+            "escape_end_operator": [
+                18,
+                20
+            ],
+            "key": [
+                12,
+                17
+            ],
+            "section_operator": [
+                4,
+                8
+            ]
+        },
+        "length": 20
+    }
+]

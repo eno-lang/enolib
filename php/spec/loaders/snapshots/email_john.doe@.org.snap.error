@@ -1,0 +1,8 @@
+--- message
+'value' must contain a valid email address, for instance 'jane.doe@eno-lang.org'.
+
+   Line | Content
+ >    1 | value: john.doe@.org
+
+--- selection
+[[0,7],[0,20]]

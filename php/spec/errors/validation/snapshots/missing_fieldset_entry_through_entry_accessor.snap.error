@@ -1,0 +1,8 @@
+--- message
+The fieldset entry 'presence' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ >    1 | emptyness:
+
+--- selection
+[[0,10],[0,10]]

@@ -1,0 +1,106 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "key",
+        "ranges": {
+            "escape_begin_operator": [
+                0,
+                1
+            ],
+            "escape_end_operator": [
+                4,
+                5
+            ],
+            "entry_operator": [
+                6,
+                7
+            ],
+            "key": [
+                1,
+                4
+            ]
+        },
+        "type": "FIELDSET_ENTRY",
+        "value": null,
+        "length": 7
+    },
+    {
+        "index": 8,
+        "line": 1,
+        "key": "ke`y",
+        "ranges": {
+            "escape_begin_operator": [
+                0,
+                2
+            ],
+            "escape_end_operator": [
+                6,
+                8
+            ],
+            "entry_operator": [
+                9,
+                10
+            ],
+            "key": [
+                2,
+                6
+            ]
+        },
+        "type": "FIELDSET_ENTRY",
+        "value": null,
+        "length": 10
+    },
+    {
+        "index": 19,
+        "line": 2,
+        "key": "k``ey",
+        "ranges": {
+            "escape_begin_operator": [
+                0,
+                3
+            ],
+            "escape_end_operator": [
+                8,
+                11
+            ],
+            "entry_operator": [
+                15,
+                16
+            ],
+            "key": [
+                3,
+                8
+            ]
+        },
+        "type": "FIELDSET_ENTRY",
+        "value": null,
+        "length": 16
+    },
+    {
+        "index": 36,
+        "line": 3,
+        "key": "`key`",
+        "ranges": {
+            "escape_begin_operator": [
+                4,
+                6
+            ],
+            "escape_end_operator": [
+                13,
+                15
+            ],
+            "entry_operator": [
+                19,
+                20
+            ],
+            "key": [
+                7,
+                12
+            ]
+        },
+        "type": "FIELDSET_ENTRY",
+        "value": null,
+        "length": 20
+    }
+]

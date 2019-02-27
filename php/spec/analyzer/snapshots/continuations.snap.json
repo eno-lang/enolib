@@ -1,0 +1,888 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "Field",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                7,
+                12
+            ]
+        },
+        "type": "FIELD",
+        "value": "Value",
+        "length": 12,
+        "subinstructions": [
+            {
+                "index": 13,
+                "line": 1,
+                "ranges": {
+                    "spaced_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        19
+                    ]
+                },
+                "spaced": true,
+                "type": "CONTINUATION",
+                "value": "Line continuation",
+                "length": 19
+            },
+            {
+                "index": 33,
+                "line": 2,
+                "ranges": {
+                    "direct_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        22
+                    ]
+                },
+                "spaced": false,
+                "type": "CONTINUATION",
+                "value": "Newline continuation",
+                "length": 22
+            }
+        ]
+    },
+    {
+        "index": 13,
+        "line": 1,
+        "ranges": {
+            "spaced_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                19
+            ]
+        },
+        "spaced": true,
+        "type": "CONTINUATION",
+        "value": "Line continuation",
+        "length": 19
+    },
+    {
+        "index": 33,
+        "line": 2,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                22
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "Newline continuation",
+        "length": 22
+    },
+    {
+        "index": 56,
+        "line": 3,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 57,
+        "line": 4,
+        "key": "Fieldset",
+        "ranges": {
+            "element_operator": [
+                8,
+                9
+            ],
+            "key": [
+                0,
+                8
+            ]
+        },
+        "type": "FIELDSET",
+        "length": 9,
+        "subinstructions": [
+            {
+                "index": 67,
+                "line": 5,
+                "key": "Empty",
+                "ranges": {
+                    "entry_operator": [
+                        6,
+                        7
+                    ],
+                    "key": [
+                        0,
+                        5
+                    ],
+                    "value": [
+                        8,
+                        13
+                    ]
+                },
+                "type": "FIELDSET_ENTRY",
+                "value": "Value",
+                "length": 13,
+                "subinstructions": [
+                    {
+                        "index": 81,
+                        "line": 6,
+                        "ranges": {
+                            "spaced_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                19
+                            ]
+                        },
+                        "spaced": true,
+                        "type": "CONTINUATION",
+                        "value": "Line continuation",
+                        "length": 19
+                    },
+                    {
+                        "index": 101,
+                        "line": 7,
+                        "ranges": {
+                            "direct_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                22
+                            ]
+                        },
+                        "spaced": false,
+                        "type": "CONTINUATION",
+                        "value": "Newline continuation",
+                        "length": 22
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 67,
+        "line": 5,
+        "key": "Empty",
+        "ranges": {
+            "entry_operator": [
+                6,
+                7
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                8,
+                13
+            ]
+        },
+        "type": "FIELDSET_ENTRY",
+        "value": "Value",
+        "length": 13,
+        "subinstructions": [
+            {
+                "index": 81,
+                "line": 6,
+                "ranges": {
+                    "spaced_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        19
+                    ]
+                },
+                "spaced": true,
+                "type": "CONTINUATION",
+                "value": "Line continuation",
+                "length": 19
+            },
+            {
+                "index": 101,
+                "line": 7,
+                "ranges": {
+                    "direct_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        22
+                    ]
+                },
+                "spaced": false,
+                "type": "CONTINUATION",
+                "value": "Newline continuation",
+                "length": 22
+            }
+        ]
+    },
+    {
+        "index": 81,
+        "line": 6,
+        "ranges": {
+            "spaced_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                19
+            ]
+        },
+        "spaced": true,
+        "type": "CONTINUATION",
+        "value": "Line continuation",
+        "length": 19
+    },
+    {
+        "index": 101,
+        "line": 7,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                22
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "Newline continuation",
+        "length": 22
+    },
+    {
+        "index": 124,
+        "line": 8,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 125,
+        "line": 9,
+        "key": "List",
+        "ranges": {
+            "element_operator": [
+                4,
+                5
+            ],
+            "key": [
+                0,
+                4
+            ]
+        },
+        "type": "LIST",
+        "length": 5,
+        "subinstructions": [
+            {
+                "index": 131,
+                "line": 10,
+                "ranges": {
+                    "item_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        7
+                    ]
+                },
+                "type": "LIST_ITEM",
+                "value": "Value",
+                "length": 7,
+                "key": "List",
+                "subinstructions": [
+                    {
+                        "index": 139,
+                        "line": 11,
+                        "ranges": {
+                            "spaced_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                19
+                            ]
+                        },
+                        "spaced": true,
+                        "type": "CONTINUATION",
+                        "value": "Line continuation",
+                        "length": 19
+                    },
+                    {
+                        "index": 159,
+                        "line": 12,
+                        "ranges": {
+                            "direct_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                22
+                            ]
+                        },
+                        "spaced": false,
+                        "type": "CONTINUATION",
+                        "value": "Newline continuation",
+                        "length": 22
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 131,
+        "line": 10,
+        "ranges": {
+            "item_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                7
+            ]
+        },
+        "type": "LIST_ITEM",
+        "value": "Value",
+        "length": 7,
+        "key": "List",
+        "subinstructions": [
+            {
+                "index": 139,
+                "line": 11,
+                "ranges": {
+                    "spaced_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        19
+                    ]
+                },
+                "spaced": true,
+                "type": "CONTINUATION",
+                "value": "Line continuation",
+                "length": 19
+            },
+            {
+                "index": 159,
+                "line": 12,
+                "ranges": {
+                    "direct_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        22
+                    ]
+                },
+                "spaced": false,
+                "type": "CONTINUATION",
+                "value": "Newline continuation",
+                "length": 22
+            }
+        ]
+    },
+    {
+        "index": 139,
+        "line": 11,
+        "ranges": {
+            "spaced_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                19
+            ]
+        },
+        "spaced": true,
+        "type": "CONTINUATION",
+        "value": "Line continuation",
+        "length": 19
+    },
+    {
+        "index": 159,
+        "line": 12,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                22
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "Newline continuation",
+        "length": 22
+    },
+    {
+        "index": 182,
+        "line": 13,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 183,
+        "line": 14,
+        "key": "Empty field",
+        "ranges": {
+            "element_operator": [
+                11,
+                12
+            ],
+            "key": [
+                0,
+                11
+            ]
+        },
+        "type": "FIELD",
+        "length": 12,
+        "subinstructions": [
+            {
+                "index": 196,
+                "line": 15,
+                "ranges": {
+                    "spaced_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        19
+                    ]
+                },
+                "spaced": true,
+                "type": "CONTINUATION",
+                "value": "Line continuation",
+                "length": 19
+            },
+            {
+                "index": 216,
+                "line": 16,
+                "ranges": {
+                    "direct_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        22
+                    ]
+                },
+                "spaced": false,
+                "type": "CONTINUATION",
+                "value": "Newline continuation",
+                "length": 22
+            }
+        ],
+        "value": null
+    },
+    {
+        "index": 196,
+        "line": 15,
+        "ranges": {
+            "spaced_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                19
+            ]
+        },
+        "spaced": true,
+        "type": "CONTINUATION",
+        "value": "Line continuation",
+        "length": 19
+    },
+    {
+        "index": 216,
+        "line": 16,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                22
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "Newline continuation",
+        "length": 22
+    },
+    {
+        "index": 239,
+        "line": 17,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 240,
+        "line": 18,
+        "key": "Fieldset with empty entry",
+        "ranges": {
+            "element_operator": [
+                25,
+                26
+            ],
+            "key": [
+                0,
+                25
+            ]
+        },
+        "type": "FIELDSET",
+        "length": 26,
+        "subinstructions": [
+            {
+                "index": 267,
+                "line": 19,
+                "key": "Empty entry",
+                "ranges": {
+                    "entry_operator": [
+                        12,
+                        13
+                    ],
+                    "key": [
+                        0,
+                        11
+                    ]
+                },
+                "type": "FIELDSET_ENTRY",
+                "value": null,
+                "length": 13,
+                "subinstructions": [
+                    {
+                        "index": 281,
+                        "line": 20,
+                        "ranges": {
+                            "spaced_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                19
+                            ]
+                        },
+                        "spaced": true,
+                        "type": "CONTINUATION",
+                        "value": "Line continuation",
+                        "length": 19
+                    },
+                    {
+                        "index": 301,
+                        "line": 21,
+                        "ranges": {
+                            "direct_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                22
+                            ]
+                        },
+                        "spaced": false,
+                        "type": "CONTINUATION",
+                        "value": "Newline continuation",
+                        "length": 22
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 267,
+        "line": 19,
+        "key": "Empty entry",
+        "ranges": {
+            "entry_operator": [
+                12,
+                13
+            ],
+            "key": [
+                0,
+                11
+            ]
+        },
+        "type": "FIELDSET_ENTRY",
+        "value": null,
+        "length": 13,
+        "subinstructions": [
+            {
+                "index": 281,
+                "line": 20,
+                "ranges": {
+                    "spaced_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        19
+                    ]
+                },
+                "spaced": true,
+                "type": "CONTINUATION",
+                "value": "Line continuation",
+                "length": 19
+            },
+            {
+                "index": 301,
+                "line": 21,
+                "ranges": {
+                    "direct_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        22
+                    ]
+                },
+                "spaced": false,
+                "type": "CONTINUATION",
+                "value": "Newline continuation",
+                "length": 22
+            }
+        ]
+    },
+    {
+        "index": 281,
+        "line": 20,
+        "ranges": {
+            "spaced_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                19
+            ]
+        },
+        "spaced": true,
+        "type": "CONTINUATION",
+        "value": "Line continuation",
+        "length": 19
+    },
+    {
+        "index": 301,
+        "line": 21,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                22
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "Newline continuation",
+        "length": 22
+    },
+    {
+        "index": 324,
+        "line": 22,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 325,
+        "line": 23,
+        "key": "List with empty item",
+        "ranges": {
+            "element_operator": [
+                20,
+                21
+            ],
+            "key": [
+                0,
+                20
+            ]
+        },
+        "type": "LIST",
+        "length": 21,
+        "subinstructions": [
+            {
+                "index": 347,
+                "line": 24,
+                "ranges": {
+                    "item_operator": [
+                        0,
+                        1
+                    ]
+                },
+                "type": "LIST_ITEM",
+                "value": null,
+                "length": 1,
+                "key": "List with empty item",
+                "subinstructions": [
+                    {
+                        "index": 349,
+                        "line": 25,
+                        "ranges": {
+                            "spaced_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                19
+                            ]
+                        },
+                        "spaced": true,
+                        "type": "CONTINUATION",
+                        "value": "Line continuation",
+                        "length": 19
+                    },
+                    {
+                        "index": 369,
+                        "line": 26,
+                        "ranges": {
+                            "direct_line_continuation_operator": [
+                                0,
+                                1
+                            ],
+                            "value": [
+                                2,
+                                22
+                            ]
+                        },
+                        "spaced": false,
+                        "type": "CONTINUATION",
+                        "value": "Newline continuation",
+                        "length": 22
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 347,
+        "line": 24,
+        "ranges": {
+            "item_operator": [
+                0,
+                1
+            ]
+        },
+        "type": "LIST_ITEM",
+        "value": null,
+        "length": 1,
+        "key": "List with empty item",
+        "subinstructions": [
+            {
+                "index": 349,
+                "line": 25,
+                "ranges": {
+                    "spaced_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        19
+                    ]
+                },
+                "spaced": true,
+                "type": "CONTINUATION",
+                "value": "Line continuation",
+                "length": 19
+            },
+            {
+                "index": 369,
+                "line": 26,
+                "ranges": {
+                    "direct_line_continuation_operator": [
+                        0,
+                        1
+                    ],
+                    "value": [
+                        2,
+                        22
+                    ]
+                },
+                "spaced": false,
+                "type": "CONTINUATION",
+                "value": "Newline continuation",
+                "length": 22
+            }
+        ]
+    },
+    {
+        "index": 349,
+        "line": 25,
+        "ranges": {
+            "spaced_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                19
+            ]
+        },
+        "spaced": true,
+        "type": "CONTINUATION",
+        "value": "Line continuation",
+        "length": 19
+    },
+    {
+        "index": 369,
+        "line": 26,
+        "ranges": {
+            "direct_line_continuation_operator": [
+                0,
+                1
+            ],
+            "value": [
+                2,
+                22
+            ]
+        },
+        "spaced": false,
+        "type": "CONTINUATION",
+        "value": "Newline continuation",
+        "length": 22
+    }
+]

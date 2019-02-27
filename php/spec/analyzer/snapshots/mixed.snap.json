@@ -1,0 +1,198 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "color",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                7,
+                11
+            ]
+        },
+        "type": "FIELD",
+        "value": "cyan",
+        "length": 11,
+        "subinstructions": []
+    },
+    {
+        "index": 12,
+        "line": 1,
+        "key": "close",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                6,
+                8
+            ]
+        },
+        "type": "FIELD",
+        "value": "up",
+        "length": 8,
+        "subinstructions": []
+    },
+    {
+        "index": 21,
+        "line": 2,
+        "depth": 1,
+        "type": "SECTION",
+        "key": "notes",
+        "ranges": {
+            "key": [
+                2,
+                7
+            ],
+            "section_operator": [
+                0,
+                1
+            ]
+        },
+        "length": 7,
+        "subinstructions": [
+            {
+                "index": 29,
+                "line": 3,
+                "key": "long",
+                "type": "MULTILINE_FIELD_BEGIN",
+                "length": 7,
+                "ranges": {
+                    "multiline_field_operator": [
+                        0,
+                        2
+                    ],
+                    "key": [
+                        3,
+                        7
+                    ]
+                },
+                "value_range": [
+                    37,
+                    38
+                ],
+                "subinstructions": [
+                    {
+                        "index": 37,
+                        "length": 2,
+                        "line": 4,
+                        "ranges": {
+                            "content": [
+                                0,
+                                2
+                            ]
+                        },
+                        "type": "MULTILINE_FIELD_VALUE"
+                    },
+                    {
+                        "index": 40,
+                        "length": 7,
+                        "line": 5,
+                        "ranges": {
+                            "multiline_field_operator": [
+                                0,
+                                2
+                            ],
+                            "key": [
+                                3,
+                                7
+                            ]
+                        },
+                        "type": "MULTILINE_FIELD_END"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 29,
+        "line": 3,
+        "key": "long",
+        "type": "MULTILINE_FIELD_BEGIN",
+        "length": 7,
+        "ranges": {
+            "multiline_field_operator": [
+                0,
+                2
+            ],
+            "key": [
+                3,
+                7
+            ]
+        },
+        "value_range": [
+            37,
+            38
+        ],
+        "subinstructions": [
+            {
+                "index": 37,
+                "length": 2,
+                "line": 4,
+                "ranges": {
+                    "content": [
+                        0,
+                        2
+                    ]
+                },
+                "type": "MULTILINE_FIELD_VALUE"
+            },
+            {
+                "index": 40,
+                "length": 7,
+                "line": 5,
+                "ranges": {
+                    "multiline_field_operator": [
+                        0,
+                        2
+                    ],
+                    "key": [
+                        3,
+                        7
+                    ]
+                },
+                "type": "MULTILINE_FIELD_END"
+            }
+        ]
+    },
+    {
+        "index": 37,
+        "length": 2,
+        "line": 4,
+        "ranges": {
+            "content": [
+                0,
+                2
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 40,
+        "length": 7,
+        "line": 5,
+        "ranges": {
+            "multiline_field_operator": [
+                0,
+                2
+            ],
+            "key": [
+                3,
+                7
+            ]
+        },
+        "type": "MULTILINE_FIELD_END"
+    }
+]

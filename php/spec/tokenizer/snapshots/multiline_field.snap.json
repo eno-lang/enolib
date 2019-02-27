@@ -1,0 +1,209 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "key": "multiline_field",
+        "type": "MULTILINE_FIELD_BEGIN",
+        "length": 18,
+        "ranges": {
+            "multiline_field_operator": [
+                0,
+                2
+            ],
+            "key": [
+                3,
+                18
+            ]
+        },
+        "value_range": [
+            19,
+            23
+        ]
+    },
+    {
+        "index": 19,
+        "length": 5,
+        "line": 1,
+        "ranges": {
+            "content": [
+                0,
+                5
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 25,
+        "length": 18,
+        "line": 2,
+        "ranges": {
+            "multiline_field_operator": [
+                0,
+                2
+            ],
+            "key": [
+                3,
+                18
+            ]
+        },
+        "type": "MULTILINE_FIELD_END"
+    },
+    {
+        "index": 44,
+        "line": 3,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 45,
+        "line": 4,
+        "key": "multiline_field",
+        "type": "MULTILINE_FIELD_BEGIN",
+        "length": 21,
+        "ranges": {
+            "multiline_field_operator": [
+                0,
+                2
+            ],
+            "key": [
+                6,
+                21
+            ]
+        },
+        "value_range": [
+            67,
+            73
+        ]
+    },
+    {
+        "index": 67,
+        "length": 0,
+        "line": 5,
+        "ranges": {
+            "content": [
+                0,
+                0
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 68,
+        "length": 5,
+        "line": 6,
+        "ranges": {
+            "content": [
+                0,
+                5
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 74,
+        "length": 0,
+        "line": 7,
+        "ranges": {
+            "content": [
+                0,
+                0
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 75,
+        "length": 22,
+        "line": 8,
+        "ranges": {
+            "multiline_field_operator": [
+                4,
+                6
+            ],
+            "key": [
+                7,
+                22
+            ]
+        },
+        "type": "MULTILINE_FIELD_END"
+    },
+    {
+        "index": 98,
+        "line": 9,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 99,
+        "line": 10,
+        "key": "multiline_field",
+        "type": "MULTILINE_FIELD_BEGIN",
+        "length": 25,
+        "ranges": {
+            "multiline_field_operator": [
+                4,
+                6
+            ],
+            "key": [
+                10,
+                25
+            ]
+        },
+        "value_range": [
+            125,
+            140
+        ]
+    },
+    {
+        "index": 125,
+        "length": 5,
+        "line": 11,
+        "ranges": {
+            "content": [
+                0,
+                5
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 131,
+        "length": 0,
+        "line": 12,
+        "ranges": {
+            "content": [
+                0,
+                0
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 132,
+        "length": 9,
+        "line": 13,
+        "ranges": {
+            "content": [
+                0,
+                9
+            ]
+        },
+        "type": "MULTILINE_FIELD_VALUE"
+    },
+    {
+        "index": 142,
+        "length": 26,
+        "line": 14,
+        "ranges": {
+            "multiline_field_operator": [
+                8,
+                10
+            ],
+            "key": [
+                11,
+                26
+            ]
+        },
+        "type": "MULTILINE_FIELD_END"
+    }
+]

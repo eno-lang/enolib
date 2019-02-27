@@ -1,0 +1,8 @@
+--- message
+'value' must contain a color, for instance '#B6D918', '#fff' or '#01b'.
+
+   Line | Content
+ >    1 | value: #abcde
+
+--- selection
+[[0,7],[0,13]]

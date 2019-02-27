@@ -1,0 +1,8 @@
+--- message
+'value' must contain a valid URL, for instance 'https://eno-lang.org'.
+
+   Line | Content
+ >    1 | value: htp://www.invalid.com
+
+--- selection
+[[0,7],[0,28]]

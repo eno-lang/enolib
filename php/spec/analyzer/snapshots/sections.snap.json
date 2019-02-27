@@ -1,0 +1,466 @@
+[
+    {
+        "index": 0,
+        "line": 0,
+        "depth": 1,
+        "type": "SECTION",
+        "key": "section_1",
+        "ranges": {
+            "key": [
+                2,
+                11
+            ],
+            "section_operator": [
+                0,
+                1
+            ],
+            "copy_operator": [
+                12,
+                13
+            ],
+            "template": [
+                14,
+                23
+            ]
+        },
+        "template": "section_2",
+        "deep_copy": false,
+        "length": 23,
+        "resolve": true,
+        "deep_resolve": true,
+        "subinstructions": [
+            {
+                "index": 24,
+                "line": 1,
+                "key": "field",
+                "ranges": {
+                    "element_operator": [
+                        5,
+                        6
+                    ],
+                    "key": [
+                        0,
+                        5
+                    ],
+                    "value": [
+                        7,
+                        12
+                    ]
+                },
+                "type": "FIELD",
+                "value": "value",
+                "length": 12,
+                "subinstructions": []
+            },
+            {
+                "index": 37,
+                "line": 2,
+                "type": "EMPTY_LINE",
+                "length": 0
+            },
+            {
+                "index": 38,
+                "line": 3,
+                "depth": 2,
+                "type": "SECTION",
+                "key": "subsection_1",
+                "ranges": {
+                    "key": [
+                        3,
+                        15
+                    ],
+                    "section_operator": [
+                        0,
+                        2
+                    ],
+                    "copy_operator": [
+                        16,
+                        17
+                    ],
+                    "template": [
+                        18,
+                        30
+                    ]
+                },
+                "template": "subsection_2",
+                "deep_copy": false,
+                "length": 30,
+                "resolve": true,
+                "deep_resolve": true,
+                "subinstructions": [
+                    {
+                        "index": 69,
+                        "line": 4,
+                        "key": "field",
+                        "ranges": {
+                            "element_operator": [
+                                5,
+                                6
+                            ],
+                            "key": [
+                                0,
+                                5
+                            ],
+                            "value": [
+                                7,
+                                12
+                            ]
+                        },
+                        "type": "FIELD",
+                        "value": "value",
+                        "length": 12,
+                        "subinstructions": []
+                    },
+                    {
+                        "index": 82,
+                        "line": 5,
+                        "type": "EMPTY_LINE",
+                        "length": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 24,
+        "line": 1,
+        "key": "field",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                7,
+                12
+            ]
+        },
+        "type": "FIELD",
+        "value": "value",
+        "length": 12,
+        "subinstructions": []
+    },
+    {
+        "index": 37,
+        "line": 2,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 38,
+        "line": 3,
+        "depth": 2,
+        "type": "SECTION",
+        "key": "subsection_1",
+        "ranges": {
+            "key": [
+                3,
+                15
+            ],
+            "section_operator": [
+                0,
+                2
+            ],
+            "copy_operator": [
+                16,
+                17
+            ],
+            "template": [
+                18,
+                30
+            ]
+        },
+        "template": "subsection_2",
+        "deep_copy": false,
+        "length": 30,
+        "resolve": true,
+        "deep_resolve": true,
+        "subinstructions": [
+            {
+                "index": 69,
+                "line": 4,
+                "key": "field",
+                "ranges": {
+                    "element_operator": [
+                        5,
+                        6
+                    ],
+                    "key": [
+                        0,
+                        5
+                    ],
+                    "value": [
+                        7,
+                        12
+                    ]
+                },
+                "type": "FIELD",
+                "value": "value",
+                "length": 12,
+                "subinstructions": []
+            },
+            {
+                "index": 82,
+                "line": 5,
+                "type": "EMPTY_LINE",
+                "length": 0
+            }
+        ]
+    },
+    {
+        "index": 69,
+        "line": 4,
+        "key": "field",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                7,
+                12
+            ]
+        },
+        "type": "FIELD",
+        "value": "value",
+        "length": 12,
+        "subinstructions": []
+    },
+    {
+        "index": 82,
+        "line": 5,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 83,
+        "line": 6,
+        "depth": 1,
+        "type": "SECTION",
+        "key": "section_2",
+        "ranges": {
+            "key": [
+                2,
+                11
+            ],
+            "section_operator": [
+                0,
+                1
+            ],
+            "copy_operator": [
+                12,
+                13
+            ],
+            "template": [
+                14,
+                23
+            ]
+        },
+        "template": "section_1",
+        "deep_copy": false,
+        "length": 23,
+        "resolve": true,
+        "deep_resolve": true,
+        "subinstructions": [
+            {
+                "index": 107,
+                "line": 7,
+                "key": "field",
+                "ranges": {
+                    "element_operator": [
+                        5,
+                        6
+                    ],
+                    "key": [
+                        0,
+                        5
+                    ],
+                    "value": [
+                        7,
+                        12
+                    ]
+                },
+                "type": "FIELD",
+                "value": "value",
+                "length": 12,
+                "subinstructions": []
+            },
+            {
+                "index": 120,
+                "line": 8,
+                "type": "EMPTY_LINE",
+                "length": 0
+            },
+            {
+                "index": 121,
+                "line": 9,
+                "depth": 2,
+                "type": "SECTION",
+                "key": "subsection_2",
+                "ranges": {
+                    "key": [
+                        3,
+                        15
+                    ],
+                    "section_operator": [
+                        0,
+                        2
+                    ],
+                    "copy_operator": [
+                        16,
+                        17
+                    ],
+                    "template": [
+                        18,
+                        27
+                    ]
+                },
+                "template": "section_1",
+                "deep_copy": false,
+                "length": 27,
+                "resolve": true,
+                "deep_resolve": true,
+                "subinstructions": [
+                    {
+                        "index": 149,
+                        "line": 10,
+                        "key": "field",
+                        "ranges": {
+                            "element_operator": [
+                                5,
+                                6
+                            ],
+                            "key": [
+                                0,
+                                5
+                            ],
+                            "value": [
+                                7,
+                                12
+                            ]
+                        },
+                        "type": "FIELD",
+                        "value": "value",
+                        "length": 12,
+                        "subinstructions": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": 107,
+        "line": 7,
+        "key": "field",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                7,
+                12
+            ]
+        },
+        "type": "FIELD",
+        "value": "value",
+        "length": 12,
+        "subinstructions": []
+    },
+    {
+        "index": 120,
+        "line": 8,
+        "type": "EMPTY_LINE",
+        "length": 0
+    },
+    {
+        "index": 121,
+        "line": 9,
+        "depth": 2,
+        "type": "SECTION",
+        "key": "subsection_2",
+        "ranges": {
+            "key": [
+                3,
+                15
+            ],
+            "section_operator": [
+                0,
+                2
+            ],
+            "copy_operator": [
+                16,
+                17
+            ],
+            "template": [
+                18,
+                27
+            ]
+        },
+        "template": "section_1",
+        "deep_copy": false,
+        "length": 27,
+        "resolve": true,
+        "deep_resolve": true,
+        "subinstructions": [
+            {
+                "index": 149,
+                "line": 10,
+                "key": "field",
+                "ranges": {
+                    "element_operator": [
+                        5,
+                        6
+                    ],
+                    "key": [
+                        0,
+                        5
+                    ],
+                    "value": [
+                        7,
+                        12
+                    ]
+                },
+                "type": "FIELD",
+                "value": "value",
+                "length": 12,
+                "subinstructions": []
+            }
+        ]
+    },
+    {
+        "index": 149,
+        "line": 10,
+        "key": "field",
+        "ranges": {
+            "element_operator": [
+                5,
+                6
+            ],
+            "key": [
+                0,
+                5
+            ],
+            "value": [
+                7,
+                12
+            ]
+        },
+        "type": "FIELD",
+        "value": "value",
+        "length": 12,
+        "subinstructions": []
+    }
+]

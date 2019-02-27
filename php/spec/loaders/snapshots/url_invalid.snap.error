@@ -1,0 +1,8 @@
+--- message
+'value' must contain a valid URL, for instance 'https://eno-lang.org'.
+
+   Line | Content
+ >    1 | value: invalid
+
+--- selection
+[[0,7],[0,14]]
