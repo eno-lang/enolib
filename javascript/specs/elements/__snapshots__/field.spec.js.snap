@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field requiredValue(loader) when empty throws an error 1`] = `
+"The field 'field' must contain a value.
+
+   Line | Content
+ >    1 | field:
+ *    2 | |"
+`;

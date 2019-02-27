@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`register on MissingField registers a customKey accessor 1`] = `
+"The field 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingField registers a requiredCustomComment accessor 1`] = `
+"The field 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingFieldset registers a customKey accessor 1`] = `
+"The fieldset 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingFieldset registers a requiredCustomComment accessor 1`] = `
+"The fieldset 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingList registers a customKey accessor 1`] = `
+"The list 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingList registers a requiredCustomComment accessor 1`] = `
+"The list 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingSection registers a customKey accessor 1`] = `
+"The section 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;
+
+exports[`register on MissingSection registers a requiredCustomComment accessor 1`] = `
+"The section 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | field: value
+ ?    3 | 
+ ?    4 | > comment
+ ?    5 | fieldset:
+ ?    6 | entry = value
+ ?    7 | 
+ ?    8 | > comment
+ ?    9 | list:
+ ?   10 | - value
+ ?   11 | 
+ ?   12 | > comment
+ ?   13 | # section"
+`;

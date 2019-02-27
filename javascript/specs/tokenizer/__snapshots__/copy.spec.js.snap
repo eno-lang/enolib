@@ -1,0 +1,1954 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Copy tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {
+      "template": Object {
+        "targets": Array [
+          Object {
+            "copy": [Circular],
+            "key": "key",
+            "line": 0,
+            "parent": Object {
+              "depth": 0,
+              "elements": Array [
+                [Circular],
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 1,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      19,
+                      21,
+                    ],
+                    "key": Array [
+                      15,
+                      18,
+                    ],
+                    "line": Array [
+                      15,
+                      30,
+                    ],
+                    "template": Array [
+                      22,
+                      30,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 2,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      38,
+                      39,
+                    ],
+                    "key": Array [
+                      31,
+                      34,
+                    ],
+                    "line": Array [
+                      31,
+                      48,
+                    ],
+                    "template": Array [
+                      40,
+                      48,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 3,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      56,
+                      58,
+                    ],
+                    "key": Array [
+                      49,
+                      52,
+                    ],
+                    "line": Array [
+                      49,
+                      67,
+                    ],
+                    "template": Array [
+                      59,
+                      67,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 4,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      81,
+                      82,
+                    ],
+                    "key": Array [
+                      73,
+                      76,
+                    ],
+                    "line": Array [
+                      68,
+                      91,
+                    ],
+                    "template": Array [
+                      83,
+                      91,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 5,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      105,
+                      107,
+                    ],
+                    "key": Array [
+                      97,
+                      100,
+                    ],
+                    "line": Array [
+                      92,
+                      116,
+                    ],
+                    "template": Array [
+                      108,
+                      116,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+              ],
+            },
+            "ranges": Object {
+              "copyOperator": Array [
+                4,
+                5,
+              ],
+              "key": Array [
+                0,
+                3,
+              ],
+              "line": Array [
+                0,
+                14,
+              ],
+              "template": Array [
+                6,
+                14,
+              ],
+            },
+            "template": "template",
+            "type": Symbol(Element),
+          },
+          Object {
+            "copy": [Circular],
+            "key": "key",
+            "line": 1,
+            "parent": Object {
+              "depth": 0,
+              "elements": Array [
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 0,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      4,
+                      5,
+                    ],
+                    "key": Array [
+                      0,
+                      3,
+                    ],
+                    "line": Array [
+                      0,
+                      14,
+                    ],
+                    "template": Array [
+                      6,
+                      14,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                [Circular],
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 2,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      38,
+                      39,
+                    ],
+                    "key": Array [
+                      31,
+                      34,
+                    ],
+                    "line": Array [
+                      31,
+                      48,
+                    ],
+                    "template": Array [
+                      40,
+                      48,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 3,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      56,
+                      58,
+                    ],
+                    "key": Array [
+                      49,
+                      52,
+                    ],
+                    "line": Array [
+                      49,
+                      67,
+                    ],
+                    "template": Array [
+                      59,
+                      67,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 4,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      81,
+                      82,
+                    ],
+                    "key": Array [
+                      73,
+                      76,
+                    ],
+                    "line": Array [
+                      68,
+                      91,
+                    ],
+                    "template": Array [
+                      83,
+                      91,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 5,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      105,
+                      107,
+                    ],
+                    "key": Array [
+                      97,
+                      100,
+                    ],
+                    "line": Array [
+                      92,
+                      116,
+                    ],
+                    "template": Array [
+                      108,
+                      116,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+              ],
+            },
+            "ranges": Object {
+              "copyOperator": Array [
+                19,
+                21,
+              ],
+              "key": Array [
+                15,
+                18,
+              ],
+              "line": Array [
+                15,
+                30,
+              ],
+              "template": Array [
+                22,
+                30,
+              ],
+            },
+            "template": "template",
+            "type": Symbol(Element),
+          },
+          Object {
+            "copy": [Circular],
+            "key": "key",
+            "line": 2,
+            "parent": Object {
+              "depth": 0,
+              "elements": Array [
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 0,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      4,
+                      5,
+                    ],
+                    "key": Array [
+                      0,
+                      3,
+                    ],
+                    "line": Array [
+                      0,
+                      14,
+                    ],
+                    "template": Array [
+                      6,
+                      14,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 1,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      19,
+                      21,
+                    ],
+                    "key": Array [
+                      15,
+                      18,
+                    ],
+                    "line": Array [
+                      15,
+                      30,
+                    ],
+                    "template": Array [
+                      22,
+                      30,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                [Circular],
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 3,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      56,
+                      58,
+                    ],
+                    "key": Array [
+                      49,
+                      52,
+                    ],
+                    "line": Array [
+                      49,
+                      67,
+                    ],
+                    "template": Array [
+                      59,
+                      67,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 4,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      81,
+                      82,
+                    ],
+                    "key": Array [
+                      73,
+                      76,
+                    ],
+                    "line": Array [
+                      68,
+                      91,
+                    ],
+                    "template": Array [
+                      83,
+                      91,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 5,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      105,
+                      107,
+                    ],
+                    "key": Array [
+                      97,
+                      100,
+                    ],
+                    "line": Array [
+                      92,
+                      116,
+                    ],
+                    "template": Array [
+                      108,
+                      116,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+              ],
+            },
+            "ranges": Object {
+              "copyOperator": Array [
+                38,
+                39,
+              ],
+              "key": Array [
+                31,
+                34,
+              ],
+              "line": Array [
+                31,
+                48,
+              ],
+              "template": Array [
+                40,
+                48,
+              ],
+            },
+            "template": "template",
+            "type": Symbol(Element),
+          },
+          Object {
+            "copy": [Circular],
+            "key": "key",
+            "line": 3,
+            "parent": Object {
+              "depth": 0,
+              "elements": Array [
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 0,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      4,
+                      5,
+                    ],
+                    "key": Array [
+                      0,
+                      3,
+                    ],
+                    "line": Array [
+                      0,
+                      14,
+                    ],
+                    "template": Array [
+                      6,
+                      14,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 1,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      19,
+                      21,
+                    ],
+                    "key": Array [
+                      15,
+                      18,
+                    ],
+                    "line": Array [
+                      15,
+                      30,
+                    ],
+                    "template": Array [
+                      22,
+                      30,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 2,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      38,
+                      39,
+                    ],
+                    "key": Array [
+                      31,
+                      34,
+                    ],
+                    "line": Array [
+                      31,
+                      48,
+                    ],
+                    "template": Array [
+                      40,
+                      48,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                [Circular],
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 4,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      81,
+                      82,
+                    ],
+                    "key": Array [
+                      73,
+                      76,
+                    ],
+                    "line": Array [
+                      68,
+                      91,
+                    ],
+                    "template": Array [
+                      83,
+                      91,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 5,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      105,
+                      107,
+                    ],
+                    "key": Array [
+                      97,
+                      100,
+                    ],
+                    "line": Array [
+                      92,
+                      116,
+                    ],
+                    "template": Array [
+                      108,
+                      116,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+              ],
+            },
+            "ranges": Object {
+              "copyOperator": Array [
+                56,
+                58,
+              ],
+              "key": Array [
+                49,
+                52,
+              ],
+              "line": Array [
+                49,
+                67,
+              ],
+              "template": Array [
+                59,
+                67,
+              ],
+            },
+            "template": "template",
+            "type": Symbol(Element),
+          },
+          Object {
+            "copy": [Circular],
+            "key": "key",
+            "line": 4,
+            "parent": Object {
+              "depth": 0,
+              "elements": Array [
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 0,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      4,
+                      5,
+                    ],
+                    "key": Array [
+                      0,
+                      3,
+                    ],
+                    "line": Array [
+                      0,
+                      14,
+                    ],
+                    "template": Array [
+                      6,
+                      14,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 1,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      19,
+                      21,
+                    ],
+                    "key": Array [
+                      15,
+                      18,
+                    ],
+                    "line": Array [
+                      15,
+                      30,
+                    ],
+                    "template": Array [
+                      22,
+                      30,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 2,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      38,
+                      39,
+                    ],
+                    "key": Array [
+                      31,
+                      34,
+                    ],
+                    "line": Array [
+                      31,
+                      48,
+                    ],
+                    "template": Array [
+                      40,
+                      48,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 3,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      56,
+                      58,
+                    ],
+                    "key": Array [
+                      49,
+                      52,
+                    ],
+                    "line": Array [
+                      49,
+                      67,
+                    ],
+                    "template": Array [
+                      59,
+                      67,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                [Circular],
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 5,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      105,
+                      107,
+                    ],
+                    "key": Array [
+                      97,
+                      100,
+                    ],
+                    "line": Array [
+                      92,
+                      116,
+                    ],
+                    "template": Array [
+                      108,
+                      116,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+              ],
+            },
+            "ranges": Object {
+              "copyOperator": Array [
+                81,
+                82,
+              ],
+              "key": Array [
+                73,
+                76,
+              ],
+              "line": Array [
+                68,
+                91,
+              ],
+              "template": Array [
+                83,
+                91,
+              ],
+            },
+            "template": "template",
+            "type": Symbol(Element),
+          },
+          Object {
+            "copy": [Circular],
+            "key": "key",
+            "line": 5,
+            "parent": Object {
+              "depth": 0,
+              "elements": Array [
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 0,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      4,
+                      5,
+                    ],
+                    "key": Array [
+                      0,
+                      3,
+                    ],
+                    "line": Array [
+                      0,
+                      14,
+                    ],
+                    "template": Array [
+                      6,
+                      14,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 1,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      19,
+                      21,
+                    ],
+                    "key": Array [
+                      15,
+                      18,
+                    ],
+                    "line": Array [
+                      15,
+                      30,
+                    ],
+                    "template": Array [
+                      22,
+                      30,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 2,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      38,
+                      39,
+                    ],
+                    "key": Array [
+                      31,
+                      34,
+                    ],
+                    "line": Array [
+                      31,
+                      48,
+                    ],
+                    "template": Array [
+                      40,
+                      48,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 3,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      56,
+                      58,
+                    ],
+                    "key": Array [
+                      49,
+                      52,
+                    ],
+                    "line": Array [
+                      49,
+                      67,
+                    ],
+                    "template": Array [
+                      59,
+                      67,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                Object {
+                  "copy": [Circular],
+                  "key": "key",
+                  "line": 4,
+                  "parent": [Circular],
+                  "ranges": Object {
+                    "copyOperator": Array [
+                      81,
+                      82,
+                    ],
+                    "key": Array [
+                      73,
+                      76,
+                    ],
+                    "line": Array [
+                      68,
+                      91,
+                    ],
+                    "template": Array [
+                      83,
+                      91,
+                    ],
+                  },
+                  "template": "template",
+                  "type": Symbol(Element),
+                },
+                [Circular],
+              ],
+            },
+            "ranges": Object {
+              "copyOperator": Array [
+                105,
+                107,
+              ],
+              "key": Array [
+                97,
+                100,
+              ],
+              "line": Array [
+                92,
+                116,
+              ],
+              "template": Array [
+                108,
+                116,
+              ],
+            },
+            "template": "template",
+            "type": Symbol(Element),
+          },
+        ],
+      },
+    },
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "copy": Object {
+          "targets": Array [
+            [Circular],
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 1,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  19,
+                  21,
+                ],
+                "key": Array [
+                  15,
+                  18,
+                ],
+                "line": Array [
+                  15,
+                  30,
+                ],
+                "template": Array [
+                  22,
+                  30,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 2,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  38,
+                  39,
+                ],
+                "key": Array [
+                  31,
+                  34,
+                ],
+                "line": Array [
+                  31,
+                  48,
+                ],
+                "template": Array [
+                  40,
+                  48,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 3,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  56,
+                  58,
+                ],
+                "key": Array [
+                  49,
+                  52,
+                ],
+                "line": Array [
+                  49,
+                  67,
+                ],
+                "template": Array [
+                  59,
+                  67,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 4,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  81,
+                  82,
+                ],
+                "key": Array [
+                  73,
+                  76,
+                ],
+                "line": Array [
+                  68,
+                  91,
+                ],
+                "template": Array [
+                  83,
+                  91,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 5,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  105,
+                  107,
+                ],
+                "key": Array [
+                  97,
+                  100,
+                ],
+                "line": Array [
+                  92,
+                  116,
+                ],
+                "template": Array [
+                  108,
+                  116,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+          ],
+        },
+        "key": "key",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "copyOperator": Array [
+            4,
+            5,
+          ],
+          "key": Array [
+            0,
+            3,
+          ],
+          "line": Array [
+            0,
+            14,
+          ],
+          "template": Array [
+            6,
+            14,
+          ],
+        },
+        "template": "template",
+        "type": Symbol(Element),
+      },
+      Object {
+        "copy": Object {
+          "targets": Array [
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 0,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  4,
+                  5,
+                ],
+                "key": Array [
+                  0,
+                  3,
+                ],
+                "line": Array [
+                  0,
+                  14,
+                ],
+                "template": Array [
+                  6,
+                  14,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            [Circular],
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 2,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  38,
+                  39,
+                ],
+                "key": Array [
+                  31,
+                  34,
+                ],
+                "line": Array [
+                  31,
+                  48,
+                ],
+                "template": Array [
+                  40,
+                  48,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 3,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  56,
+                  58,
+                ],
+                "key": Array [
+                  49,
+                  52,
+                ],
+                "line": Array [
+                  49,
+                  67,
+                ],
+                "template": Array [
+                  59,
+                  67,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 4,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  81,
+                  82,
+                ],
+                "key": Array [
+                  73,
+                  76,
+                ],
+                "line": Array [
+                  68,
+                  91,
+                ],
+                "template": Array [
+                  83,
+                  91,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 5,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  105,
+                  107,
+                ],
+                "key": Array [
+                  97,
+                  100,
+                ],
+                "line": Array [
+                  92,
+                  116,
+                ],
+                "template": Array [
+                  108,
+                  116,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+          ],
+        },
+        "key": "key",
+        "line": 1,
+        "parent": [Circular],
+        "ranges": Object {
+          "copyOperator": Array [
+            19,
+            21,
+          ],
+          "key": Array [
+            15,
+            18,
+          ],
+          "line": Array [
+            15,
+            30,
+          ],
+          "template": Array [
+            22,
+            30,
+          ],
+        },
+        "template": "template",
+        "type": Symbol(Element),
+      },
+      Object {
+        "copy": Object {
+          "targets": Array [
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 0,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  4,
+                  5,
+                ],
+                "key": Array [
+                  0,
+                  3,
+                ],
+                "line": Array [
+                  0,
+                  14,
+                ],
+                "template": Array [
+                  6,
+                  14,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 1,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  19,
+                  21,
+                ],
+                "key": Array [
+                  15,
+                  18,
+                ],
+                "line": Array [
+                  15,
+                  30,
+                ],
+                "template": Array [
+                  22,
+                  30,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            [Circular],
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 3,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  56,
+                  58,
+                ],
+                "key": Array [
+                  49,
+                  52,
+                ],
+                "line": Array [
+                  49,
+                  67,
+                ],
+                "template": Array [
+                  59,
+                  67,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 4,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  81,
+                  82,
+                ],
+                "key": Array [
+                  73,
+                  76,
+                ],
+                "line": Array [
+                  68,
+                  91,
+                ],
+                "template": Array [
+                  83,
+                  91,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 5,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  105,
+                  107,
+                ],
+                "key": Array [
+                  97,
+                  100,
+                ],
+                "line": Array [
+                  92,
+                  116,
+                ],
+                "template": Array [
+                  108,
+                  116,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+          ],
+        },
+        "key": "key",
+        "line": 2,
+        "parent": [Circular],
+        "ranges": Object {
+          "copyOperator": Array [
+            38,
+            39,
+          ],
+          "key": Array [
+            31,
+            34,
+          ],
+          "line": Array [
+            31,
+            48,
+          ],
+          "template": Array [
+            40,
+            48,
+          ],
+        },
+        "template": "template",
+        "type": Symbol(Element),
+      },
+      Object {
+        "copy": Object {
+          "targets": Array [
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 0,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  4,
+                  5,
+                ],
+                "key": Array [
+                  0,
+                  3,
+                ],
+                "line": Array [
+                  0,
+                  14,
+                ],
+                "template": Array [
+                  6,
+                  14,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 1,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  19,
+                  21,
+                ],
+                "key": Array [
+                  15,
+                  18,
+                ],
+                "line": Array [
+                  15,
+                  30,
+                ],
+                "template": Array [
+                  22,
+                  30,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 2,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  38,
+                  39,
+                ],
+                "key": Array [
+                  31,
+                  34,
+                ],
+                "line": Array [
+                  31,
+                  48,
+                ],
+                "template": Array [
+                  40,
+                  48,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            [Circular],
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 4,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  81,
+                  82,
+                ],
+                "key": Array [
+                  73,
+                  76,
+                ],
+                "line": Array [
+                  68,
+                  91,
+                ],
+                "template": Array [
+                  83,
+                  91,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 5,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  105,
+                  107,
+                ],
+                "key": Array [
+                  97,
+                  100,
+                ],
+                "line": Array [
+                  92,
+                  116,
+                ],
+                "template": Array [
+                  108,
+                  116,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+          ],
+        },
+        "key": "key",
+        "line": 3,
+        "parent": [Circular],
+        "ranges": Object {
+          "copyOperator": Array [
+            56,
+            58,
+          ],
+          "key": Array [
+            49,
+            52,
+          ],
+          "line": Array [
+            49,
+            67,
+          ],
+          "template": Array [
+            59,
+            67,
+          ],
+        },
+        "template": "template",
+        "type": Symbol(Element),
+      },
+      Object {
+        "copy": Object {
+          "targets": Array [
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 0,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  4,
+                  5,
+                ],
+                "key": Array [
+                  0,
+                  3,
+                ],
+                "line": Array [
+                  0,
+                  14,
+                ],
+                "template": Array [
+                  6,
+                  14,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 1,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  19,
+                  21,
+                ],
+                "key": Array [
+                  15,
+                  18,
+                ],
+                "line": Array [
+                  15,
+                  30,
+                ],
+                "template": Array [
+                  22,
+                  30,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 2,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  38,
+                  39,
+                ],
+                "key": Array [
+                  31,
+                  34,
+                ],
+                "line": Array [
+                  31,
+                  48,
+                ],
+                "template": Array [
+                  40,
+                  48,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 3,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  56,
+                  58,
+                ],
+                "key": Array [
+                  49,
+                  52,
+                ],
+                "line": Array [
+                  49,
+                  67,
+                ],
+                "template": Array [
+                  59,
+                  67,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            [Circular],
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 5,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  105,
+                  107,
+                ],
+                "key": Array [
+                  97,
+                  100,
+                ],
+                "line": Array [
+                  92,
+                  116,
+                ],
+                "template": Array [
+                  108,
+                  116,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+          ],
+        },
+        "key": "key",
+        "line": 4,
+        "parent": [Circular],
+        "ranges": Object {
+          "copyOperator": Array [
+            81,
+            82,
+          ],
+          "key": Array [
+            73,
+            76,
+          ],
+          "line": Array [
+            68,
+            91,
+          ],
+          "template": Array [
+            83,
+            91,
+          ],
+        },
+        "template": "template",
+        "type": Symbol(Element),
+      },
+      Object {
+        "copy": Object {
+          "targets": Array [
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 0,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  4,
+                  5,
+                ],
+                "key": Array [
+                  0,
+                  3,
+                ],
+                "line": Array [
+                  0,
+                  14,
+                ],
+                "template": Array [
+                  6,
+                  14,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 1,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  19,
+                  21,
+                ],
+                "key": Array [
+                  15,
+                  18,
+                ],
+                "line": Array [
+                  15,
+                  30,
+                ],
+                "template": Array [
+                  22,
+                  30,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 2,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  38,
+                  39,
+                ],
+                "key": Array [
+                  31,
+                  34,
+                ],
+                "line": Array [
+                  31,
+                  48,
+                ],
+                "template": Array [
+                  40,
+                  48,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 3,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  56,
+                  58,
+                ],
+                "key": Array [
+                  49,
+                  52,
+                ],
+                "line": Array [
+                  49,
+                  67,
+                ],
+                "template": Array [
+                  59,
+                  67,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            Object {
+              "copy": [Circular],
+              "key": "key",
+              "line": 4,
+              "parent": [Circular],
+              "ranges": Object {
+                "copyOperator": Array [
+                  81,
+                  82,
+                ],
+                "key": Array [
+                  73,
+                  76,
+                ],
+                "line": Array [
+                  68,
+                  91,
+                ],
+                "template": Array [
+                  83,
+                  91,
+                ],
+              },
+              "template": "template",
+              "type": Symbol(Element),
+            },
+            [Circular],
+          ],
+        },
+        "key": "key",
+        "line": 5,
+        "parent": [Circular],
+        "ranges": Object {
+          "copyOperator": Array [
+            105,
+            107,
+          ],
+          "key": Array [
+            97,
+            100,
+          ],
+          "line": Array [
+            92,
+            116,
+          ],
+          "template": Array [
+            108,
+            116,
+          ],
+        },
+        "template": "template",
+        "type": Symbol(Element),
+      },
+    ],
+  },
+  "input": "key < template
+key << template
+key    < template
+key    << template
+     key     < template
+     key     << template",
+  "lineCount": 6,
+  "meta": Array [],
+}
+`;

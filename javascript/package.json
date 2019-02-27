@@ -1,0 +1,36 @@
+{
+  "author": "Simon Repp <simon@fdpl.io>",
+  "bugs": {
+    "url": "https://github.com/eno-lang/enolib/issues/"
+  },
+  "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-node": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0",
+    "jest": "^24.1.0"
+  },
+  "files": ["lib/"],
+  "name": "enolib",
+  "description": "Standard library for parsing, loading and inspecting eno documents",
+  "homepage": "https://eno-lang.org/javascript/",
+  "license": "MIT",
+  "main": "./lib/main.js",
+  "keywords": [
+    "eno",
+    "data",
+    "notation",
+    "parser",
+    "plaintext",
+    "structured",
+    "text",
+    "validation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eno-lang/enolib.git"
+  },
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "version": "0.1.0"
+}

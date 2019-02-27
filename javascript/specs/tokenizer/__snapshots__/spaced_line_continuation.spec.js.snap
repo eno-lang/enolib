@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spaced line continutation tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "continuations": Array [
+          Object {
+            "line": 2,
+            "ranges": Object {
+              "line": Array [
+                8,
+                15,
+              ],
+              "spacedLineContinuationOperator": Array [
+                8,
+                9,
+              ],
+              "value": Array [
+                10,
+                15,
+              ],
+            },
+            "spaced": true,
+            "type": Symbol(Continuation),
+            "value": "value",
+          },
+          Object {
+            "line": 4,
+            "ranges": Object {
+              "line": Array [
+                17,
+                27,
+              ],
+              "spacedLineContinuationOperator": Array [
+                17,
+                18,
+              ],
+              "value": Array [
+                22,
+                27,
+              ],
+            },
+            "spaced": true,
+            "type": Symbol(Continuation),
+            "value": "value",
+          },
+          Object {
+            "line": 6,
+            "ranges": Object {
+              "line": Array [
+                29,
+                40,
+              ],
+              "spacedLineContinuationOperator": Array [
+                33,
+                34,
+              ],
+              "value": Array [
+                35,
+                40,
+              ],
+            },
+            "spaced": true,
+            "type": Symbol(Continuation),
+            "value": "value",
+          },
+          Object {
+            "line": 8,
+            "ranges": Object {
+              "line": Array [
+                42,
+                56,
+              ],
+              "spacedLineContinuationOperator": Array [
+                46,
+                47,
+              ],
+              "value": Array [
+                51,
+                56,
+              ],
+            },
+            "spaced": true,
+            "type": Symbol(Continuation),
+            "value": "value",
+          },
+          Object {
+            "line": 10,
+            "ranges": Object {
+              "line": Array [
+                58,
+                65,
+              ],
+              "spacedLineContinuationOperator": Array [
+                58,
+                59,
+              ],
+              "value": Array [
+                60,
+                65,
+              ],
+            },
+            "spaced": true,
+            "type": Symbol(Continuation),
+            "value": "value",
+          },
+        ],
+        "key": "field",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            5,
+            6,
+          ],
+          "key": Array [
+            0,
+            5,
+          ],
+          "line": Array [
+            0,
+            6,
+          ],
+        },
+        "type": Symbol(Field),
+      },
+    ],
+  },
+  "input": "field:
+
+\\\\ value
+
+\\\\    value
+
+    \\\\ value
+
+    \\\\    value
+
+\\\\ value",
+  "lineCount": 11,
+  "meta": Array [],
+}
+`;

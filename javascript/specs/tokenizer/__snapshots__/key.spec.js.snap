@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Key tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "key": "key",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            3,
+            4,
+          ],
+          "key": Array [
+            0,
+            3,
+          ],
+          "line": Array [
+            0,
+            4,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "key",
+        "line": 2,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            9,
+            10,
+          ],
+          "key": Array [
+            6,
+            9,
+          ],
+          "line": Array [
+            6,
+            10,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "key",
+        "line": 4,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            19,
+            20,
+          ],
+          "key": Array [
+            12,
+            15,
+          ],
+          "line": Array [
+            12,
+            20,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "key",
+        "line": 6,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            33,
+            34,
+          ],
+          "key": Array [
+            26,
+            29,
+          ],
+          "line": Array [
+            22,
+            34,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "key",
+        "line": 8,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            39,
+            40,
+          ],
+          "key": Array [
+            36,
+            39,
+          ],
+          "line": Array [
+            36,
+            40,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+    ],
+  },
+  "input": "key:
+
+key:
+
+key    :
+
+    key    :
+
+key:",
+  "lineCount": 9,
+  "meta": Array [],
+}
+`;

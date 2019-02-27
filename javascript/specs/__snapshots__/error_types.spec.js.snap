@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EnoError returns the expected message 1`] = `
+"My error
+
+My snippet"
+`;
+
+exports[`ParseError returns the expected message 1`] = `
+"My error
+
+My snippet"
+`;
+
+exports[`ValidationError returns the expected message 1`] = `
+"My error
+
+My snippet"
+`;

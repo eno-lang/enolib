@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Escaped section tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "depth": 1,
+        "elements": Array [
+          Object {
+            "depth": 2,
+            "elements": Array [
+              Object {
+                "depth": 3,
+                "elements": Array [
+                  Object {
+                    "depth": 4,
+                    "elements": Array [],
+                    "key": "\`key\`",
+                    "line": 6,
+                    "parent": [Circular],
+                    "ranges": Object {
+                      "escapeBeginOperator": Array [
+                        48,
+                        50,
+                      ],
+                      "escapeEndOperator": Array [
+                        57,
+                        59,
+                      ],
+                      "key": Array [
+                        51,
+                        56,
+                      ],
+                      "line": Array [
+                        39,
+                        59,
+                      ],
+                      "sectionOperator": Array [
+                        43,
+                        47,
+                      ],
+                    },
+                    "type": Symbol(Section),
+                  },
+                ],
+                "key": "k\`\`ey",
+                "line": 4,
+                "parent": [Circular],
+                "ranges": Object {
+                  "escapeBeginOperator": Array [
+                    26,
+                    29,
+                  ],
+                  "escapeEndOperator": Array [
+                    34,
+                    37,
+                  ],
+                  "key": Array [
+                    29,
+                    34,
+                  ],
+                  "line": Array [
+                    22,
+                    37,
+                  ],
+                  "sectionOperator": Array [
+                    22,
+                    25,
+                  ],
+                },
+                "type": Symbol(Section),
+              },
+            ],
+            "key": "ke\`y",
+            "line": 2,
+            "parent": [Circular],
+            "ranges": Object {
+              "escapeBeginOperator": Array [
+                12,
+                14,
+              ],
+              "escapeEndOperator": Array [
+                18,
+                20,
+              ],
+              "key": Array [
+                14,
+                18,
+              ],
+              "line": Array [
+                9,
+                20,
+              ],
+              "sectionOperator": Array [
+                9,
+                11,
+              ],
+            },
+            "type": Symbol(Section),
+          },
+        ],
+        "key": "key",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "escapeBeginOperator": Array [
+            2,
+            3,
+          ],
+          "escapeEndOperator": Array [
+            6,
+            7,
+          ],
+          "key": Array [
+            3,
+            6,
+          ],
+          "line": Array [
+            0,
+            7,
+          ],
+          "sectionOperator": Array [
+            0,
+            1,
+          ],
+        },
+        "type": Symbol(Section),
+      },
+      Object {
+        "depth": 1,
+        "elements": Array [],
+        "key": "key",
+        "line": 8,
+        "parent": [Circular],
+        "ranges": Object {
+          "escapeBeginOperator": Array [
+            63,
+            64,
+          ],
+          "escapeEndOperator": Array [
+            67,
+            68,
+          ],
+          "key": Array [
+            64,
+            67,
+          ],
+          "line": Array [
+            61,
+            68,
+          ],
+          "sectionOperator": Array [
+            61,
+            62,
+          ],
+        },
+        "type": Symbol(Section),
+      },
+    ],
+  },
+  "input": "# \`key\`
+
+## \`\`ke\`y\`\`
+
+### \`\`\`k\`\`ey\`\`\`
+
+    #### \`\` \`key\` \`\`
+
+# \`key\`",
+  "lineCount": 9,
+  "meta": Array [],
+}
+`;

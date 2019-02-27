@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [],
+  },
+  "input": "> value
+> more value  
+    >    value
+    >    ",
+  "lineCount": 4,
+  "meta": Array [
+    Object {
+      "line": 0,
+      "ranges": Object {
+        "commentOperator": Array [
+          0,
+          1,
+        ],
+        "line": Array [
+          0,
+          7,
+        ],
+        "value": Array [
+          2,
+          7,
+        ],
+      },
+      "type": Symbol(Comment),
+      "value": "value",
+    },
+    Object {
+      "line": 1,
+      "ranges": Object {
+        "commentOperator": Array [
+          8,
+          9,
+        ],
+        "line": Array [
+          8,
+          22,
+        ],
+        "value": Array [
+          10,
+          20,
+        ],
+      },
+      "type": Symbol(Comment),
+      "value": "more value",
+    },
+    Object {
+      "line": 2,
+      "ranges": Object {
+        "commentOperator": Array [
+          27,
+          28,
+        ],
+        "line": Array [
+          23,
+          37,
+        ],
+        "value": Array [
+          32,
+          37,
+        ],
+      },
+      "type": Symbol(Comment),
+      "value": "value",
+    },
+    Object {
+      "line": 3,
+      "ranges": Object {
+        "commentOperator": Array [
+          42,
+          43,
+        ],
+        "line": Array [
+          38,
+          47,
+        ],
+      },
+      "type": Symbol(Comment),
+      "value": null,
+    },
+  ],
+}
+`;

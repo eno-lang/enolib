@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property issues Section toString as key in a complex merge does not have any side effects 1`] = `
+Array [
+  Object {
+    "a": Array [
+      Object {
+        "toString": Array [
+          Object {
+            "toString": Array [
+              Object {
+                "toString": "discarded",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  Object {
+    "b": Array [
+      Object {
+        "toString": Array [
+          Object {
+            "toString": "ok",
+          },
+        ],
+      },
+    ],
+  },
+  Object {
+    "c": Array [
+      Object {
+        "toString": Array [
+          Object {
+            "toString": Array [
+              Object {
+                "toString": "kept",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`Property issues Section toString as missing template does not have any side effects 1`] = `
+"In line 1 the non-section element 'toString' should be copied, but it was not found.
+
+   Line | Content
+ >    1 | check < toString"
+`;

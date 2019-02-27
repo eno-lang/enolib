@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Escaped key tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "key": "key",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            5,
+            6,
+          ],
+          "escapeBeginOperator": Array [
+            0,
+            1,
+          ],
+          "escapeEndOperator": Array [
+            4,
+            5,
+          ],
+          "key": Array [
+            1,
+            4,
+          ],
+          "line": Array [
+            0,
+            6,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "ke\`y",
+        "line": 2,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            16,
+            17,
+          ],
+          "escapeBeginOperator": Array [
+            8,
+            10,
+          ],
+          "escapeEndOperator": Array [
+            14,
+            16,
+          ],
+          "key": Array [
+            10,
+            14,
+          ],
+          "line": Array [
+            8,
+            17,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "k\`\`ey",
+        "line": 4,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            34,
+            35,
+          ],
+          "escapeBeginOperator": Array [
+            19,
+            22,
+          ],
+          "escapeEndOperator": Array [
+            27,
+            30,
+          ],
+          "key": Array [
+            22,
+            27,
+          ],
+          "line": Array [
+            19,
+            35,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "\`key\`",
+        "line": 6,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            56,
+            57,
+          ],
+          "escapeBeginOperator": Array [
+            41,
+            43,
+          ],
+          "escapeEndOperator": Array [
+            50,
+            52,
+          ],
+          "key": Array [
+            44,
+            49,
+          ],
+          "line": Array [
+            37,
+            57,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+      Object {
+        "key": "key",
+        "line": 8,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            64,
+            65,
+          ],
+          "escapeBeginOperator": Array [
+            59,
+            60,
+          ],
+          "escapeEndOperator": Array [
+            63,
+            64,
+          ],
+          "key": Array [
+            60,
+            63,
+          ],
+          "line": Array [
+            59,
+            65,
+          ],
+        },
+        "type": Symbol(Element),
+      },
+    ],
+  },
+  "input": "\`key\`:
+
+\`\`ke\`y\`\`:
+
+\`\`\`k\`\`ey\`\`\`    :
+
+    \`\` \`key\` \`\`    :
+
+\`key\`:",
+  "lineCount": 9,
+  "meta": Array [],
+}
+`;

@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "continuations": Array [],
+        "key": "key",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            3,
+            4,
+          ],
+          "key": Array [
+            0,
+            3,
+          ],
+          "line": Array [
+            0,
+            10,
+          ],
+          "value": Array [
+            5,
+            10,
+          ],
+        },
+        "type": Symbol(Field),
+        "value": "value",
+      },
+      Object {
+        "continuations": Array [],
+        "key": "key",
+        "line": 2,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            15,
+            16,
+          ],
+          "key": Array [
+            12,
+            15,
+          ],
+          "line": Array [
+            12,
+            25,
+          ],
+          "value": Array [
+            20,
+            25,
+          ],
+        },
+        "type": Symbol(Field),
+        "value": "value",
+      },
+      Object {
+        "continuations": Array [],
+        "key": "key",
+        "line": 4,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            34,
+            35,
+          ],
+          "key": Array [
+            27,
+            30,
+          ],
+          "line": Array [
+            27,
+            41,
+          ],
+          "value": Array [
+            36,
+            41,
+          ],
+        },
+        "type": Symbol(Field),
+        "value": "value",
+      },
+      Object {
+        "continuations": Array [],
+        "key": "key",
+        "line": 6,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            54,
+            55,
+          ],
+          "key": Array [
+            47,
+            50,
+          ],
+          "line": Array [
+            43,
+            64,
+          ],
+          "value": Array [
+            59,
+            64,
+          ],
+        },
+        "type": Symbol(Field),
+        "value": "value",
+      },
+      Object {
+        "continuations": Array [],
+        "key": "key",
+        "line": 8,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            69,
+            70,
+          ],
+          "key": Array [
+            66,
+            69,
+          ],
+          "line": Array [
+            66,
+            76,
+          ],
+          "value": Array [
+            71,
+            76,
+          ],
+        },
+        "type": Symbol(Field),
+        "value": "value",
+      },
+    ],
+  },
+  "input": "key: value
+
+key:    value
+
+key    : value
+
+    key    :    value
+
+key: value",
+  "lineCount": 9,
+  "meta": Array [],
+}
+`;

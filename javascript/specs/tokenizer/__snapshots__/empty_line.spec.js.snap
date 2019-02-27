@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Empty line tokenization Zero-length input performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [],
+  },
+  "input": "",
+  "lineCount": 1,
+  "meta": Array [],
+}
+`;
+
+exports[`Empty line tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [],
+  },
+  "input": "
+ 
+  
+   
+
+ 
+  
+   
+",
+  "lineCount": 9,
+  "meta": Array [],
+}
+`;

@@ -1,0 +1,102 @@
+const eno = require('../..');
+
+describe('Field', () => {
+  let emptyField, emptyItem, field, item, itemWithLongValue;
+
+  beforeEach(() => {
+    emptyField = eno.parse('field:\n|').field('field');
+    emptyItem = eno.parse('list:\n-').list('list').items()[0];
+    field = eno.parse('field: value').field('field');
+    item = eno.parse('list:\n- item').list('list').items()[0];
+    itemWithLongValue = eno.parse('list:\n- long item value is long').list('list').items()[0];
+  });
+
+  it('is untouched after initialization', () => {
+    expect(field._touched).toBe(false);
+  });
+
+  describe('raw()', () => {
+    describe('with a key and a value', () => {
+      it('returns a native representation', () => {
+        expect(field.raw()).toEqual({ field: 'value' });
+      });
+    });
+
+    describe('without key, with value', () => {
+      it('returns a native representation', () => {
+        expect(item.raw()).toEqual('item');
+      });
+    });
+  });
+
+  describe('optionalStringValue()', () => {
+    it('returns the value', () => {
+      expect(field.optionalStringValue()).toEqual('value');
+    });
+
+    it('touches the element', () => {
+      const _ = field.optionalStringValue();
+      expect(field._touched).toBe(true);
+    });
+
+    it('returns null when empty', () => {
+      expect(emptyField.optionalStringValue()).toBe(null);
+    });
+  });
+
+  describe('toString()', () => {
+    describe('with a key and a value', () => {
+      it('returns a debug abstraction', () => {
+        expect(field.toString()).toEqual('[object Field key=field value="value"]');
+      });
+    });
+
+    describe('with a key and no value', () => {
+      it('returns a debug abstraction', () => {
+        expect(emptyField.toString()).toEqual('[object Field key=field value=null]');
+      });
+    });
+
+    describe('without key, with value', () => {
+      it('returns a debug abstraction', () => {
+        expect(item.toString()).toEqual('[object Field value="item"]');
+      });
+    });
+
+    describe('with no key and value', () => {
+      it('returns a debug abstraction', () => {
+        expect(emptyItem.toString()).toEqual('[object Field value=null]');
+      });
+    });
+
+    describe('without key, with long value', () => {
+      it('returns a debug abstraction with a truncated value', () => {
+        expect(itemWithLongValue.toString()).toEqual('[object Field value="long item v..."]');
+      });
+    });
+  });
+
+  describe('toStringTag symbol', () => {
+    it('returns a custom tag', () => {
+      expect(Object.prototype.toString.call(field)).toEqual('[object Field]');
+    });
+  });
+
+  describe('requiredValue(loader)', () => {
+    it('applies the loader', () => {
+      const result = field.requiredValue(value => value.toUpperCase());
+      expect(result).toEqual('VALUE');
+    });
+
+    it('touches the element', () => {
+      const _ = field.requiredValue(value => value.toUpperCase());
+      expect(field._touched).toBe(true);
+    });
+
+    describe('when empty', () => {
+      it('throws an error', () => {
+        expect(() => emptyField.requiredValue(value => value)).toThrowErrorMatchingSnapshot();
+      });
+    });
+  });
+});

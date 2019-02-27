@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "depth": 1,
+        "elements": Array [
+          Object {
+            "depth": 2,
+            "elements": Array [
+              Object {
+                "depth": 3,
+                "elements": Array [
+                  Object {
+                    "depth": 4,
+                    "elements": Array [],
+                    "key": "key",
+                    "line": 6,
+                    "parent": [Circular],
+                    "ranges": Object {
+                      "key": Array [
+                        43,
+                        46,
+                      ],
+                      "line": Array [
+                        31,
+                        46,
+                      ],
+                      "sectionOperator": Array [
+                        35,
+                        39,
+                      ],
+                    },
+                    "type": Symbol(Section),
+                  },
+                ],
+                "key": "key",
+                "line": 4,
+                "parent": [Circular],
+                "ranges": Object {
+                  "key": Array [
+                    26,
+                    29,
+                  ],
+                  "line": Array [
+                    19,
+                    29,
+                  ],
+                  "sectionOperator": Array [
+                    19,
+                    22,
+                  ],
+                },
+                "type": Symbol(Section),
+              },
+            ],
+            "key": "key",
+            "line": 2,
+            "parent": [Circular],
+            "ranges": Object {
+              "key": Array [
+                14,
+                17,
+              ],
+              "line": Array [
+                7,
+                17,
+              ],
+              "sectionOperator": Array [
+                11,
+                13,
+              ],
+            },
+            "type": Symbol(Section),
+          },
+        ],
+        "key": "key",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "key": Array [
+            2,
+            5,
+          ],
+          "line": Array [
+            0,
+            5,
+          ],
+          "sectionOperator": Array [
+            0,
+            1,
+          ],
+        },
+        "type": Symbol(Section),
+      },
+      Object {
+        "depth": 1,
+        "elements": Array [],
+        "key": "key",
+        "line": 8,
+        "parent": [Circular],
+        "ranges": Object {
+          "key": Array [
+            50,
+            53,
+          ],
+          "line": Array [
+            48,
+            53,
+          ],
+          "sectionOperator": Array [
+            48,
+            49,
+          ],
+        },
+        "type": Symbol(Section),
+      },
+    ],
+  },
+  "input": "# key
+
+    ## key
+
+###    key
+
+    ####    key
+
+# key",
+  "lineCount": 9,
+  "meta": Array [],
+}
+`;

@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset entry tokenization performs as specified 1`] = `
+Object {
+  "copy": Object {
+    "nonSectionElements": Object {},
+    "sections": Object {},
+  },
+  "document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "entries": Array [
+          Object {
+            "continuations": Array [],
+            "key": "entry",
+            "line": 2,
+            "parent": [Circular],
+            "ranges": Object {
+              "entryOperator": Array [
+                17,
+                18,
+              ],
+              "key": Array [
+                11,
+                16,
+              ],
+              "line": Array [
+                11,
+                24,
+              ],
+              "value": Array [
+                19,
+                24,
+              ],
+            },
+            "type": Symbol(Fieldset Entry),
+            "value": "value",
+          },
+          Object {
+            "continuations": Array [],
+            "key": "entry",
+            "line": 4,
+            "parent": [Circular],
+            "ranges": Object {
+              "entryOperator": Array [
+                35,
+                36,
+              ],
+              "key": Array [
+                26,
+                31,
+              ],
+              "line": Array [
+                26,
+                42,
+              ],
+              "value": Array [
+                37,
+                42,
+              ],
+            },
+            "type": Symbol(Fieldset Entry),
+            "value": "value",
+          },
+          Object {
+            "continuations": Array [],
+            "key": "entry",
+            "line": 6,
+            "parent": [Circular],
+            "ranges": Object {
+              "entryOperator": Array [
+                54,
+                55,
+              ],
+              "key": Array [
+                48,
+                53,
+              ],
+              "line": Array [
+                44,
+                61,
+              ],
+              "value": Array [
+                56,
+                61,
+              ],
+            },
+            "type": Symbol(Fieldset Entry),
+            "value": "value",
+          },
+          Object {
+            "continuations": Array [],
+            "key": "entry",
+            "line": 8,
+            "parent": [Circular],
+            "ranges": Object {
+              "entryOperator": Array [
+                76,
+                77,
+              ],
+              "key": Array [
+                67,
+                72,
+              ],
+              "line": Array [
+                63,
+                83,
+              ],
+              "value": Array [
+                78,
+                83,
+              ],
+            },
+            "type": Symbol(Fieldset Entry),
+            "value": "value",
+          },
+          Object {
+            "continuations": Array [],
+            "key": "entry",
+            "line": 10,
+            "parent": [Circular],
+            "ranges": Object {
+              "entryOperator": Array [
+                98,
+                99,
+              ],
+              "key": Array [
+                89,
+                94,
+              ],
+              "line": Array [
+                85,
+                108,
+              ],
+              "value": Array [
+                103,
+                108,
+              ],
+            },
+            "type": Symbol(Fieldset Entry),
+            "value": "value",
+          },
+          Object {
+            "continuations": Array [],
+            "key": "entry",
+            "line": 12,
+            "parent": [Circular],
+            "ranges": Object {
+              "entryOperator": Array [
+                116,
+                117,
+              ],
+              "key": Array [
+                110,
+                115,
+              ],
+              "line": Array [
+                110,
+                123,
+              ],
+              "value": Array [
+                118,
+                123,
+              ],
+            },
+            "type": Symbol(Fieldset Entry),
+            "value": "value",
+          },
+        ],
+        "key": "fieldset",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "elementOperator": Array [
+            8,
+            9,
+          ],
+          "key": Array [
+            0,
+            8,
+          ],
+          "line": Array [
+            0,
+            9,
+          ],
+        },
+        "type": Symbol(Fieldset),
+      },
+    ],
+  },
+  "input": "fieldset:
+
+entry = value
+
+entry    = value
+
+    entry = value
+
+    entry    = value
+
+    entry    =    value
+
+entry = value",
+  "lineCount": 13,
+  "meta": Array [],
+}
+`;
