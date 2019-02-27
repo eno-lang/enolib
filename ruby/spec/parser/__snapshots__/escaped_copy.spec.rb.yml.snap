@@ -1,0 +1,208 @@
+---
+"./spec/tokenizer/escaped_copy.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 6
+    - 7
+    :escape_begin_operator:
+    - 0
+    - 1
+    :escape_end_operator:
+    - 5
+    - 6
+    :key:
+    - 1
+    - 5
+    :template:
+    - 7
+    - 15
+  :template: template
+  :type: :element
+  :length: 15
+- :index: 16
+  :line: 1
+  :key: na`me
+  :ranges:
+    :copy_operator:
+    - 10
+    - 11
+    :escape_begin_operator:
+    - 0
+    - 2
+    :escape_end_operator:
+    - 7
+    - 9
+    :key:
+    - 2
+    - 7
+    :template:
+    - 12
+    - 20
+  :template: template
+  :type: :element
+  :length: 20
+- :index: 37
+  :line: 2
+  :key: na``me
+  :ranges:
+    :copy_operator:
+    - 17
+    - 18
+    :escape_begin_operator:
+    - 0
+    - 3
+    :escape_end_operator:
+    - 9
+    - 12
+    :key:
+    - 3
+    - 9
+    :template:
+    - 19
+    - 32
+  :template: more template
+  :type: :element
+  :length: 32
+- :index: 70
+  :line: 3
+  :key: "`name`"
+  :ranges:
+    :copy_operator:
+    - 21
+    - 22
+    :escape_begin_operator:
+    - 4
+    - 6
+    :escape_end_operator:
+    - 14
+    - 16
+    :key:
+    - 7
+    - 13
+    :template:
+    - 23
+    - 31
+  :template: template
+  :type: :element
+  :length: 31
+"./spec/parser/escaped_copy.spec.rb[1:1:1]": &1
+  :elements:
+  - :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 9
+      :element_operator:
+      - 8
+      - 9
+      :key:
+      - 0
+      - 8
+    :key: template
+    :type: :empty_element
+    :parent: *1
+  - :index: 10
+    :line: 1
+    :ranges:
+      :line:
+      - 10
+      - 24
+      :copy_operator:
+      - 15
+      - 16
+      :template:
+      - 16
+      - 24
+      :escape_begin_operator:
+      - 10
+      - 11
+      :escape_end_operator:
+      - 14
+      - 15
+      :key:
+      - 11
+      - 14
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 25
+    :line: 2
+    :ranges:
+      :line:
+      - 25
+      - 44
+      :copy_operator:
+      - 34
+      - 35
+      :template:
+      - 36
+      - 44
+      :escape_begin_operator:
+      - 25
+      - 27
+      :escape_end_operator:
+      - 31
+      - 33
+      :key:
+      - 27
+      - 31
+    :template: template
+    :type: :empty_element
+    :key: k`ey
+    :parent: *1
+  - :index: 45
+    :line: 3
+    :ranges:
+      :line:
+      - 45
+      - 71
+      :copy_operator:
+      - 61
+      - 62
+      :template:
+      - 63
+      - 71
+      :escape_begin_operator:
+      - 45
+      - 48
+      :escape_end_operator:
+      - 53
+      - 56
+      :key:
+      - 48
+      - 53
+    :template: template
+    :type: :empty_element
+    :key: ke``y
+    :parent: *1
+  - :index: 72
+    :line: 4
+    :ranges:
+      :line:
+      - 72
+      - 102
+      :copy_operator:
+      - 92
+      - 93
+      :template:
+      - 94
+      - 102
+      :escape_begin_operator:
+      - 76
+      - 78
+      :escape_end_operator:
+      - 85
+      - 87
+      :key:
+      - 79
+      - 84
+    :template: template
+    :type: :empty_element
+    :key: "`key`"
+    :parent: *1
+  :type: :document

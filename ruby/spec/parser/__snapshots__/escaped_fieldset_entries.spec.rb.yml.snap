@@ -1,0 +1,203 @@
+---
+"./spec/tokenizer/escaped_fieldset_entries.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :key: name
+  :ranges:
+    :escape_begin_operator:
+    - 0
+    - 1
+    :escape_end_operator:
+    - 5
+    - 6
+    :entry_operator:
+    - 6
+    - 7
+    :key:
+    - 1
+    - 5
+    :value:
+    - 7
+    - 12
+  :type: :fieldset_entry
+  :value: value
+  :length: 12
+- :index: 13
+  :line: 1
+  :key: na`me
+  :ranges:
+    :escape_begin_operator:
+    - 0
+    - 2
+    :escape_end_operator:
+    - 7
+    - 9
+    :entry_operator:
+    - 10
+    - 11
+    :key:
+    - 2
+    - 7
+    :value:
+    - 12
+    - 17
+  :type: :fieldset_entry
+  :value: value
+  :length: 17
+- :index: 31
+  :line: 2
+  :key: na``me
+  :ranges:
+    :escape_begin_operator:
+    - 0
+    - 3
+    :escape_end_operator:
+    - 9
+    - 12
+    :entry_operator:
+    - 17
+    - 18
+    :key:
+    - 3
+    - 9
+    :value:
+    - 19
+    - 29
+  :type: :fieldset_entry
+  :value: more value
+  :length: 29
+- :index: 61
+  :line: 3
+  :key: "`name`"
+  :ranges:
+    :escape_begin_operator:
+    - 4
+    - 6
+    :escape_end_operator:
+    - 14
+    - 16
+    :entry_operator:
+    - 21
+    - 22
+    :key:
+    - 7
+    - 13
+  :type: :fieldset_entry
+  :value: 
+  :length: 22
+"./spec/parser/escaped_fieldset_entries.spec.rb[1:1:1]": &1
+  :elements:
+  - &2
+    :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 9
+      :element_operator:
+      - 8
+      - 9
+      :key:
+      - 0
+      - 8
+    :key: fieldset
+    :type: :fieldset
+    :parent: *1
+    :entries:
+    - :index: 10
+      :line: 1
+      :ranges:
+        :line:
+        - 10
+        - 21
+        :entry_operator:
+        - 15
+        - 16
+        :escape_begin_operator:
+        - 10
+        - 11
+        :escape_end_operator:
+        - 14
+        - 15
+        :key:
+        - 11
+        - 14
+        :value:
+        - 16
+        - 21
+      :type: :fieldset_entry
+      :key: key
+      :value: value
+      :parent: *2
+    - :index: 22
+      :line: 2
+      :ranges:
+        :line:
+        - 22
+        - 38
+        :entry_operator:
+        - 31
+        - 32
+        :escape_begin_operator:
+        - 22
+        - 24
+        :escape_end_operator:
+        - 28
+        - 30
+        :key:
+        - 24
+        - 28
+        :value:
+        - 33
+        - 38
+      :type: :fieldset_entry
+      :key: k`ey
+      :value: value
+      :parent: *2
+    - :index: 39
+      :line: 3
+      :ranges:
+        :line:
+        - 39
+        - 67
+        :entry_operator:
+        - 55
+        - 56
+        :escape_begin_operator:
+        - 39
+        - 42
+        :escape_end_operator:
+        - 47
+        - 50
+        :key:
+        - 42
+        - 47
+        :value:
+        - 57
+        - 67
+      :type: :fieldset_entry
+      :key: ke``y
+      :value: more value
+      :parent: *2
+    - :index: 68
+      :line: 4
+      :ranges:
+        :line:
+        - 68
+        - 89
+        :entry_operator:
+        - 88
+        - 89
+        :escape_begin_operator:
+        - 72
+        - 74
+        :escape_end_operator:
+        - 81
+        - 83
+        :key:
+        - 75
+        - 80
+      :type: :fieldset_entry
+      :key: "`key`"
+      :parent: *2
+  :type: :document

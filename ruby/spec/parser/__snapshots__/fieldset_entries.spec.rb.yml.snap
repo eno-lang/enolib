@@ -1,0 +1,162 @@
+---
+"./spec/tokenizer/fieldset_entries.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :key: name
+  :ranges:
+    :entry_operator:
+    - 4
+    - 5
+    :key:
+    - 0
+    - 4
+    :value:
+    - 5
+    - 10
+  :type: :fieldset_entry
+  :value: value
+  :length: 10
+- :index: 11
+  :line: 1
+  :key: name
+  :ranges:
+    :entry_operator:
+    - 5
+    - 6
+    :key:
+    - 0
+    - 4
+    :value:
+    - 7
+    - 12
+  :type: :fieldset_entry
+  :value: value
+  :length: 12
+- :index: 24
+  :line: 2
+  :key: name
+  :ranges:
+    :entry_operator:
+    - 5
+    - 6
+    :key:
+    - 0
+    - 4
+    :value:
+    - 7
+    - 17
+  :type: :fieldset_entry
+  :value: more value
+  :length: 17
+- :index: 42
+  :line: 3
+  :key: more name
+  :ranges:
+    :entry_operator:
+    - 17
+    - 18
+    :key:
+    - 4
+    - 13
+    :value:
+    - 22
+    - 27
+  :type: :fieldset_entry
+  :value: value
+  :length: 27
+"./spec/parser/fieldset_entries.spec.rb[1:1:1]": &1
+  :elements:
+  - &2
+    :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 9
+      :element_operator:
+      - 8
+      - 9
+      :key:
+      - 0
+      - 8
+    :key: fieldset
+    :type: :fieldset
+    :parent: *1
+    :entries:
+    - :index: 10
+      :line: 1
+      :ranges:
+        :line:
+        - 10
+        - 19
+        :key:
+        - 10
+        - 13
+        :entry_operator:
+        - 13
+        - 14
+        :value:
+        - 14
+        - 19
+      :type: :fieldset_entry
+      :key: key
+      :value: value
+      :parent: *2
+    - :index: 20
+      :line: 2
+      :ranges:
+        :line:
+        - 20
+        - 31
+        :key:
+        - 20
+        - 23
+        :entry_operator:
+        - 24
+        - 25
+        :value:
+        - 26
+        - 31
+      :type: :fieldset_entry
+      :key: key
+      :value: value
+      :parent: *2
+    - :index: 32
+      :line: 3
+      :ranges:
+        :line:
+        - 32
+        - 48
+        :key:
+        - 32
+        - 35
+        :entry_operator:
+        - 36
+        - 37
+        :value:
+        - 38
+        - 48
+      :type: :fieldset_entry
+      :key: key
+      :value: more value
+      :parent: *2
+    - :index: 49
+      :line: 4
+      :ranges:
+        :line:
+        - 49
+        - 75
+        :key:
+        - 53
+        - 61
+        :entry_operator:
+        - 65
+        - 66
+        :value:
+        - 70
+        - 75
+      :type: :fieldset_entry
+      :key: more key
+      :value: value
+      :parent: *2
+  :type: :document

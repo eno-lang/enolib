@@ -1,0 +1,96 @@
+---
+"./spec/parser/direct_line_continuations.spec.rb[1:1:1]": &1
+  :elements:
+  - :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 6
+      :element_operator:
+      - 5
+      - 6
+      :key:
+      - 0
+      - 5
+    :key: field
+    :type: :field
+    :parent: *1
+    :continuations:
+    - :index: 7
+      :line: 1
+      :ranges:
+        :line:
+        - 7
+        - 8
+        :direct_line_continuation_operator:
+        - 7
+        - 8
+      :type: :continuation
+    - :index: 9
+      :line: 2
+      :ranges:
+        :line:
+        - 9
+        - 16
+        :direct_line_continuation_operator:
+        - 9
+        - 10
+        :value:
+        - 11
+        - 16
+      :type: :continuation
+      :value: value
+    - :index: 17
+      :line: 3
+      :ranges:
+        :line:
+        - 17
+        - 27
+        :direct_line_continuation_operator:
+        - 17
+        - 18
+        :value:
+        - 22
+        - 27
+      :type: :continuation
+      :value: value
+    - :index: 28
+      :line: 4
+      :ranges:
+        :line:
+        - 28
+        - 44
+        :direct_line_continuation_operator:
+        - 32
+        - 33
+        :value:
+        - 34
+        - 44
+      :type: :continuation
+      :value: more value
+    - :index: 45
+      :line: 5
+      :ranges:
+        :line:
+        - 45
+        - 59
+        :direct_line_continuation_operator:
+        - 49
+        - 50
+        :value:
+        - 54
+        - 59
+      :type: :continuation
+      :value: value
+    - :index: 60
+      :line: 6
+      :ranges:
+        :line:
+        - 60
+        - 65
+        :direct_line_continuation_operator:
+        - 64
+        - 65
+      :type: :continuation
+  :type: :document

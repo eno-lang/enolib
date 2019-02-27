@@ -1,0 +1,145 @@
+---
+"./spec/tokenizer/fields.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :key: name
+  :ranges:
+    :key:
+    - 0
+    - 4
+    :element_operator:
+    - 4
+    - 5
+    :value:
+    - 5
+    - 10
+  :type: :field
+  :value: value
+  :length: 10
+- :index: 11
+  :line: 1
+  :key: name
+  :ranges:
+    :key:
+    - 0
+    - 4
+    :element_operator:
+    - 4
+    - 5
+    :value:
+    - 6
+    - 11
+  :type: :field
+  :value: value
+  :length: 11
+- :index: 23
+  :line: 2
+  :key: name
+  :ranges:
+    :key:
+    - 0
+    - 4
+    :element_operator:
+    - 4
+    - 5
+    :value:
+    - 6
+    - 16
+  :type: :field
+  :value: more value
+  :length: 16
+- :index: 40
+  :line: 3
+  :key: name
+  :ranges:
+    :key:
+    - 4
+    - 8
+    :element_operator:
+    - 12
+    - 13
+    :value:
+    - 17
+    - 22
+  :type: :field
+  :value: value
+  :length: 22
+"./spec/parser/fields.spec.rb[1:1:1]": &1
+  :elements:
+  - :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 9
+      :element_operator:
+      - 3
+      - 4
+      :key:
+      - 0
+      - 3
+      :value:
+      - 4
+      - 9
+    :key: key
+    :type: :field
+    :value: value
+    :parent: *1
+  - :index: 10
+    :line: 1
+    :ranges:
+      :line:
+      - 10
+      - 20
+      :element_operator:
+      - 13
+      - 14
+      :key:
+      - 10
+      - 13
+      :value:
+      - 15
+      - 20
+    :key: key
+    :type: :field
+    :value: value
+    :parent: *1
+  - :index: 21
+    :line: 2
+    :ranges:
+      :line:
+      - 21
+      - 36
+      :element_operator:
+      - 24
+      - 25
+      :key:
+      - 21
+      - 24
+      :value:
+      - 26
+      - 36
+    :key: key
+    :type: :field
+    :value: more value
+    :parent: *1
+  - :index: 37
+    :line: 3
+    :ranges:
+      :line:
+      - 37
+      - 58
+      :element_operator:
+      - 48
+      - 49
+      :key:
+      - 41
+      - 44
+      :value:
+      - 53
+      - 58
+    :key: key
+    :type: :field
+    :value: value
+    :parent: *1
+  :type: :document

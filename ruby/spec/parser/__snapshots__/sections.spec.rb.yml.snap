@@ -1,0 +1,124 @@
+---
+"./spec/tokenizer/sections.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :depth: 1
+  :type: :section
+  :key: name
+  :ranges:
+    :key:
+    - 2
+    - 6
+    :section_operator:
+    - 0
+    - 1
+  :length: 6
+- :index: 7
+  :line: 1
+  :depth: 2
+  :type: :section
+  :key: long name
+  :ranges:
+    :key:
+    - 3
+    - 12
+    :section_operator:
+    - 0
+    - 2
+  :length: 12
+- :index: 20
+  :line: 2
+  :depth: 3
+  :type: :section
+  :key: name
+  :ranges:
+    :key:
+    - 8
+    - 12
+    :section_operator:
+    - 4
+    - 7
+  :length: 12
+- :index: 33
+  :line: 3
+  :depth: 4
+  :type: :section
+  :key: name
+  :ranges:
+    :key:
+    - 12
+    - 16
+    :section_operator:
+    - 4
+    - 8
+  :length: 16
+"./spec/parser/sections.spec.rb[1:1:1]": &4
+  :elements:
+  - &3
+    :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 5
+      :section_operator:
+      - 0
+      - 1
+      :key:
+      - 2
+      - 5
+    :elements:
+    - &2
+      :index: 6
+      :line: 1
+      :ranges:
+        :line:
+        - 6
+        - 17
+        :section_operator:
+        - 6
+        - 8
+        :key:
+        - 9
+        - 17
+      :elements:
+      - &1
+        :index: 18
+        :line: 2
+        :ranges:
+          :line:
+          - 18
+          - 29
+          :section_operator:
+          - 22
+          - 25
+          :key:
+          - 26
+          - 29
+        :elements:
+        - :index: 30
+          :line: 3
+          :ranges:
+            :line:
+            - 30
+            - 45
+            :section_operator:
+            - 34
+            - 38
+            :key:
+            - 42
+            - 45
+          :elements: []
+          :type: :section
+          :parent: *1
+          :key: key
+        :type: :section
+        :parent: *2
+        :key: key
+      :type: :section
+      :parent: *3
+      :key: long key
+    :type: :section
+    :parent: *4
+    :key: key
+  :type: :document

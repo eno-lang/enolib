@@ -8,7 +8,7 @@ describe 'Touching elements in a section that were copied from another section d
             "# copy < section"
 
     begin
-      document = enolib.parse(input)
+      document = Enolib.parse(input)
       
       document.section('section').string_key
       document.section('copy').field('field').string_key

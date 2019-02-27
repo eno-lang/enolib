@@ -1,0 +1,300 @@
+---
+"./spec/tokenizer/copy.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 4
+    - 5
+    :key:
+    - 0
+    - 4
+    :template:
+    - 5
+    - 13
+  :template: template
+  :type: :element
+  :length: 13
+- :index: 14
+  :line: 1
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 4
+    - 6
+    :key:
+    - 0
+    - 4
+    :template:
+    - 6
+    - 14
+  :template: template
+  :type: :element
+  :length: 14
+- :index: 29
+  :line: 2
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 5
+    - 6
+    :key:
+    - 0
+    - 4
+    :template:
+    - 7
+    - 15
+  :template: template
+  :type: :element
+  :length: 15
+- :index: 45
+  :line: 3
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 5
+    - 7
+    :key:
+    - 0
+    - 4
+    :template:
+    - 8
+    - 16
+  :template: template
+  :type: :element
+  :length: 16
+- :index: 62
+  :line: 4
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 9
+    - 10
+    :key:
+    - 0
+    - 4
+    :template:
+    - 11
+    - 24
+  :template: more template
+  :type: :element
+  :length: 24
+- :index: 87
+  :line: 5
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 9
+    - 11
+    :key:
+    - 0
+    - 4
+    :template:
+    - 12
+    - 25
+  :template: more template
+  :type: :element
+  :length: 25
+- :index: 113
+  :line: 6
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 15
+    - 16
+    :key:
+    - 5
+    - 9
+    :template:
+    - 17
+    - 25
+  :template: template
+  :type: :element
+  :length: 25
+- :index: 139
+  :line: 7
+  :key: name
+  :ranges:
+    :copy_operator:
+    - 15
+    - 17
+    :key:
+    - 5
+    - 9
+    :template:
+    - 18
+    - 26
+  :template: template
+  :type: :element
+  :length: 26
+"./spec/parser/copy.spec.rb[1:1:1]": &1
+  :elements:
+  - :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 9
+      :element_operator:
+      - 8
+      - 9
+      :key:
+      - 0
+      - 8
+    :key: template
+    :type: :empty_element
+    :parent: *1
+  - :index: 10
+    :line: 1
+    :ranges:
+      :line:
+      - 10
+      - 22
+      :copy_operator:
+      - 13
+      - 14
+      :template:
+      - 14
+      - 22
+      :key:
+      - 10
+      - 13
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 23
+    :line: 2
+    :ranges:
+      :line:
+      - 23
+      - 36
+      :copy_operator:
+      - 26
+      - 28
+      :template:
+      - 28
+      - 36
+      :key:
+      - 23
+      - 26
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 37
+    :line: 3
+    :ranges:
+      :line:
+      - 37
+      - 51
+      :copy_operator:
+      - 41
+      - 42
+      :template:
+      - 43
+      - 51
+      :key:
+      - 37
+      - 40
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 52
+    :line: 4
+    :ranges:
+      :line:
+      - 52
+      - 67
+      :copy_operator:
+      - 56
+      - 58
+      :template:
+      - 59
+      - 67
+      :key:
+      - 52
+      - 55
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 68
+    :line: 5
+    :ranges:
+      :line:
+      - 68
+      - 86
+      :copy_operator:
+      - 76
+      - 77
+      :template:
+      - 78
+      - 86
+      :key:
+      - 68
+      - 71
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 87
+    :line: 6
+    :ranges:
+      :line:
+      - 87
+      - 106
+      :copy_operator:
+      - 95
+      - 97
+      :template:
+      - 98
+      - 106
+      :key:
+      - 87
+      - 90
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 107
+    :line: 7
+    :ranges:
+      :line:
+      - 107
+      - 131
+      :copy_operator:
+      - 121
+      - 122
+      :template:
+      - 123
+      - 131
+      :key:
+      - 112
+      - 115
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  - :index: 132
+    :line: 8
+    :ranges:
+      :line:
+      - 132
+      - 157
+      :copy_operator:
+      - 146
+      - 148
+      :template:
+      - 149
+      - 157
+      :key:
+      - 137
+      - 140
+    :template: template
+    :type: :empty_element
+    :key: key
+    :parent: *1
+  :type: :document

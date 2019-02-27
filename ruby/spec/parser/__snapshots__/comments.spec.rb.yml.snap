@@ -1,0 +1,53 @@
+---
+"./spec/tokenizer/comments.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :comment: " note"
+  :ranges:
+    :comment:
+    - 1
+    - 6
+    :comment_operator:
+    - 0
+    - 1
+  :type: :comment
+  :length: 6
+- :index: 7
+  :line: 1
+  :comment: " more notes"
+  :ranges:
+    :comment:
+    - 1
+    - 12
+    :comment_operator:
+    - 0
+    - 1
+  :type: :comment
+  :length: 12
+- :index: 20
+  :line: 2
+  :comment: "    note"
+  :ranges:
+    :comment:
+    - 5
+    - 13
+    :comment_operator:
+    - 4
+    - 5
+  :type: :comment
+  :length: 13
+- :index: 34
+  :line: 3
+  :comment: ''
+  :ranges:
+    :comment:
+    - 5
+    - 5
+    :comment_operator:
+    - 4
+    - 5
+  :type: :comment
+  :length: 5
+"./spec/parser/comments.spec.rb[1:1:1]":
+  :elements: []
+  :type: :document

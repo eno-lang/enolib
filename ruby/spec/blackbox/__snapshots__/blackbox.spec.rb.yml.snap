@@ -1,0 +1,74 @@
+---
+"./spec/blackbox/blackbox.spec.rb[1:1:1]":
+  :type: :document
+  :elements:
+  - :type: :field
+    :key: language
+    :value: eno
+"./spec/blackbox/blackbox.spec.rb[1:2:1]":
+  :type: :document
+  :elements:
+  - :type: :field
+    :key: Date
+    :value: 1st of November in the year 2017
+  - :type: :multiline_field_begin
+    :key: Book Description
+    :value: |-
+      Lacks a certain ...
+      something
+  - :type: :list
+    :key: Shopping List
+    :items:
+    - :type: :list_item
+      :value: Apples
+    - :type: :list_item
+      :value: Oranges
+  - :type: :fieldset
+    :key: Telephone Numbers
+    :entries:
+    - :type: :fieldset_entry
+      :key: Ben
+      :value: "+49 1943 24724784"
+    - :type: :fieldset_entry
+      :key: Rachel
+      :value: "+59 3459 35935593"
+    - :type: :fieldset_entry
+      :key: Dave
+      :value: "+69 9025 93593531"
+  - :type: :section
+    :key: Body
+    :elements:
+    - :type: :section
+      :key: Limbs
+      :elements:
+      - :type: :section
+        :key: Left Arm
+        :elements: []
+      - :type: :section
+        :key: Right Arm
+        :elements: []
+      - :type: :section
+        :key: Right Arm
+        :elements:
+        - :type: :field
+          :key: "--format pretty"
+          :value: Pretty formatting option
+        - :type: :list
+          :key: "> Friends <"
+          :items:
+          - :type: :list_item
+            :value: Jack the Ripper
+          - :type: :list_item
+            :value: Frankenstein
+        - :type: :fieldset
+          :key: Use `${arg}` style options
+          :entries:
+          - :type: :fieldset_entry
+            :key: "'--output dir'"
+            :value: Specify a different output directory
+          - :type: :fieldset_entry
+            :key: "'--filters disabled'"
+            :value: Enable/disable filters
+        - :type: :field
+          :key: I
+          :value: append allthe things

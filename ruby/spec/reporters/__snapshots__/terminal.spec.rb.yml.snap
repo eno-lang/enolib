@@ -1,0 +1,13 @@
+---
+"./spec/reporters/terminal.spec.rb[1:1]": "\e[40m      1 \e[0m \e[90m> comment\e[0m\n\e[30m\e[101m
+  >    2 \e[0m \e[37m#\e[0m \e[1m\e[97msection\e[0m\n\e[30m\e[47m *    3 \e[0m \n\e[30m\e[47m
+  *    4 \e[0m \e[1m\e[97mfield\e[0m\e[37m:\e[0m \e[2m\e[37mvalue\e[0m\n\e[30m\e[47m
+  *    5 \e[0m \n\e[30m\e[47m *    6 \e[0m \e[1m\e[97mlist\e[0m\e[37m:\e[0m\n\e[30m\e[47m
+  *    7 \e[0m \e[37m-\e[0m \e[2m\e[37mitem\e[0m\n\e[30m\e[47m *    8 \e[0m \e[37m-\e[0m
+  \e[2m\e[37mitem\e[0m\n\e[30m\e[47m *    9 \e[0m \n\e[30m\e[47m *   10 \e[0m \e[90m>
+  comment\e[0m\n\e[30m\e[47m *   11 \e[0m \e[37m-\e[0m \e[2m\e[37mitem\e[0m\n\e[30m\e[47m
+  *   12 \e[0m \n\e[30m\e[47m *   13 \e[0m \e[37m##\e[0m \e[1m\e[97msubsection\e[0m\n\e[30m\e[47m
+  *   14 \e[0m \n\e[30m\e[47m *   15 \e[0m \e[1m\e[97mfieldset\e[0m\e[37m:\e[0m\n\e[30m\e[47m
+  *   16 \e[0m \e[1m\e[97mentry\e[0m \e[37m=\e[0m \e[2m\e[37mvalue\e[0m\n\e[30m\e[47m
+  *   17 \e[0m \n\e[30m\e[47m *   18 \e[0m \e[90m> comment\e[0m\n\e[30m\e[47m *   19
+  \e[0m \e[1m\e[97mentry\e[0m \e[37m=\e[0m \e[2m\e[37mvalue\e[0m"

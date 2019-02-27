@@ -1,0 +1,170 @@
+---
+"./spec/tokenizer/list_items.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :type: :list_item
+  :ranges:
+    :item_operator:
+    - 0
+    - 1
+  :value: 
+  :length: 1
+- :index: 2
+  :line: 1
+  :type: :list_item
+  :ranges:
+    :item_operator:
+    - 0
+    - 1
+    :value:
+    - 2
+    - 7
+  :value: value
+  :length: 7
+- :index: 10
+  :line: 2
+  :type: :list_item
+  :ranges:
+    :item_operator:
+    - 0
+    - 1
+    :value:
+    - 5
+    - 10
+  :value: value
+  :length: 10
+- :index: 21
+  :line: 3
+  :type: :list_item
+  :ranges:
+    :item_operator:
+    - 4
+    - 5
+    :value:
+    - 6
+    - 16
+  :value: more value
+  :length: 16
+- :index: 38
+  :line: 4
+  :type: :list_item
+  :ranges:
+    :item_operator:
+    - 4
+    - 5
+    :value:
+    - 9
+    - 14
+  :value: value
+  :length: 14
+- :index: 53
+  :line: 5
+  :type: :list_item
+  :ranges:
+    :item_operator:
+    - 4
+    - 5
+  :value: 
+  :length: 5
+"./spec/parser/list_items.spec.rb[1:1:1]": &1
+  :elements:
+  - &2
+    :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 5
+      :element_operator:
+      - 4
+      - 5
+      :key:
+      - 0
+      - 4
+    :key: list
+    :type: :list
+    :parent: *1
+    :items:
+    - :index: 7
+      :line: 2
+      :ranges:
+        :line:
+        - 7
+        - 8
+        :item_operator:
+        - 7
+        - 8
+      :type: :list_item
+      :parent: *2
+    - :index: 9
+      :line: 3
+      :ranges:
+        :line:
+        - 9
+        - 16
+        :item_operator:
+        - 9
+        - 10
+        :value:
+        - 11
+        - 16
+      :type: :list_item
+      :value: value
+      :parent: *2
+    - :index: 17
+      :line: 4
+      :ranges:
+        :line:
+        - 17
+        - 27
+        :item_operator:
+        - 17
+        - 18
+        :value:
+        - 22
+        - 27
+      :type: :list_item
+      :value: value
+      :parent: *2
+    - :index: 28
+      :line: 5
+      :ranges:
+        :line:
+        - 28
+        - 44
+        :item_operator:
+        - 32
+        - 33
+        :value:
+        - 34
+        - 44
+      :type: :list_item
+      :value: more value
+      :parent: *2
+    - :index: 45
+      :line: 6
+      :ranges:
+        :line:
+        - 45
+        - 59
+        :item_operator:
+        - 49
+        - 50
+        :value:
+        - 54
+        - 59
+      :type: :list_item
+      :value: value
+      :parent: *2
+    - :index: 60
+      :line: 7
+      :ranges:
+        :line:
+        - 60
+        - 65
+        :item_operator:
+        - 64
+        - 65
+      :type: :list_item
+      :parent: *2
+  :type: :document

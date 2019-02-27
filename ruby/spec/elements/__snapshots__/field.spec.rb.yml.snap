@@ -1,0 +1,26 @@
+---
+"./spec/elements/field.spec.rb[1:3:1:1]": |
+  There is a problem with the value of the element 'language'.
+
+     Line | Content
+   >    1 | language: eno
+"./spec/elements/field.spec.rb[1:3:2:1]": |
+  my custom error
+
+     Line | Content
+   >    1 | language: eno
+"./spec/elements/field.spec.rb[1:3:3:1]": |
+  my custom generated message for field language with value eno
+
+     Line | Content
+   >    1 | language: eno
+"./spec/elements/field.spec.rb[1:2:1:1]": |-
+  There is a problem with the value of this element: my custom error
+
+     Line | Content
+   >    1 | field: value
+"./spec/elements/field.spec.rb[1:2:2:1]": |-
+  There is a problem with the value of this element: my custom generated message for value 'value'
+
+     Line | Content
+   >    1 | field: value

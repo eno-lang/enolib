@@ -1,0 +1,74 @@
+---
+"./spec/tokenizer/newline_continuations.spec.rb[1:1:1]":
+- :index: 0
+  :line: 0
+  :spaced: false
+  :type: :continuation
+  :value: 
+  :ranges:
+    :newline_continuation_operator:
+    - 0
+    - 1
+  :length: 1
+- :index: 2
+  :line: 1
+  :spaced: false
+  :type: :continuation
+  :value: value
+  :ranges:
+    :newline_continuation_operator:
+    - 0
+    - 1
+    :value:
+    - 2
+    - 7
+  :length: 7
+- :index: 10
+  :line: 2
+  :spaced: false
+  :type: :continuation
+  :value: value
+  :ranges:
+    :newline_continuation_operator:
+    - 0
+    - 1
+    :value:
+    - 5
+    - 10
+  :length: 10
+- :index: 21
+  :line: 3
+  :spaced: false
+  :type: :continuation
+  :value: more value
+  :ranges:
+    :newline_continuation_operator:
+    - 4
+    - 5
+    :value:
+    - 6
+    - 16
+  :length: 16
+- :index: 38
+  :line: 4
+  :spaced: false
+  :type: :continuation
+  :value: value
+  :ranges:
+    :newline_continuation_operator:
+    - 4
+    - 5
+    :value:
+    - 9
+    - 14
+  :length: 14
+- :index: 53
+  :line: 5
+  :spaced: false
+  :type: :continuation
+  :value: 
+  :ranges:
+    :newline_continuation_operator:
+    - 4
+    - 5
+  :length: 5
