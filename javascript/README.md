@@ -34,7 +34,7 @@ const fs = require('fs');
 
 const input = fs.readFileSync('intro.eno', 'utf-8');
 
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 console.log( document.field('Greeting').requiredStringValue() );  // prints 'Hello World!'
 ```
