@@ -158,10 +158,23 @@ class Fieldset extends Element {
     }
   }
 
-  entries() {
+  entries(key = null) {
     this._touched = true;
 
-    return this._lazyEntries().map(entry => entry.instance || new field_module.Field(this._context, entry));
+    let entries;
+
+    if(key === null) {
+      entries = this._lazyEntries();
+    } else {
+      const entriesMap = this._lazyEntries(true);
+
+      if(!entriesMap.hasOwnProperty(key))
+        return [];
+
+      entries = entriesMap[key];
+    }
+
+    return entries.map(entry => entry.instance || new field_module.Field(this._context, entry));
   }
 
   entry(key) {

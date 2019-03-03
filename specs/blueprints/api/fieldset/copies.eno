@@ -23,7 +23,7 @@ output = enolib.parse(input).fieldset('copy').entries().required_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('copy').entries().map { |entry| entry.required_string_value }
+output = Eno.parse(input).fieldset('copy').entries().map(&:required_string_value)
 -- ruby
 
 ## Result
@@ -70,7 +70,7 @@ output = enolib.parse(input).fieldset('copy').entries().required_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('copy').entries().map { |entry| entry.required_string_value }
+output = Eno.parse(input).fieldset('copy').entries().map(&:required_string_value)
 -- ruby
 
 ## Result
@@ -116,7 +116,7 @@ output = enolib.parse(input).fieldset('copy').entries().required_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('copy').entries().map { |entry| entry.required_string_value }
+output = Eno.parse(input).fieldset('copy').entries().map(&:required_string_value)
 -- ruby
 
 ## Result

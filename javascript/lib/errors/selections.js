@@ -10,6 +10,8 @@ const {
   SECTION
 } = require('../constants.js');
 
+// TODO: Strongly consider reverse iteration and/or last subinstruction checks to speed up some lastIn/etc. algorithms here
+
 const lastIn = element => {
   if((element.type === FIELD || element.type === LIST_ITEM || element.type === FIELDSET_ENTRY) && element.continuations.length > 0) {
     return element.continuations[element.continuations.length - 1];
