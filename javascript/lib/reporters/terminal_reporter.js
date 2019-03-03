@@ -32,11 +32,19 @@ const HIGHLIGHTING = {
   [INDICATE]: YELLOW,
   [QUESTION]: YELLOW,
   'elementOperator': MAGENTA,
+  'escapeBeginOperator': MAGENTA,
+  'escapeEndOperator': MAGENTA,
   'itemOperator': MAGENTA,
   'entryOperator': MAGENTA,
   'sectionOperator': MAGENTA,
+  'copyOperator': MAGENTA,
+  'deepCopyOperator': MAGENTA,
+  'multilineFieldOperator': MAGENTA,
+  'directLineContinuationOperator': MAGENTA,
+  'spacedLineContinuationOperator': MAGENTA,
   'commentOperator': WHITE,
   'key': BLUE,
+  'template': BLUE,
   'value': WHITE
 };
 
