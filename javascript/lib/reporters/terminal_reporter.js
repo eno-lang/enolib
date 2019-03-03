@@ -49,10 +49,10 @@ class TerminalReporter extends Reporter {
     const columnsHeader = `${BRIGHT}  ${gutterHeader} | ${contentHeader}${RESET}`;
 
     this._gutterWidth = gutterHeader.length + 3;
-    this._header = context.source ? `-- ${BRIGHT}${context.source}${RESET} --\n\n${columnsHeader}` : columnsHeader;
+    this._header = `${context.source ? `-- ${BRIGHT}${context.source}${RESET} --\n\n` : ''}${columnsHeader}\n`;
   }
 
-  _print(line, tag) {
+  _line(line, tag) {
     if(tag === OMISSION)
       return `${BRIGHT}${' '.repeat(this._gutterWidth - 5)}...${RESET}`;
 
@@ -84,6 +84,14 @@ class TerminalReporter extends Reporter {
     }
 
     return ` ${INDICATORS[tag]}${number.padStart(this._gutterWidth - 3)} | ${HIGHLIGHTING[tag]}${content}${RESET}`;
+  }
+
+  _print() {
+    const snippet = this._snippet.map((tag, line) => this._line(line, tag))
+                                 .filter(line => line !== undefined)
+                                 .join('\n');
+
+    return this._header + snippet;
   }
 }
 

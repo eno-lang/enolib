@@ -259,11 +259,7 @@ class Reporter {
       }
     }
 
-    const snippet = this._snippet.map((tag, line) => this._print(line, tag))
-                                 .filter(line => line !== undefined)
-                                 .join('\n');
-
-    return this._header + '\n' + (this.hasOwnProperty('_footer') ? snippet + '\n' + this._footer : snippet);
+    return this._print();
   }
 }
 

@@ -21,32 +21,9 @@ const HTML_ESCAPE = {
 const escape = string => string.replace(/[&<>"'\/]/g, c => HTML_ESCAPE[c]);
 
 class HtmlReporter extends Reporter {
-  constructor(context) {
-    super(context);
-
-    const contentHeader = this._context.messages.contentHeader;
-    const gutterHeader = this._context.messages.gutterHeader.padStart(5);
-    const columnsHeader = this._line(gutterHeader, contentHeader);
-
-    this._gutterWidth = gutterHeader.length + 3;
-    this._header = '<pre class="eno-report">\n' + (context.source ? `  <div>${context.source}</div>\n` : '') + columnsHeader;
-    this._footer = '</pre>';
-  }
-
-  _line(gutter, content, tagClass = '') {
-    let result = '';
-
-    result += `  <div class="eno-report-line ${tagClass}">\n`;
-    result += `    <div class="eno-report-gutter">${gutter.padStart(10)}</div>\n`;
-    result += `    <div class="eno-report-content">${escape(content)}</div>\n`;
-    result += '  </div>';
-
-    return result;
-  }
-
-  _print(line, tag) {
+  _line(line, tag) {
     if(tag === OMISSION)
-      return this._line('...', '...');
+      return this._markup('...', '...');
 
     const number = (line + HUMAN_INDEXING).toString();
     const instruction = this._index[line];
@@ -68,7 +45,23 @@ class HtmlReporter extends Reporter {
       tagClass = 'eno-report-line-questioned';
     }
 
-    return this._line(number, content, tagClass);
+    return this._markup(number, content, tagClass);
+  }
+
+  _markup(gutter, content, tagClass = '') {
+    return `<div class="eno-report-line ${tagClass}">` +
+           `<div class="eno-report-gutter">${gutter.padStart(10)}</div>` +
+           `<div class="eno-report-content">${escape(content)}</div>` +
+           '</div>';
+  }
+
+  _print() {
+    const columnsHeader = this._markup(this._context.messages.gutterHeader, this._context.messages.contentHeader);
+    const snippet = this._snippet.map((tag, line) => this._line(line, tag))
+                                 .filter(line => line !== undefined)
+                                 .join('');
+
+    return `<div>${this._context.source ? `<div>${this._context.source}</div>` : ''}<pre class="eno-report">${columnsHeader}${snippet}</pre></div>`;
   }
 }
 

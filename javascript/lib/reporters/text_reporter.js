@@ -13,15 +13,14 @@ class TextReporter extends Reporter {
   constructor(context) {
     super(context);
 
-    const contentHeader = this._context.messages.contentHeader;
     const gutterHeader = this._context.messages.gutterHeader.padStart(5);
-    const columnsHeader = `  ${gutterHeader} | ${contentHeader}`;
+    const columnsHeader = `  ${gutterHeader} | ${this._context.messages.contentHeader}`;
 
     this._gutterWidth = gutterHeader.length + 3;
-    this._header = context.source ? `-- ${context.source} --\n\n${columnsHeader}` : columnsHeader;
+    this._header = `${context.source ? `-- ${context.source} --\n\n` : ''}${columnsHeader}\n`;
   }
 
-  _print(line, tag) {
+  _line(line, tag) {
     if(tag === OMISSION)
       return `${' '.repeat(this._gutterWidth - 5)}...`;
 
@@ -36,6 +35,14 @@ class TextReporter extends Reporter {
     }
 
     return ` ${INDICATORS[tag]}${number.padStart(this._gutterWidth - 3)} | ${content}`;
+  }
+
+  _print() {
+    const snippet = this._snippet.map((tag, line) => this._line(line, tag))
+                                 .filter(line => line !== undefined)
+                                 .join('\n');
+
+    return this._header + snippet;
   }
 }
 
