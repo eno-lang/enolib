@@ -1,0 +1,85 @@
+# Querying all elements from a section
+
+-- input
+# section
+one: value
+two: value
+-- input
+
+-- javascript
+const output = eno.parse(input).section('section').elements().map(element => element.stringKey());
+-- javascript
+
+-- php
+$output = array_map(function($element) { return $element->stringKey(); } , Eno\Parser::parse($input)->section('section')->elements());
+-- php
+
+-- python
+output = [element.string_key() for element in enolib.parse(input).section('section').elements()]
+-- python
+
+-- ruby
+output = Eno.parse(input).section('section').elements().map(&:string_key)
+-- ruby
+
+## Result
+
+-- javascript
+['one', 'two']
+-- javascript
+
+-- php
+['one', 'two']
+-- php
+
+-- python
+['one', 'two']
+-- python
+
+-- ruby
+['one', 'two']
+-- ruby
+
+
+# Querying elements from a section by key
+
+-- input
+# section
+field: value
+other: one
+other: two
+-- input
+
+-- javascript
+const output = eno.parse(input).section('section').elements('other').map(element => element.requiredStringValue());
+-- javascript
+
+-- php
+$output = array_map(function($element) { return $element->requiredStringValue(); } , Eno\Parser::parse($input)->section('section')->elements('other'));
+-- php
+
+-- python
+output = [element.required_string_value() for element in enolib.parse(input).section('section').elements('other')]
+-- python
+
+-- ruby
+output = Eno.parse(input).section('section').elements('other').map(&:required_string_value)
+-- ruby
+
+## Result
+
+-- javascript
+['one', 'two']
+-- javascript
+
+-- php
+['one', 'two']
+-- php
+
+-- python
+['one', 'two']
+-- python
+
+-- ruby
+['one', 'two']
+-- ruby

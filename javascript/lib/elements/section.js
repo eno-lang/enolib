@@ -382,10 +382,35 @@ class Section extends Element {
     return this._element(key);
   }
 
-  elements() {
+  elements(key = null) {
     this._touched = true;
 
-    return this._instantiatedElements();
+    let elements;
+
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+
+      if(!elementsMap.hasOwnProperty(key))
+        return [];
+
+      elements = elementsMap[key];
+    }
+
+    return elements.map(element => {
+      if(element.hasOwnProperty('instance'))
+        return element.instance;
+
+      switch(element.type) {
+        case ELEMENT: return new empty_module.Empty(this._context, element);
+        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
+        case FIELD: return new field_module.Field(this._context, element);
+        case FIELDSET: return new fieldset_module.Fieldset(this._context, element);
+        case LIST: return new list_module.List(this._context, element);
+        case SECTION: return new Section(this._context, element);
+      }
+    });
   }
 
   field(key) {
