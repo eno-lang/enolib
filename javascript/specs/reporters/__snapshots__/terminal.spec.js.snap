@@ -1,24 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Terminal reporter produces colored terminal output 1`] = `
-"[1m   Line | Content[0m
-      1 | [0m[2m[37m>[37m [37mcomment[37m[0m[0m
- >    2 | [1m[41m[35m#[37m [33msection[37m[0m
- *    3 | [33m[0m
- *    4 | [33m[34mfield[37m[35m:[37m [37mvalue[37m[0m
- *    5 | [33m[0m
- *    6 | [33m[34mlist[37m[35m:[37m[0m
- *    7 | [33m[35m-[37m [37mitem[37m[0m
- *    8 | [33m[35m-[37m [37mitem[37m[0m
- *    9 | [33m[0m
- *   10 | [33m[2m[37m>[37m [37mcomment[37m[0m[0m
- *   11 | [33m[35m-[37m [37mitem[37m[0m
- *   12 | [33m[0m
- *   13 | [33m[35m##[37m [33msubsection[37m[0m
- *   14 | [33m[0m
- *   15 | [33m[34mfieldset[37m[35m:[37m[0m
- *   16 | [33m[34mentry[37m [35m=[37m [37mvalue[37m[0m
- *   17 | [33m[0m
- *   18 | [33m[2m[37m>[37m [37mcomment[37m[0m[0m
- *   19 | [33m[34mentry[37m [35m=[37m [37mvalue[37m[0m"
+"[40m      1 [0m [90m> comment[0m
+[30m[101m >    2 [0m [37m#[0m [1m[97msection[0m
+[30m[47m *    3 [0m 
+[30m[47m *    4 [0m [1m[97mfield[0m[37m:[0m [2m[37mvalue[0m
+[30m[47m *    5 [0m 
+[30m[47m *    6 [0m [1m[97mlist[0m[37m:[0m
+[30m[47m *    7 [0m [37m-[0m [2m[37mitem[0m
+[30m[47m *    8 [0m [37m-[0m [2m[37mitem[0m
+[30m[47m *    9 [0m 
+[30m[47m *   10 [0m [90m> comment[0m
+[30m[47m *   11 [0m [37m-[0m [2m[37mitem[0m
+[30m[47m *   12 [0m 
+[30m[47m *   13 [0m [37m##[0m [1m[97msubsection[0m
+[30m[47m *   14 [0m 
+[30m[47m *   15 [0m [1m[97mfieldset[0m[37m:[0m
+[30m[47m *   16 [0m [1m[97mentry[0m [37m=[0m [2m[37mvalue[0m
+[30m[47m *   17 [0m 
+[30m[47m *   18 [0m [90m> comment[0m
+[30m[47m *   19 [0m [1m[97mentry[0m [37m=[0m [2m[37mvalue[0m"
 `;

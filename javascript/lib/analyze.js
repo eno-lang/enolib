@@ -12,7 +12,8 @@ const {
   MULTILINE_FIELD_BEGIN,
   MULTILINE_FIELD_END,
   MULTILINE_FIELD_VALUE,
-  SECTION
+  SECTION,
+  UNPARSED
 } = require('./constants.js');
 
 const tokenizeErrorContext = (context, index, line) => {
@@ -27,6 +28,10 @@ const tokenizeErrorContext = (context, index, line) => {
         ranges: { line: [index, context.input.length ] }
       };
 
+      if(firstInstruction) {
+        instruction.type = UNPARSED;
+      }
+
       context.lineCount = line + 1;
       context.meta.push(instruction);
 
@@ -39,7 +44,9 @@ const tokenizeErrorContext = (context, index, line) => {
 
       context.meta.push(instruction);
 
-      if(!firstInstruction) {
+      if(firstInstruction) {
+        instruction.type = UNPARSED;
+      } else {
         firstInstruction = instruction;
       }
 

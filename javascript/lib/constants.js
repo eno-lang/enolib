@@ -18,3 +18,4 @@ exports.MULTILINE_FIELD_BEGIN = Symbol('Multiline Field Begin');
 exports.MULTILINE_FIELD_END = Symbol('Multiline Field End');
 exports.MULTILINE_FIELD_VALUE = Symbol('Multiline Field Value');
 exports.SECTION = Symbol('Section');
+exports.UNPARSED = Symbol('Unparsed');

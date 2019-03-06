@@ -9,10 +9,8 @@ exports[`Parser options sourceLabel is printed in html reports if provided 1`] =
 exports[`Parser options sourceLabel is printed in terminal reports if provided 1`] = `
 "Line 1 does not follow any specified pattern.
 
--- [1m/some/dubious-file.eno[0m --
-
-[1m   Line | Content[0m
- >    1 | [1m[41mboom![0m"
+[30m[101m >      [0m [1m/some/dubious-file.eno[0m
+[30m[101m >    1 [0m boom!"
 `;
 
 exports[`Parser options sourceLabel is printed in text reports if provided 1`] = `
