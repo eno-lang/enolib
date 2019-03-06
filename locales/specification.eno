@@ -42,232 +42,146 @@ Gutter Header: Line
 ## Parsing
 
 Cyclic Dependency:
-arguments = LINE, KEY
-message = In line [LINE] '[KEY]' is copied into itself.
+LINE, KEY = In line [LINE] '[KEY]' is copied into itself.
 
 Invalid Line:
-arguments = LINE
-message = Line [LINE] does not follow any specified pattern.
+LINE = Line [LINE] does not follow any specified pattern.
 
 Missing Element For Continuation:
-arguments = LINE
-message = Line [LINE] contains a line continuation without a continuable element being specified before.
+LINE = Line [LINE] contains a line continuation without a continuable element being specified before.
 
 Missing Fieldset For Fieldset Entry:
-arguments = LINE
-message = Line [LINE] contains a fieldset entry without a fieldset being specified before.
+LINE = Line [LINE] contains a fieldset entry without a fieldset being specified before.
 
 Missing List For List Item:
-arguments = LINE
-message = Line [LINE] contains a list item without a list being specified before.
+LINE = Line [LINE] contains a list item without a list being specified before.
 
 Non-Section Element Not Found:
-arguments = LINE, KEY
-message = In line [LINE] the non-section element '[KEY]' should be copied, but it was not found.
+LINE, KEY = In line [LINE] the non-section element '[KEY]' should be copied, but it was not found.
 
 Section Hierarchy Layer Skip:
-arguments = LINE
-message = Line [LINE] starts a section that is more than one level deeper than the current one.
+LINE = Line [LINE] starts a section that is more than one level deeper than the current one.
 
 Section Not Found:
-arguments = LINE, KEY
-message = In line [LINE] the section '[KEY]' should be copied, but it was not found.
+LINE, KEY = In line [LINE] the section '[KEY]' should be copied, but it was not found.
 
 Two Or More Templates Found:
-arguments = KEY
-message = There are at least two elements with the key '[KEY]' that qualify for being copied here, it is not clear which to copy.
+KEY = There are at least two elements with the key '[KEY]' that qualify for being copied here, it is not clear which to copy.
 
 Unterminated Escaped Key:
-arguments = LINE
-message = In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line.
+LINE = In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line.
 
 Unterminated Multiline Field:
-arguments = KEY, LINE
-message = The multiline field '[KEY]' starting in line [LINE] is not terminated until the end of the document.
-
+KEY, LINE = The multiline field '[KEY]' starting in line [LINE] is not terminated until the end of the document.
 
 ## Validation
 
 Comment Error:
-arguments = MESSAGE
-message = There is a problem with the comment of this element: [MESSAGE]
+MESSAGE = There is a problem with the comment of this element: [MESSAGE]
 
-Element Error:
-arguments = MESSAGE
-message = There is a problem with this element: [MESSAGE]
+Expected Field: A field was expected.
+Expected Field With Key:
+KEY = A field with the key '[KEY]' was expected.
 
-Expected Element Got Elements:
-arguments = KEY
-message = Instead of the expected single element '[KEY]' several elements with this key were found.
+Expected Fields: Only fields were expected.
+Expected Fields With Key:
+KEY = Only fields with the key '[KEY]' were expected.
 
-Expected Field Got Fields:
-arguments = KEY
-message = Instead of the expected single field '[KEY]' several fields with this key were found.
+Expected Fieldset: A fieldset was expected.
+Expected Fieldset With Key:
+KEY = A fieldset with the key '[KEY]' was expected.
 
-Expected Field Got Fieldset:
-arguments = KEY
-message = Instead of the expected field '[KEY]' a fieldset with this key was found.
+Expected Fieldsets: Only fieldsets were expected.
+Expected Fieldsets With Key:
+KEY = Only fieldsets with the key '[KEY]' were expected.
 
-Expected Field Got List:
-arguments = KEY
-message = Instead of the expected field '[KEY]' a list with this key was found.
+Expected List: A list was expected.
+Expected List With Key:
+KEY = A list with the key '[KEY]' was expected.
 
-Expected Field Got Section:
-arguments = KEY
-message = Instead of the expected field '[KEY]' a section with this key was found.
+Expected Lists: Only lists were expected.
+Expected Lists With Key:
+KEY = Only lists with the key '[KEY]' were expected.
 
-Expected Fields Got Fieldset:
-arguments = KEY
-message = Only fields with the key '[KEY]' were expected, but a fieldset with this key was found.
+Expected Section: A section was expected.
+Expected Section With Key:
+KEY = A section with the key '[KEY]' was expected.
 
-Expected Fields Got List:
-arguments = KEY
-message = Only fields with the key '[KEY]' were expected, but a list with this key was found.
+Expected Sections: Only sections were expected.
+Expected Sections With Key:
+KEY = Only sections with the key '[KEY]' were expected.
 
-Expected Fields Got Section:
-arguments = KEY
-message = Only fields with the key '[KEY]' were expected, but a section with this key was found.
+Expected Single Element: Only a single element was expected.
+Expected Single Element With Key:
+KEY = Only a single element with the key '[KEY]' was expected.
 
-Expected Fieldset Entry Got Fieldset Entries:
-arguments = KEY
-message = Instead of the expected single fieldset entry '[KEY]' several fieldset entries with this key were found.
+Expected Single Field: Only a single field was expected.
+Expected Single Field With Key:
+KEY = Only a single field with the key '[KEY]' was expected.
 
-Expected Fieldset Got Field:
-arguments = KEY
-message = Instead of the expected fieldset '[KEY]' a field with this key was found.
+Expected Single Fieldset: Only a single fieldset was expected.
 
-Expected Fieldset Got Fieldsets:
-arguments = KEY
-message = Instead of the expected single fieldset '[KEY]' several fieldsets with this key were found.
+Expected Single Fieldset Entry: Only a single fieldset entry was expected.
 
-Expected Fieldset Got List:
-arguments = KEY
-message = Instead of the expected fieldset '[KEY]' a list with this key was found.
+Expected Single Fieldset Entry With Key:
+KEY = Only a single fieldset entry with the key '[KEY]' was expected.
 
-Expected Fieldset Got Section:
-arguments = KEY
-message = Instead of the expected fieldset '[KEY]' a section with this key was found.
+Expected Single Fieldset With Key:
+KEY = Only a single fieldset with the key '[KEY]' was expected.
 
-Expected Fieldsets Got Field:
-arguments = KEY
-message = Only fieldsets with the key '[KEY]' were expected, but a field with this key was found.
+Expected Single List: Only a single list was expected.
+Expected Single List With Key:
+KEY = Only a single list with the key '[KEY]' was expected.
 
-Expected Fieldsets Got List:
-arguments = KEY
-message = Only fieldsets with the key '[KEY]' were expected, but a list with this key was found.
-
-Expected Fieldsets Got Section:
-arguments = KEY
-message = Only fieldsets with the key '[KEY]' were expected, but a section with this key was found.
-
-Expected List Got Field:
-arguments = KEY
-message = Instead of the expected list '[KEY]' a field with this key was found.
-
-Expected List Got Fieldset:
-arguments = KEY
-message = Instead of the expected list '[KEY]' a fieldset with this key was found.
-
-Expected List Got Lists:
-arguments = KEY
-message = Instead of the expected single list '[KEY]' several lists with this key were found.
-
-Expected List Got Section:
-arguments = KEY
-message = Instead of the expected list '[KEY]' a section with this key was found.
-
-Expected Lists Got Field:
-arguments = KEY
-message = Only lists with the key '[KEY]' were expected, but a field with this key was found.
-
-Expected Lists Got Fieldset:
-arguments = KEY
-message = Only lists with the key '[KEY]' were expected, but a fieldset with this key was found.
-
-Expected Lists Got Section:
-arguments = KEY
-message = Only lists with the key '[KEY]' were expected, but a section with this key was found.
-
-Expected Section Got Empty:
-arguments = KEY
-message = Instead of the expected section '[KEY]' an empty element with this key was found.
-
-Expected Section Got Field:
-arguments = KEY
-message = Instead of the expected section '[KEY]' a field with this key was found.
-
-Expected Section Got Fieldset:
-arguments = KEY
-message = Instead of the expected section '[KEY]' a fieldset with this key was found.
-
-Expected Section Got List:
-arguments = KEY
-message = Instead of the expected section '[KEY]' a list with this key was found.
-
-Expected Section Got Sections:
-arguments = KEY
-message = Instead of the expected single section '[KEY]' several sections with this key were found.
-
-Expected Sections Got Empty:
-arguments = KEY
-message = Only sections with the key '[KEY]' were expected, but an empty element with this key was found.
-
-Expected Sections Got Field:
-arguments = KEY
-message = Only sections with the key '[KEY]' were expected, but a field with this key was found.
-
-Expected Sections Got Fieldset:
-arguments = KEY
-message = Only sections with the key '[KEY]' were expected, but a fieldset with this key was found.
-
-Expected Sections Got List:
-arguments = KEY
-message = Only sections with the key '[KEY]' were expected, but a list with this key was found.
+Expected Single Section: Only a single section was expected.
+Expected Single Section With Key:
+KEY = Only a single section with the key '[KEY]' was expected.
 
 Key Error:
-arguments = MESSAGE
-message = There is a problem with the key of this element: [MESSAGE]
+MESSAGE = There is a problem with the key of this element: [MESSAGE]
 
 Missing Comment: A required comment for this element is missing.
 
-Missing Element:
-arguments = KEY
-message = The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+Missing Element: A single element is required - it can have any key.
 
-Missing Field:
-arguments = KEY
-message = The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+Missing Element With Key:
+KEY = The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+Missing Field: A single field is required - it can have any key.
 
 Missing Field Value:
-arguments = KEY
-message = The field '[KEY]' must contain a value.
+KEY = The field '[KEY]' must contain a value.
 
-Missing Fieldset:
-arguments = KEY
-message = The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+Missing Field With Key:
+KEY = The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
-Missing Fieldset Entry:
-arguments = KEY
-message = The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+Missing Fieldset: A single fieldset is required - it can have any key.
+
+Missing Fieldset Entry: A single fieldset entry is required - it can have any key.
 
 Missing Fieldset Entry Value:
-arguments = KEY
-message = The fieldset entry '[KEY]' must contain a value.
+KEY = The fieldset entry '[KEY]' must contain a value.
 
-Missing List:
-arguments = KEY
-message = The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+Missing Fieldset Entry With Key:
+KEY = The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+Missing Fieldset With Key:
+KEY = The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+Missing List: A single list is required - it can have any key.
 
 Missing List Item Value:
-arguments = KEY
-message = The list '[KEY]' may not contain empty items.
+KEY = The list '[KEY]' may not contain empty items.
 
-Missing Section:
-arguments = KEY
-message = The section '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+Missing List With Key:
+KEY = The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+Missing Section: A single section is required - it can have any key.
+
+Missing Section With Key:
+KEY = The section '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
 Unexpected Element: This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
 
 Value Error:
-arguments = MESSAGE
-message = There is a problem with the value of this element: [MESSAGE]
+MESSAGE = There is a problem with the value of this element: [MESSAGE]

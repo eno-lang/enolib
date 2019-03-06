@@ -23,7 +23,7 @@ Eno.parse(input).fieldset('field')
 ## ValidationError
 
 -- text
-Instead of the expected fieldset 'field' a field with this key was found.
+A fieldset with the key 'field' was expected.
 -- text
 
 -- snippet
@@ -61,7 +61,7 @@ Eno.parse(input).fieldset('field')
 ## ValidationError
 
 -- text
-Instead of the expected fieldset 'field' a field with this key was found.
+A fieldset with the key 'field' was expected.
 -- text
 
 -- snippet
@@ -103,7 +103,7 @@ Eno.parse(input).fieldset('field')
 ## ValidationError
 
 -- text
-Instead of the expected fieldset 'field' a field with this key was found.
+A fieldset with the key 'field' was expected.
 -- text
 
 -- snippet

@@ -48,9 +48,15 @@ class Section extends Element {
   _element(key, required = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key)) {
+    if(elements.length === 0) {
       if(required || this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingElement');
       } else if(required === null) {
@@ -60,10 +66,10 @@ class Section extends Element {
       }
     }
 
-    if(elementsMap[key].length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elementsMap[key], 'expectedElementGotElements');
+    if(elements.length > 1)
+      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleElement');
 
-    const element = elementsMap[key][0];
+    const element = elements[0];
 
     switch(element.type) {
       case ELEMENT: return element.instance || new empty_module.Empty(this._context, element);
@@ -78,9 +84,15 @@ class Section extends Element {
   _field(key, required = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key)) {
+    if(elements.length === 0) {
       if(required || this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingField');
       } else if(required === null) {
@@ -90,31 +102,31 @@ class Section extends Element {
       }
     }
 
-    const elements = elementsMap[key];
-
-    for(let element of elements) {
-      switch(element.type) {
-        case ELEMENT: new field_module.Field(this._context, element); continue;
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: if(!element.hasOwnProperty('instance')) { new field_module.Field(this._context, element); } continue;
-        case FIELDSET: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldGotFieldset');
-        case LIST: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldGotList');
-        case SECTION: throw errors.unexpectedSection(this._context, element, 'expectedFieldGotSection');
-      }
-    }
-
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedFieldGotFields');
+      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleField');
 
-    return elements[0].instance;
+    const element = elements[0];
+
+    switch(element.type) {
+      case ELEMENT: return new field_module.Field(this._context, element);
+      case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
+      case FIELD: return element.instance || new field_module.Field(this._context, element);
+      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedField');
+    }
   }
 
   _fieldset(key, required = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key)) {
+    if(elements.length === 0) {
       if(required || this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingFieldset');
       } else if(required === null) {
@@ -124,23 +136,16 @@ class Section extends Element {
       }
     }
 
-    const elements = elementsMap[key];
-
-    for(let element of elements) {
-      switch(element.type) {
-        case ELEMENT: new fieldset_module.Fieldset(this._context, element); continue;
-        case FIELDSET: if(!element.hasOwnProperty('instance')) { new fieldset_module.Fieldset(this._context, element); } continue;
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldsetGotField');
-        case LIST: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldsetGotList');
-        case SECTION: throw errors.unexpectedSection(this._context, element, 'expectedFieldsetGotSection');
-      }
-    }
-
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedFieldsetGotFieldsets');
+      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleFieldset');
 
-    return elements[0].instance;
+    const element = elements[0];
+
+    switch(element.type) {
+      case ELEMENT: return new fieldset_module.Fieldset(this._context, element);
+      case FIELDSET: return element.instance || new fieldset_module.Fieldset(this._context, element);
+      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedFieldset');
+    }
   }
 
   _lazyElements(map = false) {
@@ -211,9 +216,15 @@ class Section extends Element {
   _list(key, required = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key)) {
+    if(elements.length === 0) {
       if(required || this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingList');
       } else if(required === null) {
@@ -223,23 +234,16 @@ class Section extends Element {
       }
     }
 
-    const elements = elementsMap[key];
-
-    for(let element of elements) {
-      switch(element.type) {
-        case ELEMENT: new list_module.List(this._context, element); continue;
-        case LIST: if(!element.hasOwnProperty('instance')) { new list_module.List(this._context, element); } continue;
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedListGotField');
-        case FIELDSET: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedListGotFieldset');
-        case SECTION: throw errors.unexpectedSection(this._context, element, 'expectedListGotSection');
-      }
-    }
-
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedListGotLists');
+      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleList');
 
-    return elements[0].instance;
+    const element = elements[0];
+
+    switch(element.type) {
+      case ELEMENT: return new list_module.List(this._context, element);
+      case LIST: return element.instance || new list_module.List(this._context, element);
+      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedList');
+    }
   }
 
   _missingError(element) {
@@ -259,9 +263,15 @@ class Section extends Element {
   _section(key, required = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key)) {
+    if(elements.length === 0) {
       if(required || this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingSection');
       } else if(required === null) {
@@ -271,23 +281,15 @@ class Section extends Element {
       }
     }
 
-    const elements = elementsMap[key];
-
-    for(let element of elements) {
-      switch(element.type) {
-        case SECTION: if(!element.hasOwnProperty('instance')) { new Section(this._context, element); } continue;
-        case ELEMENT: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionGotEmpty');
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionGotField');
-        case FIELDSET: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionGotFieldset');
-        case LIST: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionGotList');
-      }
-    }
-
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSectionGotSections');
+      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleSection');
 
-    return elements[0].instance;
+    const element = elements[0];
+
+    if(element.type !== SECTION)
+      throw errors.unexpectedElementType(this._context, key, element, 'expectedSection');
+
+    return element.instance || new Section(this._context, element);
   }
 
   _untouched() {
@@ -378,7 +380,7 @@ class Section extends Element {
     }
   }
 
-  element(key) {
+  element(key = null) {
     return this._element(key);
   }
 
@@ -386,16 +388,11 @@ class Section extends Element {
     this._touched = true;
 
     let elements;
-
     if(key === null) {
       elements = this._lazyElements();
     } else {
       const elementsMap = this._lazyElements(true);
-
-      if(!elementsMap.hasOwnProperty(key))
-        return [];
-
-      elements = elementsMap[key];
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
     return elements.map(element => {
@@ -413,51 +410,55 @@ class Section extends Element {
     });
   }
 
-  field(key) {
+  field(key = null) {
     return this._field(key);
   }
 
-  fields(key) {
+  fields(key = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key))
-      return [];
+    return elements.map(element => {
+      if(element.type === FIELD || element.type === MULTILINE_FIELD_BEGIN)
+        return element.instance || new field_module.Field(this._context, element);
 
-    return elementsMap[key].map(element => {
-      switch(element.type) {
-        case ELEMENT: return new field_module.Field(this._context, element);
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: return element.instance || new field_module.Field(this._context, element);
-        case FIELDSET: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldsGotFieldset');
-        case LIST: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldsGotList');
-        case SECTION: throw errors.unexpectedSection(this._context, element, 'expectedFieldsGotSection');
-      }
+      if(element.type === ELEMENT)
+        return new field_module.Field(this._context, element);
+
+      throw errors.unexpectedElementType(this._context, key, element, 'expectedFields');
     });
   }
 
-  fieldset(key) {
+  fieldset(key = null) {
     return this._fieldset(key);
   }
 
-  fieldsets(key) {
+  fieldsets(key = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key))
-      return [];
+    return elements.map(element => {
+      if(element.type === FIELDSET)
+        return element.instance || new fieldset_module.Fieldset(this._context, element);
 
-    return elementsMap[key].map(element => {
-      switch(element.type) {
-        case ELEMENT: return new fieldset_module.Fieldset(this._context, element);
-        case FIELDSET: return element.instance || new fieldset_module.Fieldset(this._context, element);
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldsetsGotField');
-        case LIST: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedFieldsetsGotList');
-        case SECTION: throw errors.unexpectedSection(this._context, element, 'expectedFieldsetsGotSection');
-      }
+      if(element.type === ELEMENT)
+        return new fieldset_module.Fieldset(this._context, element);
+
+      throw errors.unexpectedElementType(this._context, key, element, 'expectedFieldsets');
     });
   }
 
@@ -479,47 +480,49 @@ class Section extends Element {
     );
   }
 
-  list(key) {
+  list(key = null) {
     return this._list(key);
   }
 
-  lists(key) {
+  lists(key = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key))
-      return [];
+    return elements.map(element => {
+      if(element.type === LIST)
+        return element.instance || new list_module.List(this._context, element);
 
-    return elementsMap[key].map(element => {
-      switch(element.type) {
-        case ELEMENT: return new list_module.List(this._context, element);
-        case LIST: return element.instance || new list_module.List(this._context, element);
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedListsGotField');
-        case FIELDSET: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedListsGotFieldset');
-        case SECTION: throw errors.unexpectedSection(this._context, element, 'expectedListsGotSection');
-      }
+      if(element.type === ELEMENT)
+        return new list_module.List(this._context, element);
+
+      throw errors.unexpectedElementType(this._context, key, element, 'expectedLists');
     });
   }
 
-  optionalElement(key) {
+  optionalElement(key = null) {
     return this._element(key, false);
   }
 
-  optionalField(key) {
+  optionalField(key = null) {
     return this._field(key, false);
   }
 
-  optionalFieldset(key) {
+  optionalFieldset(key = null) {
     return this._fieldset(key, false);
   }
 
-  optionalList(key) {
+  optionalList(key = null) {
     return this._list(key, false);
   }
 
-  optionalSection(key) {
+  optionalSection(key = null) {
     return this._section(key, false);
   }
 
@@ -540,47 +543,46 @@ class Section extends Element {
     return elements;
   }
 
-  requiredElement(key) {
+  requiredElement(key = null) {
     return this._element(key, true);
   }
 
-  requiredField(key) {
+  requiredField(key = null) {
     return this._field(key, true);
   }
 
-  requiredFieldset(key) {
+  requiredFieldset(key = null) {
     return this._fieldset(key, true);
   }
 
-  requiredList(key) {
+  requiredList(key = null) {
     return this._list(key, true);
   }
 
-  requiredSection(key) {
+  requiredSection(key = null) {
     return this._section(key, true);
   }
 
-  section(key) {
+  section(key = null) {
     return this._section(key);
   }
 
-  sections(key) {
+  sections(key = null) {
     this._touched = true;
 
-    const elementsMap = this._lazyElements(true);
+    let elements;
+    if(key === null) {
+      elements = this._lazyElements();
+    } else {
+      const elementsMap = this._lazyElements(true);
+      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+    }
 
-    if(!elementsMap.hasOwnProperty(key))
-      return [];
+    return elements.map(element => {
+      if(element.type !== SECTION)
+        throw errors.unexpectedElementType(this._context, key, element, 'expectedSections');
 
-    return elementsMap[key].map(element => {
-      switch(element.type) {
-        case SECTION: return element.instance || new Section(this._context, element);
-        case ELEMENT: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionsGotEmpty');
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionsGotField');
-        case FIELDSET: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionsGotFieldset');
-        case LIST: throw errors.unexpectedNonSectionElement(this._context, element, 'expectedSectionsGotList');
-      }
+      return element.instance || new Section(this._context, element);
     });
   }
 

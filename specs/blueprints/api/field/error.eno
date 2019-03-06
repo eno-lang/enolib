@@ -23,7 +23,7 @@ raise Eno.parse(input).field('field').error('my message')
 ## ValidationError
 
 -- text
-There is a problem with this element: my message
+my message
 -- text
 
 -- snippet
@@ -58,7 +58,7 @@ raise Eno.parse(input).field('field').error { |field| "my generated message for 
 ## ValidationError
 
 -- text
-There is a problem with this element: my generated message for field 'field'
+my generated message for field 'field'
 -- text
 
 -- snippet

@@ -36,9 +36,15 @@ class Fieldset extends Element {
   _entry(key, required = null) {
     this._touched = true;
 
-    const entriesMap = this._lazyEntries(true);
+    let entries;
+    if(key === null) {
+      entries = this._lazyEntries();
+    } else {
+      const entriesMap = this._lazyEntries(true);
+      entries = entriesMap.hasOwnProperty(key) ? entriesMap[key] : [];
+    }
 
-    if(!entriesMap.hasOwnProperty(key)) {
+    if(entries.length === 0) {
       if(required || this._allEntriesRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingFieldsetEntry');
       } else if(required === null) {
@@ -48,10 +54,10 @@ class Fieldset extends Element {
       }
     }
 
-    if(entriesMap[key].length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, entriesMap[key], 'expectedFieldsetEntryGotFieldsetEntries');
+    if(entries.length > 1)
+      throw errors.unexpectedMultipleElements(this._context, key, entries, 'expectedSingleFieldsetEntry');
 
-    const entry = entriesMap[key][0];
+    const entry = entries[0];
 
     return entry.instance || new field_module.Field(this._context, entry);
   }
@@ -177,7 +183,7 @@ class Fieldset extends Element {
     return entries.map(entry => entry.instance || new field_module.Field(this._context, entry));
   }
 
-  entry(key) {
+  entry(key = null) {
     return this._entry(key);
   }
 
@@ -199,7 +205,7 @@ class Fieldset extends Element {
     );
   }
 
-  optionalEntry(key) {
+  optionalEntry(key = null) {
     return this._entry(key, false);
   }
 
@@ -215,7 +221,7 @@ class Fieldset extends Element {
     return { [this._instruction.key]: entries };
   }
 
-  requiredEntry(key) {
+  requiredEntry(key = null) {
     return this._entry(key, true);
   }
 

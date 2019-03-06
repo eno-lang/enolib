@@ -24,7 +24,7 @@ Eno.parse(input).element('element')
 ## ValidationError
 
 -- text
-Instead of the expected single element 'element' several elements with this key were found.
+Only a single element with the key 'element' was expected.
 -- text
 
 -- snippet
@@ -64,7 +64,7 @@ Eno.parse(input).element('element')
 ## ValidationError
 
 -- text
-Instead of the expected single element 'element' several elements with this key were found.
+Only a single element with the key 'element' was expected.
 -- text
 
 -- snippet

@@ -21,7 +21,7 @@ describe('Expecting a list but getting two lists', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single list 'list' several lists with this key were found.`;
+    const text = `Only a single list with the key 'list' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -67,7 +67,7 @@ describe('Expecting a list but getting two lists with comments, empty lines and 
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single list 'list' several lists with this key were found.`;
+    const text = `Only a single list with the key 'list' was expected.`;
     
     expect(error.text).toEqual(text);
     

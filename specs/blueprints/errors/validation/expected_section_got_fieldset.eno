@@ -24,7 +24,7 @@ Eno.parse(input).section('fieldset')
 ## ValidationError
 
 -- text
-Instead of the expected section 'fieldset' a fieldset with this key was found.
+A section with the key 'fieldset' was expected.
 -- text
 
 -- snippet
@@ -68,7 +68,7 @@ Eno.parse(input).section('fieldset')
 ## ValidationError
 
 -- text
-Instead of the expected section 'fieldset' a fieldset with this key was found.
+A section with the key 'fieldset' was expected.
 -- text
 
 -- snippet
@@ -115,7 +115,7 @@ Eno.parse(input).section('fieldset')
 ## ValidationError
 
 -- text
-Instead of the expected section 'fieldset' a fieldset with this key was found.
+A section with the key 'fieldset' was expected.
 -- text
 
 -- snippet

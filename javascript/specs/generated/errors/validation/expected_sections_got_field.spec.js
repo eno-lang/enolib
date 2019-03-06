@@ -18,7 +18,7 @@ describe('Expecting sections but getting a field', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only sections with the key 'field' were expected, but a field with this key was found.`;
+    const text = `Only sections with the key 'field' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -54,7 +54,7 @@ describe('Expecting sections but getting a field with continuations', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only sections with the key 'field' were expected, but a field with this key was found.`;
+    const text = `Only sections with the key 'field' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -95,7 +95,7 @@ describe('Expecting sections but getting a field with continuations separated by
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only sections with the key 'field' were expected, but a field with this key was found.`;
+    const text = `Only sections with the key 'field' were expected.`;
     
     expect(error.text).toEqual(text);
     

@@ -21,7 +21,7 @@ describe('Expecting a section but getting two sections', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single section 'section' several sections with this key were found.`;
+    const text = `Only a single section with the key 'section' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -69,7 +69,7 @@ describe('Expecting a section but getting two sections with elements, empty line
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single section 'section' several sections with this key were found.`;
+    const text = `Only a single section with the key 'section' was expected.`;
     
     expect(error.text).toEqual(text);
     

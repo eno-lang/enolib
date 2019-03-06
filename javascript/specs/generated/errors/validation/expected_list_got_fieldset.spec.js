@@ -19,7 +19,7 @@ describe('Expecting a list but getting a fieldset with one item', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected list 'fieldset' a fieldset with this key was found.`;
+    const text = `A list with the key 'fieldset' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -61,7 +61,7 @@ describe('Expecting a list but getting a fieldset with empty lines and multiple 
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected list 'fieldset' a fieldset with this key was found.`;
+    const text = `A list with the key 'fieldset' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -107,7 +107,7 @@ describe('Expecting a list but getting a fieldset with two entries with comments
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected list 'fieldset' a fieldset with this key was found.`;
+    const text = `A list with the key 'fieldset' was expected.`;
     
     expect(error.text).toEqual(text);
     

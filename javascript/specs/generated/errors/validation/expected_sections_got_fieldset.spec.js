@@ -19,7 +19,7 @@ describe('Expecting sections but getting a fieldset with one item', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only sections with the key 'fieldset' were expected, but a fieldset with this key was found.`;
+    const text = `Only sections with the key 'fieldset' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -61,7 +61,7 @@ describe('Expecting sections but getting a fieldset with empty lines and multipl
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only sections with the key 'fieldset' were expected, but a fieldset with this key was found.`;
+    const text = `Only sections with the key 'fieldset' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -107,7 +107,7 @@ describe('Expecting sections but getting a fieldset with two entries with commen
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only sections with the key 'fieldset' were expected, but a fieldset with this key was found.`;
+    const text = `Only sections with the key 'fieldset' were expected.`;
     
     expect(error.text).toEqual(text);
     

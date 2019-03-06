@@ -23,7 +23,7 @@ Eno.parse(input).fieldset('section')
 ## ValidationError
 
 -- text
-Instead of the expected fieldset 'section' a section with this key was found.
+A fieldset with the key 'section' was expected.
 -- text
 
 -- snippet
@@ -65,15 +65,18 @@ Eno.parse(input).fieldset('section')
 ## ValidationError
 
 -- text
-Instead of the expected fieldset 'section' a section with this key was found.
+A fieldset with the key 'section' was expected.
 -- text
 
 -- snippet
    Line | Content
  >    1 | # section
-      2 | 
-      3 | field: value
-   ...
+ *    2 | 
+ *    3 | field: value
+ *    4 | 
+ *    5 | list:
+ *    6 | - item
+ *    7 | - item
 -- snippet
 
 selection: [0,0] => [6,6]
@@ -113,15 +116,22 @@ Eno.parse(input).fieldset('section')
 ## ValidationError
 
 -- text
-Instead of the expected fieldset 'section' a section with this key was found.
+A fieldset with the key 'section' was expected.
 -- text
 
 -- snippet
    Line | Content
  >    1 | # section
-      2 | 
-      3 | ## subsection
-   ...
+ *    2 | 
+ *    3 | ## subsection
+ *    4 | 
+ *    5 | field: value
+ *    6 | 
+ *    7 | ## subsection
+ *    8 | 
+ *    9 | list:
+ *   10 | - item
+ *   11 | - item
 -- snippet
 
 selection: [0,0] => [10,6]

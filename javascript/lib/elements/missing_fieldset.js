@@ -14,11 +14,11 @@ class MissingFieldset {
     this._parent._missingError(this);
   }
 
-  entries() {
+  entries(_key = null) {
     return [];
   }
 
-  entry(key) {
+  entry(key = null) {
     return new missing_field_module.MissingField(key, this);
   }
 
@@ -30,7 +30,7 @@ class MissingFieldset {
     return null;
   }
 
-  optionalEntry(_key) {
+  optionalEntry(_key = null) {
     return null;
   }
 
@@ -46,7 +46,7 @@ class MissingFieldset {
     this._parent._missingError(this);
   }
 
-  requiredEntry(_key) {
+  requiredEntry(_key = null) {
     this._parent._missingError(this);
   }
 

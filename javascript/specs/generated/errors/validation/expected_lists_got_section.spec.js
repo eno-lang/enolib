@@ -18,7 +18,7 @@ describe('Expecting lists but getting an empty section', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only lists with the key 'section' were expected, but a section with this key was found.`;
+    const text = `Only lists with the key 'section' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -58,15 +58,18 @@ describe('Expecting lists but getting a section with a field and a list', () => 
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only lists with the key 'section' were expected, but a section with this key was found.`;
+    const text = `Only lists with the key 'section' were expected.`;
     
     expect(error.text).toEqual(text);
     
     const snippet = `   Line | Content\n` +
                     ` >    1 | # section\n` +
-                    `      2 | \n` +
-                    `      3 | field: value\n` +
-                    `   ...`;
+                    ` *    2 | \n` +
+                    ` *    3 | field: value\n` +
+                    ` *    4 | \n` +
+                    ` *    5 | list:\n` +
+                    ` *    6 | - item\n` +
+                    ` *    7 | - item`;
     
     expect(error.snippet).toEqual(snippet);
     
@@ -105,15 +108,22 @@ describe('Expecting lists but getting a section with subsections', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only lists with the key 'section' were expected, but a section with this key was found.`;
+    const text = `Only lists with the key 'section' were expected.`;
     
     expect(error.text).toEqual(text);
     
     const snippet = `   Line | Content\n` +
                     ` >    1 | # section\n` +
-                    `      2 | \n` +
-                    `      3 | ## subsection\n` +
-                    `   ...`;
+                    ` *    2 | \n` +
+                    ` *    3 | ## subsection\n` +
+                    ` *    4 | \n` +
+                    ` *    5 | field: value\n` +
+                    ` *    6 | \n` +
+                    ` *    7 | ## subsection\n` +
+                    ` *    8 | \n` +
+                    ` *    9 | list:\n` +
+                    ` *   10 | - item\n` +
+                    ` *   11 | - item`;
     
     expect(error.snippet).toEqual(snippet);
     

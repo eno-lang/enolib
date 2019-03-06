@@ -20,7 +20,7 @@ describe('Expecting a fieldset entry but getting two fieldset entries', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single fieldset entry 'entry' several fieldset entries with this key were found.`;
+    const text = `Only a single fieldset entry with the key 'entry' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -64,7 +64,7 @@ describe('Expecting a fieldset entry but getting two fieldset entries with comme
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single fieldset entry 'entry' several fieldset entries with this key were found.`;
+    const text = `Only a single fieldset entry with the key 'entry' was expected.`;
     
     expect(error.text).toEqual(text);
     

@@ -29,9 +29,9 @@ const generate = async () => {
   const localesSection = specification.requiredSection('Locales');
   const messagesSection = specification.requiredSection('Messages');
 
-  for(let locale of localesSection.elements()) {
-    const localeCode = locale.stringKey();
-    const localeName = locale.requiredStringValue();
+  for(let localeField of localesSection.fields()) {
+    const localeCode = localeField.stringKey();
+    const localeName = localeField.requiredStringValue();
 
     locales[localeCode] = [];
 
@@ -61,14 +61,14 @@ const generate = async () => {
       console.log(`\x1b[36m(eno locales) INFO: Locale '${localeCode}' (${localeName}) does not exist yet, creating at ${poFile}.\x1b[0m`);
     }
 
-    for(let group of messagesSection.elements()) {
-      const groupName = group.stringKey();
+    for(let groupSection of messagesSection.sections()) {
+      const groupName = groupSection.stringKey();
 
       updated += `# Message group '${groupName}'\n\n`;
 
       let previousMessageSpec;
-      for(let messageSpec of group.elements()) {
-        const messageName = messageSpec.stringKey();
+      for(let messageSpec of groupSection.elements()) {
+        const messageName = messageSpec.stringKey(); // TODO: Type-safe AmbiguousElement API implementation and usage
 
         if(!titleCase.exec(messageName))
           throw messageSpec.error(`Message '${messageName}' in group '${groupName}' is not in title case (every word starting with an uppercase letter, e.g. "My Title", "A Non-Section").`);
@@ -80,9 +80,9 @@ const generate = async () => {
         }
 
         let arguments, message;
-        if(messageSpec instanceof Fieldset) {
-          arguments = messageSpec.entry('arguments').requiredCommaSeparatedValue();
-          message = messageSpec.entry('message').requiredStringValue();
+        if(messageSpec instanceof Fieldset) { // TODO: Type-safe AmbiguousElement API implementation and usage
+          arguments = messageSpec.entry().commaSeparatedKey();
+          message = messageSpec.entry().requiredStringValue();
         } else {
           message = messageSpec.requiredStringValue();
         }

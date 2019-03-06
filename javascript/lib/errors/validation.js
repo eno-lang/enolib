@@ -27,7 +27,7 @@ exports.errors = {
 
   elementError: (context, message, element) => {
     return new ValidationError(
-      context.messages.elementError(message),
+      message,
       new context.reporter(context).reportElement(element).snippet(),
       selectElement(element)
     );
@@ -51,7 +51,7 @@ exports.errors = {
 
   missingElement: (context, key, parent, message) => {
     return new ValidationError(
-      context.messages[message](key),
+      key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
       new context.reporter(context).reportMissingElement(parent).snippet(),
       parent === context.document ? DOCUMENT_BEGIN : selection(parent, 'line', END)
     );
@@ -104,24 +104,16 @@ exports.errors = {
 
   unexpectedMultipleElements: (context, key, elements, message) => {
     return new ValidationError(
-      context.messages[message](key),
+      key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
       new context.reporter(context).reportElements(elements).snippet(),
       selectElement(elements[0])
     );
   },
 
-  unexpectedNonSectionElement: (context, element, message) => {
+  unexpectedElementType: (context, key, section, message) => {
     return new ValidationError(
-      context.messages[message](element.key),
-      new context.reporter(context).reportElement(element).snippet(),
-      selectElement(element)
-    );
-  },
-
-  unexpectedSection: (context, section, message) => {
-    return new ValidationError(
-      context.messages[message](section.key),
-      new context.reporter(context).reportLine(section).snippet(),
+      key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
+      new context.reporter(context).reportElement(section).snippet(),
       selectElement(section)
     );
   },

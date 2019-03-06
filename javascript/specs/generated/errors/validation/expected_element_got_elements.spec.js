@@ -19,7 +19,7 @@ describe('Expecting an element but getting two elements', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single element 'element' several elements with this key were found.`;
+    const text = `Only a single element with the key 'element' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -58,7 +58,7 @@ describe('Expecting an element but getting two elements with comments and empty 
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single element 'element' several elements with this key were found.`;
+    const text = `Only a single element with the key 'element' was expected.`;
     
     expect(error.text).toEqual(text);
     

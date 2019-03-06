@@ -18,7 +18,7 @@ describe('Expecting a list but getting a field', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected list 'field' a field with this key was found.`;
+    const text = `A list with the key 'field' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -54,7 +54,7 @@ describe('Expecting a list but getting a field with continuations', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected list 'field' a field with this key was found.`;
+    const text = `A list with the key 'field' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -95,7 +95,7 @@ describe('Expecting a list but getting a field with continuations separated by i
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected list 'field' a field with this key was found.`;
+    const text = `A list with the key 'field' was expected.`;
     
     expect(error.text).toEqual(text);
     

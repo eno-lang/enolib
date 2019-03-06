@@ -94,104 +94,89 @@ msgstr "La casilla de múltiples líneas '[KEY]' que comienza en la línea [LINE
 msgid "There is a problem with the comment of this element: [MESSAGE]"
 msgstr "Hay un problema con el comentario de este elemento: [MESSAGE]"
 
-msgid "There is a problem with this element: [MESSAGE]"
-msgstr "Hay un problema con este elemento: [MESSAGE]"
+msgid "A field was expected."
+msgstr "Se esperaba una casilla."
 
-msgid "Instead of the expected single element '[KEY]' several elements with this key were found."
-msgstr "En lugar del único esperado elemento '[KEY]' se encontraron varios elementos con esta clave."
+msgid "A field with the key '[KEY]' was expected."
+msgstr "Se esperaba una casilla con la clave '[KEY]'."
 
-msgid "Instead of the expected single field '[KEY]' several fields with this key were found."
-msgstr "En lugar de la única casilla esperada '[KEY]' se encontraron varias casillas con esta clave."
+msgid "Only fields were expected."
+msgstr "Solo se esperaban casillas."
 
-msgid "Instead of the expected field '[KEY]' a fieldset with this key was found."
-msgstr "En lugar de la casilla '[KEY]' esperada se encontró una collecíon de casillas con esta clave."
+msgid "Only fields with the key '[KEY]' were expected."
+msgstr "Solo se esperaban casillas con la clave '[KEY]'."
 
-msgid "Instead of the expected field '[KEY]' a list with this key was found."
-msgstr "En lugar de la casilla '[KEY]' esperada se encontró una lista con esta clave."
+msgid "A fieldset was expected."
+msgstr "Se esperaba una collecíon de casillas."
 
-msgid "Instead of the expected field '[KEY]' a section with this key was found."
-msgstr "En lugar de la casilla '[KEY]' esperada se encontró una sección con esta clave."
+msgid "A fieldset with the key '[KEY]' was expected."
+msgstr "Se esperaba una collecíon de casillas con la clave '[KEY]'."
 
-msgid "Only fields with the key '[KEY]' were expected, but a fieldset with this key was found."
-msgstr "Solo se esperaban casillas con la clave '[KEY]', pero se encontró una collecíon de casillas con esta clave."
+msgid "Only fieldsets were expected."
+msgstr "Solo se esperaban colleciones de casillas."
 
-msgid "Only fields with the key '[KEY]' were expected, but a list with this key was found."
-msgstr "Solo se esperaban casillas con la clave '[KEY]', pero se encontró una lista con esta clave."
+msgid "Only fieldsets with the key '[KEY]' were expected."
+msgstr "Solo se esperaban colleciones de casillas con la clave '[KEY]'."
 
-msgid "Only fields with the key '[KEY]' were expected, but a section with this key was found."
-msgstr "Solo se esperaban casillas con la clave '[KEY]', pero se encontró una sección con esta clave."
+msgid "A list was expected."
+msgstr "Se esperaba una lista."
 
-msgid "Instead of the expected single fieldset entry '[KEY]' several fieldset entries with this key were found."
-msgstr "En lugar de la única esperada casilla de collecíon '[KEY]' se encontraron varias casillas de collecion con esta clave."
+msgid "A list with the key '[KEY]' was expected."
+msgstr "Se esperaba una lista con la clave '[KEY]'."
 
-msgid "Instead of the expected fieldset '[KEY]' a field with this key was found."
-msgstr "En lugar de la collecíon de casillas '[KEY]' esperada se encontró una casilla con esta clave."
+msgid "Only lists were expected."
+msgstr "Solo se esperaban listas."
 
-msgid "Instead of the expected single fieldset '[KEY]' several fieldsets with this key were found."
-msgstr "En lugar de la única esperada collecíon de casillas '[KEY]' se encontraron varias collecíones de casillas con esta clave."
+msgid "Only lists with the key '[KEY]' were expected."
+msgstr "Solo se esperaban listas con la clave '[KEY]'."
 
-msgid "Instead of the expected fieldset '[KEY]' a list with this key was found."
-msgstr "En lugar de la collecíon de casillas '[KEY]' esperada se encontró una lista con esta clave."
+msgid "A section was expected."
+msgstr "Se esperaba una sección."
 
-msgid "Instead of the expected fieldset '[KEY]' a section with this key was found."
-msgstr "En lugar de la collecíon de casillas '[KEY]' esperada se encontró una sección con esta clave."
+msgid "A section with the key '[KEY]' was expected."
+msgstr "Se esperaba una sección con la clave '[KEY]'."
 
-msgid "Only fieldsets with the key '[KEY]' were expected, but a field with this key was found."
-msgstr "Solo se esperaban collecíones de casillas con la clave '[KEY]', pero se encontró una casilla con esta clave."
+msgid "Only sections were expected."
+msgstr "Solo se esperaban secciones."
 
-msgid "Only fieldsets with the key '[KEY]' were expected, but a list with this key was found."
-msgstr "Solo se esperaban collecíones de casillas con la clave '[KEY]', pero se encontró una lista con esta clave."
+msgid "Only sections with the key '[KEY]' were expected."
+msgstr "Solo se esperaban secciones con la clave '[KEY]'."
 
-msgid "Only fieldsets with the key '[KEY]' were expected, but a section with this key was found."
-msgstr "Solo se esperaban collecíones de casillas con la clave '[KEY]', pero se encontró una sección con esta clave."
+msgid "Only a single element was expected."
+msgstr "Solo se esperaba un único elemento."
 
-msgid "Instead of the expected list '[KEY]' a field with this key was found."
-msgstr "En lugar de la lista '[KEY]' esperada se encontró una casilla con esta clave."
+msgid "Only a single element with the key '[KEY]' was expected."
+msgstr "Solo se esperaba un único elemento con la clave '[KEY]'."
 
-msgid "Instead of the expected list '[KEY]' a fieldset with this key was found."
-msgstr "En lugar de la lista '[KEY]' esperada se encontró una collecíon de casillas con esta clave."
+msgid "Only a single field was expected."
+msgstr "Solo se esperaba una sola casilla."
 
-msgid "Instead of the expected single list '[KEY]' several lists with this key were found."
-msgstr "En lugar de la única lista esperada '[KEY]' se encontraron varias listas con esta clave."
+msgid "Only a single field with the key '[KEY]' was expected."
+msgstr "Solo se esperaba una sola casilla con la clave '[KEY]'."
 
-msgid "Instead of the expected list '[KEY]' a section with this key was found."
-msgstr "En lugar de la lista '[KEY]' esperada se encontró una sección con esta clave."
+msgid "Only a single fieldset was expected."
+msgstr "Solo se esperaba una sola collecíon de casillas."
 
-msgid "Only lists with the key '[KEY]' were expected, but a field with this key was found."
-msgstr "Solo se esperaban listas con la clave '[KEY]', pero se encontró una casilla con esta clave."
+msgid "Only a single fieldset entry was expected."
+msgstr "Solo se esperaba una sola casilla de collecíon."
 
-msgid "Only lists with the key '[KEY]' were expected, but a fieldset with this key was found."
-msgstr "Solo se esperaban listas con la clave '[KEY]', pero se encontró una collecíon de casillas con esta clave."
+msgid "Only a single fieldset entry with the key '[KEY]' was expected."
+msgstr "Solo se esperaba una sola casilla de collecíon con la clave '[KEY]'."
 
-msgid "Only lists with the key '[KEY]' were expected, but a section with this key was found."
-msgstr "Solo se esperaban listas con la clave '[KEY]', pero se encontró una sección con esta clave."
+msgid "Only a single fieldset with the key '[KEY]' was expected."
+msgstr "Solo se esperaba una sola collecíon de casillas con la clave '[KEY]'."
 
-msgid "Instead of the expected section '[KEY]' an empty element with this key was found."
-msgstr "En lugar de la sección '[KEY]' esperada se encontró un elemento vacío con esta clave."
+msgid "Only a single list was expected."
+msgstr "Solo se esperaba una sola lista."
 
-msgid "Instead of the expected section '[KEY]' a field with this key was found."
-msgstr "En lugar de la sección '[KEY]' esperada se encontró una casilla con esta clave."
+msgid "Only a single list with the key '[KEY]' was expected."
+msgstr "Solo se esperaba una sola lista con la clave '[KEY]'."
 
-msgid "Instead of the expected section '[KEY]' a fieldset with this key was found."
-msgstr "En lugar de la sección '[KEY]' esperada se encontró una collecíon de casillas con esta clave."
+msgid "Only a single section was expected."
+msgstr "Solo se esperaba una sola sección."
 
-msgid "Instead of the expected section '[KEY]' a list with this key was found."
-msgstr "En lugar de la sección '[KEY]' esperada se encontró una lista con esta clave."
-
-msgid "Instead of the expected single section '[KEY]' several sections with this key were found."
-msgstr "En lugar de la única sección esperada '[KEY]' se encontraron varias secciones con esta clave."
-
-msgid "Only sections with the key '[KEY]' were expected, but an empty element with this key was found."
-msgstr "Solo se esperaban secciones con la clave '[KEY]', pero se encontró un elemento vacío con esta clave."
-
-msgid "Only sections with the key '[KEY]' were expected, but a field with this key was found."
-msgstr "Solo se esperaban secciones con la clave '[KEY]', pero se encontró una casilla con esta clave."
-
-msgid "Only sections with the key '[KEY]' were expected, but a fieldset with this key was found."
-msgstr "Solo se esperaban secciones con la clave '[KEY]', pero se encontró una collecíon de casillas con esta clave."
-
-msgid "Only sections with the key '[KEY]' were expected, but a list with this key was found."
-msgstr "Solo se esperaban secciones con la clave '[KEY]', pero se encontró una lista con esta clave."
+msgid "Only a single section with the key '[KEY]' was expected."
+msgstr "Solo se esperaba una sola sección con la clave '[KEY]'."
 
 msgid "There is a problem with the key of this element: [MESSAGE]"
 msgstr "Hay un problema con la clave de este elemento: [MESSAGE]"
@@ -199,29 +184,47 @@ msgstr "Hay un problema con la clave de este elemento: [MESSAGE]"
 msgid "A required comment for this element is missing."
 msgstr "Falta un comentario necesario para este elemento."
 
+msgid "A single element is required - it can have any key."
+msgstr "Se requiere un único elemento - puede tener cualquier clave."
+
 msgid "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Falta el elemento '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
 
-msgid "The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Falta la casilla '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+msgid "A single field is required - it can have any key."
+msgstr "Se requiere una sola casilla - puede tener cualquier clave."
 
 msgid "The field '[KEY]' must contain a value."
 msgstr "La casilla '[KEY]' debe contener un valor."
 
-msgid "The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Falta la collecíon de casillas '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+msgid "The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Falta la casilla '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
 
-msgid "The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Falta la casilla de collecíon '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+msgid "A single fieldset is required - it can have any key."
+msgstr "Se requiere una sola collecíon de casillas - puede tener cualquier clave."
+
+msgid "A single fieldset entry is required - it can have any key."
+msgstr "Se requiere una sola casilla de collecíon - puede tener cualquier clave."
 
 msgid "The fieldset entry '[KEY]' must contain a value."
 msgstr "La casilla de collecíon '[KEY]' debe contener un valor."
 
-msgid "The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Falta la lista '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+msgid "The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Falta la casilla de collecíon '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+
+msgid "The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Falta la collecíon de casillas '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+
+msgid "A single list is required - it can have any key."
+msgstr "Se requiere una sola lista - puede tener cualquier clave."
 
 msgid "The list '[KEY]' may not contain empty items."
 msgstr "La lista '[KEY]' no debe contener entradas vacías."
+
+msgid "The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Falta la lista '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
+
+msgid "A single section is required - it can have any key."
+msgstr "Se requiere una sola sección - puede tener cualquier clave."
 
 msgid "The section '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Falta la sección '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."

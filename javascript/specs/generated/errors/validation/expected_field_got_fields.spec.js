@@ -19,7 +19,7 @@ describe('Expecting a field but getting two fields', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single field 'field' several fields with this key were found.`;
+    const text = `Only a single field with the key 'field' was expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -62,7 +62,7 @@ describe('Expecting a field but getting two fields with comments, empty lines an
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected single field 'field' several fields with this key were found.`;
+    const text = `Only a single field with the key 'field' was expected.`;
     
     expect(error.text).toEqual(text);
     

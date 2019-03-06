@@ -23,7 +23,7 @@ Eno.parse(input).section('element')
 ## ValidationError
 
 -- text
-Instead of the expected section 'element' an empty element with this key was found.
+A section with the key 'element' was expected.
 -- text
 
 -- snippet

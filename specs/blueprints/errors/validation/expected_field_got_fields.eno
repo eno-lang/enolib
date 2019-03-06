@@ -24,7 +24,7 @@ Eno.parse(input).field('field')
 ## ValidationError
 
 -- text
-Instead of the expected single field 'field' several fields with this key were found.
+Only a single field with the key 'field' was expected.
 -- text
 
 -- snippet
@@ -68,7 +68,7 @@ Eno.parse(input).field('field')
 ## ValidationError
 
 -- text
-Instead of the expected single field 'field' several fields with this key were found.
+Only a single field with the key 'field' was expected.
 -- text
 
 -- snippet

@@ -18,7 +18,7 @@ describe('Obtaining and throwing an error with a custom message in the context o
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `There is a problem with this element: my message`;
+    const text = `my message`;
     
     expect(error.text).toEqual(text);
     
@@ -52,7 +52,7 @@ describe('Obtaining and throwing an error with a custom generated message in the
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `There is a problem with this element: my generated message for field 'field'`;
+    const text = `my generated message for field 'field'`;
     
     expect(error.text).toEqual(text);
     

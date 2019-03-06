@@ -26,7 +26,7 @@ Eno.parse(input).list('list')
 ## ValidationError
 
 -- text
-Instead of the expected single list 'list' several lists with this key were found.
+Only a single list with the key 'list' was expected.
 -- text
 
 -- snippet
@@ -73,7 +73,7 @@ Eno.parse(input).list('list')
 ## ValidationError
 
 -- text
-Instead of the expected single list 'list' several lists with this key were found.
+Only a single list with the key 'list' was expected.
 -- text
 
 -- snippet

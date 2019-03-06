@@ -30,7 +30,7 @@ module.exports = async () => {
 
     const tests = [];
 
-    for(testSection of specDocument.elements()) {
+    for(testSection of specDocument.sections()) {
       const test = {
         description: testSection.stringKey(),
         input: testSection.field('input').requiredStringValue()

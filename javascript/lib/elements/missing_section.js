@@ -17,27 +17,27 @@ class MissingSection {
     this._parent._missingError(this);
   }
 
-  element(key) {
+  element(key = null) {
     return new missing_element_module.MissingElement(key, this);
   }
 
-  elements() {
+  elements(_key = null) {
     return [];
   }
 
-  field(key) {
+  field(key = null) {
     return new missing_field_module.MissingField(key, this);
   }
 
-  fields(_key) {
+  fields(_key = null) {
     return [];
   }
 
-  fieldset(key) {
+  fieldset(key = null) {
     return new missing_fieldset_module.MissingFieldset(key, this);
   }
 
-  fieldsets(_key) {
+  fieldsets(_key = null) {
     return [];
   }
 
@@ -45,11 +45,11 @@ class MissingSection {
     this._parent._missingError(this);
   }
 
-  list(key) {
+  list(key = null) {
     return new missing_list_module.MissingList(key, this);
   }
 
-  lists(_key) {
+  lists(_key = null) {
     return [];
   }
 
@@ -57,23 +57,23 @@ class MissingSection {
     return null;
   }
 
-  optionalElement(_key) {
+  optionalElement(_key = null) {
     return null;
   }
 
-  optionalField(_key) {
+  optionalField(_key = null) {
     return null;
   }
 
-  optionalFieldset(_key) {
+  optionalFieldset(_key = null) {
     return null;
   }
 
-  optionalList(_key) {
+  optionalList(_key = null) {
     return null;
   }
 
-  optionalSection(_key) {
+  optionalSection(_key = null) {
     return null;
   }
 
@@ -89,23 +89,23 @@ class MissingSection {
     this._parent._missingError(this);
   }
 
-  requiredElement(_key) {
+  requiredElement(_key = null) {
     this._parent._missingError(this);
   }
 
-  requiredField(_key) {
+  requiredField(_key = null) {
     this._parent._missingError(this);
   }
 
-  requiredFieldset(_key) {
+  requiredFieldset(_key = null) {
     this._parent._missingError(this);
   }
 
-  requiredList(_key) {
+  requiredList(_key = null) {
     this._parent._missingError(this);
   }
 
-  requiredSection(_key) {
+  requiredSection(_key = null) {
     this._parent._missingError(this);
   }
 
@@ -113,11 +113,11 @@ class MissingSection {
     this._parent._missingError(this);
   }
 
-  section(key) {
+  section(key = null) {
     return new MissingSection(key, this);
   }
 
-  sections(_key) {
+  sections(_key = null) {
     return [];
   }
 

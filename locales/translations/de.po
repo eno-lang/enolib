@@ -94,104 +94,89 @@ msgstr "Das Mehrzeilenfeld '[KEY]' dass in Zeile [LINE] beginnt wird bis zum End
 msgid "There is a problem with the comment of this element: [MESSAGE]"
 msgstr "Es gibt ein Problem mit dem Kommentar dieses Elements: [MESSAGE]"
 
-msgid "There is a problem with this element: [MESSAGE]"
-msgstr "Es gibt ein Problem mit diesem Element: [MESSAGE]"
+msgid "A field was expected."
+msgstr "Ein Feld wurde erwartet."
 
-msgid "Instead of the expected single element '[KEY]' several elements with this key were found."
-msgstr "Statt dem erwarteten einzelnen Element '[KEY]' wurden mehrere Elemente mit diesem Schlüssel vorgefunden."
+msgid "A field with the key '[KEY]' was expected."
+msgstr "Ein Feld mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Instead of the expected single field '[KEY]' several fields with this key were found."
-msgstr "Statt dem erwarteten einzelnen Feld '[KEY]' wurden mehrere Felder mit diesem Schlüssel vorgefunden."
+msgid "Only fields were expected."
+msgstr "Nur Felder wurden erwartet."
 
-msgid "Instead of the expected field '[KEY]' a fieldset with this key was found."
-msgstr "Statt dem erwarteten Feld '[KEY]' wurde ein Fieldset mit diesem Schlüssel vorgefunden."
+msgid "Only fields with the key '[KEY]' were expected."
+msgstr "Nur Felder mit dem Schlüssel '[KEY]' wurden erwartet."
 
-msgid "Instead of the expected field '[KEY]' a list with this key was found."
-msgstr "Statt dem erwarteten Feld '[KEY]' wurde eine Liste mit diesem Schlüssel vorgefunden."
+msgid "A fieldset was expected."
+msgstr "Ein Fieldset wurde erwartet."
 
-msgid "Instead of the expected field '[KEY]' a section with this key was found."
-msgstr "Statt dem erwarteten Feld '[KEY]' wurde eine Sektion mit diesem Schlüssel vorgefunden."
+msgid "A fieldset with the key '[KEY]' was expected."
+msgstr "Ein Fieldset mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Only fields with the key '[KEY]' were expected, but a fieldset with this key was found."
-msgstr "Es wurden nur Felder mit dem Schlüssel '[KEY]' erwartet, jedoch ein Fieldset mit diesem Schlüssel vorgefunden."
+msgid "Only fieldsets were expected."
+msgstr "Nur Fieldsets wurden erwartet."
 
-msgid "Only fields with the key '[KEY]' were expected, but a list with this key was found."
-msgstr "Es wurden nur Felder mit dem Schlüssel '[KEY]' erwartet, jedoch eine Liste mit diesem Schlüssel vorgefunden."
+msgid "Only fieldsets with the key '[KEY]' were expected."
+msgstr "Nur Fieldsets mit dem Schlüssel '[KEY]' wurden erwartet."
 
-msgid "Only fields with the key '[KEY]' were expected, but a section with this key was found."
-msgstr "Es wurden nur Felder mit dem Schlüssel '[KEY]' erwartet, jedoch eine Sektion mit diesem Schlüssel vorgefunden."
+msgid "A list was expected."
+msgstr "Eine Liste wurde erwartet."
 
-msgid "Instead of the expected single fieldset entry '[KEY]' several fieldset entries with this key were found."
-msgstr "Statt dem erwarteten einzelnen Fieldset Eintrag '[KEY]' wurden mehrere Fieldset Einträge mit diesem Schlüssel vorgefunden."
+msgid "A list with the key '[KEY]' was expected."
+msgstr "Eine Liste mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Instead of the expected fieldset '[KEY]' a field with this key was found."
-msgstr "Statt dem erwarteten Fieldset '[KEY]' wurde ein Feld mit diesem Schlüssel vorgefunden."
+msgid "Only lists were expected."
+msgstr "Nur Listen wurden erwartet."
 
-msgid "Instead of the expected single fieldset '[KEY]' several fieldsets with this key were found."
-msgstr "Statt dem erwarteten einzelnen Fieldset '[KEY]' wurden mehrere Fieldsets mit diesem Schlüssel vorgefunden."
+msgid "Only lists with the key '[KEY]' were expected."
+msgstr "Nur Listen mit dem Schlüssel '[KEY]' wurden erwartet."
 
-msgid "Instead of the expected fieldset '[KEY]' a list with this key was found."
-msgstr "Statt dem erwarteten Fieldset '[KEY]' wurde eine Liste mit diesem Schlüssel vorgefunden."
+msgid "A section was expected."
+msgstr "Eine Sektion wurde erwartet."
 
-msgid "Instead of the expected fieldset '[KEY]' a section with this key was found."
-msgstr "Statt dem erwarteten Fieldset '[KEY]' wurde eine Sektion mit diesem Schlüssel vorgefunden."
+msgid "A section with the key '[KEY]' was expected."
+msgstr "Eine Sektion mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Only fieldsets with the key '[KEY]' were expected, but a field with this key was found."
-msgstr "Es wurden nur Fieldsets mit dem Schlüssel '[KEY]' erwartet, jedoch ein Feld mit diesem Schlüssel vorgefunden."
+msgid "Only sections were expected."
+msgstr "Nur Sektionen wurden erwartet."
 
-msgid "Only fieldsets with the key '[KEY]' were expected, but a list with this key was found."
-msgstr "Es wurden nur Fieldsets mit dem Schlüssel '[KEY]' erwartet, jedoch eine Liste mit diesem Schlüssel vorgefunden."
+msgid "Only sections with the key '[KEY]' were expected."
+msgstr "Nur Sektionen mit dem Schlüssel '[KEY]' wurden erwartet."
 
-msgid "Only fieldsets with the key '[KEY]' were expected, but a section with this key was found."
-msgstr "Es wurden nur Fieldsets mit dem Schlüssel '[KEY]' erwartet, jedoch eine Sektion mit diesem Schlüssel vorgefunden."
+msgid "Only a single element was expected."
+msgstr "Nur ein einzelnes Element wurde erwartet."
 
-msgid "Instead of the expected list '[KEY]' a field with this key was found."
-msgstr "Statt der erwarteten Liste '[KEY]' wurde ein Feld mit diesem Schlüssel vorgefunden."
+msgid "Only a single element with the key '[KEY]' was expected."
+msgstr "Nur ein einzelnes Element mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Instead of the expected list '[KEY]' a fieldset with this key was found."
-msgstr "Statt der erwarteten Liste '[KEY]' wurde ein Fieldset mit diesem Schlüssel vorgefunden."
+msgid "Only a single field was expected."
+msgstr "Nur ein einzelnes Feld wurde erwartet."
 
-msgid "Instead of the expected single list '[KEY]' several lists with this key were found."
-msgstr "Statt der erwarteten einzelnen Liste '[KEY]' wurden mehrere Listen mit diesem Schlüssel vorgefunden."
+msgid "Only a single field with the key '[KEY]' was expected."
+msgstr "Nur ein einzelnes Feld mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Instead of the expected list '[KEY]' a section with this key was found."
-msgstr "Statt der erwarteten Liste '[KEY]' wurde eine Sektion mit diesem Schlüssel vorgefunden."
+msgid "Only a single fieldset was expected."
+msgstr "Nur ein einzelnes Fieldset wurde erwartet."
 
-msgid "Only lists with the key '[KEY]' were expected, but a field with this key was found."
-msgstr "Es wurden nur Listen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Feld mit diesem Schlüssel vorgefunden."
+msgid "Only a single fieldset entry was expected."
+msgstr "Nur ein einzelner Fieldset Eintrag wurde erwartet."
 
-msgid "Only lists with the key '[KEY]' were expected, but a fieldset with this key was found."
-msgstr "Es wurden nur Listen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Fieldset mit diesem Schlüssel vorgefunden."
+msgid "Only a single fieldset entry with the key '[KEY]' was expected."
+msgstr "Nur ein einzelner Fieldset Eintrag mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Only lists with the key '[KEY]' were expected, but a section with this key was found."
-msgstr "Es wurden nur Listen mit dem Schlüssel '[KEY]' erwartet, jedoch eine Sektion mit diesem Schlüssel vorgefunden."
+msgid "Only a single fieldset with the key '[KEY]' was expected."
+msgstr "Nur ein einzelnes Fieldset mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Instead of the expected section '[KEY]' an empty element with this key was found."
-msgstr "Statt der erwarteten Sektion '[KEY]' wurde ein leeres Element mit diesem Schlüssel vorgefunden."
+msgid "Only a single list was expected."
+msgstr "Nur eine einzelne Liste wurde erwartet."
 
-msgid "Instead of the expected section '[KEY]' a field with this key was found."
-msgstr "Statt der erwarteten Sektion '[KEY]' wurde ein Feld mit diesem Schlüssel vorgefunden."
+msgid "Only a single list with the key '[KEY]' was expected."
+msgstr "Nur eine einzelne Liste mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Instead of the expected section '[KEY]' a fieldset with this key was found."
-msgstr "Statt der erwarteten Sektion '[KEY]' wurde ein Fieldset mit diesem Schlüssel vorgefunden."
+msgid "Only a single section was expected."
+msgstr "Nur eine einzelne Sektion wurde erwartet."
 
-msgid "Instead of the expected section '[KEY]' a list with this key was found."
-msgstr "Statt der erwarteten Sektion '[KEY]' wurde eine Liste mit diesem Schlüssel vorgefunden."
-
-msgid "Instead of the expected single section '[KEY]' several sections with this key were found."
-msgstr "Statt der erwarteten einzelnen Sektion '[KEY]' wurden mehrere Sektionen mit diesem Schlüssel vorgefunden."
-
-msgid "Only sections with the key '[KEY]' were expected, but an empty element with this key was found."
-msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch ein leeres Element mit diesem Schlüssel vorgefunden."
-
-msgid "Only sections with the key '[KEY]' were expected, but a field with this key was found."
-msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Feld mit diesem Schlüssel vorgefunden."
-
-msgid "Only sections with the key '[KEY]' were expected, but a fieldset with this key was found."
-msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch ein Fieldset mit diesem Schlüssel vorgefunden."
-
-msgid "Only sections with the key '[KEY]' were expected, but a list with this key was found."
-msgstr "Es wurden nur Sektionen mit dem Schlüssel '[KEY]' erwartet, jedoch eine Liste mit diesem Schlüssel vorgefunden."
+msgid "Only a single section with the key '[KEY]' was expected."
+msgstr "Nur eine einzelne Sektion mit dem Schlüssel '[KEY]' wurde erwartet."
 
 msgid "There is a problem with the key of this element: [MESSAGE]"
 msgstr "Es gibt ein Problem mit dem Schlüssel dieses Elements: [MESSAGE]"
@@ -199,29 +184,47 @@ msgstr "Es gibt ein Problem mit dem Schlüssel dieses Elements: [MESSAGE]"
 msgid "A required comment for this element is missing."
 msgstr "Ein erforderlicher Kommentar zu diesem Feld fehlt."
 
+msgid "A single element is required - it can have any key."
+msgstr "Ein einzelnes Element ist erforderlich - es kann einen beliebigen Schlüssel haben."
+
 msgid "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Das Element '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
 
-msgid "The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Das Feld '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+msgid "A single field is required - it can have any key."
+msgstr "Ein einzelnes Feld ist erforderlich - es kann einen beliebigen Schlüssel haben."
 
 msgid "The field '[KEY]' must contain a value."
 msgstr "Das Feld '[KEY]' muss einen Wert enthalten."
 
-msgid "The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Das Fieldset '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+msgid "The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Das Feld '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
 
-msgid "The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Der Fieldset Eintrag '[KEY]' fehlt - falls er angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+msgid "A single fieldset is required - it can have any key."
+msgstr "Ein einzelnes Fieldset ist erforderlich - es kann einen beliebigen Schlüssel haben."
+
+msgid "A single fieldset entry is required - it can have any key."
+msgstr "Ein einzelner Fieldset Eintrag ist erforderlich - er kann einen beliebigen Schlüssel haben."
 
 msgid "The fieldset entry '[KEY]' must contain a value."
 msgstr "Der Fieldset Eintrag '[KEY]' muss einen Wert enthalten."
 
-msgid "The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Die Liste '[KEY]' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+msgid "The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Der Fieldset Eintrag '[KEY]' fehlt - falls er angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Das Fieldset '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "A single list is required - it can have any key."
+msgstr "Eine einzelne Liste ist erforderlich - sie kann einen beliebigen Schlüssel haben."
 
 msgid "The list '[KEY]' may not contain empty items."
 msgstr "Die Liste '[KEY]' darf keine leeren Einträge enthalten."
+
+msgid "The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Die Liste '[KEY]' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+
+msgid "A single section is required - it can have any key."
+msgstr "Eine einzelne Sektion ist erforderlich - sie kann einen beliebigen Schlüssel haben."
 
 msgid "The section '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Die Sektion '[KEY]' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."

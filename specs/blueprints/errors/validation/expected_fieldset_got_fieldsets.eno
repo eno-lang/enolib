@@ -26,7 +26,7 @@ Eno.parse(input).fieldset('fieldset')
 ## ValidationError
 
 -- text
-Instead of the expected single fieldset 'fieldset' several fieldsets with this key were found.
+Only a single fieldset with the key 'fieldset' was expected.
 -- text
 
 -- snippet
@@ -72,7 +72,7 @@ Eno.parse(input).fieldset('fieldset')
 ## ValidationError
 
 -- text
-Instead of the expected single fieldset 'fieldset' several fieldsets with this key were found.
+Only a single fieldset with the key 'fieldset' was expected.
 -- text
 
 -- snippet

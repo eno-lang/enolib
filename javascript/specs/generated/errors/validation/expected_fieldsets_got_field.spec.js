@@ -18,7 +18,7 @@ describe('Expecting fieldsets but getting a field', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only fieldsets with the key 'field' were expected, but a field with this key was found.`;
+    const text = `Only fieldsets with the key 'field' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -54,7 +54,7 @@ describe('Expecting fieldsets but getting a field with continuations', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only fieldsets with the key 'field' were expected, but a field with this key was found.`;
+    const text = `Only fieldsets with the key 'field' were expected.`;
     
     expect(error.text).toEqual(text);
     
@@ -95,7 +95,7 @@ describe('Expecting fieldsets but getting a field with continuations separated b
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Only fieldsets with the key 'field' were expected, but a field with this key was found.`;
+    const text = `Only fieldsets with the key 'field' were expected.`;
     
     expect(error.text).toEqual(text);
     

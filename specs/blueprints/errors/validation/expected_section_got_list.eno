@@ -24,7 +24,7 @@ Eno.parse(input).section('list')
 ## ValidationError
 
 -- text
-Instead of the expected section 'list' a list with this key was found.
+A section with the key 'list' was expected.
 -- text
 
 -- snippet
@@ -68,7 +68,7 @@ Eno.parse(input).section('list')
 ## ValidationError
 
 -- text
-Instead of the expected section 'list' a list with this key was found.
+A section with the key 'list' was expected.
 -- text
 
 -- snippet
@@ -115,7 +115,7 @@ Eno.parse(input).section('list')
 ## ValidationError
 
 -- text
-Instead of the expected section 'list' a list with this key was found.
+A section with the key 'list' was expected.
 -- text
 
 -- snippet

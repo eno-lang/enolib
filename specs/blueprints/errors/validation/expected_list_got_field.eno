@@ -23,7 +23,7 @@ Eno.parse(input).list('field')
 ## ValidationError
 
 -- text
-Instead of the expected list 'field' a field with this key was found.
+A list with the key 'field' was expected.
 -- text
 
 -- snippet
@@ -61,7 +61,7 @@ Eno.parse(input).list('field')
 ## ValidationError
 
 -- text
-Instead of the expected list 'field' a field with this key was found.
+A list with the key 'field' was expected.
 -- text
 
 -- snippet
@@ -103,7 +103,7 @@ Eno.parse(input).list('field')
 ## ValidationError
 
 -- text
-Instead of the expected list 'field' a field with this key was found.
+A list with the key 'field' was expected.
 -- text
 
 -- snippet

@@ -18,7 +18,7 @@ describe('Expecting a section but getting an empty element', () => {
 
     expect(error).toBeInstanceOf(eno.ValidationError);
     
-    const text = `Instead of the expected section 'element' an empty element with this key was found.`;
+    const text = `A section with the key 'element' was expected.`;
     
     expect(error.text).toEqual(text);
     
