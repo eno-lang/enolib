@@ -1,4 +1,4 @@
-const eno = require('../javascript');
+const enolib = require('../javascript');
 const fs = require('fs');
 const gettextParser = require('gettext-parser');
 const path = require('path');
@@ -8,11 +8,11 @@ const php = require('./generators/php.js');
 const python = require('./generators/python.js');
 const ruby = require('./generators/ruby.js');
 
-const { commaSeparated } = require('../../enotype/javascript');
 const { Fieldset, TerminalReporter } = require('../javascript');
+const { commaSeparated } = require('enotype');
 const { interpolatify } = require('../utilities.js');
 
-eno.register({ commaSeparated });
+enolib.register({ commaSeparated });
 
 const titleCase = /^[A-Z](?:-[A-Z]|[a-z])*( [A-Z](?:-[A-Z]|[a-z])*)*$/;
 
@@ -20,7 +20,7 @@ const generate = async () => {
   // 1. Read in the current specification of supported locales and messages
 
   const input = fs.readFileSync(path.join(__dirname, 'specification.eno'), 'utf-8');
-  const specification = eno.parse(input, { reporter: TerminalReporter, sourceLabel: 'specification.eno' });
+  const specification = enolib.parse(input, { reporter: TerminalReporter, source: 'specification.eno' });
 
   // 2. Create/update .po files in translations/ based on current specification
 

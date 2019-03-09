@@ -25,7 +25,7 @@ module.exports = async () => {
   for(const file of blueprints.sort()) {
     const specDocument = eno.parse(
       await fs.promises.readFile(path.join(__dirname, 'blueprints', file), 'utf-8'),
-      { reporter: TerminalReporter, sourceLabel: file }
+      { reporter: TerminalReporter, source: file }
     );
 
     const tests = [];

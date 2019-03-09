@@ -4,6 +4,7 @@
     "url": "https://github.com/eno-lang/enolib/issues"
   },
   "dependencies": {
+    "enotype": "^0.1.0",
     "fast-glob": "^2.2.6",
     "fs-extra": "^7.0.1",
     "gettext-parser": "^3.1.0",
@@ -19,7 +20,7 @@
     "url": "git+https://github.com/eno-lang/enolib.git"
   },
   "scripts": {
-    "generate-messages": "node locales/generate.js",
-    "generate-specs": "node specs/generate.js"
+    "messages": "node locales/generate.js",
+    "specs": "node specs/generate.js"
   }
 }
