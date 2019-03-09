@@ -14,7 +14,7 @@
   ],
   "name": "enolib",
   "description": "Standard library for parsing, loading and inspecting eno documents",
-  "homepage": "https://eno-lang.org/javascript/",
+  "homepage": "https://eno-lang.org/enolib/",
   "license": "MIT",
   "main": "./lib/main.js",
   "keywords": [
@@ -34,5 +34,5 @@
   "scripts": {
     "test": "jest --watch"
   },
-  "version": "0.1.1"
+  "version": "0.2.0"
 }

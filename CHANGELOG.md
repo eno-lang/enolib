@@ -4,6 +4,22 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.2.0
+
+### Features
+
+- Introduce ambiguous element proxies and low level context abstractions `9df14d4`
+- Add key-less typed accessors and new message layout to make it possible `372002b`
+- Introduce new terminal report design `5697c35`
+
+### Internals
+
+- Adopt new internal document and empty element constants `2ec16ec`
+
+### Maintenance
+
+- Use enotype from npm, fix legacy sourceLabel option used in generators `db719c2`
+
 ## 0.1.1
 
 ### Features
