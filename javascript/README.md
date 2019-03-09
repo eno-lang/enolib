@@ -10,7 +10,9 @@ Also, asides the formal specification perspective and from a practical point of 
 
 ## Beta notice
 
-enolib for javascript was just released, there is only JSDoc based reference documentation which however isn't yet published - expect updates in the coming days. Automated testing coverage is already at around 85% but it's still likely you will run into critical bugs here or there, you're welcome to report them in the issue tracker - thank you for your help.
+enolib for javascript is currently in beta. Automated testing coverage is already at around 85% but it's still likely you will run into critical bugs here or there, you're welcome to report them in the issue tracker - thank you for your help.
+
+Early work in progress documentation is now available at https://eno-lang.org/enolib/.
 
 ## Installation
 
@@ -20,21 +22,12 @@ npm install enolib
 
 ## Getting started
 
-Create an eno document, for instance `intro.eno`:
-
-```eno
-Greeting: Hello World!
-```
-
-A minimal example to read this file with `enolib`:
+A minimal example to read an eno document directly from a string with `enolib`:
 
 ```js
 const enolib = require('enolib');
-const fs = require('fs');
 
-const input = fs.readFileSync('intro.eno', 'utf-8');
-
-const document = enolib.parse(input);
+const document = enolib.parse('Greeting: Hello World');
 
 console.log( document.field('Greeting').requiredStringValue() );  // prints 'Hello World!'
 ```
