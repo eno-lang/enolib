@@ -1,4 +1,5 @@
 const {
+  DOCUMENT,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
@@ -220,7 +221,7 @@ class Reporter {
   }
 
   reportMissingElement(parent) {
-    if(parent !== this._context.document) {
+    if(parent.type !== DOCUMENT) {
       this._snippet[parent.line] = INDICATE;
     }
 

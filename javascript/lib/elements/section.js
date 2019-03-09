@@ -11,7 +11,7 @@ const missing_section_module = require('./missing_section.js');
 
 const {
   COMMENT,
-  ELEMENT,
+  EMPTY_ELEMENT,
   FIELD,
   FIELDSET,
   LIST,
@@ -72,7 +72,6 @@ class Section extends Element {
     const element = elements[0];
 
     switch(element.type) {
-      case ELEMENT: return element.instance || new empty_module.Empty(this._context, element);
       case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
       case FIELD: return element.instance || new field_module.Field(this._context, element);
       case FIELDSET: return element.instance || new fieldset_module.Fieldset(this._context, element);
@@ -108,7 +107,7 @@ class Section extends Element {
     const element = elements[0];
 
     switch(element.type) {
-      case ELEMENT: return new field_module.Field(this._context, element);
+      case EMPTY_ELEMENT: return new field_module.Field(this._context, element);
       case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
       case FIELD: return element.instance || new field_module.Field(this._context, element);
       default: throw errors.unexpectedElementType(this._context, key, element, 'expectedField');
@@ -142,7 +141,7 @@ class Section extends Element {
     const element = elements[0];
 
     switch(element.type) {
-      case ELEMENT: return new fieldset_module.Fieldset(this._context, element);
+      case EMPTY_ELEMENT: return new fieldset_module.Fieldset(this._context, element);
       case FIELDSET: return element.instance || new fieldset_module.Fieldset(this._context, element);
       default: throw errors.unexpectedElementType(this._context, key, element, 'expectedFieldset');
     }
@@ -240,7 +239,7 @@ class Section extends Element {
     const element = elements[0];
 
     switch(element.type) {
-      case ELEMENT: return new list_module.List(this._context, element);
+      case EMPTY_ELEMENT: return new list_module.List(this._context, element);
       case LIST: return element.instance || new list_module.List(this._context, element);
       default: throw errors.unexpectedElementType(this._context, key, element, 'expectedList');
     }
@@ -358,7 +357,6 @@ class Section extends Element {
           untouchedElement = element.instance._untouched();
         } else {
           switch(element.type) {
-            case ELEMENT: new empty_module.Empty(this._context, element);
             case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
             case FIELD: new field_module.Field(this._context, element);
             case FIELDSET: new fieldset_module.Fieldset(this._context, element);
@@ -400,7 +398,6 @@ class Section extends Element {
         return element.instance;
 
       switch(element.type) {
-        case ELEMENT: return new empty_module.Empty(this._context, element);
         case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
         case FIELD: return new field_module.Field(this._context, element);
         case FIELDSET: return new fieldset_module.Fieldset(this._context, element);
@@ -429,7 +426,7 @@ class Section extends Element {
       if(element.type === FIELD || element.type === MULTILINE_FIELD_BEGIN)
         return element.instance || new field_module.Field(this._context, element);
 
-      if(element.type === ELEMENT)
+      if(element.type === EMPTY_ELEMENT)
         return new field_module.Field(this._context, element);
 
       throw errors.unexpectedElementType(this._context, key, element, 'expectedFields');
@@ -455,7 +452,7 @@ class Section extends Element {
       if(element.type === FIELDSET)
         return element.instance || new fieldset_module.Fieldset(this._context, element);
 
-      if(element.type === ELEMENT)
+      if(element.type === EMPTY_ELEMENT)
         return new fieldset_module.Fieldset(this._context, element);
 
       throw errors.unexpectedElementType(this._context, key, element, 'expectedFieldsets');
@@ -499,7 +496,7 @@ class Section extends Element {
       if(element.type === LIST)
         return element.instance || new list_module.List(this._context, element);
 
-      if(element.type === ELEMENT)
+      if(element.type === EMPTY_ELEMENT)
         return new list_module.List(this._context, element);
 
       throw errors.unexpectedElementType(this._context, key, element, 'expectedLists');
@@ -527,7 +524,7 @@ class Section extends Element {
   }
 
   parent() {
-    if(!this._instruction.parent)
+    if(this._instruction.type === DOCUMENT)
       return null;
 
     return this._instruction.parent.instance || new Section(this._context, this._instruction.parent);

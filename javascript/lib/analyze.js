@@ -3,7 +3,8 @@ const matcher = require('./grammar_matcher.js');
 const {
   COMMENT,
   CONTINUATION,
-  ELEMENT,
+  DOCUMENT,
+  EMPTY_ELEMENT,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
@@ -146,7 +147,7 @@ exports.analyze = context => {
         const valueIndex = context.input.indexOf(value, elementOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + value.length];
       } else {
-        instruction.type = ELEMENT;
+        instruction.type = EMPTY_ELEMENT;
       }
 
       instruction.parent = lastSection;
@@ -179,7 +180,7 @@ exports.analyze = context => {
         throw errors.missingListForListItem(context, instruction);
       } else if(lastNonSectionElement.type === LIST) {
         lastNonSectionElement.items.push(instruction);
-      } else if(lastNonSectionElement.type === ELEMENT) {
+      } else if(lastNonSectionElement.type === EMPTY_ELEMENT) {
         lastNonSectionElement.items = [instruction];
         lastNonSectionElement.type = LIST;
       } else {
@@ -239,7 +240,7 @@ exports.analyze = context => {
         throw errors.missingFieldsetForFieldsetEntry(context, instruction);
       } else if(lastNonSectionElement.type === FIELDSET) {
         lastNonSectionElement.entries.push(instruction);
-      } else if(lastNonSectionElement.type === ELEMENT) {
+      } else if(lastNonSectionElement.type === EMPTY_ELEMENT) {
         lastNonSectionElement.entries = [instruction];
         lastNonSectionElement.type = FIELDSET;
       } else {
@@ -272,7 +273,7 @@ exports.analyze = context => {
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       }
 
-      if(lastContinuableElement.type === ELEMENT) {
+      if(lastContinuableElement.type === EMPTY_ELEMENT) {
         lastContinuableElement.continuations = [instruction];
         lastContinuableElement.type = FIELD;
       } else {
@@ -306,7 +307,7 @@ exports.analyze = context => {
         instruction.value = null;
       }
 
-      if(lastContinuableElement.type === ELEMENT) {
+      if(lastContinuableElement.type === EMPTY_ELEMENT) {
         lastContinuableElement.continuations = [instruction];
         lastContinuableElement.type = FIELD;
       } else {

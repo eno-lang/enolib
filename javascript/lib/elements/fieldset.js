@@ -3,14 +3,14 @@ const { Element } = require('./element.js');
 const field_module = require('./field.js');
 const missing_field_module = require('./missing_field.js');
 
-const { ELEMENT, FIELDSET } = require('../constants.js');
+const { EMPTY_ELEMENT, FIELDSET } = require('../constants.js');
 
 class Fieldset extends Element {
   constructor(context, instruction) {
     super(context, instruction);
 
     // Late determination by the application
-    if(this._instruction.type === ELEMENT) {
+    if(this._instruction.type === EMPTY_ELEMENT) {
       this._instruction.entries = [];
       this._instruction.type = FIELDSET;
 

@@ -2,14 +2,14 @@ const { Element } = require('./element.js');
 const field_module = require('./field.js');
 const { errors } = require('../errors/validation.js');
 
-const { ELEMENT, LIST, LIST_ITEM } = require('../constants.js');
+const { EMPTY_ELEMENT, LIST } = require('../constants.js');
 
 class List extends Element {
   constructor(context, instruction) {
     super(context, instruction);
 
     // Late determination by the application
-    if(this._instruction.type === ELEMENT) {
+    if(this._instruction.type === EMPTY_ELEMENT) {
       this._instruction.items = [];
       this._instruction.type = LIST;
 

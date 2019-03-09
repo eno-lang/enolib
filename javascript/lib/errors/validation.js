@@ -3,7 +3,8 @@ const { DOCUMENT_BEGIN, selection, cursor, selectComments, selectElement, select
 const {
   BEGIN,
   END,
-  ELEMENT,
+  DOCUMENT,
+  EMPTY_ELEMENT,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
@@ -53,7 +54,7 @@ exports.errors = {
     return new ValidationError(
       key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
       new context.reporter(context).reportMissingElement(parent).snippet(),
-      parent === context.document ? DOCUMENT_BEGIN : selection(parent, 'line', END)
+      parent.type === DOCUMENT ? DOCUMENT_BEGIN : selection(parent, 'line', END)
     );
   },
 
@@ -65,7 +66,7 @@ exports.errors = {
     let message;
     const selection = {};
 
-    if(element.type === FIELD || element.type === ELEMENT || element.type === MULTILINE_FIELD_BEGIN) {
+    if(element.type === FIELD || element.type === EMPTY_ELEMENT || element.type === MULTILINE_FIELD_BEGIN) {
       message = context.messages.missingFieldValue(element.key);
 
       if(element.ranges.hasOwnProperty('template')) {

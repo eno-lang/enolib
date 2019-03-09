@@ -13,7 +13,7 @@ const { Section } = require('./elements/section.js');
 const {
   BEGIN,
   COMMENT,
-  ELEMENT,
+  EMPTY_ELEMENT,
   END,
   FIELD,
   FIELDSET,
@@ -201,7 +201,6 @@ const checkInSection = (context, section, line, column) => {
     // TODO: Probably redundant because done in check* methods below anyway? (except for ELEMENT)
     if(element.line === line) {
       switch(element.type) {
-        case ELEMENT: return { element: new Empty(context, element), instruction: element };
         case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
         case FIELD: return { element: new Field(context, element), instruction: element };
         case FIELDSET: return { element: new Fieldset(context, element), instruction: element };
@@ -249,7 +248,6 @@ const checkInSectionByIndex = (context, section, index) => {
     // TODO: Probably redundant because done in check* methods below anyway? (except for ELEMENT)
     if(index <= element.ranges.line[END]) {
       switch(element.type) {
-        case ELEMENT: return { element: new Empty(context, element), instruction: element };
         case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
         case FIELD: return { element: new Field(context, element), instruction: element };
         case FIELDSET: return { element: new Fieldset(context, element), instruction: element };

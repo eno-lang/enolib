@@ -8,7 +8,8 @@ exports.END = 1;
 // Instruction types
 exports.COMMENT = Symbol('Comment');
 exports.CONTINUATION = Symbol('Continuation');
-exports.ELEMENT = Symbol('Element');
+exports.DOCUMENT = Symbol('Document');
+exports.EMPTY_ELEMENT = Symbol('Empty Element');
 exports.FIELD = Symbol('Field');
 exports.FIELDSET = Symbol('Fieldset');
 exports.FIELDSET_ENTRY = Symbol('Fieldset Entry');

@@ -1,7 +1,7 @@
 const { errors } = require('./errors/parsing.js');
 const {
   COMMENT,
-  ELEMENT,
+  EMPTY_ELEMENT,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
@@ -16,7 +16,7 @@ const consolidateNonSectionElements = (context, instruction, template) => {
     instruction.comments = template.comments;
   }
 
-  if(instruction.type === ELEMENT) {
+  if(instruction.type === EMPTY_ELEMENT) {
     if(template.type === MULTILINE_FIELD_BEGIN) {
       instruction.type = FIELD;  // TODO: Revisit this - maybe should be MULTILINE_FIELD_COPY or something else - consider implications all around.
       mirror(instruction, template);
