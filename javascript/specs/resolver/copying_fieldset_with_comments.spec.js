@@ -2,12 +2,14 @@ const { parse } = require('../..');
 
 const input = `
 languages:
-> eno-lang.org
+> error-lang.org
 eno = error notation
 > json.org
 json = json object notation
 
 copy < languages
+> eno-lang.org
+eno = eno notation
 > yaml.org
 yaml = yaml ain't markup language
 `.trim();

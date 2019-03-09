@@ -1,6 +1,8 @@
 const { inspectTokenization } = require('./util.js');
 
 const input = `
+template:
+
 key < template
 key << template
 key    < template

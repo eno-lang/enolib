@@ -2,11 +2,7 @@
 
 exports[`Escaped fieldset entry tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -182,18 +178,9 @@ Object {
         "type": Symbol(Fieldset),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "fieldset:
-\`key\` =
-
-\`\`ke\`y\`\` =
-
-\`\`\`k\`\`ey\`\`\`    =
-
-    \`\` \`key\` \`\`    =
-
-\`key\` =",
-  "lineCount": 10,
-  "meta": Array [],
+  "_lineCount": 10,
+  "_meta": Array [],
 }
 `;

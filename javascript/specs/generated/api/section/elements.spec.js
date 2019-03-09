@@ -19,7 +19,7 @@ describe('Querying elements from a section by key', () => {
                   `other: one\n` +
                   `other: two`;
 
-    const output = eno.parse(input).section('section').elements('other').map(element => element.requiredStringValue());
+    const output = eno.parse(input).section('section').elements('other').map(element => element.toField().requiredStringValue());
 
     expect(output).toEqual(['one', 'two']);
   });

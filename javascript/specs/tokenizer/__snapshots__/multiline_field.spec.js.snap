@@ -2,11 +2,7 @@
 
 exports[`Multiline field tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -228,23 +224,9 @@ Object {
         "type": Symbol(Multiline Field Begin),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "-- key
-value
--- key
-
---    key
-
-value
-
-    -- key
-
-    --    key
-value
-
-    value
-        -- key",
-  "lineCount": 15,
-  "meta": Array [],
+  "_lineCount": 15,
+  "_meta": Array [],
 }
 `;

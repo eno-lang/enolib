@@ -1,29 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Resolution Copying fieldset with comments works 1`] = `
-Array [
-  Object {
-    "languages": Array [
-      Object {
-        "eno": "error notation",
-      },
-      Object {
-        "json": "json object notation",
-      },
-    ],
-  },
-  Object {
-    "copy": Array [
-      Object {
-        "eno": "error notation",
-      },
-      Object {
-        "json": "json object notation",
-      },
-      Object {
-        "yaml": "yaml ain't markup language",
-      },
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "entries": Array [
+        Object {
+          "comment": "error-lang.org",
+          "key": "eno",
+          "type": "fieldsetEntry",
+          "value": "error notation",
+        },
+        Object {
+          "comment": "json.org",
+          "key": "json",
+          "type": "fieldsetEntry",
+          "value": "json object notation",
+        },
+      ],
+      "key": "languages",
+      "type": "fieldset",
+    },
+    Object {
+      "entries": Array [
+        Object {
+          "comment": "json.org",
+          "key": "json",
+          "type": "fieldsetEntry",
+          "value": "json object notation",
+        },
+        Object {
+          "comment": "eno-lang.org",
+          "key": "eno",
+          "type": "fieldsetEntry",
+          "value": "eno notation",
+        },
+        Object {
+          "comment": "yaml.org",
+          "key": "yaml",
+          "type": "fieldsetEntry",
+          "value": "yaml ain't markup language",
+        },
+      ],
+      "key": "copy",
+      "type": "fieldset",
+    },
+  ],
+  "type": "document",
+}
 `;

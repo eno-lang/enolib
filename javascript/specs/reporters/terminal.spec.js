@@ -28,7 +28,7 @@ describe('Terminal reporter', () => {
   it('produces colored terminal output', () => {
     const document = eno.parse(input, { reporter: TerminalReporter });
 
-    const snippet = new document._context.reporter(document._context).reportElement(document._context.document.elements[0]).snippet();
+    const snippet = new document._context.reporter(document._context).reportElement(document._context._document.elements[0]).snippet();
 
     // Uncomment this to inspect the snippet correctness in a terminal for review
     // console.log(snippet);

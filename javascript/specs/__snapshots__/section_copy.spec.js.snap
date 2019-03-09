@@ -2,69 +2,103 @@
 
 exports[`Section copy operators Deep section is correctly merged 1`] = `
 Object {
-  "deep": Array [
+  "elements": Array [
     Object {
-      "a": Array [
+      "elements": Array [
         Object {
-          "value_1": "default",
+          "key": "value_1",
+          "type": "field",
+          "value": "default",
         },
       ],
+      "key": "a",
+      "type": "section",
     },
     Object {
-      "b": Array [
+      "elements": Array [
         Object {
-          "value_2": "default",
+          "key": "value_2",
+          "type": "field",
+          "value": "default",
         },
         Object {
-          "value_1": "deep",
+          "key": "value_1",
+          "type": "field",
+          "value": "deep",
         },
       ],
+      "key": "b",
+      "type": "section",
     },
   ],
+  "key": "deep",
+  "type": "section",
 }
 `;
 
 exports[`Section copy operators Default section is correctly initialized 1`] = `
 Object {
-  "default": Array [
+  "elements": Array [
     Object {
-      "a": Array [
+      "elements": Array [
         Object {
-          "value_1": "default",
+          "key": "value_1",
+          "type": "field",
+          "value": "default",
         },
       ],
+      "key": "a",
+      "type": "section",
     },
     Object {
-      "b": Array [
+      "elements": Array [
         Object {
-          "value_1": "default",
+          "key": "value_1",
+          "type": "field",
+          "value": "default",
         },
         Object {
-          "value_2": "default",
+          "key": "value_2",
+          "type": "field",
+          "value": "default",
         },
       ],
+      "key": "b",
+      "type": "section",
     },
   ],
+  "key": "default",
+  "type": "section",
 }
 `;
 
 exports[`Section copy operators Shallow section is correctly merged 1`] = `
 Object {
-  "shallow": Array [
+  "elements": Array [
     Object {
-      "a": Array [
+      "elements": Array [
         Object {
-          "value_1": "default",
+          "key": "value_1",
+          "type": "field",
+          "value": "default",
         },
       ],
+      "key": "a",
+      "type": "section",
     },
     Object {
-      "b": Array [
+      "elements": Array [
         Object {
-          "value_1": "shallow",
+          "key": "value_1",
+          "type": "field",
+          "value": "shallow",
         },
       ],
+      "key": "b",
+      "type": "section",
     },
   ],
+  "key": "shallow",
+  "type": "section",
 }
 `;

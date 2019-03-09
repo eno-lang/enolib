@@ -1,16 +1,16 @@
 const { errors } = require('../errors/validation.js');
+const { LIST_ITEM } = require('../constants.js');
 
 class Element {
   constructor(context, instruction) {
     this._context = context;
     this._instruction = instruction;
-    this._touched = false;
   }
 
   _comment(loader, required) {
-    this._touched = true;
+    this._instruction.touched = true;
 
-    const comment = this._lazyComment();
+    const comment = this._context.comment(this._instruction);
 
     if(comment === null) {
       if(required)
@@ -29,62 +29,14 @@ class Element {
     }
   }
 
-  _lazyComment() {
-    if(!this.hasOwnProperty('_cachedComment')) {
-      if(this._instruction.hasOwnProperty('comments')) {
-        if(this._instruction.comments.length === 1) {
-          this._cachedComment = this._instruction.comments[0].value;
-        } else {
-          let firstNonEmptyLineIndex = null;
-          let sharedIndent = Infinity;
-          let lastNonEmptyLineIndex = null;
-
-          for(const [index, comment] of this._instruction.comments.entries()) {
-            if(comment.value !== null) {
-              if(firstNonEmptyLineIndex == null) {
-                firstNonEmptyLineIndex = index;
-              }
-
-              const indent = comment.ranges.value[0] - comment.ranges.line[0];
-              if(comment.ranges.value[0] - comment.ranges.line[0] < sharedIndent) {
-                sharedIndent = comment.ranges.value[0] - comment.ranges.line[0];
-              }
-
-              lastNonEmptyLineIndex = index;
-            }
-          }
-
-          if(firstNonEmptyLineIndex !== null) {
-            const nonEmptyLines = this._instruction.comments.slice(
-              firstNonEmptyLineIndex,
-              lastNonEmptyLineIndex + 1
-            );
-
-            this._cachedComment = nonEmptyLines.map(comment => {
-              if(comment.value === null) {
-                return '';
-              } else if(comment.ranges.value[0] - comment.ranges.line[0] === sharedIndent) {
-                return comment.value;
-              } else {
-                return ' '.repeat(comment.ranges.value[0] - comment.ranges.line[0] - sharedIndent) + comment.value;
-              }
-            }).join('\n');
-          } else {
-            this._cachedComment = null;
-          }
-        }
-      } else {
-        this._cachedComment = null;
-      }
-    }
-
-    return this._cachedComment;
+  _key() {
+    return this._instruction.type === LIST_ITEM ? this._instruction.parent.key : this._instruction.key;
   }
 
   commentError(message) {
     return errors.commentError(
       this._context,
-      typeof message === 'function' ? message(this._lazyComment()) : message,
+      typeof message === 'function' ? message(this._context.comment(this._instruction)) : message,
       this._instruction
     );
   }
@@ -97,6 +49,24 @@ class Element {
     );
   }
 
+  key(loader) {
+    this._instruction.touched = true;
+
+    try {
+      return loader(this._key());
+    } catch(message) {
+      throw errors.keyError(this._context, message, this._instruction);
+    }
+  }
+
+  keyError(message) {
+    return errors.keyError(
+      this._context,
+      typeof message === 'function' ? message(this._key()) : message,
+      this._instruction
+    );
+  }
+
   optionalComment(loader) {
     return this._comment(loader, false);
   }
@@ -105,12 +75,26 @@ class Element {
     return this._comment(null, false);
   }
 
+  raw() {
+    return this._context.raw(this._instruction);
+  }
+
   requiredComment(loader) {
     return this._comment(loader, true);
   }
 
   requiredStringComment() {
     return this._comment(null, true);
+  }
+
+  stringKey() {
+    this._instruction.touched = true;
+
+    return this._key();
+  }
+
+  touch() {
+    this._context.touch(this._instruction);
   }
 }
 

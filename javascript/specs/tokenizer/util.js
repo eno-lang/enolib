@@ -1,9 +1,11 @@
-const { analyze } = require('../../lib/analyze.js');
+const { Context } = require('../../lib/context.js');
 
 exports.inspectTokenization = input => {
-  const context = { input: input };
+  const context = new Context(input, {});
 
-  analyze(context);
-
-  return context;
+  return {
+    _document: context._document,
+    _lineCount: context._lineCount,
+    _meta: context._meta
+  };
 };

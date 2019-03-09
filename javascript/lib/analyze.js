@@ -21,20 +21,20 @@ const tokenizeErrorContext = (context, index, line) => {
   let firstInstruction = null;
 
   while(true) {
-    const endOfLineIndex = context.input.indexOf('\n', index);
+    const endOfLineIndex = context._input.indexOf('\n', index);
 
     if(endOfLineIndex === -1) {
       const instruction = {
         line: line,
-        ranges: { line: [index, context.input.length ] }
+        ranges: { line: [index, context._input.length ] }
       };
 
       if(firstInstruction) {
         instruction.type = UNPARSED;
       }
 
-      context.lineCount = line + 1;
-      context.meta.push(instruction);
+      context._lineCount = line + 1;
+      context._meta.push(instruction);
 
       return firstInstruction || instruction;
     } else {
@@ -43,7 +43,7 @@ const tokenizeErrorContext = (context, index, line) => {
         ranges: { line: [index, endOfLineIndex] }
       };
 
-      context.meta.push(instruction);
+      context._meta.push(instruction);
 
       if(firstInstruction) {
         instruction.type = UNPARSED;
@@ -57,24 +57,25 @@ const tokenizeErrorContext = (context, index, line) => {
   }
 };
 
-exports.analyze = context => {
-  context.document = {
+exports.analyze = function() {
+  this._document = {
     depth: 0,
-    elements: []
+    elements: [],
+    type: DOCUMENT
   };
 
   // TODO: Possibly flatten into two properties?
-  context.copy = {
+  this.copy = {
     nonSectionElements: {},
     sections: {}
   };
 
-  context.meta = [];
+  this._meta = [];
 
   let comments = null;
   let lastContinuableElement = null;
   let lastNonSectionElement = null;
-  let lastSection = context.document;
+  let lastSection = this._document;
 
   let index = 0;
   let line = 0;
@@ -84,11 +85,11 @@ exports.analyze = context => {
   let instruction;
 
   while(true) {
-    const match = matcherRegex.exec(context.input);
+    const match = matcherRegex.exec(this._input);
 
     if(match === null) {
-      const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing
-      throw errors.invalidLine(context, instruction);
+      const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing
+      throw errors.invalidLine(this, instruction);
     } else {
       instruction = {
         line: line,
@@ -101,7 +102,7 @@ exports.analyze = context => {
     if(match[matcher.EMPTY_LINE_INDEX] !== undefined) {
 
       if(comments) {
-        context.meta.push(...comments);
+        this._meta.push(...comments);
         comments = null;
       }
 
@@ -118,8 +119,8 @@ exports.analyze = context => {
       if(unescapedKey) {
         instruction.key = unescapedKey;
 
-        const keyIndex = context.input.indexOf(instruction.key, index);
-        elementOperatorIndex = context.input.indexOf(':', keyIndex + instruction.key.length);
+        const keyIndex = this._input.indexOf(instruction.key, index);
+        elementOperatorIndex = this._input.indexOf(':', keyIndex + instruction.key.length);
 
         instruction.ranges.elementOperator = [elementOperatorIndex, elementOperatorIndex + 1];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
@@ -127,10 +128,10 @@ exports.analyze = context => {
         instruction.key = match[matcher.KEY_ESCAPED_INDEX];
 
         const escapeOperator = match[matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
-        const escapeBeginOperatorIndex = context.input.indexOf(escapeOperator, index);
-        const keyIndex = context.input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
-        const escapeEndOperatorIndex = context.input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        elementOperatorIndex = context.input.indexOf(':', escapeEndOperatorIndex + escapeOperator.length);
+        const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
+        const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
+        const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
+        elementOperatorIndex = this._input.indexOf(':', escapeEndOperatorIndex + escapeOperator.length);
 
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
         instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
@@ -144,7 +145,7 @@ exports.analyze = context => {
         instruction.type = FIELD;
         instruction.value = value;
 
-        const valueIndex = context.input.indexOf(value, elementOperatorIndex + 1);
+        const valueIndex = this._input.indexOf(value, elementOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + value.length];
       } else {
         instruction.type = EMPTY_ELEMENT;
@@ -166,26 +167,26 @@ exports.analyze = context => {
       instruction.type = LIST_ITEM;
       instruction.value = match[matcher.LIST_ITEM_VALUE_INDEX] || null;
 
-      const operatorIndex = context.input.indexOf('-', index);
+      const operatorIndex = this._input.indexOf('-', index);
 
       instruction.ranges.itemOperator = [operatorIndex, operatorIndex + 1];
 
       if(instruction.value) {
-        const valueIndex = context.input.indexOf(instruction.value, operatorIndex + 1);
+        const valueIndex = this._input.indexOf(instruction.value, operatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       }
 
       if(lastNonSectionElement === null) {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingListForListItem(context, instruction);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.missingListForListItem(this, instruction);
       } else if(lastNonSectionElement.type === LIST) {
         lastNonSectionElement.items.push(instruction);
       } else if(lastNonSectionElement.type === EMPTY_ELEMENT) {
         lastNonSectionElement.items = [instruction];
         lastNonSectionElement.type = LIST;
       } else {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingListForListItem(context, instruction);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.missingListForListItem(this, instruction);
       }
 
       instruction.parent = lastNonSectionElement;
@@ -207,10 +208,10 @@ exports.analyze = context => {
         instruction.key = match[matcher.KEY_ESCAPED_INDEX];
 
         const escapeOperator = match[matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
-        const escapeBeginOperatorIndex = context.input.indexOf(escapeOperator, index);
-        const keyIndex = context.input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
-        const escapeEndOperatorIndex = context.input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        entryOperatorIndex = context.input.indexOf('=', escapeEndOperatorIndex + escapeOperator.length);
+        const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
+        const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
+        const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
+        entryOperatorIndex = this._input.indexOf('=', escapeEndOperatorIndex + escapeOperator.length);
 
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
         instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
@@ -219,8 +220,8 @@ exports.analyze = context => {
       } else {
         instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
 
-        const keyIndex = context.input.indexOf(instruction.key, index);
-        entryOperatorIndex = context.input.indexOf('=', keyIndex + instruction.key.length);
+        const keyIndex = this._input.indexOf(instruction.key, index);
+        entryOperatorIndex = this._input.indexOf('=', keyIndex + instruction.key.length);
 
         instruction.ranges.entryOperator = [entryOperatorIndex, entryOperatorIndex + 1];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
@@ -231,21 +232,21 @@ exports.analyze = context => {
       } else {
         instruction.value = match[matcher.FIELDSET_ENTRY_VALUE_INDEX];
 
-        const valueIndex = context.input.indexOf(instruction.value, entryOperatorIndex + 1);
+        const valueIndex = this._input.indexOf(instruction.value, entryOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       }
 
       if(lastNonSectionElement === null) {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingFieldsetForFieldsetEntry(context, instruction);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.missingFieldsetForFieldsetEntry(this, instruction);
       } else if(lastNonSectionElement.type === FIELDSET) {
         lastNonSectionElement.entries.push(instruction);
       } else if(lastNonSectionElement.type === EMPTY_ELEMENT) {
         lastNonSectionElement.entries = [instruction];
         lastNonSectionElement.type = FIELDSET;
       } else {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingFieldsetForFieldsetEntry(context, instruction);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.missingFieldsetForFieldsetEntry(this, instruction);
       }
 
       instruction.parent = lastNonSectionElement;
@@ -254,14 +255,14 @@ exports.analyze = context => {
     } else if(match[matcher.SPACED_LINE_CONTINUATION_OPERATOR_INDEX] !== undefined) {
 
       if(lastContinuableElement === null) {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingElementForContinuation(context, instruction);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.missingElementForContinuation(this, instruction);
       }
 
       instruction.spaced = true;
       instruction.type = CONTINUATION;
 
-      const operatorIndex = context.input.indexOf('\\', index);
+      const operatorIndex = this._input.indexOf('\\', index);
       instruction.ranges.spacedLineContinuationOperator = [operatorIndex, operatorIndex + 1];
 
       if(match[matcher.SPACED_LINE_CONTINUATION_VALUE_INDEX] === undefined) {
@@ -269,7 +270,7 @@ exports.analyze = context => {
       } else {
         instruction.value = match[matcher.SPACED_LINE_CONTINUATION_VALUE_INDEX];
 
-        const valueIndex = context.input.indexOf(instruction.value, operatorIndex + 1);
+        const valueIndex = this._input.indexOf(instruction.value, operatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       }
 
@@ -281,7 +282,7 @@ exports.analyze = context => {
       }
 
       if(comments) {
-        context.meta.push(...comments);
+        this._meta.push(...comments);
         comments = null;
       }
 
@@ -289,19 +290,19 @@ exports.analyze = context => {
     } else if(match[matcher.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX] !== undefined) {
 
       if(lastContinuableElement === null) {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingElementForContinuation(context, instruction);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.missingElementForContinuation(this, instruction);
       }
 
       instruction.spaced = false;
       instruction.type = CONTINUATION;
 
-      const operatorIndex = context.input.indexOf('|', index);
+      const operatorIndex = this._input.indexOf('|', index);
       instruction.ranges.directLineContinuationOperator = [operatorIndex, operatorIndex + 1];
 
       if(match[matcher.DIRECT_LINE_CONTINUATION_VALUE_INDEX] !== undefined) {
         instruction.value = match[matcher.DIRECT_LINE_CONTINUATION_VALUE_INDEX];
-        const valueIndex = context.input.indexOf(instruction.value, operatorIndex + 1);
+        const valueIndex = this._input.indexOf(instruction.value, operatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       } else {
         instruction.value = null;
@@ -315,7 +316,7 @@ exports.analyze = context => {
       }
 
       if(comments) {
-        context.meta.push(...comments);
+        this._meta.push(...comments);
         comments = null;
       }
 
@@ -341,8 +342,8 @@ exports.analyze = context => {
 
         instruction.parent = lastSection.parent;
       } else {
-        const instruction = tokenizeErrorContext(context, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.sectionHierarchyLayerSkip(context, instruction, lastSection);
+        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        throw errors.sectionHierarchyLayerSkip(this, instruction, lastSection);
       }
 
       instruction.parent.elements.push(instruction);
@@ -351,14 +352,14 @@ exports.analyze = context => {
       instruction.elements = [];
       instruction.type = SECTION;
 
-      const sectionOperatorIndex = context.input.indexOf(sectionOperator, index);
+      const sectionOperatorIndex = this._input.indexOf(sectionOperator, index);
       const unescapedKey = match[matcher.SECTION_KEY_UNESCAPED_INDEX];
       let keyEndIndex;
 
       if(unescapedKey) {
         instruction.key = unescapedKey;
 
-        const keyIndex = context.input.indexOf(instruction.key, sectionOperatorIndex + sectionOperator.length);
+        const keyIndex = this._input.indexOf(instruction.key, sectionOperatorIndex + sectionOperator.length);
         keyEndIndex = keyIndex + unescapedKey.length;
 
         instruction.ranges.key = [keyIndex, keyIndex + unescapedKey.length];
@@ -367,9 +368,9 @@ exports.analyze = context => {
         instruction.key = match[matcher.SECTION_KEY_ESCAPED_INDEX];
 
         const escapeOperator = match[matcher.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
-        const escapeBeginOperatorIndex = context.input.indexOf(escapeOperator, sectionOperatorIndex + sectionOperator.length);
-        const keyIndex = context.input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
-        const escapeEndOperatorIndex = context.input.indexOf(escapeOperator, keyIndex + instruction.key.length);
+        const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, sectionOperatorIndex + sectionOperator.length);
+        const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
+        const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
         keyEndIndex = escapeEndOperatorIndex + escapeOperator.length;
 
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
@@ -386,8 +387,8 @@ exports.analyze = context => {
         }
 
         const copyOperator = match[matcher.SECTION_COPY_OPERATOR_INDEX];
-        const copyOperatorIndex = context.input.indexOf(copyOperator, keyEndIndex);
-        const templateIndex = context.input.indexOf(instruction.template, copyOperatorIndex + copyOperator.length);
+        const copyOperatorIndex = this._input.indexOf(copyOperator, keyEndIndex);
+        const templateIndex = this._input.indexOf(instruction.template, copyOperatorIndex + copyOperator.length);
 
         instruction.deepCopy = copyOperator.length > 1;
 
@@ -399,13 +400,13 @@ exports.analyze = context => {
 
         instruction.ranges.template = [templateIndex, templateIndex + instruction.template.length];
 
-        if(context.copy.sections.hasOwnProperty(instruction.template)) {
-          context.copy.sections[instruction.template].targets.push(instruction);
+        if(this.copy.sections.hasOwnProperty(instruction.template)) {
+          this.copy.sections[instruction.template].targets.push(instruction);
         } else {
-          context.copy.sections[instruction.template] = { targets: [instruction] };
+          this.copy.sections[instruction.template] = { targets: [instruction] };
         }
 
-        instruction.copy = context.copy.sections[instruction.template];
+        instruction.copy = this.copy.sections[instruction.template];
       }
 
       lastContinuableElement = null;
@@ -424,8 +425,8 @@ exports.analyze = context => {
       instruction.lines = [];
       instruction.type = MULTILINE_FIELD_BEGIN;
 
-      let operatorIndex = context.input.indexOf(operator, index);
-      let keyIndex = context.input.indexOf(instruction.key, operatorIndex + operator.length);
+      let operatorIndex = this._input.indexOf(operator, index);
+      let keyIndex = this._input.indexOf(instruction.key, operatorIndex + operator.length);
 
       instruction.ranges.multilineFieldOperator = [operatorIndex, operatorIndex + operator.length];
       instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
@@ -446,11 +447,11 @@ exports.analyze = context => {
 
       while(true) {
         terminatorMatcher.lastIndex = index;
-        let terminatorMatch = terminatorMatcher.exec(context.input);
+        let terminatorMatch = terminatorMatcher.exec(this._input);
 
         if(terminatorMatch) {
-          operatorIndex = context.input.indexOf(operator, index);
-          keyIndex = context.input.indexOf(instruction.key, operatorIndex + operator.length);
+          operatorIndex = this._input.indexOf(operator, index);
+          keyIndex = this._input.indexOf(instruction.key, operatorIndex + operator.length);
 
           instruction = {
             line: line,
@@ -469,19 +470,19 @@ exports.analyze = context => {
 
           break;
         } else {
-          const endofLineIndex = context.input.indexOf('\n', index);
+          const endofLineIndex = this._input.indexOf('\n', index);
 
           if(endofLineIndex === -1) {
             lastNonSectionElement.lines.push({
               line: line,
               ranges: {
-                line: [index, context.input.length],
-                value: [index, context.input.length]  // TODO: line range === value range, drop value range? (see how the custom terminal reporter eg. handles this for syntax coloring, then revisit)
+                line: [index, this._input.length],
+                value: [index, this._input.length]  // TODO: line range === value range, drop value range? (see how the custom terminal reporter eg. handles this for syntax coloring, then revisit)
               },
               type: MULTILINE_FIELD_VALUE
             });
 
-            throw errors.unterminatedMultilineField(context, instruction);
+            throw errors.unterminatedMultilineField(this, instruction);
           } else {
             lastNonSectionElement.lines.push({
               line: line,
@@ -506,7 +507,7 @@ exports.analyze = context => {
       }
 
       instruction.template = match[matcher.TEMPLATE_INDEX]; // TODO: We can possibly make this ephemeral (local variable) because the new copyData reference replaces its function
-      instruction.type = ELEMENT;
+      instruction.type = EMPTY_ELEMENT;
 
       const copyOperator = match[matcher.COPY_OPERATOR_INDEX];
       let copyOperatorIndex;
@@ -514,8 +515,8 @@ exports.analyze = context => {
       if(match[matcher.KEY_UNESCAPED_INDEX] !== undefined) {
         instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
 
-        const keyIndex = context.input.indexOf(instruction.key, index);
-        copyOperatorIndex = context.input.indexOf(copyOperator, keyIndex + instruction.key.length);
+        const keyIndex = this._input.indexOf(instruction.key, index);
+        copyOperatorIndex = this._input.indexOf(copyOperator, keyIndex + instruction.key.length);
 
         instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + copyOperator.length];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
@@ -523,10 +524,10 @@ exports.analyze = context => {
         instruction.key = match[matcher.KEY_ESCAPED_INDEX];
 
         const escapeOperator = match[matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
-        const escapeBeginOperatorIndex = context.input.indexOf(escapeOperator, index);
-        const keyIndex = context.input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
-        const escapeEndOperatorIndex = context.input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        copyOperatorIndex = context.input.indexOf(copyOperator, escapeEndOperatorIndex + escapeOperator.length);
+        const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
+        const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
+        const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
+        copyOperatorIndex = this._input.indexOf(copyOperator, escapeEndOperatorIndex + escapeOperator.length);
 
         instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + copyOperator.length];
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
@@ -534,7 +535,7 @@ exports.analyze = context => {
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
       }
 
-      const templateIndex = context.input.indexOf(instruction.template, copyOperatorIndex + 1);
+      const templateIndex = this._input.indexOf(instruction.template, copyOperatorIndex + 1);
       instruction.ranges.template = [templateIndex, templateIndex + instruction.template.length];
 
       instruction.parent = lastSection;
@@ -542,13 +543,13 @@ exports.analyze = context => {
       lastContinuableElement = null;
       lastNonSectionElement = instruction;
 
-      if(context.copy.nonSectionElements.hasOwnProperty(instruction.template)) {
-        context.copy.nonSectionElements[instruction.template].targets.push(instruction);
+      if(this.copy.nonSectionElements.hasOwnProperty(instruction.template)) {
+        this.copy.nonSectionElements[instruction.template].targets.push(instruction);
       } else {
-        context.copy.nonSectionElements[instruction.template] = { targets: [instruction] };
+        this.copy.nonSectionElements[instruction.template] = { targets: [instruction] };
       }
 
-      instruction.copy = context.copy.nonSectionElements[instruction.template];
+      instruction.copy = this.copy.nonSectionElements[instruction.template];
 
     } else if(match[matcher.COMMENT_OPERATOR_INDEX] !== undefined) {
 
@@ -560,16 +561,16 @@ exports.analyze = context => {
 
       instruction.type = COMMENT;
 
-      const operatorIndex = context.input.indexOf('>', index);
+      const operatorIndex = this._input.indexOf('>', index);
       instruction.ranges.commentOperator = [operatorIndex, operatorIndex + 1];
 
-      if(match[matcher.COMMENT_VALUE_INDEX] !== undefined) {
-        instruction.value = match[matcher.COMMENT_VALUE_INDEX];
+      if(match[matcher.COMMENT_INDEX] !== undefined) {
+        instruction.comment = match[matcher.COMMENT_INDEX];
 
-        const valueIndex = context.input.indexOf(instruction.value, operatorIndex + 1);
-        instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
+        const commentIndex = this._input.indexOf(instruction.comment, operatorIndex + 1);
+        instruction.ranges.comment = [commentIndex, commentIndex + instruction.comment.length];
       } else {
-        instruction.value = null;
+        instruction.comment = null;
       }
 
     }
@@ -578,12 +579,12 @@ exports.analyze = context => {
     index = matcherRegex.lastIndex + 1;
     matcherRegex.lastIndex = index;
 
-    if(index >= context.input.length) {
+    if(index >= this._input.length) {
       // TODO: Possibly solve this by capturing with the unified grammar matcher as last group
-      if(context.input[context.input.length - 1] === '\n') {
-        context.lineCount = line + 1;
+      if(this._input[this._input.length - 1] === '\n') {
+        this._lineCount = line + 1;
       } else {
-        context.lineCount = line;
+        this._lineCount = line;
       }
 
       break;
@@ -591,6 +592,6 @@ exports.analyze = context => {
   } // ends while(true)
 
   if(comments) {
-    context.meta.push(...comments);
+    this._meta.push(...comments);
   }
 };

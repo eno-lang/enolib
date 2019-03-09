@@ -8,8 +8,8 @@ const php = require('./generators/php.js');
 const python = require('./generators/python.js');
 const ruby = require('./generators/ruby.js');
 
-const { Fieldset, TerminalReporter } = require('../javascript');
 const { commaSeparated } = require('enotype');
+const { TerminalReporter } = require('../javascript');
 const { interpolatify } = require('../utilities.js');
 
 enolib.register({ commaSeparated });
@@ -29,7 +29,7 @@ const generate = async () => {
   const localesSection = specification.requiredSection('Locales');
   const messagesSection = specification.requiredSection('Messages');
 
-  for(let localeField of localesSection.fields()) {
+  for(const localeField of localesSection.fields()) {
     const localeCode = localeField.stringKey();
     const localeName = localeField.requiredStringValue();
 
@@ -61,14 +61,14 @@ const generate = async () => {
       console.log(`\x1b[36m(eno locales) INFO: Locale '${localeCode}' (${localeName}) does not exist yet, creating at ${poFile}.\x1b[0m`);
     }
 
-    for(let groupSection of messagesSection.sections()) {
+    for(const groupSection of messagesSection.sections()) {
       const groupName = groupSection.stringKey();
 
       updated += `# Message group '${groupName}'\n\n`;
 
       let previousMessageSpec;
-      for(let messageSpec of groupSection.elements()) {
-        const messageName = messageSpec.stringKey(); // TODO: Type-safe AmbiguousElement API implementation and usage
+      for(const messageSpec of groupSection.elements()) {
+        const messageName = messageSpec.stringKey();
 
         if(!titleCase.exec(messageName))
           throw messageSpec.error(`Message '${messageName}' in group '${groupName}' is not in title case (every word starting with an uppercase letter, e.g. "My Title", "A Non-Section").`);
@@ -80,11 +80,11 @@ const generate = async () => {
         }
 
         let arguments, message;
-        if(messageSpec instanceof Fieldset) { // TODO: Type-safe AmbiguousElement API implementation and usage
-          arguments = messageSpec.entry().commaSeparatedKey();
-          message = messageSpec.entry().requiredStringValue();
+        if(messageSpec.yieldsFieldset()) {
+          arguments = messageSpec.toFieldset().entry().commaSeparatedKey();
+          message = messageSpec.toFieldset().entry().requiredStringValue();
         } else {
-          message = messageSpec.requiredStringValue();
+          message = messageSpec.toField().requiredStringValue();
         }
 
         let translation = '';

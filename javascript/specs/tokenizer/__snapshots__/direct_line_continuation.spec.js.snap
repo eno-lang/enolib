@@ -2,11 +2,7 @@
 
 exports[`Direct line continuation tokenization is performed as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -132,19 +128,9 @@ Object {
         "type": Symbol(Field),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "field:
-
-| value
-
-|    value
-
-    | value
-
-    |    value
-
-| value",
-  "lineCount": 11,
-  "meta": Array [],
+  "_lineCount": 11,
+  "_meta": Array [],
 }
 `;

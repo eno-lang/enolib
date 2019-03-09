@@ -2,11 +2,7 @@
 
 exports[`Key tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -27,7 +23,7 @@ Object {
             4,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "key",
@@ -47,7 +43,7 @@ Object {
             10,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "key",
@@ -67,7 +63,7 @@ Object {
             20,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "key",
@@ -87,7 +83,7 @@ Object {
             34,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "key",
@@ -107,20 +103,12 @@ Object {
             40,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "key:
-
-key:
-
-key    :
-
-    key    :
-
-key:",
-  "lineCount": 9,
-  "meta": Array [],
+  "_lineCount": 9,
+  "_meta": Array [],
 }
 `;

@@ -1,16 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Copying a multiline field succeeds 1`] = `
-Array [
-  Object {
-    "Multiline Field": "Veni
+Object {
+  "elements": Array [
+    Object {
+      "key": "Multiline Field",
+      "type": "field",
+      "value": "Veni
 Vidi
 Vici",
-  },
-  Object {
-    "Copied Multiline Field": "Veni
+    },
+    Object {
+      "key": "Copied Multiline Field",
+      "type": "field",
+      "value": "Veni
 Vidi
 Vici",
-  },
-]
+    },
+  ],
+  "type": "document",
+}
 `;

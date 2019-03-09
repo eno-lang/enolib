@@ -1,36 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Blackbox test Continuations performs as expected 1`] = `
-Array [
-  Object {
-    "Field": "[value] [spaced_line_continuation][direct_line_continuation]",
-  },
-  Object {
-    "Fieldset": Array [
-      Object {
-        "Entry": "[value] [spaced_line_continuation][direct_line_continuation]",
-      },
-    ],
-  },
-  Object {
-    "List": Array [
-      "[value] [spaced_line_continuation][direct_line_continuation]",
-    ],
-  },
-  Object {
-    "Empty field": "[spaced_line_continuation][direct_line_continuation]",
-  },
-  Object {
-    "Fieldset with empty entry": Array [
-      Object {
-        "Empty entry": "[spaced_line_continuation][direct_line_continuation]",
-      },
-    ],
-  },
-  Object {
-    "List with empty item": Array [
-      "[spaced_line_continuation][direct_line_continuation]",
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "key": "Field",
+      "type": "field",
+      "value": "[value] [spaced_line_continuation][direct_line_continuation]",
+    },
+    Object {
+      "entries": Array [
+        Object {
+          "key": "Entry",
+          "type": "fieldsetEntry",
+          "value": "[value] [spaced_line_continuation][direct_line_continuation]",
+        },
+      ],
+      "key": "Fieldset",
+      "type": "fieldset",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "[value] [spaced_line_continuation][direct_line_continuation]",
+        },
+      ],
+      "key": "List",
+      "type": "list",
+    },
+    Object {
+      "key": "Empty field",
+      "type": "field",
+      "value": "[spaced_line_continuation][direct_line_continuation]",
+    },
+    Object {
+      "entries": Array [
+        Object {
+          "key": "Empty entry",
+          "type": "fieldsetEntry",
+          "value": "[spaced_line_continuation][direct_line_continuation]",
+        },
+      ],
+      "key": "Fieldset with empty entry",
+      "type": "fieldset",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "[spaced_line_continuation][direct_line_continuation]",
+        },
+      ],
+      "key": "List with empty item",
+      "type": "list",
+    },
+  ],
+  "type": "document",
+}
 `;

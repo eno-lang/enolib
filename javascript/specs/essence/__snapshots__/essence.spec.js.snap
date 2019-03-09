@@ -1,63 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The essence testrun succeeds 1`] = `
-Array [
-  Object {
-    "Date": "1st of November in the year 2017",
-  },
-  Object {
-    "Book Description": "Lacks a certain ...
+Object {
+  "elements": Array [
+    Object {
+      "key": "Date",
+      "type": "field",
+      "value": "1st of November in the year 2017",
+    },
+    Object {
+      "key": "Book Description",
+      "type": "field",
+      "value": "Lacks a certain ...
 something",
-  },
-  Object {
-    "Shopping List": Array [
-      "Apples",
-      "Oranges",
-    ],
-  },
-  Object {
-    "Telephone Numbers": Array [
-      Object {
-        "Ben": "+49 1943 24724784",
-      },
-      Object {
-        "Rachel": "+59 3459 35935593",
-      },
-    ],
-  },
-  Object {
-    "Body": Array [
-      Object {
-        "Limbs": Array [
-          Object {
-            "Left Arm": Array [],
-          },
-          Object {
-            "Right Arm": Array [
-              Object {
-                "--format pretty": "Pretty formatting option",
-              },
-              Object {
-                "> Friends <": Array [
-                  "Jack the Ripper",
-                  "Frankenstein",
-                ],
-              },
-              Object {
-                "Use \`\${arg}\` style options": Array [
-                  Object {
-                    "'--output dir'": "Specify a different output directory",
-                  },
-                  Object {
-                    "'--filters disabled'": "Enable/disable filters",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "Apples",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Oranges",
+        },
+      ],
+      "key": "Shopping List",
+      "type": "list",
+    },
+    Object {
+      "entries": Array [
+        Object {
+          "key": "Ben",
+          "type": "fieldsetEntry",
+          "value": "+49 1943 24724784",
+        },
+        Object {
+          "key": "Rachel",
+          "type": "fieldsetEntry",
+          "value": "+59 3459 35935593",
+        },
+      ],
+      "key": "Telephone Numbers",
+      "type": "fieldset",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "elements": Array [],
+              "key": "Left Arm",
+              "type": "section",
+            },
+            Object {
+              "elements": Array [
+                Object {
+                  "key": "--format pretty",
+                  "type": "field",
+                  "value": "Pretty formatting option",
+                },
+                Object {
+                  "items": Array [
+                    Object {
+                      "type": "listItem",
+                      "value": "Jack the Ripper",
+                    },
+                    Object {
+                      "type": "listItem",
+                      "value": "Frankenstein",
+                    },
+                  ],
+                  "key": "> Friends <",
+                  "type": "list",
+                },
+                Object {
+                  "entries": Array [
+                    Object {
+                      "key": "'--output dir'",
+                      "type": "fieldsetEntry",
+                      "value": "Specify a different output directory",
+                    },
+                    Object {
+                      "key": "'--filters disabled'",
+                      "type": "fieldsetEntry",
+                      "value": "Enable/disable filters",
+                    },
+                  ],
+                  "key": "Use \`\${arg}\` style options",
+                  "type": "fieldset",
+                },
+              ],
+              "key": "Right Arm",
+              "type": "section",
+            },
+          ],
+          "key": "Limbs",
+          "type": "section",
+        },
+      ],
+      "key": "Body",
+      "type": "section",
+    },
+  ],
+  "type": "document",
+}
 `;

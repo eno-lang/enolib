@@ -1,26 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Resolution Copying fieldset into fieldset works 1`] = `
-Array [
-  Object {
-    "languages": Array [
-      Object {
-        "eno": "error notation",
-      },
-      Object {
-        "json": "json object notation",
-      },
-    ],
-  },
-  Object {
-    "copy": Array [
-      Object {
-        "json": "json object notation",
-      },
-      Object {
-        "eno": "eno notation",
-      },
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "entries": Array [
+        Object {
+          "key": "eno",
+          "type": "fieldsetEntry",
+          "value": "error notation",
+        },
+        Object {
+          "key": "json",
+          "type": "fieldsetEntry",
+          "value": "json object notation",
+        },
+      ],
+      "key": "languages",
+      "type": "fieldset",
+    },
+    Object {
+      "entries": Array [
+        Object {
+          "key": "json",
+          "type": "fieldsetEntry",
+          "value": "json object notation",
+        },
+        Object {
+          "key": "eno",
+          "type": "fieldsetEntry",
+          "value": "eno notation",
+        },
+      ],
+      "key": "copy",
+      "type": "fieldset",
+    },
+  ],
+  "type": "document",
+}
 `;

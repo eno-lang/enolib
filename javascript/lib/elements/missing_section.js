@@ -1,24 +1,16 @@
-const missing_element_module = require('./missing_element.js');
+const { MissingElement } = require('./missing_element.js');
+const missing_ambiguous_section_element_module = require('./missing_element.js');
 const missing_field_module = require('./missing_field.js');
 const missing_fieldset_module = require('./missing_fieldset.js');
 const missing_list_module = require('./missing_list.js');
 
-class MissingSection {
-  constructor(key, parent) {
-    this._key = key;
-    this._parent = parent;
-  }
-
+class MissingSection extends MissingElement {
   get [Symbol.toStringTag]() {
     return 'MissingSection';
   }
 
-  _missingError(_element) {
-    this._parent._missingError(this);
-  }
-
   element(key = null) {
-    return new missing_element_module.MissingElement(key, this);
+    return new missing_ambiguous_section_element_module.MissingAmbiguousSectionElement(key, this);
   }
 
   elements(_key = null) {
@@ -41,20 +33,12 @@ class MissingSection {
     return [];
   }
 
-  key(_loader) {
-    this._parent._missingError(this);
-  }
-
   list(key = null) {
     return new missing_list_module.MissingList(key, this);
   }
 
   lists(_key = null) {
     return [];
-  }
-
-  optionalComment(_loader) {
-    return null;
   }
 
   optionalElement(_key = null) {
@@ -77,18 +61,6 @@ class MissingSection {
     return null;
   }
 
-  optionalStringComment() {
-    return null;
-  }
-
-  raw() {
-    return null;
-  }
-
-  requiredComment(_loader) {
-    this._parent._missingError(this);
-  }
-
   requiredElement(_key = null) {
     this._parent._missingError(this);
   }
@@ -109,20 +81,12 @@ class MissingSection {
     this._parent._missingError(this);
   }
 
-  requiredStringComment() {
-    this._parent._missingError(this);
-  }
-
   section(key = null) {
     return new MissingSection(key, this);
   }
 
   sections(_key = null) {
     return [];
-  }
-
-  stringKey() {
-    this._parent._missingError(this);
   }
 
   toString() {

@@ -2,11 +2,7 @@
 
 exports[`Field tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -140,17 +136,9 @@ Object {
         "value": "value",
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "key: value
-
-key:    value
-
-key    : value
-
-    key    :    value
-
-key: value",
-  "lineCount": 9,
-  "meta": Array [],
+  "_lineCount": 9,
+  "_meta": Array [],
 }
 `;

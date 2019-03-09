@@ -2,11 +2,7 @@
 
 exports[`Escaped section tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -163,17 +159,9 @@ Object {
         "type": Symbol(Section),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "# \`key\`
-
-## \`\`ke\`y\`\`
-
-### \`\`\`k\`\`ey\`\`\`
-
-    #### \`\` \`key\` \`\`
-
-# \`key\`",
-  "lineCount": 9,
-  "meta": Array [],
+  "_lineCount": 9,
+  "_meta": Array [],
 }
 `;

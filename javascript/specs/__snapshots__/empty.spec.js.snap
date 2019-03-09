@@ -1,56 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Empty elements correctly parses 1`] = `
-Array [
-  Object {
-    "empty": null,
-  },
-  Object {
-    "leer": Array [
-      null,
-      null,
-      null,
-    ],
-  },
-  Object {
-    "nichts": null,
-  },
-  Object {
-    "nada": null,
-  },
-  Object {
-    "nothing": Array [
-      Object {
-        "none": Array [
-          Object {
-            "void": null,
-          },
-          Object {
-            "emptyness": null,
-          },
-          Object {
-            "leere": null,
-          },
-        ],
-      },
-    ],
-  },
-  Object {
-    "ningun": Array [
-      Object {
-        "absence": Array [
-          null,
-          null,
-          null,
-        ],
-      },
-      Object {
-        "non": null,
-      },
-      Object {
-        "end": null,
-      },
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "key": "empty",
+      "type": "emptyElement",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": null,
+        },
+        Object {
+          "type": "listItem",
+          "value": null,
+        },
+        Object {
+          "type": "listItem",
+          "value": null,
+        },
+      ],
+      "key": "leer",
+      "type": "list",
+    },
+    Object {
+      "key": "nichts",
+      "type": "emptyElement",
+    },
+    Object {
+      "key": "nada",
+      "type": "emptyElement",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "key": "void",
+              "type": "emptyElement",
+            },
+            Object {
+              "key": "emptyness",
+              "type": "emptyElement",
+            },
+            Object {
+              "key": "leere",
+              "type": "field",
+              "value": null,
+            },
+          ],
+          "key": "none",
+          "type": "section",
+        },
+      ],
+      "key": "nothing",
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "items": Array [
+            Object {
+              "type": "listItem",
+              "value": null,
+            },
+            Object {
+              "type": "listItem",
+              "value": null,
+            },
+            Object {
+              "type": "listItem",
+              "value": null,
+            },
+          ],
+          "key": "absence",
+          "type": "list",
+        },
+        Object {
+          "key": "non",
+          "type": "emptyElement",
+        },
+        Object {
+          "key": "end",
+          "type": "emptyElement",
+        },
+      ],
+      "key": "ningun",
+      "type": "section",
+    },
+  ],
+  "type": "document",
+}
 `;

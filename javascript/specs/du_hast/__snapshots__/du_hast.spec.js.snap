@@ -1,91 +1,146 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Du hast succeeds 1`] = `
-Array [
-  Object {
-    "Song": Array [
-      Object {
-        "Verse A": Array [
-          Object {
-            "Line A": "Du",
-          },
-          Object {
-            "Line B": "Du hast",
-          },
-          Object {
-            "Line C": "Du hast mich",
-          },
-        ],
-      },
-      Object {
-        "Verse A": Array [
-          Object {
-            "Line A": "Du",
-          },
-          Object {
-            "Line B": "Du hast",
-          },
-          Object {
-            "Line C": "Du hast mich",
-          },
-        ],
-      },
-      Object {
-        "Verse A": Array [
-          Object {
-            "Line A": "Du",
-          },
-          Object {
-            "Line B": "Du hast",
-          },
-          Object {
-            "Line C": "Du hast mich",
-          },
-        ],
-      },
-      Object {
-        "Verse A": Array [
-          Object {
-            "Line A": "Du",
-          },
-          Object {
-            "Line B": "Du hast",
-          },
-          Object {
-            "Line C": "Du hast mich",
-          },
-        ],
-      },
-      Object {
-        "Verse A": Array [
-          Object {
-            "Line A": "Du",
-          },
-          Object {
-            "Line B": "Du hast",
-          },
-          Object {
-            "Line C": "Du hast mich",
-          },
-        ],
-      },
-      Object {
-        "Verse B": Array [
-          Object {
-            "Line C": "Du hast mich",
-          },
-          Object {
-            "Line D": "Du hast mich gefragt",
-          },
-          Object {
-            "Line D": "Du hast mich gefragt",
-          },
-          Object {
-            "Line E": "Du hast mich gefragt und ich hab nichts gesagt",
-          },
-        ],
-      },
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "key": "Line A",
+              "type": "field",
+              "value": "Du",
+            },
+            Object {
+              "key": "Line B",
+              "type": "field",
+              "value": "Du hast",
+            },
+            Object {
+              "key": "Line C",
+              "type": "field",
+              "value": "Du hast mich",
+            },
+          ],
+          "key": "Verse A",
+          "type": "section",
+        },
+        Object {
+          "elements": Array [
+            Object {
+              "key": "Line A",
+              "type": "field",
+              "value": "Du",
+            },
+            Object {
+              "key": "Line B",
+              "type": "field",
+              "value": "Du hast",
+            },
+            Object {
+              "key": "Line C",
+              "type": "field",
+              "value": "Du hast mich",
+            },
+          ],
+          "key": "Verse A",
+          "type": "section",
+        },
+        Object {
+          "elements": Array [
+            Object {
+              "key": "Line A",
+              "type": "field",
+              "value": "Du",
+            },
+            Object {
+              "key": "Line B",
+              "type": "field",
+              "value": "Du hast",
+            },
+            Object {
+              "key": "Line C",
+              "type": "field",
+              "value": "Du hast mich",
+            },
+          ],
+          "key": "Verse A",
+          "type": "section",
+        },
+        Object {
+          "elements": Array [
+            Object {
+              "key": "Line A",
+              "type": "field",
+              "value": "Du",
+            },
+            Object {
+              "key": "Line B",
+              "type": "field",
+              "value": "Du hast",
+            },
+            Object {
+              "key": "Line C",
+              "type": "field",
+              "value": "Du hast mich",
+            },
+          ],
+          "key": "Verse A",
+          "type": "section",
+        },
+        Object {
+          "elements": Array [
+            Object {
+              "key": "Line A",
+              "type": "field",
+              "value": "Du",
+            },
+            Object {
+              "key": "Line B",
+              "type": "field",
+              "value": "Du hast",
+            },
+            Object {
+              "key": "Line C",
+              "type": "field",
+              "value": "Du hast mich",
+            },
+          ],
+          "key": "Verse A",
+          "type": "section",
+        },
+        Object {
+          "elements": Array [
+            Object {
+              "key": "Line C",
+              "type": "field",
+              "value": "Du hast mich",
+            },
+            Object {
+              "key": "Line D",
+              "type": "field",
+              "value": "Du hast mich gefragt",
+            },
+            Object {
+              "key": "Line D",
+              "type": "field",
+              "value": "Du hast mich gefragt",
+            },
+            Object {
+              "key": "Line E",
+              "type": "field",
+              "value": "Du hast mich gefragt und ich hab nichts gesagt",
+            },
+          ],
+          "key": "Verse B",
+          "type": "section",
+        },
+      ],
+      "key": "Song",
+      "type": "section",
+    },
+  ],
+  "type": "document",
+}
 `;

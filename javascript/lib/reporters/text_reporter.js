@@ -31,7 +31,7 @@ class TextReporter extends Reporter {
     if(instruction === undefined) {
       content = '';
     }  else {
-      content = this._context.input.substring(instruction.ranges.line[0], instruction.ranges.line[1]);
+      content = this._context._input.substring(instruction.ranges.line[0], instruction.ranges.line[1]);
     }
 
     return ` ${INDICATORS[tag]}${number.padStart(this._gutterWidth - 3)} | ${content}`;

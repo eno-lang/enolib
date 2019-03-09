@@ -1,49 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Property issues Section toString as field key does not have any side effects 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "key": "toString",
+      "type": "field",
+      "value": "ok",
+    },
+  ],
+  "type": "document",
+}
+`;
+
+exports[`Property issues Section toString as fieldset entry does not have any side effects 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "entries": Array [
+        Object {
+          "key": "toString",
+          "type": "fieldsetEntry",
+          "value": "ok",
+        },
+      ],
+      "key": "check",
+      "type": "fieldset",
+    },
+  ],
+  "type": "document",
+}
+`;
+
+exports[`Property issues Section toString as fieldset key does not have any side effects 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "entries": Array [
+        Object {
+          "key": "check",
+          "type": "fieldsetEntry",
+          "value": "ok",
+        },
+      ],
+      "key": "toString",
+      "type": "fieldset",
+    },
+  ],
+  "type": "document",
+}
+`;
+
 exports[`Property issues Section toString as key in a complex merge does not have any side effects 1`] = `
-Array [
-  Object {
-    "a": Array [
-      Object {
-        "toString": Array [
-          Object {
-            "toString": Array [
-              Object {
-                "toString": "discarded",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  Object {
-    "b": Array [
-      Object {
-        "toString": Array [
-          Object {
-            "toString": "ok",
-          },
-        ],
-      },
-    ],
-  },
-  Object {
-    "c": Array [
-      Object {
-        "toString": Array [
-          Object {
-            "toString": Array [
-              Object {
-                "toString": "kept",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "entries": Array [
+                Object {
+                  "key": "toString",
+                  "type": "fieldsetEntry",
+                  "value": "discarded",
+                },
+              ],
+              "key": "toString",
+              "type": "fieldset",
+            },
+          ],
+          "key": "toString",
+          "type": "section",
+        },
+      ],
+      "key": "a",
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "key": "toString",
+              "type": "field",
+              "value": "ok",
+            },
+          ],
+          "key": "toString",
+          "type": "section",
+        },
+      ],
+      "key": "b",
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "entries": Array [
+                Object {
+                  "key": "toString",
+                  "type": "fieldsetEntry",
+                  "value": "kept",
+                },
+              ],
+              "key": "toString",
+              "type": "fieldset",
+            },
+          ],
+          "key": "toString",
+          "type": "section",
+        },
+      ],
+      "key": "c",
+      "type": "section",
+    },
+  ],
+  "type": "document",
+}
 `;
 
 exports[`Property issues Section toString as missing template does not have any side effects 1`] = `

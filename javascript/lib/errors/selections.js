@@ -53,8 +53,8 @@ const selectComments = element => {
   const { comments } = element;
 
   if(comments.length === 1) {
-    if(comments[0].hasOwnProperty('value')) {
-      return selection(comments[0], 'value', BEGIN, END);
+    if(comments[0].hasOwnProperty('comment')) {
+      return selection(comments[0], 'comment', BEGIN, END);
     } else {
       return selection(comments[0], 'line', BEGIN, END);
     }

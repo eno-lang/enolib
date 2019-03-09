@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List raw() returns a native object representation 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "type": "listItem",
+      "value": "item",
+    },
+    Object {
+      "type": "listItem",
+      "value": "other",
+    },
+  ],
+  "key": "list",
+  "type": "list",
+}
+`;

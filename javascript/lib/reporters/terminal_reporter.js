@@ -77,9 +77,9 @@ class TerminalReporter extends Reporter {
     let content = '';
     if(instruction !== undefined) {
       if(instruction.type === COMMENT || instruction.type === UNPARSED) {
-        content = BRIGHT_BLACK + this._context.input.substring(instruction.ranges.line[0], instruction.ranges.line[1]) + RESET;
+        content = BRIGHT_BLACK + this._context._input.substring(instruction.ranges.line[0], instruction.ranges.line[1]) + RESET;
       } else {
-        content = this._context.input.substring(instruction.ranges.line[0], instruction.ranges.line[1]);
+        content = this._context._input.substring(instruction.ranges.line[0], instruction.ranges.line[1]);
 
         const ranges = Object.entries(instruction.ranges).filter(([name, _]) => name !== 'line');
 
@@ -89,7 +89,7 @@ class TerminalReporter extends Reporter {
           const before = content.substring(0, instruction.ranges[name][0] - instruction.ranges.line[0]);
           const after = content.substr(instruction.ranges[name][1] - instruction.ranges.line[0]);
 
-          content = before + RANGE_STYLE[name] + this._context.input.substring(instruction.ranges[name][0], instruction.ranges[name][1]) + RESET + after;
+          content = before + RANGE_STYLE[name] + this._context._input.substring(instruction.ranges[name][0], instruction.ranges[name][1]) + RESET + after;
         }
       }
     }

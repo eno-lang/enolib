@@ -173,35 +173,35 @@ const index = (context, section, indexNonSectionElements, indexSections) => {
   }
 }
 
-exports.resolve = context => {
-  const unresolvedNonSectionElements = Object.entries(context.copy.nonSectionElements);
-  const unresolvedSections = Object.entries(context.copy.sections);
+exports.resolve = function() {
+  const unresolvedNonSectionElements = Object.entries(this.copy.nonSectionElements);
+  const unresolvedSections = Object.entries(this.copy.sections);
 
   if(unresolvedNonSectionElements.length > 0 || unresolvedSections.length > 0) {
-    index(context, context.document, unresolvedNonSectionElements.length > 0, unresolvedSections.length > 0);
+    index(this, this._document, unresolvedNonSectionElements.length > 0, unresolvedSections.length > 0);
 
     for(const [key, copy] of unresolvedNonSectionElements) {
       if(!copy.hasOwnProperty('template'))
-        throw errors.nonSectionElementNotFound(context, copy.targets[0]);
+        throw errors.nonSectionElementNotFound(this, copy.targets[0]);
 
       for(const target of copy.targets) {
         if(!target.hasOwnProperty('copy')) continue;
 
-        resolveNonSectionElement(context, target);
+        resolveNonSectionElement(this, target);
       }
     }
 
     for(const [key, copy] of unresolvedSections) {
       if(!copy.hasOwnProperty('template'))
-        throw errors.sectionNotFound(context, copy.targets[0]);
+        throw errors.sectionNotFound(this, copy.targets[0]);
 
       for(const target of copy.targets) {
         if(!target.hasOwnProperty('copy')) continue;
 
-        resolveSection(context, target);
+        resolveSection(this, target);
       }
     }
   }
 
-  delete context.copy;
+  delete this.copy;
 };

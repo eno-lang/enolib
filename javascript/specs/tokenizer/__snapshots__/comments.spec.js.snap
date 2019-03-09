@@ -2,23 +2,21 @@
 
 exports[`Comment tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [],
+    "type": Symbol(Document),
   },
-  "input": "> value
-> more value  
-    >    value
-    >    ",
-  "lineCount": 4,
-  "meta": Array [
+  "_lineCount": 4,
+  "_meta": Array [
     Object {
+      "comment": "value",
       "line": 0,
       "ranges": Object {
+        "comment": Array [
+          2,
+          7,
+        ],
         "commentOperator": Array [
           0,
           1,
@@ -27,17 +25,17 @@ Object {
           0,
           7,
         ],
-        "value": Array [
-          2,
-          7,
-        ],
       },
       "type": Symbol(Comment),
-      "value": "value",
     },
     Object {
+      "comment": "more value",
       "line": 1,
       "ranges": Object {
+        "comment": Array [
+          10,
+          20,
+        ],
         "commentOperator": Array [
           8,
           9,
@@ -46,17 +44,17 @@ Object {
           8,
           22,
         ],
-        "value": Array [
-          10,
-          20,
-        ],
       },
       "type": Symbol(Comment),
-      "value": "more value",
     },
     Object {
+      "comment": "value",
       "line": 2,
       "ranges": Object {
+        "comment": Array [
+          32,
+          37,
+        ],
         "commentOperator": Array [
           27,
           28,
@@ -65,15 +63,11 @@ Object {
           23,
           37,
         ],
-        "value": Array [
-          32,
-          37,
-        ],
       },
       "type": Symbol(Comment),
-      "value": "value",
     },
     Object {
+      "comment": null,
       "line": 3,
       "ranges": Object {
         "commentOperator": Array [
@@ -86,7 +80,6 @@ Object {
         ],
       },
       "type": Symbol(Comment),
-      "value": null,
     },
   ],
 }

@@ -1,18 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Resolution Copying list into empty works 1`] = `
-Array [
-  Object {
-    "languages": Array [
-      "eno",
-      "json",
-    ],
-  },
-  Object {
-    "copy": Array [
-      "eno",
-      "json",
-    ],
-  },
-]
+Object {
+  "elements": Array [
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "eno",
+        },
+        Object {
+          "type": "listItem",
+          "value": "json",
+        },
+      ],
+      "key": "languages",
+      "type": "list",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "eno",
+        },
+        Object {
+          "type": "listItem",
+          "value": "json",
+        },
+      ],
+      "key": "copy",
+      "type": "list",
+    },
+  ],
+  "type": "document",
+}
 `;

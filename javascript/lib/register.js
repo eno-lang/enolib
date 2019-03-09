@@ -1,11 +1,9 @@
-const { Field } = require('./elements/field.js');
-const { Fieldset } = require('./elements/fieldset.js');
+const { Element } = require('./elements/element.js');
 const { List } = require('./elements/list.js');
-const { MissingField } = require('./elements/missing_field.js');
-const { MissingFieldset } = require('./elements/missing_fieldset.js');
+const { MissingElement } = require('./elements/missing_element.js');
 const { MissingList } = require('./elements/missing_list.js');
-const { MissingSection } = require('./elements/missing_section.js');
-const { Section } = require('./elements/section.js');
+const { MissingValueElement } = require('./elements/missing_value_element.js');
+const { ValueElement } = require('./elements/value_element.js');
 
 // TODO: Safe-guard against conflicting loader names (e.g. previous definition or native library function conflict)
 
@@ -15,38 +13,20 @@ const _register = (name, func) => {
 
   const titleCased = name.replace(/^./, inital => inital.toUpperCase());
 
-  Field.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
-  Field.prototype[`optional${titleCased}Value`] = function() { return this.optionalValue(func); };
-  Field.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
-  Field.prototype[`required${titleCased}Value`] = function() { return this.requiredValue(func); };
-  Field.prototype[`${name}Key`] = function() { return this.key(func); };
-  Fieldset.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
-  Fieldset.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
-  Fieldset.prototype[`${name}Key`] = function() { return this.key(func); };
-  List.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
+  Element.prototype[`${name}Key`] = function() { return this.key(func); };
+  Element.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
+  Element.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
+  ValueElement.prototype[`optional${titleCased}Value`] = function() { return this.optionalValue(func); };
+  ValueElement.prototype[`required${titleCased}Value`] = function() { return this.requiredValue(func); };
   List.prototype[`optional${titleCased}Values`] = function() { return this.optionalValues(func); };
-  List.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
   List.prototype[`required${titleCased}Values`] = function() { return this.requiredValues(func); };
-  List.prototype[`${name}Key`] = function() { return this.key(func); };
-  MissingField.prototype[`optional${titleCased}Comment`] = MissingField.prototype.optionalStringComment;
-  MissingField.prototype[`optional${titleCased}Value`] = MissingField.prototype.optionalStringValue;
-  MissingField.prototype[`required${titleCased}Comment`] = MissingField.prototype.requiredStringComment;
-  MissingField.prototype[`required${titleCased}Value`] = MissingField.prototype.requiredStringValue;
-  MissingField.prototype[`${name}Key`] = MissingField.prototype.stringKey;
-  MissingFieldset.prototype[`optional${titleCased}Comment`] = MissingFieldset.prototype.optionalStringComment;
-  MissingFieldset.prototype[`required${titleCased}Comment`] = MissingFieldset.prototype.requiredStringComment;
-  MissingFieldset.prototype[`${name}Key`] = MissingFieldset.prototype.stringKey;
-  MissingList.prototype[`optional${titleCased}Comment`] = MissingList.prototype.optionalStringComment;
+  MissingElement.prototype[`${name}Key`] = MissingElement.prototype.stringKey;
+  MissingElement.prototype[`optional${titleCased}Comment`] = MissingElement.prototype.optionalStringComment;
+  MissingElement.prototype[`required${titleCased}Comment`] = MissingElement.prototype.requiredStringComment;
+  MissingValueElement.prototype[`optional${titleCased}Value`] = MissingValueElement.prototype.optionalStringValue;
+  MissingValueElement.prototype[`required${titleCased}Value`] = MissingValueElement.prototype.requiredStringValue;
   MissingList.prototype[`optional${titleCased}Values`] = MissingList.prototype.optionalStringValues;
-  MissingList.prototype[`required${titleCased}Comment`] = MissingList.prototype.requiredStringComment;
   MissingList.prototype[`required${titleCased}Values`] = MissingList.prototype.requiredStringValues;
-  MissingList.prototype[`${name}Key`] = MissingList.prototype.stringKey;  // TODO: This and other dynamically registered API methods need to be revisited possibly
-  MissingSection.prototype[`optional${titleCased}Comment`] = MissingSection.prototype.optionalStringComment;
-  MissingSection.prototype[`required${titleCased}Comment`] = MissingSection.prototype.requiredStringComment;
-  MissingSection.prototype[`${name}Key`] = MissingSection.prototype.stringKey;
-  Section.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
-  Section.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
-  Section.prototype[`${name}Key`] = function() { return this.key(func); };
 };
 
 exports.register = (...definitions) => {

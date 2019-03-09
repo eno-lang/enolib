@@ -4,16 +4,16 @@ describe('Empty', () => {
   let empty;
 
   beforeEach(() => {
-    empty = eno.parse('element:').element('element');
+    empty = eno.parse('element:').empty('element');
   });
 
   it('is untouched after initialization', () => {
-    expect(empty._touched).toBe(false);
+    expect(empty._instruction.touched).toBeUndefined();
   });
 
   describe('raw()', () => {
     it('returns a native object representation', () => {
-      expect(empty.raw()).toEqual({ element: null });
+      expect(empty.raw()).toEqual({ key: 'element', type: 'emptyElement' });
     });
   });
 

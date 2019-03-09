@@ -1,12 +1,9 @@
-const { analyze } = require('./analyze.js');
+const { Context } = require('./context.js');
 const { Empty } = require('./elements/empty.js');
-const { en } = require('./messages/en.js');
 const { Field } = require('./elements/field.js');
 const { Fieldset } = require('./elements/fieldset.js');
 const { List } = require('./elements/list.js');
-const { resolve } =  require('./resolve.js');
-const { TextReporter } = require('./reporters/text_reporter.js');
-const { Section } = require('./elements/section.js');
+const { AmbiguousElement } = require('./elements/ambiguous_element.js');
 
 // TODO: if(element.type === MULTILINE_FIELD_BEGIN) - Here and elsewhere there will be trouble if the multiline field is really COPIED, because then we can't go through .lines (!) revisit boldly
 
@@ -25,44 +22,38 @@ const {
   SECTION
 } = require('./constants.js');
 
-const checkMultilineField = (context, field, line, column) => {
+const checkMultilineField = (field, line, column) => {
   if(line < field.line || line > field.end.line)
     return false;
 
   if(line === field.line)
-    return { element: new Field(context, field), instruction: field };
+    return { element: field, instruction: field };
 
   if(line === field.end.line)
-    return { element: new Field(context, field), instruction: field.end };
+    return { element: field, instruction: field.end };
 
-  return {
-    element: new Field(context, field),
-    instruction: field.lines.find(valueLine => valueLine.line === line)
-  };
+  return { element: field, instruction: field.lines.find(valueLine => valueLine.line === line) };
 };
 
-const checkMultilineFieldByIndex = (context, field, index) => {
+const checkMultilineFieldByIndex = (field, index) => {
   if(index < field.ranges.line[BEGIN] || index > field.end.ranges.line[END])  // TODO: Consider terminology 'range' => 'indices' everywhere ? (the "range name" then is the "range" simply)
     return false;
 
   if(index <= field.ranges.line[END])
-    return { element: new Field(context, field), instruction: field };
+    return { element: field, instruction: field };
 
   if(index >= field.end.ranges.line[BEGIN])
-    return { element: new Field(context, field), instruction: field.end };
+    return { element: field, instruction: field.end };
 
-  return {
-    element: new Field(context, field),
-    instruction: field.lines.find(line => index <= line.ranges.line[END])
-  };
+  return { element: field, instruction: field.lines.find(line => index <= line.ranges.line[END]) };
 };
 
-const checkField = (context, field, line, column) => {
+const checkField = (field, line, column) => {
   if(line < field.line)
     return false;
 
   if(line === field.line)
-    return { element: new Field(context, field), instruction: field };
+    return { element: field, instruction: field };
 
   if(field.continuations.length === 0 ||
      line > field.continuations[field.continuations.length - 1].line)
@@ -70,18 +61,18 @@ const checkField = (context, field, line, column) => {
 
   for(const continuation of field.continuations) {
     if(line === continuation.line)
-      return { element: new Field(context, field), instruction: continuation };
+      return { element: field, instruction: continuation };
     if(line < continuation.line)
-      return { element: new Field(context, field), instruction: null };
+      return { element: field, instruction: null };
   }
 };
 
-const checkFieldByIndex = (context, field, index) => {
+const checkFieldByIndex = (field, index) => {
   if(index < field.ranges.line[BEGIN])
     return false;
 
   if(index <= field.ranges.line[END])
-    return { element: new Field(context, field), instruction: field };
+    return { element: field, instruction: field };
 
   if(field.continuations.length === 0 ||
      index > field.continuations[field.continuations.length - 1].ranges.line[END])
@@ -89,18 +80,18 @@ const checkFieldByIndex = (context, field, index) => {
 
   for(const continuation of field.continuations) {
     if(index < continuation.ranges.line[BEGIN])
-      return { element: new Field(context, field), instruction: null };
+      return { element: field, instruction: null };
     if(index <= continuation.ranges.line[END])
-      return { element: new Field(context, field), instruction: continuation };
+      return { element: field, instruction: continuation };
   }
 };
 
-const checkFieldset = (context, fieldset, line, column) => {
+const checkFieldset = (fieldset, line, column) => {
   if(line < fieldset.line)
     return false;
 
   if(line === fieldset.line)
-    return { element: new Fieldset(context, fieldset), instruction: fieldset };
+    return { element: fieldset, instruction: fieldset };
 
   if(fieldset.entries.length === 0 ||
      line > fieldset.entries[fieldset.entries.length - 1].line)
@@ -108,23 +99,23 @@ const checkFieldset = (context, fieldset, line, column) => {
 
   for(const entry of fieldset.entries) {
     if(line === entry.line)
-      return { element: new Field(context, entry), instruction: entry };
+      return { element: entry, instruction: entry };
     if(line < entry.line)
-      return { element: new Fieldset(context, fieldset), instruction: null };
+      return { element: fieldset, instruction: null };
 
-    const matchInEntry = checkField(context, entry, line, column);
+    const matchInEntry = checkField(entry, line, column);
 
     if(matchInEntry)
       return matchInEntry;
   }
 };
 
-const checkFieldsetByIndex = (context, fieldset, index) => {
+const checkFieldsetByIndex = (fieldset, index) => {
   if(index < fieldset.ranges.line[BEGIN])
     return false;
 
   if(index <= fieldset.ranges.line[END])
-    return { element: new Fieldset(context, fieldset), instruction: fieldset };
+    return { element: fieldset, instruction: fieldset };
 
   if(fieldset.entries.length === 0 ||
      index > fieldset.entries[fieldset.entries.length - 1].ranges.line[END])
@@ -132,23 +123,23 @@ const checkFieldsetByIndex = (context, fieldset, index) => {
 
   for(const entry of fieldset.entries) {
     if(index < entry.ranges.line[BEGIN])
-      return { element: new Fieldset(context, fieldset), instruction: null };
+      return { element: fieldset, instruction: null };
     if(index <= entry.ranges.line[END])
-      return { element: new Field(context, entry), instruction: entry };
+      return { element: entry, instruction: entry };
 
-    const matchInEntry = checkFieldByIndex(context, entry, index);
+    const matchInEntry = checkFieldByIndex(entry, index);
 
     if(matchInEntry)
       return matchInEntry;
   }
 };
 
-const checkList = (context, list, line, column) => {
+const checkList = (list, line, column) => {
   if(line < list.line)
     return false;
 
   if(line === list.line)
-    return { element: new List(context, list), instruction: list };
+    return { element: list, instruction: list };
 
   if(list.items.length === 0 ||
      line > list.items[list.items.length - 1].line)
@@ -156,23 +147,23 @@ const checkList = (context, list, line, column) => {
 
   for(const item of list.items) {
     if(line === item.line)
-      return { element: new Field(context, item), instruction: item };
+      return { element: item, instruction: item };
     if(line < item.line)
-      return { element: new List(context, list), instruction: null };
+      return { element: list, instruction: null };
 
-    const matchInItem = checkField(context, item, line, column);
+    const matchInItem = checkField(item, line, column);
 
     if(matchInItem)
       return matchInItem;
   }
 };
 
-const checkListByIndex = (context, list, index) => {
+const checkListByIndex = (list, index) => {
   if(index < list.ranges.line[BEGIN])
     return false;
 
   if(index <= list.ranges.line[END])
-    return { element: new Fieldset(context, list), instruction: list };
+    return { element: list, instruction: list };
 
   if(list.entries.length === 0 ||
      index > list.entries[list.entries.length - 1].ranges.line[END])
@@ -180,150 +171,120 @@ const checkListByIndex = (context, list, index) => {
 
   for(const item of list.items) {
     if(index < item.ranges.line[BEGIN])
-      return { element: new Fieldset(context, list), instruction: null };
+      return { element: list, instruction: null };
     if(index <= item.ranges.line[END])
-      return { element: new Field(context, item), instruction: item };
+      return { element: item, instruction: item };
 
-    const matchInItem = checkFieldByIndex(context, item, index);
+    const matchInItem = checkFieldByIndex(item, index);
 
     if(matchInItem)
       return matchInItem;
   }
 };
 
-const checkInSection = (context, section, line, column) => {
+const checkInSection = (section, line, column) => {
   for(let elementIndex = section.elements.length - 1; elementIndex >= 0; elementIndex--) {
     const element = section.elements[elementIndex];
 
     if(element.line > line)
       continue;
 
-    // TODO: Probably redundant because done in check* methods below anyway? (except for ELEMENT)
-    if(element.line === line) {
-      switch(element.type) {
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: return { element: new Field(context, element), instruction: element };
-        case FIELDSET: return { element: new Fieldset(context, element), instruction: element };
-        case LIST: return { element: new List(context, element), instruction: element };
-        case SECTION: return { element: new Section(context, element), instruction: element };
-      }
+    if(element.line === line)
+      return { element: element, instruction: element };
+
+    switch(element.type) {
+      case FIELD:
+        const matchInField = checkField(element, line, column);
+        if(matchInField) return matchInField;
+        break;
+      case FIELDSET:
+        const matchInFieldset = checkFieldset(element, line, column);
+        if(matchInFieldset) return matchInFieldset;
+        break;
+      case LIST:
+        const matchInList = checkList(element, line, column);
+        if(matchInList) return matchInList;
+        break;
+      case MULTILINE_FIELD_BEGIN:
+        if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
+          const matchInMultilineField = checkMultilineField(element, line, column);
+          if(matchInMultilineField) return matchInMultilineField;
+        }
+        break;
+      case SECTION:
+        return checkInSection(element, line, column);
     }
-
-    if(element.type === SECTION)
-      return checkInSection(context, element, line, column);
-
-    if(element.type === MULTILINE_FIELD_BEGIN && !element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
-      const matchInMultilineField = checkMultilineField(context, element, line, column);
-      if(matchInMultilineField) return matchInMultilineField;
-    }
-
-    if(element.type === FIELD) {
-      const matchInField = checkField(context, element, line, column);
-      if(matchInField) return matchInField;
-    }
-
-    if(element.type === FIELDSET) {
-      const matchInFieldset = checkFieldset(context, element, line, column);
-      if(matchInFieldset) return matchInFieldset;
-    }
-
-    if(element.type === LIST) {
-      const matchInList = checkList(context, element, line, column);
-      if(matchInList) return matchInList;
-    }
-
     break;
   }
-
   return { element: section, instruction: null };
 };
 
-const checkInSectionByIndex = (context, section, index) => {
+const checkInSectionByIndex = (section, index) => {
   for(let elementIndex = section.elements.length - 1; elementIndex >= 0; elementIndex--) {
     const element = section.elements[elementIndex];
 
     if(index < element.ranges.line[BEGIN])
       continue;
 
-    // TODO: Probably redundant because done in check* methods below anyway? (except for ELEMENT)
-    if(index <= element.ranges.line[END]) {
-      switch(element.type) {
-        case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-        case FIELD: return { element: new Field(context, element), instruction: element };
-        case FIELDSET: return { element: new Fieldset(context, element), instruction: element };
-        case LIST: return { element: new List(context, element), instruction: element };
-        case SECTION: return { element: new Section(context, element), instruction: element };
-      }
+    if(index <= element.ranges.line[END])
+      return { element: element, instruction: element };
+
+    switch(element.type) {
+      case FIELD:
+        const matchInField = checkFieldByIndex(element, index);
+        if(matchInField) return matchInField;
+        break;
+      case FIELDSET:
+        const matchInFieldset = checkFieldsetByIndex(element, index);
+        if(matchInFieldset) return matchInFieldset;
+        break;
+      case LIST:
+        const matchInList = checkListByIndex(element, index);
+        if(matchInList) return matchInList;
+        break;
+      case MULTILINE_FIELD_BEGIN:
+        if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
+          const matchInMultilineField = checkMultilineFieldByIndex(element, index);
+          if(matchInMultilineField) return matchInMultilineField;
+        }
+        break;
+      case SECTION:
+        return checkInSectionByIndex(element, index);
     }
-
-    if(element.type === SECTION)
-      return checkInSectionByIndex(context, element, index);
-
-    if(element.type === MULTILINE_FIELD_BEGIN && !element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
-      const matchInMultilineField = checkMultilineFieldByIndex(context, element, index);
-      if(matchInMultilineField) return matchInMultilineField;
-    }
-
-    if(element.type === FIELD) {
-      const matchInField = checkFieldByIndex(context, element, index);
-      if(matchInField) return matchInField;
-    }
-
-    if(element.type === FIELDSET) {
-      const matchInFieldset = checkFieldsetByIndex(context, element, index);
-      if(matchInFieldset) return matchInFieldset;
-    }
-
-    if(element.type === LIST) {
-      const matchInList = checkListByIndex(context, element, index);
-      if(matchInList) return matchInList;
-    }
-
     break;
   }
-
   return { element: section, instruction: null };
 };
+
 
 exports.lookup = (position, input, options = {}) => {
   let { column, index, line } = position;
 
-  const context = {
-    input,
-    messages: options.hasOwnProperty('locale') ? options.locale : en,
-    reporter: options.hasOwnProperty('reporter') ? options.reporter : TextReporter,
-    source: options.hasOwnProperty('source') ? options.source : null
-  };
-
-  analyze(context);
-
-  if(context.hasOwnProperty('copy')) {
-    resolve(context);
-  }
+  const context = new Context(input, options);
 
   if(index) {
-    if(index < 0 || index >= context.input.length)
-      throw new RangeError(`You are trying to look up an index (${index}) outside of the document's index range (0-${context.input.length - 1})`);
-  } else if(line < 0 || line >= context.lineCount) {
-    throw new RangeError(`You are trying to look up a line (${line}) outside of the document's line range (0-${context.lineCount - 1})`);
+    if(index < 0 || index >= context._input.length)
+      throw new RangeError(`You are trying to look up an index (${index}) outside of the document's index range (0-${context._input.length - 1})`);
+  } else if(line < 0 || line >= context._lineCount) {
+    throw new RangeError(`You are trying to look up a line (${line}) outside of the document's line range (0-${context._lineCount - 1})`);
   }
 
   let match;
   if(index) {
-    match = checkInSectionByIndex(context, context.document, index);
+    match = checkInSectionByIndex(context._document, index);
   } else {
-    match = checkInSection(context, context.document, line, column);
+    match = checkInSection(context._document, line, column);
   }
 
   const result = {
-    element: match.element,
+    element: new AmbiguousElement(context, match.element),
     range: null
   };
 
   let instruction = match.instruction;
 
   if(!instruction) {
-    instruction = context.meta.find(instruction => instruction.line === line);
+    instruction = context._meta.find(instruction => instruction.line === line);
 
     if(!instruction)
       return result;

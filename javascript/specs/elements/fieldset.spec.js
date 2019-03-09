@@ -1,6 +1,6 @@
 const eno = require('../..');
 const { Field } = require('../../lib/elements/field.js');
-const { MissingField } = require('../../lib/elements/missing_field.js');
+const { MissingFieldsetEntry } = require('../../lib/elements/missing_fieldset_entry.js');
 
 describe('Fieldset', () => {
   let fieldset;
@@ -14,12 +14,12 @@ other = value
   });
 
   it('is untouched after initialization', () => {
-    expect(fieldset._touched).toBe(false);
+    expect(fieldset._instruction.touched).toBeUndefined();
   });
 
   it('has only untouched entries after initialization', () => {
     for(let entry of fieldset.entries()) {
-      expect(entry._touched).toBe(false);
+      expect(entry._instruction.touched).toBeUndefined();
     }
   });
 
@@ -45,9 +45,9 @@ other = value
     });
 
     describe('fetching a missing element', () => {
-      it('returns a MissingField', () => {
+      it('returns a MissingFieldsetEntry', () => {
         const missingEntry = fieldset.entry('missing');
-        expect(missingEntry).toBeInstanceOf(MissingField);
+        expect(missingEntry).toBeInstanceOf(MissingFieldsetEntry);
       });
     });
   });
@@ -76,12 +76,7 @@ other = value
 
   describe('raw()', () => {
     it('returns a native object representation', () => {
-      expect(fieldset.raw()).toEqual({
-        'fieldset': [
-          { 'entry': 'value' },
-          { 'other': 'value' }
-        ]
-      });
+      expect(fieldset.raw()).toMatchSnapshot();
     });
   });
 
@@ -103,12 +98,12 @@ other = value
     });
 
     it('touches the fieldset', () => {
-      expect(fieldset._touched).toBe(true);
+      expect(fieldset._instruction.touched).toBe(true);
     });
 
     it('touches the entries', () => {
-      for(let entry of fieldset._lazyEntries()) {
-        expect(entry.instance._touched).toBe(true);
+      for(const entry of fieldset.entries()) {
+        expect(entry._instruction.touched).toBe(true);
       }
     });
   });

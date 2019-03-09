@@ -2,11 +2,7 @@
 
 exports[`Fieldset entry tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -188,21 +184,9 @@ Object {
         "type": Symbol(Fieldset),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "fieldset:
-
-entry = value
-
-entry    = value
-
-    entry = value
-
-    entry    = value
-
-    entry    =    value
-
-entry = value",
-  "lineCount": 13,
-  "meta": Array [],
+  "_lineCount": 13,
+  "_meta": Array [],
 }
 `;

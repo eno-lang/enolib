@@ -21,8 +21,8 @@ const QUESTION = Symbol('Question Line');
 class Reporter {
   constructor(context) {
     this._context = context;
-    this._index = new Array(this._context.lineCount);
-    this._snippet = new Array(this._context.lineCount);
+    this._index = new Array(this._context._lineCount);
+    this._snippet = new Array(this._context._lineCount);
 
     this._buildIndex()
   }
@@ -81,9 +81,9 @@ class Reporter {
       }
     }
 
-    traverse(this._context.document);
+    traverse(this._context._document);
 
-    for(const meta of this._context.meta) {
+    for(const meta of this._context._meta) {
       this._index[meta.line] = meta;
     }
   }

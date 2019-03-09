@@ -12,19 +12,19 @@ describe('Field', () => {
   });
 
   it('is untouched after initialization', () => {
-    expect(field._touched).toBe(false);
+    expect(field._instruction.touched).toBeUndefined();
   });
 
   describe('raw()', () => {
     describe('with a key and a value', () => {
       it('returns a native representation', () => {
-        expect(field.raw()).toEqual({ field: 'value' });
+        expect(field.raw()).toEqual({ key: 'field', type: 'field', value: 'value' });
       });
     });
 
     describe('without key, with value', () => {
       it('returns a native representation', () => {
-        expect(item.raw()).toEqual('item');
+        expect(item.raw()).toEqual({ type: 'listItem', value: 'item' });
       });
     });
   });
@@ -36,7 +36,7 @@ describe('Field', () => {
 
     it('touches the element', () => {
       const _ = field.optionalStringValue();
-      expect(field._touched).toBe(true);
+      expect(field._instruction.touched).toBe(true);
     });
 
     it('returns null when empty', () => {
@@ -59,19 +59,19 @@ describe('Field', () => {
 
     describe('without key, with value', () => {
       it('returns a debug abstraction', () => {
-        expect(item.toString()).toEqual('[object Field value="item"]');
+        expect(item.toString()).toEqual('[object ListItem value="item"]');
       });
     });
 
     describe('with no key and value', () => {
       it('returns a debug abstraction', () => {
-        expect(emptyItem.toString()).toEqual('[object Field value=null]');
+        expect(emptyItem.toString()).toEqual('[object ListItem value=null]');
       });
     });
 
     describe('without key, with long value', () => {
       it('returns a debug abstraction with a truncated value', () => {
-        expect(itemWithLongValue.toString()).toEqual('[object Field value="long item v..."]');
+        expect(itemWithLongValue.toString()).toEqual('[object ListItem value="long item v..."]');
       });
     });
   });
@@ -90,7 +90,7 @@ describe('Field', () => {
 
     it('touches the element', () => {
       const _ = field.requiredValue(value => value.toUpperCase());
-      expect(field._touched).toBe(true);
+      expect(field._instruction.touched).toBe(true);
     });
 
     describe('when empty', () => {

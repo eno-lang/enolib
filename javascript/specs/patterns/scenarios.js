@@ -92,7 +92,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_VALUE_INDEX]: 'Comment Value'
+      [matcher.COMMENT_INDEX]: 'Comment Value'
     },
     syntax: '>Comment Value',
     variants: ['>Comment Value', ' >Comment Value', '   >Comment Value']
@@ -100,7 +100,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_VALUE_INDEX]: 'Comment Value'
+      [matcher.COMMENT_INDEX]: 'Comment Value'
     },
     syntax: '> Comment Value',
     variants: ['> Comment Value', ' > Comment Value', '   > Comment Value']
@@ -108,7 +108,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_VALUE_INDEX]: 'Comment Value'
+      [matcher.COMMENT_INDEX]: 'Comment Value'
     },
     syntax: '> Comment Value ',
     variants: ['> Comment Value ', ' > Comment Value ', '   > Comment Value ']
@@ -116,7 +116,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_VALUE_INDEX]: 'Comment Value'
+      [matcher.COMMENT_INDEX]: 'Comment Value'
     },
     syntax: '>   Comment Value   ',
     variants: ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']

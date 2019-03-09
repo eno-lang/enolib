@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset raw() returns a native object representation 1`] = `
+Object {
+  "entries": Array [
+    Object {
+      "key": "entry",
+      "type": "fieldsetEntry",
+      "value": "value",
+    },
+    Object {
+      "key": "other",
+      "type": "fieldsetEntry",
+      "value": "value",
+    },
+  ],
+  "key": "fieldset",
+  "type": "fieldset",
+}
+`;

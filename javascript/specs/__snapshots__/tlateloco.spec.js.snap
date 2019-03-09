@@ -1,64 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tlateloco sample parses correctly 1`] = `
-Array [
-  Object {
-    "Titel": "Tlatelolco: Wohnblocks, Ruinen und Massaker",
-  },
-  Object {
-    "Untertitel": "»Tlatelolco«, ein Film von Lotte Schreiber",
-  },
-  Object {
-    "Bild": null,
-  },
-  Object {
-    "Autoren": Array [
-      "Georg Oswald",
-    ],
-  },
-  Object {
-    "Datum": "2013-01-01",
-  },
-  Object {
-    "Sprache": "DE",
-  },
-  Object {
-    "Kategorien": Array [
-      "Besprechung",
-      "Film",
-    ],
-  },
-  Object {
-    "Tags": Array [
-      "Mexiko",
-      "Tlatelolco",
-      "Olympische Spiele",
-      "Architektur",
-      "Mexico City",
-      "Polizeigewalt",
-    ],
-  },
-  Object {
-    "Permalink": "tlatelolco-wohnblocks-ruinen-und-massaker",
-  },
-  Object {
-    "Buchbesprechungen": null,
-  },
-  Object {
-    "Lesbar": "Ja",
-  },
-  Object {
-    "Urbanize": null,
-  },
-  Object {
-    "Abstract": null,
-  },
-  Object {
-    "Text": "Der Stadtteil Tlatelolco ist ein Ort, ...
+Object {
+  "elements": Array [
+    Object {
+      "key": "Titel",
+      "type": "field",
+      "value": "Tlatelolco: Wohnblocks, Ruinen und Massaker",
+    },
+    Object {
+      "key": "Untertitel",
+      "type": "field",
+      "value": "»Tlatelolco«, ein Film von Lotte Schreiber",
+    },
+    Object {
+      "key": "Bild",
+      "type": "emptyElement",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "Georg Oswald",
+        },
+      ],
+      "key": "Autoren",
+      "type": "list",
+    },
+    Object {
+      "key": "Datum",
+      "type": "field",
+      "value": "2013-01-01",
+    },
+    Object {
+      "key": "Sprache",
+      "type": "field",
+      "value": "DE",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "Besprechung",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Film",
+        },
+      ],
+      "key": "Kategorien",
+      "type": "list",
+    },
+    Object {
+      "items": Array [
+        Object {
+          "type": "listItem",
+          "value": "Mexiko",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Tlatelolco",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Olympische Spiele",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Architektur",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Mexico City",
+        },
+        Object {
+          "type": "listItem",
+          "value": "Polizeigewalt",
+        },
+      ],
+      "key": "Tags",
+      "type": "list",
+    },
+    Object {
+      "key": "Permalink",
+      "type": "field",
+      "value": "tlatelolco-wohnblocks-ruinen-und-massaker",
+    },
+    Object {
+      "key": "Buchbesprechungen",
+      "type": "emptyElement",
+    },
+    Object {
+      "key": "Lesbar",
+      "type": "field",
+      "value": "Ja",
+    },
+    Object {
+      "key": "Urbanize",
+      "type": "emptyElement",
+    },
+    Object {
+      "key": "Abstract",
+      "type": "field",
+      "value": null,
+    },
+    Object {
+      "key": "Text",
+      "type": "field",
+      "value": "Der Stadtteil Tlatelolco ist ein Ort, ...
 ...Österreich, Mexiko, 75 min",
-  },
-  Object {
-    "Literaturverzeichnis": null,
-  },
-]
+    },
+    Object {
+      "key": "Literaturverzeichnis",
+      "type": "field",
+      "value": null,
+    },
+  ],
+  "type": "document",
+}
 `;

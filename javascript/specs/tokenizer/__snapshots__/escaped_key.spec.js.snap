@@ -2,11 +2,7 @@
 
 exports[`Escaped key tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -35,7 +31,7 @@ Object {
             6,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "ke\`y",
@@ -63,7 +59,7 @@ Object {
             17,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "k\`\`ey",
@@ -91,7 +87,7 @@ Object {
             35,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "\`key\`",
@@ -119,7 +115,7 @@ Object {
             57,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
       Object {
         "key": "key",
@@ -147,20 +143,12 @@ Object {
             65,
           ],
         },
-        "type": Symbol(Element),
+        "type": Symbol(Empty Element),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "\`key\`:
-
-\`\`ke\`y\`\`:
-
-\`\`\`k\`\`ey\`\`\`    :
-
-    \`\` \`key\` \`\`    :
-
-\`key\`:",
-  "lineCount": 9,
-  "meta": Array [],
+  "_lineCount": 9,
+  "_meta": Array [],
 }
 `;

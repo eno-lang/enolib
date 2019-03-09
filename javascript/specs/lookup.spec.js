@@ -1,4 +1,4 @@
-const eno = require('..');
+const enolib = require('..');
 
 const sample = `
 color: cyan
@@ -98,9 +98,9 @@ describe('Element/Token lookup', () => {
 
       let lookup;
       if(scenario.position.length === 1) {
-        lookup = eno.lookup({ index: scenario.position[0] }, sample);
+        lookup = enolib.lookup({ index: scenario.position[0] }, sample);
       } else {
-        lookup = eno.lookup({ column: scenario.position[1], line: scenario.position[0] }, sample);
+        lookup = enolib.lookup({ column: scenario.position[1], line: scenario.position[0] }, sample);
       }
 
       it(`looks up element '${scenario.element}'`, () => {

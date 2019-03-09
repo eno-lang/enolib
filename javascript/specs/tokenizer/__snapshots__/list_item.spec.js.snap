@@ -2,11 +2,7 @@
 
 exports[`List item tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
@@ -137,19 +133,9 @@ Object {
         "type": Symbol(List),
       },
     ],
+    "type": Symbol(Document),
   },
-  "input": "list:
-
-- value
-
--    value
-
-    - value
-
-    -    value
-
-- value",
-  "lineCount": 11,
-  "meta": Array [],
+  "_lineCount": 11,
+  "_meta": Array [],
 }
 `;

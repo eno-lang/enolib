@@ -6,7 +6,7 @@ describe('Property issues', () => {
       it('does not have any side effects', () => {
         const document = eno.parse('toString: ok');
 
-        expect(document.raw()).toEqual([{ toString: 'ok' }]);
+        expect(document.raw()).toMatchSnapshot();
       });
     });
 
@@ -17,7 +17,7 @@ describe('Property issues', () => {
           check = ok
         `);
 
-        expect(document.raw()).toEqual([{ toString: [{ check: 'ok' }] }]);
+        expect(document.raw()).toMatchSnapshot();
       });
     });
 
@@ -28,7 +28,7 @@ describe('Property issues', () => {
           toString = ok
         `);
 
-        expect(document.raw()).toEqual([{ check: [{ toString: 'ok' }] }]);
+        expect(document.raw()).toMatchSnapshot();
       });
     });
 

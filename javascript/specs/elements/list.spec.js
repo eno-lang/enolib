@@ -1,5 +1,5 @@
 const eno = require('../..');
-const { Field } = require('../../lib/elements/field.js');
+const { ListItem } = require('../../lib/elements/list_item.js');
 
 describe('List', () => {
   let list;
@@ -15,12 +15,12 @@ list:
   });
 
   it('is untouched after initialization', () => {
-    expect(list._touched).toBe(false);
+    expect(list._instruction.touched).toBeUndefined();
   });
 
   it('has only untouched items after initialization', () => {
     for(const item of list.items()) {
-      expect(item._touched).toBe(false);
+      expect(item._instruction.touched).toBeUndefined();
     }
   });
 
@@ -32,18 +32,18 @@ list:
     });
 
     it('touches the list itself', () => {
-      expect(list._touched).toBe(true);
+      expect(list._instruction.touched).toBe(true);
     });
 
     it('does not touch the list items', () => {
       for(const item of items) {
-        expect(item._touched).toBe(false);
+        expect(item._instruction.touched).toBeUndefined();
       }
     });
 
     it('returns the items', () => {
       for(const item of items) {
-        expect(item).toBeInstanceOf(Field);
+        expect(item).toBeInstanceOf(ListItem);
       }
     });
   });
@@ -60,12 +60,12 @@ list:
     });
 
     it('touches the list itself', () => {
-      expect(list._touched).toBe(true);
+      expect(list._instruction.touched).toBe(true);
     });
 
     it('touches all list items', () => {
       for(const item of list.items()) {
-        expect(item._touched).toBe(true);
+        expect(item._instruction.touched).toBe(true);
       }
     });
   });
@@ -80,12 +80,12 @@ list:
     });
 
     it('touches the element', () => {
-      expect(list._touched).toBe(true);
+      expect(list._instruction.touched).toBe(true);
     });
 
     it('touches all list items', () => {
       for(const item of list.items()) {
-        expect(item._touched).toBe(true);
+        expect(item._instruction.touched).toBe(true);
       }
     });
   });
@@ -98,7 +98,7 @@ list:
 
   describe('raw()', () => {
     it('returns a native object representation', () => {
-      expect(list.raw()).toEqual({ list: ['item', 'other'] });
+      expect(list.raw()).toMatchSnapshot();
     });
   });
 
@@ -120,12 +120,12 @@ list:
     });
 
     it('touches the list itself', () => {
-      expect(list._touched).toBe(true);
+      expect(list._instruction.touched).toBe(true);
     });
 
     it('touches the list items', () => {
       for(const item of list.items()) {
-        expect(item._touched).toBe(true);
+        expect(item._instruction.touched).toBe(true);
       }
     });
   });

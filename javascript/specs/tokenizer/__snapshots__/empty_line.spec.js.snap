@@ -2,40 +2,24 @@
 
 exports[`Empty line tokenization Zero-length input performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [],
+    "type": Symbol(Document),
   },
-  "input": "",
-  "lineCount": 1,
-  "meta": Array [],
+  "_lineCount": 1,
+  "_meta": Array [],
 }
 `;
 
 exports[`Empty line tokenization performs as specified 1`] = `
 Object {
-  "copy": Object {
-    "nonSectionElements": Object {},
-    "sections": Object {},
-  },
-  "document": Object {
+  "_document": Object {
     "depth": 0,
     "elements": Array [],
+    "type": Symbol(Document),
   },
-  "input": "
- 
-  
-   
-
- 
-  
-   
-",
-  "lineCount": 9,
-  "meta": Array [],
+  "_lineCount": 9,
+  "_meta": Array [],
 }
 `;

@@ -79,6 +79,10 @@ KEY, LINE = The multiline field '[KEY]' starting in line [LINE] is not terminate
 Comment Error:
 MESSAGE = There is a problem with the comment of this element: [MESSAGE]
 
+Expected Empty: An empty element was expected.
+Expected Empty With Key:
+KEY = An empty element with the key '[KEY]' was expected.
+
 Expected Field: A field was expected.
 Expected Field With Key:
 KEY = A field with the key '[KEY]' was expected.
@@ -88,6 +92,7 @@ Expected Fields With Key:
 KEY = Only fields with the key '[KEY]' were expected.
 
 Expected Fieldset: A fieldset was expected.
+Expected Fieldset Entry: A fieldset entry was expected.
 Expected Fieldset With Key:
 KEY = A fieldset with the key '[KEY]' was expected.
 
@@ -96,6 +101,7 @@ Expected Fieldsets With Key:
 KEY = Only fieldsets with the key '[KEY]' were expected.
 
 Expected List: A list was expected.
+Expected List Item: A list item was expected.
 Expected List With Key:
 KEY = A list with the key '[KEY]' was expected.
 
@@ -114,6 +120,10 @@ KEY = Only sections with the key '[KEY]' were expected.
 Expected Single Element: Only a single element was expected.
 Expected Single Element With Key:
 KEY = Only a single element with the key '[KEY]' was expected.
+
+Expected Single Empty: Only a single empty element was expected.
+Expected Single Empty With Key:
+KEY = Only a single empty element with the key '[KEY]' was expected.
 
 Expected Single Field: Only a single field was expected.
 Expected Single Field With Key:
@@ -146,6 +156,12 @@ Missing Element: A single element is required - it can have any key.
 
 Missing Element With Key:
 KEY = The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+Missing Empty: A single empty element is required - it can have any key.
+
+Missing Empty With Key:
+KEY = The empty element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
 
 Missing Field: A single field is required - it can have any key.
 

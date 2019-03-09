@@ -2,7 +2,7 @@ const eno = require('..');
 const { HtmlReporter, TerminalReporter } = require('..');
 
 describe('Parser options', () => {
-  describe('sourceLabel', () => {
+  describe('source', () => {
     it('is printed in text reports if provided', () => {
       expect(() => eno.parse('boom!', { source: '/some/dubious-file.eno' })).toThrowErrorMatchingSnapshot();
     });

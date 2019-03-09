@@ -22,7 +22,7 @@ const CONTINUATION = `${DIRECT_LINE_CONTINUATION}|${SPACED_LINE_CONTINUATION}`;
 // > Comment
 const COMMENT = `(>)[^\\S\\n]*${OPTIONAL}`;
 exports.COMMENT_OPERATOR_INDEX = 6;
-exports.COMMENT_VALUE_INDEX = 7;
+exports.COMMENT_INDEX = 7;
 
 // - [value]
 const LIST_ITEM = `(-)(?!-)[^\\S\\n]*${OPTIONAL}`;

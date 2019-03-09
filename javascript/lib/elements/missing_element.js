@@ -1,13 +1,7 @@
-// TODO: Probably we can inherit this in all Missing* implementations?
-
 class MissingElement {
   constructor(key, parent) {
     this._key = key;
     this._parent = parent;
-  }
-
-  get [Symbol.toStringTag]() {
-    return 'MissingElement';
   }
 
   _missingError(_element) {
@@ -26,6 +20,7 @@ class MissingElement {
     return null;
   }
 
+  // TODO: I think this I wanted to remove here and elsewhere and re-implement as internal helper for specs?
   raw() {
     return null;
   }
@@ -40,10 +35,6 @@ class MissingElement {
 
   stringKey() {
     this._parent._missingError(this);
-  }
-
-  toString() {
-    return `[object MissingElement key="${this._key}"]`;
   }
 }
 
