@@ -4,6 +4,17 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.3.0
+
+### Features
+
+- Implement unique isolated touch hierarchies `1d5f47e`
+
+### Maintenance
+
+- Update jest `7f78d3a`
+- Use enolib global in all specs `590cb71`
+
 ## 0.2.0
 
 ### Features
