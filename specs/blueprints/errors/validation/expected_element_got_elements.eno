@@ -6,7 +6,7 @@ element:
 -- input
 
 -- javascript
-eno.parse(input).element('element');
+enolib.parse(input).element('element');
 -- javascript
 
 -- php
@@ -46,7 +46,7 @@ element:
 -- input
 
 -- javascript
-eno.parse(input).element('element');
+enolib.parse(input).element('element');
 -- javascript
 
 -- php

@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting an element but getting two elements', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Expecting an element but getting two elements', () => {
                   `element:`;
 
     try {
-      eno.parse(input).element('element');
+      enolib.parse(input).element('element');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only a single element with the key 'element' was expected.`;
     
@@ -47,16 +47,16 @@ describe('Expecting an element but getting two elements with comments and empty 
                   `element:`;
 
     try {
-      eno.parse(input).element('element');
+      enolib.parse(input).element('element');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only a single element with the key 'element' was expected.`;
     

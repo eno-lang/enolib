@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-eno.parse(input).section('section').requiredFieldset('fieldset');
+enolib.parse(input).section('section').requiredFieldset('fieldset');
 -- javascript
 
 -- php

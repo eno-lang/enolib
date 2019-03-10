@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const { HtmlReporter } = require('../..');
 
 const input = `
@@ -26,7 +26,7 @@ entry = value
 
 describe('HTML reporter', () => {
   it('produces html output', () => {
-    const document = eno.parse(input, { reporter: HtmlReporter });
+    const document = enolib.parse(input, { reporter: HtmlReporter });
 
     const snippet = new document._context.reporter(document._context).reportElement(document._context._document.elements[0]).snippet();
 

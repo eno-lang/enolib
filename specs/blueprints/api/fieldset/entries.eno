@@ -7,7 +7,7 @@ fieldset:
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').entries().map(entry => entry.requiredStringValue());
+const output = enolib.parse(input).fieldset('fieldset').entries().map(entry => entry.requiredStringValue());
 -- javascript
 
 -- php
@@ -51,7 +51,7 @@ other = two
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').entries('other').map(entry => entry.requiredStringValue());
+const output = enolib.parse(input).fieldset('fieldset').entries('other').map(entry => entry.requiredStringValue());
 -- javascript
 
 -- php

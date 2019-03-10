@@ -1,10 +1,10 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Asserting everything was touched on an empty document', () => {
   it('produces the expected result', () => {
     const input = ``;
 
-    eno.parse(input).assertAllTouched();
+    enolib.parse(input).assertAllTouched();
 
     expect('it passes').toBeTruthy();
   });
@@ -17,16 +17,16 @@ describe('Asserting everything was touched on an untouched document containing a
     const input = `field: value`;
 
     try {
-      eno.parse(input).assertAllTouched();
+      enolib.parse(input).assertAllTouched();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.`;
     
@@ -51,16 +51,16 @@ describe('Asserting everything was touched on an untouched document containing a
     const input = `field: value`;
 
     try {
-      eno.parse(input).assertAllTouched('my message');
+      enolib.parse(input).assertAllTouched('my message');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `my message`;
     
@@ -85,16 +85,16 @@ describe('Asserting everything was touched on an untouched document containing a
     const input = `field: value`;
 
     try {
-      eno.parse(input).assertAllTouched(element => `my generated message for unexpected element '${element.stringKey()}'`);
+      enolib.parse(input).assertAllTouched(element => `my generated message for unexpected element '${element.stringKey()}'`);
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `my generated message for unexpected element 'field'`;
     

@@ -5,7 +5,7 @@ field: value
 -- input
 
 -- javascript
-eno.parse(input).sections('field');
+enolib.parse(input).sections('field');
 -- javascript
 
 -- php
@@ -43,7 +43,7 @@ field:
 -- input
 
 -- javascript
-eno.parse(input).sections('field');
+enolib.parse(input).sections('field');
 -- javascript
 
 -- php
@@ -85,7 +85,7 @@ field: value
 -- input
 
 -- javascript
-eno.parse(input).sections('field');
+enolib.parse(input).sections('field');
 -- javascript
 
 -- php

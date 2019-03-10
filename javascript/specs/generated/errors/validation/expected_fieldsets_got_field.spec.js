@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting fieldsets but getting a field', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Expecting fieldsets but getting a field', () => {
     const input = `field: value`;
 
     try {
-      eno.parse(input).fieldsets('field');
+      enolib.parse(input).fieldsets('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fieldsets with the key 'field' were expected.`;
     
@@ -43,16 +43,16 @@ describe('Expecting fieldsets but getting a field with continuations', () => {
                   `| continuation`;
 
     try {
-      eno.parse(input).fieldsets('field');
+      enolib.parse(input).fieldsets('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fieldsets with the key 'field' were expected.`;
     
@@ -84,16 +84,16 @@ describe('Expecting fieldsets but getting a field with continuations separated b
                   `| continuation`;
 
     try {
-      eno.parse(input).fieldsets('field');
+      enolib.parse(input).fieldsets('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fieldsets with the key 'field' were expected.`;
     

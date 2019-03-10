@@ -8,7 +8,7 @@ value
 -- input
 
 -- javascript
-const output = eno.parse(input).field('multiline_field').requiredStringComment();
+const output = enolib.parse(input).field('multiline_field').requiredStringComment();
 -- javascript
 
 -- php
@@ -40,7 +40,7 @@ value
 -- input
 
 -- javascript
-const output = eno.parse(input).field('multiline_field').requiredStringComment();
+const output = enolib.parse(input).field('multiline_field').requiredStringComment();
 -- javascript
 
 -- php
@@ -78,7 +78,7 @@ value
 -- input
 
 -- javascript
-const output = eno.parse(input).field('multiline_field').requiredStringComment();
+const output = enolib.parse(input).field('multiline_field').requiredStringComment();
 -- javascript
 
 -- php
@@ -113,7 +113,7 @@ value
 -- input
 
 -- javascript
-const output = eno.parse(input).field('multiline_field').optionalStringComment();
+const output = enolib.parse(input).field('multiline_field').optionalStringComment();
 -- javascript
 
 -- php
@@ -143,7 +143,7 @@ value
 -- input
 
 -- javascript
-const output = eno.parse(input).field('multiline_field').optionalStringComment();
+const output = enolib.parse(input).field('multiline_field').optionalStringComment();
 -- javascript
 
 -- php

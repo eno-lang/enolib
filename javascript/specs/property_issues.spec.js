@@ -1,10 +1,10 @@
-const eno = require('..');
+const enolib = require('..');
 
 describe('Property issues', () => {
   describe('Section', () => {
     describe('toString as field key', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('toString: ok');
+        const document = enolib.parse('toString: ok');
 
         expect(document.raw()).toMatchSnapshot();
       });
@@ -12,7 +12,7 @@ describe('Property issues', () => {
 
     describe('toString as fieldset key', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse(`
+        const document = enolib.parse(`
           toString:
           check = ok
         `);
@@ -23,7 +23,7 @@ describe('Property issues', () => {
 
     describe('toString as fieldset entry', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse(`
+        const document = enolib.parse(`
           check:
           toString = ok
         `);
@@ -34,13 +34,13 @@ describe('Property issues', () => {
 
     describe('toString as missing template', () => {
       it('does not have any side effects', () => {
-        expect(() => eno.parse('check < toString')).toThrowErrorMatchingSnapshot();
+        expect(() => enolib.parse('check < toString')).toThrowErrorMatchingSnapshot();
       });
     });
 
     describe('toString as key in a complex merge', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse(`
+        const document = enolib.parse(`
           # a
           ## toString
           toString:
@@ -62,7 +62,7 @@ describe('Property issues', () => {
 
     describe('fetching from a missing toString field', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('');
+        const document = enolib.parse('');
 
         expect(document.field('toString').optionalStringValue()).toBe(null);
       });
@@ -70,7 +70,7 @@ describe('Property issues', () => {
 
     describe("fetching a missing fieldset with the key 'toString'", () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('');
+        const document = enolib.parse('');
 
         expect(document.optionalFieldset('toString')).toBe(null);
       });
@@ -78,7 +78,7 @@ describe('Property issues', () => {
 
     describe("fetching a missing list with the key 'toString'", () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('');
+        const document = enolib.parse('');
 
         expect(document.list('toString').optionalStringValues()).toEqual([]);
       });
@@ -86,7 +86,7 @@ describe('Property issues', () => {
 
     describe("fetching a missing section with the key 'toString'", () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('');
+        const document = enolib.parse('');
 
         expect(document.optionalSection('toString')).toBe(null);
       });
@@ -94,7 +94,7 @@ describe('Property issues', () => {
 
     describe("fetching missing sections with the key 'toString'", () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('');
+        const document = enolib.parse('');
 
         expect(document.sections('toString')).toEqual([]);
       });
@@ -102,7 +102,7 @@ describe('Property issues', () => {
 
     describe('asserting toString has been touched', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse('');
+        const document = enolib.parse('');
 
         expect(() => document.assertAllTouched({ only: 'toString' })).not.toThrow();
       });
@@ -114,7 +114,7 @@ describe('Property issues', () => {
 
     describe('asserting toString has been touched', () => {
       it('does not have any side effects', () => {
-        const document = eno.parse(`
+        const document = enolib.parse(`
 color ratings:
 red = 1
 blue = 2
@@ -128,7 +128,7 @@ blue = 2
 
     describe("fetching a missing fieldset entry with the key 'toString'", () => {
       it('does not have any side effects', () => {
-        const document = eno.parse(`
+        const document = enolib.parse(`
 color ratings:
 red = 1
 blue = 2

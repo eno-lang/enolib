@@ -6,7 +6,7 @@ list:
 -- input
 
 -- javascript
-eno.parse(input).list('list').items()[0].requiredStringValue();
+enolib.parse(input).list('list').items()[0].requiredStringValue();
 -- javascript
 
 -- php
@@ -43,7 +43,7 @@ list:
 -- input
 
 -- javascript
-eno.parse(input).list('list').requiredStringValues();
+enolib.parse(input).list('list').requiredStringValues();
 -- javascript
 
 -- php

@@ -7,7 +7,7 @@ value
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched()
+enolib.parse(input).assertAllTouched()
 -- javascript
 
 -- php
@@ -46,7 +46,7 @@ value
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.field('multiline_field').touch();
 document.assertAllTouched();

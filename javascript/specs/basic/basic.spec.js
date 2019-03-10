@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const fs = require('fs');
 const path = require('path');
 
@@ -22,7 +22,7 @@ Value
 
 describe('A basic testrun', () => {
   test('succeeds', () => {
-    const document = eno.parse(input);
+    const document = enolib.parse(input);
 
     expect(document.raw()).toMatchSnapshot();
   });

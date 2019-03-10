@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying the document for a required but missing list', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Querying the document for a required but missing list', () => {
     const input = ``;
 
     try {
-      eno.parse(input).requiredList('list');
+      enolib.parse(input).requiredList('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The list 'list' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     
@@ -41,16 +41,16 @@ describe('Querying a section for a required but missing list', () => {
     const input = `# section`;
 
     try {
-      eno.parse(input).section('section').requiredList('list');
+      enolib.parse(input).section('section').requiredList('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The list 'list' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     

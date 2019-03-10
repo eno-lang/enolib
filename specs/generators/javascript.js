@@ -16,7 +16,7 @@ module.exports = async specs => {
       if(test.hasOwnProperty('error')) {
         const { selection, snippet, text, type } = test.error;
 
-        const expectations = [`expect(error).toBeInstanceOf(eno.${type});`];
+        const expectations = [`expect(error).toBeInstanceOf(enolib.${type});`];
 
         if(text) {
           expectations.push(interpolatify`
@@ -51,9 +51,9 @@ module.exports = async specs => {
               const input = ${quotedJavaScriptMultilineString(test.input)};
 
               try {
-                ${type === 'ParseError' ? 'eno.parse(input);' : test.javascript}
+                ${type === 'ParseError' ? 'enolib.parse(input);' : test.javascript}
               } catch(_error) {
-                if(_error instanceof eno.${type}) {
+                if(_error instanceof enolib.${type}) {
                   error = _error;
                 } else {
                   throw _error;
@@ -98,7 +98,7 @@ module.exports = async specs => {
     }
 
     const code = interpolatify`
-      const eno = require('../..${'/..'.repeat((spec.path.match(/\//g) || []).length)}');
+      const enolib = require('../..${'/..'.repeat((spec.path.match(/\//g) || []).length)}');
 
       ${tests.join('\n\n')}
     `;

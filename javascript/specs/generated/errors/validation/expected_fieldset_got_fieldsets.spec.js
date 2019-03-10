@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting a fieldset but getting two fieldsets', () => {
   it('throws the expected ValidationError', () => {
@@ -10,16 +10,16 @@ describe('Expecting a fieldset but getting two fieldsets', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input).fieldset('fieldset');
+      enolib.parse(input).fieldset('fieldset');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only a single fieldset with the key 'fieldset' was expected.`;
     
@@ -55,16 +55,16 @@ describe('Expecting a fieldset but getting two fieldsets with comments, empty li
                   `entry = value`;
 
     try {
-      eno.parse(input).fieldset('fieldset');
+      enolib.parse(input).fieldset('fieldset');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only a single fieldset with the key 'fieldset' was expected.`;
     

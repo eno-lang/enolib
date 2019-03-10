@@ -1,10 +1,10 @@
-const eno = require('../..');
+const enolib = require('../..');
 
 describe('Section', () => {
   let section;
 
   beforeEach(() => {
-    section = eno.parse('');
+    section = enolib.parse('');
   });
 
   describe('elements()', () => {

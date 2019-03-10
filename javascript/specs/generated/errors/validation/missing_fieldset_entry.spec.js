@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an empty fieldset for a required but missing entry', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Querying an empty fieldset for a required but missing entry', () => {
     const input = `fieldset:`;
 
     try {
-      eno.parse(input).fieldset('fieldset').requiredEntry('entry');
+      enolib.parse(input).fieldset('fieldset').requiredEntry('entry');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The fieldset entry 'entry' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     
@@ -43,16 +43,16 @@ describe('Querying a fieldset with two entries for a required but missing entry'
                   `entry = value`;
 
     try {
-      eno.parse(input).fieldset('fieldset').requiredEntry('missing');
+      enolib.parse(input).fieldset('fieldset').requiredEntry('missing');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The fieldset entry 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     
@@ -85,16 +85,16 @@ describe('Querying a fieldset with entries, empty lines and comments for a requi
                   `entry = value`;
 
     try {
-      eno.parse(input).fieldset('fieldset').requiredEntry('missing');
+      enolib.parse(input).fieldset('fieldset').requiredEntry('missing');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The fieldset entry 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     

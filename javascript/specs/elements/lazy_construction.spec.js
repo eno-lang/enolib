@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const { Field } = require('../../lib/elements/field.js');
 const { Fieldset } = require('../../lib/elements/fieldset.js');
 const { List } = require('../../lib/elements/list.js');
@@ -7,7 +7,7 @@ describe('Fetching an empty element through fieldset()', () => {
   let fieldset;
 
   beforeEach(() => {
-    fieldset = eno.parse('fieldset:').fieldset('fieldset');
+    fieldset = enolib.parse('fieldset:').fieldset('fieldset');
   });
 
   it('returns a fieldset', () => {
@@ -20,7 +20,7 @@ describe('Fetching an empty element through fieldset()', () => {
 
   describe('when allElementsRequired was enabled on the document', () => {
     beforeEach(() => {
-      const document = eno.parse('fieldset:');
+      const document = enolib.parse('fieldset:');
 
       document.allElementsRequired();
 
@@ -37,7 +37,7 @@ describe('Fetching an empty element through fieldsets()', () => {
   let fieldsets;
 
   beforeEach(() => {
-    fieldsets = eno.parse('fieldset:').fieldsets('fieldset');
+    fieldsets = enolib.parse('fieldset:').fieldsets('fieldset');
   });
 
   it('returns one element', () => {
@@ -54,7 +54,7 @@ describe('Fetching an empty element through fieldsets()', () => {
 
   describe('when allElementsRequired was enabled on the document', () => {
     beforeEach(() => {
-      const document = eno.parse('fieldset:');
+      const document = enolib.parse('fieldset:');
 
       document.allElementsRequired();
 
@@ -71,7 +71,7 @@ describe('Fetching an empty element through fields()', () => {
   let fields;
 
   beforeEach(() => {
-    fields = eno.parse('field:').fields('field');
+    fields = enolib.parse('field:').fields('field');
   });
 
   it('returns one element', () => {
@@ -87,7 +87,7 @@ describe('Fetching an empty element through lists()', () => {
   let lists;
 
   beforeEach(() => {
-    lists = eno.parse('list:').lists('list');
+    lists = enolib.parse('list:').lists('list');
   });
 
   it('returns one element', () => {

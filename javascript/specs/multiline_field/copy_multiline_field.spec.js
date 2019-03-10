@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const fs = require('fs');
 const path = require('path');
 
@@ -16,7 +16,7 @@ Copied Multiline Field < Multiline Field
 
 describe('Copying a multiline field', () => {
   test('succeeds', () => {
-    const document = eno.parse(input);
+    const document = enolib.parse(input);
     expect(document.raw()).toMatchSnapshot();
   });
 });

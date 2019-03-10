@@ -1,4 +1,4 @@
-const eno = require('../javascript');
+const enolib = require('../javascript');
 const glob = require('fast-glob');
 const fs = require('fs');
 const path = require('path');
@@ -23,7 +23,7 @@ module.exports = async () => {
   const blueprints = await glob('**/*.eno', { cwd: path.join(__dirname, 'blueprints') })
 
   for(const file of blueprints.sort()) {
-    const specDocument = eno.parse(
+    const specDocument = enolib.parse(
       await fs.promises.readFile(path.join(__dirname, 'blueprints', file), 'utf-8'),
       { reporter: TerminalReporter, source: file }
     );

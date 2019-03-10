@@ -6,7 +6,7 @@ entry = value
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched();
+enolib.parse(input).assertAllTouched();
 -- javascript
 
 -- php
@@ -43,7 +43,7 @@ entry = value
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.fieldset('fieldset').touch();
 document.assertAllTouched();

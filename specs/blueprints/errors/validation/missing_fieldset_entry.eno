@@ -5,7 +5,7 @@ fieldset:
 -- input
 
 -- javascript
-eno.parse(input).fieldset('fieldset').requiredEntry('entry');
+enolib.parse(input).fieldset('fieldset').requiredEntry('entry');
 -- javascript
 
 -- php
@@ -42,7 +42,7 @@ entry = value
 -- input
 
 -- javascript
-eno.parse(input).fieldset('fieldset').requiredEntry('missing');
+enolib.parse(input).fieldset('fieldset').requiredEntry('missing');
 -- javascript
 
 -- php
@@ -85,7 +85,7 @@ entry = value
 -- input
 
 -- javascript
-eno.parse(input).fieldset('fieldset').requiredEntry('missing');
+enolib.parse(input).fieldset('fieldset').requiredEntry('missing');
 -- javascript
 
 -- php

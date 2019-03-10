@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying a section for a required but missing comment', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Querying a section for a required but missing comment', () => {
     const input = `# section`;
 
     try {
-      eno.parse(input).section('section').requiredComment();
+      enolib.parse(input).section('section').requiredComment();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A required comment for this element is missing.`;
     

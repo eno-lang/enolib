@@ -6,7 +6,7 @@
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').requiredStringComment();
+const output = enolib.parse(input).section('section').requiredStringComment();
 -- javascript
 
 -- php
@@ -36,7 +36,7 @@ comment
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').requiredStringComment();
+const output = enolib.parse(input).section('section').requiredStringComment();
 -- javascript
 
 -- php
@@ -72,7 +72,7 @@ comment
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').requiredStringComment();
+const output = enolib.parse(input).section('section').requiredStringComment();
 -- javascript
 
 -- php
@@ -105,7 +105,7 @@ comment
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').optionalStringComment();
+const output = enolib.parse(input).section('section').optionalStringComment();
 -- javascript
 
 -- php
@@ -133,7 +133,7 @@ comment
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').optionalStringComment();
+const output = enolib.parse(input).section('section').optionalStringComment();
 -- javascript
 
 -- php

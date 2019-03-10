@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an existing required string value from a multline field', () => {
   it('produces the expected result', () => {
@@ -6,7 +6,7 @@ describe('Querying an existing required string value from a multline field', () 
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').requiredStringValue();
+    const output = enolib.parse(input).field('multiline_field').requiredStringValue();
 
     const expected = `value`;
     
@@ -20,7 +20,7 @@ describe('Querying an existing optional string value from a multline field', () 
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').optionalStringValue();
+    const output = enolib.parse(input).field('multiline_field').optionalStringValue();
 
     const expected = `value`;
     
@@ -33,7 +33,7 @@ describe('Querying a missing optional string value from a multline field', () =>
     const input = `-- multiline_field\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').optionalStringValue();
+    const output = enolib.parse(input).field('multiline_field').optionalStringValue();
 
     expect(output).toBeNull();
   });

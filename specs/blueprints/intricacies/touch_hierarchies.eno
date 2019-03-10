@@ -8,7 +8,7 @@ field: value
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.section('section').stringKey();
 document.section('copy').field('field').stringKey();

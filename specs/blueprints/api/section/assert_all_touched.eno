@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched();
+enolib.parse(input).assertAllTouched();
 -- javascript
 
 -- php
@@ -29,7 +29,7 @@ field: value
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched();
+enolib.parse(input).assertAllTouched();
 -- javascript
 
 -- php
@@ -64,7 +64,7 @@ field: value
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched('my message');
+enolib.parse(input).assertAllTouched('my message');
 -- javascript
 
 -- php
@@ -99,7 +99,7 @@ field: value
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched(element => `my generated message for unexpected element '${element.stringKey()}'`);
+enolib.parse(input).assertAllTouched(element => `my generated message for unexpected element '${element.stringKey()}'`);
 -- javascript
 
 -- php

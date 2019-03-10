@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying a section for a required but missing fieldset', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Querying a section for a required but missing fieldset', () => {
     const input = `# section`;
 
     try {
-      eno.parse(input).section('section').requiredFieldset('fieldset');
+      enolib.parse(input).section('section').requiredFieldset('fieldset');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The fieldset 'fieldset' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     

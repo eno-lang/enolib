@@ -1,4 +1,4 @@
-const eno = require('../../..');
+const enolib = require('../../..');
 
 describe('Touching elements in a section that were copied from another section does not touch the original elements', () => {
   it('throws the expected ValidationError', () => {
@@ -10,21 +10,21 @@ describe('Touching elements in a section that were copied from another section d
                   `# copy < section`;
 
     try {
-      const document = eno.parse(input);
+      const document = enolib.parse(input);
       
       document.section('section').stringKey();
       document.section('copy').field('field').stringKey();
       
       document.assertAllTouched();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.`;
     

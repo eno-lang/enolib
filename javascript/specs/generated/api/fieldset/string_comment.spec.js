@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an existing, single-line, required string comment from a fieldset', () => {
   it('produces the expected result', () => {
@@ -6,7 +6,7 @@ describe('Querying an existing, single-line, required string comment from a fiel
                   `fieldset:\n` +
                   `entry = value`;
 
-    const output = eno.parse(input).fieldset('fieldset').requiredStringComment();
+    const output = enolib.parse(input).fieldset('fieldset').requiredStringComment();
 
     const expected = `comment`;
     
@@ -21,7 +21,7 @@ describe('Querying an existing, two-line, required string comment from a fieldse
                   `fieldset:\n` +
                   `entry = value`;
 
-    const output = eno.parse(input).fieldset('fieldset').requiredStringComment();
+    const output = enolib.parse(input).fieldset('fieldset').requiredStringComment();
 
     const expected = `comment\n` +
                      `  comment`;
@@ -42,7 +42,7 @@ describe('Querying an existing, required string comment with blank lines from a 
                   `fieldset:\n` +
                   `entry = value`;
 
-    const output = eno.parse(input).fieldset('fieldset').requiredStringComment();
+    const output = enolib.parse(input).fieldset('fieldset').requiredStringComment();
 
     const expected = `    comment\n` +
                      `\n` +
@@ -60,7 +60,7 @@ describe('Querying an optional, existing string comment from a fieldset', () => 
                   `fieldset:\n` +
                   `entry = value`;
 
-    const output = eno.parse(input).fieldset('fieldset').optionalStringComment();
+    const output = enolib.parse(input).fieldset('fieldset').optionalStringComment();
 
     const expected = `comment`;
     
@@ -73,7 +73,7 @@ describe('Querying an optional, missing string comment from a fieldset', () => {
     const input = `fieldset:\n` +
                   `entry = value`;
 
-    const output = eno.parse(input).fieldset('fieldset').optionalStringComment();
+    const output = enolib.parse(input).fieldset('fieldset').optionalStringComment();
 
     expect(output).toBeNull();
   });

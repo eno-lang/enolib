@@ -1,11 +1,11 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an existing, single-line, required string comment from a section', () => {
   it('produces the expected result', () => {
     const input = `> comment\n` +
                   `# section`;
 
-    const output = eno.parse(input).section('section').requiredStringComment();
+    const output = enolib.parse(input).section('section').requiredStringComment();
 
     const expected = `comment`;
     
@@ -19,7 +19,7 @@ describe('Querying an existing, two-line, required string comment from a section
                   `>  comment\n` +
                   `# section`;
 
-    const output = eno.parse(input).section('section').requiredStringComment();
+    const output = enolib.parse(input).section('section').requiredStringComment();
 
     const expected = `comment\n` +
                      `  comment`;
@@ -39,7 +39,7 @@ describe('Querying an existing, required string comment with blank lines from a 
                   `>\n` +
                   `# section`;
 
-    const output = eno.parse(input).section('section').requiredStringComment();
+    const output = enolib.parse(input).section('section').requiredStringComment();
 
     const expected = `    comment\n` +
                      `\n` +
@@ -56,7 +56,7 @@ describe('Querying an optional, existing string comment from a section', () => {
     const input = `> comment\n` +
                   `# section`;
 
-    const output = eno.parse(input).section('section').optionalStringComment();
+    const output = enolib.parse(input).section('section').optionalStringComment();
 
     const expected = `comment`;
     
@@ -68,7 +68,7 @@ describe('Querying an optional, missing string comment from a section', () => {
   it('produces the expected result', () => {
     const input = `# section`;
 
-    const output = eno.parse(input).section('section').optionalStringComment();
+    const output = enolib.parse(input).section('section').optionalStringComment();
 
     expect(output).toBeNull();
   });

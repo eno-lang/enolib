@@ -1,14 +1,14 @@
-const eno = require('../..');
+const enolib = require('../..');
 
 describe('Field', () => {
   let emptyField, emptyItem, field, item, itemWithLongValue;
 
   beforeEach(() => {
-    emptyField = eno.parse('field:\n|').field('field');
-    emptyItem = eno.parse('list:\n-').list('list').items()[0];
-    field = eno.parse('field: value').field('field');
-    item = eno.parse('list:\n- item').list('list').items()[0];
-    itemWithLongValue = eno.parse('list:\n- long item value is long').list('list').items()[0];
+    emptyField = enolib.parse('field:\n|').field('field');
+    emptyItem = enolib.parse('list:\n-').list('list').items()[0];
+    field = enolib.parse('field: value').field('field');
+    item = enolib.parse('list:\n- item').list('list').items()[0];
+    itemWithLongValue = enolib.parse('list:\n- long item value is long').list('list').items()[0];
   });
 
   it('is untouched after initialization', () => {

@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying a fieldset entry for a required but missing value', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Querying a fieldset entry for a required but missing value', () => {
                   `entry =`;
 
     try {
-      eno.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
+      enolib.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The fieldset entry 'entry' must contain a value.`;
     

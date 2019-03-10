@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 
 const input = `
 Field: [value]
@@ -33,7 +33,7 @@ List with empty item:
 describe('Blackbox test', () => {
   describe('Continuations', () => {
     it('performs as expected', () => {
-      expect(eno.parse(input).raw()).toMatchSnapshot();
+      expect(enolib.parse(input).raw()).toMatchSnapshot();
     });
   });
 });

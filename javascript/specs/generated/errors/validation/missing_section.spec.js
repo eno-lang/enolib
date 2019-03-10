@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an empty document for a required but missing section', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Querying an empty document for a required but missing section', () => 
     const input = ``;
 
     try {
-      eno.parse(input).requiredSection('section');
+      enolib.parse(input).requiredSection('section');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The section 'section' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     
@@ -41,16 +41,16 @@ describe('Querying a section for a required but missing section', () => {
     const input = `# section`;
 
     try {
-      eno.parse(input).section('section').requiredSection('section');
+      enolib.parse(input).section('section').requiredSection('section');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The section 'section' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     

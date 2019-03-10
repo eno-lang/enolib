@@ -7,7 +7,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').requiredStringValues();
+const output = enolib.parse(input).list('list').requiredStringValues();
 -- javascript
 
 -- php
@@ -49,7 +49,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').optionalStringValues();
+const output = enolib.parse(input).list('list').optionalStringValues();
 -- javascript
 
 -- php
@@ -91,7 +91,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').optionalStringValues();
+const output = enolib.parse(input).list('list').optionalStringValues();
 -- javascript
 
 -- php

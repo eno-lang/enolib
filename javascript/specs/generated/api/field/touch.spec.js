@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Asserting everything was touched when the only present field was not touched', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Asserting everything was touched when the only present field was not t
     const input = `field: value`;
 
     try {
-      eno.parse(input).assertAllTouched()
+      enolib.parse(input).assertAllTouched()
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.`;
     
@@ -38,7 +38,7 @@ describe('Asserting everything was touched when the only present field was touch
   it('produces the expected result', () => {
     const input = `field: value`;
 
-    const document = eno.parse(input);
+    const document = enolib.parse(input);
     
     document.field('field').touch();
     document.assertAllTouched();

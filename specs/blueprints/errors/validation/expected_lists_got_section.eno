@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-eno.parse(input).lists('section');
+enolib.parse(input).lists('section');
 -- javascript
 
 -- php
@@ -47,7 +47,7 @@ list:
 -- input
 
 -- javascript
-eno.parse(input).lists('section');
+enolib.parse(input).lists('section');
 -- javascript
 
 -- php
@@ -98,7 +98,7 @@ list:
 -- input
 
 -- javascript
-eno.parse(input).lists('section');
+enolib.parse(input).lists('section');
 -- javascript
 
 -- php

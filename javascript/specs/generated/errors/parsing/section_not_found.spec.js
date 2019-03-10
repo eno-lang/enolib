@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Copying a section that does not exist', () => {
   it('throws the expected ParseError', () => {
@@ -7,16 +7,16 @@ describe('Copying a section that does not exist', () => {
     const input = `# copy < section`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 1 the section 'section' should be copied, but it was not found.`;
     
@@ -43,16 +43,16 @@ describe('Copying a section whose key only exists on a field', () => {
                   `# copy < field`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 3 the section 'field' should be copied, but it was not found.`;
     
@@ -82,16 +82,16 @@ describe('Copying a section whose key only exists on a fieldset', () => {
                   `# copy < fieldset`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 4 the section 'fieldset' should be copied, but it was not found.`;
     
@@ -122,16 +122,16 @@ describe('Copying a section whose key only exists on a list', () => {
                   `# copy < list`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 4 the section 'list' should be copied, but it was not found.`;
     
@@ -163,16 +163,16 @@ describe('Copying a section whose key only exists on a multiline field', () => {
                   `# copy < multiline_field`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 5 the section 'multiline_field' should be copied, but it was not found.`;
     
@@ -203,16 +203,16 @@ describe('Copying a section whose key only exists on an empty multiline field', 
                   `# copy < multiline_field`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 4 the section 'multiline_field' should be copied, but it was not found.`;
     
@@ -243,16 +243,16 @@ describe('Copying a section whose key only exists on a fieldset entry', () => {
                   `# copy < entry`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 4 the section 'entry' should be copied, but it was not found.`;
     

@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting fieldsets but getting a list with one item', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Expecting fieldsets but getting a list with one item', () => {
                   `- item`;
 
     try {
-      eno.parse(input).fieldsets('list');
+      enolib.parse(input).fieldsets('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fieldsets with the key 'list' were expected.`;
     
@@ -50,16 +50,16 @@ describe('Expecting fieldsets but getting a list with empty lines and multiple i
                   ``;
 
     try {
-      eno.parse(input).fieldsets('list');
+      enolib.parse(input).fieldsets('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fieldsets with the key 'list' were expected.`;
     
@@ -96,16 +96,16 @@ describe('Expecting fieldsets but getting a list with two items with comments', 
                   `- item`;
 
     try {
-      eno.parse(input).fieldsets('list');
+      enolib.parse(input).fieldsets('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fieldsets with the key 'list' were expected.`;
     

@@ -5,7 +5,7 @@ element:
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched()
+enolib.parse(input).assertAllTouched()
 -- javascript
 
 -- php
@@ -40,7 +40,7 @@ element:
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.empty('element').touch();
 document.assertAllTouched();
@@ -76,7 +76,7 @@ field:
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.field('field').touch();
 document.assertAllTouched();
@@ -112,7 +112,7 @@ fieldset:
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.fieldset('fieldset').touch();
 document.assertAllTouched();
@@ -148,7 +148,7 @@ list:
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.list('list').touch();
 document.assertAllTouched();

@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('A multiline field with an incomplete multiline field operator in the ending line', () => {
   it('throws the expected ParseError', () => {
@@ -11,16 +11,16 @@ describe('A multiline field with an incomplete multiline field operator in the e
                   `- multiline_field`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `The multiline field 'multiline_field' starting in line 1 is not terminated until the end of the document.`;
     
@@ -53,16 +53,16 @@ describe('A multiline field with an edge case key and missing space in the endin
                   `---`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `The multiline field '-' starting in line 1 is not terminated until the end of the document.`;
     

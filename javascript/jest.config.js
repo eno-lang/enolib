@@ -1,8 +1,5 @@
 module.exports = {
-  collectCoverageFrom: [
-    "eno.js",
-    "lib/**"
-  ],
+  collectCoverageFrom: ["lib/**"],
   setupFilesAfterEnv: ['./jest.setup.js'],
   testRegex: '/specs/.*\\.spec\\.js$'
 };

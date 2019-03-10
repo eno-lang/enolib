@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('A line without operators', () => {
   it('throws the expected ParseError', () => {
@@ -10,16 +10,16 @@ describe('A line without operators', () => {
                   `illegal`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 4 does not follow any specified pattern.`;
     

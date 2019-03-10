@@ -1,10 +1,10 @@
-const eno = require('../..');
+const enolib = require('../..');
 
 describe('Empty', () => {
   let empty;
 
   beforeEach(() => {
-    empty = eno.parse('element:').empty('element');
+    empty = enolib.parse('element:').empty('element');
   });
 
   it('is untouched after initialization', () => {

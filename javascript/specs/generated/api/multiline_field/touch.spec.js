@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Asserting everything was touched when the only present multiline field was not touched', () => {
   it('throws the expected ValidationError', () => {
@@ -9,16 +9,16 @@ describe('Asserting everything was touched when the only present multiline field
                   `-- multiline_field`;
 
     try {
-      eno.parse(input).assertAllTouched()
+      enolib.parse(input).assertAllTouched()
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.`;
     
@@ -44,7 +44,7 @@ describe('Asserting everything was touched when the only present multiline field
                   `value\n` +
                   `-- multiline_field`;
 
-    const document = eno.parse(input);
+    const document = enolib.parse(input);
     
     document.field('multiline_field').touch();
     document.assertAllTouched();

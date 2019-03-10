@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const fs = require('fs');
 const path = require('path');
 
@@ -26,7 +26,7 @@ Line E: Du hast mich gefragt und ich hab nichts gesagt
 
 describe('Du hast', () => {
   test('succeeds', () => {
-    const document = eno.parse(input);
+    const document = enolib.parse(input);
     expect(document.raw()).toMatchSnapshot();
   });
 });

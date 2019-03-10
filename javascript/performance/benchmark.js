@@ -1,4 +1,4 @@
-const eno = require('..');
+const enolib = require('..');
 const fs = require('fs');
 const path = require('path');
 
@@ -33,7 +33,7 @@ for(let [name, content] of Object.entries(SAMPLES)) {
 
   while(milliseconds < 4000) {
     for(let i = 0; i < 1000; i++) {
-      eno.parse(content);
+      enolib.parse(content);
     }
 
     iterations += 1000;

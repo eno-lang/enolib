@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Parsing a list item without any previous element', () => {
   it('throws the expected ParseError', () => {
@@ -7,16 +7,16 @@ describe('Parsing a list item without any previous element', () => {
     const input = `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 1 contains a list item without a list being specified before.`;
     
@@ -43,16 +43,16 @@ describe('Parsing a list item preceded by a line continuation', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 3 contains a list item without a list being specified before.`;
     
@@ -81,16 +81,16 @@ describe('Parsing a list item preceded by a fieldset entry', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 3 contains a list item without a list being specified before.`;
     
@@ -120,16 +120,16 @@ describe('Parsing a list item preceded by a copied field', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 4 contains a list item without a list being specified before.`;
     
@@ -161,16 +161,16 @@ describe('Parsing a list item preceded by a copied fieldset', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 5 contains a list item without a list being specified before.`;
     
@@ -203,16 +203,16 @@ describe('Parsing a list item preceded by a multiline field', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 6 contains a list item without a list being specified before.`;
     
@@ -244,16 +244,16 @@ describe('Parsing a list item preceded by an empty multiline field', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 5 contains a list item without a list being specified before.`;
     

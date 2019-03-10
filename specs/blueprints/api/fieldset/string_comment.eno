@@ -7,7 +7,7 @@ entry = value
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').requiredStringComment();
+const output = enolib.parse(input).fieldset('fieldset').requiredStringComment();
 -- javascript
 
 -- php
@@ -38,7 +38,7 @@ entry = value
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').requiredStringComment();
+const output = enolib.parse(input).fieldset('fieldset').requiredStringComment();
 -- javascript
 
 -- php
@@ -75,7 +75,7 @@ entry = value
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').requiredStringComment();
+const output = enolib.parse(input).fieldset('fieldset').requiredStringComment();
 -- javascript
 
 -- php
@@ -109,7 +109,7 @@ entry = value
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').optionalStringComment();
+const output = enolib.parse(input).fieldset('fieldset').optionalStringComment();
 -- javascript
 
 -- php
@@ -138,7 +138,7 @@ entry = value
 -- input
 
 -- javascript
-const output = eno.parse(input).fieldset('fieldset').optionalStringComment();
+const output = enolib.parse(input).fieldset('fieldset').optionalStringComment();
 -- javascript
 
 -- php

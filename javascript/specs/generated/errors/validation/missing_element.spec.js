@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying a section for a required but missing element', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Querying a section for a required but missing element', () => {
     const input = `# section`;
 
     try {
-      eno.parse(input).section('section').requiredElement('element');
+      enolib.parse(input).section('section').requiredElement('element');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The element 'element' is missing - in case it has been specified look for typos and also check for correct capitalization.`;
     

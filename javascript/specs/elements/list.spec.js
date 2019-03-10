@@ -1,11 +1,11 @@
-const eno = require('../..');
+const enolib = require('../..');
 const { ListItem } = require('../../lib/elements/list_item.js');
 
 describe('List', () => {
   let list;
 
   beforeEach(() => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 list:
 - item
 - other

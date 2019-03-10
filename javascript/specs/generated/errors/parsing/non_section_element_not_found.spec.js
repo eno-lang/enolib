@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Copying a non-section element that does not exist', () => {
   it('throws the expected ParseError', () => {
@@ -7,16 +7,16 @@ describe('Copying a non-section element that does not exist', () => {
     const input = `copy < element`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 1 the non-section element 'element' should be copied, but it was not found.`;
     
@@ -45,16 +45,16 @@ describe('Copying a non-section element whose key only exists on a section', () 
                   `copy < section`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 5 the non-section element 'section' should be copied, but it was not found.`;
     
@@ -87,16 +87,16 @@ describe('Copying an implied fieldset whose key only exists on a section', () =>
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 5 the non-section element 'section' should be copied, but it was not found.`;
     
@@ -130,16 +130,16 @@ describe('Copying an implied list whose key only exists on a section', () => {
                   `- item`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 5 the non-section element 'section' should be copied, but it was not found.`;
     

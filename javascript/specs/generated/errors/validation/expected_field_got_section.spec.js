@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting a field but getting an empty section', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Expecting a field but getting an empty section', () => {
     const input = `# section`;
 
     try {
-      eno.parse(input).field('section');
+      enolib.parse(input).field('section');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A field with the key 'section' was expected.`;
     
@@ -47,16 +47,16 @@ describe('Expecting a field but getting a section with a field and a list', () =
                   `- item`;
 
     try {
-      eno.parse(input).field('section');
+      enolib.parse(input).field('section');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A field with the key 'section' was expected.`;
     
@@ -97,16 +97,16 @@ describe('Expecting a field but getting a section with subsections', () => {
                   `- item`;
 
     try {
-      eno.parse(input).field('section');
+      enolib.parse(input).field('section');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A field with the key 'section' was expected.`;
     

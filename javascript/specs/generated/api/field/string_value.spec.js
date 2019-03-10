@@ -1,10 +1,10 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an existing required string value from a field', () => {
   it('produces the expected result', () => {
     const input = `field: value`;
 
-    const output = eno.parse(input).field('field').requiredStringValue();
+    const output = enolib.parse(input).field('field').requiredStringValue();
 
     const expected = `value`;
     
@@ -16,7 +16,7 @@ describe('Querying an existing optional string value from a field', () => {
   it('produces the expected result', () => {
     const input = `field: value`;
 
-    const output = eno.parse(input).field('field').optionalStringValue();
+    const output = enolib.parse(input).field('field').optionalStringValue();
 
     const expected = `value`;
     
@@ -28,7 +28,7 @@ describe('Querying a missing optional string value from a field', () => {
   it('produces the expected result', () => {
     const input = `field:`;
 
-    const output = eno.parse(input).field('field').optionalStringValue();
+    const output = enolib.parse(input).field('field').optionalStringValue();
 
     expect(output).toBeNull();
   });

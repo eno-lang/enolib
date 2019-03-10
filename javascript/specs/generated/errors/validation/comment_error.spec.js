@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Triggering an error inside a custom loader when querying a required comment on a field', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Triggering an error inside a custom loader when querying a required co
                   `field: value`;
 
     try {
-      eno.parse(input).field('field').requiredComment(() => { throw 'my error'; });
+      enolib.parse(input).field('field').requiredComment(() => { throw 'my error'; });
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the comment of this element: my error`;
     

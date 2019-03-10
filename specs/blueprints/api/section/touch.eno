@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-eno.parse(input).assertAllTouched()
+enolib.parse(input).assertAllTouched()
 -- javascript
 
 -- php
@@ -40,7 +40,7 @@ selection: [0,0] => [0,9]
 -- input
 
 -- javascript
-const document = eno.parse(input);
+const document = enolib.parse(input);
 
 document.section('section').touch();
 document.assertAllTouched();

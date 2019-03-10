@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const { FieldsetEntry } = require('../../lib/elements/fieldset_entry.js');
 const { MissingFieldsetEntry } = require('../../lib/elements/missing_fieldset_entry.js');
 
@@ -6,7 +6,7 @@ describe('Fieldset', () => {
   let fieldset;
 
   beforeEach(() => {
-    fieldset =  eno.parse(`
+    fieldset =  enolib.parse(`
 fieldset:
 entry = value
 other = value

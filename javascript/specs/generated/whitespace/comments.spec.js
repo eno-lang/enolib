@@ -1,4 +1,4 @@
-const eno = require('../../..');
+const enolib = require('../../..');
 
 describe('Querying a comment with complex indentation from a section', () => {
   it('produces the expected result', () => {
@@ -11,7 +11,7 @@ describe('Querying a comment with complex indentation from a section', () => {
                   `                                 >\n` +
                   `# section`;
 
-    const output = eno.parse(input).section('section').requiredStringComment();
+    const output = enolib.parse(input).section('section').requiredStringComment();
 
     const expected = `indented 0 spaces\n` +
                      `\n` +

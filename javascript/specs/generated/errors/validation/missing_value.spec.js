@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying a fieldset entry for a required but missing value', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Querying a fieldset entry for a required but missing value', () => {
                   `entry =`;
 
     try {
-      eno.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
+      enolib.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The fieldset entry 'entry' must contain a value.`;
     
@@ -43,16 +43,16 @@ describe('Querying a field for a required but missing value', () => {
     const input = `field:`;
 
     try {
-      eno.parse(input).field('field').requiredStringValue();
+      enolib.parse(input).field('field').requiredStringValue();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The field 'field' must contain a value.`;
     
@@ -80,16 +80,16 @@ describe('Querying a field with empty line continuations for a required but miss
                   `|`;
 
     try {
-      eno.parse(input).field('field').requiredStringValue();
+      enolib.parse(input).field('field').requiredStringValue();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The field 'field' must contain a value.`;
     
@@ -119,16 +119,16 @@ describe('Querying a list with an empty item for required values', () => {
                   `-`;
 
     try {
-      eno.parse(input).list('list').requiredStringValues();
+      enolib.parse(input).list('list').requiredStringValues();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The list 'list' may not contain empty items.`;
     

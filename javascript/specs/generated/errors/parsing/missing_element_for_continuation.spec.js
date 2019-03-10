@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Parsing a line continuation without any prior element', () => {
   it('throws the expected ParseError', () => {
@@ -7,16 +7,16 @@ describe('Parsing a line continuation without any prior element', () => {
     const input = `| continuation`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 1 contains a line continuation without a continuable element being specified before.`;
     
@@ -44,16 +44,16 @@ describe('Parsing a line continuation preceded by a copied field', () => {
                   `| illegal_continuation`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 4 contains a line continuation without a continuable element being specified before.`;
     

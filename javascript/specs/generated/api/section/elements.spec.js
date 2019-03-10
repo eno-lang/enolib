@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying all elements from a section', () => {
   it('produces the expected result', () => {
@@ -6,7 +6,7 @@ describe('Querying all elements from a section', () => {
                   `one: value\n` +
                   `two: value`;
 
-    const output = eno.parse(input).section('section').elements().map(element => element.stringKey());
+    const output = enolib.parse(input).section('section').elements().map(element => element.stringKey());
 
     expect(output).toEqual(['one', 'two']);
   });
@@ -19,7 +19,7 @@ describe('Querying elements from a section by key', () => {
                   `other: one\n` +
                   `other: two`;
 
-    const output = eno.parse(input).section('section').elements('other').map(element => element.toField().requiredStringValue());
+    const output = enolib.parse(input).section('section').elements('other').map(element => element.toField().requiredStringValue());
 
     expect(output).toEqual(['one', 'two']);
   });

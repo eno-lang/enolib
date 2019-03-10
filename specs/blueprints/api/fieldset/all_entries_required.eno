@@ -5,7 +5,7 @@ fieldset:
 -- input
 
 -- javascript
-const fieldset = eno.parse(input).fieldset('fieldset');
+const fieldset = enolib.parse(input).fieldset('fieldset');
 
 fieldset.allEntriesRequired();
 fieldset.entry('entry');
@@ -45,7 +45,7 @@ fieldset:
 -- input
 
 -- javascript
-const fieldset = eno.parse(input).fieldset('fieldset');
+const fieldset = enolib.parse(input).fieldset('fieldset');
 
 fieldset.allEntriesRequired(true);
 fieldset.entry('entry');
@@ -85,7 +85,7 @@ fieldset:
 -- input
 
 -- javascript
-const fieldset = eno.parse(input).fieldset('fieldset');
+const fieldset = enolib.parse(input).fieldset('fieldset');
 
 fieldset.allEntriesRequired(false);
 fieldset.entry('entry');
@@ -121,7 +121,7 @@ fieldset:
 -- input
 
 -- javascript
-const fieldset = eno.parse(input).fieldset('fieldset');
+const fieldset = enolib.parse(input).fieldset('fieldset');
 
 fieldset.allEntriesRequired(true);
 fieldset.allEntriesRequired(false);

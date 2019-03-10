@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Asserting everything was touched on an untouched document', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Asserting everything was touched on an untouched document', () => {
     const input = `field: value`;
 
     try {
-      eno.parse(input).assertAllTouched();
+      enolib.parse(input).assertAllTouched();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.`;
     
@@ -41,16 +41,16 @@ describe('Asserting everything was touched on an untouched document, with a cust
     const input = `field: value`;
 
     try {
-      eno.parse(input).assertAllTouched('my custom message');
+      enolib.parse(input).assertAllTouched('my custom message');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `my custom message`;
     

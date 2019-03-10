@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an existing, single-line, required string comment from a field', () => {
   it('produces the expected result', () => {
@@ -7,7 +7,7 @@ describe('Querying an existing, single-line, required string comment from a fiel
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').requiredStringComment();
+    const output = enolib.parse(input).field('multiline_field').requiredStringComment();
 
     const expected = `comment`;
     
@@ -23,7 +23,7 @@ describe('Querying an existing, two-line, required string comment from a field',
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').requiredStringComment();
+    const output = enolib.parse(input).field('multiline_field').requiredStringComment();
 
     const expected = `comment\n` +
                      `  comment`;
@@ -45,7 +45,7 @@ describe('Querying an existing, required string comment with blank lines from a 
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').requiredStringComment();
+    const output = enolib.parse(input).field('multiline_field').requiredStringComment();
 
     const expected = `    comment\n` +
                      `\n` +
@@ -64,7 +64,7 @@ describe('Querying an optional, existing string comment from a field', () => {
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').optionalStringComment();
+    const output = enolib.parse(input).field('multiline_field').optionalStringComment();
 
     const expected = `comment`;
     
@@ -78,7 +78,7 @@ describe('Querying an optional, missing string comment from a field', () => {
                   `value\n` +
                   `-- multiline_field`;
 
-    const output = eno.parse(input).field('multiline_field').optionalStringComment();
+    const output = enolib.parse(input).field('multiline_field').optionalStringComment();
 
     expect(output).toBeNull();
   });

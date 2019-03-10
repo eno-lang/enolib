@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying a value from a field with a loader that always produces an error', () => {
   it('throws the expected ValidationError', () => {
@@ -9,16 +9,16 @@ describe('Querying a value from a field with a loader that always produces an er
     try {
       const loader = value => { throw `my error for '${value}'`; };
       
-      eno.parse(input).field('field').requiredValue(loader);
+      enolib.parse(input).field('field').requiredValue(loader);
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my error for 'value'`;
     
@@ -43,16 +43,16 @@ describe('Requesting a value error from a field with a static message', () => {
     const input = `field: value`;
 
     try {
-      throw eno.parse(input).field('field').valueError('my static message');
+      throw enolib.parse(input).field('field').valueError('my static message');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my static message`;
     
@@ -77,16 +77,16 @@ describe('Requesting a value error from a field with a dynamically generated mes
     const input = `field: value`;
 
     try {
-      throw eno.parse(input).field('field').valueError(value => `my generated message for '${value}'`);
+      throw enolib.parse(input).field('field').valueError(value => `my generated message for '${value}'`);
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my generated message for 'value'`;
     
@@ -113,16 +113,16 @@ describe('Requesting a value error from a multiline field with a static message'
                   `-- multiline_field`;
 
     try {
-      throw eno.parse(input).field('multiline_field').valueError('my static message');
+      throw enolib.parse(input).field('multiline_field').valueError('my static message');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my static message`;
     
@@ -151,16 +151,16 @@ describe('Requesting a value error from a multiline field with a dynamically gen
                   `-- multiline_field`;
 
     try {
-      throw eno.parse(input).field('multiline_field').valueError(value => `my generated message for '${value}'`);
+      throw enolib.parse(input).field('multiline_field').valueError(value => `my generated message for '${value}'`);
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my generated message for 'value'`;
     
@@ -188,16 +188,16 @@ describe('Requesting a value error from an empty multiline field with a static m
                   `-- multiline_field`;
 
     try {
-      throw eno.parse(input).field('multiline_field').valueError('my static message');
+      throw enolib.parse(input).field('multiline_field').valueError('my static message');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my static message`;
     
@@ -224,16 +224,16 @@ describe('Requesting a value error from an empty multiline field with a dynamica
                   `-- multiline_field`;
 
     try {
-      throw eno.parse(input).field('multiline_field').valueError(value => `my generated message`);
+      throw enolib.parse(input).field('multiline_field').valueError(value => `my generated message`);
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my generated message`;
     
@@ -264,16 +264,16 @@ describe('Requesting a value error from a field with continuations with a static
                   `|`;
 
     try {
-      throw eno.parse(input).field('field').valueError('my static message');
+      throw enolib.parse(input).field('field').valueError('my static message');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my static message`;
     
@@ -308,16 +308,16 @@ describe('Requesting a value error from a field with continuations with a dynami
                   `|`;
 
     try {
-      throw eno.parse(input).field('field').valueError(value => `my generated message for '${value}'`);
+      throw enolib.parse(input).field('field').valueError(value => `my generated message for '${value}'`);
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my generated message for 'value continuation continuation'`;
     

@@ -5,7 +5,7 @@ field: value
 -- input
 
 -- javascript
-eno.parse(input).field('field').key(() => { throw 'my error'; });
+enolib.parse(input).field('field').key(() => { throw 'my error'; });
 -- javascript
 
 -- php

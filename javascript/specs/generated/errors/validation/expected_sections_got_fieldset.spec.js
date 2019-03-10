@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting sections but getting a fieldset with one item', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Expecting sections but getting a fieldset with one item', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input).sections('fieldset');
+      enolib.parse(input).sections('fieldset');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only sections with the key 'fieldset' were expected.`;
     
@@ -50,16 +50,16 @@ describe('Expecting sections but getting a fieldset with empty lines and multipl
                   ``;
 
     try {
-      eno.parse(input).sections('fieldset');
+      enolib.parse(input).sections('fieldset');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only sections with the key 'fieldset' were expected.`;
     
@@ -96,16 +96,16 @@ describe('Expecting sections but getting a fieldset with two entries with commen
                   `entry = value`;
 
     try {
-      eno.parse(input).sections('fieldset');
+      enolib.parse(input).sections('fieldset');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only sections with the key 'fieldset' were expected.`;
     

@@ -7,7 +7,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').requiredStringComment();
+const output = enolib.parse(input).list('list').requiredStringComment();
 -- javascript
 
 -- php
@@ -38,7 +38,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').requiredStringComment();
+const output = enolib.parse(input).list('list').requiredStringComment();
 -- javascript
 
 -- php
@@ -75,7 +75,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').requiredStringComment();
+const output = enolib.parse(input).list('list').requiredStringComment();
 -- javascript
 
 -- php
@@ -109,7 +109,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').optionalStringComment();
+const output = enolib.parse(input).list('list').optionalStringComment();
 -- javascript
 
 -- php
@@ -138,7 +138,7 @@ list:
 -- input
 
 -- javascript
-const output = eno.parse(input).list('list').optionalStringComment();
+const output = enolib.parse(input).list('list').optionalStringComment();
 -- javascript
 
 -- php

@@ -5,7 +5,7 @@ field: value
 -- input
 
 -- javascript
-throw eno.parse(input).field('field').valueError('my message')
+throw enolib.parse(input).field('field').valueError('my message')
 -- javascript
 
 -- php
@@ -40,7 +40,7 @@ field: value
 -- input
 
 -- javascript
-throw eno.parse(input).field('field').valueError(value => `my generated message for value '${value}'`)
+throw enolib.parse(input).field('field').valueError(value => `my generated message for value '${value}'`)
 -- javascript
 
 -- php

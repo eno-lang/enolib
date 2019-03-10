@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const { Field } = require('../..');
 
 const input = `
@@ -22,9 +22,9 @@ describe('register', () => {
   let missingField, missingFieldset, missingList, missingSection;
 
   beforeAll(() => {
-    eno.register({ custom: value => `custom ${value}` });
+    enolib.register({ custom: value => `custom ${value}` });
 
-    document = eno.parse(input);
+    document = enolib.parse(input);
 
     field = document.field('field');
     fieldset = document.fieldset('fieldset');

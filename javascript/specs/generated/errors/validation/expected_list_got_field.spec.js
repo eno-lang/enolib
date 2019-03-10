@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting a list but getting a field', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Expecting a list but getting a field', () => {
     const input = `field: value`;
 
     try {
-      eno.parse(input).list('field');
+      enolib.parse(input).list('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A list with the key 'field' was expected.`;
     
@@ -43,16 +43,16 @@ describe('Expecting a list but getting a field with continuations', () => {
                   `| continuation`;
 
     try {
-      eno.parse(input).list('field');
+      enolib.parse(input).list('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A list with the key 'field' was expected.`;
     
@@ -84,16 +84,16 @@ describe('Expecting a list but getting a field with continuations separated by i
                   `| continuation`;
 
     try {
-      eno.parse(input).list('field');
+      enolib.parse(input).list('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `A list with the key 'field' was expected.`;
     

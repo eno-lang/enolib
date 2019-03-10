@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('A single field with an terminated escaped key', () => {
   it('throws the expected ParseError', () => {
@@ -7,16 +7,16 @@ describe('A single field with an terminated escaped key', () => {
     const input = `\`field: value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.`;
     
@@ -41,16 +41,16 @@ describe('A single section with an unterminated escaped key', () => {
     const input = `# \`field: value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.`;
     

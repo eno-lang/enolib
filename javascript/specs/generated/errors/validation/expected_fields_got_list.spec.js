@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting fields but getting a list with one item', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Expecting fields but getting a list with one item', () => {
                   `- item`;
 
     try {
-      eno.parse(input).fields('list');
+      enolib.parse(input).fields('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fields with the key 'list' were expected.`;
     
@@ -50,16 +50,16 @@ describe('Expecting fields but getting a list with empty lines and multiple item
                   ``;
 
     try {
-      eno.parse(input).fields('list');
+      enolib.parse(input).fields('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fields with the key 'list' were expected.`;
     
@@ -96,16 +96,16 @@ describe('Expecting fields but getting a list with two items with comments', () 
                   `- item`;
 
     try {
-      eno.parse(input).fields('list');
+      enolib.parse(input).fields('list');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only fields with the key 'list' were expected.`;
     

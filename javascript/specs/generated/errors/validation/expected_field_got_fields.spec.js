@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting a field but getting two fields', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Expecting a field but getting two fields', () => {
                   `field: value`;
 
     try {
-      eno.parse(input).field('field');
+      enolib.parse(input).field('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only a single field with the key 'field' was expected.`;
     
@@ -51,16 +51,16 @@ describe('Expecting a field but getting two fields with comments, empty lines an
                   `| continutation`;
 
     try {
-      eno.parse(input).field('field');
+      enolib.parse(input).field('field');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only a single field with the key 'field' was expected.`;
     

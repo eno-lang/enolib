@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Directly querying a list item for a required but missing value', () => {
   it('throws the expected ValidationError', () => {
@@ -8,16 +8,16 @@ describe('Directly querying a list item for a required but missing value', () =>
                   `-`;
 
     try {
-      eno.parse(input).list('list').items()[0].requiredStringValue();
+      enolib.parse(input).list('list').items()[0].requiredStringValue();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The list 'list' may not contain empty items.`;
     
@@ -44,16 +44,16 @@ describe('Indirectly querying a list with empty items for required values', () =
                   `-`;
 
     try {
-      eno.parse(input).list('list').requiredStringValues();
+      enolib.parse(input).list('list').requiredStringValues();
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `The list 'list' may not contain empty items.`;
     

@@ -7,7 +7,7 @@ two: value
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').elements().map(element => element.stringKey());
+const output = enolib.parse(input).section('section').elements().map(element => element.stringKey());
 -- javascript
 
 -- php
@@ -51,7 +51,7 @@ other: two
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').elements('other').map(element => element.toField().requiredStringValue());
+const output = enolib.parse(input).section('section').elements('other').map(element => element.toField().requiredStringValue());
 -- javascript
 
 -- php

@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Obtaining and throwing an error with a custom message in the context of a field\'s value', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Obtaining and throwing an error with a custom message in the context o
     const input = `field: value`;
 
     try {
-      throw eno.parse(input).field('field').valueError('my message')
+      throw enolib.parse(input).field('field').valueError('my message')
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my message`;
     
@@ -41,16 +41,16 @@ describe('Obtaining and throwing an error with a custom generated message in the
     const input = `field: value`;
 
     try {
-      throw eno.parse(input).field('field').valueError(value => `my generated message for value '${value}'`)
+      throw enolib.parse(input).field('field').valueError(value => `my generated message for value '${value}'`)
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `There is a problem with the value of this element: my generated message for value 'value'`;
     

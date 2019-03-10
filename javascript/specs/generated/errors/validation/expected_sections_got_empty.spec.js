@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Expecting sections but getting an empty element', () => {
   it('throws the expected ValidationError', () => {
@@ -7,16 +7,16 @@ describe('Expecting sections but getting an empty element', () => {
     const input = `element:`;
 
     try {
-      eno.parse(input).sections('element');
+      enolib.parse(input).sections('element');
     } catch(_error) {
-      if(_error instanceof eno.ValidationError) {
+      if(_error instanceof enolib.ValidationError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ValidationError);
+    expect(error).toBeInstanceOf(enolib.ValidationError);
     
     const text = `Only sections with the key 'element' were expected.`;
     

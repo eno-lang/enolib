@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Starting a section two levels deeper than the current one', () => {
   it('throws the expected ParseError', () => {
@@ -8,16 +8,16 @@ describe('Starting a section two levels deeper than the current one', () => {
                   `### subsubsection`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 2 starts a section that is more than one level deeper than the current one.`;
     

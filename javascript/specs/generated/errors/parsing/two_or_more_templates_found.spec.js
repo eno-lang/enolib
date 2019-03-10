@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Copying a field that exists twice', () => {
   it('throws the expected ParseError', () => {
@@ -10,16 +10,16 @@ describe('Copying a field that exists twice', () => {
                   `copy < field`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `There are at least two elements with the key 'field' that qualify for being copied here, it is not clear which to copy.`;
     
@@ -51,16 +51,16 @@ describe('Copying a section that exists twice', () => {
                   `# copy < section`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `There are at least two elements with the key 'section' that qualify for being copied here, it is not clear which to copy.`;
     

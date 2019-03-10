@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 const { TerminalReporter } = require('../..');
 
 const input = `
@@ -26,7 +26,7 @@ entry = value
 
 describe('Terminal reporter', () => {
   it('produces colored terminal output', () => {
-    const document = eno.parse(input, { reporter: TerminalReporter });
+    const document = enolib.parse(input, { reporter: TerminalReporter });
 
     const snippet = new document._context.reporter(document._context).reportElement(document._context._document.elements[0]).snippet();
 

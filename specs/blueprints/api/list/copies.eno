@@ -11,7 +11,7 @@ copy < list
 -- input
 
 -- javascript
-const output = eno.parse(input).list('copy').requiredStringValues();
+const output = enolib.parse(input).list('copy').requiredStringValues();
 -- javascript
 
 -- php
@@ -58,7 +58,7 @@ copy < list
 -- input
 
 -- javascript
-const output = eno.parse(input).list('copy').requiredStringValues();
+const output = enolib.parse(input).list('copy').requiredStringValues();
 -- javascript
 
 -- php

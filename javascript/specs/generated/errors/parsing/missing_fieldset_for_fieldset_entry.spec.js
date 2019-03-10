@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Parsing a fieldset entry without a fieldset', () => {
   it('throws the expected ParseError', () => {
@@ -7,16 +7,16 @@ describe('Parsing a fieldset entry without a fieldset', () => {
     const input = `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 1 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -43,16 +43,16 @@ describe('Parsing a fieldset entry preceded by a line continuation', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 3 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -80,16 +80,16 @@ describe('Parsing a fieldset entry preceded by a field', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 2 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -117,16 +117,16 @@ describe('Parsing a fieldset entry preceded by a list item', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 3 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -156,16 +156,16 @@ describe('Parsing a fieldset entry preceded by a copied field', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 4 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -197,16 +197,16 @@ describe('Parsing a fieldset entry preceded by a copied list', () => {
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 5 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -238,16 +238,16 @@ describe('Parsing a fieldset entry preceded by a copied empty multiline field', 
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 5 contains a fieldset entry without a fieldset being specified before.`;
     
@@ -280,16 +280,16 @@ describe('Parsing a fieldset entry preceded by a copied multiline field', () => 
                   `entry = value`;
 
     try {
-      eno.parse(input);
+      enolib.parse(input);
     } catch(_error) {
-      if(_error instanceof eno.ParseError) {
+      if(_error instanceof enolib.ParseError) {
         error = _error;
       } else {
         throw _error;
       }
     };
 
-    expect(error).toBeInstanceOf(eno.ParseError);
+    expect(error).toBeInstanceOf(enolib.ParseError);
     
     const text = `Line 6 contains a fieldset entry without a fieldset being specified before.`;
     

@@ -1,8 +1,8 @@
-const eno = require('..');
+const enolib = require('..');
 
 describe('Line continuation behaviour', () => {
   test('empty direct line continuations are always ignored', () => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 field:
 |
 | foo
@@ -15,7 +15,7 @@ field:
   });
 
   test('leading and trailing empty spaced line continuations are ignored', () => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 field:
 \\
 \\ foo
@@ -27,7 +27,7 @@ field:
   });
 
   test('in-between empty spaced line continuations do not contribute redundant spacing', () => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 field:
 \\ foo
 \\
@@ -38,7 +38,7 @@ field:
   });
 
   test('an in-between empty spaced line continuation can contribute spacing', () => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 field:
 | foo
 \\
@@ -49,7 +49,7 @@ field:
   });
 
   test('multiple in-between empty spaced line continuations can only contribute spacing once', () => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 field:
 | foo
 \\
@@ -61,7 +61,7 @@ field:
   });
 
   test('newlines copied from multiline fields are not trimmed away', () => {
-    const document = eno.parse(`
+    const document = enolib.parse(`
 -- multiline field
 
 [inbetween whitespace]
@@ -83,6 +83,6 @@ field < multiline field
 | [illegal continuation]
     `.trim();
 
-    expect(() => eno.parse(input)).toThrowErrorMatchingSnapshot();
+    expect(() => enolib.parse(input)).toThrowErrorMatchingSnapshot();
   });
 });

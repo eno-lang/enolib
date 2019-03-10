@@ -12,7 +12,7 @@
 -- input
 
 -- javascript
-const output = eno.parse(input).section('section').requiredStringComment();
+const output = enolib.parse(input).section('section').requiredStringComment();
 -- javascript
 
 -- php

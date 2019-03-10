@@ -1,4 +1,4 @@
-const eno = require('../../../..');
+const enolib = require('../../../..');
 
 describe('Querying an existing, single-line, required string comment from a list', () => {
   it('produces the expected result', () => {
@@ -6,7 +6,7 @@ describe('Querying an existing, single-line, required string comment from a list
                   `list:\n` +
                   `- item`;
 
-    const output = eno.parse(input).list('list').requiredStringComment();
+    const output = enolib.parse(input).list('list').requiredStringComment();
 
     const expected = `comment`;
     
@@ -21,7 +21,7 @@ describe('Querying an existing, two-line, required string comment from a list', 
                   `list:\n` +
                   `- item`;
 
-    const output = eno.parse(input).list('list').requiredStringComment();
+    const output = enolib.parse(input).list('list').requiredStringComment();
 
     const expected = `comment\n` +
                      `  comment`;
@@ -42,7 +42,7 @@ describe('Querying an existing, required string comment with blank lines from a 
                   `list:\n` +
                   `- item`;
 
-    const output = eno.parse(input).list('list').requiredStringComment();
+    const output = enolib.parse(input).list('list').requiredStringComment();
 
     const expected = `    comment\n` +
                      `\n` +
@@ -60,7 +60,7 @@ describe('Querying an optional, existing string comment from a list', () => {
                   `list:\n` +
                   `- item`;
 
-    const output = eno.parse(input).list('list').optionalStringComment();
+    const output = enolib.parse(input).list('list').optionalStringComment();
 
     const expected = `comment`;
     
@@ -73,7 +73,7 @@ describe('Querying an optional, missing string comment from a list', () => {
     const input = `list:\n` +
                   `- item`;
 
-    const output = eno.parse(input).list('list').optionalStringComment();
+    const output = enolib.parse(input).list('list').optionalStringComment();
 
     expect(output).toBeNull();
   });

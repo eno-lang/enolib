@@ -1,4 +1,4 @@
-const eno = require('../..');
+const enolib = require('../..');
 
 const input = `
 > [comment]
@@ -34,7 +34,7 @@ describe('Blackbox test', () => {
     let document;
 
     beforeAll(() => {
-      document = eno.parse(input);
+      document = enolib.parse(input);
     });
 
     it('associates a comment to the list', () => {

@@ -1,4 +1,4 @@
-const eno = require('..');
+const enolib = require('..');
 
 const latLng = value => {
   const split = value.split(',');
@@ -17,7 +17,7 @@ describe('Complex loader', () => {
   let document;
 
   beforeAll(() => {
-    document = eno.parse(`
+    document = enolib.parse(`
 bad coordinates: Mickey Mouse
 good coordinates: 48.211180, 16.371514
     `.trim());
