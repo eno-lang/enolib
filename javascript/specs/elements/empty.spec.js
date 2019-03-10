@@ -8,7 +8,7 @@ describe('Empty', () => {
   });
 
   it('is untouched after initialization', () => {
-    expect(empty._instruction.touched).toBeUndefined();
+    expect(empty._touched).toBeUndefined();
   });
 
   describe('raw()', () => {

@@ -86,7 +86,7 @@ exports.errors = {
 
     const snippet = new context.reporter(context).reportElement(element).snippet();
 
-    if(element.type !== MULTILINE_FIELD_BEGIN && element.continuations.length > 0) {
+    if(element.type === FIELD && element.continuations.length > 0) {
       selection.to = cursor(element.continuations[element.continuations.length - 1], 'line', END);
     } else {
       selection.to = cursor(element, 'line', END);

@@ -1,5 +1,5 @@
 const eno = require('../..');
-const { Field } = require('../../lib/elements/field.js');
+const { FieldsetEntry } = require('../../lib/elements/fieldset_entry.js');
 const { MissingFieldsetEntry } = require('../../lib/elements/missing_fieldset_entry.js');
 
 describe('Fieldset', () => {
@@ -14,12 +14,12 @@ other = value
   });
 
   it('is untouched after initialization', () => {
-    expect(fieldset._instruction.touched).toBeUndefined();
+    expect(fieldset._touched).toBeUndefined();
   });
 
   it('has only untouched entries after initialization', () => {
     for(let entry of fieldset.entries()) {
-      expect(entry._instruction.touched).toBeUndefined();
+      expect(entry._touched).toBeUndefined();
     }
   });
 
@@ -29,18 +29,18 @@ other = value
 
   describe('entry()', () => {
     describe('fetching an existing element', () => {
-      let field;
+      let entry;
 
       beforeEach(() => {
-        field = fieldset.entry('entry');
+        entry = fieldset.entry('entry');
       });
 
-      it('returns a Field', () => {
-        expect(field).toBeInstanceOf(Field);
+      it('returns a FieldsetEntry', () => {
+        expect(entry).toBeInstanceOf(FieldsetEntry);
       });
 
-      it('returns the right field', () => {
-        expect(field.stringKey()).toEqual('entry');
+      it('returns the right entry', () => {
+        expect(entry.stringKey()).toEqual('entry');
       });
     });
 
@@ -98,12 +98,12 @@ other = value
     });
 
     it('touches the fieldset', () => {
-      expect(fieldset._instruction.touched).toBe(true);
+      expect(fieldset._touched).toBe(true);
     });
 
     it('touches the entries', () => {
       for(const entry of fieldset.entries()) {
-        expect(entry._instruction.touched).toBe(true);
+        expect(entry._touched).toBe(true);
       }
     });
   });

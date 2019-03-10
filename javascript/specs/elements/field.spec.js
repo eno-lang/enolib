@@ -12,7 +12,7 @@ describe('Field', () => {
   });
 
   it('is untouched after initialization', () => {
-    expect(field._instruction.touched).toBeUndefined();
+    expect(field._touched).toBeUndefined();
   });
 
   describe('raw()', () => {
@@ -36,7 +36,7 @@ describe('Field', () => {
 
     it('touches the element', () => {
       const _ = field.optionalStringValue();
-      expect(field._instruction.touched).toBe(true);
+      expect(field._touched).toBe(true);
     });
 
     it('returns null when empty', () => {
@@ -90,7 +90,7 @@ describe('Field', () => {
 
     it('touches the element', () => {
       const _ = field.requiredValue(value => value.toUpperCase());
-      expect(field._instruction.touched).toBe(true);
+      expect(field._touched).toBe(true);
     });
 
     describe('when empty', () => {

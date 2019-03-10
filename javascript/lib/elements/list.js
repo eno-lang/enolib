@@ -1,92 +1,96 @@
 const { Element } = require('./element.js');
-const { errors } = require('../errors/validation.js');
 const list_item_module = require('./list_item.js');
 
 const { EMPTY_ELEMENT, LIST } = require('../constants.js');
 
 class List extends Element {
-  constructor(context, instruction) {
-    super(context, instruction);
-
-    // Late determination by the application
-    if(this._instruction.type === EMPTY_ELEMENT) {
-      this._instruction.items = [];
-      this._instruction.type = LIST;
-    }
-
-    this._instruction.instance = this;
-  }
-
   get [Symbol.toStringTag]() {
     return 'List';
   }
 
-  items() {
-    this._instruction.touched = true;
+  _instantiateItems(list) {
+    if(list.hasOwnProperty('mirror')) {
+      return this._instantiateItems(list.mirror);
+    } else if(list.hasOwnProperty('extend')) {
+      return [
+        ...this._instantiateItems(list.extend),
+        ...list.items.map(item => new list_item_module.ListItem(this._context, item, this))
+      ];
+    } else {
+      if(!list.hasOwnProperty('items'))
+        return [];
 
-    return this._context.items(this._instruction).map(item => item.instance || new list_item_module.ListItem(this._context, item));
+      return list.items.map(item => new list_item_module.ListItem(this._context, item, this));
+    }
+  }
+
+  _items() {
+    if(!this.hasOwnProperty('_instantiatedItems')) {
+      this._instantiatedItems = this._instantiateItems(this._instruction);
+    }
+
+    return this._instantiatedItems;
+  }
+
+  _untouched() {
+    if(!this._touched)
+      return this._instruction;
+
+    const untouchedItem = this._items().find(item => !item._touched);
+
+    return untouchedItem ? untouchedItem._instruction : false;
+  }
+
+  items() {
+    this._touched = true;
+
+    return this._items();
   }
 
   length() {
-    this._instruction.touched = true;
+    this._touched = true;
 
-    return this._context.items(this._instruction).length;
+    return this._items().length;
   }
 
   optionalStringValues() {
-    this._instruction.touched = true;
+    this._touched = true;
 
-    return this._context.items(this._instruction).map(item => {
-      if(!item.hasOwnProperty('instance')) {
-        new list_item_module.ListItem(this._context, item);
-      }
-
-      return item.instance.optionalStringValue();
-    });
+    return this._items().map(item => item.optionalStringValue());
   }
 
   optionalValues(loader) {
-    this._instruction.touched = true;
+    this._touched = true;
 
-    return this._context.items(this._instruction).map(item => {
-      if(!item.hasOwnProperty('instance')) {
-        new list_item_module.ListItem(this._context, item);
-      }
-
-      return item.instance.optionalValue(loader);
-    });
+    return this._items().map(item => item.optionalValue(loader));
   }
 
   parent() {
-    return this._instruction.parent.instance || new Section(this._context, this._instruction.parent);
+    return this._parent || new Section(this._context, this._instruction.parent);
   }
 
   requiredStringValues() {
-    this._instruction.touched = true;
+    this._touched = true;
 
-    return this._context.items(this._instruction).map(item => {
-      if(!item.hasOwnProperty('instance')) {
-        new list_item_module.ListItem(this._context, item);
-      }
-
-      return item.instance.requiredStringValue();
-    });
+    return this._items().map(item => item.requiredStringValue());
   }
 
   requiredValues(loader) {
-    this._instruction.touched = true;
+    this._touched = true;
 
-    return this._context.items(this._instruction).map(item => {
-      if(!item.hasOwnProperty('instance')) {
-        new list_item_module.ListItem(this._context, item);
-      }
-
-      return item.instance.requiredValue(loader);
-    });
+    return this._items().map(item => item.requiredValue(loader));
   }
 
   toString() {
-    return `[object List key=${this._instruction.key} items=${this._context.items(this._instruction).length}]`;
+    return `[object List key=${this._instruction.key} items=${this._items().length}]`;
+  }
+
+  touch() {
+    this._touched = true;
+
+    for(const item of this.items()) {
+      item._touched = true;
+    }
   }
 }
 

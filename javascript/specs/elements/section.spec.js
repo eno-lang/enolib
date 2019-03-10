@@ -15,7 +15,7 @@ describe('Section', () => {
     });
 
     it('touches the section', () => {
-      expect(section._instruction.touched).toBe(true);
+      expect(section._touched).toBe(true);
     });
 
     it('returns the elements of the section', () => {

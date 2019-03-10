@@ -42,7 +42,7 @@ element:
 -- javascript
 const document = eno.parse(input);
 
-document.element('element').touch();
+document.empty('element').touch();
 document.assertAllTouched();
 -- javascript
 

@@ -19,7 +19,7 @@ class ValueElement extends Element {
   }
 
   _value(loader, required) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     const value = this._context.value(this._instruction);
 

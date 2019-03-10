@@ -2,13 +2,14 @@ const { errors } = require('../errors/validation.js');
 const { LIST_ITEM } = require('../constants.js');
 
 class Element {
-  constructor(context, instruction) {
+  constructor(context, instruction, parent = null) {
     this._context = context;
     this._instruction = instruction;
+    this._parent = parent;
   }
 
   _comment(loader, required) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     const comment = this._context.comment(this._instruction);
 
@@ -50,7 +51,7 @@ class Element {
   }
 
   key(loader) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     try {
       return loader(this._key());
@@ -88,13 +89,13 @@ class Element {
   }
 
   stringKey() {
-    this._instruction.touched = true;
+    this._touched = true;
 
     return this._key();
   }
 
   touch() {
-    this._context.touch(this._instruction);
+    this._touched = true;
   }
 }
 

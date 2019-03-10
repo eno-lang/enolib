@@ -13,20 +13,9 @@ const {
   LIST,
   LIST_ITEM,
   MULTILINE_FIELD_BEGIN,
+  PRETTY_TYPES,
   SECTION
 } = require('./constants.js');
-
-const PRETTY_TYPES = {
-  [DOCUMENT]: 'document',
-  [EMPTY_ELEMENT]: 'emptyElement',
-  [FIELD]: 'field',
-  [FIELDSET]: 'fieldset',
-  [FIELDSET_ENTRY]: 'fieldsetEntry',
-  [LIST]: 'list',
-  [LIST_ITEM]: 'listItem',
-  [MULTILINE_FIELD_BEGIN]: 'field',
-  [SECTION]: 'section'
-};
 
 class Context {
   constructor(input, options) {
@@ -97,11 +86,7 @@ class Context {
   }
 
   document() {
-    if(!this._document.hasOwnProperty('instance')) {
-      new Section(this, this._document);
-    }
-
-    return this._document.instance;
+    return new Section(this, this._document);
   }
 
   elements(section, map = false) {
@@ -248,22 +233,6 @@ class Context {
     return result;
   }
 
-  touch(element) {
-    element.touched = true;
-
-    switch(element.type) {
-      case LIST:
-        for(const item of this.items(element)) { item.touched = true; }
-        break;
-      case FIELDSET:
-        for(const entry of this.entries(element)) { entry.touched = true; }
-        break;
-      case SECTION:
-        for(const sectionElement of this.elements(element)) { this.touch(sectionElement); }
-        break;
-    }
-  }
-
   value(element) {
     if(!element.hasOwnProperty('computedValue')) {
       if(element.hasOwnProperty('mirror')) {
@@ -305,18 +274,6 @@ class Context {
     }
 
     return element.computedValue;
-  }
-
-  untouched(element) {
-    if(!element.hasOwnProperty('touched'))
-      return element;
-
-    switch(element.type) {
-      case LIST: return this.items(element).find(item => !item.hasOwnProperty('touched')) || false;
-      case FIELDSET: return this.entries(element).find(entry => !entry.hasOwnProperty('touched')) || false;
-      case SECTION: return this.elements(element).find(sectionElement => !sectionElement.hasOwnProperty('touched')) || false;
-      default: return false;
-    }
   }
 }
 

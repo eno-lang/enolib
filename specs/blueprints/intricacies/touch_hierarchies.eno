@@ -1,0 +1,45 @@
+# Touching elements in a section that were copied from another section does not touch the original elements
+
+-- input
+# section
+field: value
+
+# copy < section
+-- input
+
+-- javascript
+const document = eno.parse(input);
+
+document.section('section').stringKey();
+document.section('copy').field('field').stringKey();
+
+document.assertAllTouched();
+-- javascript
+
+-- php
+TODO
+-- php
+
+-- python
+TODO
+-- python
+
+-- ruby
+TODO
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+      1 | # section
+ >    2 | field: value
+      3 | 
+      4 | # copy < section
+-- snippet
+
+selection: [1,0] => [1,12]

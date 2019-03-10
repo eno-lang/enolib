@@ -1,5 +1,6 @@
 const { errors } = require('../errors/validation.js');
 const { Element } = require('./element.js');
+const ambiguous_element_module = require('./ambiguous_element.js');
 const ambiguous_section_element_module = require('./ambiguous_section_element.js');
 const empty_module = require('./empty.js');
 const field_module = require('./field.js');
@@ -23,8 +24,7 @@ const {
   SECTION
 } = require('../constants.js');
 
-// TODO: Use 'any' instead of anything in document-javascript branch? see: https://medium.com/@trukrs/type-safe-javascript-with-jsdoc-7a2a63209b76
-//       Also consider keeping documentation on master / in release branch so users get intellisense and jsdoc typechecking through released package
+// TODO: Consider keeping documentation on master / in release branch so users get intellisense and jsdoc typechecking through released package
 
 // TODO: For each value store the representational type as well ? (e.g. string may come from "- foo" or -- foo\nxxx\n-- foo) and use that for precise error messages?
 
@@ -32,17 +32,10 @@ const {
 //       Maybe handle with a generic FIELD type and an additional .multiline flag on the instruction? (less queries but quite some restructuring)
 
 class Section extends Element {
-  constructor(context, instruction) {
-    super(context, instruction);
+  constructor(context, instruction, parent = null) {
+    super(context, instruction, parent);
 
-    this._instruction.instance = this;
-
-    if(this._instruction.hasOwnProperty('parent') &&
-       this._instruction.parent.hasOwnProperty('instance')) {
-      this._allElementsRequired = this._instruction.parent.instance._allElementsRequired;
-    } else {
-      this._allElementsRequired = false;
-    }
+    this._allElementsRequired = parent ? parent._allElementsRequired : false;
   }
 
   get [Symbol.toStringTag]() {
@@ -50,13 +43,13 @@ class Section extends Element {
   }
 
   _element(key, required = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
@@ -71,19 +64,34 @@ class Section extends Element {
     }
 
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleElement');
+      throw errors.unexpectedMultipleElements(
+        this._context,
+        key,
+        elements.map(element => element._instruction),
+        'expectedSingleElement'
+      );
 
-    return new ambiguous_section_element_module.AmbiguousSectionElement(this._context, elements[0]);
+    return elements[0];
+  }
+
+  _elements(map = false) {
+    if(!this.hasOwnProperty('_instantiatedElements')) {
+      this._instantiatedElements = [];
+      this._instantiatedElementsMap = {};
+      this._instantiateElements(this._instruction, this._instantiatedElements, this._instantiatedElementsMap);
+    }
+
+    return map ? this._instantiatedElementsMap : this._instantiatedElements;
   }
 
   _empty(key, required = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
@@ -98,24 +106,29 @@ class Section extends Element {
     }
 
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleEmpty');
+      throw errors.unexpectedMultipleElements(
+        this._context,
+        key,
+        elements.map(element => element._instruction),
+        'expectedSingleEmpty'
+      );
 
     const element = elements[0];
 
-    switch(element.type) {
-      case EMPTY_ELEMENT: return new empty_module.Empty(this._context, element);
-      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedEmpty');
-    }
+    if(element._instruction.type !== EMPTY_ELEMENT)
+      throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedEmpty');
+
+    return element.toEmpty();
   }
 
   _field(key, required = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
@@ -130,26 +143,31 @@ class Section extends Element {
     }
 
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleField');
+      throw errors.unexpectedMultipleElements(
+        this._context,
+        key,
+        elements.map(element => element._instruction),
+        'expectedSingleField'
+      );
 
     const element = elements[0];
 
-    switch(element.type) {
-      case EMPTY_ELEMENT: return new field_module.Field(this._context, element);
-      case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-      case FIELD: return element.instance || new field_module.Field(this._context, element);
-      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedField');
-    }
+    if(element._instruction.type !== FIELD &&
+       element._instruction.type !== MULTILINE_FIELD_BEGIN &&
+       element._instruction.type !== EMPTY_ELEMENT)
+      throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedField');
+
+    return element.toField();
   }
 
   _fieldset(key, required = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
@@ -164,25 +182,57 @@ class Section extends Element {
     }
 
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleFieldset');
+      throw errors.unexpectedMultipleElements(
+        this._context,
+        key,
+        elements.map(element => element._instruction),
+        'expectedSingleFieldset'
+      );
 
     const element = elements[0];
 
-    switch(element.type) {
-      case EMPTY_ELEMENT: return new fieldset_module.Fieldset(this._context, element);
-      case FIELDSET: return element.instance || new fieldset_module.Fieldset(this._context, element);
-      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedFieldset');
+    if(element._instruction.type !== FIELDSET && element._instruction.type !== EMPTY_ELEMENT)
+      throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFieldset');
+
+    return element.toFieldset();
+  }
+
+  _instantiateElements(section, elements = [], elementsMap = {}) {
+    if(section.hasOwnProperty('mirror')) {
+      this._instantiateElements(section.mirror, elements, elementsMap);
+    } else {
+      elements.push(
+        ...section.elements.filter(element =>
+          !elementsMap.hasOwnProperty(element.key)
+        ).map(element => {
+          const instance = new ambiguous_section_element_module.AmbiguousSectionElement(this._context, element, this);
+
+          if(elementsMap.hasOwnProperty(element.key)) {
+            elementsMap[element.key].push(instance);
+          } else {
+            elementsMap[element.key] = [instance];
+          }
+
+          return instance;
+        })
+      );
+
+      if(section.hasOwnProperty('extend')) {
+        this._instantiateElements(section.extend, elements, elementsMap);
+      }
     }
+
+    return [elements, elementsMap];
   }
 
   _list(key, required = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
@@ -197,15 +247,19 @@ class Section extends Element {
     }
 
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleList');
+      throw errors.unexpectedMultipleElements(
+        this._context,
+        key,
+        elements.map(element => element._instruction),
+        'expectedSingleList'
+      );
 
     const element = elements[0];
 
-    switch(element.type) {
-      case EMPTY_ELEMENT: return new list_module.List(this._context, element);
-      case LIST: return element.instance || new list_module.List(this._context, element);
-      default: throw errors.unexpectedElementType(this._context, key, element, 'expectedList');
-    }
+    if(element._instruction.type !== LIST && element._instruction.type !== EMPTY_ELEMENT)
+      throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedList');
+
+    return element.toList();
   }
 
   // TODO: Can probably be simplified again - e.g. pushed back into Missing* classes themselves - also check if MissingFieldsetEntry addition is made use of already
@@ -224,13 +278,13 @@ class Section extends Element {
   }
 
   _section(key, required = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
@@ -245,27 +299,42 @@ class Section extends Element {
     }
 
     if(elements.length > 1)
-      throw errors.unexpectedMultipleElements(this._context, key, elements, 'expectedSingleSection');
+      throw errors.unexpectedMultipleElements(
+        this._context,
+        key,
+        elements.map(element => element._instruction),
+        'expectedSingleSection'
+      );
 
     const element = elements[0];
 
-    if(element.type !== SECTION)
-      throw errors.unexpectedElementType(this._context, key, element, 'expectedSection');
+    if(element._instruction.type !== SECTION)
+      throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedSection');
 
-    return element.instance || new Section(this._context, element);
+    return element.toSection();
+  }
+
+  _untouched() {
+    if(!this._touched)
+      return this._instruction;
+
+    for(const element of this._elements()) {
+      const untouchedElement = element._untouched();
+
+      if(untouchedElement) return untouchedElement;
+    }
+
+    return false;
   }
 
   allElementsRequired(required = true) {
     this._allElementsRequired = required;
 
-    for(const element of this._context.elements(this._instruction)) {
-      if(!element.hasOwnProperty('instance'))
-        continue;
-
-      if(element.type === SECTION) {
-        element.instance.allElementsRequired(required);
-      } else if(element.type === FIELDSET) {
-        element.instance.allEntriesRequired(required);
+    for(const element of this._elements()) {
+      if(element._instruction.type === SECTION && element._yielded) {
+        element.toSection().allElementsRequired(required);
+      } else if(element._instruction.type === FIELDSET && element._yielded) {
+        element.toFieldset().allEntriesRequired(required);
       }
     }
   }
@@ -283,30 +352,22 @@ class Section extends Element {
       }
     }
 
-    const elementsMap = this._context.elements(this._instruction, true);
+    const elementsMap = this._elements(true);
 
     for(const [key, elements] of Object.entries(elementsMap)) {
       if(options.hasOwnProperty('except') && options.except.includes(key)) continue;
       if(options.hasOwnProperty('only') && !options.only.includes(key)) continue;
 
       for(const element of elements) {
-        const untouchedElement = this._context.untouched(element);
+        const untouched = element._untouched();
 
-        if(untouchedElement) {
+        if(untouched) {
           if(typeof message === 'function') {
-            switch(untouchedElement.type) {
-              case EMPTY_ELEMENT: new empty_module.Empty(this._context, untouchedElement); // TODO: Empty! Revisit - Should this just also return AmbiguousAnyElement style thing? (then we can abolish empty some more)
-              case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
-              case FIELD: new field_module.Field(this._context, untouchedElement);
-              case FIELDSET: new fieldset_module.Fieldset(this._context, untouchedElement);
-              case LIST: new list_module.List(this._context, untouchedElement);
-              case SECTION: new Section(this._context, untouchedElement);
-            }
-
-            message = message(untouchedElement.instance);
+            // TODO: This doesn't make use of a possible cached AmbiguousElement, although, AmbiguousSectionElement would be unusable here anyway ...
+            message = message(new ambiguous_element_module.AmbiguousElement(this._context, untouched, this));
           }
 
-          throw errors.unexpectedElement(this._context, message, untouchedElement);
+          throw errors.unexpectedElement(this._context, message, untouched);
         }
       }
     }
@@ -317,17 +378,17 @@ class Section extends Element {
   }
 
   elements(key = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
-    return elements.map(element => new ambiguous_section_element_module.AmbiguousSectionElement(this._context, element));
+    return elements;
   }
 
   empty(key = null) {
@@ -339,24 +400,23 @@ class Section extends Element {
   }
 
   fields(key = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
     return elements.map(element => {
-      if(element.type === FIELD || element.type === MULTILINE_FIELD_BEGIN)
-        return element.instance || new field_module.Field(this._context, element);
+      if(element._instruction.type !== FIELD &&
+         element._instruction.type !== MULTILINE_FIELD_BEGIN &&
+         element._instruction.type !== EMPTY_ELEMENT)
+        throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFields');
 
-      if(element.type === EMPTY_ELEMENT)
-        return new field_module.Field(this._context, element);
-
-      throw errors.unexpectedElementType(this._context, key, element, 'expectedFields');
+      return element.toField();
     });
   }
 
@@ -365,24 +425,21 @@ class Section extends Element {
   }
 
   fieldsets(key = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
     return elements.map(element => {
-      if(element.type === FIELDSET)
-        return element.instance || new fieldset_module.Fieldset(this._context, element);
+      if(element._instruction.type !== FIELDSET && element._instruction.type !== EMPTY_ELEMENT)
+        throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFieldsets');
 
-      if(element.type === EMPTY_ELEMENT)
-        return new fieldset_module.Fieldset(this._context, element);
-
-      throw errors.unexpectedElementType(this._context, key, element, 'expectedFieldsets');
+      return element.toFieldset();
     });
   }
 
@@ -391,24 +448,21 @@ class Section extends Element {
   }
 
   lists(key = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
     return elements.map(element => {
-      if(element.type === LIST)
-        return element.instance || new list_module.List(this._context, element);
+      if(element._instruction.type !== LIST && element._instruction.type !== EMPTY_ELEMENT)
+        throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedLists');
 
-      if(element.type === EMPTY_ELEMENT)
-        return new list_module.List(this._context, element);
-
-      throw errors.unexpectedElementType(this._context, key, element, 'expectedLists');
+      return element.toList();
     });
   }
 
@@ -440,7 +494,7 @@ class Section extends Element {
     if(this._instruction.type === DOCUMENT)
       return null;
 
-    return this._instruction.parent.instance || new Section(this._context, this._instruction.parent);
+    return this._parent || new Section(this._context, this._instruction.parent);
   }
 
   requiredElement(key = null) {
@@ -472,29 +526,42 @@ class Section extends Element {
   }
 
   sections(key = null) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     let elements;
     if(key === null) {
-      elements = this._context.elements(this._instruction);
+      elements = this._elements();
     } else {
-      const elementsMap = this._context.elements(this._instruction, true);
+      const elementsMap = this._elements(true);
       elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
 
     return elements.map(element => {
-      if(element.type !== SECTION)
-        throw errors.unexpectedElementType(this._context, key, element, 'expectedSections');
+      if(element._instruction.type !== SECTION)
+        throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedSections');
 
-      return element.instance || new Section(this._context, element);
+      return element.toSection();
     });
   }
 
   toString() {
-    if(this._instruction.hasOwnProperty('key'))
-      return `[object Section key=${this._instruction.key} elements=${this._context.elements(this._instruction).length}]`;
+    if(this._instruction.type === DOCUMENT)
+      return `[object Section document elements=${this._elements().length}]`;
 
-    return `[object Section document elements=${this._context.elements(this._instruction).length}]`;
+    return `[object Section key=${this._instruction.key} elements=${this._elements().length}]`;
+  }
+
+  touch() {
+    // TODO: Potentially revisit this - maybe we can do a shallow touch, that is: propagating only to the hierarchy below that was already instantiated,
+    //       while marking the deepest initialized element as _touchedRecursive/Deeply or something, which marks a border for _untouched() checks that
+    //       does not have to be traversed deeper down. However if after that the hierarchy is used after all, the _touched property should be picked
+    //       up starting at the element marked _touchedRecursive, passing the property down below.
+
+    this._touched = true;
+
+    for(const element of this._elements()) {
+      element.touch();
+    }
   }
 }
 

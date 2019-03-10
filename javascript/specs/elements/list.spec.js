@@ -15,12 +15,12 @@ list:
   });
 
   it('is untouched after initialization', () => {
-    expect(list._instruction.touched).toBeUndefined();
+    expect(list._touched).toBeUndefined();
   });
 
   it('has only untouched items after initialization', () => {
     for(const item of list.items()) {
-      expect(item._instruction.touched).toBeUndefined();
+      expect(item._touched).toBeUndefined();
     }
   });
 
@@ -32,12 +32,12 @@ list:
     });
 
     it('touches the list itself', () => {
-      expect(list._instruction.touched).toBe(true);
+      expect(list._touched).toBe(true);
     });
 
     it('does not touch the list items', () => {
       for(const item of items) {
-        expect(item._instruction.touched).toBeUndefined();
+        expect(item._touched).toBeUndefined();
       }
     });
 
@@ -60,12 +60,12 @@ list:
     });
 
     it('touches the list itself', () => {
-      expect(list._instruction.touched).toBe(true);
+      expect(list._touched).toBe(true);
     });
 
     it('touches all list items', () => {
       for(const item of list.items()) {
-        expect(item._instruction.touched).toBe(true);
+        expect(item._touched).toBe(true);
       }
     });
   });
@@ -80,12 +80,12 @@ list:
     });
 
     it('touches the element', () => {
-      expect(list._instruction.touched).toBe(true);
+      expect(list._touched).toBe(true);
     });
 
     it('touches all list items', () => {
       for(const item of list.items()) {
-        expect(item._instruction.touched).toBe(true);
+        expect(item._touched).toBe(true);
       }
     });
   });
@@ -120,12 +120,12 @@ list:
     });
 
     it('touches the list itself', () => {
-      expect(list._instruction.touched).toBe(true);
+      expect(list._touched).toBe(true);
     });
 
     it('touches the list items', () => {
       for(const item of list.items()) {
-        expect(item._instruction.touched).toBe(true);
+        expect(item._touched).toBe(true);
       }
     });
   });

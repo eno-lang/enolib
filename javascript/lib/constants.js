@@ -20,3 +20,16 @@ exports.MULTILINE_FIELD_END = Symbol('Multiline Field End');
 exports.MULTILINE_FIELD_VALUE = Symbol('Multiline Field Value');
 exports.SECTION = Symbol('Section');
 exports.UNPARSED = Symbol('Unparsed');
+
+// Maps instruction type symbols to printable strings
+exports.PRETTY_TYPES = {
+  [exports.DOCUMENT]: 'document',
+  [exports.EMPTY_ELEMENT]: 'emptyElement',
+  [exports.FIELD]: 'field',
+  [exports.FIELDSET]: 'fieldset',
+  [exports.FIELDSET_ENTRY]: 'fieldsetEntry',
+  [exports.LIST]: 'list',
+  [exports.LIST_ITEM]: 'listItem',
+  [exports.MULTILINE_FIELD_BEGIN]: 'field',
+  [exports.SECTION]: 'section'
+};

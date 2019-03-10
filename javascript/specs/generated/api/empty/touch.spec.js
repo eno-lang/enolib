@@ -40,7 +40,7 @@ describe('Asserting everything was touched when the only present empty element w
 
     const document = eno.parse(input);
     
-    document.element('element').touch();
+    document.empty('element').touch();
     document.assertAllTouched();
 
     expect('it passes').toBeTruthy();

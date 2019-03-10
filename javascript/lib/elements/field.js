@@ -1,29 +1,14 @@
-const { EMPTY_ELEMENT, FIELD } = require('../constants.js');
 const { errors } = require('../errors/validation.js');
-const fieldset_module = require('./fieldset.js');
-const list_module = require('./list.js');
 const section_module = require('./section.js');
 const { ValueElement } = require('./value_element.js');
 
 class Field extends ValueElement {
-  constructor(context, instruction) {
-    super(context, instruction);
-
-    // Late determination by the application - TODO remove this and proceed with implications
-    if(this._instruction.type === EMPTY_ELEMENT) {
-      this._instruction.continuations = [];
-      this._instruction.type = FIELD;
-    }
-
-    this._instruction.instance = this;
-  }
-
   get [Symbol.toStringTag]() {
     return 'Field';
   }
 
   _value(loader, required) {
-    this._instruction.touched = true;
+    this._touched = true;
 
     const value = this._context.value(this._instruction);
 
@@ -53,8 +38,7 @@ class Field extends ValueElement {
   }
 
   parent() {
-    return this._instruction.parent.instance ||
-           new section_module.Section(this._context, this._instruction.parent);
+    return this._parent || new section_module.Section(this._context, this._instruction.parent);
   }
 
   requiredStringValue() {
