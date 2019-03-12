@@ -4,11 +4,8 @@ const input = `
 template:
 
 key < template
-key << template
 key    < template
-key    << template
      key     < template
-     key     << template
 `.trim();
 
 describe('Copy tokenization', () => {

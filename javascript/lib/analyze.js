@@ -499,7 +499,7 @@ exports.analyze = function() {
         }
       }
 
-    } else if(match[matcher.COPY_OPERATOR_INDEX] !== undefined) {
+    } else if(match[matcher.TEMPLATE_INDEX] !== undefined) {
 
       if(comments) {
         instruction.comments = comments;
@@ -509,17 +509,15 @@ exports.analyze = function() {
       instruction.template = match[matcher.TEMPLATE_INDEX]; // TODO: We can possibly make this ephemeral (local variable) because the new copyData reference replaces its function
       instruction.type = EMPTY_ELEMENT;
 
-      const copyOperator = match[matcher.COPY_OPERATOR_INDEX];
       let copyOperatorIndex;
 
       if(match[matcher.KEY_UNESCAPED_INDEX] !== undefined) {
         instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
 
         const keyIndex = this._input.indexOf(instruction.key, index);
-        copyOperatorIndex = this._input.indexOf(copyOperator, keyIndex + instruction.key.length);
-
-        instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + copyOperator.length];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
+
+        copyOperatorIndex = this._input.indexOf('<', keyIndex + instruction.key.length);
       } else {
         instruction.key = match[matcher.KEY_ESCAPED_INDEX];
 
@@ -527,13 +525,15 @@ exports.analyze = function() {
         const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
         const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
         const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        copyOperatorIndex = this._input.indexOf(copyOperator, escapeEndOperatorIndex + escapeOperator.length);
 
-        instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + copyOperator.length];
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
-        instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
+        instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
+
+        copyOperatorIndex = this._input.indexOf('<', escapeEndOperatorIndex + escapeOperator.length);
       }
+
+      instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + 1];
 
       const templateIndex = this._input.indexOf(instruction.template, copyOperatorIndex + 1);
       instruction.ranges.template = [templateIndex, templateIndex + instruction.template.length];

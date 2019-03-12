@@ -56,8 +56,8 @@ Object {
         "parent": [Circular],
         "ranges": Object {
           "copyOperator": Array [
-            30,
-            32,
+            33,
+            34,
           ],
           "key": Array [
             26,
@@ -65,11 +65,11 @@ Object {
           ],
           "line": Array [
             26,
-            41,
+            43,
           ],
           "template": Array [
-            33,
-            41,
+            35,
+            43,
           ],
         },
         "template": "template",
@@ -81,95 +81,20 @@ Object {
         "parent": [Circular],
         "ranges": Object {
           "copyOperator": Array [
+            57,
+            58,
+          ],
+          "key": Array [
             49,
-            50,
-          ],
-          "key": Array [
-            42,
-            45,
+            52,
           ],
           "line": Array [
-            42,
-            59,
-          ],
-          "template": Array [
-            51,
-            59,
-          ],
-        },
-        "template": "template",
-        "type": Symbol(Empty Element),
-      },
-      Object {
-        "key": "key",
-        "line": 5,
-        "parent": [Circular],
-        "ranges": Object {
-          "copyOperator": Array [
+            44,
             67,
-            69,
-          ],
-          "key": Array [
-            60,
-            63,
-          ],
-          "line": Array [
-            60,
-            78,
           ],
           "template": Array [
-            70,
-            78,
-          ],
-        },
-        "template": "template",
-        "type": Symbol(Empty Element),
-      },
-      Object {
-        "key": "key",
-        "line": 6,
-        "parent": [Circular],
-        "ranges": Object {
-          "copyOperator": Array [
-            92,
-            93,
-          ],
-          "key": Array [
-            84,
-            87,
-          ],
-          "line": Array [
-            79,
-            102,
-          ],
-          "template": Array [
-            94,
-            102,
-          ],
-        },
-        "template": "template",
-        "type": Symbol(Empty Element),
-      },
-      Object {
-        "key": "key",
-        "line": 7,
-        "parent": [Circular],
-        "ranges": Object {
-          "copyOperator": Array [
-            116,
-            118,
-          ],
-          "key": Array [
-            108,
-            111,
-          ],
-          "line": Array [
-            103,
-            127,
-          ],
-          "template": Array [
-            119,
-            127,
+            59,
+            67,
           ],
         },
         "template": "template",
@@ -178,7 +103,7 @@ Object {
     ],
     "type": Symbol(Document),
   },
-  "_lineCount": 8,
+  "_lineCount": 5,
   "_meta": Array [],
 }
 `;

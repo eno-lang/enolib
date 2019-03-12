@@ -126,7 +126,6 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.COPY_OPERATOR_INDEX]: '<',
       [matcher.TEMPLATE_INDEX]: 'Other Key'
     },
     syntax: 'Key < Other Key',
@@ -135,7 +134,6 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.COPY_OPERATOR_INDEX]: '<',
       [matcher.TEMPLATE_INDEX]: '<'
     },
     syntax: 'Key < <',
@@ -144,11 +142,10 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.COPY_OPERATOR_INDEX]: '<<',
       [matcher.TEMPLATE_INDEX]: '<'
     },
-    syntax: 'Key << <',
-    variants: space('Key', '<<', '<')
+    syntax: 'Key <<',
+    variants: space('Key', '<<')
   },
 
   // FIELDSET_ENTRY_SCENARIOS
