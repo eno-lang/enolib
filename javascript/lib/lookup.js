@@ -262,18 +262,17 @@ exports.lookup = (position, input, options = {}) => {
 
   const context = new Context(input, options);
 
-  if(index) {
-    if(index < 0 || index >= context._input.length)
-      throw new RangeError(`You are trying to look up an index (${index}) outside of the document's index range (0-${context._input.length - 1})`);
-  } else if(line < 0 || line >= context._lineCount) {
-    throw new RangeError(`You are trying to look up a line (${line}) outside of the document's line range (0-${context._lineCount - 1})`);
-  }
-
   let match;
-  if(index) {
-    match = checkInSectionByIndex(context._document, index);
-  } else {
+  if(index === undefined) {
+    if(line < 0 || line >= context._lineCount)
+      throw new RangeError(`You are trying to look up a line (${line}) outside of the document's line range (0-${context._lineCount - 1})`);
+
     match = checkInSection(context._document, line, column);
+  } else {
+    if(index < 0 || index > context._input.length)
+      throw new RangeError(`You are trying to look up an index (${index}) outside of the document's index range (0-${context._input.length})`);
+
+    match = checkInSectionByIndex(context._document, index);
   }
 
   const result = {
@@ -292,7 +291,7 @@ exports.lookup = (position, input, options = {}) => {
 
   let rightmostMatch = instruction.ranges.line[0];
 
-  if(!index) {
+  if(index === undefined) {
     index = instruction.ranges.line[0] + column;
   }
 

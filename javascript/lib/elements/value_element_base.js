@@ -1,6 +1,9 @@
 const { ElementBase } = require('./element_base.js');
 const { errors } = require('../errors/validation.js');
 
+// TODO: Here and elsewhere: substr is apparently somewhat deprecated and non-standard? Replace therefore.
+//       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr
+
 class ValueElementBase extends ElementBase {
   _printValue() {
     let value = this._context.value(this._instruction);

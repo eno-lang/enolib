@@ -11,83 +11,103 @@ is
 
 const scenarios = [
   {
-    element: 'color', // 'o'
+    element: 'color', // '|color'
+    position: [0],
+    range: 'key'
+  },
+  {
+    element: 'color', // '|color'
+    position: [0, 0],
+    range: 'key'
+  },
+  {
+    element: 'color', // 'col|or'
     position: [3],
     range: 'key'
   },
   {
-    element: 'color', // 'o'
+    element: 'color', // 'col|or'
     position: [0, 3],
     range: 'key'
   },
   {
-    element: 'color', // ' '
+    element: 'color', // 'color:|'
     position: [6],
     range: 'elementOperator'
   },
   {
-    element: 'color', // ' '
+    element: 'color', // 'color:|'
     position: [0, 6],
     range: 'elementOperator'
   },
   {
-    element: 'color', // 'c'
+    element: 'color', // '|close'
     position: [7],
     range: 'value'
   },
   {
-    element: 'color', // 'c'
+    element: 'color', // '|close'
     position: [0, 7],
     range: 'value'
   },
   {
-    element: 'close', // 'u'
+    element: 'close', // '|up'
     position: [18],
     range: 'value'
   },
   {
-    element: 'close', // 'u'
+    element: 'close', // '|up'
     position: [1, 6],
     range: 'value'
   },
   {
-    element: 'notes', // '#'
+    element: 'notes', // '|#'
     position: [21],
     range: 'sectionOperator'
   },
   {
-    element: 'notes', // '#'
+    element: 'notes', // '|#'
     position: [2, 0],
     range: 'sectionOperator'
   },
   {
-    element: 'notes', // 's'
+    element: 'notes', // 'note|s'
     position: [27],
     range: 'key'
   },
   {
-    element: 'notes', // 's'
+    element: 'notes', // 'note|s'
     position: [2, 6],
     range: 'key'
   },
   {
-    element: 'long', // 'i'
+    element: 'long', // '|is'
     position: [37],
     range: 'value'
   },
   {
-    element: 'long', // 'i'
+    element: 'long', // '|is'
     position: [4, 0],
     range: 'value'
   },
   {
-    element: 'long', // 'n'
+    element: 'long', // 'lo|ng'
     position: [45],
     range: 'key'
   },
   {
-    element: 'long', // 'n'
+    element: 'long', // 'lo|ng'
     position: [5, 5],
+    range: 'key'
+  },
+  {
+    element: 'long', // 'long|'
+    position: [47],
+    range: 'key'
+  },
+  {
+    element: 'long', // 'long|'
+    position: [5, 7],
     range: 'key'
   }
 ];
