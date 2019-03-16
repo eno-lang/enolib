@@ -4,6 +4,29 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.3.1
+
+### Fixes
+
+- Fix begin/end index lookup edge cases `95fe0f8`
+
+### Specification compliance
+
+- Remove noop deep-copy operator support for non-section elements `dd3eeaa`
+
+### Internals
+
+-  Simplify element class layout, split element folder layout `23787f1`
+
+
+### Documentation
+
+- Merge in existing JSDoc documentation `6f594fc`
+
+### Maintenance
+
+- Update jest `98a9bf6`
+
 ## 0.3.0
 
 ### Features

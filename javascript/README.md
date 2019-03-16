@@ -1,6 +1,6 @@
 # enolib
 
-JavaScript library for parsing, loading and inspecting eno documents
+The standard library for processing eno documents
 
 ## Installation
 
