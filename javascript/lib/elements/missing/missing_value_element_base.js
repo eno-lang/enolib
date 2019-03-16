@@ -1,6 +1,6 @@
-const { MissingElement } = require('./missing_element.js');
+const { MissingElementBase } = require('./missing_element_base.js');
 
-class MissingValueElement extends MissingElement {
+class MissingValueElementBase extends MissingElementBase {
   optionalStringValue() {
     return null;
   }
@@ -18,4 +18,4 @@ class MissingValueElement extends MissingElement {
   }
 }
 
-exports.MissingValueElement = MissingValueElement;
+exports.MissingValueElementBase = MissingValueElementBase;

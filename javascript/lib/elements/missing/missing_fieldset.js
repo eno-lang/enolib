@@ -1,7 +1,8 @@
-const { MissingElement } = require('./missing_element.js');
 const missing_fieldset_entry_module = require('./missing_fieldset_entry.js');
 
-class MissingFieldset extends MissingElement {
+const { MissingElementBase } = require('./missing_element_base.js');
+
+class MissingFieldset extends MissingElementBase {
   get [Symbol.toStringTag]() {
     return 'MissingFieldset';
   }

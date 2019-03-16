@@ -1,101 +1,39 @@
+const fieldset_entry_module = require('./fieldset_entry.js');
+const list_item_module = require('./list_item.js');
+
 const { errors } = require('../errors/validation.js');
-const { LIST_ITEM } = require('../constants.js');
+const { FIELDSET_ENTRY, LIST_ITEM } = require('../constants.js');
+const { SectionElement } = require('./section_element.js');
 
-class Element {
-  constructor(context, instruction, parent = null) {
-    this._context = context;
-    this._instruction = instruction;
-    this._parent = parent;
-  }
+class Element extends SectionElement {
+  toFieldsetEntry() {
+    if(!this._fieldsetEntry) {
+      if(this._instruction.type !== FIELDSET_ENTRY)
+        throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedFieldsetEntry');
 
-  _comment(loader, required) {
-    this._touched = true;
-
-    const comment = this._context.comment(this._instruction);
-
-    if(comment === null) {
-      if(required)
-        throw errors.missingComment(this._context, this._instruction);
-
-      return null;
+      this._fieldsetEntry = new fieldset_entry_module.Fieldset(this._context, this._instruction);
     }
 
-    if(loader === null)
-      return comment;
+    return this._fieldsetEntry;
+  }
 
-    try {
-      return loader(comment);
-    } catch(message) {
-      throw errors.commentError(this._context, message, this._instruction);
+  toListItem() {
+    if(!this._listItem) {
+      if(this._instruction.type !== LIST_ITEM)
+        throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedListItem');
+
+      this._listItem = new list_item_module.ListItem(this._context, this._instruction);
     }
+
+    return this._listItem;
   }
 
-  _key() {
-    return this._instruction.type === LIST_ITEM ? this._instruction.parent.key : this._instruction.key;
+  yieldsFieldsetEntry() {
+    return this._instruction.type === FIELDSET_ENTRY;
   }
 
-  commentError(message) {
-    return errors.commentError(
-      this._context,
-      typeof message === 'function' ? message(this._context.comment(this._instruction)) : message,
-      this._instruction
-    );
-  }
-
-  error(message) {
-    return errors.elementError(
-      this._context,
-      typeof message === 'function' ? message(this) : message,
-      this._instruction
-    );
-  }
-
-  key(loader) {
-    this._touched = true;
-
-    try {
-      return loader(this._key());
-    } catch(message) {
-      throw errors.keyError(this._context, message, this._instruction);
-    }
-  }
-
-  keyError(message) {
-    return errors.keyError(
-      this._context,
-      typeof message === 'function' ? message(this._key()) : message,
-      this._instruction
-    );
-  }
-
-  optionalComment(loader) {
-    return this._comment(loader, false);
-  }
-
-  optionalStringComment() {
-    return this._comment(null, false);
-  }
-
-  raw() {
-    return this._context.raw(this._instruction);
-  }
-
-  requiredComment(loader) {
-    return this._comment(loader, true);
-  }
-
-  requiredStringComment() {
-    return this._comment(null, true);
-  }
-
-  stringKey() {
-    this._touched = true;
-
-    return this._key();
-  }
-
-  touch() {
-    this._touched = true;
+  yieldsListItem() {
+    return this._instruction.type === LIST_ITEM;
   }
 }
 

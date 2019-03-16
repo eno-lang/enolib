@@ -1,15 +1,14 @@
-const { MissingElement } = require('./missing_element.js');
 const missing_empty_module = require('./missing_empty.js');
 const missing_field_module = require('./missing_field.js');
 const missing_fieldset_module = require('./missing_fieldset.js');
 const missing_list_module = require('./missing_list.js');
 const missing_section_module = require('./missing_section.js');
 
-// TODO: Split elements/ folder into elements/missing, etc.
+const { MissingElementBase } = require('./missing_element_base.js');
 
-class MissingAmbiguousSectionElement extends MissingElement {
+class MissingSectionElement extends MissingElementBase {
   get [Symbol.toStringTag]() {
-    return 'MissingAmbiguousSectionElement';
+    return 'MissingSectionElement';
   }
 
   toEmpty() {
@@ -33,7 +32,7 @@ class MissingAmbiguousSectionElement extends MissingElement {
   }
 
   toString() {
-    return `[object MissingAmbiguousSectionElement key="${this._key}"]`;
+    return `[object MissingSectionElement key="${this._key}"]`;
   }
 
   yieldsEmpty() {
@@ -57,4 +56,4 @@ class MissingAmbiguousSectionElement extends MissingElement {
   }
 }
 
-exports.MissingAmbiguousSectionElement = MissingAmbiguousSectionElement;
+exports.MissingSectionElement = MissingSectionElement;

@@ -1,6 +1,6 @@
-const { Element } = require('./element.js');
+const { ElementBase } = require('./element_base.js');
 
-class Empty extends Element {
+class Empty extends ElementBase {
   get [Symbol.toStringTag]() {
     return 'Empty';
   }

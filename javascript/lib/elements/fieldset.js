@@ -1,9 +1,10 @@
-const { errors } = require('../errors/validation.js');
-const { Element } = require('./element.js');
 const fieldset_entry_module = require('./fieldset_entry.js');
-const missing_fieldset_entry_module = require('./missing_fieldset_entry.js');
+const missing_fieldset_entry_module = require('./missing/missing_fieldset_entry.js');
 
-class Fieldset extends Element {
+const { ElementBase } = require('./element_base.js');
+const { errors } = require('../errors/validation.js');
+
+class Fieldset extends ElementBase {
   constructor(context, instruction, parent = null) {
     super(context, instruction, parent);
 

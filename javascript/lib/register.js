@@ -1,9 +1,9 @@
-const { Element } = require('./elements/element.js');
+const { ElementBase } = require('./elements/element_base.js');
 const { List } = require('./elements/list.js');
-const { MissingElement } = require('./elements/missing_element.js');
-const { MissingList } = require('./elements/missing_list.js');
-const { MissingValueElement } = require('./elements/missing_value_element.js');
-const { ValueElement } = require('./elements/value_element.js');
+const { MissingElementBase } = require('./elements/missing/missing_element_base.js');
+const { MissingList } = require('./elements/missing/missing_list.js');
+const { MissingValueElementBase } = require('./elements/missing/missing_value_element_base.js');
+const { ValueElementBase } = require('./elements/value_element_base.js');
 
 // TODO: Safe-guard against conflicting loader names (e.g. previous definition or native library function conflict)
 
@@ -13,18 +13,18 @@ const _register = (name, func) => {
 
   const titleCased = name.replace(/^./, inital => inital.toUpperCase());
 
-  Element.prototype[`${name}Key`] = function() { return this.key(func); };
-  Element.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
-  Element.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
-  ValueElement.prototype[`optional${titleCased}Value`] = function() { return this.optionalValue(func); };
-  ValueElement.prototype[`required${titleCased}Value`] = function() { return this.requiredValue(func); };
+  ElementBase.prototype[`${name}Key`] = function() { return this.key(func); };
+  ElementBase.prototype[`optional${titleCased}Comment`] = function() { return this.optionalComment(func); };
+  ElementBase.prototype[`required${titleCased}Comment`] = function() { return this.requiredComment(func); };
+  ValueElementBase.prototype[`optional${titleCased}Value`] = function() { return this.optionalValue(func); };
+  ValueElementBase.prototype[`required${titleCased}Value`] = function() { return this.requiredValue(func); };
   List.prototype[`optional${titleCased}Values`] = function() { return this.optionalValues(func); };
   List.prototype[`required${titleCased}Values`] = function() { return this.requiredValues(func); };
-  MissingElement.prototype[`${name}Key`] = MissingElement.prototype.stringKey;
-  MissingElement.prototype[`optional${titleCased}Comment`] = MissingElement.prototype.optionalStringComment;
-  MissingElement.prototype[`required${titleCased}Comment`] = MissingElement.prototype.requiredStringComment;
-  MissingValueElement.prototype[`optional${titleCased}Value`] = MissingValueElement.prototype.optionalStringValue;
-  MissingValueElement.prototype[`required${titleCased}Value`] = MissingValueElement.prototype.requiredStringValue;
+  MissingElementBase.prototype[`${name}Key`] = MissingElementBase.prototype.stringKey;
+  MissingElementBase.prototype[`optional${titleCased}Comment`] = MissingElementBase.prototype.optionalStringComment;
+  MissingElementBase.prototype[`required${titleCased}Comment`] = MissingElementBase.prototype.requiredStringComment;
+  MissingValueElementBase.prototype[`optional${titleCased}Value`] = MissingValueElementBase.prototype.optionalStringValue;
+  MissingValueElementBase.prototype[`required${titleCased}Value`] = MissingValueElementBase.prototype.requiredStringValue;
   MissingList.prototype[`optional${titleCased}Values`] = MissingList.prototype.optionalStringValues;
   MissingList.prototype[`required${titleCased}Values`] = MissingList.prototype.requiredStringValues;
 };

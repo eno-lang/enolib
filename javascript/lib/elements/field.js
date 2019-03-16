@@ -1,8 +1,9 @@
-const { errors } = require('../errors/validation.js');
 const section_module = require('./section.js');
-const { ValueElement } = require('./value_element.js');
 
-class Field extends ValueElement {
+const { errors } = require('../errors/validation.js');
+const { ValueElementBase } = require('./value_element_base.js');
+
+class Field extends ValueElementBase {
   get [Symbol.toStringTag]() {
     return 'Field';
   }

@@ -1,7 +1,8 @@
 const list_module = require('./list.js');
-const { ValueElement } = require('./value_element.js');
 
-class ListItem extends ValueElement {
+const { ValueElementBase } = require('./value_element_base.js');
+
+class ListItem extends ValueElementBase {
   get [Symbol.toStringTag]() {
     return 'ListItem';
   }

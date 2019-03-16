@@ -1,18 +1,18 @@
-const { errors } = require('../errors/validation.js');
-const { Element } = require('./element.js');
-const ambiguous_element_module = require('./ambiguous_element.js');
-const ambiguous_section_element_module = require('./ambiguous_section_element.js');
+const element_module = require('./element.js');
 const empty_module = require('./empty.js');
 const field_module = require('./field.js');
 const fieldset_module = require('./fieldset.js');
 const list_module = require('./list.js');
-const missing_ambiguous_section_element_module = require('./missing_ambiguous_section_element.js');
-const missing_field_module = require('./missing_field.js');
-const missing_fieldset_module = require('./missing_fieldset.js');
-const missing_list_module = require('./missing_list.js');
-const missing_section_module = require('./missing_section.js');
+const missing_field_module = require('./missing/missing_field.js');
+const missing_fieldset_module = require('./missing/missing_fieldset.js');
+const missing_list_module = require('./missing/missing_list.js');
+const missing_section_element_module = require('./missing/missing_section_element.js');
+const missing_section_module = require('./missing/missing_section.js');
+const section_element_module = require('./section_element.js');
 
 // TODO: touch() on ambiguous and/or missing elements
+const { errors } = require('../errors/validation.js');
+const { ElementBase } = require('./element_base.js');
 
 const {
   DOCUMENT,
@@ -31,7 +31,7 @@ const {
 // TODO: These things ->   case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
 //       Maybe handle with a generic FIELD type and an additional .multiline flag on the instruction? (less queries but quite some restructuring)
 
-class Section extends Element {
+class Section extends ElementBase {
   constructor(context, instruction, parent = null) {
     super(context, instruction, parent);
 
@@ -57,7 +57,7 @@ class Section extends Element {
       if(required || this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingElement');
       } else if(required === null) {
-        return new missing_ambiguous_section_element_module.MissingAmbiguousSectionElement(key, this);
+        return new missing_section_element_module.MissingSectionElement(key, this);
       } else {
         return null;
       }
@@ -205,7 +205,7 @@ class Section extends Element {
         ...section.elements.filter(element =>
           !elementsMap.hasOwnProperty(element.key)
         ).map(element => {
-          const instance = new ambiguous_section_element_module.AmbiguousSectionElement(this._context, element, this);
+          const instance = new section_element_module.SectionElement(this._context, element, this);
 
           if(elementsMap.hasOwnProperty(element.key)) {
             elementsMap[element.key].push(instance);
@@ -363,8 +363,8 @@ class Section extends Element {
 
         if(untouched) {
           if(typeof message === 'function') {
-            // TODO: This doesn't make use of a possible cached AmbiguousElement, although, AmbiguousSectionElement would be unusable here anyway ...
-            message = message(new ambiguous_element_module.AmbiguousElement(this._context, untouched, this));
+            // TODO: This doesn't make use of a possible cached Element, although, SectionElement would be unusable here anyway ...
+            message = message(new element_module.Element(this._context, untouched, this));
           }
 
           throw errors.unexpectedElement(this._context, message, untouched);

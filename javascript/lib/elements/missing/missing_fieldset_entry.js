@@ -1,6 +1,6 @@
-const { MissingValueElement } = require('./missing_value_element.js');
+const { MissingValueElementBase } = require('./missing_value_element_base.js');
 
-class MissingFieldsetEntry extends MissingValueElement {
+class MissingFieldsetEntry extends MissingValueElementBase {
   get [Symbol.toStringTag]() {
     return 'MissingFieldsetEntry';
   }

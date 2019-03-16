@@ -1,7 +1,8 @@
 const fieldset_module = require('./fieldset.js');
-const { ValueElement } = require('./value_element.js');
 
-class FieldsetEntry extends ValueElement {
+const { ValueElementBase } = require('./value_element_base.js');
+
+class FieldsetEntry extends ValueElementBase {
   get [Symbol.toStringTag]() {
     return 'FieldsetEntry';
   }

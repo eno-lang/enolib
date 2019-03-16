@@ -3,7 +3,7 @@ const { Empty } = require('./elements/empty.js');
 const { Field } = require('./elements/field.js');
 const { Fieldset } = require('./elements/fieldset.js');
 const { List } = require('./elements/list.js');
-const { AmbiguousElement } = require('./elements/ambiguous_element.js');
+const { Element } = require('./elements/element.js');
 
 // TODO: if(element.type === MULTILINE_FIELD_BEGIN) - Here and elsewhere there will be trouble if the multiline field is really COPIED, because then we can't go through .lines (!) revisit boldly
 
@@ -277,7 +277,7 @@ exports.lookup = (position, input, options = {}) => {
   }
 
   const result = {
-    element: new AmbiguousElement(context, match.element),
+    element: new Element(context, match.element),
     range: null
   };
 

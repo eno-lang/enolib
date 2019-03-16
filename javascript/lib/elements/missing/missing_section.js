@@ -1,16 +1,17 @@
-const { MissingElement } = require('./missing_element.js');
-const missing_ambiguous_section_element_module = require('./missing_element.js');
 const missing_field_module = require('./missing_field.js');
 const missing_fieldset_module = require('./missing_fieldset.js');
 const missing_list_module = require('./missing_list.js');
+const missing_section_element_module = require('./missing_section_element.js');
 
-class MissingSection extends MissingElement {
+const { MissingElementBase } = require('./missing_element_base.js');
+
+class MissingSection extends MissingElementBase {
   get [Symbol.toStringTag]() {
     return 'MissingSection';
   }
 
   element(key = null) {
-    return new missing_ambiguous_section_element_module.MissingAmbiguousSectionElement(key, this);
+    return new missing_section_element_module.MissingSectionElement(key, this);
   }
 
   elements(_key = null) {

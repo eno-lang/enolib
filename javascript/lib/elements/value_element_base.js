@@ -1,7 +1,7 @@
-const { Element } = require('./element.js');
+const { ElementBase } = require('./element_base.js');
 const { errors } = require('../errors/validation.js');
 
-class ValueElement extends Element {
+class ValueElementBase extends ElementBase {
   _printValue() {
     let value = this._context.value(this._instruction);
 
@@ -65,4 +65,4 @@ class ValueElement extends Element {
   }
 }
 
-exports.ValueElement = ValueElement;
+exports.ValueElementBase = ValueElementBase;

@@ -1,6 +1,6 @@
 const enolib = require('../..');
 const { FieldsetEntry } = require('../../lib/elements/fieldset_entry.js');
-const { MissingFieldsetEntry } = require('../../lib/elements/missing_fieldset_entry.js');
+const { MissingFieldsetEntry } = require('../../lib/elements/missing/missing_fieldset_entry.js');
 
 describe('Fieldset', () => {
   let fieldset;

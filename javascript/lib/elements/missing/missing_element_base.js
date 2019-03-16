@@ -1,4 +1,4 @@
-class MissingElement {
+class MissingElementBase {
   constructor(key, parent) {
     this._key = key;
     this._parent = parent;
@@ -38,4 +38,4 @@ class MissingElement {
   }
 }
 
-exports.MissingElement = MissingElement;
+exports.MissingElementBase = MissingElementBase;

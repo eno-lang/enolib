@@ -1,10 +1,11 @@
-const { Element } = require('./element.js');
-const { errors } = require('../errors/validation.js');
 const empty_module = require('./empty.js');
 const field_module = require('./field.js');
 const fieldset_module = require('./fieldset.js');
 const list_module = require('./list.js');
 const section_module = require('./section.js');
+
+const { ElementBase } = require('./element_base.js');
+const { errors } = require('../errors/validation.js');
 
 const {
   EMPTY_ELEMENT,
@@ -16,7 +17,7 @@ const {
   SECTION
 } = require('../constants.js');
 
-class AmbiguousSectionElement extends Element {
+class SectionElement extends ElementBase {
   _untouched() {
     if(!this._yielded)
       return this._instruction;
@@ -136,4 +137,4 @@ class AmbiguousSectionElement extends Element {
   }
 }
 
-exports.AmbiguousSectionElement = AmbiguousSectionElement;
+exports.SectionElement = SectionElement;
