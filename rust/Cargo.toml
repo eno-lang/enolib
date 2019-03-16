@@ -1,0 +1,8 @@
+[package]
+authors = ["Simon Repp <simon@fdpl.io>"]
+edition = "2018"
+license = "MIT"
+name = "enolib"
+readme = "README.md"
+repository = "https://github.com/eno-lang/enolib"
+version = "0.0.0"
