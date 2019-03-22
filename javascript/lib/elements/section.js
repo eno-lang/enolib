@@ -408,6 +408,8 @@ class Section extends ElementBase {
     return this._empty(key);
   }
 
+  // TODO: Here and in other implementations and in missing_section: empties(...) ?
+
   field(key = null) {
     return this._field(key);
   }

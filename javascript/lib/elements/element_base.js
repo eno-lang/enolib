@@ -63,7 +63,7 @@ class ElementBase {
   error(message) {
     return errors.elementError(
       this._context,
-      typeof message === 'function' ? message(this) : message,
+      typeof message === 'function' ? message(this) : message,  // TODO: *this* is problematic in this context - what is it?
       this._instruction
     );
   }

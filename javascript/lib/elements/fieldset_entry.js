@@ -1,5 +1,4 @@
 const fieldset_module = require('./fieldset.js');
-
 const { ValueElementBase } = require('./value_element_base.js');
 
 class FieldsetEntry extends ValueElementBase {

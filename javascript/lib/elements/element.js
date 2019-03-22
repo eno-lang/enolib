@@ -11,7 +11,7 @@ class Element extends SectionElement {
       if(this._instruction.type !== FIELDSET_ENTRY)
         throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedFieldsetEntry');
 
-      this._fieldsetEntry = new fieldset_entry_module.Fieldset(this._context, this._instruction);
+      this._fieldsetEntry = new fieldset_entry_module.Fieldset(this._context, this._instruction); // TODO: parent missing? or: what if casting Element to Field (inherited from SectionElement) but does not have parent because originating from lookup? investigate
     }
 
     return this._fieldsetEntry;
@@ -22,7 +22,7 @@ class Element extends SectionElement {
       if(this._instruction.type !== LIST_ITEM)
         throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedListItem');
 
-      this._listItem = new list_item_module.ListItem(this._context, this._instruction);
+      this._listItem = new list_item_module.ListItem(this._context, this._instruction); // TODO: parent missing? or: what if casting Element to Field (inherited from SectionElement) but does not have parent because originating from lookup? investigate
     }
 
     return this._listItem;
