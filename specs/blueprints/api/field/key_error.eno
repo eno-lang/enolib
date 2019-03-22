@@ -9,7 +9,7 @@ throw enolib.parse(input).field('field').keyError('my message')
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('field')->keyError('my message');
+throw Enolib\Parser::parse($input)->field('field')->keyError('my message');
 -- php
 
 -- python
@@ -17,7 +17,7 @@ raise enolib.parse(input).field('field').key_error('my message')
 -- python
 
 -- ruby
-raise Eno.parse(input).field('field').key_error('my message')
+raise Enolib.parse(input).field('field').key_error('my message')
 -- ruby
 
 ## ValidationError
@@ -44,7 +44,7 @@ throw enolib.parse(input).field('field').keyError(key => `my generated message f
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('field')->keyError(function($key) { return "my generated message for field '{$key}'"; });
+throw Enolib\Parser::parse($input)->field('field')->keyError(function($key) { return "my generated message for field '{$key}'"; });
 -- php
 
 -- python
@@ -52,7 +52,7 @@ raise enolib.parse(input).field('field').key_error(lambda key: f"my generated me
 -- python
 
 -- ruby
-raise Eno.parse(input).field('field').key_error { |key| "my generated message for field '#{key}'" }
+raise Enolib.parse(input).field('field').key_error { |key| "my generated message for field '#{key}'" }
 -- ruby
 
 ## ValidationError

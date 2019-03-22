@@ -10,7 +10,7 @@ enolib.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->fieldset('fieldset')->entry('entry')->requiredStringValue();
+Enolib\Parser::parse($input)->fieldset('fieldset')->entry('entry')->requiredStringValue();
 -- php
 
 -- python
@@ -18,7 +18,7 @@ enolib.parse(input).fieldset('fieldset').entry('entry').required_string_value()
 -- python
 
 -- ruby
-Eno.parse(input).fieldset('fieldset').entry('entry').required_string_value
+Enolib.parse(input).fieldset('fieldset').entry('entry').required_string_value
 -- ruby
 
 ## ValidationError
@@ -46,7 +46,7 @@ enolib.parse(input).field('field').requiredStringValue();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->field('field')->requiredStringValue();
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
 -- php
 
 -- python
@@ -54,7 +54,7 @@ enolib.parse(input).field('field').required_string_value()
 -- python
 
 -- ruby
-Eno.parse(input).field('field').required_string_value
+Enolib.parse(input).field('field').required_string_value
 -- ruby
 
 ## ValidationError
@@ -84,7 +84,7 @@ enolib.parse(input).field('field').requiredStringValue();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->field('field')->requiredStringValue();
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
 -- php
 
 -- python
@@ -92,7 +92,7 @@ enolib.parse(input).field('field').required_string_value()
 -- python
 
 -- ruby
-Eno.parse(input).field('field').required_string_value
+Enolib.parse(input).field('field').required_string_value
 -- ruby
 
 ## ValidationError
@@ -124,7 +124,7 @@ enolib.parse(input).list('list').requiredStringValues();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->list('list')->requiredStringValues();
+Enolib\Parser::parse($input)->list('list')->requiredStringValues();
 -- php
 
 -- python
@@ -132,7 +132,7 @@ enolib.parse(input).list('list').required_string_values()
 -- python
 
 -- ruby
-Eno.parse(input).list('list').required_string_values
+Enolib.parse(input).list('list').required_string_values
 -- ruby
 
 ## ValidationError

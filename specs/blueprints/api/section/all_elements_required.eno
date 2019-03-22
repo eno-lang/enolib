@@ -12,7 +12,7 @@ document.field('field');
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired();
 $document->field('field');
@@ -26,7 +26,7 @@ document.field('field')
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.all_elements_required
 document.field('field')
@@ -52,7 +52,7 @@ document.fieldset('fieldset');
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired();
 $document->fieldset('fieldset');
@@ -66,7 +66,7 @@ document.fieldset('fieldset')
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.all_elements_required
 document.fieldset('fieldset')
@@ -92,7 +92,7 @@ document.list('list');
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired();
 $document->list('list');
@@ -106,7 +106,7 @@ document.list('list')
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.all_elements_required
 document.list('list')
@@ -132,7 +132,7 @@ document.section('section');
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired();
 $document->section('section');
@@ -146,7 +146,7 @@ document.section('section')
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.all_elements_required
 document.section('section')
@@ -172,7 +172,7 @@ document.field('field');
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired(false);
 $document->field('field');
@@ -186,7 +186,7 @@ document.field('field')
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.all_elements_required(false)
 document.field('field')
@@ -209,7 +209,7 @@ document.field('field');
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired(true);
 $document->allElementsRequired(false);
@@ -225,7 +225,7 @@ document.field('field')
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.all_elements_required(true)
 document.all_elements_required(false)

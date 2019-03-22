@@ -9,7 +9,7 @@ enolib.parse(input).assertAllTouched();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched();
+Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
@@ -17,7 +17,7 @@ enolib.parse(input).assert_all_touched
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched
+Enolib.parse(input).assert_all_touched
 -- ruby
 
 ## Passes
@@ -33,7 +33,7 @@ enolib.parse(input).assertAllTouched();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched();
+Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
@@ -41,7 +41,7 @@ enolib.parse(input).assert_all_touched
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched
+Enolib.parse(input).assert_all_touched
 -- ruby
 
 ## ValidationError
@@ -68,7 +68,7 @@ enolib.parse(input).assertAllTouched('my message');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched('my message');
+Enolib\Parser::parse($input)->assertAllTouched('my message');
 -- php
 
 -- python
@@ -76,7 +76,7 @@ enolib.parse(input).assert_all_touched('my message')
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched('my message')
+Enolib.parse(input).assert_all_touched('my message')
 -- ruby
 
 ## ValidationError
@@ -103,7 +103,7 @@ enolib.parse(input).assertAllTouched(element => `my generated message for unexpe
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched(function($element) { return "my generated message for unexpected element '{$element->stringKey()}'"; });
+Enolib\Parser::parse($input)->assertAllTouched(function($element) { return "my generated message for unexpected element '{$element->stringKey()}'"; });
 -- php
 
 -- python
@@ -111,7 +111,7 @@ enolib.parse(input).assert_all_touched(lambda element: f"my generated message fo
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched { |element| "my generated message for unexpected element '#{element.string_key}'" }
+Enolib.parse(input).assert_all_touched { |element| "my generated message for unexpected element '#{element.string_key}'" }
 -- ruby
 
 ## ValidationError

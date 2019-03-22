@@ -9,7 +9,7 @@ const output = enolib.parse(input).field('field').requiredStringValue();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->requiredStringValue();
+$output = Enolib\Parser::parse($input)->field('field')->requiredStringValue();
 -- php
 
 -- python
@@ -17,7 +17,7 @@ output = enolib.parse(input).field('field').required_string_value()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').required_string_value
+output = Enolib.parse(input).field('field').required_string_value
 -- ruby
 
 ## Result
@@ -37,7 +37,7 @@ const output = enolib.parse(input).field('field').optionalStringValue();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->optionalStringValue();
+$output = Enolib\Parser::parse($input)->field('field')->optionalStringValue();
 -- php
 
 -- python
@@ -45,7 +45,7 @@ output = enolib.parse(input).field('field').optional_string_value()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').optional_string_value
+output = Enolib.parse(input).field('field').optional_string_value
 -- ruby
 
 ## Result
@@ -65,7 +65,7 @@ const output = enolib.parse(input).field('field').optionalStringValue();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->optionalStringValue();
+$output = Enolib\Parser::parse($input)->field('field')->optionalStringValue();
 -- php
 
 
@@ -74,7 +74,7 @@ output = enolib.parse(input).field('field').optional_string_value()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').optional_string_value
+output = Enolib.parse(input).field('field').optional_string_value
 -- ruby
 
 ## Nothing

@@ -16,7 +16,7 @@ const output = enolib.parse(input).section('section').requiredStringComment();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->section('section')->requiredStringComment();
+$output = Enolib\Parser::parse($input)->section('section')->requiredStringComment();
 -- php
 
 -- python
@@ -24,7 +24,7 @@ output = enolib.parse(input).section('section').required_string_comment()
 -- python
 
 -- ruby
-output = Eno.parse(input).section('section').required_string_comment
+output = Enolib.parse(input).section('section').required_string_comment
 -- ruby
 
 ## Result

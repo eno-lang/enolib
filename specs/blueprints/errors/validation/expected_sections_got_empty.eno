@@ -9,7 +9,7 @@ enolib.parse(input).sections('element');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->sections('element');
+Enolib\Parser::parse($input)->sections('element');
 -- php
 
 -- python
@@ -17,7 +17,7 @@ enolib.parse(input).sections('element')
 -- python
 
 -- ruby
-Eno.parse(input).sections('element')
+Enolib.parse(input).sections('element')
 -- ruby
 
 ## ValidationError

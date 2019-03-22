@@ -16,7 +16,7 @@ module.exports = async specs => {
       if(test.hasOwnProperty('error')) {
         const { cursor, selection, snippet, text, type } = test.error;
 
-        const expectations = [`expect(error).to be_a(Eno::${type})`];
+        const expectations = [`expect(error).to be_a(Enolib::${type})`];
 
         if(text) {
           expectations.push(interpolatify`
@@ -50,9 +50,9 @@ module.exports = async specs => {
               input = ${quotedRubyMultilineString(test.input)}
 
               begin
-                ${type === 'ParseError' ? 'Eno.parse(input)' : test.ruby}
+                ${type === 'ParseError' ? 'Enolib.parse(input)' : test.ruby}
               rescue => _error
-                if _error.is_a?(Eno::${type})
+                if _error.is_a?(Enolib::${type})
                   error = _error
                 else
                   raise _error

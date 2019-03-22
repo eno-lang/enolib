@@ -9,7 +9,7 @@ enolib.parse(input).assertAllTouched()
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched();
+Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
@@ -17,7 +17,7 @@ enolib.parse(input).assert_all_touched
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched
+Enolib.parse(input).assert_all_touched
 -- ruby
 
 ## ValidationError
@@ -47,7 +47,7 @@ document.assertAllTouched();
 -- javascript
 
 -- php
-$document = Eno\Parser::parse($input);
+$document = Enolib\Parser::parse($input);
 
 $document->field('field')->touch();
 $document->assertAllTouched();
@@ -61,7 +61,7 @@ document.assert_all_touched
 -- python
 
 -- ruby
-document = Eno.parse(input)
+document = Enolib.parse(input)
 
 document.field('field').touch
 document.assert_all_touched

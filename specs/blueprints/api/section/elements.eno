@@ -11,7 +11,7 @@ const output = enolib.parse(input).section('section').elements().map(element => 
 -- javascript
 
 -- php
-$output = array_map(function($element) { return $element->stringKey(); } , Eno\Parser::parse($input)->section('section')->elements());
+$output = array_map(function($element) { return $element->stringKey(); } , Enolib\Parser::parse($input)->section('section')->elements());
 -- php
 
 -- python
@@ -19,7 +19,7 @@ output = [element.string_key() for element in enolib.parse(input).section('secti
 -- python
 
 -- ruby
-output = Eno.parse(input).section('section').elements().map(&:string_key)
+output = Enolib.parse(input).section('section').elements.map(&:string_key)
 -- ruby
 
 ## Result
@@ -55,7 +55,7 @@ const output = enolib.parse(input).section('section').elements('other').map(elem
 -- javascript
 
 -- php
-$output = array_map(function($element) { return $element->requiredStringValue(); } , Eno\Parser::parse($input)->section('section')->elements('other'));
+$output = array_map(function($element) { return $element->requiredStringValue(); } , Enolib\Parser::parse($input)->section('section')->elements('other'));
 -- php
 
 -- python
@@ -63,7 +63,7 @@ output = [element.required_string_value() for element in enolib.parse(input).sec
 -- python
 
 -- ruby
-output = Eno.parse(input).section('section').elements('other').map(&:required_string_value)
+output = Enolib.parse(input).section('section').elements('other').map(&:required_string_value)
 -- ruby
 
 ## Result

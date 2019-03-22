@@ -9,7 +9,7 @@ enolib.parse(input).field('field').key(() => { throw 'my error'; });
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->field('field')->key(function() { throw new Exception('my error'); });
+Enolib\Parser::parse($input)->field('field')->key(function() { throw new Exception('my error'); });
 -- php
 
 -- python
@@ -20,7 +20,7 @@ enolib.parse(input).field('field').key(loader)
 -- python
 
 -- ruby
-Eno.parse(input).field('field').key { raise 'my error' }
+Enolib.parse(input).field('field').key { raise 'my error' }
 -- ruby
 
 ## ValidationError

@@ -10,7 +10,7 @@ enolib.parse(input).element('element');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->element('element');
+Enolib\Parser::parse($input)->element('element');
 -- php
 
 -- python
@@ -18,7 +18,7 @@ enolib.parse(input).element('element')
 -- python
 
 -- ruby
-Eno.parse(input).element('element')
+Enolib.parse(input).element('element')
 -- ruby
 
 ## ValidationError
@@ -50,7 +50,7 @@ enolib.parse(input).element('element');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->element('element');
+Enolib\Parser::parse($input)->element('element');
 -- php
 
 -- python
@@ -58,7 +58,7 @@ enolib.parse(input).element('element')
 -- python
 
 -- ruby
-Eno.parse(input).element('element')
+Enolib.parse(input).element('element')
 -- ruby
 
 ## ValidationError

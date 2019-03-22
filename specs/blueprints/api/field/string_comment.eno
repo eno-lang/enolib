@@ -10,7 +10,7 @@ const output = enolib.parse(input).field('field').requiredStringComment();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->requiredStringComment();
+$output = Enolib\Parser::parse($input)->field('field')->requiredStringComment();
 -- php
 
 -- python
@@ -18,7 +18,7 @@ output = enolib.parse(input).field('field').required_string_comment()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').required_string_comment
+output = Enolib.parse(input).field('field').required_string_comment
 -- ruby
 
 ## Result
@@ -40,7 +40,7 @@ const output = enolib.parse(input).field('field').requiredStringComment();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->requiredStringComment();
+$output = Enolib\Parser::parse($input)->field('field')->requiredStringComment();
 -- php
 
 -- python
@@ -48,7 +48,7 @@ output = enolib.parse(input).field('field').required_string_comment()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').required_string_comment
+output = Enolib.parse(input).field('field').required_string_comment
 -- ruby
 
 ## Result
@@ -76,7 +76,7 @@ const output = enolib.parse(input).field('field').requiredStringComment();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->requiredStringComment();
+$output = Enolib\Parser::parse($input)->field('field')->requiredStringComment();
 -- php
 
 -- python
@@ -84,7 +84,7 @@ output = enolib.parse(input).field('field').required_string_comment()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').required_string_comment
+output = Enolib.parse(input).field('field').required_string_comment
 -- ruby
 
 ## Result
@@ -109,7 +109,7 @@ const output = enolib.parse(input).field('field').optionalStringComment();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->optionalStringComment();
+$output = Enolib\Parser::parse($input)->field('field')->optionalStringComment();
 -- php
 
 -- python
@@ -117,7 +117,7 @@ output = enolib.parse(input).field('field').optional_string_comment()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').optional_string_comment
+output = Enolib.parse(input).field('field').optional_string_comment
 -- ruby
 
 ## Result
@@ -137,7 +137,7 @@ const output = enolib.parse(input).field('field').optionalStringComment();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->field('field')->optionalStringComment();
+$output = Enolib\Parser::parse($input)->field('field')->optionalStringComment();
 -- php
 
 -- python
@@ -145,7 +145,7 @@ output = enolib.parse(input).field('field').optional_string_comment()
 -- python
 
 -- ruby
-output = Eno.parse(input).field('field').optional_string_comment
+output = Enolib.parse(input).field('field').optional_string_comment
 -- ruby
 
 ## Nothing

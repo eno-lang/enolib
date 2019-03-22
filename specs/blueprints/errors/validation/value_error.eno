@@ -15,7 +15,7 @@ $loader = function($value) {
   throw new Exception("my error for '{$value}'");
 }
 
-Eno\Parser::parse($input)->field('field')->requiredValue($loader);
+Enolib\Parser::parse($input)->field('field')->requiredValue($loader);
 -- php
 
 -- python
@@ -53,7 +53,7 @@ throw enolib.parse(input).field('field').valueError('my static message');
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('field')->valueError('my static message');
+throw Enolib\Parser::parse($input)->field('field')->valueError('my static message');
 -- php
 
 -- python
@@ -88,7 +88,7 @@ throw enolib.parse(input).field('field').valueError(value => `my generated messa
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('field')->valueError(function($value) { return "my generated message for '{$value}'"; });
+throw Enolib\Parser::parse($input)->field('field')->valueError(function($value) { return "my generated message for '{$value}'"; });
 -- php
 
 -- python
@@ -112,77 +112,6 @@ There is a problem with the value of this element: my generated message for 'val
 
 selection: [0,7] => [0,12]
 
-> TODO: Possibly reintroduce alongside "hardcore duck-typed" empty element that acts as a standin for field, fieldset and list
-> # Requesting a value error from an empty element with a static message
-> 
-> -- input
-> element:
-> -- input
-> 
-> -- javascript
-> throw enolib.parse(input).element('element').valueError('my static message');
-> -- javascript
-> 
-> -- php
-> throw Eno\Parser::parse($input)->element('element')->valueError('my static message');
-> -- php
-> 
-> -- python
-> raise enolib.parse(input).element('element').value_error('my static message')
-> -- python
-> 
-> -- ruby
-> raise Enolib.parse(input).element('element').value_error('my static message')
-> -- ruby
-> 
-> ## ValidationError
-> 
-> -- text
-> There is a problem with the value of this element: my static message
-> -- text
-> 
-> -- snippet
->    Line | Content
->  >    1 | element:
-> -- snippet
-> 
-> selection: [0,7] => [0,12]
-> 
-> # Requesting a value error from an empty element with a dynamically generated message
-> 
-> -- input
-> element:
-> -- input
-> 
-> -- javascript
-> throw enolib.parse(input).element('element').valueError(value => `my generated message for '${value}'`);
-> -- javascript
-> 
-> -- php
-> throw Eno\Parser::parse($input)->element('element')->valueError(function($value) { return "my generated message for '{$value}'"; });
-> -- php
-> 
-> -- python
-> raise enolib.parse(input).element('element').value_error(lambda value: f"my generated message for '{value}'")
-> -- python
-> 
-> -- ruby
-> raise Enolib.parse(input).element('element').value_error { |value| "my generated message for '#{value}'" }
-> -- ruby
-> 
-> ## ValidationError
-> 
-> -- text
-> There is a problem with the value of this element: my generated message for 'value'
-> -- text
-> 
-> -- snippet
->    Line | Content
->  >    1 | element:
-> -- snippet
-> 
-> selection: [0,7] => [0,12]
-
 # Requesting a value error from a multiline field with a static message
 
 -- input
@@ -196,7 +125,7 @@ throw enolib.parse(input).field('multiline_field').valueError('my static message
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('multiline_field')->valueError('my static message');
+throw Enolib\Parser::parse($input)->field('multiline_field')->valueError('my static message');
 -- php
 
 -- python
@@ -235,7 +164,7 @@ throw enolib.parse(input).field('multiline_field').valueError(value => `my gener
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message for '{$value}'"; });
+throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message for '{$value}'"; });
 -- php
 
 -- python
@@ -273,7 +202,7 @@ throw enolib.parse(input).field('multiline_field').valueError('my static message
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('multiline_field')->valueError('my static message');
+throw Enolib\Parser::parse($input)->field('multiline_field')->valueError('my static message');
 -- php
 
 -- python
@@ -310,7 +239,7 @@ throw enolib.parse(input).field('multiline_field').valueError(value => `my gener
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message"; });
+throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message"; });
 -- php
 
 -- python
@@ -351,7 +280,7 @@ throw enolib.parse(input).field('field').valueError('my static message');
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('field')->valueError('my static message');
+throw Enolib\Parser::parse($input)->field('field')->valueError('my static message');
 -- php
 
 -- python
@@ -396,7 +325,7 @@ throw enolib.parse(input).field('field').valueError(value => `my generated messa
 -- javascript
 
 -- php
-throw Eno\Parser::parse($input)->field('field')->valueError(function($value) { return "my generated message for '{$value}'"; });
+throw Enolib\Parser::parse($input)->field('field')->valueError(function($value) { return "my generated message for '{$value}'"; });
 -- php
 
 -- python

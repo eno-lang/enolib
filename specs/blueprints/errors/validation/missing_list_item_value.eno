@@ -10,7 +10,7 @@ enolib.parse(input).list('list').items()[0].requiredStringValue();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->list('list')->items()[0]->requiredStringValue();
+Enolib\Parser::parse($input)->list('list')->items()[0]->requiredStringValue();
 -- php
 
 -- python
@@ -18,7 +18,7 @@ enolib.parse(input).list('list').items()[0].required_string_value()
 -- python
 
 -- ruby
-Eno.parse(input).list('list').items.first.required_string_value
+Enolib.parse(input).list('list').items.first.required_string_value
 -- ruby
 
 ## ValidationError
@@ -47,7 +47,7 @@ enolib.parse(input).list('list').requiredStringValues();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->list('list')->requiredStringValues();
+Enolib\Parser::parse($input)->list('list')->requiredStringValues();
 -- php
 
 -- python
@@ -55,7 +55,7 @@ enolib.parse(input).list('list').required_string_values()
 -- python
 
 -- ruby
-Eno.parse(input).list('list').required_string_values
+Enolib.parse(input).list('list').required_string_values
 -- ruby
 
 ## ValidationError

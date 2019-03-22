@@ -17,15 +17,30 @@ document.assertAllTouched();
 -- javascript
 
 -- php
-TODO
+$document = Enolib\Parser::parse($input);
+
+document->section('section')->stringKey();
+document->section('copy')->field('field')->stringKey();
+
+document->assertAllTouched();
 -- php
 
 -- python
-TODO
+document = enolib.parse(input)
+
+document.section('section').string_key()
+document.section('copy').field('field').string_key()
+
+document.assert_all_touched()
 -- python
 
 -- ruby
-TODO
+document = enolib.parse(input)
+
+document.section('section').string_key
+document.section('copy').field('field').string_key
+
+document.assert_all_touched
 -- ruby
 
 ## ValidationError

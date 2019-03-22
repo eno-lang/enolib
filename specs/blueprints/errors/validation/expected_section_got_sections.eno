@@ -12,7 +12,7 @@ enolib.parse(input).section('section');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->section('section');
+Enolib\Parser::parse($input)->section('section');
 -- php
 
 -- python
@@ -20,7 +20,7 @@ enolib.parse(input).section('section')
 -- python
 
 -- ruby
-Eno.parse(input).section('section')
+Enolib.parse(input).section('section')
 -- ruby
 
 ## ValidationError
@@ -61,7 +61,7 @@ enolib.parse(input).section('section');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->section('section');
+Enolib\Parser::parse($input)->section('section');
 -- php
 
 -- python
@@ -69,7 +69,7 @@ enolib.parse(input).section('section')
 -- python
 
 -- ruby
-Eno.parse(input).section('section')
+Enolib.parse(input).section('section')
 -- ruby
 
 ## ValidationError

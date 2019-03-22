@@ -15,15 +15,18 @@ const output = enolib.parse(input).fieldset('copy').entries().map(entry => entry
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->fieldset('copy')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->fieldset('copy')->entries()
+);
 -- php
 
 -- python
-output = enolib.parse(input).fieldset('copy').entries().required_string_values() TODO: Implement js/rb equivalent
+output = [entry.required_string_value() for entry in enolib.parse(input).fieldset('copy').entries()]
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('copy').entries().map(&:required_string_value)
+output = Enolib.parse(input).fieldset('copy').entries.map(&:required_string_value)
 -- ruby
 
 ## Result
@@ -62,15 +65,18 @@ const output = enolib.parse(input).fieldset('copy').entries().map(entry => entry
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->fieldset('copy')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->fieldset('copy')->entries()
+);
 -- php
 
 -- python
-output = enolib.parse(input).fieldset('copy').entries().required_string_values() TODO: Implement js/rb equivalent
+output = [entry.required_string_value() for entry in enolib.parse(input).fieldset('copy').entries()]
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('copy').entries().map(&:required_string_value)
+output = Enolib.parse(input).fieldset('copy').entries.map(&:required_string_value)
 -- ruby
 
 ## Result
@@ -108,15 +114,18 @@ const output = enolib.parse(input).fieldset('copy').entries().map(entry => entry
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->fieldset('copy')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->fieldset('copy')->entries()
+);
 -- php
 
 -- python
-output = enolib.parse(input).fieldset('copy').entries().required_string_values() TODO: Implement js/rb equivalent
+output = [entry.required_string_value() for entry in enolib.parse(input).fieldset('copy').entries()]
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('copy').entries().map(&:required_string_value)
+output = Enolib.parse(input).fieldset('copy').entries.map(&:required_string_value)
 -- ruby
 
 ## Result

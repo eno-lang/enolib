@@ -9,7 +9,7 @@ enolib.parse(input).section('section').requiredField('field');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->section('section')->requiredField('field');
+Enolib\Parser::parse($input)->section('section')->requiredField('field');
 -- php
 
 -- python
@@ -17,7 +17,7 @@ enolib.parse(input).section('section').required_field('field')
 -- python
 
 -- ruby
-Eno.parse(input).section('section').required_field('field')
+Enolib.parse(input).section('section').required_field('field')
 -- ruby
 
 ## ValidationError

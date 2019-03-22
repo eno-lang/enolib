@@ -9,7 +9,7 @@ enolib.parse(input).assertAllTouched();
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched();
+Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
@@ -17,7 +17,7 @@ enolib.parse(input).assert_all_touched()
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched
+Enolib.parse(input).assert_all_touched
 -- ruby
 
 ## ValidationError
@@ -44,7 +44,7 @@ enolib.parse(input).assertAllTouched('my custom message');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->assertAllTouched('my custom message');
+Enolib\Parser::parse($input)->assertAllTouched('my custom message');
 -- php
 
 -- python
@@ -52,7 +52,7 @@ enolib.parse(input).assert_all_touched('my custom message')
 -- python
 
 -- ruby
-Eno.parse(input).assert_all_touched('my custom message')
+Enolib.parse(input).assert_all_touched('my custom message')
 -- ruby
 
 ## ValidationError

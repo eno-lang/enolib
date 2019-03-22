@@ -10,7 +10,7 @@ enolib.parse(input).fields('list');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->fields('list');
+Enolib\Parser::parse($input)->fields('list');
 -- php
 
 -- python
@@ -18,7 +18,7 @@ enolib.parse(input).fields('list')
 -- python
 
 -- ruby
-Eno.parse(input).fields('list')
+Enolib.parse(input).fields('list')
 -- ruby
 
 ## ValidationError
@@ -54,7 +54,7 @@ enolib.parse(input).fields('list');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->fields('list');
+Enolib\Parser::parse($input)->fields('list');
 -- php
 
 -- python
@@ -62,7 +62,7 @@ enolib.parse(input).fields('list')
 -- python
 
 -- ruby
-Eno.parse(input).fields('list')
+Enolib.parse(input).fields('list')
 -- ruby
 
 ## ValidationError
@@ -101,7 +101,7 @@ enolib.parse(input).fields('list');
 -- javascript
 
 -- php
-Eno\Parser::parse($input)->fields('list');
+Enolib\Parser::parse($input)->fields('list');
 -- php
 
 -- python
@@ -109,7 +109,7 @@ enolib.parse(input).fields('list')
 -- python
 
 -- ruby
-Eno.parse(input).fields('list')
+Enolib.parse(input).fields('list')
 -- ruby
 
 ## ValidationError

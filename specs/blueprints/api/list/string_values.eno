@@ -11,7 +11,7 @@ const output = enolib.parse(input).list('list').requiredStringValues();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->list('list')->requiredStringValues();
+$output = Enolib\Parser::parse($input)->list('list')->requiredStringValues();
 -- php
 
 -- python
@@ -19,7 +19,7 @@ output = enolib.parse(input).list('list').required_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).list('list').required_string_values
+output = Enolib.parse(input).list('list').required_string_values
 -- ruby
 
 ## Result
@@ -53,7 +53,7 @@ const output = enolib.parse(input).list('list').optionalStringValues();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->list('list')->optionalStringValues();
+$output = Enolib\Parser::parse($input)->list('list')->optionalStringValues();
 -- php
 
 -- python
@@ -61,7 +61,7 @@ output = enolib.parse(input).list('list').optional_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).list('list').optional_string_values
+output = Enolib.parse(input).list('list').optional_string_values
 -- ruby
 
 ## Result
@@ -95,7 +95,7 @@ const output = enolib.parse(input).list('list').optionalStringValues();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->list('list')->optionalStringValues();
+$output = Enolib\Parser::parse($input)->list('list')->optionalStringValues();
 -- php
 
 -- python
@@ -103,7 +103,7 @@ output = enolib.parse(input).list('list').optional_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).list('list').optional_string_values
+output = Enolib.parse(input).list('list').optional_string_values
 -- ruby
 
 ## Result

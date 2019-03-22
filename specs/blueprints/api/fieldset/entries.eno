@@ -11,15 +11,18 @@ const output = enolib.parse(input).fieldset('fieldset').entries().map(entry => e
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->fieldset('fieldset')->entries()->requiredStringValues(); TODO: Implement js/rb equivalent
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->fieldset('fieldset')->entries()
+);
 -- php
 
 -- python
-output = enolib.parse(input).fieldset('fieldset').entries().required_string_values() TODO: Implement js/rb equivalent
+output = [entry.required_string_value() for entry in enolib.parse(input).fieldset('fieldset').entries()]
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('fieldset').entries().map(&:required_string_value)
+output = Enolib.parse(input).fieldset('fieldset').entries.map(&:required_string_value)
 -- ruby
 
 ## Result
@@ -55,15 +58,18 @@ const output = enolib.parse(input).fieldset('fieldset').entries('other').map(ent
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->fieldset('fieldset')->entries('other')->requiredStringValues(); TODO: Implement js/rb equivalent
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->fieldset('fieldset')->entries('other')
+);
 -- php
 
 -- python
-output = enolib.parse(input).fieldset('fieldset').entries('other').required_string_values() TODO: Implement js/rb equivalent
+output = [entry.required_string_value() for entry in enolib.parse(input).fieldset('fieldset').entries('other')]
 -- python
 
 -- ruby
-output = Eno.parse(input).fieldset('fieldset').entries('other').map(&:required_string_value)
+output = Enolib.parse(input).fieldset('fieldset').entries('other').map(&:required_string_value)
 -- ruby
 
 ## Result

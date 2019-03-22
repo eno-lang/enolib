@@ -15,7 +15,7 @@ const output = enolib.parse(input).list('copy').requiredStringValues();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->list('copy')->requiredStringValues();
+$output = Enolib\Parser::parse($input)->list('copy')->requiredStringValues();
 -- php
 
 -- python
@@ -23,7 +23,7 @@ output = enolib.parse(input).list('copy').required_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).list('copy').required_string_values
+output = Enolib.parse(input).list('copy').required_string_values
 -- ruby
 
 ## Result
@@ -62,7 +62,7 @@ const output = enolib.parse(input).list('copy').requiredStringValues();
 -- javascript
 
 -- php
-$output = Eno\Parser::parse($input)->list('copy')->requiredStringValues();
+$output = Enolib\Parser::parse($input)->list('copy')->requiredStringValues();
 -- php
 
 -- python
@@ -70,7 +70,7 @@ output = enolib.parse(input).list('copy').required_string_values()
 -- python
 
 -- ruby
-output = Eno.parse(input).list('copy').required_string_values
+output = Enolib.parse(input).list('copy').required_string_values
 -- ruby
 
 ## Result

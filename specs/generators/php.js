@@ -16,7 +16,7 @@ module.exports = async specs => {
       if(test.hasOwnProperty('error')) {
         const { selection, snippet, text, type } = test.error;
 
-        const expectations = [`expect($error)->toBeAnInstanceOf('Eno\\${type}');`];
+        const expectations = [`expect($error)->toBeAnInstanceOf('Enolib\\${type}');`];
 
         if(text) {
           expectations.push(interpolatify`
@@ -50,8 +50,8 @@ module.exports = async specs => {
               $input = ${quotedPhpMultilineString(test.input)};
 
               try {
-                ${type === 'ParseError' ? 'Eno\\Parser::parse($input);' : test.php}
-              } catch(Eno\\${type} $_error) {
+                ${type === 'ParseError' ? 'Enolib\\Parser::parse($input);' : test.php}
+              } catch(Enolib\\${type} $_error) {
                 $error = $_error;
               }
 
