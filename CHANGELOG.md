@@ -4,6 +4,18 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.3.2
+
+### Fixes
+
+- Add missing require for Section instantiation in Empty `b5febb1`
+- Add missing empty accessor in MissingSection `80d12e1`
+- Remove redundant valueError definition in Field implementation `4f7ad12`
+
+### Internals
+
+- Use early return in context value construction to reduce indentation `5538686`
+
 ## 0.3.1
 
 ### Fixes
