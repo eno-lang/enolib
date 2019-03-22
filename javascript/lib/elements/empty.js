@@ -1,4 +1,5 @@
 const { ElementBase } = require('./element_base.js');
+const section_module = require('./section.js');
 
 class Empty extends ElementBase {
   get [Symbol.toStringTag]() {
@@ -6,7 +7,7 @@ class Empty extends ElementBase {
   }
 
   parent() {
-    return this._parent || new Section(this._context, this._instruction.parent);
+    return this._parent || new section_module.Section(this._context, this._instruction.parent);
   }
 
   /**
