@@ -1,3 +1,4 @@
+const missing_empty_module = require('./missing_empty.js');
 const missing_field_module = require('./missing_field.js');
 const missing_fieldset_module = require('./missing_fieldset.js');
 const missing_list_module = require('./missing_list.js');
@@ -8,6 +9,10 @@ const { MissingElementBase } = require('./missing_element_base.js');
 class MissingSection extends MissingElementBase {
   get [Symbol.toStringTag]() {
     return 'MissingSection';
+  }
+
+  empty(key = null) {
+    return new missing_empty_module.MissingEmpty(key, this);
   }
 
   element(key = null) {
