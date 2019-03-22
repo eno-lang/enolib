@@ -116,23 +116,6 @@ class Field extends ValueElementBase {
   toString() {
     return `[object Field key=${this._instruction.key} value=${this._printValue()}]`;
   }
-
-  /**
-   * Constructs and returns a {@link ValidationError} with the supplied message in the context of this field's value.
-   *
-   * Note that this only *returns* an error, whether you want to just use its
-   * metadata, pass it on or actually throw the error is up to you.
-   *
-   * @param {string|function(value: string): string} message A message or a function that receives the field's value and returns the message.
-   * @return {ValidationError} The requested error.
-   */
-  valueError(message) {
-    return errors.valueError(
-      this._context,
-      typeof message === 'function' ? message(this._context.value(this._instruction)) : message,
-      this._instruction
-    );
-  }
 }
 
 exports.Field = Field;

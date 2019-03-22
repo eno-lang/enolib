@@ -59,6 +59,15 @@ class ValueElementBase extends ElementBase {
     return this._value(loader, true);
   }
 
+  /**
+   * Constructs and returns a {@link ValidationError} with the supplied message in the context of this element's value.
+   *
+   * Note that this only *returns* an error, whether you want to just use its
+   * metadata, pass it on or actually throw the error is up to you.
+   *
+   * @param {string|function(value: string): string} message A message or a function that receives the element's value and returns the message.
+   * @return {ValidationError} The requested error.
+   */
   valueError(message) {
     return errors.valueError(
       this._context,
