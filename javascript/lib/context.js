@@ -235,38 +235,37 @@ class Context {
 
   value(element) {
     if(!element.hasOwnProperty('computedValue')) {
-      if(element.hasOwnProperty('mirror')) {
+      if(element.hasOwnProperty('mirror'))
         return this.value(element.mirror);
+
+      element.computedValue = null;
+
+      if(element.type === MULTILINE_FIELD_BEGIN) {
+        if(element.lines.length > 0) {
+          element.computedValue = this._input.substring(
+            element.lines[0].ranges.line[0],
+            element.lines[element.lines.length - 1].ranges.line[1]
+          );
+        }
       } else {
-        element.computedValue = null;
+        if(element.hasOwnProperty('value')) {
+          element.computedValue = element.value;  // TODO: *Could* consider not actually storing those, but lazily aquiring from substring as well (probably only makes sense in e.g. rust implementation though)
+        }
 
-        if(element.type === MULTILINE_FIELD_BEGIN) {
-          if(element.lines.length > 0) {
-            element.computedValue = this._input.substring(
-              element.lines[0].ranges.line[0],
-              element.lines[element.lines.length - 1].ranges.line[1]
-            );
-          }
-        } else {
-          if(element.hasOwnProperty('value')) {
-            element.computedValue = element.value;  // TODO: *Could* consider not actually storing those, but lazily aquiring from substring as well (probably only makes sense in e.g. rust implementation though)
-          }
+        if(element.hasOwnProperty('continuations')) {
+          let unappliedSpacing = false;
 
-          if(element.hasOwnProperty('continuations')) {
-            let unappliedSpacing = false;
-
-            for(let continuation of element.continuations) {
-              if(element.computedValue === null) {
-                element.computedValue = continuation.value;
-                unappliedSpacing = false;
-              } else if(continuation.value === null) {
-                unappliedSpacing = unappliedSpacing || continuation.spaced;
-              } else if(continuation.spaced || unappliedSpacing) {
-                element.computedValue += ' ' + continuation.value;
-                unappliedSpacing = false;
-              } else {
-                element.computedValue += continuation.value;
-              }
+          for(let continuation of element.continuations) {
+            if(element.computedValue === null) {
+              element.computedValue = continuation.value;
+              unappliedSpacing = false;
+            } else if(continuation.value === null) {
+              unappliedSpacing = unappliedSpacing || continuation.spaced;
+            } else if(continuation.spaced || unappliedSpacing) {
+              element.computedValue += ' ' + continuation.value;
+              unappliedSpacing = false;
+            } else {
+              element.computedValue += continuation.value;
             }
           }
         }
