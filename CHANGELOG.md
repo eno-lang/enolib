@@ -4,6 +4,17 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.3.3
+
+### Fixes
+
+- Fix wrong falsey return type for document key queries `3a6801e`
+- Fix invalid element accesses and unused requires in lookup code `ec14255`
+
+### Quality assurance
+
+- Switch to exhaustive lookup testing over the full sample document range `949dd19`
+
 ## 0.3.2
 
 ### Fixes
