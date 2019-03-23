@@ -1,5 +1,6 @@
 const enolib = require('..');
 
+// TODO: Error case lookups (indices -1/length+1 etc. and same for line/column)
 
 const input = `
 field: value

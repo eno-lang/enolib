@@ -5,6 +5,8 @@ const { errors } = require('../errors/validation.js');
 const { FIELDSET_ENTRY, LIST_ITEM } = require('../constants.js');
 const { SectionElement } = require('./section_element.js');
 
+// TODO: parent() implementation on Element and SectionElement ?
+
 class Element extends SectionElement {
   toFieldsetEntry() {
     if(!this._fieldsetEntry) {
