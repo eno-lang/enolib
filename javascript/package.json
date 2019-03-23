@@ -13,7 +13,7 @@
     "lib/"
   ],
   "name": "enolib",
-  "description": "The standard library for processing eno documents",
+  "description": "The cross-language eno standard library",
   "homepage": "https://eno-lang.org/enolib/",
   "license": "MIT",
   "main": "./lib/main.js",

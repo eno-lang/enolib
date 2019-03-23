@@ -10,8 +10,8 @@
     "gettext-parser": "^3.1.1",
     "speakingurl": "^14.0.1"
   },
-  "description": "Standard library for parsing, validating and inspecting eno documents",
-  "homepage": "https://github.com/eno-lang/enolib#readme",
+  "description": "The cross-language eno standard library",
+  "homepage": "https://eno-lang.org/enolib/",
   "license": "MIT",
   "name": "enolib",
   "private": true,
