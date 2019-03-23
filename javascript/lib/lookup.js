@@ -1,8 +1,4 @@
 const { Context } = require('./context.js');
-const { Empty } = require('./elements/empty.js');
-const { Field } = require('./elements/field.js');
-const { Fieldset } = require('./elements/fieldset.js');
-const { List } = require('./elements/list.js');
 const { Element } = require('./elements/element.js');
 
 // TODO: if(element.type === MULTILINE_FIELD_BEGIN) - Here and elsewhere there will be trouble if the multiline field is really COPIED, because then we can't go through .lines (!) revisit boldly
@@ -55,7 +51,8 @@ const checkField = (field, line, column) => {
   if(line === field.line)
     return { element: field, instruction: field };
 
-  if(field.continuations.length === 0 ||
+  if(!field.hasOwnProperty('continuations') ||
+     field.continuations.length === 0 ||
      line > field.continuations[field.continuations.length - 1].line)
     return false;
 
@@ -74,7 +71,8 @@ const checkFieldByIndex = (field, index) => {
   if(index <= field.ranges.line[END])
     return { element: field, instruction: field };
 
-  if(field.continuations.length === 0 ||
+  if(!field.hasOwnProperty('continuations') ||
+     field.continuations.length === 0 ||
      index > field.continuations[field.continuations.length - 1].ranges.line[END])
     return false;
 
@@ -93,7 +91,8 @@ const checkFieldset = (fieldset, line, column) => {
   if(line === fieldset.line)
     return { element: fieldset, instruction: fieldset };
 
-  if(fieldset.entries.length === 0 ||
+  if(!fieldset.hasOwnProperty('entries') ||
+     fieldset.entries.length === 0 ||
      line > fieldset.entries[fieldset.entries.length - 1].line)
     return false;
 
@@ -117,7 +116,8 @@ const checkFieldsetByIndex = (fieldset, index) => {
   if(index <= fieldset.ranges.line[END])
     return { element: fieldset, instruction: fieldset };
 
-  if(fieldset.entries.length === 0 ||
+  if(!fieldset.hasOwnProperty('entries') ||
+     fieldset.entries.length === 0 ||
      index > fieldset.entries[fieldset.entries.length - 1].ranges.line[END])
     return false;
 
@@ -141,7 +141,7 @@ const checkList = (list, line, column) => {
   if(line === list.line)
     return { element: list, instruction: list };
 
-  if(list.items.length === 0 ||
+  if(!list.hasOwnProperty('items') ||
      line > list.items[list.items.length - 1].line)
     return false;
 
@@ -165,8 +165,8 @@ const checkListByIndex = (list, index) => {
   if(index <= list.ranges.line[END])
     return { element: list, instruction: list };
 
-  if(list.entries.length === 0 ||
-     index > list.entries[list.entries.length - 1].ranges.line[END])
+  if(!list.hasOwnProperty('items') ||
+     index > list.items[list.items.length - 1].ranges.line[END])
     return false;
 
   for(const item of list.items) {
