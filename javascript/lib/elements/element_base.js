@@ -1,5 +1,5 @@
 const { errors } = require('../errors/validation.js');
-const { LIST_ITEM } = require('../constants.js');
+const { DOCUMENT, LIST_ITEM } = require('../constants.js');
 
 class ElementBase {
   constructor(context, instruction, parent = null) {
@@ -31,7 +31,11 @@ class ElementBase {
   }
 
   _key() {
-    return this._instruction.type === LIST_ITEM ? this._instruction.parent.key : this._instruction.key;
+    switch(this._instruction.type) {
+      case DOCUMENT: return null;
+      case LIST_ITEM: return this._instruction.parent.key;
+      default: return this._instruction.key;
+    }
   }
 
   /**
