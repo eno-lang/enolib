@@ -14,7 +14,7 @@ Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
-enolib.parse(input).assert_all_touched
+enolib.parse(input).assert_all_touched()
 -- python
 
 -- ruby
@@ -60,7 +60,7 @@ $document->assertAllTouched();
 document = enolib.parse(input)
 
 document.fieldset('fieldset').touch
-document.assert_all_touched
+document.assert_all_touched()
 -- python
 
 -- ruby

@@ -13,7 +13,7 @@ Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
-enolib.parse(input).assert_all_touched
+enolib.parse(input).assert_all_touched()
 -- python
 
 -- ruby
@@ -37,7 +37,7 @@ Enolib\Parser::parse($input)->assertAllTouched();
 -- php
 
 -- python
-enolib.parse(input).assert_all_touched
+enolib.parse(input).assert_all_touched()
 -- python
 
 -- ruby
