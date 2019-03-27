@@ -5,19 +5,19 @@
 -- input
 
 -- javascript
-enolib.parse(input).section('section').requiredComment();
+enolib.parse(input).section('section').requiredStringComment();
 -- javascript
 
 -- php
-Enolib\Parser::parse($input)->section('section')->requiredComment();
+Enolib\Parser::parse($input)->section('section')->requiredStringComment();
 -- php
 
 -- python
-enolib.parse(input).section('section').required_comment
+enolib.parse(input).section('section').required_string_comment()
 -- python
 
 -- ruby
-Enolib.parse(input).section('section').required_comment
+Enolib.parse(input).section('section').required_string_comment
 -- ruby
 
 ## ValidationError
