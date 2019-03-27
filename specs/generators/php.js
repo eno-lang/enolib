@@ -36,9 +36,10 @@ module.exports = async specs => {
 
         if(selection) {
           expectations.push(interpolatify`
-            $selection = [[${selection[0][0]},${selection[0][1]}], [${selection[1][0]},${selection[1][1]}]];
-
-            expect($error->selection)->toEqual($selection);
+            expect($error->selection['from']['line'])->toEqual(${selection[0][0]});
+            expect($error->selection['from']['column'])->toEqual(${selection[0][1]});
+            expect($error->selection['to']['line'])->toEqual(${selection[1][0]});
+            expect($error->selection['to']['column'])->toEqual(${selection[1][1]});
           `);
         }
 

@@ -36,9 +36,10 @@ module.exports = async specs => {
 
         if(selection) {
           expectations.push(interpolatify`
-            selection = [[${selection[0][0]},${selection[0][1]}], [${selection[1][0]},${selection[1][1]}]]
-
-            expect(error.selection).to eq(selection)
+            expect(error.selection[:from][:line]).to eq(${selection[0][0]})
+            expect(error.selection[:from][:column]).to eq(${selection[0][1]})
+            expect(error.selection[:to][:line]).to eq(${selection[1][0]})
+            expect(error.selection[:to][:column]).to eq(${selection[1][1]})
           `);
         }
 
