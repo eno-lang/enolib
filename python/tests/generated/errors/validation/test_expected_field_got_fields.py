@@ -26,9 +26,10 @@ def test_expecting_a_field_but_getting_two_fields_raises_the_expected_validation
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_expecting_a_field_but_getting_two_fields_with_comments_empty_lines_and_continuations_raises_the_expected_validationerror():
   error = None
@@ -70,6 +71,7 @@ def test_expecting_a_field_but_getting_two_fields_with_comments_empty_lines_and_
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [4,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 14

@@ -27,9 +27,10 @@ describe('Expecting a fieldset entry but getting two fieldset entries', function
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [1,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -72,8 +73,9 @@ describe('Expecting a fieldset entry but getting two fieldset entries with comme
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,0], [4,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });

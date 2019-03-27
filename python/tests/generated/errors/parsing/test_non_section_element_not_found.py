@@ -24,9 +24,10 @@ def test_copying_a_non_section_element_that_does_not_exist_raises_the_expected_p
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 14
 
 def test_copying_a_non_section_element_whose_key_only_exists_on_a_section_raises_the_expected_parseerror():
   error = None
@@ -59,9 +60,10 @@ def test_copying_a_non_section_element_whose_key_only_exists_on_a_section_raises
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 14
 
 def test_copying_an_implied_fieldset_whose_key_only_exists_on_a_section_raises_the_expected_parseerror():
   error = None
@@ -96,9 +98,10 @@ def test_copying_an_implied_fieldset_whose_key_only_exists_on_a_section_raises_t
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 14
 
 def test_copying_an_implied_list_whose_key_only_exists_on_a_section_raises_the_expected_parseerror():
   error = None
@@ -133,6 +136,7 @@ def test_copying_an_implied_list_whose_key_only_exists_on_a_section_raises_the_e
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 14

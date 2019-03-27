@@ -44,9 +44,10 @@ def test_multiple_sections_with_multiple_cyclical_copy_chains_raises_the_expecte
   
   assert error.snippet == snippet
   
-  selection = [[9,18], [9,27]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 9
+  assert error.selection['from']['column'] == 18
+  assert error.selection['to']['line'] == 9
+  assert error.selection['to']['column'] == 27
 
 def test_three_empty_elements_copying_each_other_two_of_them_cyclically_raises_the_expected_parseerror():
   error = None
@@ -76,9 +77,10 @@ def test_three_empty_elements_copying_each_other_two_of_them_cyclically_raises_t
   
   assert error.snippet == snippet
   
-  selection = [[2,9], [2,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 2
+  assert error.selection['from']['column'] == 9
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 14
 
 def test_three_sections_with_one_being_copied_into_its_own_subsection_raises_the_expected_parseerror():
   error = None
@@ -108,9 +110,10 @@ def test_three_sections_with_one_being_copied_into_its_own_subsection_raises_the
   
   assert error.snippet == snippet
   
-  selection = [[1,23], [1,30]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 23
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 30
 
 def test_three_sections_with_one_being_copied_into_its_own_subsubsection_raises_the_expected_parseerror():
   error = None
@@ -140,9 +143,10 @@ def test_three_sections_with_one_being_copied_into_its_own_subsubsection_raises_
   
   assert error.snippet == snippet
   
-  selection = [[2,27], [2,34]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 2
+  assert error.selection['from']['column'] == 27
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 34
 
 def test_two_fieldsets_mutually_copying_each_other_raises_the_expected_parseerror():
   error = None
@@ -176,9 +180,10 @@ def test_two_fieldsets_mutually_copying_each_other_raises_the_expected_parseerro
   
   assert error.snippet == snippet
   
-  selection = [[3,11], [3,15]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 11
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 15
 
 def test_two_lists_mutually_copying_each_other_raises_the_expected_parseerror():
   error = None
@@ -212,6 +217,7 @@ def test_two_lists_mutually_copying_each_other_raises_the_expected_parseerror():
   
   assert error.snippet == snippet
   
-  selection = [[3,7], [3,11]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 11

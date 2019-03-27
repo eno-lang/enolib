@@ -30,9 +30,10 @@ def test_copying_a_field_that_exists_twice_raises_the_expected_parseerror():
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 12
 
 def test_copying_a_section_that_exists_twice_raises_the_expected_parseerror():
   error = None
@@ -66,6 +67,7 @@ def test_copying_a_section_that_exists_twice_raises_the_expected_parseerror():
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,16]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 16

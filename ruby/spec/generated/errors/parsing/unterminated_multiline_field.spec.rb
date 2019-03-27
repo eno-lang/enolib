@@ -33,9 +33,10 @@ describe 'A multiline field with an incomplete multiline field operator in the e
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,18]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(18)
   end
 end
 
@@ -74,8 +75,9 @@ describe 'A multiline field with an edge case key and missing space in the endin
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,4]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(4)
   end
 end

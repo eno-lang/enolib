@@ -35,6 +35,7 @@ def test_touching_elements_in_a_section_that_were_copied_from_another_section_do
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [1,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 12

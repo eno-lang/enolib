@@ -26,9 +26,10 @@ def test_expecting_a_section_but_getting_a_list_with_one_item_raises_the_expecte
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [1,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 6
 
 def test_expecting_a_section_but_getting_a_list_with_empty_lines_and_multiple_items_raises_the_expected_validationerror():
   error = None
@@ -68,9 +69,10 @@ def test_expecting_a_section_but_getting_a_list_with_empty_lines_and_multiple_it
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [6,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 6
+  assert error.selection['to']['column'] == 6
 
 def test_expecting_a_section_but_getting_a_list_with_two_items_with_comments_raises_the_expected_validationerror():
   error = None
@@ -106,6 +108,7 @@ def test_expecting_a_section_but_getting_a_list_with_two_items_with_comments_rai
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [5,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 5
+  assert error.selection['to']['column'] == 6

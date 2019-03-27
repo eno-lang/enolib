@@ -25,8 +25,9 @@ describe('Querying a fieldset entry for a required but missing value', function(
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,7], [1,7]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(7);
   });
 });

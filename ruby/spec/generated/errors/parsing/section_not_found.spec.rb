@@ -25,9 +25,10 @@ describe 'Copying a section that does not exist' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,16]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(16)
   end
 end
 
@@ -62,9 +63,10 @@ describe 'Copying a section whose key only exists on a field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,0], [2,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -101,9 +103,10 @@ describe 'Copying a section whose key only exists on a fieldset' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,17]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(17)
   end
 end
 
@@ -140,9 +143,10 @@ describe 'Copying a section whose key only exists on a list' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -180,9 +184,10 @@ describe 'Copying a section whose key only exists on a multiline field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,24]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(24)
   end
 end
 
@@ -219,9 +224,10 @@ describe 'Copying a section whose key only exists on an empty multiline field' d
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,24]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(24)
   end
 end
 
@@ -258,8 +264,9 @@ describe 'Copying a section whose key only exists on a fieldset entry' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end

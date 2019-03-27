@@ -31,9 +31,10 @@ describe 'Expecting a section but getting two sections' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,9]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(9)
   end
 end
 
@@ -86,8 +87,9 @@ describe 'Expecting a section but getting two sections with elements, empty line
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [3,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end

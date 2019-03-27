@@ -43,9 +43,10 @@ describe('Multiple sections with multiple cyclical copy chains', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[9,18], [9,27]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(9);
+    expect($error->selection['from']['column'])->toEqual(18);
+    expect($error->selection['to']['line'])->toEqual(9);
+    expect($error->selection['to']['column'])->toEqual(27);
   });
 });
 
@@ -76,9 +77,10 @@ describe('Three empty elements copying each other, two of them cyclically', func
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,9], [2,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(9);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -109,9 +111,10 @@ describe('Three sections with one being copied into its own subsection', functio
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,23], [1,30]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(23);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(30);
   });
 });
 
@@ -142,9 +145,10 @@ describe('Three sections with one being copied into its own subsubsection', func
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,27], [2,34]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(27);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(34);
   });
 });
 
@@ -179,9 +183,10 @@ describe('Two fieldsets mutually copying each other', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,11], [3,15]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(11);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(15);
   });
 });
 
@@ -216,8 +221,9 @@ describe('Two lists mutually copying each other', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,7], [3,11]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(11);
   });
 });

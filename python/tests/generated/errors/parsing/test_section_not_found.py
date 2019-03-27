@@ -24,9 +24,10 @@ def test_copying_a_section_that_does_not_exist_raises_the_expected_parseerror():
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,16]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 16
 
 def test_copying_a_section_whose_key_only_exists_on_a_field_raises_the_expected_parseerror():
   error = None
@@ -56,9 +57,10 @@ def test_copying_a_section_whose_key_only_exists_on_a_field_raises_the_expected_
   
   assert error.snippet == snippet
   
-  selection = [[2,0], [2,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 2
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 14
 
 def test_copying_a_section_whose_key_only_exists_on_a_fieldset_raises_the_expected_parseerror():
   error = None
@@ -90,9 +92,10 @@ def test_copying_a_section_whose_key_only_exists_on_a_fieldset_raises_the_expect
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,17]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 17
 
 def test_copying_a_section_whose_key_only_exists_on_a_list_raises_the_expected_parseerror():
   error = None
@@ -124,9 +127,10 @@ def test_copying_a_section_whose_key_only_exists_on_a_list_raises_the_expected_p
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 13
 
 def test_copying_a_section_whose_key_only_exists_on_a_multiline_field_raises_the_expected_parseerror():
   error = None
@@ -159,9 +163,10 @@ def test_copying_a_section_whose_key_only_exists_on_a_multiline_field_raises_the
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,24]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 24
 
 def test_copying_a_section_whose_key_only_exists_on_an_empty_multiline_field_raises_the_expected_parseerror():
   error = None
@@ -193,9 +198,10 @@ def test_copying_a_section_whose_key_only_exists_on_an_empty_multiline_field_rai
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,24]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 24
 
 def test_copying_a_section_whose_key_only_exists_on_a_fieldset_entry_raises_the_expected_parseerror():
   error = None
@@ -227,6 +233,7 @@ def test_copying_a_section_whose_key_only_exists_on_a_fieldset_entry_raises_the_
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 14

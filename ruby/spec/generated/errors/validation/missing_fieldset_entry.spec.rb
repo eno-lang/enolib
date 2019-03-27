@@ -25,9 +25,10 @@ describe 'Querying an empty fieldset for a required but missing entry' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,9], [0,9]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(9)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(9)
   end
 end
 
@@ -62,9 +63,10 @@ describe 'Querying a fieldset with two entries for a required but missing entry'
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,9], [0,9]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(9)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(9)
   end
 end
 
@@ -107,8 +109,9 @@ describe 'Querying a fieldset with entries, empty lines and comments for a requi
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,9], [0,9]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(9)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(9)
   end
 end

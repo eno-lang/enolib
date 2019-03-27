@@ -24,9 +24,10 @@ def test_parsing_a_line_continuation_without_any_prior_element_raises_the_expect
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 14
 
 def test_parsing_a_line_continuation_preceded_by_a_copied_field_raises_the_expected_parseerror():
   error = None
@@ -58,6 +59,7 @@ def test_parsing_a_line_continuation_preceded_by_a_copied_field_raises_the_expec
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,22]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 22

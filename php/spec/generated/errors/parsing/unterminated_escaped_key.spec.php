@@ -23,9 +23,10 @@ describe('A single field with an terminated escaped key', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,1], [0,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(1);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -52,8 +53,9 @@ describe('A single section with an unterminated escaped key', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,3], [0,15]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(3);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(15);
   });
 });

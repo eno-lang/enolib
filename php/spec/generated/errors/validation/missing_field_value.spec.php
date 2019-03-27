@@ -23,8 +23,9 @@ describe('Querying a field for a required but missing value', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,6], [0,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(6);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });

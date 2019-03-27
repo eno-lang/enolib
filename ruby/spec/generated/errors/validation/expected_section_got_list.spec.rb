@@ -27,9 +27,10 @@ describe 'Expecting a section but getting a list with one item' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [1,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end
 
@@ -74,9 +75,10 @@ describe 'Expecting a section but getting a list with empty lines and multiple i
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [6,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(6)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end
 
@@ -117,8 +119,9 @@ describe 'Expecting a section but getting a list with two items with comments' d
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [5,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(5)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end

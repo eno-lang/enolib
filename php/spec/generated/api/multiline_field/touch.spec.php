@@ -27,9 +27,10 @@ describe('Asserting everything was touched when the only present multiline field
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [2,18]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(18);
   });
 });
 

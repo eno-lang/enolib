@@ -24,9 +24,10 @@ def test_expecting_lists_but_getting_a_field_raises_the_expected_validationerror
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_expecting_lists_but_getting_a_field_with_continuations_raises_the_expected_validationerror():
   error = None
@@ -56,9 +57,10 @@ def test_expecting_lists_but_getting_a_field_with_continuations_raises_the_expec
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [2,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 14
 
 def test_expecting_lists_but_getting_a_field_with_continuations_separated_by_idle_lines_raises_the_expected_validationerror():
   error = None
@@ -94,6 +96,7 @@ def test_expecting_lists_but_getting_a_field_with_continuations_separated_by_idl
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [5,14]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 5
+  assert error.selection['to']['column'] == 14

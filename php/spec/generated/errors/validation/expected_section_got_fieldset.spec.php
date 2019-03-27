@@ -25,9 +25,10 @@ describe('Expecting a section but getting a fieldset with one item', function() 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [1,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -68,9 +69,10 @@ describe('Expecting a section but getting a fieldset with empty lines and multip
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [6,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(6);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -107,8 +109,9 @@ describe('Expecting a section but getting a fieldset with two entries with comme
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [5,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(5);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });

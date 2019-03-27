@@ -23,9 +23,10 @@ describe('Parsing a fieldset entry without a fieldset', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -56,9 +57,10 @@ describe('Parsing a fieldset entry preceded by a line continuation', function() 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,0], [2,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -87,9 +89,10 @@ describe('Parsing a fieldset entry preceded by a field', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [1,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -120,9 +123,10 @@ describe('Parsing a fieldset entry preceded by a list item', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,0], [2,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -155,9 +159,10 @@ describe('Parsing a fieldset entry preceded by a copied field', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -191,9 +196,10 @@ describe('Parsing a fieldset entry preceded by a copied list', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -227,9 +233,10 @@ describe('Parsing a fieldset entry preceded by a copied empty multiline field', 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -264,8 +271,9 @@ describe('Parsing a fieldset entry preceded by a copied multiline field', functi
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[5,0], [5,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(5);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(5);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });

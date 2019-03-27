@@ -30,9 +30,10 @@ def test_expecting_a_section_but_getting_two_sections_raises_the_expected_valida
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9
 
 def test_expecting_a_section_but_getting_two_sections_with_elements_empty_lines_and_continuations_raises_the_expected_validationerror():
   error = None
@@ -80,6 +81,7 @@ def test_expecting_a_section_but_getting_two_sections_with_elements_empty_lines_
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [3,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 12

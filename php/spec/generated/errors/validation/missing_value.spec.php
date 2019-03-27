@@ -25,9 +25,10 @@ describe('Querying a fieldset entry for a required but missing value', function(
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,7], [1,7]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(7);
   });
 });
 
@@ -54,9 +55,10 @@ describe('Querying a field for a required but missing value', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,6], [0,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(6);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });
 
@@ -89,9 +91,10 @@ describe('Querying a field with empty line continuations for a required but miss
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,6], [3,1]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(6);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(1);
   });
 });
 
@@ -122,8 +125,9 @@ describe('Querying a list with an empty item for required values', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,1], [2,1]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(1);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(1);
   });
 });

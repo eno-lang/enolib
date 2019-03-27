@@ -24,9 +24,10 @@ def test_asserting_everything_was_touched_on_an_untouched_document_raises_the_ex
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_asserting_everything_was_touched_on_an_untouched_document_with_a_custom_message_raises_the_expected_validationerror():
   error = None
@@ -52,6 +53,7 @@ def test_asserting_everything_was_touched_on_an_untouched_document_with_a_custom
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12

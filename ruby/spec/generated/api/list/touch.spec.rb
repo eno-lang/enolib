@@ -27,9 +27,10 @@ describe 'Asserting everything was touched when the only present list was not to
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [1,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end
 

@@ -33,9 +33,10 @@ describe('Asserting everything was touched on an untouched document containing a
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -62,9 +63,10 @@ describe('Asserting everything was touched on an untouched document containing a
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -91,8 +93,9 @@ describe('Asserting everything was touched on an untouched document containing a
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });

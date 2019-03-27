@@ -29,8 +29,9 @@ describe('A line without operators', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,7]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(7);
   });
 });

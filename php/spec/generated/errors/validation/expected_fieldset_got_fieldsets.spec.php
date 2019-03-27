@@ -29,9 +29,10 @@ describe('Expecting a fieldset but getting two fieldsets', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [1,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -74,8 +75,9 @@ describe('Expecting a fieldset but getting two fieldsets with comments, empty li
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [4,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });

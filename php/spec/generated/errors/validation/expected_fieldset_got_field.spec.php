@@ -23,9 +23,10 @@ describe('Expecting a fieldset but getting a field', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -56,9 +57,10 @@ describe('Expecting a fieldset but getting a field with continuations', function
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [2,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -95,8 +97,9 @@ describe('Expecting a fieldset but getting a field with continuations separated 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [5,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(5);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });

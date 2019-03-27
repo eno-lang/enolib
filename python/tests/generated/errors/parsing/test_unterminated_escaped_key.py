@@ -24,9 +24,10 @@ def test_a_single_field_with_an_terminated_escaped_key_raises_the_expected_parse
   
   assert error.snippet == snippet
   
-  selection = [[0,1], [0,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 1
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 13
 
 def test_a_single_section_with_an_unterminated_escaped_key_raises_the_expected_parseerror():
   error = None
@@ -52,6 +53,7 @@ def test_a_single_section_with_an_unterminated_escaped_key_raises_the_expected_p
   
   assert error.snippet == snippet
   
-  selection = [[0,3], [0,15]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 3
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 15

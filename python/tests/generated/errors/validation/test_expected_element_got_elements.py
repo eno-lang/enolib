@@ -26,9 +26,10 @@ def test_expecting_an_element_but_getting_two_elements_raises_the_expected_valid
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,8]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 8
 
 def test_expecting_an_element_but_getting_two_elements_with_comments_and_empty_lines_raises_the_expected_validationerror():
   error = None
@@ -62,6 +63,7 @@ def test_expecting_an_element_but_getting_two_elements_with_comments_and_empty_l
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [1,8]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 8

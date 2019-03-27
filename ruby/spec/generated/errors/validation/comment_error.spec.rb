@@ -27,8 +27,9 @@ describe 'Triggering an error inside a custom loader when querying a required co
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,2], [0,9]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(2)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(9)
   end
 end

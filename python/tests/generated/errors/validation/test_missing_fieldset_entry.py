@@ -24,9 +24,10 @@ def test_querying_an_empty_fieldset_for_a_required_but_missing_entry_raises_the_
   
   assert error.snippet == snippet
   
-  selection = [[0,9], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 9
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9
 
 def test_querying_a_fieldset_with_two_entries_for_a_required_but_missing_entry_raises_the_expected_validationerror():
   error = None
@@ -56,9 +57,10 @@ def test_querying_a_fieldset_with_two_entries_for_a_required_but_missing_entry_r
   
   assert error.snippet == snippet
   
-  selection = [[0,9], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 9
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9
 
 def test_querying_a_fieldset_with_entries_empty_lines_and_comments_for_a_required_but_missing_entry_raises_the_expected_validationerror():
   error = None
@@ -96,6 +98,7 @@ def test_querying_a_fieldset_with_entries_empty_lines_and_comments_for_a_require
   
   assert error.snippet == snippet
   
-  selection = [[0,9], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 9
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9

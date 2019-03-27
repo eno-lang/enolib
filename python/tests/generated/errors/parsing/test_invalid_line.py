@@ -30,6 +30,7 @@ def test_a_line_without_operators_raises_the_expected_parseerror():
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,7]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 7

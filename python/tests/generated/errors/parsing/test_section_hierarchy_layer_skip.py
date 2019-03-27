@@ -26,6 +26,7 @@ def test_starting_a_section_two_levels_deeper_than_the_current_one_raises_the_ex
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [1,17]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 17

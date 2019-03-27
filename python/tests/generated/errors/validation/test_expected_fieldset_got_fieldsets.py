@@ -30,9 +30,10 @@ def test_expecting_a_fieldset_but_getting_two_fieldsets_raises_the_expected_vali
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [1,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 13
 
 def test_expecting_a_fieldset_but_getting_two_fieldsets_with_comments_empty_lines_and_continuations_raises_the_expected_validationerror():
   error = None
@@ -74,6 +75,7 @@ def test_expecting_a_fieldset_but_getting_two_fieldsets_with_comments_empty_line
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [4,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 13

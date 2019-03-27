@@ -29,9 +29,10 @@ describe('Expecting a section but getting two sections', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,9]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(9);
   });
 });
 
@@ -80,8 +81,9 @@ describe('Expecting a section but getting two sections with elements, empty line
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [3,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });

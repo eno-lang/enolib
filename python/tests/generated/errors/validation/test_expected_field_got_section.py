@@ -24,9 +24,10 @@ def test_expecting_a_field_but_getting_an_empty_section_raises_the_expected_vali
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9
 
 def test_expecting_a_field_but_getting_a_section_with_a_field_and_a_list_raises_the_expected_validationerror():
   error = None
@@ -64,9 +65,10 @@ def test_expecting_a_field_but_getting_a_section_with_a_field_and_a_list_raises_
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [6,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 6
+  assert error.selection['to']['column'] == 6
 
 def test_expecting_a_field_but_getting_a_section_with_subsections_raises_the_expected_validationerror():
   error = None
@@ -112,6 +114,7 @@ def test_expecting_a_field_but_getting_a_section_with_subsections_raises_the_exp
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [10,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 10
+  assert error.selection['to']['column'] == 6

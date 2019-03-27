@@ -23,9 +23,10 @@ describe('Copying a non-section element that does not exist', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -59,9 +60,10 @@ describe('Copying a non-section element whose key only exists on a section', fun
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -97,9 +99,10 @@ describe('Copying an implied fieldset whose key only exists on a section', funct
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -135,8 +138,9 @@ describe('Copying an implied list whose key only exists on a section', function(
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });

@@ -25,9 +25,10 @@ describe 'Parsing a fieldset entry without a fieldset' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -62,9 +63,10 @@ describe 'Parsing a fieldset entry preceded by a line continuation' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,0], [2,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -97,9 +99,10 @@ describe 'Parsing a fieldset entry preceded by a field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [1,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -134,9 +137,10 @@ describe 'Parsing a fieldset entry preceded by a list item' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,0], [2,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -173,9 +177,10 @@ describe 'Parsing a fieldset entry preceded by a copied field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -213,9 +218,10 @@ describe 'Parsing a fieldset entry preceded by a copied list' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -253,9 +259,10 @@ describe 'Parsing a fieldset entry preceded by a copied empty multiline field' d
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -294,8 +301,9 @@ describe 'Parsing a fieldset entry preceded by a copied multiline field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[5,0], [5,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(5)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(5)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end

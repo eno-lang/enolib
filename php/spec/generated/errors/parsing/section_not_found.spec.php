@@ -23,9 +23,10 @@ describe('Copying a section that does not exist', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,16]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(16);
   });
 });
 
@@ -56,9 +57,10 @@ describe('Copying a section whose key only exists on a field', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[2,0], [2,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(2);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(2);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -91,9 +93,10 @@ describe('Copying a section whose key only exists on a fieldset', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,17]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(17);
   });
 });
 
@@ -126,9 +129,10 @@ describe('Copying a section whose key only exists on a list', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,13]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(13);
   });
 });
 
@@ -162,9 +166,10 @@ describe('Copying a section whose key only exists on a multiline field', functio
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,24]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(24);
   });
 });
 
@@ -197,9 +202,10 @@ describe('Copying a section whose key only exists on an empty multiline field', 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,24]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(24);
   });
 });
 
@@ -232,8 +238,9 @@ describe('Copying a section whose key only exists on a fieldset entry', function
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });

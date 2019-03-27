@@ -31,9 +31,10 @@ describe 'Expecting a list but getting two lists' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [1,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end
 
@@ -82,8 +83,9 @@ describe 'Expecting a list but getting two lists with comments, empty lines and 
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [4,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end

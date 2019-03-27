@@ -23,9 +23,10 @@ describe('Expecting fields but getting an empty section', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,9]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(9);
   });
 });
 
@@ -64,9 +65,10 @@ describe('Expecting fields but getting a section with a field and a list', funct
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [6,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(6);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });
 
@@ -113,8 +115,9 @@ describe('Expecting fields but getting a section with subsections', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [10,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(10);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });

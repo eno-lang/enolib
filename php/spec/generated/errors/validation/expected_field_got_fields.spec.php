@@ -25,9 +25,10 @@ describe('Expecting a field but getting two fields', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -70,8 +71,9 @@ describe('Expecting a field but getting two fields with comments, empty lines an
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [4,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });

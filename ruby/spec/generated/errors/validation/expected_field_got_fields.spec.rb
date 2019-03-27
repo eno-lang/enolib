@@ -27,9 +27,10 @@ describe 'Expecting a field but getting two fields' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -76,8 +77,9 @@ describe 'Expecting a field but getting two fields with comments, empty lines an
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [4,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end

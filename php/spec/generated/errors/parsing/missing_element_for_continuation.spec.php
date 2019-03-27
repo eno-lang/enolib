@@ -23,9 +23,10 @@ describe('Parsing a line continuation without any prior element', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,14]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(14);
   });
 });
 
@@ -58,8 +59,9 @@ describe('Parsing a line continuation preceded by a copied field', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,22]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(22);
   });
 });

@@ -27,9 +27,10 @@ describe 'Expecting fields but getting a fieldset with one item' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [1,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -74,9 +75,10 @@ describe 'Expecting fields but getting a fieldset with empty lines and multiple 
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [6,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(6)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -117,8 +119,9 @@ describe 'Expecting fields but getting a fieldset with two entries with comments
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [5,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(5)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end

@@ -25,9 +25,10 @@ describe 'Expecting lists but getting an empty section' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,9]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(9)
   end
 end
 
@@ -70,9 +71,10 @@ describe 'Expecting lists but getting a section with a field and a list' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [6,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(6)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end
 
@@ -123,8 +125,9 @@ describe 'Expecting lists but getting a section with subsections' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [10,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(10)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end

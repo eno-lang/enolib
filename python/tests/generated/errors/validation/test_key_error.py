@@ -27,6 +27,7 @@ def test_triggering_an_error_inside_a_custom_loader_when_querying_the_key_of_a_f
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,5]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 5

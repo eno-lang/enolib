@@ -29,9 +29,10 @@ describe('Copying a field that exists twice', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[3,0], [3,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(3);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(3);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -66,8 +67,9 @@ describe('Copying a section that exists twice', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[4,0], [4,16]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(4);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(16);
   });
 });

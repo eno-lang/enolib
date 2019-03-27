@@ -5,7 +5,7 @@ describe 'Querying a section for a required but missing comment' do
     input = "# section"
 
     begin
-      Enolib.parse(input).section('section').required_comment
+      Enolib.parse(input).section('section').required_string_comment
     rescue => _error
       if _error.is_a?(Enolib::ValidationError)
         error = _error
@@ -25,8 +25,9 @@ describe 'Querying a section for a required but missing comment' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,0]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(0)
   end
 end

@@ -29,9 +29,10 @@ describe('Expecting a list but getting two lists', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [1,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });
 
@@ -76,8 +77,9 @@ describe('Expecting a list but getting two lists with comments, empty lines and 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [4,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(4);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });

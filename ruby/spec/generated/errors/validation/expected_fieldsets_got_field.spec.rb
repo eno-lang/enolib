@@ -25,9 +25,10 @@ describe 'Expecting fieldsets but getting a field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -62,9 +63,10 @@ describe 'Expecting fieldsets but getting a field with continuations' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [2,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -105,8 +107,9 @@ describe 'Expecting fieldsets but getting a field with continuations separated b
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [5,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(5)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end

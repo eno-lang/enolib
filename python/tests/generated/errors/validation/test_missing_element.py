@@ -24,6 +24,7 @@ def test_querying_a_section_for_a_required_but_missing_element_raises_the_expect
   
   assert error.snippet == snippet
   
-  selection = [[0,9], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 9
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9

@@ -27,9 +27,10 @@ describe 'Querying a fieldset entry for a required but missing value' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,7], [1,7]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(7)
   end
 end
 
@@ -60,9 +61,10 @@ describe 'Querying a field for a required but missing value' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,6], [0,6]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(6)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(6)
   end
 end
 
@@ -99,9 +101,10 @@ describe 'Querying a field with empty line continuations for a required but miss
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,6], [3,1]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(6)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(1)
   end
 end
 
@@ -136,8 +139,9 @@ describe 'Querying a list with an empty item for required values' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,1], [2,1]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(1)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(1)
   end
 end

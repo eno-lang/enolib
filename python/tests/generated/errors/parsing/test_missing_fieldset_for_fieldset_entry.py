@@ -24,9 +24,10 @@ def test_parsing_a_fieldset_entry_without_a_fieldset_raises_the_expected_parseer
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_line_continuation_raises_the_expected_parseerror():
   error = None
@@ -56,9 +57,10 @@ def test_parsing_a_fieldset_entry_preceded_by_a_line_continuation_raises_the_exp
   
   assert error.snippet == snippet
   
-  selection = [[2,0], [2,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 2
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_field_raises_the_expected_parseerror():
   error = None
@@ -86,9 +88,10 @@ def test_parsing_a_fieldset_entry_preceded_by_a_field_raises_the_expected_parsee
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [1,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_list_item_raises_the_expected_parseerror():
   error = None
@@ -118,9 +121,10 @@ def test_parsing_a_fieldset_entry_preceded_by_a_list_item_raises_the_expected_pa
   
   assert error.snippet == snippet
   
-  selection = [[2,0], [2,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 2
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_copied_field_raises_the_expected_parseerror():
   error = None
@@ -152,9 +156,10 @@ def test_parsing_a_fieldset_entry_preceded_by_a_copied_field_raises_the_expected
   
   assert error.snippet == snippet
   
-  selection = [[3,0], [3,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 3
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_copied_list_raises_the_expected_parseerror():
   error = None
@@ -187,9 +192,10 @@ def test_parsing_a_fieldset_entry_preceded_by_a_copied_list_raises_the_expected_
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_copied_empty_multiline_field_raises_the_expected_parseerror():
   error = None
@@ -222,9 +228,10 @@ def test_parsing_a_fieldset_entry_preceded_by_a_copied_empty_multiline_field_rai
   
   assert error.snippet == snippet
   
-  selection = [[4,0], [4,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 4
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 13
 
 def test_parsing_a_fieldset_entry_preceded_by_a_copied_multiline_field_raises_the_expected_parseerror():
   error = None
@@ -258,6 +265,7 @@ def test_parsing_a_fieldset_entry_preceded_by_a_copied_multiline_field_raises_th
   
   assert error.snippet == snippet
   
-  selection = [[5,0], [5,13]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 5
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 5
+  assert error.selection['to']['column'] == 13

@@ -27,9 +27,10 @@ describe 'Expecting an element but getting two elements' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,8]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(8)
   end
 end
 
@@ -68,8 +69,9 @@ describe 'Expecting an element but getting two elements with comments and empty 
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [1,8]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(8)
   end
 end

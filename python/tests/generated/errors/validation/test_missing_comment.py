@@ -6,7 +6,7 @@ def test_querying_a_section_for_a_required_but_missing_comment_raises_the_expect
   input = ("# section")
 
   try:
-    enolib.parse(input).section('section').required_comment
+    enolib.parse(input).section('section').required_string_comment()
   except enolib.ValidationError as _error:
     if isinstance(_error, enolib.ValidationError):
       error = _error
@@ -24,6 +24,7 @@ def test_querying_a_section_for_a_required_but_missing_comment_raises_the_expect
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,0]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 0

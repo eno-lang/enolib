@@ -25,9 +25,10 @@ describe('Asserting everything was touched when the only present list was not to
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [1,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });
 

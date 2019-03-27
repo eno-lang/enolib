@@ -36,8 +36,9 @@ describe 'Touching elements in a section that were copied from another section d
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [1,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end

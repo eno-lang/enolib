@@ -24,6 +24,7 @@ def test_querying_a_field_for_a_required_but_missing_value_raises_the_expected_v
   
   assert error.snippet == snippet
   
-  selection = [[0,6], [0,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 6
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 6

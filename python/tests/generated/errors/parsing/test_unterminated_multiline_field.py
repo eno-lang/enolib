@@ -32,9 +32,10 @@ def test_a_multiline_field_with_an_incomplete_multiline_field_operator_in_the_en
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,18]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 18
 
 def test_a_multiline_field_with_an_edge_case_key_and_missing_space_in_the_ending_line_raises_the_expected_parseerror():
   error = None
@@ -68,6 +69,7 @@ def test_a_multiline_field_with_an_edge_case_key_and_missing_space_in_the_ending
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [0,4]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 4

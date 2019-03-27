@@ -25,8 +25,9 @@ describe('Triggering an error inside a custom loader when querying a required co
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,2], [0,9]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(2);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(9);
   });
 });

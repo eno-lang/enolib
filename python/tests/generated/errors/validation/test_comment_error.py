@@ -29,6 +29,7 @@ def test_triggering_an_error_inside_a_custom_loader_when_querying_a_required_com
   
   assert error.snippet == snippet
   
-  selection = [[0,2], [0,9]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 2
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 9

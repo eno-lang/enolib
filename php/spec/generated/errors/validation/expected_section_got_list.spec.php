@@ -25,9 +25,10 @@ describe('Expecting a section but getting a list with one item', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [1,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });
 
@@ -68,9 +69,10 @@ describe('Expecting a section but getting a list with empty lines and multiple i
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [6,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(6);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });
 
@@ -107,8 +109,9 @@ describe('Expecting a section but getting a list with two items with comments', 
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [5,6]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(5);
+    expect($error->selection['to']['column'])->toEqual(6);
   });
 });

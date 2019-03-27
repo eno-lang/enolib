@@ -45,9 +45,10 @@ describe 'Multiple sections with multiple cyclical copy chains' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[9,18], [9,27]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(9)
+    expect(error.selection[:from][:column]).to eq(18)
+    expect(error.selection[:to][:line]).to eq(9)
+    expect(error.selection[:to][:column]).to eq(27)
   end
 end
 
@@ -82,9 +83,10 @@ describe 'Three empty elements copying each other, two of them cyclically' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,9], [2,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(9)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -119,9 +121,10 @@ describe 'Three sections with one being copied into its own subsection' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,23], [1,30]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(23)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(30)
   end
 end
 
@@ -156,9 +159,10 @@ describe 'Three sections with one being copied into its own subsubsection' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,27], [2,34]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(27)
+    expect(error.selection[:to][:line]).to eq(2)
+    expect(error.selection[:to][:column]).to eq(34)
   end
 end
 
@@ -197,9 +201,10 @@ describe 'Two fieldsets mutually copying each other' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,11], [3,15]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(11)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(15)
   end
 end
 
@@ -238,8 +243,9 @@ describe 'Two lists mutually copying each other' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,7], [3,11]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(11)
   end
 end

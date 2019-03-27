@@ -25,9 +25,10 @@ describe 'Copying a non-section element that does not exist' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -65,9 +66,10 @@ describe 'Copying a non-section element whose key only exists on a section' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -107,9 +109,10 @@ describe 'Copying an implied fieldset whose key only exists on a section' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -149,8 +152,9 @@ describe 'Copying an implied list whose key only exists on a section' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end

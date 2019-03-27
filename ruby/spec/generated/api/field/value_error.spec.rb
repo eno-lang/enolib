@@ -25,9 +25,10 @@ describe 'Obtaining and throwing an error with a custom message in the context o
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -58,8 +59,9 @@ describe 'Obtaining and throwing an error with a custom generated message in the
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end

@@ -29,9 +29,10 @@ describe 'Expecting a fieldset entry but getting two fieldset entries' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [1,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -78,8 +79,9 @@ describe 'Expecting a fieldset entry but getting two fieldset entries with comme
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[2,0], [4,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(2)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end

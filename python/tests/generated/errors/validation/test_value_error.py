@@ -27,9 +27,10 @@ def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_err
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_requesting_a_value_error_from_a_field_with_a_static_message_raises_the_expected_validationerror():
   error = None
@@ -55,9 +56,10 @@ def test_requesting_a_value_error_from_a_field_with_a_static_message_raises_the_
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
   error = None
@@ -83,9 +85,10 @@ def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_mess
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_raises_the_expected_validationerror():
   error = None
@@ -115,9 +118,10 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_r
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [1,5]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 5
 
 def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
   error = None
@@ -147,9 +151,10 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_gene
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [1,5]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 5
 
 def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_message_raises_the_expected_validationerror():
   error = None
@@ -177,9 +182,10 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_me
   
   assert error.snippet == snippet
   
-  selection = [[0,18], [0,18]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 18
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 18
 
 def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
   error = None
@@ -207,9 +213,10 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamical
   
   assert error.snippet == snippet
   
-  selection = [[0,18], [0,18]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 18
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 18
 
 def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_message_raises_the_expected_validationerror():
   error = None
@@ -245,9 +252,10 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [5,1]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 5
+  assert error.selection['to']['column'] == 1
 
 def test_requesting_a_value_error_from_a_field_with_continuations_with_a_dynamically_generated_message_raises_the_expected_validationerror():
   error = None
@@ -283,6 +291,7 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_dynamic
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [5,1]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 5
+  assert error.selection['to']['column'] == 1

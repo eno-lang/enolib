@@ -25,9 +25,10 @@ describe 'Asserting everything was touched when the only present field was not t
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 

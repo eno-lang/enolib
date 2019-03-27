@@ -25,9 +25,10 @@ describe 'Parsing a line continuation without any prior element' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,14]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(14)
   end
 end
 
@@ -64,8 +65,9 @@ describe 'Parsing a line continuation preceded by a copied field' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,22]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(22)
   end
 end

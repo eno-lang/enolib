@@ -31,9 +31,10 @@ describe('A multiline field with an incomplete multiline field operator in the e
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,18]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(18);
   });
 });
 
@@ -68,8 +69,9 @@ describe('A multiline field with an edge case key and missing space in the endin
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,4]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(4);
   });
 });

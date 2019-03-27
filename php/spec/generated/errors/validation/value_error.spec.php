@@ -27,9 +27,10 @@ describe('Querying a value from a field with a loader that always produces an er
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,7], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -56,9 +57,10 @@ describe('Requesting a value error from a field with a static message', function
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,7], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -85,9 +87,10 @@ describe('Requesting a value error from a field with a dynamically generated mes
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,7], [0,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });
 
@@ -118,9 +121,10 @@ describe('Requesting a value error from a multiline field with a static message'
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [1,5]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(5);
   });
 });
 
@@ -151,9 +155,10 @@ describe('Requesting a value error from a multiline field with a dynamically gen
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [1,5]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(5);
   });
 });
 
@@ -182,9 +187,10 @@ describe('Requesting a value error from an empty multiline field with a static m
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,18], [0,18]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(18);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(18);
   });
 });
 
@@ -213,9 +219,10 @@ describe('Requesting a value error from an empty multiline field with a dynamica
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,18], [0,18]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(18);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(18);
   });
 });
 
@@ -252,9 +259,10 @@ describe('Requesting a value error from a field with continuations with a static
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,7], [5,1]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(5);
+    expect($error->selection['to']['column'])->toEqual(1);
   });
 });
 
@@ -291,8 +299,9 @@ describe('Requesting a value error from a field with continuations with a dynami
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,7], [5,1]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(7);
+    expect($error->selection['to']['line'])->toEqual(5);
+    expect($error->selection['to']['column'])->toEqual(1);
   });
 });

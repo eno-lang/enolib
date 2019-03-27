@@ -23,9 +23,10 @@ describe('Obtaining and throwing an error with a custom message in the context o
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,5]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(5);
   });
 });
 
@@ -52,8 +53,9 @@ describe('Obtaining and throwing an error with a custom generated message in the
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,5]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(5);
   });
 });

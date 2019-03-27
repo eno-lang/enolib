@@ -31,9 +31,10 @@ describe 'Copying a field that exists twice' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -72,8 +73,9 @@ describe 'Copying a section that exists twice' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[4,0], [4,16]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(4)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(4)
+    expect(error.selection[:to][:column]).to eq(16)
   end
 end

@@ -25,8 +25,9 @@ describe('Starting a section two levels deeper than the current one', function()
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [1,17]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(17);
   });
 });

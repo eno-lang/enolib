@@ -30,9 +30,10 @@ def test_expecting_a_list_but_getting_two_lists_raises_the_expected_validationer
   
   assert error.snippet == snippet
   
-  selection = [[0,0], [1,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 6
 
 def test_expecting_a_list_but_getting_two_lists_with_comments_empty_lines_and_continuations_raises_the_expected_validationerror():
   error = None
@@ -76,6 +77,7 @@ def test_expecting_a_list_but_getting_two_lists_with_comments_empty_lines_and_co
   
   assert error.snippet == snippet
   
-  selection = [[1,0], [4,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 0
+  assert error.selection['to']['line'] == 4
+  assert error.selection['to']['column'] == 6

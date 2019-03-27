@@ -26,6 +26,7 @@ def test_querying_a_fieldset_entry_for_a_required_but_missing_value_raises_the_e
   
   assert error.snippet == snippet
   
-  selection = [[1,7], [1,7]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 7

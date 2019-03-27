@@ -26,9 +26,10 @@ def test_directly_querying_a_list_item_for_a_required_but_missing_value_raises_t
   
   assert error.snippet == snippet
   
-  selection = [[1,1], [1,1]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 1
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 1
 
 def test_indirectly_querying_a_list_with_empty_items_for_required_values_raises_the_expected_validationerror():
   error = None
@@ -56,6 +57,7 @@ def test_indirectly_querying_a_list_with_empty_items_for_required_values_raises_
   
   assert error.snippet == snippet
   
-  selection = [[1,1], [1,1]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 1
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 1

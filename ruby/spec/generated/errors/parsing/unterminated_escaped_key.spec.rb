@@ -25,9 +25,10 @@ describe 'A single field with an terminated escaped key' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,1], [0,13]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(1)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(13)
   end
 end
 
@@ -58,8 +59,9 @@ describe 'A single section with an unterminated escaped key' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,3], [0,15]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(3)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(15)
   end
 end

@@ -25,8 +25,9 @@ describe 'Triggering an error inside a custom loader when querying the key of a 
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,0], [0,5]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(5)
   end
 end

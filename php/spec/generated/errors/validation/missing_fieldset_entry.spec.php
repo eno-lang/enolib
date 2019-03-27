@@ -23,9 +23,10 @@ describe('Querying an empty fieldset for a required but missing entry', function
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,9], [0,9]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(9);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(9);
   });
 });
 
@@ -56,9 +57,10 @@ describe('Querying a fieldset with two entries for a required but missing entry'
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,9], [0,9]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(9);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(9);
   });
 });
 
@@ -97,8 +99,9 @@ describe('Querying a fieldset with entries, empty lines and comments for a requi
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,9], [0,9]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(9);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(9);
   });
 });

@@ -7,7 +7,7 @@ describe('Querying a section for a required but missing comment', function() {
     $input = "# section";
 
     try {
-      Enolib\Parser::parse($input)->section('section')->requiredComment();
+      Enolib\Parser::parse($input)->section('section')->requiredStringComment();
     } catch(Enolib\ValidationError $_error) {
       $error = $_error;
     }
@@ -23,8 +23,9 @@ describe('Querying a section for a required but missing comment', function() {
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[0,0], [0,0]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(0);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(0);
+    expect($error->selection['to']['column'])->toEqual(0);
   });
 });

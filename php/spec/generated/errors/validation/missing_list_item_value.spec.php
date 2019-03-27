@@ -25,9 +25,10 @@ describe('Directly querying a list item for a required but missing value', funct
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,1], [1,1]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(1);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(1);
   });
 });
 
@@ -56,8 +57,9 @@ describe('Indirectly querying a list with empty items for required values', func
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,1], [1,1]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(1);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(1);
   });
 });

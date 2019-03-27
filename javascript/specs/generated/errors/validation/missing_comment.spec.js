@@ -7,7 +7,7 @@ describe('Querying a section for a required but missing comment', () => {
     const input = `# section`;
 
     try {
-      enolib.parse(input).section('section').requiredComment();
+      enolib.parse(input).section('section').requiredStringComment();
     } catch(_error) {
       if(_error instanceof enolib.ValidationError) {
         error = _error;

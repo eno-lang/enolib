@@ -25,9 +25,10 @@ describe 'Querying a value from a field with a loader that always produces an er
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -58,9 +59,10 @@ describe 'Requesting a value error from a field with a static message' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -91,9 +93,10 @@ describe 'Requesting a value error from a field with a dynamically generated mes
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [0,12]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(12)
   end
 end
 
@@ -128,9 +131,10 @@ describe 'Requesting a value error from a multiline field with a static message'
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [1,5]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(5)
   end
 end
 
@@ -165,9 +169,10 @@ describe 'Requesting a value error from a multiline field with a dynamically gen
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[1,0], [1,5]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(1)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(1)
+    expect(error.selection[:to][:column]).to eq(5)
   end
 end
 
@@ -200,9 +205,10 @@ describe 'Requesting a value error from an empty multiline field with a static m
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,18], [0,18]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(18)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(18)
   end
 end
 
@@ -235,9 +241,10 @@ describe 'Requesting a value error from an empty multiline field with a dynamica
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,18], [0,18]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(18)
+    expect(error.selection[:to][:line]).to eq(0)
+    expect(error.selection[:to][:column]).to eq(18)
   end
 end
 
@@ -278,9 +285,10 @@ describe 'Requesting a value error from a field with continuations with a static
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [5,1]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(5)
+    expect(error.selection[:to][:column]).to eq(1)
   end
 end
 
@@ -321,8 +329,9 @@ describe 'Requesting a value error from a field with continuations with a dynami
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[0,7], [5,1]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(0)
+    expect(error.selection[:from][:column]).to eq(7)
+    expect(error.selection[:to][:line]).to eq(5)
+    expect(error.selection[:to][:column]).to eq(1)
   end
 end

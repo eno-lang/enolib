@@ -31,8 +31,9 @@ describe 'A line without operators' do
     
     expect(error.snippet).to eq(snippet)
     
-    selection = [[3,0], [3,7]]
-    
-    expect(error.selection).to eq(selection)
+    expect(error.selection[:from][:line]).to eq(3)
+    expect(error.selection[:from][:column]).to eq(0)
+    expect(error.selection[:to][:line]).to eq(3)
+    expect(error.selection[:to][:column]).to eq(7)
   end
 end

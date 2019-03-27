@@ -34,8 +34,9 @@ describe('Touching elements in a section that were copied from another section d
     
     expect($error->snippet)->toEqual($snippet);
     
-    $selection = [[1,0], [1,12]];
-    
-    expect($error->selection)->toEqual($selection);
+    expect($error->selection['from']['line'])->toEqual(1);
+    expect($error->selection['from']['column'])->toEqual(0);
+    expect($error->selection['to']['line'])->toEqual(1);
+    expect($error->selection['to']['column'])->toEqual(12);
   });
 });

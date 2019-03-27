@@ -24,9 +24,10 @@ def test_obtaining_and_throwing_an_error_with_a_custom_message_in_the_context_of
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12
 
 def test_obtaining_and_throwing_an_error_with_a_custom_generated_message_in_the_context_of_a_field_s_value_raises_the_expected_validationerror():
   error = None
@@ -52,6 +53,7 @@ def test_obtaining_and_throwing_an_error_with_a_custom_generated_message_in_the_
   
   assert error.snippet == snippet
   
-  selection = [[0,7], [0,12]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 12

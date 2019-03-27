@@ -26,9 +26,10 @@ def test_querying_a_fieldset_entry_for_a_required_but_missing_value_raises_the_e
   
   assert error.snippet == snippet
   
-  selection = [[1,7], [1,7]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 1
+  assert error.selection['from']['column'] == 7
+  assert error.selection['to']['line'] == 1
+  assert error.selection['to']['column'] == 7
 
 def test_querying_a_field_for_a_required_but_missing_value_raises_the_expected_validationerror():
   error = None
@@ -54,9 +55,10 @@ def test_querying_a_field_for_a_required_but_missing_value_raises_the_expected_v
   
   assert error.snippet == snippet
   
-  selection = [[0,6], [0,6]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 6
+  assert error.selection['to']['line'] == 0
+  assert error.selection['to']['column'] == 6
 
 def test_querying_a_field_with_empty_line_continuations_for_a_required_but_missing_value_raises_the_expected_validationerror():
   error = None
@@ -88,9 +90,10 @@ def test_querying_a_field_with_empty_line_continuations_for_a_required_but_missi
   
   assert error.snippet == snippet
   
-  selection = [[0,6], [3,1]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 0
+  assert error.selection['from']['column'] == 6
+  assert error.selection['to']['line'] == 3
+  assert error.selection['to']['column'] == 1
 
 def test_querying_a_list_with_an_empty_item_for_required_values_raises_the_expected_validationerror():
   error = None
@@ -120,6 +123,7 @@ def test_querying_a_list_with_an_empty_item_for_required_values_raises_the_expec
   
   assert error.snippet == snippet
   
-  selection = [[2,1], [2,1]]
-  
-  assert error.selection == selection
+  assert error.selection['from']['line'] == 2
+  assert error.selection['from']['column'] == 1
+  assert error.selection['to']['line'] == 2
+  assert error.selection['to']['column'] == 1
