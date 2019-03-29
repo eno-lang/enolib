@@ -50,7 +50,7 @@ class TerminalReporter extends Reporter {
   constructor(context) {
     super(context);
 
-    const highestShownLineNumber = this._snippet.length;
+    let highestShownLineNumber = this._snippet.length;
 
     for(let index = this._snippet.length; index >= 0; index--) {
       if(this._snippet[index] !== undefined && this._snippet[index] !== OMISSION) {
