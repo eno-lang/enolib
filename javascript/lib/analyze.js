@@ -20,41 +20,38 @@ const {
 const tokenizeErrorContext = (context, index, line) => {
   let firstInstruction = null;
 
-  while(true) {
-    const endOfLineIndex = context._input.indexOf('\n', index);
+  let endOfLineIndex;
+  while((endOfLineIndex = context._input.indexOf('\n', index)) !== -1) {
+    const instruction = {
+      line: line,
+      ranges: { line: [index, endOfLineIndex] }
+    };
 
-    if(endOfLineIndex === -1) {
-      const instruction = {
-        line: line,
-        ranges: { line: [index, context._input.length ] }
-      };
+    context._meta.push(instruction);
 
-      if(firstInstruction) {
-        instruction.type = UNPARSED;
-      }
-
-      context._lineCount = line + 1;
-      context._meta.push(instruction);
-
-      return firstInstruction || instruction;
+    if(firstInstruction) {
+      instruction.type = UNPARSED;
     } else {
-      const instruction = {
-        line: line,
-        ranges: { line: [index, endOfLineIndex] }
-      };
-
-      context._meta.push(instruction);
-
-      if(firstInstruction) {
-        instruction.type = UNPARSED;
-      } else {
-        firstInstruction = instruction;
-      }
-
-      index = endOfLineIndex + 1;
-      line++;
+      firstInstruction = instruction;
     }
+
+    index = endOfLineIndex + 1;
+    line++;
   }
+
+  const instruction = {
+    line: line,
+    ranges: { line: [index, context._input.length ] }
+  };
+
+  if(firstInstruction) {
+    instruction.type = UNPARSED;
+  }
+
+  context._lineCount = line + 1;
+  context._meta.push(instruction);
+
+  return firstInstruction || instruction;
 };
 
 exports.analyze = function() {
@@ -72,6 +69,11 @@ exports.analyze = function() {
 
   this._meta = [];
 
+  if(this._input.length === 0) {
+    this._lineCount = 1;
+    return;
+  }
+
   let comments = null;
   let lastContinuableElement = null;
   let lastNonSectionElement = null;
@@ -84,7 +86,7 @@ exports.analyze = function() {
 
   let instruction;
 
-  while(true) {
+  while(index < this._input.length) {
     const match = matcherRegex.exec(this._input);
 
     if(match === null) {
@@ -330,6 +332,8 @@ exports.analyze = function() {
       const sectionOperator = match[matcher.SECTION_OPERATOR_INDEX];
 
       instruction.depth = sectionOperator.length;
+      instruction.elements = [];
+      instruction.type = SECTION;
 
       if(instruction.depth === lastSection.depth + 1) {
         instruction.parent = lastSection;
@@ -348,9 +352,6 @@ exports.analyze = function() {
 
       instruction.parent.elements.push(instruction);
       lastSection = instruction;
-
-      instruction.elements = [];
-      instruction.type = SECTION;
 
       const sectionOperatorIndex = this._input.indexOf(sectionOperator, index);
       const unescapedKey = match[matcher.SECTION_KEY_UNESCAPED_INDEX];
@@ -439,8 +440,6 @@ exports.analyze = function() {
 
       lastContinuableElement = null;
       lastNonSectionElement = instruction;
-
-      const startOfMultilineFieldIndex = index;
 
       const keyEscaped = instruction.key.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
       const terminatorMatcher = new RegExp(`[^\\S\\n]*(${operator})(?!-)[^\\S\\n]*(${keyEscaped})[^\\S\\n]*(?=\\n|$)`, 'y');
@@ -578,18 +577,9 @@ exports.analyze = function() {
     line += 1;
     index = matcherRegex.lastIndex + 1;
     matcherRegex.lastIndex = index;
-
-    if(index >= this._input.length) {
-      // TODO: Possibly solve this by capturing with the unified grammar matcher as last group
-      if(this._input[this._input.length - 1] === '\n') {
-        this._lineCount = line + 1;
-      } else {
-        this._lineCount = line;
-      }
-
-      break;
-    }
   } // ends while(true)
+
+  this._lineCount = this._input[this._input.length - 1] === '\n' ? line + 1 : line;
 
   if(comments) {
     this._meta.push(...comments);
