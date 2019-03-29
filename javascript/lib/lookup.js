@@ -13,7 +13,7 @@ const {
   SECTION
 } = require('./constants.js');
 
-const checkMultilineField = (field, line, column) => {
+const checkMultilineFieldByLine = (field, line) => {
   if(line < field.line || line > field.end.line)
     return false;
 
@@ -39,7 +39,7 @@ const checkMultilineFieldByIndex = (field, index) => {
   return { element: field, instruction: field.lines.find(line => index <= line.ranges.line[END]) };
 };
 
-const checkField = (field, line, column) => {
+const checkFieldByLine = (field, line) => {
   if(line < field.line)
     return false;
 
@@ -79,7 +79,7 @@ const checkFieldByIndex = (field, index) => {
   }
 };
 
-const checkFieldset = (fieldset, line, column) => {
+const checkFieldsetByLine = (fieldset, line) => {
   if(line < fieldset.line)
     return false;
 
@@ -97,7 +97,7 @@ const checkFieldset = (fieldset, line, column) => {
     if(line < entry.line)
       return { element: fieldset, instruction: null };
 
-    const matchInEntry = checkField(entry, line, column);
+    const matchInEntry = checkFieldByLine(entry, line);
 
     if(matchInEntry)
       return matchInEntry;
@@ -129,7 +129,7 @@ const checkFieldsetByIndex = (fieldset, index) => {
   }
 };
 
-const checkList = (list, line, column) => {
+const checkListByLine = (list, line) => {
   if(line < list.line)
     return false;
 
@@ -146,7 +146,7 @@ const checkList = (list, line, column) => {
     if(line < item.line)
       return { element: list, instruction: null };
 
-    const matchInItem = checkField(item, line, column);
+    const matchInItem = checkFieldByLine(item, line);
 
     if(matchInItem)
       return matchInItem;
@@ -177,7 +177,7 @@ const checkListByIndex = (list, index) => {
   }
 };
 
-const checkInSection = (section, line, column) => {
+const checkInSectionByLine = (section, line) => {
   for(let elementIndex = section.elements.length - 1; elementIndex >= 0; elementIndex--) {
     const element = section.elements[elementIndex];
 
@@ -205,12 +205,12 @@ const checkInSection = (section, line, column) => {
       }
       case MULTILINE_FIELD_BEGIN:
         if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
-          const matchInMultilineField = checkMultilineField(element, line, column);
+          const matchInMultilineField = checkMultilineFieldByLine(element, line);
           if(matchInMultilineField) return matchInMultilineField;
         }
         break;
       case SECTION:
-        return checkInSection(element, line, column);
+        return checkInSectionByLine(element, line);
     }
     break;
   }
@@ -268,7 +268,7 @@ exports.lookup = (position, input, options = {}) => {
     if(line < 0 || line >= context._lineCount)
       throw new RangeError(`You are trying to look up a line (${line}) outside of the document's line range (0-${context._lineCount - 1})`);
 
-    match = checkInSection(context._document, line, column);
+    match = checkInSectionByLine(context._document, line);
   } else {
     if(index < 0 || index > context._input.length)
       throw new RangeError(`You are trying to look up an index (${index}) outside of the document's index range (0-${context._input.length})`);
