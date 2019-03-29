@@ -235,7 +235,7 @@ class Reporter {
 
   snippet() {
     if(this._snippet.every(line => line === undefined)) {
-      for(const [line, tag] of this._snippet.entries()) {
+      for(let line = 0; line < this._snippet.length; line++) {
         this._snippet[line] = QUESTION;
       }
     } else {
