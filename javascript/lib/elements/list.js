@@ -1,5 +1,5 @@
 const list_item_module = require('./list_item.js');
-
+const section_module = require('./section.js');
 const { ElementBase } = require('./element_base.js');
 
 class List extends ElementBase {
@@ -80,7 +80,7 @@ class List extends ElementBase {
    * @return {Section} The parent section.
    */
   parent() {
-    return this._parent || new Section(this._context, this._instruction.parent);
+    return this._parent || new section_module.Section(this._context, this._instruction.parent);
   }
 
   requiredStringValues() {

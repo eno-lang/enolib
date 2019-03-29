@@ -1,4 +1,5 @@
 const fieldset_entry_module = require('./fieldset_entry.js');
+const section_module = require('./section.js');
 const missing_fieldset_entry_module = require('./missing/missing_fieldset_entry.js');
 
 const { ElementBase } = require('./element_base.js');
@@ -180,7 +181,7 @@ class Fieldset extends ElementBase {
    * @return {Section} The parent section.
    */
   parent() {
-    return this._parent || new Section(this._context, this._instruction.parent);
+    return this._parent || new section_module.Section(this._context, this._instruction.parent);
   }
 
   requiredEntry(key = null) {

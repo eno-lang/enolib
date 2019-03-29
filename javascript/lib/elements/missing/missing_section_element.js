@@ -12,7 +12,7 @@ class MissingSectionElement extends MissingElementBase {
   }
 
   toEmpty() {
-    return new missing_field_module.MissingEmpty(this._key, this._parent);
+    return new missing_empty_module.MissingEmpty(this._key, this._parent);
   }
 
   toField() {
@@ -20,15 +20,15 @@ class MissingSectionElement extends MissingElementBase {
   }
 
   toFieldset() {
-    return new missing_field_module.MissingFieldset(this._key, this._parent);
+    return new missing_fieldset_module.MissingFieldset(this._key, this._parent);
   }
 
   toList() {
-    return new missing_field_module.MissingList(this._key, this._parent);
+    return new missing_list_module.MissingList(this._key, this._parent);
   }
 
   toSection() {
-    return new missing_field_module.MissingSection(this._key, this._parent);
+    return new missing_section_module.MissingSection(this._key, this._parent);
   }
 
   toString() {
