@@ -35,7 +35,7 @@ describe('Field', () => {
     });
 
     it('touches the element', () => {
-      const _ = field.optionalStringValue();
+      field.optionalStringValue();
       expect(field._touched).toBe(true);
     });
 
@@ -89,7 +89,7 @@ describe('Field', () => {
     });
 
     it('touches the element', () => {
-      const _ = field.requiredValue(value => value.toUpperCase());
+      field.requiredValue(value => value.toUpperCase());
       expect(field._touched).toBe(true);
     });
 

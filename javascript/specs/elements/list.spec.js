@@ -71,6 +71,8 @@ list:
   });
 
   describe('requiredValues(loader)', () => {
+    let values;
+
     beforeEach(() => {
       values = list.requiredValues(value => value.toUpperCase());
     });
