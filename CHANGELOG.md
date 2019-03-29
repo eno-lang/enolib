@@ -4,6 +4,26 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.3.4
+
+### Fixes
+
+- Add missing type checks in section element yields* determination `3ebd1ff`
+- Fix non-reassignable variable in TerminalReporter constructor `7e3b558`
+- Fix missing or falsely referenced element modules `1f97c9d`
+
+### Minor optimizations
+
+- Remove unused column context in line-based instruction lookups `42b5d48`
+- Only iterate line numbers in reporter snippet processing `364124c`
+- Remove unused key iteration in javascript resolver code `5416dfc`
+- Miscellaneous minor refactoring inside the javascript implementation `e7ffff7`
+- Remove unused requires throughout the javascript implementation `415f1f4`
+
+### Refactoring
+
+- Use more readable flow patterns in the javascript analyzer code `7d0159b`
+
 ## 0.3.3
 
 ### Fixes
@@ -40,7 +60,6 @@ All enolib implementations across supported languages share the same version num
 ### Internals
 
 -  Simplify element class layout, split element folder layout `23787f1`
-
 
 ### Documentation
 
