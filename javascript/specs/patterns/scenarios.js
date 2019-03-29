@@ -137,7 +137,7 @@ exports.SCENARIOS = [
       [matcher.TEMPLATE_INDEX]: '<'
     },
     syntax: 'Key < <',
-    variants: space('Key', '<', ' ', '<')
+    variants: space('Key', '<', '<')
   },
   {
     captures: {
