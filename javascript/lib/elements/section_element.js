@@ -119,17 +119,19 @@ class SectionElement extends ElementBase {
   }
 
   yieldsField() {
-    return this._instruction.type === EMPTY_ELEMENT ||
-           this._instruction.type === FIELD ||
-           this._instruction.type === MULTILINE_FIELD_BEGIN;
+    return this._instruction.type === FIELD ||
+           this._instruction.type === MULTILINE_FIELD_BEGIN ||
+           this._instruction.type === EMPTY_ELEMENT;
   }
 
   yieldsFieldset() {
-    return this._instruction.type === FIELDSET;
+    return this._instruction.type === FIELDSET ||
+           this._instruction.type === EMPTY_ELEMENT;
   }
 
   yieldsList() {
-    return this._instruction.type === LIST;
+    return this._instruction.type === LIST ||
+           this._instruction.type === EMPTY_ELEMENT;
   }
 
   yieldsSection() {
