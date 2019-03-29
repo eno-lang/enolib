@@ -1,18 +1,14 @@
 const { ValidationError } = require('../error_types.js');
-const { DOCUMENT_BEGIN, selection, cursor, selectComments, selectElement, selectKey } = require('./selections.js');
+const { cursor, DOCUMENT_BEGIN, selection, selectComments, selectElement, selectKey } = require('./selections.js');
 const {
   BEGIN,
   END,
   DOCUMENT,
   EMPTY_ELEMENT,
   FIELD,
-  FIELDSET,
   FIELDSET_ENTRY,
-  LIST,
   LIST_ITEM,
-  MULTILINE_FIELD_BEGIN,
-  MULTILINE_FIELD_VALUE,
-  SECTION
+  MULTILINE_FIELD_BEGIN
 } = require('../constants.js');
 
 // TODO: Here and prominently also elsewhere - consider replacing instruction.ranges.line with instruction[LINE_RANGE] (where LINE_RANGE = Symbol('descriptive'))

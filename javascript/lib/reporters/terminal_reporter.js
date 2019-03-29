@@ -1,4 +1,4 @@
-const { COMMENT, HUMAN_INDEXING, SECTION, UNPARSED } = require('../constants.js');
+const { COMMENT, HUMAN_INDEXING, UNPARSED } = require('../constants.js');
 const { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION } = require('./reporter.js');
 const { Reporter } = require('./reporter.js');
 

@@ -1,7 +1,6 @@
 const list_item_module = require('./list_item.js');
 
 const { ElementBase } = require('./element_base.js');
-const { EMPTY_ELEMENT, LIST } = require('../constants.js');
 
 class List extends ElementBase {
   get [Symbol.toStringTag]() {

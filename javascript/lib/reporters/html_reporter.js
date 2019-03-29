@@ -1,13 +1,14 @@
-const { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION } = require('./reporter.js');
+const { EMPHASIZE, INDICATE, OMISSION, QUESTION } = require('./reporter.js');
 const { HUMAN_INDEXING } = require('../constants.js');
 const { Reporter } = require('./reporter.js');
 
-const INDICATORS = {
-  [DISPLAY]: ' ',
-  [EMPHASIZE]: '>',
-  [INDICATE]: '*',
-  [QUESTION]: '?'
-};
+// TODO: Possibly introduce here too
+// const INDICATORS = {
+//   [DISPLAY]: ' ',
+//   [EMPHASIZE]: '>',
+//   [INDICATE]: '*',
+//   [QUESTION]: '?'
+// };
 
 const HTML_ESCAPE = {
   '&': '&amp;',

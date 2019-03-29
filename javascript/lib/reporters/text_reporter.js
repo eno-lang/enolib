@@ -1,6 +1,5 @@
-const { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION } = require('./reporter.js');
+const { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION, Reporter } = require('./reporter.js');
 const { HUMAN_INDEXING } = require('../constants.js');
-const { Reporter } = require('./reporter.js');
 
 const INDICATORS = {
   [DISPLAY]: ' ',

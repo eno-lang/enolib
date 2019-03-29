@@ -5,16 +5,11 @@ const { Element } = require('./elements/element.js');
 
 const {
   BEGIN,
-  COMMENT,
-  EMPTY_ELEMENT,
   END,
   FIELD,
   FIELDSET,
-  FIELDSET_ENTRY,
   LIST,
-  LIST_ITEM,
   MULTILINE_FIELD_BEGIN,
-  MULTILINE_FIELD_VALUE,
   SECTION
 } = require('./constants.js');
 

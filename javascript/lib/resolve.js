@@ -1,12 +1,9 @@
 const { errors } = require('./errors/parsing.js');
 const {
-  COMMENT,
   EMPTY_ELEMENT,
   FIELD,
   FIELDSET,
-  FIELDSET_ENTRY,
   LIST,
-  LIST_ITEM,
   MULTILINE_FIELD_BEGIN,
   SECTION
 } = require('./constants.js');
