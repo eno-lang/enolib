@@ -1,5 +1,4 @@
 const enolib = require('../..');
-const { Field } = require('../..');
 
 const input = `
 > comment

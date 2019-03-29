@@ -1,6 +1,4 @@
 const enolib = require('../..');
-const fs = require('fs');
-const path = require('path');
 
 const input = `
 > Comment
