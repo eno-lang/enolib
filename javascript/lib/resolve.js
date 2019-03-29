@@ -84,7 +84,7 @@ const consolidateSections = (context, instruction, template, deepMerge) => {
       }
     }
 
-    for(const [key, merger] of Object.entries(mergeMap)) {
+    for(const merger of Object.values(mergeMap)) {
       if(merger === false) continue;
 
       consolidateSections(context, merger.instruction, merger.template, true);
@@ -171,13 +171,13 @@ const index = (context, section, indexNonSectionElements, indexSections) => {
 }
 
 exports.resolve = function() {
-  const unresolvedNonSectionElements = Object.entries(this.copy.nonSectionElements);
-  const unresolvedSections = Object.entries(this.copy.sections);
+  const unresolvedNonSectionElements = Object.values(this.copy.nonSectionElements);
+  const unresolvedSections = Object.values(this.copy.sections);
 
   if(unresolvedNonSectionElements.length > 0 || unresolvedSections.length > 0) {
     index(this, this._document, unresolvedNonSectionElements.length > 0, unresolvedSections.length > 0);
 
-    for(const [key, copy] of unresolvedNonSectionElements) {
+    for(const copy of unresolvedNonSectionElements) {
       if(!copy.hasOwnProperty('template'))
         throw errors.nonSectionElementNotFound(this, copy.targets[0]);
 
@@ -188,7 +188,7 @@ exports.resolve = function() {
       }
     }
 
-    for(const [key, copy] of unresolvedSections) {
+    for(const copy of unresolvedSections) {
       if(!copy.hasOwnProperty('template'))
         throw errors.sectionNotFound(this, copy.targets[0]);
 
