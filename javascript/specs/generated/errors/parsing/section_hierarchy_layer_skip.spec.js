@@ -15,7 +15,7 @@ describe('Starting a section two levels deeper than the current one', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

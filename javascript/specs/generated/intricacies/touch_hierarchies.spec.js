@@ -22,7 +22,7 @@ describe('Touching elements in a section that were copied from another section d
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

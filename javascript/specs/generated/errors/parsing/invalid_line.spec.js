@@ -17,7 +17,7 @@ describe('A line without operators', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

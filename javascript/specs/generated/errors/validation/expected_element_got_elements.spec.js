@@ -15,7 +15,7 @@ describe('Expecting an element but getting two elements', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -54,7 +54,7 @@ describe('Expecting an element but getting two elements with comments and empty 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

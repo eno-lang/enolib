@@ -14,7 +14,7 @@ describe('Expecting lists but getting a field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -50,7 +50,7 @@ describe('Expecting lists but getting a field with continuations', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -91,7 +91,7 @@ describe('Expecting lists but getting a field with continuations separated by id
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

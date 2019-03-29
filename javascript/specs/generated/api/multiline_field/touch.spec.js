@@ -16,7 +16,7 @@ describe('Asserting everything was touched when the only present multiline field
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

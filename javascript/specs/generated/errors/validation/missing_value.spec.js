@@ -15,7 +15,7 @@ describe('Querying a fieldset entry for a required but missing value', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -50,7 +50,7 @@ describe('Querying a field for a required but missing value', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -87,7 +87,7 @@ describe('Querying a field with empty line continuations for a required but miss
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -126,7 +126,7 @@ describe('Querying a list with an empty item for required values', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

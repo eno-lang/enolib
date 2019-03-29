@@ -16,7 +16,7 @@ describe('Querying a value from a field with a loader that always produces an er
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -50,7 +50,7 @@ describe('Requesting a value error from a field with a static message', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -84,7 +84,7 @@ describe('Requesting a value error from a field with a dynamically generated mes
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -120,7 +120,7 @@ describe('Requesting a value error from a multiline field with a static message'
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -158,7 +158,7 @@ describe('Requesting a value error from a multiline field with a dynamically gen
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -195,7 +195,7 @@ describe('Requesting a value error from an empty multiline field with a static m
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -231,7 +231,7 @@ describe('Requesting a value error from an empty multiline field with a dynamica
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -271,7 +271,7 @@ describe('Requesting a value error from a field with continuations with a static
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -315,7 +315,7 @@ describe('Requesting a value error from a field with continuations with a dynami
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

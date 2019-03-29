@@ -15,7 +15,7 @@ describe('Expecting a fieldset but getting a list with one item', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -57,7 +57,7 @@ describe('Expecting a fieldset but getting a list with empty lines and multiple 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -103,7 +103,7 @@ describe('Expecting a fieldset but getting a list with two items with comments',
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

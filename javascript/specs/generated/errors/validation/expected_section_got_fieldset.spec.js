@@ -15,7 +15,7 @@ describe('Expecting a section but getting a fieldset with one item', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -57,7 +57,7 @@ describe('Expecting a section but getting a fieldset with empty lines and multip
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -103,7 +103,7 @@ describe('Expecting a section but getting a fieldset with two entries with comme
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

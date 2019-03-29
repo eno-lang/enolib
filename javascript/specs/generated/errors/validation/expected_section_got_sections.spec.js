@@ -17,7 +17,7 @@ describe('Expecting a section but getting two sections', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -65,7 +65,7 @@ describe('Expecting a section but getting two sections with elements, empty line
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

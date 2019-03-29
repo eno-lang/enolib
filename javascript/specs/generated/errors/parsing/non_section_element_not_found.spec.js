@@ -14,7 +14,7 @@ describe('Copying a non-section element that does not exist', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -52,7 +52,7 @@ describe('Copying a non-section element whose key only exists on a section', () 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -94,7 +94,7 @@ describe('Copying an implied fieldset whose key only exists on a section', () =>
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -137,7 +137,7 @@ describe('Copying an implied list whose key only exists on a section', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

@@ -14,7 +14,7 @@ describe('A single field with an terminated escaped key', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -48,7 +48,7 @@ describe('A single section with an unterminated escaped key', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

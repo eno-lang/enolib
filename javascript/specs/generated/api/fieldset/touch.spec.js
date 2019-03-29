@@ -15,7 +15,7 @@ describe('Asserting everything was touched when the only present fieldset was no
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

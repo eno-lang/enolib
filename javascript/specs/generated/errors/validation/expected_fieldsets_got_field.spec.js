@@ -14,7 +14,7 @@ describe('Expecting fieldsets but getting a field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -50,7 +50,7 @@ describe('Expecting fieldsets but getting a field with continuations', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -91,7 +91,7 @@ describe('Expecting fieldsets but getting a field with continuations separated b
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

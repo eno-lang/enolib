@@ -18,7 +18,7 @@ describe('A multiline field with an incomplete multiline field operator in the e
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -60,7 +60,7 @@ describe('A multiline field with an edge case key and missing space in the endin
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

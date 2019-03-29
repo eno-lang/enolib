@@ -15,7 +15,7 @@ describe('Expecting a field but getting two fields', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -58,7 +58,7 @@ describe('Expecting a field but getting two fields with comments, empty lines an
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

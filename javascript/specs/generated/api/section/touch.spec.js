@@ -14,7 +14,7 @@ describe('Asserting everything was touched when the only present section was not
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

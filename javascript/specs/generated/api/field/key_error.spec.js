@@ -14,7 +14,7 @@ describe('Obtaining and throwing an error with a custom message in the context o
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -48,7 +48,7 @@ describe('Obtaining and throwing an error with a custom generated message in the
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

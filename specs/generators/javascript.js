@@ -58,7 +58,7 @@ module.exports = async specs => {
                 } else {
                   throw _error;
                 }
-              };
+              }
 
               ${expectations.join('\n\n')}
             });

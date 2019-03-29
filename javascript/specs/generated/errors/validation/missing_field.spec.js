@@ -14,7 +14,7 @@ describe('Querying a section for a required but missing field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

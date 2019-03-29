@@ -17,7 +17,7 @@ describe('Copying a field that exists twice', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -58,7 +58,7 @@ describe('Copying a section that exists twice', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

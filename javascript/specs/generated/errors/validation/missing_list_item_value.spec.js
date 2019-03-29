@@ -15,7 +15,7 @@ describe('Directly querying a list item for a required but missing value', () =>
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -51,7 +51,7 @@ describe('Indirectly querying a list with empty items for required values', () =
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

@@ -14,7 +14,7 @@ describe('Expecting lists but getting an empty section', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -54,7 +54,7 @@ describe('Expecting lists but getting a section with a field and a list', () => 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -104,7 +104,7 @@ describe('Expecting lists but getting a section with subsections', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

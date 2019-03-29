@@ -15,7 +15,7 @@ describe('Triggering an error inside a custom loader when querying a required co
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

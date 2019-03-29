@@ -17,7 +17,7 @@ describe('Querying a missing field on the document when all elements are require
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -44,7 +44,7 @@ describe('Querying a missing fieldset on the document when all elements are requ
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -71,7 +71,7 @@ describe('Querying a missing list on the document when all elements are required
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -98,7 +98,7 @@ describe('Querying a missing section on the document when all elements are requi
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

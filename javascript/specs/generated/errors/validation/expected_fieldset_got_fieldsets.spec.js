@@ -17,7 +17,7 @@ describe('Expecting a fieldset but getting two fieldsets', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -62,7 +62,7 @@ describe('Expecting a fieldset but getting two fieldsets with comments, empty li
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

@@ -14,7 +14,7 @@ describe('Asserting everything was touched when the only present empty element w
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

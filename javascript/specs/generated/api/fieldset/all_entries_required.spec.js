@@ -17,7 +17,7 @@ describe('Querying a missing entry on a fieldset when all entries are required',
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -44,7 +44,7 @@ describe('Querying a missing entry on a fieldset when all requiring all entries 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

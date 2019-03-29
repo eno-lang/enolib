@@ -14,7 +14,7 @@ describe('Parsing a line continuation without any prior element', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -51,7 +51,7 @@ describe('Parsing a line continuation preceded by a copied field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

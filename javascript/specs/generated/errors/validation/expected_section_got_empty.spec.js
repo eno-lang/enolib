@@ -14,7 +14,7 @@ describe('Expecting a section but getting an empty element', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

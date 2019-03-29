@@ -14,7 +14,7 @@ describe('Querying the document for a required but missing list', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -48,7 +48,7 @@ describe('Querying a section for a required but missing list', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

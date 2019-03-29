@@ -16,7 +16,7 @@ describe('Expecting a fieldset entry but getting two fieldset entries', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -60,7 +60,7 @@ describe('Expecting a fieldset entry but getting two fieldset entries with comme
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

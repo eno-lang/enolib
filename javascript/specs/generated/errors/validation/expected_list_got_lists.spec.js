@@ -17,7 +17,7 @@ describe('Expecting a list but getting two lists', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -63,7 +63,7 @@ describe('Expecting a list but getting two lists with comments, empty lines and 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

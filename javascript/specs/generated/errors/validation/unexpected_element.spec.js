@@ -14,7 +14,7 @@ describe('Asserting everything was touched on an untouched document', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -48,7 +48,7 @@ describe('Asserting everything was touched on an untouched document, with a cust
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

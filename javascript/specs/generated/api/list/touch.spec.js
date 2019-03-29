@@ -15,7 +15,7 @@ describe('Asserting everything was touched when the only present list was not to
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

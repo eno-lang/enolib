@@ -14,7 +14,7 @@ describe('Querying a field for a required but missing value', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

@@ -24,7 +24,7 @@ describe('Multiple sections with multiple cyclical copy chains', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -70,7 +70,7 @@ describe('Three empty elements copying each other, two of them cyclically', () =
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -108,7 +108,7 @@ describe('Three sections with one being copied into its own subsection', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -146,7 +146,7 @@ describe('Three sections with one being copied into its own subsubsection', () =
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -186,7 +186,7 @@ describe('Two fieldsets mutually copying each other', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -228,7 +228,7 @@ describe('Two lists mutually copying each other', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

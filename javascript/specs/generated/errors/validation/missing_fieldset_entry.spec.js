@@ -14,7 +14,7 @@ describe('Querying an empty fieldset for a required but missing entry', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -50,7 +50,7 @@ describe('Querying a fieldset with two entries for a required but missing entry'
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     
@@ -92,7 +92,7 @@ describe('Querying a fieldset with entries, empty lines and comments for a requi
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ValidationError);
     

@@ -14,7 +14,7 @@ describe('Parsing a list item without any previous element', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -50,7 +50,7 @@ describe('Parsing a list item preceded by a line continuation', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -88,7 +88,7 @@ describe('Parsing a list item preceded by a fieldset entry', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -127,7 +127,7 @@ describe('Parsing a list item preceded by a copied field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -168,7 +168,7 @@ describe('Parsing a list item preceded by a copied fieldset', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -210,7 +210,7 @@ describe('Parsing a list item preceded by a multiline field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -251,7 +251,7 @@ describe('Parsing a list item preceded by an empty multiline field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     

@@ -14,7 +14,7 @@ describe('Copying a section that does not exist', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -50,7 +50,7 @@ describe('Copying a section whose key only exists on a field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -89,7 +89,7 @@ describe('Copying a section whose key only exists on a fieldset', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -129,7 +129,7 @@ describe('Copying a section whose key only exists on a list', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -170,7 +170,7 @@ describe('Copying a section whose key only exists on a multiline field', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -210,7 +210,7 @@ describe('Copying a section whose key only exists on an empty multiline field', 
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
@@ -250,7 +250,7 @@ describe('Copying a section whose key only exists on a fieldset entry', () => {
       } else {
         throw _error;
       }
-    };
+    }
 
     expect(error).toBeInstanceOf(enolib.ParseError);
     
