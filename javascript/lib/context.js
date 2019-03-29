@@ -50,8 +50,8 @@ class Context {
               }
 
               const indent = comment.ranges.comment[0] - comment.ranges.line[0];
-              if(comment.ranges.comment[0] - comment.ranges.line[0] < sharedIndent) {
-                sharedIndent = comment.ranges.comment[0] - comment.ranges.line[0];
+              if(indent < sharedIndent) {
+                sharedIndent = indent;
               }
 
               lastNonEmptyLineIndex = index;
@@ -225,6 +225,7 @@ class Context {
         break;
       case SECTION:
         result.key = element.key;
+        // fall through
       case DOCUMENT:
         result.elements = this.elements(element).map(sectionElement => this.raw(sectionElement))
         break;

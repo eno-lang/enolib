@@ -188,18 +188,21 @@ const checkInSection = (section, line, column) => {
       return { element: element, instruction: element };
 
     switch(element.type) {
-      case FIELD:
-        const matchInField = checkField(element, line, column);
+      case FIELD: {
+        const matchInField = checkFieldByLine(element, line);
         if(matchInField) return matchInField;
         break;
-      case FIELDSET:
-        const matchInFieldset = checkFieldset(element, line, column);
+      }
+      case FIELDSET: {
+        const matchInFieldset = checkFieldsetByLine(element, line);
         if(matchInFieldset) return matchInFieldset;
         break;
-      case LIST:
-        const matchInList = checkList(element, line, column);
+      }
+      case LIST: {
+        const matchInList = checkListByLine(element, line);
         if(matchInList) return matchInList;
         break;
+      }
       case MULTILINE_FIELD_BEGIN:
         if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
           const matchInMultilineField = checkMultilineField(element, line, column);
@@ -225,18 +228,21 @@ const checkInSectionByIndex = (section, index) => {
       return { element: element, instruction: element };
 
     switch(element.type) {
-      case FIELD:
+      case FIELD: {
         const matchInField = checkFieldByIndex(element, index);
         if(matchInField) return matchInField;
         break;
-      case FIELDSET:
+      }
+      case FIELDSET: {
         const matchInFieldset = checkFieldsetByIndex(element, index);
         if(matchInFieldset) return matchInFieldset;
         break;
-      case LIST:
+      }
+      case LIST: {
         const matchInList = checkListByIndex(element, index);
         if(matchInList) return matchInList;
         break;
+      }
       case MULTILINE_FIELD_BEGIN:
         if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
           const matchInMultilineField = checkMultilineFieldByIndex(element, index);

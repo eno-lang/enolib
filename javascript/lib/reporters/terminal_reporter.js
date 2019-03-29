@@ -86,10 +86,10 @@ class TerminalReporter extends Reporter {
         ranges.sort((a,b) => a[1][0] < b[1][0] ? 1 : -1);
 
         for(const [name, range] of ranges) {
-          const before = content.substring(0, instruction.ranges[name][0] - instruction.ranges.line[0]);
-          const after = content.substr(instruction.ranges[name][1] - instruction.ranges.line[0]);
+          const before = content.substring(0, range[0] - instruction.ranges.line[0]);
+          const after = content.substr(range[1] - instruction.ranges.line[0]);
 
-          content = before + RANGE_STYLE[name] + this._context._input.substring(instruction.ranges[name][0], instruction.ranges[name][1]) + RESET + after;
+          content = before + RANGE_STYLE[name] + this._context._input.substring(range[0], range[1]) + RESET + after;
         }
       }
     }

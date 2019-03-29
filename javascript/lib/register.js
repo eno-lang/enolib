@@ -33,7 +33,7 @@ exports.register = (...definitions) => {
   for(let definition of definitions) {
     if(typeof definition === 'function') {
       _register(definition.name, definition);
-    } else if(typeof definition === 'object') {
+    } else /* if(typeof definition === 'object') */ {
       for(let [name, func] of Object.entries(definition)) {
         _register(name, func);
       }

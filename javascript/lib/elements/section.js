@@ -389,15 +389,12 @@ class Section extends ElementBase {
   elements(key = null) {
     this._touched = true;
 
-    let elements;
     if(key === null) {
-      elements = this._elements();
+      return this._elements();
     } else {
       const elementsMap = this._elements(true);
-      elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+      return elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
     }
-
-    return elements;
   }
 
   empty(key = null) {

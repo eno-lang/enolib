@@ -19,7 +19,7 @@ const HTML_ESCAPE = {
   '/': '&#x2F;'
 };
 
-const escape = string => string.replace(/[&<>"'\/]/g, c => HTML_ESCAPE[c]);
+const escape = string => string.replace(/[&<>"'/]/g, c => HTML_ESCAPE[c]);
 
 class HtmlReporter extends Reporter {
   _line(line, tag) {

@@ -148,8 +148,6 @@ class Fieldset extends ElementBase {
   entries(key = null) {
     this._touched = true;
 
-    let entries;
-
     if(key === null) {
       return this._entries();
     } else {
