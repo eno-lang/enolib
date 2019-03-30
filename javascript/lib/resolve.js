@@ -120,7 +120,7 @@ const resolveSection = (context, instruction, previousInstructions = []) => {
     throw errors.cyclicDependency(context, instruction, previousInstructions);
 
   if(instruction.hasOwnProperty('deepResolve')) {
-    for(let elementInstruction of instruction.elements) {
+    for(const elementInstruction of instruction.elements) {
       if(elementInstruction.type === SECTION && (elementInstruction.hasOwnProperty('copy') || elementInstruction.hasOwnProperty('deepResolve'))) {
         resolveSection(context, elementInstruction, [...previousInstructions, instruction]);
       }
@@ -143,7 +143,7 @@ const resolveSection = (context, instruction, previousInstructions = []) => {
 };
 
 const index = (context, section, indexNonSectionElements, indexSections) => {
-  for(let elementInstruction of section.elements) {
+  for(const elementInstruction of section.elements) {
     if(elementInstruction.type === SECTION) {
       index(context, elementInstruction, indexNonSectionElements, indexSections);
 
