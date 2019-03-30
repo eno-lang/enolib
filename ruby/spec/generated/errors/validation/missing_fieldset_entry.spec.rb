@@ -41,7 +41,7 @@ describe 'Querying a fieldset with two entries for a required but missing entry'
             "entry = value"
 
     begin
-      Enolib.parse(input).fieldset('fieldset').missing('missing')
+      Enolib.parse(input).fieldset('fieldset').required_entry('missing')
     rescue => _error
       if _error.is_a?(Enolib::ValidationError)
         error = _error
@@ -83,7 +83,7 @@ describe 'Querying a fieldset with entries, empty lines and comments for a requi
             "entry = value"
 
     begin
-      Enolib.parse(input).fieldset('fieldset').missing('missing')
+      Enolib.parse(input).fieldset('fieldset').required_entry('missing')
     rescue => _error
       if _error.is_a?(Enolib::ValidationError)
         error = _error

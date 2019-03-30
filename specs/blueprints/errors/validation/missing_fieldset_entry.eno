@@ -50,11 +50,11 @@ Enolib\Parser::parse($input)->fieldset('fieldset')->requiredEntry('missing');
 -- php
 
 -- python
-enolib.parse(input).fieldset('fieldset').missing('missing')
+enolib.parse(input).fieldset('fieldset').required_entry('missing')
 -- python
 
 -- ruby
-Enolib.parse(input).fieldset('fieldset').missing('missing')
+Enolib.parse(input).fieldset('fieldset').required_entry('missing')
 -- ruby
 
 ## ValidationError
@@ -93,11 +93,11 @@ Enolib\Parser::parse($input)->fieldset('fieldset')->requiredEntry('missing');
 -- php
 
 -- python
-enolib.parse(input).fieldset('fieldset').missing('missing')
+enolib.parse(input).fieldset('fieldset').required_entry('missing')
 -- python
 
 -- ruby
-Enolib.parse(input).fieldset('fieldset').missing('missing')
+Enolib.parse(input).fieldset('fieldset').required_entry('missing')
 -- ruby
 
 ## ValidationError

@@ -37,7 +37,7 @@ def test_querying_a_fieldset_with_two_entries_for_a_required_but_missing_entry_r
            "entry = value")
 
   try:
-    enolib.parse(input).fieldset('fieldset').missing('missing')
+    enolib.parse(input).fieldset('fieldset').required_entry('missing')
   except enolib.ValidationError as _error:
     if isinstance(_error, enolib.ValidationError):
       error = _error
@@ -74,7 +74,7 @@ def test_querying_a_fieldset_with_entries_empty_lines_and_comments_for_a_require
            "entry = value")
 
   try:
-    enolib.parse(input).fieldset('fieldset').missing('missing')
+    enolib.parse(input).fieldset('fieldset').required_entry('missing')
   except enolib.ValidationError as _error:
     if isinstance(_error, enolib.ValidationError):
       error = _error
