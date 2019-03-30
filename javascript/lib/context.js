@@ -177,11 +177,11 @@ class Context {
     } else if(!list.hasOwnProperty('extend')) {
       return list.items;
     } else {
-      if(!this.hasOwnProperty('computedItems')) {
-        this.computedItems = [...this.items(list.extend), ...list.items];
+      if(!list.hasOwnProperty('computedItems')) {
+        list.computedItems = [...this.items(list.extend), ...list.items];
       }
 
-      return this.computedItems;
+      return list.computedItems;
     }
   }
 
