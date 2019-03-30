@@ -4,6 +4,18 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.3.5
+
+### Fixes
+
+- Fix wrongly assigned items computation in context implementation `d54eaef`
+
+### Minor optimizations
+
+- Inline document root section instantiation inside parse entrypoint `abe9eaa`
+- Remove superfluous map option for context elements/entries computation `0e52fb9`
+- Remove unneeded argument defaults and returns in entries instantiation `a7f44e9`
+
 ## 0.3.4
 
 ### Fixes
