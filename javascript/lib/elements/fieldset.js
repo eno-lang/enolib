@@ -120,9 +120,9 @@ class Fieldset extends ElementBase {
       }
     }
 
-    const entryMap = this._entries(true);
+    const entriesMap = this._entries(true);
 
-    for(const [key, entries] of Object.entries(entryMap)) {
+    for(const [key, entries] of Object.entries(entriesMap)) {
       if(options.hasOwnProperty('except') && options.except.includes(key)) continue;
       if(options.hasOwnProperty('only') && !options.only.includes(key)) continue;
 
