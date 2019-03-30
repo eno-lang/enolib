@@ -1,4 +1,5 @@
 const { Context } = require('./context.js');
+const { Section } = require('./elements/section.js');
 
 /**
  * Main parser entry point
@@ -10,5 +11,5 @@ const { Context } = require('./context.js');
 exports.parse = (input, options = {}) => {
   const context = new Context(input, options);
 
-  return context.document();
+  return new Section(context, context._document);
 };

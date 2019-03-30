@@ -1,7 +1,6 @@
 const { analyze } = require('./analyze.js');
 const { en } = require('./messages/en.js');
 const { resolve } =  require('./resolve.js');
-const { Section } = require('./elements/section.js');
 const { TextReporter } = require('./reporters/text_reporter.js');
 
 const {
@@ -83,10 +82,6 @@ class Context {
     }
 
     return element.computedComment;
-  }
-
-  document() {
-    return new Section(this, this._document);
   }
 
   elements(section) {
