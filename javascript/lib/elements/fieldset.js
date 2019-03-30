@@ -58,7 +58,7 @@ class Fieldset extends ElementBase {
     return entries[0];
   }
 
-  _instantiateEntries(fieldset, entries = [], entriesMap = {}) {
+  _instantiateEntries(fieldset, entries, entriesMap) {
     if(fieldset.hasOwnProperty('mirror')) {
       this._instantiateEntries(fieldset.mirror, entries, entriesMap);
     } else if(fieldset.hasOwnProperty('entries')) {
@@ -82,8 +82,6 @@ class Fieldset extends ElementBase {
 
       entries.push(...nativeEntries);
     }
-
-    return [entries, entriesMap];
   }
 
   _missingError(entry) {
