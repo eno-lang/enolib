@@ -89,11 +89,11 @@ class Context {
     return new Section(this, this._document);
   }
 
-  elements(section, map = false) {
+  elements(section) {
     if(section.hasOwnProperty('mirror')) {
-      return this.elements(section.mirror, map);
+      return this.elements(section.mirror);
     } else {
-      if(!section.hasOwnProperty('computedElements')) { // TODO: Revisit the role of this in the new low level architecture
+      if(!section.hasOwnProperty('computedElements')) {
         section.computedElementsMap = {};
         section.computedElements = section.elements;
 
@@ -122,17 +122,13 @@ class Context {
         }
       }
 
-      if(map) {
-        return section.computedElementsMap;
-      } else {
-        return section.computedElements;
-      }
+      return section.computedElements;
     }
   }
 
-  entries(fieldset, map = false) {
+  entries(fieldset) {
     if(fieldset.hasOwnProperty('mirror')) {
-      return this.entries(fieldset.mirror, map);
+      return this.entries(fieldset.mirror);
     } else {
       if(!fieldset.hasOwnProperty('computedEntries')) {
         fieldset.computedEntriesMap = {};
@@ -163,11 +159,7 @@ class Context {
         }
       }
 
-      if(map) {
-        return fieldset.computedEntriesMap;
-      } else {
-        return fieldset.computedEntries;
-      }
+      return fieldset.computedEntries;
     }
   }
 
