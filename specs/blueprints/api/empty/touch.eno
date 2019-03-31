@@ -49,21 +49,21 @@ document.assertAllTouched();
 -- php
 $document = Enolib\Parser::parse($input);
 
-$document->element('element')->touch();
+$document->empty('element')->touch();
 $document->assertAllTouched();
 -- php
 
 -- python
 document = enolib.parse(input)
 
-document.element('element').touch()
+document.empty('element').touch()
 document.assert_all_touched()
 -- python
 
 -- ruby
 document = Enolib.parse(input)
 
-document.element('element').touch
+document.empty('element').touch
 document.assert_all_touched
 -- ruby
 

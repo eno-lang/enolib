@@ -34,7 +34,7 @@ def test_asserting_everything_was_touched_when_the_only_present_empty_element_wa
 
   document = enolib.parse(input)
   
-  document.element('element').touch()
+  document.empty('element').touch()
   document.assert_all_touched()
 
   assert bool('it passes') is True

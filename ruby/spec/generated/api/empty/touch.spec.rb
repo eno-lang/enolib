@@ -38,7 +38,7 @@ describe 'Asserting everything was touched when the only present empty element w
 
     document = Enolib.parse(input)
     
-    document.element('element').touch
+    document.empty('element').touch
     document.assert_all_touched
 
     expect('it passes').to be_truthy

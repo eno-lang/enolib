@@ -59,7 +59,7 @@ $document->assertAllTouched();
 -- python
 document = enolib.parse(input)
 
-document.fieldset('fieldset').touch
+document.fieldset('fieldset').touch()
 document.assert_all_touched()
 -- python
 

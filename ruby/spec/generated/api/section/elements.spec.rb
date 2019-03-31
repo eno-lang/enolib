@@ -17,7 +17,7 @@ describe 'Querying elements from a section by key' do
             "other: one\n" +
             "other: two"
 
-    output = Enolib.parse(input).section('section').elements('other').map(&:required_string_value)
+    output = Enolib.parse(input).section('section').elements('other').map { |element| element.to_field.required_string_value )
 
     expect(output).to eq(['one', 'two'])
   end

@@ -36,7 +36,7 @@ describe('Asserting everything was touched when the only present empty element w
 
     $document = Enolib\Parser::parse($input);
     
-    $document->element('element')->touch();
+    $document->empty('element')->touch();
     $document->assertAllTouched();
 
     expect('it passes')->toBeTruthy();

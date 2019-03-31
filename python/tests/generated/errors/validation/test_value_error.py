@@ -6,8 +6,8 @@ def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_err
   input = ("field: value")
 
   try:
-    function loader(value):
-      raise ValueError(f"my error for {value}")
+    def loader(value):
+      raise ValueError(f"my error for '{value}'")
     
     enolib.parse(input).field('field').required_value(loader)
   except enolib.ValidationError as _error:

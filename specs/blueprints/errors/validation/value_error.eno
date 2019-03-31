@@ -19,8 +19,8 @@ Enolib\Parser::parse($input)->field('field')->requiredValue($loader);
 -- php
 
 -- python
-function loader(value):
-  raise ValueError(f"my error for {value}")
+def loader(value):
+  raise ValueError(f"my error for '{value}'")
 
 enolib.parse(input).field('field').required_value(loader)
 -- python

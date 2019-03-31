@@ -59,11 +59,11 @@ $output = array_map(function($element) { return $element->requiredStringValue();
 -- php
 
 -- python
-output = [element.required_string_value() for element in enolib.parse(input).section('section').elements('other')]
+output = [element.to_field().required_string_value() for element in enolib.parse(input).section('section').elements('other')]
 -- python
 
 -- ruby
-output = Enolib.parse(input).section('section').elements('other').map(&:required_string_value)
+output = Enolib.parse(input).section('section').elements('other').map { |element| element.to_field.required_string_value )
 -- ruby
 
 ## Result

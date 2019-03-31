@@ -37,7 +37,7 @@ def test_asserting_everything_was_touched_when_the_only_present_fieldset_was_tou
 
   document = enolib.parse(input)
   
-  document.fieldset('fieldset').touch
+  document.fieldset('fieldset').touch()
   document.assert_all_touched()
 
   assert bool('it passes') is True
