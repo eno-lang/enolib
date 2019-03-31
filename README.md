@@ -13,7 +13,7 @@ From a practical point of view there are not likely any major changes ahead.  Un
 |Language | Release | Progress |
 |  -- | -- | -- |
 | JavaScript | **Released** | Complete |
-| Python | Early april | Currently porting to latest architecture |
-| Ruby  |  Early may | Feature complete, pending update to latest architecture |
+| Python | **Released** | Complete |
+| Ruby  |  Early may | Currently porting to latest architecture |
 | Rust  |  tba | Completed about a third of initial development |
 | PHP  |  tba | Feature complete, pending update to latest architecture |
