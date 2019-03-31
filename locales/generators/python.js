@@ -4,7 +4,6 @@ const path = require('path');
 
 const { interpolatify } = require('../../utilities.js');
 
-const screamingSnakeCase = string => string.toUpperCase().replace(/[ \-]/g, '_');
 const snakeCase = string => string.toLowerCase().replace(/[ \-]/g, '_');
 
 module.exports = async (meta, locales) => {
@@ -25,7 +24,7 @@ module.exports = async (meta, locales) => {
 
       return `${snakeCase(message.name)} = lambda ${arguments.join(', ')}: f"${translation}"`;
     } else {
-      return `${screamingSnakeCase(message.name)} = '${translation.replace(/'/g, "\\'")}'`;
+      return `${snakeCase(message.name)} = '${translation.replace(/'/g, "\\'")}'`;
     }
   };
 
