@@ -4,6 +4,18 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.4.1
+
+### Fixes
+
+- Omit missing keys in debug string representations of missing elements `653c4ea`
+- Handle section hierarchy layer skips without a super section `3e277531`
+
+### Python package
+
+- Add libraries topic to python package definition `b55b5ba`
+- Add python readme documentation link `4f7f3c5`
+
 ## 0.4.0
 
 ### Initial release for python
