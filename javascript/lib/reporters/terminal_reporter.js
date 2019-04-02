@@ -1,6 +1,5 @@
 const { COMMENT, HUMAN_INDEXING, UNPARSED } = require('../constants.js');
-const { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION } = require('./reporter.js');
-const { Reporter } = require('./reporter.js');
+const { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION, Reporter } = require('./reporter.js');
 
 const RESET = '\x1b[0m';
 const BOLD = '\x1b[1m';

@@ -4,7 +4,7 @@ describe('Field', () => {
   let emptyField, emptyItem, field, item, itemWithLongValue;
 
   beforeEach(() => {
-    emptyField = enolib.parse('field:\n|').field('field');
+    emptyField = enolib.parse('field:').field('field');
     emptyItem = enolib.parse('list:\n-').list('list').items()[0];
     field = enolib.parse('field: value').field('field');
     item = enolib.parse('list:\n- item').list('list').items()[0];

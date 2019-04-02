@@ -21,7 +21,6 @@ entry = value
 
 > comment
 entry = value
-
 `.trim()
 
 describe('Terminal reporter', () => {
