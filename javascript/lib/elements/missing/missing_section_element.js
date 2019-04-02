@@ -32,7 +32,10 @@ class MissingSectionElement extends MissingElementBase {
   }
 
   toString() {
-    return `[object MissingSectionElement key="${this._key}"]`;
+    if(this._key === null)
+      return `[object MissingSectionElement]`;
+
+    return `[object MissingSectionElement key=${this._key}]`;
   }
 
   yieldsEmpty() {

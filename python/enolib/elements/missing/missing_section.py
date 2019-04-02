@@ -7,7 +7,10 @@ from . import missing_section_element
 
 class MissingSection(MissingElementBase):
   def __repr__(self):
-    f"<class MissingSection key={self._key}>" # TODO: Handle missing key
+    if self._key:
+      return f"<class MissingSection key={self._key}>"
+    else:
+      return '<class MissingSection>'
 
   def element(self, key=None):
     return missing_section_element.MissingSectionElement(key, self)

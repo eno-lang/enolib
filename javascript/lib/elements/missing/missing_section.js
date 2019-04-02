@@ -96,7 +96,10 @@ class MissingSection extends MissingElementBase {
   }
 
   toString() {
-    return `[object MissingSection key="${this._key}"]`;
+    if(this._key === null)
+      return `[object MissingSection]`;
+
+    return `[object MissingSection key=${this._key}]`;
   }
 }
 

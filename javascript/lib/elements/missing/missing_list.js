@@ -26,7 +26,10 @@ class MissingList extends MissingElementBase {
   }
 
   toString() {
-    return `[object MissingList key="${this._key}"]`;
+    if(this._key === null)
+      return `[object MissingList]`;
+
+    return `[object MissingList key=${this._key}]`;
   }
 }
 

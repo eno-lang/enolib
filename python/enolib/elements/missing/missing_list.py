@@ -2,7 +2,10 @@ from .missing_element_base import MissingElementBase
 
 class MissingList(MissingElementBase):
   def __repr__(self):
-    f"<class MissingList key={self._key}>" # TODO: Handle missing key
+    if self._key:
+      return f"<class MissingList key={self._key}>"
+    else:
+      return '<class MissingList>'
 
   def items(self):
     return []

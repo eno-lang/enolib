@@ -6,7 +6,10 @@ class MissingFieldsetEntry extends MissingValueElementBase {
   }
 
   toString() {
-    return `[object MissingFieldsetEntry key="${this._key}"]`;
+    if(this._key === null)
+      return `[object MissingFieldsetEntry]`;
+
+    return `[object MissingFieldsetEntry key=${this._key}]`;
   }
 }
 

@@ -2,4 +2,7 @@ from .missing_value_element_base import MissingValueElementBase
 
 class MissingField(MissingValueElementBase):
   def __repr__(self):
-    f"<class MissingField key={self._key}>" # TODO: Handle missing key
+    if self._key:
+      return f"<class MissingField key={self._key}>"
+    else:
+      return '<class MissingField>'

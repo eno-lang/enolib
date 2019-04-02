@@ -3,7 +3,10 @@ from .missing_fieldset_entry import MissingFieldsetEntry
 
 class MissingFieldset(MissingElementBase):
   def __repr__(self):
-    f"<class MissingFieldset key={self._key}>" # TODO: Handle missing key
+    if self._key:
+      return f"<class MissingFieldset key={self._key}>"
+    else:
+      return '<class MissingFieldset>'
 
   def entries(self, _key=None):
     return []

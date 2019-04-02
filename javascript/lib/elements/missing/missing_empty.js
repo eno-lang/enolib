@@ -6,7 +6,10 @@ class MissingEmpty extends MissingElementBase {
   }
 
   toString() {
-    return `[object MissingEmpty key="${this._key}"]`; // TODO: Here and elsewhere adaptations for missing elements with null key (if/else display variants)
+    if(this._key === null)
+      return `[object MissingEmpty]`;
+
+    return `[object MissingEmpty key=${this._key}]`;
   }
 }
 

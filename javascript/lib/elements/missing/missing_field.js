@@ -6,7 +6,10 @@ class MissingField extends MissingValueElementBase {
   }
 
   toString() {
-    return `[object MissingField key="${this._key}"]`;
+    if(this._key === null)
+      return `[object MissingField]`;
+
+    return `[object MissingField key=${this._key}]`;
   }
 }
 
