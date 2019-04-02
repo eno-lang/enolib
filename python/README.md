@@ -21,7 +21,7 @@ A minimal example to read an eno document directly from a string with `enolib`:
 
 ## Documentation
 
-enolib for python was just released, temporarily consult the *javascript* documentation at [eno-lang.org/enolib](https://eno-lang.org/enolib/) and replace all method names with their snakecase equivalent - the API is pretty much identical asides language conventions and specific syntax. Native python documentation will be provided shortly.
+Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
 
 ## Beta notice
 
