@@ -1,7 +1,7 @@
-pytest==4.0.2
-pytest-cov==2.6.0
+pytest==4.4.0
+pytest-cov==2.6.1
 pyyaml==5.1
-hypothesis==3.84.5
-setuptools==40.6.3
-twine==1.12.1
-wheel==0.32.3
+hypothesis==4.14.2
+setuptools==40.8.0
+twine==1.13.0
+wheel==0.33.1
