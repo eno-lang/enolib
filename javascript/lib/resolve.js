@@ -86,7 +86,9 @@ const consolidateSections = (context, instruction, template, deepMerge) => {
 
     for(const merger of Object.values(mergeMap)) {
       if(merger === false) continue;
-
+      // TODO: merger.template can be undefined if an instruction is applicable for
+      //       merging but no matching merge template is present? (see python impl.)
+      //       Note: No spec in js impl. reported this so far, unlike in python impl.
       consolidateSections(context, merger.instruction, merger.template, true);
     }
   }

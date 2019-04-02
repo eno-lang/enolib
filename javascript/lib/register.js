@@ -29,6 +29,10 @@ const _register = (name, func) => {
   MissingList.prototype[`required${titleCased}Values`] = MissingList.prototype.requiredStringValues;
 };
 
+// TODO: Document method signature on the website and here in JSDoc form
+/**
+ * Globally register loaders in the enolib API
+ */
 exports.register = (...definitions) => {
   for(let definition of definitions) {
     if(typeof definition === 'function') {

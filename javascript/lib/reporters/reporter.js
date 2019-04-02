@@ -244,6 +244,7 @@ class Reporter {
       for(const [line, tag] of this._snippet.entries()) {
         if(tag !== undefined) continue;
 
+        // TODO: Prevent out of bounds access
         if(this._snippet[line + 2] !== undefined && this._snippet[line + 2] !== DISPLAY ||
            this._snippet[line - 2] !== undefined && this._snippet[line - 2] !== DISPLAY ||
            this._snippet[line + 1] !== undefined && this._snippet[line + 1] !== DISPLAY ||

@@ -55,6 +55,8 @@ exports.errors = {
       return unterminatedEscapedKey(context, instruction, match[2]);
     }
 
+    // TODO: This is a reoccurring pattern and can be DRYed up - line_error or something
+    //       (Also in other implementations)
     return new ParseError(
       context.messages.invalidLine(instruction.line + HUMAN_INDEXING),
       new context.reporter(context).reportLine(instruction).snippet(),
@@ -95,6 +97,8 @@ exports.errors = {
   },
 
   sectionHierarchyLayerSkip: (context, section, superSection) => {
+    // TODO: Handle superSection being the document (no line to indicate there) - see python impl.
+
     return new ParseError(
       context.messages.sectionHierarchyLayerSkip(section.line + HUMAN_INDEXING),
       new context.reporter(context).reportLine(section).indicateLine(superSection).snippet(),

@@ -173,7 +173,6 @@ class Context {
   }
 
   // TODO: raw() implies this would be the actual underlying structure used - maybe something like toNative or toJson is better (json would be good for interchangeable specs)
-  // TODO: Revisit this not being deterministic - if you already queried empty elements as field/fieldset/list it yields different results than before that
   raw(element) {
     const result = {
       type: PRETTY_TYPES[element.type]

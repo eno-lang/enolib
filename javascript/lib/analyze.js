@@ -201,7 +201,7 @@ exports.analyze = function() {
         comments = null;
       }
 
-      instruction.continuations = [];
+      instruction.continuations = []; // TODO: Only create ad-hoc, remove here and elsewhere, generally follow this pattern of allocation sparsity
       instruction.type = FIELDSET_ENTRY;
 
       let entryOperatorIndex;
@@ -296,7 +296,7 @@ exports.analyze = function() {
         throw errors.missingElementForContinuation(this, instruction);
       }
 
-      instruction.spaced = false;
+      instruction.spaced = false;  // TODO: Just leave out
       instruction.type = CONTINUATION;
 
       const operatorIndex = this._input.indexOf('|', index);

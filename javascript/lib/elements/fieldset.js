@@ -129,7 +129,7 @@ class Fieldset extends ElementBase {
       for(const entry of entries) {
         if(!entry.hasOwnProperty('_touched')) {
           if(typeof message === 'function') {
-            message = message(entry);
+            message = message(entry);  // TODO: This passes a FieldsetEntry while in section.assertAllTouched passes Element? Inconsisten probably
           }
 
           throw errors.unexpectedElement(this._context, message, entry._instruction); // TODO: Consider all error implementations fetching the _instruction themselves?
