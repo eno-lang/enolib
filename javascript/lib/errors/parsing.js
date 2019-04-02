@@ -1,4 +1,4 @@
-const { BEGIN, END, HUMAN_INDEXING } = require('../constants.js');
+const { BEGIN, DOCUMENT, END, HUMAN_INDEXING } = require('../constants.js');
 const { cursor, selectLine, selectTemplate } = require('./selections.js');
 const { ParseError } = require('../error_types.js');
 
@@ -97,11 +97,15 @@ exports.errors = {
   },
 
   sectionHierarchyLayerSkip: (context, section, superSection) => {
-    // TODO: Handle superSection being the document (no line to indicate there) - see python impl.
+    const reporter = new context.reporter(context).reportLine(section);
+
+    if(superSection.type !== DOCUMENT) {
+      reporter.indicateLine(superSection);
+    }
 
     return new ParseError(
       context.messages.sectionHierarchyLayerSkip(section.line + HUMAN_INDEXING),
-      new context.reporter(context).reportLine(section).indicateLine(superSection).snippet(),
+      reporter.snippet(),
       selectLine(section)
     );
   },

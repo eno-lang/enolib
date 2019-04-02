@@ -8,7 +8,7 @@ def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_err
   try:
     def loader(value):
       raise ValueError(f"my error for '{value}'")
-
+    
     enolib.parse(input).field('field').required_value(loader)
   except enolib.ValidationError as _error:
     if isinstance(_error, enolib.ValidationError):
@@ -17,16 +17,16 @@ def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_err
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my error for 'value'")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | field: value")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 7
   assert error.selection['to']['line'] == 0
@@ -46,16 +46,16 @@ def test_requesting_a_value_error_from_a_field_with_a_static_message_raises_the_
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my static message")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | field: value")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 7
   assert error.selection['to']['line'] == 0
@@ -75,16 +75,16 @@ def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_mess
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my generated message for 'value'")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | field: value")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 7
   assert error.selection['to']['line'] == 0
@@ -106,18 +106,18 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_r
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my static message")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                "      1 | -- multiline_field\n"
                " >    2 | value\n"
                "      3 | -- multiline_field")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 1
   assert error.selection['from']['column'] == 0
   assert error.selection['to']['line'] == 1
@@ -139,18 +139,18 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_gene
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my generated message for 'value'")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                "      1 | -- multiline_field\n"
                " >    2 | value\n"
                "      3 | -- multiline_field")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 1
   assert error.selection['from']['column'] == 0
   assert error.selection['to']['line'] == 1
@@ -171,17 +171,17 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_me
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my static message")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | -- multiline_field\n"
                " *    2 | -- multiline_field")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 18
   assert error.selection['to']['line'] == 0
@@ -202,17 +202,17 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamical
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my generated message")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | -- multiline_field\n"
                " *    2 | -- multiline_field")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 18
   assert error.selection['to']['line'] == 0
@@ -237,11 +237,11 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my static message")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | field: value\n"
                " *    2 | \\ continuation\n"
@@ -249,9 +249,9 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_
                " *    4 | |\n"
                " *    5 | \n"
                " *    6 | |")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 7
   assert error.selection['to']['line'] == 5
@@ -276,11 +276,11 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_dynamic
       raise _error
 
   assert type(error) is enolib.ValidationError
-
+  
   text = ("There is a problem with the value of this element: my generated message for 'value continuation continuation'")
-
+  
   assert error.text == text
-
+  
   snippet   = ("   Line | Content\n"
                " >    1 | field: value\n"
                " *    2 | \\ continuation\n"
@@ -288,9 +288,9 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_dynamic
                " *    4 | |\n"
                " *    5 | \n"
                " *    6 | |")
-
+  
   assert error.snippet == snippet
-
+  
   assert error.selection['from']['line'] == 0
   assert error.selection['from']['column'] == 7
   assert error.selection['to']['line'] == 5

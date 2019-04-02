@@ -18,3 +18,22 @@ Line 2 starts a section that is more than one level deeper than the current one.
 -- snippet
 
 selection: [1,0] => [1,17]
+
+# Starting the first section in the document at a deep level
+
+-- input
+### section
+-- input
+
+## ParseError
+
+-- text
+Line 1 starts a section that is more than one level deeper than the current one.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | ### section
+-- snippet
+
+selection: [0,0] => [0,11]
