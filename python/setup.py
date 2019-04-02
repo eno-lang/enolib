@@ -9,7 +9,8 @@ setup(author='Simon Repp',
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent"
+        "Operating System :: OS Independent",
+        "Topic :: Software Development :: Libraries"
       ),
       description='The cross-language eno standard library',
       long_description=long_description,
