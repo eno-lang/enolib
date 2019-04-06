@@ -34,7 +34,7 @@ module.exports = async (meta, locales) => {
     const code = interpolatify`
       # ${meta}
 
-      module Eno
+      module Enolib
         module Messages
           module ${titleCase(locale)}
             ${messages.map(messageFunction).join('\n')}
