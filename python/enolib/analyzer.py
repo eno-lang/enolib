@@ -2,10 +2,12 @@ import re
 from .errors.parsing import Parsing
 from .grammar_regex import Grammar
 from .constants import (
+  BEGIN,
   COMMENT,
   CONTINUATION,
   DOCUMENT,
   EMPTY_ELEMENT,
+  END,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
