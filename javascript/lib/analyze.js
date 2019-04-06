@@ -115,12 +115,10 @@ exports.analyze = function() {
         comments = null;
       }
 
-      const unescapedKey = match[matcher.KEY_UNESCAPED_INDEX];
+      instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
+
       let elementOperatorIndex;
-
-      if(unescapedKey) {
-        instruction.key = unescapedKey;
-
+      if(instruction.key !== undefined) {
         const keyIndex = this._input.indexOf(instruction.key, index);
         elementOperatorIndex = this._input.indexOf(':', keyIndex + instruction.key.length);
 
@@ -354,16 +352,14 @@ exports.analyze = function() {
       lastSection = instruction;
 
       const sectionOperatorIndex = this._input.indexOf(sectionOperator, index);
-      const unescapedKey = match[matcher.SECTION_KEY_UNESCAPED_INDEX];
+      instruction.key = match[matcher.SECTION_KEY_UNESCAPED_INDEX];
       let keyEndIndex;
 
-      if(unescapedKey) {
-        instruction.key = unescapedKey;
-
+      if(instruction.key !== undefined) {
         const keyIndex = this._input.indexOf(instruction.key, sectionOperatorIndex + sectionOperator.length);
-        keyEndIndex = keyIndex + unescapedKey.length;
+        keyEndIndex = keyIndex + instruction.key.length;
 
-        instruction.ranges.key = [keyIndex, keyIndex + unescapedKey.length];
+        instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
         instruction.ranges.sectionOperator = [sectionOperatorIndex, sectionOperatorIndex + sectionOperator.length];
       } else {
         instruction.key = match[matcher.SECTION_KEY_ESCAPED_INDEX];
@@ -510,9 +506,9 @@ exports.analyze = function() {
 
       let copyOperatorIndex;
 
-      if(match[matcher.KEY_UNESCAPED_INDEX] !== undefined) {
-        instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
+      instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
 
+      if(instruction.key !== undefined) {
         const keyIndex = this._input.indexOf(instruction.key, index);
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
 
@@ -577,7 +573,7 @@ exports.analyze = function() {
     line += 1;
     index = matcherRegex.lastIndex + 1;
     matcherRegex.lastIndex = index;
-  } // ends while(true)
+  } // ends while(index < this._input.length) {
 
   this._lineCount = this._input[this._input.length - 1] === '\n' ? line + 1 : line;
 

@@ -105,16 +105,15 @@ class Analyzer:
           instruction['comments'] = comments
           comments = None
 
-        unescaped_key = match.group(Grammar.KEY_UNESCAPED_INDEX)
+        instruction['key'] = match.group(Grammar.KEY_UNESCAPED_INDEX)
 
-        if unescaped_key is None:
+        if instruction['key'] is None:
           instruction['key'] = match.group(Grammar.KEY_ESCAPED_INDEX)
           instruction['ranges']['element_operator'] = match.span(Grammar.ELEMENT_OPERATOR_INDEX)
           instruction['ranges']['escape_begin_operator'] = match.span(Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
           instruction['ranges']['escape_end_operator'] = match.span(Grammar.KEY_ESCAPE_END_OPERATOR_INDEX)
           instruction['ranges']['key'] = match.span(Grammar.KEY_ESCAPED_INDEX)
         else:
-          instruction['key'] = unescaped_key
           instruction['ranges']['element_operator'] = match.span(Grammar.ELEMENT_OPERATOR_INDEX)
           instruction['ranges']['key'] = match.span(Grammar.KEY_UNESCAPED_INDEX)
 
@@ -289,22 +288,21 @@ class Analyzer:
         instruction['parent']['elements'].append(instruction)
         last_section = instruction
 
-        unescaped_key = match.group(Grammar.SECTION_KEY_UNESCAPED_INDEX)
+        instruction['key'] = match.group(Grammar.SECTION_KEY_UNESCAPED_INDEX)
 
-        if unescaped_key is None:
+        if instruction['key'] is None:
           instruction['key'] = match.group(Grammar.SECTION_KEY_ESCAPED_INDEX)
           instruction['ranges']['escape_begin_operator'] = match.span(Grammar.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
           instruction['ranges']['escape_end_operator'] = match.span(Grammar.SECTION_KEY_ESCAPE_END_OPERATOR_INDEX)
           instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_ESCAPED_INDEX)
         else:
-          instruction['key'] = unescaped_key
           instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_UNESCAPED_INDEX)
 
         template = match.group(Grammar.SECTION_TEMPLATE_INDEX)
 
         if template is not None:
-          instruction['template'] = template
           instruction['ranges']['template'] = match.span(Grammar.SECTION_TEMPLATE_INDEX)
+          instruction['template'] = template
 
           parent = instruction['parent']
           while parent['type'] != DOCUMENT:
@@ -411,7 +409,6 @@ class Analyzer:
         last_non_section_element['end'] = instruction
         last_non_section_element = None
 
-
         self._index = terminator_match.end() + 1
         self._line += 1
 
@@ -446,15 +443,14 @@ class Analyzer:
         instruction['template'] = template
         instruction['type'] = EMPTY_ELEMENT
 
-        unescaped_key = match.group(Grammar.KEY_UNESCAPED_INDEX)
+        instruction['key'] = match.group(Grammar.KEY_UNESCAPED_INDEX)
 
-        if unescaped_key is None:
+        if instruction['key'] is None:
           instruction['key'] = match.group(Grammar.KEY_ESCAPED_INDEX)
           instruction['ranges']['escape_begin_operator'] = match.span(Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
           instruction['ranges']['escape_end_operator'] = match.span(Grammar.KEY_ESCAPE_END_OPERATOR_INDEX)
           instruction['ranges']['key'] = match.span(Grammar.KEY_ESCAPED_INDEX)
         else:
-          instruction['key'] = unescaped_key
           instruction['ranges']['key'] = match.span(Grammar.KEY_UNESCAPED_INDEX)
 
         instruction['parent'] = last_section
