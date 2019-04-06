@@ -35,7 +35,7 @@ output = Enolib.parse(input).empty().to_s
 -- python
 
 -- ruby
-'#<Eno::MissingEmpty>'
+'#<Enolib::MissingEmpty>'
 -- ruby
 
 # A missing empty queried with a key includes the key in the debug string representation
@@ -75,5 +75,5 @@ output = Enolib.parse(input).empty('key').to_s
 -- python
 
 -- ruby
-'#<Eno::MissingEmpty key=key>'
+'#<Enolib::MissingEmpty key=key>'
 -- ruby

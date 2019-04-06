@@ -4,7 +4,7 @@ describe 'A missing empty queried without a key leaves out the key in the debug 
 
     output = Enolib.parse(input).empty().to_s
 
-    expect(output).to eq('#<Eno::MissingEmpty>')
+    expect(output).to eq('#<Enolib::MissingEmpty>')
   end
 end
 
@@ -14,6 +14,6 @@ describe 'A missing empty queried with a key includes the key in the debug strin
 
     output = Enolib.parse(input).empty('key').to_s
 
-    expect(output).to eq('#<Eno::MissingEmpty key=key>')
+    expect(output).to eq('#<Enolib::MissingEmpty key=key>')
   end
 end

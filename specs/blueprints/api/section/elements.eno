@@ -63,7 +63,7 @@ output = [element.to_field().required_string_value() for element in enolib.parse
 -- python
 
 -- ruby
-output = Enolib.parse(input).section('section').elements('other').map { |element| element.to_field.required_string_value )
+output = Enolib.parse(input).section('section').elements('other').map { |element| element.to_field.required_string_value }
 -- ruby
 
 ## Result
