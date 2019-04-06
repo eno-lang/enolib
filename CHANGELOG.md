@@ -4,6 +4,23 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.4.2
+
+### Fixes
+
+- Add missing begin/end alias imports in python analyzer `2e5c002`
+- Fix swapped copy operator range assignment in python analyzer `2c4cde0`
+
+### Minor optimizations
+
+- Remove redundant input length check in python analyzer `30e07e79`
+- Assign conditional unescaped key matches directly to instructions `8119c66`
+
+### Internals
+
+- Use more concrete variable names in resolver code `b5ae240`
+- Use begin/end index aliases in python analyzer section depth calculation `b3fc565`
+
 ## 0.4.1
 
 ### Fixes
