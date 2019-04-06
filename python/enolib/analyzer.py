@@ -313,9 +313,9 @@ class Analyzer:
 
           if copy_operator_range[1] - copy_operator_range[0] == 2:
             instruction['deep_copy'] = True
-            instruction['ranges']['copy_operator'] = copy_operator_range
-          else:
             instruction['ranges']['deep_copy_operator'] = copy_operator_range
+          else:
+            instruction['ranges']['copy_operator'] = copy_operator_range
 
           if not hasattr(self._context, '_copy_sections'):
             self._context._copy_sections = {}
