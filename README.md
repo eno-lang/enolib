@@ -14,6 +14,6 @@ From a practical point of view there are not likely any major changes ahead.  Un
 |  -- | -- | -- |
 | JavaScript | **Released** | Complete |
 | Python | **Released** | Complete |
-| Ruby  |  Early may | Currently porting to latest architecture |
+| Ruby  | April 2019 | Currently porting to latest architecture |
 | Rust  |  tba | Completed about a third of initial development |
 | PHP  |  tba | Feature complete, pending update to latest architecture |
