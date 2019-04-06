@@ -474,7 +474,7 @@ class Analyzer:
 
     # again outside while self._index < len(self._context.input):
 
-    if len(self._context.input) > 0 and self._context.input[-1] == '\n':
+    if self._context.input[-1] == '\n':
       self._context.line_count = self._line + 1
     else:
       self._context.line_count = self._line
