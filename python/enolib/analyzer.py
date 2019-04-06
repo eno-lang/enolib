@@ -268,7 +268,7 @@ class Analyzer:
         instruction['ranges']['section_operator'] = match.span(Grammar.SECTION_OPERATOR_INDEX)
         instruction['type'] = SECTION
 
-        new_depth = instruction['ranges']['section_operator'][1] - instruction['ranges']['section_operator'][0]
+        new_depth = instruction['ranges']['section_operator'][END] - instruction['ranges']['section_operator'][BEGIN]
 
         if new_depth == self._depth + 1:
           instruction['parent'] = last_section
