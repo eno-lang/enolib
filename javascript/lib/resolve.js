@@ -8,65 +8,65 @@ const {
   SECTION
 } = require('./constants.js');
 
-const consolidateNonSectionElements = (context, instruction, template) => {
-  if(template.hasOwnProperty('comments') && !instruction.hasOwnProperty('comments')) {
-    instruction.comments = template.comments;
+const consolidateNonSectionElements = (context, element, template) => {
+  if(template.hasOwnProperty('comments') && !element.hasOwnProperty('comments')) {
+    element.comments = template.comments;
   }
 
-  if(instruction.type === EMPTY_ELEMENT) {
+  if(element.type === EMPTY_ELEMENT) {
     if(template.type === MULTILINE_FIELD_BEGIN) {
-      instruction.type = FIELD;  // TODO: Revisit this - maybe should be MULTILINE_FIELD_COPY or something else - consider implications all around.
-      mirror(instruction, template);
+      element.type = FIELD;  // TODO: Revisit this - maybe should be MULTILINE_FIELD_COPY or something else - consider implications all around.
+      mirror(element, template);
     } else if(template.type === FIELD) {
-      instruction.type = FIELD;
-      mirror(instruction, template);
+      element.type = FIELD;
+      mirror(element, template);
     } else if(template.type === FIELDSET) {
-      instruction.type = FIELDSET;
-      mirror(instruction, template);
+      element.type = FIELDSET;
+      mirror(element, template);
     } else if(template.type === LIST) {
-      instruction.type = LIST;
-      mirror(instruction, template);
+      element.type = LIST;
+      mirror(element, template);
     }
-  } else if(instruction.type === FIELDSET) {
+  } else if(element.type === FIELDSET) {
     if(template.type === FIELDSET) {
-      instruction.extend = template;
+      element.extend = template;
     } else if(template.type === FIELD ||
               template.type === LIST ||
               template.type === MULTILINE_FIELD_BEGIN) {
-      throw errors.missingFieldsetForFieldsetEntry(context, instruction.entries[0]);
+      throw errors.missingFieldsetForFieldsetEntry(context, element.entries[0]);
     }
-  } else if(instruction.type === LIST) {
+  } else if(element.type === LIST) {
     if(template.type === LIST) {
-      instruction.extend = template;
+      element.extend = template;
     } else if(template.type === FIELD ||
               template.type === FIELDSET ||
               template.type === MULTILINE_FIELD_BEGIN) {
-      throw errors.missingListForListItem(context, instruction.items[0]);
+      throw errors.missingListForListItem(context, element.items[0]);
     }
   }
 };
 
-const consolidateSections = (context, instruction, template, deepMerge) => {
-  if(template.hasOwnProperty('comments') && !instruction.hasOwnProperty('comments')) {
-    instruction.comments = template.comments;
+const consolidateSections = (context, section, template, deepMerge) => {
+  if(template.hasOwnProperty('comments') && !section.hasOwnProperty('comments')) {
+    section.comments = template.comments;
   }
 
-  if(instruction.elements.length === 0) {
-    mirror(instruction, template);
+  if(section.elements.length === 0) {
+    mirror(section, template);
   } else {
     // TODO: Handle possibility of two templates (one hardcoded in the document, one implicitly derived through deep merging)
     //       Possibly also elswhere (e.g. up there in the mirror branch?)
-    instruction.extend = template;
+    section.extend = template;
 
     if(!deepMerge) return;
 
     const mergeMap = {};
 
-    for(const elementInstruction of instruction.elements) {
+    for(const elementInstruction of section.elements) {
       if(elementInstruction.type !== SECTION || mergeMap.hasOwnProperty(elementInstruction.key)) {
-        mergeMap[elementInstruction.key] = false; // non-mergable (no section or multiple instructions with same key)
+        mergeMap[elementInstruction.key] = false; // non-mergable (no section or multiple sections with same key)
       } else {
-        mergeMap[elementInstruction.key] = { instruction: elementInstruction };
+        mergeMap[elementInstruction.key] = { section: elementInstruction };
       }
     }
 
@@ -77,7 +77,7 @@ const consolidateSections = (context, instruction, template, deepMerge) => {
         if(merger === false) continue;
 
         if(elementInstruction.type !== SECTION || merger.hasOwnProperty('template')) {
-          mergeMap[elementInstruction.key] = false; // non-mergable (no section or multiple template instructions with same key)
+          mergeMap[elementInstruction.key] = false; // non-mergable (no section or multiple template sections with same key)
         } else {
           merger.template = elementInstruction;
         }
@@ -86,61 +86,61 @@ const consolidateSections = (context, instruction, template, deepMerge) => {
 
     for(const merger of Object.values(mergeMap)) {
       if(merger === false) continue;
-      // TODO: merger.template can be undefined if an instruction is applicable for
+      // TODO: merger.template can be undefined if a section is applicable for
       //       merging but no matching merge template is present? (see python impl.)
       //       Note: No spec in js impl. reported this so far, unlike in python impl.
-      consolidateSections(context, merger.instruction, merger.template, true);
+      consolidateSections(context, merger.section, merger.template, true);
     }
   }
 };
 
-const mirror = (instruction, template) => {
+const mirror = (element, template) => {
   if(template.hasOwnProperty('mirror')) {
-    instruction.mirror = template.mirror;
+    element.mirror = template.mirror;
   } else {
-    instruction.mirror = template;
+    element.mirror = template;
   }
 }
 
-const resolveNonSectionElement = (context, instruction, previousInstructions = []) => {
-  if(previousInstructions.includes(instruction))
-    throw errors.cyclicDependency(context, instruction, previousInstructions);
+const resolveNonSectionElement = (context, element, previousElements = []) => {
+  if(previousElements.includes(element))
+    throw errors.cyclicDependency(context, element, previousElements);
 
-  const template = instruction.copy.template;
+  const template = element.copy.template;
 
   if(template.hasOwnProperty('copy')) { // TODO: Maybe we change that to .unresolved everywhere ?
-    resolveNonSectionElement(context, template, [...previousInstructions, instruction]);
+    resolveNonSectionElement(context, template, [...previousElements, element]);
   }
 
-  consolidateNonSectionElements(context, instruction, template);
+  consolidateNonSectionElements(context, element, template);
 
-  delete instruction.copy;
+  delete element.copy;
 };
 
-const resolveSection = (context, instruction, previousInstructions = []) => {
-  if(previousInstructions.includes(instruction))
-    throw errors.cyclicDependency(context, instruction, previousInstructions);
+const resolveSection = (context, section, previousSections = []) => {
+  if(previousSections.includes(section))
+    throw errors.cyclicDependency(context, section, previousSections);
 
-  if(instruction.hasOwnProperty('deepResolve')) {
-    for(const elementInstruction of instruction.elements) {
+  if(section.hasOwnProperty('deepResolve')) {
+    for(const elementInstruction of section.elements) {
       if(elementInstruction.type === SECTION && (elementInstruction.hasOwnProperty('copy') || elementInstruction.hasOwnProperty('deepResolve'))) {
-        resolveSection(context, elementInstruction, [...previousInstructions, instruction]);
+        resolveSection(context, elementInstruction, [...previousSections, section]);
       }
     }
 
-    delete instruction.deepResolve;
+    delete section.deepResolve;
   }
 
-  if(instruction.hasOwnProperty('copy')) {
-    const template = instruction.copy.template;
+  if(section.hasOwnProperty('copy')) {
+    const template = section.copy.template;
 
     if(template.hasOwnProperty('copy') || template.hasOwnProperty('deepResolve')) {
-      resolveSection(context, template, [...previousInstructions, instruction]);
+      resolveSection(context, template, [...previousSections, section]);
     }
 
-    consolidateSections(context, instruction, template, instruction.deepCopy);
+    consolidateSections(context, section, template, section.deepCopy);
 
-    delete instruction.copy;
+    delete section.copy;
   }
 };
 
