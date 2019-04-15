@@ -15,7 +15,7 @@ class TextReporter(Reporter):
     gutter_header = context.messages.gutter_header.rjust(5)
     columns_header = f"  {gutter_header} | {context.messages.content_header}"
 
-    source = f"-- {source} --\n\n" if context.source is not None else ''
+    source = f"-- {context.source} --\n\n" if context.source is not None else ''
 
     self._gutter_width = len(gutter_header) + 3
     self._header = f"{source}{columns_header}\n"
