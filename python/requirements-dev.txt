@@ -1,7 +1,7 @@
-pytest==4.4.0
+pytest==4.4.1
 pytest-cov==2.6.1
 pyyaml==5.1
-hypothesis==4.14.2
+hypothesis==4.17.0
 setuptools==40.8.0
 twine==1.13.0
 wheel==0.33.1
