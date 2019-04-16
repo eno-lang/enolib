@@ -8,17 +8,13 @@ class ValueElementBase extends ElementBase {
   _printValue() {
     let value = this._context.value(this._instruction);
 
-    if(value === null) {
-      value = 'null';
-    } else {
-      value = value.replace('\n', '\\n');
-      if(value.length > 14) {
-        value = value.substr(0, 11) + '...';
-      }
-      value = `"${value}"`;
+    if(value === null) return 'null';
+
+    if(value.length > 14) {
+      value = value.substring(0, 11) + '...';
     }
 
-    return value;
+    return value.replace('\n', '\\n');
   }
 
   _value(loader, required) {

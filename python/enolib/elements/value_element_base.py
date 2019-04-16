@@ -6,14 +6,13 @@ class ValueElementBase(ElementBase):
   def _print_value(self):
     value = self._context.value(self._instruction)
 
-    if value:
-      value = value.replace("\n", '\n')
-      if len(value) > 14:
-        value = f"{value[0:11]}..."
-    else:
-      value = 'None'
+    if not value:
+      return 'None'
 
-    return value
+    if len(value) > 14:
+      value = f"{value[0:11]}..."
+
+    return value.replace("\n", '\n')
 
   def _value(self, loader=None, *, required):
     self._touched = True
