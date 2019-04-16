@@ -24,7 +24,7 @@ module.exports = async (meta, locales) => {
 
       return `def self.${snakeCase(message.name)}(${arguments.join(', ')}) "${translation}" end`;
     } else {
-      return `${screamingSnakeCase(message.name)} = '${translation.replace(/'/g, "\\'")}'.freeze`;
+      return `${screamingSnakeCase(message.name)} = '${translation.replace(/'/g, "\\'")}'`;
     }
   };
 
@@ -32,6 +32,8 @@ module.exports = async (meta, locales) => {
     const titleCaseLocale = locale.replace(/^./, initial => initial.toUpperCase());
 
     const code = interpolatify`
+      # frozen_string_literal: true
+
       # ${meta}
 
       module Enolib
