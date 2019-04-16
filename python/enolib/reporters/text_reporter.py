@@ -27,7 +27,6 @@ class TextReporter(Reporter):
     number = str(line + HUMAN_INDEXING)
     instruction = self._index[line]
 
-    content = None
     if instruction is None:
       content = ''
     else:
