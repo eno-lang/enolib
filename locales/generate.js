@@ -140,7 +140,7 @@ const generate = async () => {
 
   // 3. Generate message catalog code for all currently supported programming languages
 
-  const meta = ` GENERATED ON ${(new Date()).toISOString().substr(0, 19)} - DO NOT EDIT MANUALLY`;
+  const meta = ` GENERATED ON ${(new Date()).toISOString().substring(0, 19)} - DO NOT EDIT MANUALLY`;
 
   await javascript(meta, locales);
   await php(meta, locales);

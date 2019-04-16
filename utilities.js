@@ -17,7 +17,7 @@ exports.crop = text => {
     return minDepth;
   }, null);
 
-  return text.split('\n').map(line => line.substr(depth)).join('\n');
+  return text.split('\n').map(line => line.substring(depth)).join('\n');
 };
 
 exports.escapeDoubleQuotes = string => string.replace(/"/g, '\\"');

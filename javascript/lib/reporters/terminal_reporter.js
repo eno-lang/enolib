@@ -86,7 +86,7 @@ class TerminalReporter extends Reporter {
 
         for(const [name, range] of ranges) {
           const before = content.substring(0, range[0] - instruction.ranges.line[0]);
-          const after = content.substr(range[1] - instruction.ranges.line[0]);
+          const after = content.substring(range[1] - instruction.ranges.line[0]);
 
           content = before + RANGE_STYLE[name] + this._context._input.substring(range[0], range[1]) + RESET + after;
         }

@@ -96,7 +96,7 @@ module.exports = async () => {
     specDocument.assertAllTouched();
 
     specs.push({
-      path: file.substr(0, file.length - 4),
+      path: file.substring(0, file.length - 4),
       tests
     });
   }
