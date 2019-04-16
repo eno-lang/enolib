@@ -20,7 +20,7 @@ class Fieldset extends ElementBase {
     if(!this.hasOwnProperty('_instantiatedEntries')) {
       this._instantiatedEntries = [];
       this._instantiatedEntriesMap = {};
-      this._instantiateEntries(this._instruction, this._instantiatedEntries, this._instantiatedEntriesMap);
+      this._instantiateEntries(this._instruction);
     }
 
     return map ? this._instantiatedEntriesMap : this._instantiatedEntries;
@@ -58,29 +58,29 @@ class Fieldset extends ElementBase {
     return entries[0];
   }
 
-  _instantiateEntries(fieldset, entries, entriesMap) {
+  _instantiateEntries(fieldset) {
     if(fieldset.hasOwnProperty('mirror')) {
-      this._instantiateEntries(fieldset.mirror, entries, entriesMap);
+      this._instantiateEntries(fieldset.mirror);
     } else if(fieldset.hasOwnProperty('entries')) {
       const nativeEntries = fieldset.entries.filter(entry =>
-        !entriesMap.hasOwnProperty(entry.key)
+        !this._instantiatedEntriesMap.hasOwnProperty(entry.key)
       ).map(entry => {
         const instance = new fieldset_entry_module.FieldsetEntry(this._context, entry, this);
 
-        if(entriesMap.hasOwnProperty(entry.key)) {
-          entriesMap[entry.key].push(instance);
+        if(this._instantiatedEntriesMap.hasOwnProperty(entry.key)) {
+          this._instantiatedEntriesMap[entry.key].push(instance);
         } else {
-          entriesMap[entry.key] = [instance];
+          this._instantiatedEntriesMap[entry.key] = [instance];
         }
 
         return instance;
       });
 
       if(fieldset.hasOwnProperty('extend')) {
-        this._instantiateEntries(fieldset.extend, entries, entriesMap);
+        this._instantiateEntries(fieldset.extend);
       }
 
-      entries.push(...nativeEntries);
+      this._instantiatedEntries.push(...nativeEntries);
     }
   }
 

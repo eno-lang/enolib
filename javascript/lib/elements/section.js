@@ -75,7 +75,7 @@ class Section extends ElementBase {
     if(!this.hasOwnProperty('_instantiatedElements')) {
       this._instantiatedElements = [];
       this._instantiatedElementsMap = {};
-      this._instantiateElements(this._instruction, this._instantiatedElements, this._instantiatedElementsMap);
+      this._instantiateElements(this._instruction);
     }
 
     return map ? this._instantiatedElementsMap : this._instantiatedElements;
@@ -194,20 +194,20 @@ class Section extends ElementBase {
     return element.toFieldset();
   }
 
-  _instantiateElements(section, elements = [], elementsMap = {}) {
+  _instantiateElements(section) {
     if(section.hasOwnProperty('mirror')) {
-      this._instantiateElements(section.mirror, elements, elementsMap);
+      this._instantiateElements(section.mirror);
     } else {
-      elements.push(
+      this._instantiatedElements.push(
         ...section.elements.filter(element =>
-          !elementsMap.hasOwnProperty(element.key)
+          !this._instantiatedElementsMap.hasOwnProperty(element.key)
         ).map(element => {
           const instance = new section_element_module.SectionElement(this._context, element, this);
 
-          if(elementsMap.hasOwnProperty(element.key)) {
-            elementsMap[element.key].push(instance);
+          if(this._instantiatedElementsMap.hasOwnProperty(element.key)) {
+            this._instantiatedElementsMap[element.key].push(instance);
           } else {
-            elementsMap[element.key] = [instance];
+            this._instantiatedElementsMap[element.key] = [instance];
           }
 
           return instance;
@@ -215,11 +215,9 @@ class Section extends ElementBase {
       );
 
       if(section.hasOwnProperty('extend')) {
-        this._instantiateElements(section.extend, elements, elementsMap);
+        this._instantiateElements(section.extend);
       }
     }
-
-    return [elements, elementsMap];
   }
 
   _list(key, required = null) {

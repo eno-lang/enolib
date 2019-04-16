@@ -60,7 +60,7 @@ class Section(ElementBase):
     if not hasattr(self, '_instantiated_elements'):
       self._instantiated_elements = []
       self._instantiated_elements_map = {}
-      self._instantiate_elements(self._instruction, self._instantiated_elements, self._instantiated_elements_map)
+      self._instantiate_elements(self._instruction)
 
     return self._instantiated_elements_map if map else self._instantiated_elements
 
@@ -162,27 +162,25 @@ class Section(ElementBase):
 
     return element.to_fieldset()
 
-  def _instantiate_elements(self, section, elements, elements_map):
+  def _instantiate_elements(self, section):
     if 'mirror' in section:
-      self._instantiate_elements(section['mirror'], elements, elements_map)
+      self._instantiate_elements(section['mirror'])
     else:
       def instantiate_and_index(element):
         instance = section_element.SectionElement(self._context, element, self)
 
-        if element['key'] in elements_map:
-          elements_map[element['key']].append(instance)
+        if element['key'] in self._instantiated_elements_map:
+          self._instantiated_elements_map[element['key']].append(instance)
         else:
-          elements_map[element['key']] = [instance]
+          self._instantiated_elements_map[element['key']] = [instance]
 
         return instance
 
-      filtered = [element for element in section['elements'] if element['key'] not in elements_map]
-      elements.extend(instantiate_and_index(element) for element in filtered)
+      filtered = [element for element in section['elements'] if element['key'] not in self._instantiated_elements_map]
+      self._instantiated_elements.extend(instantiate_and_index(element) for element in filtered)  # TODO: Probably needs to come AFTER 'if 'extend' in section:' below because otherwise the order is incorrect?
 
       if 'extend' in section:
-        self._instantiate_elements(section['extend'], elements, elements_map)
-
-    return [elements, elements_map]
+        self._instantiate_elements(section['extend'])
 
   def _list(self, key, *, required=None):
     self._touched = True

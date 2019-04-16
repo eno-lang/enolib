@@ -18,7 +18,7 @@ class Fieldset(ElementBase):
     if not hasattr(self, '_instantiated_entries'):
       self._instantiated_entries = []
       self._instantiated_entries_map = {}
-      self._instantiate_entries(self._instruction, self._instantiated_entries, self._instantiated_entries_map)
+      self._instantiate_entries(self._instruction)
 
     return self._instantiated_entries_map if map else self._instantiated_entries
 
@@ -49,27 +49,27 @@ class Fieldset(ElementBase):
 
     return entries[0]
 
-  def _instantiate_entries(self, fieldset, entries, entries_map):
+  def _instantiate_entries(self, fieldset):
     if 'mirror' in fieldset:
-      self._instantiate_entries(fieldset['mirror'], entries, entries_map)
+      self._instantiate_entries(fieldset['mirror'])
     elif 'entries' in fieldset:
       def instantiate_and_index(entry):
         instance = fieldset_entry.FieldsetEntry(self._context, entry, self)
 
-        if entry['key'] in entries_map:
-          entries_map[entry['key']].append(instance)
+        if entry['key'] in self._instantiated_entries_map:
+          self._instantiated_entries_map[entry['key']].append(instance)
         else:
-          entries_map[entry['key']] = [instance]
+          self._instantiated_entries_map[entry['key']] = [instance]
 
         return instance
 
-      filtered = [entry for entry in fieldset['entries'] if entry['key'] not in entries_map]
+      filtered = [entry for entry in fieldset['entries'] if entry['key'] not in self._instantiated_entries_map]
       native_entries = [instantiate_and_index(entry) for entry in filtered]
 
       if 'extend' in fieldset:
-        self._instantiate_entries(fieldset['extend'], entries, entries_map)
+        self._instantiate_entries(fieldset['extend'])
 
-      entries.extend(native_entries)
+      self._instantiated_entries.extend(native_entries)
 
   def _missingError(self, entry):
     raise Validation.missing_element(self._context, entry._key, self._instruction, 'missing_fieldset_entry')
