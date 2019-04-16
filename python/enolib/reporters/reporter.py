@@ -25,11 +25,13 @@ class Reporter:
     self._build_index()
 
   def _build_index(self):
+    # TODO: Put this into the root class scope?
     def index_comments(element):
       if 'comments' in element:
         for comment in element['comments']:
           self._index[comment['line']] = comment
 
+    # TODO: Put this into the root class scope?
     def traverse(section):
       for element in section['elements']:
         index_comments(element)

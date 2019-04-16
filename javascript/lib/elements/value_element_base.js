@@ -5,6 +5,8 @@ class ValueElementBase extends ElementBase {
   _printValue() {
     let value = this._context.value(this._instruction);
 
+    // TODO: Actually we are missing a differentiation between 'null' and null here,
+    //       improve at some point (across all implementations)
     if(value === null) return 'null';
 
     if(value.length > 14) {
