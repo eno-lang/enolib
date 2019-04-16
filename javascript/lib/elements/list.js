@@ -15,11 +15,10 @@ class List extends ElementBase {
         ...this._instantiateItems(list.extend),
         ...list.items.map(item => new list_item_module.ListItem(this._context, item, this))
       ];
-    } else {
-      if(!list.hasOwnProperty('items'))
-        return [];
-
+    } else if(list.hasOwnProperty('items')) {
       return list.items.map(item => new list_item_module.ListItem(this._context, item, this));
+    } else {
+      return [];
     }
   }
 

@@ -13,11 +13,10 @@ class List(ElementBase):
       return self._instantiate_items(list['mirror'])
     elif 'extend' in list:
       return self._instantiate_items(list['extend']) + [list_item.ListItem(self._context, item, self) for item in list['items']]
-    else:
-      if not 'items' in list:
-        return []
-
+    elif 'items' in list:
       return [list_item.ListItem(self._context, item, self) for item in list['items']]
+    else:
+      return []
 
   def _items(self):
     if not hasattr(self, '_instantiated_items'):
