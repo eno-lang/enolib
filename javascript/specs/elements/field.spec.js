@@ -47,7 +47,7 @@ describe('Field', () => {
   describe('toString()', () => {
     describe('with a key and a value', () => {
       it('returns a debug abstraction', () => {
-        expect(field.toString()).toEqual('[object Field key=field value="value"]');
+        expect(field.toString()).toEqual('[object Field key=field value=value]');
       });
     });
 
@@ -59,7 +59,7 @@ describe('Field', () => {
 
     describe('without key, with value', () => {
       it('returns a debug abstraction', () => {
-        expect(item.toString()).toEqual('[object ListItem value="item"]');
+        expect(item.toString()).toEqual('[object ListItem value=item]');
       });
     });
 
@@ -71,7 +71,7 @@ describe('Field', () => {
 
     describe('without key, with long value', () => {
       it('returns a debug abstraction with a truncated value', () => {
-        expect(itemWithLongValue.toString()).toEqual('[object ListItem value="long item v..."]');
+        expect(itemWithLongValue.toString()).toEqual('[object ListItem value=long item v...]');
       });
     });
   });
