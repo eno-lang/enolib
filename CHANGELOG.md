@@ -4,6 +4,23 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.4.3
+
+### Fixes
+
+- Fix an UnboundLocalError in python/text_reporter (Clément Pit-Claudel) `c8cfe1e`
+- Truncate before substituting newlines when debug printing values `f6a3918`
+
+### Minor optimizations
+
+- Remove redundant member passing when instantiating fieldsets/sections `02a361e`
+- Flatten conditional flow in lazy list construction `3988de9`
+- Remove superfluous forward declaration in python text reporter `1504d55`
+
+### Maintenance
+
+- Replace soft-deprecated substr uses with core javascript substring calls `ec6485a`
+
 ## 0.4.2
 
 ### Fixes
