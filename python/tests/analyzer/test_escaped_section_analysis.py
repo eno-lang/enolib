@@ -14,6 +14,6 @@ input = """
 """.strip()
 
 def test_escaped_section_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/escaped_section_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/escaped_section_analysis.snap.yaml')

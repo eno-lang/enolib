@@ -11,6 +11,6 @@ list:
 """.strip()
 
 def test_list_item_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/list_item_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/list_item_analysis.snap.yaml')

@@ -22,13 +22,13 @@ SECTION = 'Section'
 UNPARSED = 'Unparsed'
 
 PRETTY_TYPES = {
-  DOCUMENT: 'document',
-  EMPTY_ELEMENT: 'empty_element',
-  FIELD: 'field',
-  FIELDSET: 'fieldset',
-  FIELDSET_ENTRY: 'fieldset_entry',
-  LIST: 'list',
-  LIST_ITEM: 'list_item',
-  MULTILINE_FIELD_BEGIN: 'field',
-  SECTION: 'section'
+    DOCUMENT: 'document',
+    EMPTY_ELEMENT: 'empty_element',
+    FIELD: 'field',
+    FIELDSET: 'fieldset',
+    FIELDSET_ENTRY: 'fieldset_entry',
+    LIST: 'list',
+    LIST_ITEM: 'list_item',
+    MULTILINE_FIELD_BEGIN: 'field',
+    SECTION: 'section'
 }

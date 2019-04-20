@@ -11,6 +11,6 @@ input = ('\n'
          '   \n')
 
 def test_empty_line_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/empty_line_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/empty_line_analysis.snap.yaml')

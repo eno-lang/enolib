@@ -12,6 +12,6 @@ field:
 """.strip()
 
 def test_spaced_line_continuation_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/spaced_line_continuation_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/spaced_line_continuation_analysis.snap.yaml')

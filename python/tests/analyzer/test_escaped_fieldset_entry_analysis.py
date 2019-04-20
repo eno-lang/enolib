@@ -11,6 +11,6 @@ fieldset:
 """.strip()
 
 def test_escaped_fieldset_entry_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/escaped_fieldset_entry_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/escaped_fieldset_entry_analysis.snap.yaml')

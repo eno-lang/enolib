@@ -23,6 +23,6 @@ value
 """.strip()
 
 def test_multiline_field_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/multiline_field_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/multiline_field_analysis.snap.yaml')

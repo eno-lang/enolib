@@ -10,6 +10,6 @@ key: value
 """.strip()
 
 def test_field_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/field_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/field_analysis.snap.yaml')

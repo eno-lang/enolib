@@ -9,6 +9,6 @@ input = """
 """.strip()
 
 def test_comment_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/comment_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/comment_analysis.snap.yaml')

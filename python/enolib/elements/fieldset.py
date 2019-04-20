@@ -6,122 +6,122 @@ from .missing import missing_fieldset_entry
 
 
 class Fieldset(ElementBase):
-  def __init__(self, context, instruction, parent=None):
-    super().__init__(context, instruction, parent)
+    def __init__(self, context, instruction, parent=None):
+        super().__init__(context, instruction, parent)
 
-    self._all_entries_required = parent._all_elements_required if parent else False
+        self._all_entries_required = parent._all_elements_required if parent else False
 
-  def __repr__(self):
-    return f"<class Fieldset key={self._instruction['key']} entries={len(self._entries())}>"
+    def __repr__(self):
+        return f"<class Fieldset key={self._instruction['key']} entries={len(self._entries())}>"
 
-  def _entries(self, map=False):
-    if not hasattr(self, '_instantiated_entries'):
-      self._instantiated_entries = []
-      self._instantiated_entries_map = {}
-      self._instantiate_entries(self._instruction)
+    def _entries(self, map=False):
+        if not hasattr(self, '_instantiated_entries'):
+            self._instantiated_entries = []
+            self._instantiated_entries_map = {}
+            self._instantiate_entries(self._instruction)
 
-    return self._instantiated_entries_map if map else self._instantiated_entries
+        return self._instantiated_entries_map if map else self._instantiated_entries
 
-  def _entry(self, key, *, required=False):
-    self._touched = True
+    def _entry(self, key, *, required=False):
+        self._touched = True
 
-    if not key:
-      entries = self._entries()
-    else:
-      entries_map = self._entries(True)
-      entries = entries_map[key] if key in entries_map else []
-
-    if len(entries) == 0:
-      if required or self._all_entries_required:
-        raise Validation.missing_element(self._context, key, self._instruction, 'missing_fieldset_entry')
-      elif required is None:
-        return missing_fieldset_entry.MissingFieldsetEntry(key, self)
-      else:
-        return None
-
-    if len(entries) > 1:
-      raise Validation.unexpected_multiple_elements(
-        self._context,
-        key,
-        [e._instruction for e in entries],
-        'expected_single_fieldset_entry'
-      )
-
-    return entries[0]
-
-  def _instantiate_entries(self, fieldset):
-    if 'mirror' in fieldset:
-      self._instantiate_entries(fieldset['mirror'])
-    elif 'entries' in fieldset:
-      def instantiate_and_index(entry):
-        instance = fieldset_entry.FieldsetEntry(self._context, entry, self)
-
-        if entry['key'] in self._instantiated_entries_map:
-          self._instantiated_entries_map[entry['key']].append(instance)
+        if not key:
+            entries = self._entries()
         else:
-          self._instantiated_entries_map[entry['key']] = [instance]
+            entries_map = self._entries(True)
+            entries = entries_map[key] if key in entries_map else []
 
-        return instance
+        if len(entries) == 0:
+            if required or self._all_entries_required:
+                raise Validation.missing_element(self._context, key, self._instruction, 'missing_fieldset_entry')
+            elif required is None:
+                return missing_fieldset_entry.MissingFieldsetEntry(key, self)
+            else:
+                return None
 
-      filtered = [entry for entry in fieldset['entries'] if entry['key'] not in self._instantiated_entries_map]
-      native_entries = [instantiate_and_index(entry) for entry in filtered]
+        if len(entries) > 1:
+            raise Validation.unexpected_multiple_elements(
+                self._context,
+                key,
+                [e._instruction for e in entries],
+                'expected_single_fieldset_entry'
+            )
 
-      if 'extend' in fieldset:
-        self._instantiate_entries(fieldset['extend'])
+        return entries[0]
 
-      self._instantiated_entries.extend(native_entries)
+    def _instantiate_entries(self, fieldset):
+        if 'mirror' in fieldset:
+            self._instantiate_entries(fieldset['mirror'])
+        elif 'entries' in fieldset:
+            def instantiate_and_index(entry):
+                instance = fieldset_entry.FieldsetEntry(self._context, entry, self)
 
-  def _missingError(self, entry):
-    raise Validation.missing_element(self._context, entry._key, self._instruction, 'missing_fieldset_entry')
+                if entry['key'] in self._instantiated_entries_map:
+                    self._instantiated_entries_map[entry['key']].append(instance)
+                else:
+                    self._instantiated_entries_map[entry['key']] = [instance]
 
-  def _untouched(self):
-    if not hasattr(self, '_touched'):
-      return self._instruction
+                return instance
 
-    untouched_entry = next((entry for entry in self._entries() if not hasattr(entry, '_touched')), None)
+            filtered = [entry for entry in fieldset['entries'] if entry['key'] not in self._instantiated_entries_map]
+            native_entries = [instantiate_and_index(entry) for entry in filtered]
 
-    return untouched_entry._instruction if untouched_entry else False
+            if 'extend' in fieldset:
+                self._instantiate_entries(fieldset['extend'])
 
-  def all_entries_required(self, required=True):
-    self._all_entries_required = required
+            self._instantiated_entries.extend(native_entries)
 
-  def assert_all_touched(self, message=None, *, only=None, skip=None):
-    entries_map = self._entries(True)
+    def _missingError(self, entry):
+        raise Validation.missing_element(self._context, entry._key, self._instruction, 'missing_fieldset_entry')
 
-    for key, entries in entries_map.items():
-      if (skip and key in skip) or (only and key not in only):
-        continue
+    def _untouched(self):
+        if not hasattr(self, '_touched'):
+            return self._instruction
 
-      for entry in entries:
-        if not hasattr(entry, '_touched'):
-          if callable(message):
-            message = message(entry)
+        untouched_entry = next((entry for entry in self._entries() if not hasattr(entry, '_touched')), None)
 
-          raise Validation.unexpected_element(self._context, message, entry['instruction'])
+        return untouched_entry._instruction if untouched_entry else False
 
-  def entries(self, key=None):
-    self._touched = True
+    def all_entries_required(self, required=True):
+        self._all_entries_required = required
 
-    if not key:
-      return self._entries()
-    else:
-      entries_map = self._entries(True)
-      return entries_map[key] if key in entries_map else []
+    def assert_all_touched(self, message=None, *, only=None, skip=None):
+        entries_map = self._entries(True)
 
-  def entry(self, key=None):
-    return self._entry(key)
+        for key, entries in entries_map.items():
+            if (skip and key in skip) or (only and key not in only):
+                continue
 
-  def optional_entry(self, key=None):
-    return self._entry(key, required=False)
+            for entry in entries:
+                if not hasattr(entry, '_touched'):
+                    if callable(message):
+                        message = message(entry)
 
-  def parent(self):
-    return self._parent or section.Section(self._context, self._instruction['parent'])
+                    raise Validation.unexpected_element(self._context, message, entry['instruction'])
 
-  def required_entry(self, key=None):
-    return self._entry(key, required=True)
+    def entries(self, key=None):
+        self._touched = True
 
-  def touch(self):
-    self._touched = True
+        if not key:
+            return self._entries()
+        else:
+            entries_map = self._entries(True)
+            return entries_map[key] if key in entries_map else []
 
-    for entry in self._entries():
-      entry._touched = True
+    def entry(self, key=None):
+        return self._entry(key)
+
+    def optional_entry(self, key=None):
+        return self._entry(key, required=False)
+
+    def parent(self):
+        return self._parent or section.Section(self._context, self._instruction['parent'])
+
+    def required_entry(self, key=None):
+        return self._entry(key, required=True)
+
+    def touch(self):
+        self._touched = True
+
+        for entry in self._entries():
+            entry._touched = True

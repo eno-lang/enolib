@@ -10,6 +10,6 @@ key    < template
 """.strip()
 
 def test_escaped_copy_analysis():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/copy_analysis.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/copy_analysis.snap.yaml')

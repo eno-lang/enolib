@@ -32,6 +32,6 @@ List with empty item:
 """.strip()
 
 def test_blackbox_test_continuations():
-  result = enolib.parse(input).raw()
+    result = enolib.parse(input).raw()
 
-  assert result == snapshot(result, 'tests/blackbox/snapshots/continuations.snap.json')
+    assert result == snapshot(result, 'tests/blackbox/snapshots/continuations.snap.json')

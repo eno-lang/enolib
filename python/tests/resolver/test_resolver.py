@@ -66,6 +66,6 @@ long = yaml ain't markup language
 '''
 
 def test_resolver_resolves_dependencies_without_error():
-  result = parse(input).raw()
+    result = parse(input).raw()
 
-  assert result == snapshot(result, 'tests/resolver/snapshots/resolver_resolves_dependencies_without_error.snap.json')
+    assert result == snapshot(result, 'tests/resolver/snapshots/resolver_resolves_dependencies_without_error.snap.json')

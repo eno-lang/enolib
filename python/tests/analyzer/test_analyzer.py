@@ -23,6 +23,6 @@ json
 """.strip()
 
 def test_tokenizer():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/analyzer.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/analyzer.snap.yaml')

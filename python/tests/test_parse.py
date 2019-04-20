@@ -13,20 +13,20 @@ def test_parse():
     assert document.field('language').required_string_value() == 'eno'
 
 def test_parse_with_invalid_syntax():
-  with pytest.raises(ParseError) as excinfo:
-    enolib.parse('language eno')
+    with pytest.raises(ParseError) as excinfo:
+        enolib.parse('language eno')
 
-  assert str(excinfo.value) == snapshot(str(excinfo.value), 'tests/snapshots/parse_with_invalid_syntax.snap.txt')
+    assert str(excinfo.value) == snapshot(str(excinfo.value), 'tests/snapshots/parse_with_invalid_syntax.snap.txt')
 
 @hypothesis.given(hypothesis.strategies.text())
 def test_fuzz(text):
-  '''Only allow the parse method to raise ParseErrors.'''
+    '''Only allow the parse method to raise ParseErrors.'''
 
-  try:
-    enolib.parse(text)
-  except Exception as e:
-    assert isinstance(e, ParseError)
+    try:
+        enolib.parse(text)
+    except Exception as e:
+        assert isinstance(e, ParseError)
 
 
 if __name__ == '__main__':
-  pytest.main()
+    pytest.main()

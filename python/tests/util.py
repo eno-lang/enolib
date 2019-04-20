@@ -2,26 +2,26 @@ import json
 
 
 def snapshot(content, filename):
-  extension = filename.split('.')[-1]
-  json_snapshot = extension == 'json'
+    extension = filename.split('.')[-1]
+    json_snapshot = extension == 'json'
 
-  try:
-    with open(filename, 'r') as file:
-      persisted = file.read()
+    try:
+        with open(filename, 'r') as file:
+            persisted = file.read()
 
-      if json_snapshot:
-        return json.loads(persisted)
-      else:
-        return persisted
-  except FileNotFoundError:
-    with open(filename, 'w') as file:
-      if json_snapshot:
-        persistable = json.dumps(content, ensure_ascii=False, indent=2, separators=(',', ': '))
-      else:
-        persistable = content
+            if json_snapshot:
+                return json.loads(persisted)
 
-      file.write(persistable)
+            return persisted
+    except FileNotFoundError:
+        with open(filename, 'w') as file:
+            if json_snapshot:
+                persistable = json.dumps(content, ensure_ascii=False, indent=2, separators=(',', ': '))
+            else:
+                persistable = content
 
-    print(f"1 snapshot written to {filename}")
+            file.write(persistable)
 
-    return content
+        print(f"1 snapshot written to {filename}")
+
+        return content

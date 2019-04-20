@@ -48,19 +48,19 @@ module.exports = async specs => {
 
         tests.push(interpolatify`
           def test_${filenamify(test.description)}_raises_the_expected_${filenamify(type)}():
-            error = None
+              error = None
 
-            input = ${quotedPythonMultilineString(test.input)}
+              input = ${quotedPythonMultilineString(test.input)}
 
-            try:
-              ${type === 'ParseError' ? 'enolib.parse(input)' : test.python}
-            except enolib.${type} as _error:
-              if isinstance(_error, enolib.${type}):
-                error = _error
-              else:
-                raise _error
+              try:
+                  ${type === 'ParseError' ? 'enolib.parse(input)' : test.python}
+              except enolib.${type} as _error:
+                  if isinstance(_error, enolib.${type}):
+                      error = _error
+                  else:
+                      raise _error
 
-            ${expectations.join('\n\n')}
+              ${expectations.join('\n\n')}
         `);
       }
 
@@ -83,11 +83,11 @@ module.exports = async specs => {
 
         tests.push(interpolatify`
           def test_${filenamify(test.description)}_produces_the_expected_result():
-            input = ${quotedPythonMultilineString(test.input)}
+              input = ${quotedPythonMultilineString(test.input)}
 
-            ${test.python}
+              ${test.python}
 
-            ${expectation}
+              ${expectation}
         `);
       }
     }

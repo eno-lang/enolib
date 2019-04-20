@@ -32,6 +32,6 @@ List with empty item:
 """.strip()
 
 def test_continuations():
-  analysis = analyze(input)
+    analysis = analyze(input)
 
-  assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/continuations.snap.yaml')
+    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/continuations.snap.yaml')

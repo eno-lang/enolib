@@ -14,19 +14,19 @@
 # "A   B   "
 # "   A   B   "
 def spacing_variants(tokens):
-  if len(tokens) > 1:
-    results = []
+    if len(tokens) > 1:
+        results = []
 
-    for variant in spacing_variants(tokens[1:]):
-      results.append(f"{tokens[0]}{variant}")
-      results.append(f"   {tokens[0]}{variant}")
+        for variant in spacing_variants(tokens[1:]):
+            results.append(f"{tokens[0]}{variant}")
+            results.append(f"   {tokens[0]}{variant}")
 
-    return results
-  else:
+        return results
+
     return [tokens[0], f"   {tokens[0]}"]
 
 def space(*tokens):
-  tokens = list(tokens)
-  tokens.append('')
+    tokens = list(tokens)
+    tokens.append('')
 
-  return spacing_variants(tokens)
+    return spacing_variants(tokens)

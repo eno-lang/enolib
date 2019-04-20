@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 with open('README.md', 'r') as file:
-  long_description = file.read()
+    long_description = file.read()
 
 setup(author='Simon Repp',
       author_email='simon@fdpl.io',
