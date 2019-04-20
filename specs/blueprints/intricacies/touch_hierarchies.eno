@@ -35,7 +35,7 @@ document.assert_all_touched()
 -- python
 
 -- ruby
-document = enolib.parse(input)
+document = Enolib.parse(input)
 
 document.section('section').string_key
 document.section('copy').field('field').string_key
