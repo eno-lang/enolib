@@ -4,8 +4,8 @@ class MissingList(MissingElementBase):
     def __repr__(self):
         if self._key:
             return f"<class MissingList key={self._key}>"
-        else:
-            return '<class MissingList>'
+
+        return '<class MissingList>'
 
     def items(self):
         return []

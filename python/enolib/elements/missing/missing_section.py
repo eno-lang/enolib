@@ -9,8 +9,8 @@ class MissingSection(MissingElementBase):
     def __repr__(self):
         if self._key:
             return f"<class MissingSection key={self._key}>"
-        else:
-            return '<class MissingSection>'
+
+        return '<class MissingSection>'
 
     def element(self, key=None):
         return missing_section_element.MissingSectionElement(key, self)

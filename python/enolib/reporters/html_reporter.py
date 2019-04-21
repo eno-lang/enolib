@@ -41,5 +41,5 @@ class HtmlReporter(Reporter):
 
         if self._context.source:
             return f"<div><div>{self._context.source}</div><pre class=\"eno-report\">{columns_header}{snippet}</pre></div>"
-        else:
-            return f"<pre class=\"eno-report\">{columns_header}{snippet}</pre>"
+
+        return f"<pre class=\"eno-report\">{columns_header}{snippet}</pre>"
