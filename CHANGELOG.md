@@ -4,6 +4,19 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.5.0
+
+### Initial release for ruby
+
+### Fixes
+
+- Add missing optional/required empty accessors to missing section proxy `ab43915`
+
+### Python refactoring
+
+- Switch python code to 4 space indentation `31de01a`
+- Omit some simple redundant else branches in python implementation `630b7e1`
+
 ## 0.4.3
 
 ### Fixes

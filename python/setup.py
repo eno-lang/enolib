@@ -5,13 +5,13 @@ with open('README.md', 'r') as file:
 
 setup(author='Simon Repp',
       author_email='simon@fdpl.io',
-      classifiers=(
+      classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries"
-      ),
+      ],
       description='The cross-language eno standard library',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -19,5 +19,5 @@ setup(author='Simon Repp',
       name='enolib',
       packages=find_packages(exclude=['performance', 'performance.*', 'tests', 'tests.*']),
       url='https://eno-lang.org/enolib/',
-      version='0.4.3',
+      version='0.5.0',
       zip_safe=False)

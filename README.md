@@ -8,12 +8,12 @@ enolib supports the not yet completely ratified [final specification](https://gi
 
 From a practical point of view there are not likely any major changes ahead.  Unless you build your application around edge cases of the exotic language features you should be perfectly safe and future-proof.
 
-## Release Schedule
+## Development overview
 
-|Language | Release | Progress |
-|  -- | -- | -- |
-| JavaScript | **Released** | Complete |
-| Python | **Released** | Complete |
-| Ruby  | April 2019 | Currently porting to latest architecture |
-| Rust  |  tba | Completed about a third of initial development |
-| PHP  |  tba | Feature complete, pending update to latest architecture |
+| Language | Status |
+|  -- | -- |
+| JavaScript | Released |
+| Python | Released |
+| Ruby  | Released |
+| Rust  | Completed about a third of development |
+| PHP  | Feature complete, pending update to latest architecture |
