@@ -42,6 +42,9 @@ class MissingSection(MissingElementBase):
     def optional_element(self, _key=None):
         return None
 
+    def optional_empty(self, _key=None):
+        return None
+
     def optional_field(self, _key=None):
         return None
 
@@ -55,6 +58,9 @@ class MissingSection(MissingElementBase):
         return None
 
     def required_element(self, _key=None):
+        self._parent._missing_error(self)
+
+    def required_empty(self, _key=None):
         self._parent._missing_error(self)
 
     def required_field(self, _key=None):

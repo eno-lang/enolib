@@ -51,6 +51,10 @@ class MissingSection extends MissingElementBase {
     return null;
   }
 
+  optionalEmpty(_key = null) {
+    return null;
+  }
+
   optionalField(_key = null) {
     return null;
   }
@@ -68,6 +72,10 @@ class MissingSection extends MissingElementBase {
   }
 
   requiredElement(_key = null) {
+    this._parent._missingError(this);
+  }
+
+  requiredEmpty(_key = null) {
     this._parent._missingError(this);
   }
 
