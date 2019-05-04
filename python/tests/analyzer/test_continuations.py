@@ -1,5 +1,5 @@
 from tests.analyzer.util import analyze
-from tests.util import snapshot
+from tests.util import match_object_snapshot
 
 input = """
 Field: Value
@@ -34,4 +34,4 @@ List with empty item:
 def test_continuations():
     analysis = analyze(input)
 
-    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/continuations.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/continuations.snap.yaml')
