@@ -1,4 +1,4 @@
-from tests.util import snapshot
+from tests.util import match_object_snapshot
 from tests.analyzer.util import analyze
 
 input = """
@@ -14,4 +14,4 @@ entry = value
 def test_field_analysis():
     analysis = analyze(input)
 
-    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/fieldset_entry_analysis.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/fieldset_entry_analysis.snap.yaml')

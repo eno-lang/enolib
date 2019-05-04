@@ -1,4 +1,4 @@
-from tests.util import snapshot
+from tests.util import match_object_snapshot
 from tests.analyzer.util import analyze
 
 input = """
@@ -25,4 +25,4 @@ json
 def test_tokenizer():
     analysis = analyze(input)
 
-    assert analysis == snapshot(analysis, 'tests/analyzer/snapshots/analyzer.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/analyzer.snap.yaml')
