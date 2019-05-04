@@ -136,7 +136,7 @@ document: &id001
         multiline_field_operator: !!python/tuple
         - 139
         - 141
-      type: MULTILINE_FIELD_END
+      type: Multiline Field End
     key: languages
     line: 11
     lines:

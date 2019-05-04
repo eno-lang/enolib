@@ -405,7 +405,7 @@ class Analyzer:
                         'line': (self._index, terminator_match.end()),
                         'multiline_field_operator': terminator_match.span(1)
                     },
-                    'type': 'MULTILINE_FIELD_END'
+                    'type': MULTILINE_FIELD_END
                 }
 
                 last_non_section_element['end'] = instruction
