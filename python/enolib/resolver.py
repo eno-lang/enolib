@@ -92,7 +92,7 @@ class Resolver:
         else:
             element['mirror'] = template
 
-    def resolve_non_section_element(self, element, previous_elements=[]):
+    def resolve_non_section_element(self, element, previous_elements):
         if element in previous_elements:
             raise Parsing.cyclic_dependency(self._context, element, previous_elements)
 
@@ -105,7 +105,7 @@ class Resolver:
 
         del element['copy']
 
-    def resolve_section(self, section, previous_sections=[]):
+    def resolve_section(self, section, previous_sections):
         if section in previous_sections:
             raise Parsing.cyclic_dependency(self._context, section, previous_sections)
 
@@ -160,7 +160,7 @@ class Resolver:
 
                 for target in copy['targets']:
                     if 'copy' in target:
-                        self.resolve_non_section_element(target)
+                        self.resolve_non_section_element(target, [])
 
             del self._context._copy_non_section_elements
 
@@ -171,6 +171,6 @@ class Resolver:
 
                 for target in copy['targets']:
                     if 'copy' in target:
-                        self.resolve_section(target)
+                        self.resolve_section(target, [])
 
             del self._context._copy_sections
