@@ -1,8 +1,8 @@
 pylint-2.3.1
 pytest==4.4.1
-pytest-cov==2.6.1
+pytest-cov==2.7.1
 pyyaml==5.1
-hypothesis==4.17.0
-setuptools==40.8.0
+hypothesis==4.18.3
+setuptools==41.0.1
 twine==1.13.0
 wheel==0.33.1
