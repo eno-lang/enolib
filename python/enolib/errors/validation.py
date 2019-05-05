@@ -57,7 +57,7 @@ class Validation:
 
     @staticmethod
     def missing_value(context, element):
-        selection = {}
+        selection_data = {}
 
         if (element['type'] == FIELD or
             element['type'] == EMPTY_ELEMENT or
@@ -65,26 +65,26 @@ class Validation:
             message = context.messages.missing_field_value(element['key'])
 
             if 'template' in element['ranges']:
-                selection['from'] = cursor(element, 'template', END)
+                selection_data['from'] = cursor(element, 'template', END)
             elif 'element_operator' in element['ranges']:
-                selection['from'] = cursor(element, 'element_operator', END)
+                selection_data['from'] = cursor(element, 'element_operator', END)
             else:
-                selection['from'] = cursor(element, 'line', END)
+                selection_data['from'] = cursor(element, 'line', END)
         elif element['type'] == FIELDSET_ENTRY:
             message = context.messages.missing_fieldset_entry_value(element['key'])
-            selection['from'] = cursor(element, 'entry_operator', END)
+            selection_data['from'] = cursor(element, 'entry_operator', END)
         elif element['type'] == LIST_ITEM:
             message = context.messages.missing_list_item_value(element['parent']['key'])
-            selection['from'] = cursor(element, 'item_operator', END)
+            selection_data['from'] = cursor(element, 'item_operator', END)
 
         snippet = context.reporter(context).report_element(element).snippet()
 
         if element['type'] == FIELD and 'continuations' in element:
-            selection['to'] = cursor(element['continuations'][-1], 'line', END)
+            selection_data['to'] = cursor(element['continuations'][-1], 'line', END)
         else:
-            selection['to'] = cursor(element, 'line', END)
+            selection_data['to'] = cursor(element, 'line', END)
 
-        return ValidationError(message, snippet, selection)
+        return ValidationError(message, snippet, selection_data)
 
     @staticmethod
     def unexpected_element(context, message, element):
