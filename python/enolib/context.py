@@ -24,6 +24,13 @@ class Context:
         self.reporter = reporter
         self.source = source
 
+        self.document = {
+            'elements': [],
+            'type': DOCUMENT
+        }
+
+        self.meta = []
+
         Analyzer(self).analyze()
 
         if hasattr(self, '_copy_non_section_elements') or hasattr(self, '_copy_sections'):

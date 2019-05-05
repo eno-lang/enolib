@@ -27,13 +27,6 @@ class Analyzer:
         self._index = 0
         self._line = 0
 
-        self._context.document = {
-            'elements': [],
-            'type': DOCUMENT
-        }
-
-        self._context.meta = []
-
     def _tokenize_error_context(self):
         first_instruction = None
 
