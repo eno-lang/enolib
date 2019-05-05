@@ -11,7 +11,7 @@ class Element(SectionElement):
         return f"<class Element key={self._instruction['key']}>"
 
     def to_fieldset_entry(self):
-        if not self._fieldset_entry:
+        if not hasattr(self, '_fieldset_entry'):
             if self._instruction['type'] != FIELDSET_ENTRY:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_fieldset_entry')
 
@@ -20,7 +20,7 @@ class Element(SectionElement):
         return self._fieldset_entry
 
     def to_list_item(self):
-        if not self._list_item:
+        if not hasattr(self, '_list_item'):
             if self._instruction['type'] != LIST_ITEM:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_list_item')
 
