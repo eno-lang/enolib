@@ -40,13 +40,13 @@ def cursor(instruction, range, position):
         'line': instruction['line']
     }
 
-def selection(instruction, range, position, *to):
-    to_instruction = next((argument for argument in to if type(argument) is dict), instruction)
-    to_range = next((argument for argument in to if type(argument) is str), range)
-    to_position = next((argument for argument in to if type(argument) is int), position)
+def selection(from_instruction, from_range, from_position, *to):
+    to_instruction = next((argument for argument in to if isinstance(argument, dict)), from_instruction)
+    to_range = next((argument for argument in to if isinstance(argument, str)), from_range)
+    to_position = next((argument for argument in to if isinstance(argument, int)), from_position)
 
     return {
-        'from': cursor(instruction, range, position),
+        'from': cursor(from_instruction, from_range, from_position),
         'to': cursor(to_instruction, to_range, to_position)
     }
 
