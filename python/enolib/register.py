@@ -8,9 +8,6 @@ from .elements.missing.missing_value_element_base import MissingValueElementBase
 # TODO: Safe-guard against conflicting loader names (e.g. previous definition or native library function conflict)
 
 def _register(name: str, function):
-    def registered_key_accessor(self):
-        return self.key(function)
-
     setattr(ElementBase, f"{name}_key", lambda self: self.key(function))
     setattr(ElementBase, f"optional_{name}_comment",  lambda self: self.optional_comment(function))
     setattr(ElementBase, f"required_{name}_comment",  lambda self: self.required_comment(function))
