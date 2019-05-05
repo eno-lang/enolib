@@ -4,6 +4,27 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.5.1 (python only)
+
+### Fixes
+
+- Fix faulty checks for lazily defined members in element implementation `b07c035ec`
+- Fix mutable default value anti-pattern in python resolver code `844a74c`
+- Fix accidental assignment of constant key instead of constant value `541403d`
+
+### Maintenance
+
+- In tests, compare deserialized structure instead of serialized yaml (Massimo Redaelli) `77116b7`
+- Remove unused closure in register implementation `ae74ad0`
+- Avoid shadowing selection helper in missing value error builder `5e53064`
+- Avoid overriding range built-in/clarify arguments in selection helper `ba5462b`
+- Simplify simple if/else scenarios with early returns `8a64f31`
+- Avoid globally overriding list built-in with module imports `d0e34f5`
+- Avoid overriding map built-in in entries/elements access/initialisation `3c9e608d`
+- Define obligatory context members at initialization time `35a1b06`
+- Remove unneeded python module imports `e882dff`
+- Define reusable make target for noise-reduced python linting `7d50200`
+
 ## 0.5.0
 
 ### Initial release for ruby
