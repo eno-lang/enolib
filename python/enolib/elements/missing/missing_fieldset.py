@@ -5,8 +5,8 @@ class MissingFieldset(MissingElementBase):
     def __repr__(self):
         if self._key:
             return f"<class MissingFieldset key={self._key}>"
-        else:
-            return '<class MissingFieldset>'
+
+        return '<class MissingFieldset>'
 
     def entries(self, _key=None):
         return []

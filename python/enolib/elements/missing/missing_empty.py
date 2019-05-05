@@ -4,5 +4,5 @@ class MissingEmpty(MissingElementBase):
     def __repr__(self):
         if self._key:
             return f"<class MissingEmpty key={self._key}>"
-        else:
-            return '<class MissingEmpty>'
+
+        return '<class MissingEmpty>'

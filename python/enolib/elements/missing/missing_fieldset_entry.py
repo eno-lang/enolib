@@ -4,5 +4,5 @@ class MissingFieldsetEntry(MissingValueElementBase):
     def __repr__(self):
         if self._key:
             return f"<class MissingFieldsetEntry key={self._key}>"
-        else:
-            return '<class MissingFieldsetEntry>'
+
+        return '<class MissingFieldsetEntry>'

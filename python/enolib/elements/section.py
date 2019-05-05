@@ -26,8 +26,8 @@ class Section(ElementBase):
     def __repr__(self):
         if self._instruction['type'] == DOCUMENT:
             return f"<class Section document elements={len(self._elements())}>"
-        else:
-            return f"<class Section key=\"{self._instruction['key']}\" elements={len(self._elements())}>"
+
+        return f"<class Section key=\"{self._instruction['key']}\" elements={len(self._elements())}>"
 
     def _element(self, key, *, required=None):
         self._touched = True
@@ -300,11 +300,11 @@ class Section(ElementBase):
     def elements(self, key=None):
         self._touched = True
 
-        if not key:
-            return self._elements()
-        else:
+        if key:
             elements_map = self._elements(True)
             return elements_map[key] if key in elements_map else []
+
+        return self._elements()
 
     def empty(self, key=None):
         return self._empty(key)
