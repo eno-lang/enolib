@@ -1,4 +1,4 @@
-from . import list
+from . import list as list_module  # don't globally override built-in list function
 from .value_element_base import ValueElementBase
 
 
@@ -7,4 +7,4 @@ class ListItem(ValueElementBase):
         return f"<class ListItem value={self._print_value()}>"
 
     def parent(self):
-        return self._parent or list.List(self._context, self._instruction.parent)
+        return self._parent or list_module.List(self._context, self._instruction.parent)

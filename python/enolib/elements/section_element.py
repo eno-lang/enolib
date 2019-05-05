@@ -2,7 +2,7 @@ from ..errors.validation import Validation
 from . import empty
 from . import field
 from . import fieldset
-from . import list
+from . import list as list_module  # don't globally override built-in list function
 from . import section
 from .element_base import ElementBase
 from ..constants import (
@@ -88,7 +88,7 @@ class SectionElement(ElementBase):
             if self._instruction['type'] != LIST and self._instruction['type'] != EMPTY_ELEMENT:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_list')
 
-            self._list = list.List(self._context, self._instruction, self._parent)
+            self._list = list_module.List(self._context, self._instruction, self._parent)
             self._yielded = LIST
 
         return self._list
