@@ -56,13 +56,13 @@ class Section(ElementBase):
 
         return elements[0]
 
-    def _elements(self, map=False):
+    def _elements(self, as_map=False):
         if not hasattr(self, '_instantiated_elements'):
             self._instantiated_elements = []
             self._instantiated_elements_map = {}
             self._instantiate_elements(self._instruction)
 
-        return self._instantiated_elements_map if map else self._instantiated_elements
+        return self._instantiated_elements_map if as_map else self._instantiated_elements
 
     def _empty(self, key, *, required=None):
         self._touched = True

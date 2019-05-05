@@ -14,13 +14,13 @@ class Fieldset(ElementBase):
     def __repr__(self):
         return f"<class Fieldset key={self._instruction['key']} entries={len(self._entries())}>"
 
-    def _entries(self, map=False):
+    def _entries(self, as_map=False):
         if not hasattr(self, '_instantiated_entries'):
             self._instantiated_entries = []
             self._instantiated_entries_map = {}
             self._instantiate_entries(self._instruction)
 
-        return self._instantiated_entries_map if map else self._instantiated_entries
+        return self._instantiated_entries_map if as_map else self._instantiated_entries
 
     def _entry(self, key, *, required=False):
         self._touched = True
