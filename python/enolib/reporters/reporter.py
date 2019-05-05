@@ -3,7 +3,6 @@ from ..constants import (
     FIELD,
     FIELDSET,
     FIELDSET_ENTRY,
-    HUMAN_INDEXING,
     LIST,
     LIST_ITEM,
     MULTILINE_FIELD_BEGIN,

@@ -2,16 +2,11 @@ from .context import Context
 from .elements.element import Element
 from .constants import (
     BEGIN,
-    COMMENT,
-    EMPTY_ELEMENT,
     END,
     FIELD,
     FIELDSET,
-    FIELDSET_ENTRY,
     LIST,
-    LIST_ITEM,
     MULTILINE_FIELD_BEGIN,
-    MULTILINE_FIELD_VALUE,
     SECTION
 )
 

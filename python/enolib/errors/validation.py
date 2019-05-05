@@ -6,13 +6,9 @@ from ..constants import (
     DOCUMENT,
     EMPTY_ELEMENT,
     FIELD,
-    FIELDSET,
     FIELDSET_ENTRY,
-    LIST,
     LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
-    MULTILINE_FIELD_VALUE,
-    SECTION
+    MULTILINE_FIELD_BEGIN
 )
 
 
