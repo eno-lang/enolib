@@ -1,4 +1,4 @@
-from ..constants import FIELDSET_ENTRY, LIST_ITEM
+from ..constants import InstructionType
 from ..errors.validation import Validation
 from . import fieldset_entry
 from . import list_item
@@ -12,7 +12,7 @@ class Element(SectionElement):
 
     def to_fieldset_entry(self):
         if not hasattr(self, '_fieldset_entry'):
-            if self._instruction['type'] != FIELDSET_ENTRY:
+            if self._instruction['type'] is not InstructionType.FIELDSET_ENTRY:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_fieldset_entry')
 
             self._fieldset_entry = fieldset_entry.FieldsetEntry(self._context, self._instruction)
@@ -21,7 +21,7 @@ class Element(SectionElement):
 
     def to_list_item(self):
         if not hasattr(self, '_list_item'):
-            if self._instruction['type'] != LIST_ITEM:
+            if self._instruction['type'] is not InstructionType.LIST_ITEM:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_list_item')
 
             self._list_item = list_item.ListItem(self._context, self._instruction)
@@ -29,7 +29,7 @@ class Element(SectionElement):
         return self._list_item
 
     def yields_fieldset_entry(self):
-        return self._instruction['type'] == FIELDSET_ENTRY
+        return self._instruction['type'] is InstructionType.FIELDSET_ENTRY
 
     def yields_list_item(self):
-        return self._instruction['type'] == LIST_ITEM
+        return self._instruction['type'] is InstructionType.LIST_ITEM

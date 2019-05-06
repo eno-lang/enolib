@@ -1,15 +1,6 @@
 from ..error_types import ValidationError
 from .selections import cursor, DOCUMENT_BEGIN, select_comments, select_element, select_key, selection
-from ..constants import (
-    BEGIN,
-    END,
-    DOCUMENT,
-    EMPTY_ELEMENT,
-    FIELD,
-    FIELDSET_ENTRY,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN
-)
+from ..constants import BEGIN, END, InstructionType
 
 
 class Validation:
@@ -52,39 +43,39 @@ class Validation:
         return ValidationError(
             message if key is None else message(key),
             context.reporter(context).report_missing_element(parent).snippet(),
-            DOCUMENT_BEGIN if parent['type'] == DOCUMENT else selection(parent, 'line', END)
+            DOCUMENT_BEGIN if parent['type'] is InstructionType.DOCUMENT else selection(parent, 'line', END)
         )
 
     @staticmethod
     def missing_value(context, element):
-        selection_data = {}
+        selection = {}
 
-        if (element['type'] == FIELD or
-            element['type'] == EMPTY_ELEMENT or
-            element['type'] == MULTILINE_FIELD_BEGIN):
+        if (element['type'] is InstructionType.FIELD or
+            element['type'] is InstructionType.EMPTY_ELEMENT or
+            element['type'] is InstructionType.MULTILINE_FIELD_BEGIN):
             message = context.messages.missing_field_value(element['key'])
 
             if 'template' in element['ranges']:
-                selection_data['from'] = cursor(element, 'template', END)
+                selection['from'] = cursor(element, 'template', END)
             elif 'element_operator' in element['ranges']:
-                selection_data['from'] = cursor(element, 'element_operator', END)
+                selection['from'] = cursor(element, 'element_operator', END)
             else:
-                selection_data['from'] = cursor(element, 'line', END)
-        elif element['type'] == FIELDSET_ENTRY:
+                selection['from'] = cursor(element, 'line', END)
+        elif element['type'] is InstructionType.FIELDSET_ENTRY:
             message = context.messages.missing_fieldset_entry_value(element['key'])
-            selection_data['from'] = cursor(element, 'entry_operator', END)
-        elif element['type'] == LIST_ITEM:
+            selection['from'] = cursor(element, 'entry_operator', END)
+        elif element['type'] is InstructionType.LIST_ITEM:
             message = context.messages.missing_list_item_value(element['parent']['key'])
-            selection_data['from'] = cursor(element, 'item_operator', END)
+            selection['from'] = cursor(element, 'item_operator', END)
 
         snippet = context.reporter(context).report_element(element).snippet()
 
-        if element['type'] == FIELD and 'continuations' in element:
-            selection_data['to'] = cursor(element['continuations'][-1], 'line', END)
+        if element['type'] is InstructionType.FIELD and 'continuations' in element:
+            selection['to'] = cursor(element['continuations'][-1], 'line', END)
         else:
-            selection_data['to'] = cursor(element, 'line', END)
+            selection['to'] = cursor(element, 'line', END)
 
-        return ValidationError(message, snippet, selection_data)
+        return ValidationError(message, snippet, selection)
 
     @staticmethod
     def unexpected_element(context, message, element):
@@ -119,7 +110,7 @@ class Validation:
         if 'mirror' in element:
             snippet = context.reporter(context).report_line(element).snippet()
             select = select_key(element)
-        elif element['type'] == MULTILINE_FIELD_BEGIN:
+        elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
             if 'lines' in element:
                 snippet = context.reporter(context).report_multiline_value(element).snippet()
                 select = selection(element['lines'][0], 'line', BEGIN, element['lines'][-1], 'line', END)
@@ -136,7 +127,7 @@ class Validation:
                 select['from'] = cursor(element, 'element_operator', END)
             elif 'entry_operator' in element['ranges']:
                 select['from'] = cursor(element, 'entry_operator', END)
-            elif element['type'] == LIST_ITEM:
+            elif element['type'] is InstructionType.LIST_ITEM:
                 select['from'] = cursor(element, 'item_operator', END)
             else:
                 # TODO: Possibly never reached - think through state permutations

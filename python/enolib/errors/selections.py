@@ -1,14 +1,4 @@
-from ..constants import (
-    BEGIN,
-    END,
-    FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
-    SECTION
-)
+from ..constants import BEGIN, END, InstructionType
 
 DOCUMENT_BEGIN = {
     'from': { 'column': 0, 'index': 0, 'line': 0 },
@@ -16,17 +6,17 @@ DOCUMENT_BEGIN = {
 }
 
 def last_in(element):
-    if ((element['type'] == FIELD or
-         element['type'] == LIST_ITEM or
-         element['type'] == FIELDSET_ENTRY) and 'continuations' in element):
+    if ((element['type'] is InstructionType.FIELD or
+         element['type'] is InstructionType.LIST_ITEM or
+         element['type'] is InstructionType.FIELDSET_ENTRY) and 'continuations' in element):
         return element['continuations'][-1]
-    elif element['type'] == LIST and 'items' in element:
+    elif element['type'] is InstructionType.LIST and 'items' in element:
         return last_in(element['items'][-1])
-    elif element['type'] == FIELDSET and 'entries' in element:
+    elif element['type'] is InstructionType.FIELDSET and 'entries' in element:
         return last_in(element['entries'][-1])
-    elif element['type'] == MULTILINE_FIELD_BEGIN:
+    elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
         return element['end']
-    elif element['type'] == SECTION and len(element['elements']) > 0:
+    elif element['type'] is InstructionType.SECTION and len(element['elements']) > 0:
         return last_in(element['elements'][-1])
     else:
         return element

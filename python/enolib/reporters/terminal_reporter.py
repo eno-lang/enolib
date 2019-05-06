@@ -1,4 +1,4 @@
-from ..constants import BEGIN, COMMENT, END, HUMAN_INDEXING, UNPARSED
+from ..constants import BEGIN, END, HUMAN_INDEXING, InstructionType
 from .reporter import DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION, Reporter
 
 RESET = '\x1b[0m'
@@ -71,7 +71,7 @@ class TerminalReporter(Reporter):
 
         content = ''
         if instruction:
-            if instruction['type'] == COMMENT or instruction['type'] == UNPARSED:
+            if instruction['type'] is InstructionType.COMMENT or instruction['type'] is InstructionType.UNPARSED:
                 content = BRIGHT_BLACK + self._context.input[instruction['ranges']['line'][BEGIN]:instruction['ranges']['line'][END]] + RESET
             else:
                 content = self._context.input[instruction['ranges']['line'][BEGIN]:instruction['ranges']['line'][END]]

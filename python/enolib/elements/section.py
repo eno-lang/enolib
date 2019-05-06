@@ -7,15 +7,7 @@ from .missing import missing_fieldset
 from .missing import missing_list
 from .missing import missing_section
 from .missing import missing_section_element
-from ..constants import (
-    DOCUMENT,
-    EMPTY_ELEMENT,
-    FIELD,
-    FIELDSET,
-    LIST,
-    MULTILINE_FIELD_BEGIN,
-    SECTION
-)
+from ..constants import InstructionType
 
 class Section(ElementBase):
     def __init__(self, context, instruction, parent=None):
@@ -24,7 +16,7 @@ class Section(ElementBase):
         self._all_elements_required = parent._all_elements_required if parent else False
 
     def __repr__(self):
-        if self._instruction['type'] == DOCUMENT:
+        if self._instruction['type'] is InstructionType.DOCUMENT:
             return f"<class Section document elements={len(self._elements())}>"
 
         return f"<class Section key=\"{self._instruction['key']}\" elements={len(self._elements())}>"
@@ -91,7 +83,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != EMPTY_ELEMENT:
+        if element._instruction['type'] is not InstructionType.EMPTY_ELEMENT:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_empty')
 
         return element.to_empty()
@@ -123,9 +115,9 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if (element._instruction['type'] != FIELD and
-            element._instruction['type'] != MULTILINE_FIELD_BEGIN and
-            element._instruction['type'] != EMPTY_ELEMENT):
+        if (element._instruction['type'] is not  InstructionType.FIELD and
+            element._instruction['type'] is not InstructionType.MULTILINE_FIELD_BEGIN and
+            element._instruction['type'] is not InstructionType.EMPTY_ELEMENT):
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_field')
 
         return element.to_field()
@@ -157,7 +149,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != FIELDSET and element._instruction['type'] != EMPTY_ELEMENT:
+        if element._instruction['type'] is not InstructionType.FIELDSET and element._instruction['type'] is not InstructionType.EMPTY_ELEMENT:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_fieldset')
 
         return element.to_fieldset()
@@ -209,7 +201,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != LIST and element._instruction['type'] != EMPTY_ELEMENT:
+        if element._instruction['type'] is not InstructionType.LIST and element._instruction['type'] is not InstructionType.EMPTY_ELEMENT:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_list')
 
         return element.to_list()
@@ -253,7 +245,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != SECTION:
+        if element._instruction['type'] is not InstructionType.SECTION:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_section')
 
         return element.to_section()
@@ -273,9 +265,9 @@ class Section(ElementBase):
         self._all_elements_required = required
 
         for element in self._elements():
-            if element._instruction['type'] == SECTION and element._yielded:
+            if element._instruction['type'] is InstructionType.SECTION and element._yielded:
                 element.to_section().all_elements_required(required)
-            elif element._instruction['type'] == FIELDSET and element._yielded:
+            elif element._instruction['type'] is InstructionType.FIELDSET and element._yielded:
                 element.to_fieldset().all_entries_required(required)
 
     def assert_all_touched(self, message=None, *, only=None, skip=None):
@@ -322,9 +314,9 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         def cast(element):
-            if (element._instruction['type'] != FIELD and
-                element._instruction['type'] != MULTILINE_FIELD_BEGIN and
-                element._instruction['type'] != EMPTY_ELEMENT):
+            if (element._instruction['type'] is not InstructionType.FIELD and
+                element._instruction['type'] is not InstructionType.MULTILINE_FIELD_BEGIN and
+                element._instruction['type'] is not InstructionType.EMPTY_ELEMENT):
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_fields')
 
             return element.to_field()
@@ -344,7 +336,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         def cast(element):
-            if element._instruction['type'] != FIELDSET and element._instruction['type'] != EMPTY_ELEMENT:
+            if element._instruction['type'] is not InstructionType.FIELDSET and element._instruction['type'] is not InstructionType.EMPTY_ELEMENT:
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_fieldsets')
 
             return element.to_fieldset()
@@ -364,7 +356,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         def cast(element):
-            if element._instruction['type'] != LIST and element._instruction['type'] != EMPTY_ELEMENT:
+            if element._instruction['type'] is not InstructionType.LIST and element._instruction['type'] is not InstructionType.EMPTY_ELEMENT:
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_lists')
 
             return element.to_list()
@@ -390,7 +382,7 @@ class Section(ElementBase):
         return self._section(key, required=False)
 
     def parent(self):
-        if self._instruction['type'] == DOCUMENT:
+        if self._instruction['type'] is not InstructionType.DOCUMENT:
             return None
 
         return self._parent or Section(self._context, self._instruction['parent'])
@@ -426,7 +418,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         def cast(element):
-            if element._instruction['type'] != SECTION:
+            if element._instruction['type'] is not InstructionType.SECTION:
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_sections')
 
             return element.to_section()

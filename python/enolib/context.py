@@ -3,19 +3,7 @@ from .analyzer import Analyzer
 from .messages import en
 from .reporters.text_reporter import TextReporter
 from .resolver import Resolver
-from .constants import (
-    BEGIN,
-    DOCUMENT,
-    EMPTY_ELEMENT,
-    FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
-    PRETTY_TYPES,
-    SECTION
-)
+from .constants import BEGIN, InstructionType
 
 class Context:
     def __init__(self, input: str, *, locale=en, reporter=TextReporter, source=None):
@@ -26,7 +14,7 @@ class Context:
 
         self.document = {
             'elements': [],
-            'type': DOCUMENT
+            'type': InstructionType.DOCUMENT
         }
 
         self.meta = []
@@ -146,34 +134,34 @@ class Context:
         return []
 
     def raw(self, element):
-        result = { 'type': PRETTY_TYPES[element['type']] }
+        result = { 'type': element['type'].pretty() }
 
         if 'comments' in element:
             result['comment'] = self.comment(element)
 
-        if element['type'] == EMPTY_ELEMENT:
+        if element['type'] is InstructionType.EMPTY_ELEMENT:
             result['key'] = element['key']
-        elif element['type'] == FIELD:
-            result['key'] = element['key']
-            result['value'] = self.value(element)
-        elif element['type'] == LIST_ITEM:
-            result['value'] = self.value(element)
-        elif element['type'] == FIELDSET_ENTRY:
+        elif element['type'] is InstructionType.FIELD:
             result['key'] = element['key']
             result['value'] = self.value(element)
-        elif element['type'] == MULTILINE_FIELD_BEGIN:
+        elif element['type'] is InstructionType.LIST_ITEM:
+            result['value'] = self.value(element)
+        elif element['type'] is InstructionType.FIELDSET_ENTRY:
             result['key'] = element['key']
             result['value'] = self.value(element)
-        elif element['type'] == LIST:
+        elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
+            result['key'] = element['key']
+            result['value'] = self.value(element)
+        elif element['type'] is InstructionType.LIST:
             result['key'] = element['key']
             result['items'] = [self.raw(item) for item in self.items(element)]
-        elif element['type'] == FIELDSET:
+        elif element['type'] is InstructionType.FIELDSET:
             result['key'] = element['key']
             result['entries'] = [self.raw(entry) for entry in self.entries(element)]
-        elif element['type'] == SECTION:
+        elif element['type'] is InstructionType.SECTION:
             result['key'] = element['key']
             result['elements'] = [self.raw(section_element) for section_element in self.elements(element)]
-        elif element['type'] == DOCUMENT:
+        elif element['type'] is InstructionType.DOCUMENT:
             result['elements'] = [self.raw(section_element) for section_element in self.elements(element)]
 
         return result
@@ -185,7 +173,7 @@ class Context:
 
             element['computed_value'] = None
 
-            if element['type'] is MULTILINE_FIELD_BEGIN:
+            if element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
                 if 'lines' in element:
                     element['computed_value'] = self.input[
                         element['lines'][0]['ranges']['line'][0]:element['lines'][-1]['ranges']['line'][1]

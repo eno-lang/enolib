@@ -1,24 +1,8 @@
 import re
 from .errors.parsing import Parsing
 from .grammar_regex import Grammar
-from .constants import (
-    BEGIN,
-    COMMENT,
-    CONTINUATION,
-    DOCUMENT,
-    EMPTY_ELEMENT,
-    END,
-    FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
-    MULTILINE_FIELD_END,
-    MULTILINE_FIELD_VALUE,
-    SECTION,
-    UNPARSED
-)
+from .constants import InstructionType, END, BEGIN
+
 
 class Analyzer:
     def __init__(self, context):
@@ -40,7 +24,7 @@ class Analyzer:
                 }
 
                 if first_instruction is not None:
-                    instruction['type'] = UNPARSED
+                    instruction['type'] = InstructionType.UNPARSED
 
                 self._context.line_count = self._line + 1
                 self._context.meta.append(instruction)
@@ -57,7 +41,7 @@ class Analyzer:
                 if first_instruction is None:
                     first_instruction = instruction
                 else:
-                    instruction['type'] = UNPARSED
+                    instruction['type'] = InstructionType.UNPARSED
 
                 self._index = end_of_line_index + 1
                 self._line += 1
@@ -115,9 +99,9 @@ class Analyzer:
                 value = match.group(Grammar.FIELD_VALUE_INDEX)
 
                 if value is None:
-                    instruction['type'] = EMPTY_ELEMENT
+                    instruction['type'] = InstructionType.EMPTY_ELEMENT
                 else:
-                    instruction['type'] = FIELD
+                    instruction['type'] = InstructionType.FIELD
                     instruction['value'] = value
                     instruction['ranges']['value'] = match.span(Grammar.FIELD_VALUE_INDEX)
 
@@ -133,7 +117,7 @@ class Analyzer:
                     comments = None
 
                 instruction['ranges']['item_operator'] = match.span(Grammar.LIST_ITEM_OPERATOR_INDEX)
-                instruction['type'] = LIST_ITEM
+                instruction['type'] = InstructionType.LIST_ITEM
 
                 value = match.group(Grammar.LIST_ITEM_VALUE_INDEX)
 
@@ -144,11 +128,11 @@ class Analyzer:
                 if last_non_section_element is None:
                     instruction = self._tokenize_error_context()
                     raise Parsing.missing_list_for_list_item(self._context, instruction)
-                elif last_non_section_element['type'] == LIST:
+                elif last_non_section_element['type'] is InstructionType.LIST:
                     last_non_section_element['items'].append(instruction)
-                elif last_non_section_element['type'] == EMPTY_ELEMENT:
+                elif last_non_section_element['type'] is InstructionType.EMPTY_ELEMENT:
                     last_non_section_element['items'] = [instruction]
-                    last_non_section_element['type'] = LIST
+                    last_non_section_element['type'] = InstructionType.LIST
                 else:
                     instruction = self._tokenize_error_context()
                     raise Parsing.missing_list_for_list_item(self._context, instruction)
@@ -162,7 +146,7 @@ class Analyzer:
                     instruction['comments'] = comments
                     comments = None
 
-                instruction['type'] = FIELDSET_ENTRY
+                instruction['type'] = InstructionType.FIELDSET_ENTRY
 
                 unescaped_key = match.group(Grammar.KEY_UNESCAPED_INDEX)
 
@@ -186,11 +170,11 @@ class Analyzer:
                 if last_non_section_element is None:
                     instruction = self._tokenize_error_context()
                     raise Parsing.missing_fieldset_for_fieldset_entry(self._context, instruction)
-                elif last_non_section_element['type'] == FIELDSET:
+                elif last_non_section_element['type'] is InstructionType.FIELDSET:
                     last_non_section_element['entries'].append(instruction)
-                elif last_non_section_element['type'] == EMPTY_ELEMENT:
+                elif last_non_section_element['type'] is InstructionType.EMPTY_ELEMENT:
                     last_non_section_element['entries'] = [instruction]
-                    last_non_section_element['type'] = FIELDSET
+                    last_non_section_element['type'] = InstructionType.FIELDSET
                 else:
                     instruction = self._tokenize_error_context()
                     raise Parsing.missing_fieldset_for_fieldset_entry(self._context, instruction)
@@ -206,7 +190,7 @@ class Analyzer:
 
                 instruction['spaced'] = True
                 instruction['ranges']['spaced_line_continuation_operator'] = match.span(Grammar.SPACED_LINE_CONTINUATION_OPERATOR_INDEX)
-                instruction['type'] = CONTINUATION
+                instruction['type'] = InstructionType.CONTINUATION
 
                 value = match.group(Grammar.SPACED_LINE_CONTINUATION_VALUE_INDEX)
 
@@ -217,8 +201,8 @@ class Analyzer:
                 if 'continuations' in last_continuable_element:
                     last_continuable_element['continuations'].append(instruction)
                 else:
-                    if last_continuable_element['type'] == EMPTY_ELEMENT:
-                        last_continuable_element['type'] = FIELD
+                    if last_continuable_element['type'] is InstructionType.EMPTY_ELEMENT:
+                        last_continuable_element['type'] = InstructionType.FIELD
 
                     last_continuable_element['continuations'] = [instruction]
 
@@ -233,7 +217,7 @@ class Analyzer:
                     raise Parsing.missing_element_for_continuation(self._context, instruction)
 
                 instruction['ranges']['direct_line_continuation_operator'] = match.span(Grammar.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX)
-                instruction['type'] = CONTINUATION
+                instruction['type'] = InstructionType.CONTINUATION
 
                 value = match.group(Grammar.DIRECT_LINE_CONTINUATION_VALUE_INDEX)
 
@@ -244,8 +228,8 @@ class Analyzer:
                 if 'continuations' in last_continuable_element:
                     last_continuable_element['continuations'].append(instruction)
                 else:
-                    if last_continuable_element['type'] == EMPTY_ELEMENT:
-                        last_continuable_element['type'] = FIELD
+                    if last_continuable_element['type'] is InstructionType.EMPTY_ELEMENT:
+                        last_continuable_element['type'] = InstructionType.FIELD
 
                     last_continuable_element['continuations'] = [instruction]
 
@@ -261,7 +245,7 @@ class Analyzer:
 
                 instruction['elements'] = []
                 instruction['ranges']['section_operator'] = match.span(Grammar.SECTION_OPERATOR_INDEX)
-                instruction['type'] = SECTION
+                instruction['type'] = InstructionType.SECTION
 
                 new_depth = instruction['ranges']['section_operator'][END] - instruction['ranges']['section_operator'][BEGIN]
 
@@ -300,7 +284,7 @@ class Analyzer:
                     instruction['template'] = template
 
                     parent = instruction['parent']
-                    while parent['type'] != DOCUMENT:
+                    while parent['type'] is not InstructionType.DOCUMENT:
                         parent['deep_resolve'] = True
                         parent = parent['parent']
 
@@ -338,7 +322,7 @@ class Analyzer:
                 instruction['parent'] = last_section
                 instruction['ranges']['multiline_field_operator'] = match.span(Grammar.MULTILINE_FIELD_OPERATOR_INDEX)
                 instruction['ranges']['key'] = match.span(Grammar.MULTILINE_FIELD_KEY_INDEX)
-                instruction['type'] = MULTILINE_FIELD_BEGIN
+                instruction['type'] = InstructionType.MULTILINE_FIELD_BEGIN
 
                 self._index = match.end()
 
@@ -371,7 +355,7 @@ class Analyzer:
                                     'line': (self._index, end_of_multiline_field_index),
                                     'value': (self._index, end_of_multiline_field_index)
                                 },
-                                'type': MULTILINE_FIELD_VALUE
+                                'type': InstructionType.MULTILINE_FIELD_VALUE
                             })
 
                             self._index = end_of_multiline_field_index + 1
@@ -385,7 +369,7 @@ class Analyzer:
                                     'line': (self._index, end_of_line_index),
                                     'value': (self._index, end_of_line_index)
                                 },
-                                'type': MULTILINE_FIELD_VALUE
+                                'type': InstructionType.MULTILINE_FIELD_VALUE
                             })
 
                             self._index = end_of_line_index + 1
@@ -398,7 +382,7 @@ class Analyzer:
                         'line': (self._index, terminator_match.end()),
                         'multiline_field_operator': terminator_match.span(1)
                     },
-                    'type': MULTILINE_FIELD_END
+                    'type': InstructionType.MULTILINE_FIELD_END
                 }
 
                 last_non_section_element['end'] = instruction
@@ -417,7 +401,7 @@ class Analyzer:
                     comments.append(instruction)
 
                 instruction['ranges']['comment_operator'] = match.span(Grammar.COMMENT_OPERATOR_INDEX)
-                instruction['type'] = COMMENT
+                instruction['type'] = InstructionType.COMMENT
 
                 comment = match.group(Grammar.COMMENT_VALUE_INDEX)
 
@@ -436,7 +420,7 @@ class Analyzer:
                 instruction['ranges']['copy_operator'] = match.span(Grammar.COPY_OPERATOR_INDEX)
                 instruction['ranges']['template'] = match.span(Grammar.TEMPLATE_INDEX)
                 instruction['template'] = template
-                instruction['type'] = EMPTY_ELEMENT
+                instruction['type'] = InstructionType.EMPTY_ELEMENT
 
                 instruction['key'] = match.group(Grammar.KEY_UNESCAPED_INDEX)
 

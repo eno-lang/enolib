@@ -1,14 +1,6 @@
 from .context import Context
 from .elements.element import Element
-from .constants import (
-    BEGIN,
-    END,
-    FIELD,
-    FIELDSET,
-    LIST,
-    MULTILINE_FIELD_BEGIN,
-    SECTION
-)
+from .constants import BEGIN, END, InstructionType
 
 def check_multiline_field_by_line(field, line):
     if line < field['line'] or line > field['end']['line']:
@@ -164,24 +156,24 @@ def check_in_section_by_line(section, line):
         if element['line'] == line:
             return { 'element': element, 'instruction': element }
 
-        if element['type'] is FIELD:
+        if element['type'] is InstructionType.FIELD:
             match_in_field = check_field_by_line(element, line)
             if match_in_field:
                 return match_in_field
-        elif element['type'] is FIELDSET:
+        elif element['type'] is InstructionType.FIELDSET:
             match_in_fieldset = check_fieldset_by_line(element, line)
             if match_in_fieldset:
                 return match_in_fieldset
-        elif element['type'] is LIST:
+        elif element['type'] is InstructionType.LIST:
             match_in_list = check_list_by_line(element, line)
             if match_in_list:
                 return match_in_list
-        elif element['type'] is MULTILINE_FIELD_BEGIN:
+        elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
             if not 'template' in element:  # TODO: More elegant copy detection?
                 match_in_multiline_field = check_multiline_field_by_line(element, line)
                 if match_in_multiline_field:
                     return match_in_multiline_field
-        elif element['type'] is SECTION:
+        elif element['type'] is InstructionType.SECTION:
             return check_in_section_by_line(element, line)
 
         break
@@ -196,24 +188,24 @@ def check_in_section_by_index(section, index):
         if index <= element['ranges']['line'][END]:
             return { 'element': element, 'instruction': element }
 
-        if element['type'] is FIELD:
+        if element['type'] is InstructionType.FIELD:
             match_in_field = check_field_by_index(element, index)
             if match_in_field:
                 return match_in_field
-        elif element['type'] is FIELDSET:
+        elif element['type'] is InstructionType.FIELDSET:
             match_in_fieldset = check_fieldset_by_index(element, index)
             if match_in_fieldset:
                 return match_in_fieldset
-        elif element['type'] is LIST:
+        elif element['type'] is InstructionType.LIST:
             match_in_list = check_list_by_index(element, index)
             if match_in_list:
                 return match_in_list
-        elif element['type'] is MULTILINE_FIELD_BEGIN:
+        elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
             if not 'template' in element:  # TODO: More elegant copy detection?
                 match_in_multiline_field = check_multiline_field_by_index(element, index)
                 if match_in_multiline_field:
                     return match_in_multiline_field
-        elif element['type'] is SECTION:
+        elif element['type'] is InstructionType.SECTION:
             return check_in_section_by_index(element, index)
 
         break

@@ -1,12 +1,5 @@
 from .errors.parsing import Parsing
-from .constants import (
-    EMPTY_ELEMENT,
-    FIELD,
-    FIELDSET,
-    LIST,
-    MULTILINE_FIELD_BEGIN,
-    SECTION
-)
+from .constants import InstructionType
 
 class Resolver:
     def __init__(self, context):
@@ -20,32 +13,32 @@ class Resolver:
         if 'comments' in template and not 'comments' in element:
             element['comments'] = template['comments']
 
-        if element['type'] == EMPTY_ELEMENT:
-            if template['type'] == MULTILINE_FIELD_BEGIN:
-                element['type'] = FIELD  # TODO: Revisit this - maybe should be MULTILINE_FIELD_COPY or something else - consider implications all around.
+        if element['type'] is InstructionType.EMPTY_ELEMENT:
+            if template['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
+                element['type'] = InstructionType.FIELD  # TODO: Revisit this - maybe should be MULTILINE_FIELD_COPY or something else - consider implications all around.
                 self.mirror(element, template)
-            elif template['type'] == FIELD:
-                element['type'] = FIELD
+            elif template['type'] is InstructionType.FIELD:
+                element['type'] = InstructionType.FIELD
                 self.mirror(element, template)
-            elif template['type'] == FIELDSET:
-                element['type'] = FIELDSET
+            elif template['type'] is InstructionType.FIELDSET:
+                element['type'] = InstructionType.FIELDSET
                 self.mirror(element, template)
-            elif template['type'] == LIST:
-                element['type'] = LIST
+            elif template['type'] is InstructionType.LIST:
+                element['type'] = InstructionType.LIST
                 self.mirror(element, template)
-        elif element['type'] == FIELDSET:
-            if template['type'] == FIELDSET:
+        elif element['type'] is InstructionType.FIELDSET:
+            if template['type'] is InstructionType.FIELDSET:
                 element['extend'] = template
-            elif (template['type'] == FIELD or
-                  template['type'] == LIST or
-                  template['type'] == MULTILINE_FIELD_BEGIN):
+            elif (template['type'] is InstructionType.FIELD or
+                  template['type'] is InstructionType.LIST or
+                  template['type'] is InstructionType.MULTILINE_FIELD_BEGIN):
                 raise Parsing.missing_fieldset_for_fieldset_entry(self._context, element['entries'][0])
-        elif element['type'] == LIST:
-            if template['type'] == LIST:
+        elif element['type'] is InstructionType.LIST:
+            if template['type'] is InstructionType.LIST:
                 element['extend'] = template
-            elif (template['type'] == FIELD or
-                  template['type'] == FIELDSET or
-                  template['type'] == MULTILINE_FIELD_BEGIN):
+            elif (template['type'] is InstructionType.FIELD or
+                  template['type'] is InstructionType.FIELDSET or
+                  template['type'] is InstructionType.MULTILINE_FIELD_BEGIN):
                 raise Parsing.missing_list_for_list_item(self._context, element['items'][0])
 
     def consolidate_sections(self, section, template, deep_merge):
@@ -65,7 +58,7 @@ class Resolver:
             merge_map = {}
 
             for section_element in section['elements']:
-                if section_element['type'] != SECTION or section_element['key'] in merge_map:
+                if section_element['type'] is not InstructionType.SECTION or section_element['key'] in merge_map:
                     merge_map[section_element['key']] = False # non-mergable (no section or multiple sections with same key)
                 else:
                     merge_map[section_element['key']] = { 'section': section_element }
@@ -77,7 +70,7 @@ class Resolver:
                     if merger is False:
                         continue
 
-                    if section_element['type'] != SECTION or 'template' in merger:
+                    if section_element['type'] is not InstructionType.SECTION or 'template' in merger:
                         merge_map[section_element['key']] = False # non-mergable (no section or multiple template sections with same key)
                     else:
                         merger['template'] = section_element
@@ -111,7 +104,7 @@ class Resolver:
 
         if 'deep_resolve' in section:
             for section_element in section['elements']:
-                if section_element['type'] == SECTION and ('copy' in section_element or 'deep_resolve' in section_element):
+                if section_element['type'] is InstructionType.SECTION and ('copy' in section_element or 'deep_resolve' in section_element):
                     self.resolve_section(section_element, [*previous_sections, section])
 
             del section['deep_resolve']
@@ -128,7 +121,7 @@ class Resolver:
 
     def index(self, section):
         for element in section['elements']:
-            if element['type'] == SECTION:
+            if element['type'] is InstructionType.SECTION:
                 self.index(element)
 
                 if (self._unresolved_sections and

@@ -1,13 +1,4 @@
-from ..constants import (
-    DOCUMENT,
-    FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
-    SECTION
-)
+from ..constants import InstructionType
 
 DISPLAY = 'Display Line'
 EMPHASIZE = 'Emphasize Line'
@@ -37,13 +28,13 @@ class Reporter:
 
                 self._index[element['line']] = element
 
-                if element['type'] == SECTION:
+                if element['type'] is InstructionType.SECTION:
                     traverse(element)
-                elif element['type'] == FIELD:
+                elif element['type'] is InstructionType.FIELD:
                     if 'continuations' in element:
                         for continuation in element['continuations']:
                             self._index[continuation['line']] = continuation
-                elif element['type'] == MULTILINE_FIELD_BEGIN:
+                elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
                     # Missing when reporting an unterminated multiline field
                     if 'end' in element:
                         self._index[element['end']['line']] = element['end']
@@ -52,7 +43,7 @@ class Reporter:
                         for line in element['lines']:
                             self._index[line['line']] = line
 
-                elif element['type'] == LIST:
+                elif element['type'] is InstructionType.LIST:
                     if 'items' in element:
                         for item in element['items']:
                             index_comments(item)
@@ -63,7 +54,7 @@ class Reporter:
                                 for continuation in item['continuations']:
                                     self._index[continuation['line']] = continuation
 
-                elif element['type'] == FIELDSET:
+                elif element['type'] is InstructionType.FIELDSET:
                     if 'entries' in element:
                         for entry in element['entries']:
                             index_comments(entry)
@@ -113,13 +104,13 @@ class Reporter:
         return scan_line
 
     def _tag_element(self, element, tag):
-        if element['type'] == FIELD or element['type'] == LIST_ITEM or element['type'] == FIELDSET_ENTRY:
+        if element['type'] is InstructionType.FIELD or element['type'] is InstructionType.LIST_ITEM or element['type'] is InstructionType.FIELDSET_ENTRY:
             return self._tag_continuations(element, tag)
-        elif element['type'] == LIST:
+        elif element['type'] is InstructionType.LIST:
             return self._tag_continuables(element, 'items', tag)
-        elif element['type'] == FIELDSET and 'entries' in element:
+        elif element['type'] is InstructionType.FIELDSET and 'entries' in element:
             return self._tag_continuables(element, 'entries', tag)
-        elif element['type'] == MULTILINE_FIELD_BEGIN:
+        elif element['type'] is InstructionType.MULTILINE_FIELD_BEGIN:
             if 'lines' in element:
                 for line in element['lines']:
                     self._snippet[line['line']] = tag
@@ -131,7 +122,7 @@ class Reporter:
                 return element['lines'][-1]['line'] + 1
             else:
                 return element['line'] + 1
-        elif element['type'] == SECTION:
+        elif element['type'] is InstructionType.SECTION:
             return self._tag_section(element, tag)
 
     def _tag_section(self, section, tag, recursive=True):
@@ -142,7 +133,7 @@ class Reporter:
                 self._snippet[scan_line] = INDICATE
                 scan_line += 1
 
-            if not recursive and element['type'] == SECTION:
+            if not recursive and element['type'] is InstructionType.SECTION:
                 break
 
             self._snippet[element['line']] = INDICATE
@@ -191,10 +182,10 @@ class Reporter:
         return self
 
     def report_missing_element(self, parent):
-        if parent['type'] != DOCUMENT:
+        if parent['type'] is not InstructionType.DOCUMENT:
             self._snippet[parent['line']] = INDICATE
 
-        if parent['type'] == SECTION:
+        if parent['type'] is InstructionType.SECTION:
             self._tag_section(parent, QUESTION, False)
         else:
             self._tag_element(parent, QUESTION)

@@ -1,5 +1,5 @@
 import re
-from ..constants import BEGIN, DOCUMENT, END, HUMAN_INDEXING
+from ..constants import BEGIN, InstructionType, END, HUMAN_INDEXING
 from ..error_types import ParseError
 from .selections import cursor, select_line, select_template
 
@@ -81,7 +81,7 @@ class Parsing:
     def section_hierarchy_layer_skip(context, section, super_section):
         reporter = context.reporter(context).report_line(section)
 
-        if super_section['type'] != DOCUMENT:
+        if super_section['type'] is not InstructionType.DOCUMENT:
             reporter.indicate_line(super_section)
 
         return ParseError(
