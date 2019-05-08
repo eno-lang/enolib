@@ -241,13 +241,13 @@ module Enolib
 
       section[:elements].each do |element|
         while scan_line < element[:line]
-          @snippet[scan_line] = :indicate
+          @snippet[scan_line] = tag
           scan_line += 1
         end
 
         break if element[:type] == :section && !recursive
 
-        @snippet[element[:line]] = :indicate
+        @snippet[element[:line]] = tag
 
         scan_line = tag_element(element, tag)
       end

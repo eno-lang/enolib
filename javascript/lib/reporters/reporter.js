@@ -156,13 +156,13 @@ class Reporter {
 
     for(const element of section.elements) {
       while(scanLine < element.line) {
-        this._snippet[scanLine] = INDICATE;
+        this._snippet[scanLine] = tag;
         scanLine++;
       }
 
       if(!recursive && element.type === SECTION) break;
 
-      this._snippet[element.line] = INDICATE;
+      this._snippet[element.line] = tag;
 
       scanLine = this._tagElement(element, tag);
     }

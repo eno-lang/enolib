@@ -139,13 +139,13 @@ class Reporter:
 
         for element in section['elements']:
             while scan_line < element['line']:
-                self._snippet[scan_line] = INDICATE
+                self._snippet[scan_line] = tag
                 scan_line += 1
 
             if not recursive and element['type'] == SECTION:
                 break
 
-            self._snippet[element['line']] = INDICATE
+            self._snippet[element['line']] = tag
 
             scan_line = self._tag_element(element, tag)
 
