@@ -126,12 +126,12 @@ class Reporter {
     return scanLine;
   }
 
-  _tagElement(element, tag) {
+  _tagChildren(element, tag) {
     if(element.type === FIELD || element.type === LIST_ITEM || element.type === FIELDSET_ENTRY) {
       return this._tagContinuations(element, tag);
     } else if(element.type === LIST) {
       return this._tagContinuables(element, 'items', tag);
-    } else if(element.type === FIELDSET && element.entries.length > 0) {
+    } else if(element.type === FIELDSET) {
       return this._tagContinuables(element, 'entries', tag);
     } else if(element.type === MULTILINE_FIELD_BEGIN) {
       for(const line of element.lines) {
@@ -164,7 +164,7 @@ class Reporter {
 
       this._snippet[element.line] = tag;
 
-      scanLine = this._tagElement(element, tag);
+      scanLine = this._tagChildren(element, tag);
     }
 
     return scanLine;
@@ -191,7 +191,7 @@ class Reporter {
 
   reportElement(element) {
     this._snippet[element.line] = EMPHASIZE;
-    this._tagElement(element, INDICATE);
+    this._tagChildren(element, INDICATE);
 
     return this;
   }
@@ -199,7 +199,7 @@ class Reporter {
   reportElements(elements) {
     for(const element of elements) {
       this._snippet[element.line] = EMPHASIZE;
-      this._tagElement(element, INDICATE);
+      this._tagChildren(element, INDICATE);
     }
 
     return this;
@@ -227,7 +227,7 @@ class Reporter {
     if(parent.type === SECTION) {
       this._tagSection(parent, QUESTION, false);
     } else {
-      this._tagElement(parent, QUESTION);
+      this._tagChildren(parent, QUESTION);
     }
 
     return this;

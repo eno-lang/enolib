@@ -31,7 +31,7 @@ module Enolib
 
     def report_element(element)
       @snippet[element[:line]] = :emphasize
-      tag_element(element, :indicate)
+      tag_children(element, :indicate)
 
       self
     end
@@ -39,7 +39,7 @@ module Enolib
     def report_elements(elements)
       elements.each do |element|
         @snippet[element[:line]] = :emphasize
-        tag_element(element, :indicate)
+        tag_children(element, :indicate)
       end
 
       self
@@ -65,7 +65,7 @@ module Enolib
       if parent[:type] == :section
         tag_section(parent, :question, false)
       else
-        tag_element(parent, :question)
+        tag_children(parent, :question)
       end
 
       self
@@ -209,14 +209,15 @@ module Enolib
       scan_line
     end
 
-    def tag_element(element, tag)
-      if element[:type] == :field || element[:type] == :list_item || element[:type] == :fieldset_entry
+    def tag_children(element, tag)
+      case element[:type]
+      when :field, :list_item, :fieldset_entry
         return tag_continuations(element, tag)
-      elsif element[:type] == :list
+      when :list
         return tag_continuables(element, :items, tag)
-      elsif element[:type] == :fieldset && element.has_key?(:entries)
+      when :fieldset
         return tag_continuables(element, :entries, tag)
-      elsif element[:type] == :multiline_field_begin
+      when :multiline_field_begin
         if element.has_key?(:lines)
           element[:lines].each do |line|
             @snippet[line[:line]] = tag
@@ -226,17 +227,16 @@ module Enolib
         if element.has_key?(:end)
           @snippet[element[:end][:line]] = tag
           return element[:end][:line] + 1
-        elsif element.has_key?(:lines)
-          return element[:lines][-1][:line] + 1
-        else
-          return element[:line] + 1
         end
-      elsif element[:type] == :section
+
+        return element[:lines][-1][:line] + 1 if element.has_key?(:lines)
+        return element[:line] + 1
+      when :section
         return tag_section(element, tag)
       end
     end
 
-    def tag_section(section, tag, recursive=true)
+    def tag_section(section, tag, recursive = true)
       scan_line = section[:line] + 1
 
       section[:elements].each do |element|
@@ -249,7 +249,7 @@ module Enolib
 
         @snippet[element[:line]] = tag
 
-        scan_line = tag_element(element, tag)
+        scan_line = tag_children(element, tag)
       end
 
       scan_line

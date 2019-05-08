@@ -112,7 +112,7 @@ class Reporter:
 
         return scan_line
 
-    def _tag_element(self, element, tag):
+    def _tag_children(self, element, tag):
         if element['type'] == FIELD or element['type'] == LIST_ITEM or element['type'] == FIELDSET_ENTRY:
             return self._tag_continuations(element, tag)
         elif element['type'] == LIST:
@@ -147,7 +147,7 @@ class Reporter:
 
             self._snippet[element['line']] = tag
 
-            scan_line = self._tag_element(element, tag)
+            scan_line = self._tag_children(element, tag)
 
         return scan_line
 
@@ -168,14 +168,14 @@ class Reporter:
 
     def report_element(self, element):
         self._snippet[element['line']] = EMPHASIZE
-        self._tag_element(element, INDICATE)
+        self._tag_children(element, INDICATE)
 
         return self
 
     def report_elements(self, elements):
         for element in elements:
             self._snippet[element['line']] = EMPHASIZE
-            self._tag_element(element, INDICATE)
+            self._tag_children(element, INDICATE)
 
         return self
 
@@ -197,7 +197,7 @@ class Reporter:
         if parent['type'] == SECTION:
             self._tag_section(parent, QUESTION, False)
         else:
-            self._tag_element(parent, QUESTION)
+            self._tag_children(parent, QUESTION)
 
         return self
 
