@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Parsing a line continuation without any prior element' do
   it 'raises the expected ParseError' do
     error = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying an empty document for a required but missing section' do
   it 'raises the expected ValidationError' do
     error = nil

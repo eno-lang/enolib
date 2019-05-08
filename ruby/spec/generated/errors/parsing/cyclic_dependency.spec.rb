@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Multiple sections with multiple cyclical copy chains' do
   it 'raises the expected ParseError' do
     error = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying four items from a list, all of them copied from another list' do
   it 'produces the expected result' do
     input = "list:\n" +

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'A multiline field with an incomplete multiline field operator in the ending line' do
   it 'raises the expected ParseError' do
     error = nil

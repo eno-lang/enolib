@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying all elements from a section' do
   it 'produces the expected result' do
     input = "# section\n" +

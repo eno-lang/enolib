@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying the document for a required but missing list' do
   it 'raises the expected ValidationError' do
     error = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Enolib::Parser do
   context 'with a complex sample' do
     input = File.read(File.join(__dir__, 'samples/complex.eno'))

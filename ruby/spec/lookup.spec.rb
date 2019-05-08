@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 input = <<~DOC.strip
 color: cyan
 close:up

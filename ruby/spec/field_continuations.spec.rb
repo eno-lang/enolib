@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Enolib::Field do
   describe '#new' do
     context 'leading, trailing and in-between empty direct line continuations' do

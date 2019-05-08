@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying four entries from a fieldset, all of them copied from another fieldset' do
   it 'produces the expected result' do
     input = "fieldset:\n" +

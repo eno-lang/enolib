@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |spec|
   spec.add_development_dependency('deep-cover', '~> 0.7.1')
   spec.add_development_dependency('rspec', '~> 3.8')

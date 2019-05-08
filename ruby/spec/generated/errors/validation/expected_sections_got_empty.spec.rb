@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Expecting sections but getting an empty element' do
   it 'raises the expected ValidationError' do
     error = nil

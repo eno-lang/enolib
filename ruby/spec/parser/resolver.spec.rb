@@ -1,4 +1,6 @@
-input = <<~DOC.strip()
+# frozen_string_literal: true
+
+input = <<~DOC.strip
 language field: eno notation language
 
 language < language field

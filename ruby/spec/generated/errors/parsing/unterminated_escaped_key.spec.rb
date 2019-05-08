@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'A single field with an terminated escaped key' do
   it 'raises the expected ParseError' do
     error = nil

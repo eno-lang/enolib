@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Asserting everything was touched on an untouched document' do
   it 'raises the expected ValidationError' do
     error = nil

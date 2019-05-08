@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Copying a non-section element that does not exist' do
   it 'raises the expected ParseError' do
     error = nil

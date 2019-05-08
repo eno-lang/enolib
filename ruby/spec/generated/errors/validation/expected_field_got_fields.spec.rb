@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Expecting a field but getting two fields' do
   it 'raises the expected ValidationError' do
     error = nil

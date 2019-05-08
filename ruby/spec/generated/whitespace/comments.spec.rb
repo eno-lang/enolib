@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying a comment with complex indentation from a section' do
   it 'produces the expected result' do
     input = "               >\n" +

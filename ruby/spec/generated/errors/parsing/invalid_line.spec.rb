@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'A line without operators' do
   it 'raises the expected ParseError' do
     error = nil

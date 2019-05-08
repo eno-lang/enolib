@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Copying a section that does not exist' do
   it 'raises the expected ParseError' do
     error = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying a value from a field with a loader that always produces an error' do
   it 'raises the expected ValidationError' do
     error = nil

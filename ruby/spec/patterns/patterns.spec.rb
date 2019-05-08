@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './scenarios.rb'
 
 MATCH_INDICES = Enolib::Grammar.constants

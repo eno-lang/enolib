@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'A missing empty queried without a key leaves out the key in the debug string representation' do
   it 'produces the expected result' do
     input = ""

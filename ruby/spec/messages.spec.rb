@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Enolib::Messages::En do
   Enolib::Messages::En.constants.each do |name|
     describe name do

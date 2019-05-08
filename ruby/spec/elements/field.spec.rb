@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Enolib::Field do
   before(:each) do
     @field = Enolib.parse('field: value').field('field')

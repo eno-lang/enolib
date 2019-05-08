@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Enolib::Empty do
   before(:each) do
     @empty = Enolib.parse('element:').empty

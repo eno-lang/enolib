@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Expecting a list but getting two lists' do
   it 'raises the expected ValidationError' do
     error = nil

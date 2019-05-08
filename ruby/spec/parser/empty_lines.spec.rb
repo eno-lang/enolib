@@ -1,10 +1,12 @@
-input = "\n" +
-        " \n" +
-        "  \n" +
-        "   \n" +
-        "\n" +
-        " \n" +
-        "  \n" +
+# frozen_string_literal: true
+
+input = "\n" \
+        " \n" \
+        "  \n" \
+        "   \n" \
+        "\n" \
+        " \n" \
+        "  \n" \
         "   \n"
 
 describe Enolib::Parser do

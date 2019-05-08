@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # For the biggest part the eno language specification
 # allows arbitrary whitespace before, between and after tokens.
 #

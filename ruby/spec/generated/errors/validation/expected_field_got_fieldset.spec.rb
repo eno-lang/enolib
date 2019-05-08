@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Expecting a field but getting a fieldset with one item' do
   it 'raises the expected ValidationError' do
     error = nil

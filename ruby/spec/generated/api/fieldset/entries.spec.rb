@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying all entries from a fieldset' do
   it 'produces the expected result' do
     input = "fieldset:\n" +

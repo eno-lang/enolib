@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RANGE_BEGIN = 0
 RANGE_END = 1
 

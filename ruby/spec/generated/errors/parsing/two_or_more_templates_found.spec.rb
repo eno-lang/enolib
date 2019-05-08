@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Copying a field that exists twice' do
   it 'raises the expected ParseError' do
     error = nil

@@ -97,7 +97,11 @@ module.exports = async specs => {
       }
     }
 
-    const code = tests.join('\n\n');
+    const code = interpolatify`
+      # frozen_string_literal: true
+
+      ${tests.join('\n\n')}
+    `;
 
     await fsExtra.ensureDir(path.dirname(filepath));
     await fs.promises.writeFile(filepath, code);

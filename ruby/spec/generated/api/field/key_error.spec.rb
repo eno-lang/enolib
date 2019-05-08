@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Obtaining and throwing an error with a custom message in the context of a field\'s key' do
   it 'raises the expected ValidationError' do
     error = nil

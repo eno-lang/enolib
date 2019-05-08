@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Starting a section two levels deeper than the current one' do
   it 'raises the expected ParseError' do
     error = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying existing required string values from a list' do
   it 'produces the expected result' do
     input = "list:\n" +

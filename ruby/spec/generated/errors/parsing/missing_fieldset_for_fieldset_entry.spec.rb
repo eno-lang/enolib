@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Parsing a fieldset entry without a fieldset' do
   it 'raises the expected ParseError' do
     error = nil

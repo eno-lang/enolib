@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying a fieldset entry for a required but missing value' do
   it 'raises the expected ValidationError' do
     error = nil

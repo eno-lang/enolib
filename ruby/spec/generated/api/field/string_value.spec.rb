@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying an existing required string value from a field' do
   it 'produces the expected result' do
     input = "field: value"

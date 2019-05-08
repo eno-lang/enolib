@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Global blackbox test' do
   context 'with a minimal sample' do
     document = Enolib.parse('language: eno')

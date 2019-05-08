@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Touching elements in a section that were copied from another section does not touch the original elements' do
   it 'raises the expected ValidationError' do
     error = nil

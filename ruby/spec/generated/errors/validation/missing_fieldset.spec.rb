@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying a section for a required but missing fieldset' do
   it 'raises the expected ValidationError' do
     error = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Parsing a list item without any previous element' do
   it 'raises the expected ParseError' do
     error = nil

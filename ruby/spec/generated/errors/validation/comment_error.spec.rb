@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Triggering an error inside a custom loader when querying a required comment on a field' do
   it 'raises the expected ValidationError' do
     error = nil

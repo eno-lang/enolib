@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Asserting everything was touched when the only present multiline field was not touched' do
   it 'raises the expected ValidationError' do
     error = nil

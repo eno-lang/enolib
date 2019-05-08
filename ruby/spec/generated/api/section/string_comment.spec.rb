@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying an existing, single-line, required string comment from a section' do
   it 'produces the expected result' do
     input = "> comment\n" +

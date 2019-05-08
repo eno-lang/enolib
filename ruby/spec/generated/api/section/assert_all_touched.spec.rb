@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Asserting everything was touched on an empty document' do
   it 'produces the expected result' do
     input = ""

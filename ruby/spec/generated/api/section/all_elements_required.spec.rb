@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Querying a missing field on the document when all elements are required' do
   it 'raises the expected ValidationError' do
     error = nil
