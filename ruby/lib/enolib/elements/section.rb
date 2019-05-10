@@ -291,7 +291,7 @@ module Enolib
         if required || @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_element')
         elsif required == nil
-          return MissingElement.new(key, self)
+          return MissingSectionElement.new(key, self)
         else
           return nil
         end
