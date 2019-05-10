@@ -7,8 +7,8 @@ module Enolib
       @depth = 0
       @index = 0
       @line = 0
-      @unresolved_non_section_elements = nil
-      @unresolved_sections = nil
+      @unresolved_non_section_elements = {}
+      @unresolved_sections = {}
     end
 
     def run
@@ -292,8 +292,6 @@ module Enolib
               instruction[:ranges][:copy_operator] = copy_operator_offset
             end
 
-            @unresolved_sections = {} unless @unresolved_sections
-
             if @unresolved_sections.has_key?(template)
               @unresolved_sections[template][:targets].push(instruction)
             else
@@ -444,8 +442,6 @@ module Enolib
           last_continuable_element = nil
           last_non_section_element = instruction
 
-          @unresolved_non_section_elements = {} unless @unresolved_non_section_elements
-
           if @unresolved_non_section_elements.has_key?(template)
             @unresolved_non_section_elements[template][:targets].push(instruction)
           else
@@ -469,7 +465,7 @@ module Enolib
 
       @context.meta.concat(comments) if comments
 
-      resolve if @unresolved_non_section_elements || @unresolved_sections
+      resolve unless @unresolved_non_section_elements.empty? && @unresolved_sections.empty?
     end
 
     private
