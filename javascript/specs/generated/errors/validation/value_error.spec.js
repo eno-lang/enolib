@@ -224,7 +224,7 @@ describe('Requesting a value error from an empty multiline field with a dynamica
                   `-- multiline_field`;
 
     try {
-      throw enolib.parse(input).field('multiline_field').valueError(value => `my generated message`);
+      throw enolib.parse(input).field('multiline_field').valueError(_value => `my generated message`);
     } catch(_error) {
       if(_error instanceof enolib.ValidationError) {
         error = _error;

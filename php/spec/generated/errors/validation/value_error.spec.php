@@ -202,7 +202,7 @@ describe('Requesting a value error from an empty multiline field with a dynamica
              "-- multiline_field";
 
     try {
-      throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message"; });
+      throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($_value) { return "my generated message"; });
     } catch(Enolib\ValidationError $_error) {
       $error = $_error;
     }

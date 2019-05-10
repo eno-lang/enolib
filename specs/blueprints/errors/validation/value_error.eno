@@ -235,19 +235,19 @@ selection: [0,18] => [0,18]
 -- input
 
 -- javascript
-throw enolib.parse(input).field('multiline_field').valueError(value => `my generated message`);
+throw enolib.parse(input).field('multiline_field').valueError(_value => `my generated message`);
 -- javascript
 
 -- php
-throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message"; });
+throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($_value) { return "my generated message"; });
 -- php
 
 -- python
-raise enolib.parse(input).field('multiline_field').value_error(lambda value: f"my generated message")
+raise enolib.parse(input).field('multiline_field').value_error(lambda _value: f"my generated message")
 -- python
 
 -- ruby
-raise Enolib.parse(input).field('multiline_field').value_error { |value| "my generated message" }
+raise(Enolib.parse(input).field('multiline_field').value_error { |_value| 'my generated message' })
 -- ruby
 
 ## ValidationError

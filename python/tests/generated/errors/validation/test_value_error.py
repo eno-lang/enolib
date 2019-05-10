@@ -194,7 +194,7 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamical
              "-- multiline_field")
 
     try:
-        raise enolib.parse(input).field('multiline_field').value_error(lambda value: f"my generated message")
+        raise enolib.parse(input).field('multiline_field').value_error(lambda _value: f"my generated message")
     except enolib.ValidationError as _error:
         if isinstance(_error, enolib.ValidationError):
             error = _error
