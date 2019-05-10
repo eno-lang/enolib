@@ -4,6 +4,31 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.5.2
+
+## All implementations
+
+- Replace misleading tag_element method naming with tag_children `14e3d59`
+- Replace wrong static tag assignment with passed parameter in tag_section `ca7d081`
+
+### Ruby
+
+- Early return, if assignment and misc refactoring in ruby implementation `aa32c16`
+- Prefer single to double quotes, line continuation to append in ruby code `1dc2b5f`
+- Correct stray ported python or in ruby code `743b5ff`
+- Prefer unless over if not in ruby parser code `48182bf`
+- Correct various ruby indentation issues `3c223e4`
+- Correct missing and surplus spaces in ruby code `9d70b03`
+- Use shorthand block method invocation in ruby section implementation `a976078`
+- Omit redundant void parentheses on ruby method calls and definitions `3de71cc`
+- Omit redundant return in obvious return scenarios `9cae9e1`
+- Avoid lazy implementation/checks for unresolved elements in ruby parser `e62c0ce`
+- Prefer send operator over scope operator in ruby errors generators `21230fc`
+- Fix wrong missing proxy target class instantiation in section accessor `618ecc7`
+- Remove redundant value accessor base implementation in field `d169550`
+- Freeze all constant arrays, hashes and regexes in ruby implementation `958f650`
+- Add frozen_string_literal magic string throughout all ruby files `6a8d44e`
+
 ## 0.5.1 (python only)
 
 ### Fixes
