@@ -379,7 +379,7 @@ module Enolib
             length: terminator_match.end(0),
             line: @line,
             ranges: {
-              key:  terminator_match.offset(2),
+              key: terminator_match.offset(2),
               line: [@index, terminator_match.end(0)],
               multiline_field_operator: terminator_match.offset(1),
             },
@@ -688,7 +688,7 @@ module Enolib
         else
           instruction = {
             line: @line,
-            ranges: { line: [@index, @context.input.length]}
+            ranges: { line: [@index, @context.input.length] }
           }
 
           instruction[:type] = :unparsed if first_instruction

@@ -16,7 +16,7 @@ describe Enolib::Parser do
 
     it 'parses as expected' do
       # TODO: Infinite loop on serialization - possibly a problem with the serialization code in rspec_cheki
-      #expect(context.document).to match_snapshot
+      # expect(context.document).to match_snapshot
     end
   end
 end
