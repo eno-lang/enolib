@@ -164,7 +164,7 @@ module Enolib
 
         elsif match[Grammar::SPACED_LINE_CONTINUATION_OPERATOR_INDEX]
 
-          if !last_continuable_element
+          unless last_continuable_element
             instruction = tokenize_error_context
             raise Errors::Parsing.missing_element_for_continuation(@context, instruction)
           end
@@ -197,7 +197,7 @@ module Enolib
 
         elsif match[Grammar::DIRECT_LINE_CONTINUATION_OPERATOR_INDEX]
 
-          if !last_continuable_element
+          unless last_continuable_element
             instruction = tokenize_error_context
             raise Errors::Parsing.missing_element_for_continuation(@context, instruction)
           end
