@@ -76,7 +76,7 @@ module Enolib
 
       content = ''
       if instruction
-        if instruction[:type] == :comment or instruction[:type] == :unparsed
+        if instruction[:type] == :comment || instruction[:type] == :unparsed
           content = BRIGHT_BLACK + @context.input[instruction[:ranges][:line][RANGE_BEGIN]...instruction[:ranges][:line][RANGE_END]] + RESET
         else
           content = @context.input[instruction[:ranges][:line][RANGE_BEGIN]...instruction[:ranges][:line][RANGE_END]]
