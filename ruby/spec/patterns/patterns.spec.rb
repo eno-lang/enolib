@@ -3,9 +3,9 @@
 require_relative './scenarios.rb'
 
 MATCH_INDICES = Enolib::Grammar.constants
-                            .select { |constant| constant.to_s.end_with?('_INDEX') }
-                            .map { |constant| [Enolib::Grammar.const_get(constant), constant] }
-                            .to_h
+                               .select { |constant| constant.to_s.end_with?('_INDEX') }
+                               .map { |constant| [Enolib::Grammar.const_get(constant), constant] }
+                               .to_h
 
 describe Enolib::Grammar do
   SCENARIOS.each do |scenario|

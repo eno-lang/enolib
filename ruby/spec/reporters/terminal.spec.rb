@@ -27,9 +27,8 @@ describe Enolib::TerminalReporter do
     document = Enolib.parse(input, reporter: Enolib::TerminalReporter)
     context = document.instance_variable_get(:@context)
 
-    snippet = context.reporter.new(context)
-                              .report_element(context.document[:elements].first)
-                              .snippet()
+    reporter = context.reporter.new(context)
+    snippet = reporter.report_element(context.document[:elements].first).snippet()
 
     # Uncomment to inspect
     # puts snippet

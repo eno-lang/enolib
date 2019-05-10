@@ -43,17 +43,17 @@ module Enolib
             end
 
             if first_non_empty_line_index
-                non_empty_lines = element[:comments][first_non_empty_line_index..last_non_empty_line_index]
+              non_empty_lines = element[:comments][first_non_empty_line_index..last_non_empty_line_index]
 
-                non_empty_lines.map do |comment|
-                  if !comment.has_key?(:comment)
-                    ''
-                  elsif (comment[:ranges][:comment][RANGE_BEGIN] - comment[:ranges][:line][RANGE_BEGIN]) == shared_indent
-                    comment[:comment]
-                  else
-                    (' ' * (comment[:ranges][:comment][RANGE_BEGIN] - comment[:ranges][:line][RANGE_BEGIN] - shared_indent)) + comment[:comment]
-                  end
-                end.join("\n")
+              non_empty_lines.map do |comment|
+                if !comment.has_key?(:comment)
+                  ''
+                elsif (comment[:ranges][:comment][RANGE_BEGIN] - comment[:ranges][:line][RANGE_BEGIN]) == shared_indent
+                  comment[:comment]
+                else
+                  (' ' * (comment[:ranges][:comment][RANGE_BEGIN] - comment[:ranges][:line][RANGE_BEGIN] - shared_indent)) + comment[:comment]
+                end
+              end.join("\n")
             else
               nil
             end
