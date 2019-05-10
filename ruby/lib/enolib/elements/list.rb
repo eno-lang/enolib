@@ -50,7 +50,7 @@ module Enolib
       if loader
         _comment(loader, required: false)
       else
-        raise ArgumentError.new('A loader block or Proc must be provided')
+        raise ArgumentError, 'A loader block or Proc must be provided'
       end
     end
 
@@ -66,7 +66,7 @@ module Enolib
       @touched = true
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       _items.map { |item| item.optional_value(loader) }
@@ -88,7 +88,7 @@ module Enolib
       @touched = true
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       _items.map { |item| item.required_value(loader) }

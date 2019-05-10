@@ -16,7 +16,7 @@ module Enolib
       end
 
       unless message
-        raise ArgumentError.new('A message or message function must be provided')
+        raise ArgumentError, 'A message or message function must be provided'
       end
 
       Errors::Validation.comment_error(@context, message, @instruction)
@@ -30,7 +30,7 @@ module Enolib
       end
 
       unless message
-        raise ArgumentError.new('A message or message function must be provided')
+        raise ArgumentError, 'A message or message function must be provided'
       end
 
       Errors::Validation.element_error(@context, message, @instruction)
@@ -42,7 +42,7 @@ module Enolib
       @touched = true
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       begin
@@ -60,7 +60,7 @@ module Enolib
       end
 
       unless message
-        raise ArgumentError.new('A message or message function must be provided')
+        raise ArgumentError, 'A message or message function must be provided'
       end
 
       Errors::Validation.key_error(@context, message, @instruction)
@@ -70,7 +70,7 @@ module Enolib
       loader = Proc.new if block_given?
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       _comment(loader, required: false)
@@ -88,7 +88,7 @@ module Enolib
       loader = Proc.new if block_given?
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       _comment(loader, required: true)

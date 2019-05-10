@@ -17,7 +17,7 @@ module Enolib
     def to_empty
       unless instance_variable_defined?(:@empty)
         if instance_variable_defined?(:@yielded)
-          raise TypeError.new("This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as an empty.")
+          raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as an empty."
         end
 
         unless @instruction[:type] == :empty_element
@@ -35,7 +35,7 @@ module Enolib
     def to_field
       unless instance_variable_defined?(:@field)
         if instance_variable_defined?(:@yielded)
-          raise TypeError.new("This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a field.")
+          raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a field."
         end
 
         unless @instruction[:type] == :field ||
@@ -54,7 +54,7 @@ module Enolib
     def to_fieldset
       unless instance_variable_defined?(:@fieldset)
         if instance_variable_defined?(:@yielded)
-          raise TypeError.new("This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a fieldset.")
+          raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a fieldset."
         end
 
         unless @instruction[:type] == :fieldset || @instruction[:type] == :empty_element
@@ -71,7 +71,7 @@ module Enolib
     def to_list
       unless instance_variable_defined?(:@list)
         if instance_variable_defined?(:@yielded)
-          raise TypeError.new("This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a list.")
+          raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a list."
         end
 
         unless @instruction[:type] == :list || @instruction[:type] == :empty_element

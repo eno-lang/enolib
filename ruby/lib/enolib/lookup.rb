@@ -65,7 +65,6 @@ def check_fieldset_by_line(fieldset, line)
   return false unless fieldset.has_key?(:entries) &&
                       line <= fieldset[:entries].last[:line]
 
-
   fieldset[:entries].each do |entry|
     return { element: entry, instruction: entry } if line == entry[:line]
     return { element: fieldset, instruction: nil } if line < entry[:line]
@@ -192,13 +191,13 @@ module Enolib
     match = nil
     if index
       if index < 0 || index > context.input.length
-        raise IndexError.new("You are trying to look up an index (#{index}) outside of the document's index range (0-#{context.input.length})")
+        raise IndexError, "You are trying to look up an index (#{index}) outside of the document's index range (0-#{context.input.length})"
       end
 
       match = check_in_section_by_index(context.document, index)
     else
       if line < 0 || line >= context.line_count
-        raise IndexError.new("You are trying to look up a line (#{line}) outside of the document's line range (0-#{context.line_count - 1})")
+        raise IndexError, "You are trying to look up a line (#{line}) outside of the document's line range (0-#{context.line_count - 1})"
       end
 
       match = check_in_section_by_line(context.document, line)

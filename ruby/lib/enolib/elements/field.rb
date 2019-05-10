@@ -10,7 +10,7 @@ module Enolib
       loader = Proc.new if block_given?
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       _value(loader, required: false)
@@ -28,7 +28,7 @@ module Enolib
       loader = Proc.new if block_given?
 
       unless loader
-        raise ArgumentError.new('A loader function must be provided')
+        raise ArgumentError, 'A loader function must be provided'
       end
 
       _value(loader, required: true)
