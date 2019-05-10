@@ -52,7 +52,7 @@ raise enolib.parse(input).field('field').value_error(lambda value: f"my generate
 -- python
 
 -- ruby
-raise Enolib.parse(input).field('field').value_error { |value| "my generated message for value '#{value}'" }
+raise(Enolib.parse(input).field('field').value_error { |value| "my generated message for value '#{value}'" })
 -- ruby
 
 ## ValidationError
