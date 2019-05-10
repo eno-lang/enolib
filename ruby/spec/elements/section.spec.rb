@@ -26,8 +26,8 @@ describe Enolib::Section do
 
   describe '#raw' do
     it 'returns a native representation' do
-      expect(@section.raw).to eq({
-        elements:  [
+      expect(@section.raw).to eq(
+        elements: [
           {
             key: 'field',
             type: :field,
@@ -40,7 +40,7 @@ describe Enolib::Section do
           }
         ],
         type: :document
-      })
+      )
     end
   end
 

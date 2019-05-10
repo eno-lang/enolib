@@ -71,7 +71,7 @@ describe Enolib::Fieldset do
 
   describe '#raw' do
     it 'returns a debug representation' do
-      expect(@fieldset.raw).to eq({
+      expect(@fieldset.raw).to eq(
         key: 'fieldset',
         entries: [
           {
@@ -86,7 +86,7 @@ describe Enolib::Fieldset do
           }
         ],
         type: :fieldset
-      })
+      )
     end
   end
 

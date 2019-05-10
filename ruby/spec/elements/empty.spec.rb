@@ -29,10 +29,10 @@ describe Enolib::Empty do
 
   describe '#raw' do
     it 'returns a native object representation' do
-      expect(@empty.raw).to eq({
-          key: 'element',
-          type: :empty_element
-        })
+      expect(@empty.raw).to eq(
+        key: 'element',
+        type: :empty_element
+      )
     end
   end
 

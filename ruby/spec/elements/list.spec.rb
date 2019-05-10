@@ -91,7 +91,7 @@ describe Enolib::List do
 
   describe '#raw' do
     it 'returns a native representation' do
-      expect(@list.raw).to eq({
+      expect(@list.raw).to eq(
         key: 'list',
         items: [
           {
@@ -104,7 +104,7 @@ describe Enolib::List do
           }
         ],
         type: :list
-      })
+      )
     end
   end
 

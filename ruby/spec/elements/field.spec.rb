@@ -29,11 +29,11 @@ describe Enolib::Field do
 
   describe '#raw' do
     it 'returns a debug representation' do
-      expect(@field.raw).to eq({
+      expect(@field.raw).to eq(
         key: 'field',
         type: :field,
         value: 'value'
-      })
+      )
     end
   end
 
