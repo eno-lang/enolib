@@ -32,7 +32,7 @@ describe 'Global blackbox test' do
         limbs = body.section('Limbs')
         right_arms = limbs.sections('Right Arm')
 
-        expect(right_arms[1].field('I').required_string_value).to eq("append allthe things")
+        expect(right_arms[1].field('I').required_string_value).to eq('append allthe things')
       end
     end
   end

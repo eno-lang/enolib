@@ -84,8 +84,12 @@ exports.quotedPythonMultilineString = text => {
 }
 
 exports.quotedRubyMultilineString = text => {
-  text = text.replace(/\\/g, '\\\\'); // escape backslashes
-  text = text.replace(/"/g, '\\"');   // escape quotes
-
-  return '"' + text.replace(/\n/g, '\\n" +\n"') + '"';
+  return text.split('\n').map((line, index, lines) => {
+    // Last line is quoted in single quotes (following ruby convention) because there is no \n inside
+    if(index === lines.length - 1) {
+      return `'${line.replace(/'/g, "\\'")}'`;
+    } else {
+      return `"${line.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}\\n"`;
+    }
+  }).join(' \\\n');
 }

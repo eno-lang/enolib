@@ -36,7 +36,7 @@ SAMPLES.each do |name, content|
   delta = @reference ? ips - @reference[name]['ips'] : 0
 
   if delta == 0
-    change = "~0 ips (same)"
+    change = '~0 ips (same)'
   elsif delta.positive?
     factor = @reference ? (ips / @reference[name]['ips'].to_f).round(3) : 0
     change = "+#{delta} ips (#{factor}× faster)"
@@ -55,4 +55,4 @@ end
 
 @analysis['modifications'] = @modifications
 
-File.write("performance/analysis.json", JSON.pretty_generate(@analysis))
+File.write('performance/analysis.json', JSON.pretty_generate(@analysis))

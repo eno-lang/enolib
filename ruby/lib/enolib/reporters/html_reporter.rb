@@ -86,10 +86,10 @@ module Enolib
     end
 
     def markup(gutter, content, tag_class = '')
-       "<div class=\"eno-report-line #{tag_class}\">" +
-       "<div class=\"eno-report-gutter\">#{gutter.rjust(10)}</div>" +
-       "<div class=\"eno-report-content\">#{escape(content)}</div>" +
-       '</div>'
+      "<div class=\"eno-report-line #{tag_class}\">" \
+      "<div class=\"eno-report-gutter\">#{gutter.rjust(10)}</div>" \
+      "<div class=\"eno-report-content\">#{escape(content)}</div>" \
+      '</div>'
     end
 
     def print
