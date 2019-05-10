@@ -2,9 +2,9 @@
 
 describe 'Querying all elements from a section' do
   it 'produces the expected result' do
-    input = "# section\n" +
-            "one: value\n" +
-            "two: value"
+    input = "# section\n" \
+            "one: value\n" \
+            'two: value'
 
     output = Enolib.parse(input).section('section').elements.map(&:string_key)
 
@@ -14,10 +14,10 @@ end
 
 describe 'Querying elements from a section by key' do
   it 'produces the expected result' do
-    input = "# section\n" +
-            "field: value\n" +
-            "other: one\n" +
-            "other: two"
+    input = "# section\n" \
+            "field: value\n" \
+            "other: one\n" \
+            'other: two'
 
     output = Enolib.parse(input).section('section').elements('other').map { |element| element.to_field.required_string_value }
 

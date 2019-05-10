@@ -2,13 +2,13 @@
 
 describe 'Querying four items from a list, all of them copied from another list' do
   it 'produces the expected result' do
-    input = "list:\n" +
-            "- 1\n" +
-            "- 2\n" +
-            "- 3\n" +
-            "- 4\n" +
-            "\n" +
-            "copy < list"
+    input = "list:\n" \
+            "- 1\n" \
+            "- 2\n" \
+            "- 3\n" \
+            "- 4\n" \
+            "\n" \
+            'copy < list'
 
     output = Enolib.parse(input).list('copy').required_string_values
 
@@ -18,13 +18,13 @@ end
 
 describe 'Querying four items from a list, two of them copied from another list' do
   it 'produces the expected result' do
-    input = "list:\n" +
-            "- 1\n" +
-            "- 2\n" +
-            "\n" +
-            "copy < list\n" +
-            "- 3\n" +
-            "- 4"
+    input = "list:\n" \
+            "- 1\n" \
+            "- 2\n" \
+            "\n" \
+            "copy < list\n" \
+            "- 3\n" \
+            '- 4'
 
     output = Enolib.parse(input).list('copy').required_string_values
 

@@ -2,9 +2,9 @@
 
 describe 'Querying existing required string values from a list' do
   it 'produces the expected result' do
-    input = "list:\n" +
-            "- item\n" +
-            "- item"
+    input = "list:\n" \
+            "- item\n" \
+            '- item'
 
     output = Enolib.parse(input).list('list').required_string_values
 
@@ -14,9 +14,9 @@ end
 
 describe 'Querying existing optional string values from a list' do
   it 'produces the expected result' do
-    input = "list:\n" +
-            "- item\n" +
-            "- item"
+    input = "list:\n" \
+            "- item\n" \
+            '- item'
 
     output = Enolib.parse(input).list('list').optional_string_values
 
@@ -26,9 +26,9 @@ end
 
 describe 'Querying missing optional string values from a list' do
   it 'produces the expected result' do
-    input = "list:\n" +
-            "-\n" +
-            "-"
+    input = "list:\n" \
+            "-\n" \
+            '-'
 
     output = Enolib.parse(input).list('list').optional_string_values
 
