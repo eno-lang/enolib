@@ -48,7 +48,7 @@ describe Enolib::List do
       end
 
       it 'applies the loader' do
-        expect(@items).to eq(['ITEM', 'OTHER']);
+        expect(@items).to eq(['ITEM', 'OTHER'])
       end
 
       it 'touches the list' do
@@ -68,7 +68,7 @@ describe Enolib::List do
       end
 
       it 'applies the loader' do
-        expect(@items).to eq(['ITEM', 'OTHER']);
+        expect(@items).to eq(['ITEM', 'OTHER'])
       end
 
       it 'touches the list' do
