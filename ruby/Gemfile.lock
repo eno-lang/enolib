@@ -77,9 +77,9 @@ DEPENDENCIES
   deep-cover (~> 0.7.1)
   enolib!
   rspec (~> 3.8)
-  rspec-cheki (= 0.1.0)
-  rubocop
-  rubocop-performance
+  rspec-cheki (~> 0.1.0)
+  rubocop (~> 0.68.1)
+  rubocop-performance (~> 1.2)
 
 BUNDLED WITH
    1.17.2
