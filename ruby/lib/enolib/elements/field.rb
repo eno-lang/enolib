@@ -17,7 +17,7 @@ module Enolib
     end
 
     def parent
-      return @parent || Section.new(@context, @instruction[:parent])
+      @parent || Section.new(@context, @instruction[:parent])
     end
 
     def required_string_value

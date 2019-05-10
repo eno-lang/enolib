@@ -214,7 +214,7 @@ module Enolib
         end
       end
 
-      return element[:computed_value]
+      element[:computed_value]
     end
   end
 end
