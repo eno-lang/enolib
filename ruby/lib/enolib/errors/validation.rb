@@ -7,7 +7,7 @@ module Enolib
         ValidationError.new(
           context.messages.comment_error(message),
           context.reporter.new(context).report_comments(element).snippet(),
-          Selections::select_comments(element)
+          Selections.select_comments(element)
         )
       end
 
@@ -15,7 +15,7 @@ module Enolib
         ValidationError.new(
           message,
           context.reporter.new(context).report_element(element).snippet(),
-          Selections::select_element(element)
+          Selections.select_element(element)
         )
       end
 
@@ -23,7 +23,7 @@ module Enolib
         ValidationError.new(
           context.messages.key_error(message),
           context.reporter.new(context).report_line(element).snippet(),
-          Selections::select_key(element)
+          Selections.select_key(element)
         )
       end
 
@@ -31,7 +31,7 @@ module Enolib
         ValidationError.new(
           context.messages::MISSING_COMMENT,
           context.reporter.new(context).report_line(element).snippet(), # TODO: Question-tag an empty line before an element with missing comment
-          Selections::selection(element, :line, RANGE_BEGIN)
+          Selections.selection(element, :line, RANGE_BEGIN)
         )
       end
 
@@ -39,7 +39,7 @@ module Enolib
         ValidationError.new(
           key ? context.messages.send(message + '_with_key', key) : context.messages.const_get(message.upcase), # TODO: Solve the upcase rather through a different generated message type, e.g. method instead of constant
           context.reporter.new(context).report_missing_element(parent).snippet(),
-          parent[:type] == :document ? Selections::DOCUMENT_BEGIN : Selections::selection(parent, :line, RANGE_END)
+          parent[:type] == :document ? Selections::DOCUMENT_BEGIN : Selections.selection(parent, :line, RANGE_END)
         )
       end
 
@@ -60,10 +60,10 @@ module Enolib
           end
         elsif element[:type] == :fieldset_entry
           message = context.messages.missing_fieldset_entry_value(element[:key])
-          selection[:from] = Selections::cursor(element, :entry_operator, RANGE_END)
+          selection[:from] = Selections.cursor(element, :entry_operator, RANGE_END)
         elsif element[:type] == :list_item
           message = context.messages.missing_list_item_value(element[:parent][:key])
-          selection[:from] = Selections::cursor(element, :item_operator, RANGE_END)
+          selection[:from] = Selections.cursor(element, :item_operator, RANGE_END)
         end
 
         snippet = context.reporter.new(context).report_element(element).snippet()
@@ -81,7 +81,7 @@ module Enolib
         ValidationError.new(
           message || context.messages::UNEXPECTED_ELEMENT,
           context.reporter.new(context).report_element(element).snippet(),
-          Selections::select_element(element)
+          Selections.select_element(element)
         )
       end
 
@@ -89,7 +89,7 @@ module Enolib
         ValidationError.new(
           key ? context.messages.send(message + '_with_key', key) : context.messages.const_get(message.upcase), # TODO: Solve the upcase rather through a different generated message type, e.g. method instead of constant
           context.reporter.new(context).report_elements(elements).snippet(),
-          Selections::select_element(elements[0])
+          Selections.select_element(elements[0])
         )
       end
 
@@ -97,7 +97,7 @@ module Enolib
         ValidationError.new(
           key ? context.messages.send(message + '_with_key', key) : context.messages.const_get(message.upcase), # TODO: Solve the upcase rather through a different generated message type, e.g. method instead of constant
           context.reporter.new(context).report_element(section).snippet(),
-          Selections::select_element(section)
+          Selections.select_element(section)
         )
       end
 
@@ -108,10 +108,10 @@ module Enolib
         elsif element[:type] == :multiline_field_begin
           if element.has_key?(:lines)
             snippet = context.reporter.new(context).report_multiline_value(element).snippet()
-            select = Selections::selection(element[:lines][0], :line, RANGE_BEGIN, element[:lines][-1], :line, RANGE_END)
+            select = Selections.selection(element[:lines][0], :line, RANGE_BEGIN, element[:lines][-1], :line, RANGE_END)
           else
             snippet = context.reporter.new(context).report_element(element).snippet()
-            select = Selections::selection(element, :line, RANGE_END)
+            select = Selections.selection(element, :line, RANGE_END)
           end
         else
           snippet = context.reporter.new(context).report_element(element).snippet()
