@@ -270,9 +270,7 @@ module Enolib
     def touch
       @touched = true
 
-      _elements.each do |element|
-        element.touch
-      end
+      _elements.each(&:touch)
     end
 
     private
