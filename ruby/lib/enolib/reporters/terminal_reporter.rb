@@ -81,7 +81,7 @@ module Enolib
         else
           content = @context.input[instruction[:ranges][:line][RANGE_BEGIN]...instruction[:ranges][:line][RANGE_END]]
 
-          instruction[:ranges].sort_by { |type, range| range[0] }.reverse_each do |type, range|
+          instruction[:ranges].sort_by { |_type, range| range[0] }.reverse_each do |type, range|
             next if type == :line
 
             before = content[0...range[RANGE_BEGIN] - instruction[:ranges][:line][RANGE_BEGIN]]

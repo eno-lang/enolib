@@ -381,7 +381,7 @@ module Enolib
             ranges: {
               key: terminator_match.offset(2),
               line: [@index, terminator_match.end(0)],
-              multiline_field_operator: terminator_match.offset(1),
+              multiline_field_operator: terminator_match.offset(1)
             },
             type: :multiline_field_end
           }
@@ -457,12 +457,7 @@ module Enolib
         end
       end
 
-      if @context.input[-1] == "\n"
-        @context.line_count = @line + 1
-      else
-        @context.line_count = @line
-      end
-
+      @context.line_count = @context.input[-1] == "\n" ? @line + 1 : @line
       @context.meta.concat(comments) if comments
 
       resolve unless @unresolved_non_section_elements.empty? && @unresolved_sections.empty?
@@ -525,24 +520,25 @@ module Enolib
         merge_map = {}
 
         section[:elements].each do |section_element|
-          if section_element[:type] != :section || merge_map.has_key?(section_element[:key])
-            merge_map[section_element[:key]] = false # non-mergable (no section or multiple instructions with same key)
-          else
-            merge_map[section_element[:key]] = { section: section_element }
-          end
+          merge_map[section_element[:key]] =
+            if section_element[:type] != :section || merge_map.has_key?(section_element[:key])
+              false # non-mergable (no section or multiple instructions with same key)
+            else
+              { section: section_element }
+            end
         end
 
         template[:elements].each do |section_element|
-          if merge_map.has_key?(section_element[:key])
-            merger = merge_map[section_element[:key]]
+          next unless merge_map.has_key?(section_element[:key])
 
-            next unless merger
+          merger = merge_map[section_element[:key]]
 
-            if section_element[:type] != :section || merger.has_key?(:template)
-              merge_map[section_element[:key]] = false # non-mergable (no section or multiple template instructions with same key)
-            else
-              merger[:template] = section_element
-            end
+          next unless merger
+
+          if section_element[:type] != :section || merger.has_key?(:template)
+            merge_map[section_element[:key]] = false # non-mergable (no section or multiple template instructions with same key)
+          else
+            merger[:template] = section_element
           end
         end
 

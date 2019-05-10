@@ -33,13 +33,13 @@ module Enolib
             shared_indent = Float::INFINITY
 
             element[:comments].each_with_index do |comment, index|
-              if comment.has_key?(:comment)
-                first_non_empty_line_index = index unless first_non_empty_line_index
-                last_non_empty_line_index = index
+              next unless comment.has_key?(:comment)
 
-                indent = comment[:ranges][:comment][RANGE_BEGIN] - comment[:ranges][:line][RANGE_BEGIN]
-                shared_indent = indent if indent < shared_indent
-              end
+              first_non_empty_line_index ||= index
+              last_non_empty_line_index = index
+
+              indent = comment[:ranges][:comment][RANGE_BEGIN] - comment[:ranges][:line][RANGE_BEGIN]
+              shared_indent = indent if indent < shared_indent
             end
 
             if first_non_empty_line_index

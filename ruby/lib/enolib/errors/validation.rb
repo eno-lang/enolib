@@ -51,13 +51,14 @@ module Enolib
            element[:type] == :multiline_field_begin
           message = context.messages.missing_field_value(element[:key])
 
-          if element[:ranges].has_key?(:template)
-            selection[:from] = Selections::cursor(element, :template, RANGE_END)
-          elsif element[:ranges].has_key?(:element_operator)
-            selection[:from] = Selections::cursor(element, :element_operator, RANGE_END)
-          else
-            selection[:from] = Selections::cursor(element, :line, RANGE_END)
-          end
+          selection[:from] =
+            if element[:ranges].has_key?(:template)
+              Selections.cursor(element, :template, RANGE_END)
+            elsif element[:ranges].has_key?(:element_operator)
+              Selections.cursor(element, :element_operator, RANGE_END)
+            else
+              Selections.cursor(element, :line, RANGE_END)
+            end
         elsif element[:type] == :fieldset_entry
           message = context.messages.missing_fieldset_entry_value(element[:key])
           selection[:from] = Selections.cursor(element, :entry_operator, RANGE_END)
@@ -68,11 +69,12 @@ module Enolib
 
         snippet = context.reporter.new(context).report_element(element).snippet
 
-        if element[:type] == :field and element.has_key?(:continuations)
-          selection[:to] = Selections::cursor(element[:continuations].last, :line, RANGE_END)
-        else
-          selection[:to] = Selections::cursor(element, :line, RANGE_END)
-        end
+        selection[:to] =
+          if element[:type] == :field && element.has_key?(:continuations)
+            Selections.cursor(element[:continuations].last, :line, RANGE_END)
+          else
+            Selections.cursor(element, :line, RANGE_END)
+          end
 
         ValidationError.new(message, snippet, selection)
       end
@@ -114,29 +116,30 @@ module Enolib
             select = Selections.selection(element, :line, RANGE_END)
           end
         else
-          select = {}
-
-          if element[:ranges].has_key?(:value)
-            select[:from] = Selections::cursor(element, :value, RANGE_BEGIN)
-          elsif element[:ranges].has_key?(:element_operator)
-            select[:from] = Selections::cursor(element, :element_operator, RANGE_END)
-          elsif element[:ranges].has_key?(:entry_operator)
-            select[:from] = Selections::cursor(element, :entry_operator, RANGE_END)
-          elsif element[:type] == :list_item
-            select[:from] = Selections::cursor(element, :item_operator, RANGE_END)
-          else
-            # TODO: Possibly never reached - think through state permutations
-            select[:from] = Selections::cursor(element, :line, RANGE_END)
-          end
-
-          if element.has_key?(:continuations)
-            select[:to] = Selections::cursor(element[:continuations][-1], :line, RANGE_END)
-          elsif element[:ranges].has_key?(:value)
-            select[:to] = Selections::cursor(element, :value, RANGE_END)
-          else
-            select[:to] = Selections::cursor(element, :line, RANGE_END)
-          end
           snippet = context.reporter.new(context).report_element(element).snippet
+          select = {
+            from:
+              if element[:ranges].has_key?(:value)
+                Selections.cursor(element, :value, RANGE_BEGIN)
+              elsif element[:ranges].has_key?(:element_operator)
+                Selections.cursor(element, :element_operator, RANGE_END)
+              elsif element[:ranges].has_key?(:entry_operator)
+                Selections.cursor(element, :entry_operator, RANGE_END)
+              elsif element[:type] == :list_item
+                Selections.cursor(element, :item_operator, RANGE_END)
+              else
+                # TODO: Possibly never reached - think through state permutations
+                Selections.cursor(element, :line, RANGE_END)
+              end,
+            to:
+              if element.has_key?(:continuations)
+                Selections.cursor(element[:continuations][-1], :line, RANGE_END)
+              elsif element[:ranges].has_key?(:value)
+                Selections.cursor(element, :value, RANGE_END)
+              else
+                Selections.cursor(element, :line, RANGE_END)
+              end
+          }
         end
 
         ValidationError.new(context.messages.value_error(message), snippet, select)

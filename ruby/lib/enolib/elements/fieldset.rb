@@ -33,13 +33,13 @@ module Enolib
         next if except && except.include?(key) || only && !only.include?(key)
 
         entries.each do |entry|
-          unless entry.touched  # TODO: Revisit instance var existance question in ruby
-            if message.is_a?(Proc)
-              message = message.call(entry)
-            end
-
-            raise Errors::Validation.unexpected_element(@context, message, entry[:instruction])
+          next if entry.touched  # TODO: Revisit instance var existance question in ruby
+          
+          if message.is_a?(Proc)
+            message = message.call(entry)
           end
+
+          raise Errors::Validation.unexpected_element(@context, message, entry[:instruction])
         end
       end
     end

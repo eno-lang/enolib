@@ -61,13 +61,13 @@ module Enolib
         elements.each do |element|
           untouched = element._untouched
 
-          if untouched
-            if message.is_a?(Proc)
-              message = message.call(Element.new(@context, untouched, self))
-            end
+          next unless untouched
 
-            raise Errors::Validation.unexpected_element(@context, message, untouched)
+          if message.is_a?(Proc)
+            message = message.call(Element.new(@context, untouched, self))
           end
+
+          raise Errors::Validation.unexpected_element(@context, message, untouched)
         end
       end
     end

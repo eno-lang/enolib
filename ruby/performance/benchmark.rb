@@ -14,9 +14,12 @@ SAMPLES = {
   'post' => File.read('performance/samples/post.eno')
 }.freeze
 
-analysis = File.read('performance/analysis.json') rescue '{}'
-
-@analysis = JSON.parse(analysis)
+@analysis =
+  begin
+    JSON.parse(File.read('performance/analysis.json'))
+  rescue Errno::ENOENT
+    {}
+  end
 
 @reference = @analysis.empty? ? nil : @analysis['reference']
 @modifications = { _evaluated: Time.now }

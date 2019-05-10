@@ -139,10 +139,10 @@ module Enolib
 
               @index[item[:line]] = item
 
-              if item.has_key?(:continuations)
-                item[:continuations].each do |continuation|
-                  @index[continuation[:line]] = continuation
-                end
+              next unless item.has_key?(:continuations)
+
+              item[:continuations].each do |continuation|
+                @index[continuation[:line]] = continuation
               end
             end
           end
@@ -153,10 +153,10 @@ module Enolib
 
               @index[entry[:line]] = entry
 
-              if entry.has_key?(:continuations)
-                entry[:continuations].each do |continuation|
-                  @index[continuation[:line]] = continuation
-                end
+              next unless entry.has_key?(:continuations)
+
+              entry[:continuations].each do |continuation|
+                @index[continuation[:line]] = continuation
               end
             end
           end
