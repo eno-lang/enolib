@@ -46,21 +46,13 @@ module.exports = async specs => {
         tests.push(interpolatify`
           describe '${escapeSingleQuotes(test.description)}' do
             it 'raises the expected ${type}' do
-              error = nil
-
               input = ${quotedRubyMultilineString(test.input)}
 
               begin
                 ${type === 'ParseError' ? 'Enolib.parse(input)' : test.ruby}
-              rescue => _error
-                if _error.is_a?(Enolib::${type})
-                  error = _error
-                else
-                  raise _error
-                end
+              rescue Enolib::${type} => error
+                ${expectations.join('\n\n')}
               end
-
-              ${expectations.join('\n\n')}
             end
           end
         `);
