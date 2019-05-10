@@ -3,7 +3,7 @@
 module Enolib
   module Errors
     module Parsing
-      UNTERMINATED_ESCAPED_KEY = /^\s*#*\s*(`+)(?!`)((?:(?!\1).)+)$/
+      UNTERMINATED_ESCAPED_KEY = /^\s*#*\s*(`+)(?!`)((?:(?!\1).)+)$/.freeze
 
       def self.cyclic_dependency(context, instruction, instruction_chain)
         first_occurrence = instruction_chain.find_index(instruction)

@@ -7,7 +7,7 @@ module Enolib
       emphasize: '>',
       indicate: '*',
       question: '?'
-    }
+    }.freeze
 
     def initialize(context)
       super(context)

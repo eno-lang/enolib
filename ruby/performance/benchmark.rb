@@ -12,7 +12,7 @@ SAMPLES = {
   'invoice' => File.read('performance/samples/invoice.eno'),
   'journey' => File.read('performance/samples/journey.eno'),
   'post' => File.read('performance/samples/post.eno')
-}
+}.freeze
 
 analysis = File.read('performance/analysis.json') rescue '{}'
 

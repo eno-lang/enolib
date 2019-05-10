@@ -18,14 +18,14 @@ INDICATORS = {
   emphasize: '>',
   indicate: '*',
   question: '?'
-}
+}.freeze
 
 GUTTER_STYLE = {
   display: BRIGHT_BLACK_BACKGROUND,
   emphasize: BLACK + BRIGHT_RED_BACKGROUND,
   indicate: BLACK + WHITE_BACKGROUND,
   question: BLACK + WHITE_BACKGROUND
-}
+}.freeze
 
 RANGE_STYLE = {
   'element_operator': WHITE,
@@ -42,7 +42,7 @@ RANGE_STYLE = {
   'key': BOLD + BRIGHT_WHITE,
   'template': BOLD + BRIGHT_WHITE,
   'value': DIM + WHITE
-}
+}.freeze
 
 module Enolib
   class TerminalReporter < Reporter

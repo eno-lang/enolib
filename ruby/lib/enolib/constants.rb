@@ -12,5 +12,5 @@ module Enolib
     list_item: 'list_item',
     multiline_field_begin: 'field',
     section: 'section'
-  }
+  }.freeze
 end

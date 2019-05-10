@@ -98,6 +98,6 @@ module Enolib
 
     NOT_EMPTY = /(?:#{EARLY_DETERMINED}|#{LATE_DETERMINED})/.source
 
-    REGEX = /[^\S\n]*(?:#{EMPTY}|#{NOT_EMPTY})[^\S\n]*(?=\n|$)/
+    REGEX = /[^\S\n]*(?:#{EMPTY}|#{NOT_EMPTY})[^\S\n]*(?=\n|$)/.freeze
   end
 end

@@ -7,7 +7,7 @@ module Enolib
     DOCUMENT_BEGIN = {
       from: { column: 0, index: 0, line: 0 },
       to: { column: 0, index: 0, line: 0 }
-    }
+    }.freeze
 
     def self.last_in(element)
       if (element[:type] == :field ||

@@ -470,4 +470,4 @@ SCENARIOS = [
     syntax: '# Name << Other Name',
     variants: space('#', ' ', 'Name', '<<', 'Other Name')
   }
-]
+].freeze
