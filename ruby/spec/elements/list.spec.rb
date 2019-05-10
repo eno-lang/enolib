@@ -21,7 +21,6 @@ describe Enolib::List do
     end
   end
 
-
   describe '#required_string_values' do
     before(:each) do
       @items = @list.required_string_values
@@ -65,7 +64,7 @@ describe Enolib::List do
 
     context 'with a loader Proc' do
       before(:each) do
-        @items = @list.required_values(Proc.new { |value| value.upcase })
+        @items = @list.required_values(proc { |value| value.upcase })
       end
 
       it 'applies the loader' do

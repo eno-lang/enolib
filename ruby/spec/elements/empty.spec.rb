@@ -18,7 +18,7 @@ describe Enolib::Empty do
 
     context 'with a message Proc' do
       it 'returns a custom error' do
-        message_proc = ->(element) do
+        message_proc = proc do |element|
           "my custom generated message for empty element '#{element.string_key}'"
         end
 

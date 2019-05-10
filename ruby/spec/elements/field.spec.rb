@@ -18,7 +18,7 @@ describe Enolib::Field do
 
     context 'with a message Proc' do
       it 'returns a custom error' do
-        message_proc = ->(value) do
+        message_proc = proc do |value|
           "my custom generated message for value '#{value}'"
         end
 
@@ -88,7 +88,7 @@ describe Enolib::Field do
 
     context 'with a loader Proc' do
       before(:each) do
-        @value = @field.required_value(Proc.new { |value| value.upcase })
+        @value = @field.required_value(proc { |value| value.upcase })
       end
 
       it 'returns the processed value' do

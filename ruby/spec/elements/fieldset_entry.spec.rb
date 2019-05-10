@@ -61,7 +61,7 @@ describe Enolib::FieldsetEntry do
 
     context 'with a loader Proc' do
       before(:each) do
-        @value = @fieldset_entry.required_value(Proc.new { |value| value.upcase })
+        @value = @fieldset_entry.required_value(proc { |value| value.upcase })
       end
 
       it 'applies the loader' do
