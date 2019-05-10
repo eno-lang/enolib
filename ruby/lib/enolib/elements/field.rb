@@ -37,27 +37,5 @@ module Enolib
     def to_s
       "#<Enolib::Field key=#{@instruction[:key]} value=#{print_value}>"
     end
-
-    private
-
-    def _value(loader = nil, required:)
-      @touched = true
-
-      value = @context.value(@instruction)
-
-      if value
-        return value unless loader
-
-        begin
-          loader.call(value)
-        rescue => message
-          raise Errors::Validation.value_error(@context, message, @instruction)
-        end
-      else
-        return nil unless required
-
-        raise Errors::Validation.missing_value(@context, @instruction)
-      end
-    end
   end
 end
