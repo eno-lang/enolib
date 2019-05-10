@@ -97,17 +97,13 @@ end
 # TODO: Ultimately completely replace these interceptors below
 
 def intercept_parse_error
-  begin
-    yield
-  rescue Enolib::ParseError => e
-    return e
-  end
+  yield
+rescue Enolib::ParseError => e
+  e
 end
 
 def intercept_validation_error
-  begin
-    yield
-  rescue Enolib::ValidationError => e
-    return e
-  end
+  yield
+rescue Enolib::ValidationError => e
+  e
 end
