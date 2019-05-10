@@ -19,7 +19,7 @@ analysis = File.read('performance/analysis.json') rescue '{}'
 @analysis = JSON.parse(analysis)
 
 @reference = @analysis.empty? ? nil : @analysis['reference']
-@modifications = { _evaluated: Time.now() }
+@modifications = { _evaluated: Time.now }
 
 SAMPLES.each do |name, content|
   before = Time.now

@@ -17,7 +17,7 @@ output = repr(enolib.parse(input).empty())
 -- python
 
 -- ruby
-output = Enolib.parse(input).empty().to_s
+output = Enolib.parse(input).empty.to_s
 -- ruby
 
 ## Result

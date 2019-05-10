@@ -76,7 +76,7 @@ module Enolib
       _comment(loader, required: false)
     end
 
-    def optional_string_comment()
+    def optional_string_comment
       _comment(required: false)
     end
 
@@ -94,7 +94,7 @@ module Enolib
       _comment(loader, required: true)
     end
 
-    def required_string_comment()
+    def required_string_comment
       _comment(required: true)
     end
 
