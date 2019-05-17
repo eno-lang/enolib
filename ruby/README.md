@@ -39,7 +39,7 @@ puts document.field('Greeting').required_string_value  #=> 'Hello World!'
 
 ## Documentation
 
-Until available please use the javascript or python documentation at [eno-lang.org/enolib](https://eno-lang.org/enolib/) and replace all shown syntax with the ruby equivalent (ie. different case for the most part) - except for language specifics the API is exactly the same for all implementations.
+Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
 
 ## Beta notice
 
