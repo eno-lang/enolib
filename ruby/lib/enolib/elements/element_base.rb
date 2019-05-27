@@ -52,6 +52,10 @@ module Enolib
       end
     end
 
+    # TODO: All implementations - this could be called on the document (?),
+    # via both element and section, most likely triggering erratic behavior
+    # because the error->selection chain does not handle the missing key range?
+    # (Also being able to call it and doing so does not make sense in the first place)
     def key_error(message = nil)
       if block_given?
         message = yield(_key)

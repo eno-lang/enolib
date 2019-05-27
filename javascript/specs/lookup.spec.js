@@ -1,6 +1,7 @@
 const enolib = require('..');
 
 // TODO: Error case lookups (indices -1/length+1 etc. and same for line/column)
+//       (all implementations)
 
 const input = `
 field: value
@@ -37,6 +38,9 @@ copied_multiline < multiline
 
 const SNIPPET_PADDING_WIDTH = 3
 const SNIPPET_PADDING = '▓'.repeat(SNIPPET_PADDING_WIDTH);
+
+// The + ' ' before closing SNIPPET_PADDING represents the last cursor
+// (there is always one cursor index more than there are chars in a string)
 const snippetInput = SNIPPET_PADDING + input.replace(/\n/g, '⏎').replace(/\t/g, '⇥').replace(/ /g, '␣') + ' ' + SNIPPET_PADDING;
 
 const snippet = index => {
