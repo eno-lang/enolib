@@ -131,11 +131,10 @@ module Enolib
     end
 
     def _key
-      if @instruction[:type] == :list_item
-        @instruction[:parent][:key]
-      else
-        @instruction[:key]
-      end
+      return nil if @instruction[:type] == :document
+      return @instruction[:parent][:key] if @instruction[:type] == :list_item
+
+      @instruction[:key]
     end
   end
 end

@@ -1,5 +1,5 @@
 from ..errors.validation import Validation
-from ..constants import LIST_ITEM
+from ..constants import DOCUMENT, LIST_ITEM
 
 class ElementBase:
     def __init__(self, context, instruction, parent=None):
@@ -27,6 +27,9 @@ class ElementBase:
             raise Validation.comment_error(self._context, message, self._instruction)
 
     def _key(self):
+        if self._instruction['type'] is DOCUMENT:
+            return None
+
         if self._instruction['type'] is LIST_ITEM:
             return self._instruction['parent']['key']
 
