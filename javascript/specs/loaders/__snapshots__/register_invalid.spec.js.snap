@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`register (with invalid arguments) trying to register 'string' throws an error 1`] = `"You cannot register 'string' as a type/loader with enolib as this conflicts with the native string type accessors."`;

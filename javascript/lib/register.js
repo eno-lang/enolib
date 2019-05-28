@@ -5,11 +5,12 @@ const { MissingList } = require('./elements/missing/missing_list.js');
 const { MissingValueElementBase } = require('./elements/missing/missing_value_element_base.js');
 const { ValueElementBase } = require('./elements/value_element_base.js');
 
-// TODO: Safe-guard against conflicting loader names (e.g. previous definition or native library function conflict)
-
 const _register = (name, func) => {
   if(name.match(/^\s*$/))
     throw new Error('Anonymous functions cannot be registered as loaders, please use register({ myName: myFunc }) or register({ myFunc }) syntax to explicitly provide a name.');
+
+  if(name === 'string')
+    throw new Error("You cannot register 'string' as a type/loader with enolib as this conflicts with the native string type accessors.");
 
   const titleCased = name.replace(/^./, inital => inital.toUpperCase());
 

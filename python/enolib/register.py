@@ -5,9 +5,10 @@ from .elements.missing.missing_element_base import MissingElementBase
 from .elements.missing.missing_list import MissingList
 from .elements.missing.missing_value_element_base import MissingValueElementBase
 
-# TODO: Safe-guard against conflicting loader names (e.g. previous definition or native library function conflict)
-
 def _register(name: str, function):
+    if name == 'string':
+        raise ValueError("You cannot register 'string' as a type/loader with enolib as this conflicts with the native string type accessors.")
+
     setattr(ElementBase, f"{name}_key", lambda self: self.key(function))
     setattr(ElementBase, f"optional_{name}_comment",  lambda self: self.optional_comment(function))
     setattr(ElementBase, f"required_{name}_comment",  lambda self: self.required_comment(function))

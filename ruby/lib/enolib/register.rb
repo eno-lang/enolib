@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-# TODO: Safe-guard against conflicting loader names (e.g. previous definition or native library function conflict)
-
 module Enolib
   def self.register(definitions)
     definitions.each do |name, loader|
+      if name == :string
+        raise ArgumentError, "You cannot register 'string' as a type/loader with enolib as this conflicts with the native string type accessors."
+      end
+
       ElementBase.send(:define_method, "#{name}_key") { key(loader) }
       ElementBase.send(:define_method, "optional_#{name}_comment") { optional_comment(loader) }
       ElementBase.send(:define_method, "required_#{name}_comment") { required_comment(loader) }
