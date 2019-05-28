@@ -34,6 +34,12 @@ class ValueElementBase extends ElementBase {
     try {
       return loader(value);
     } catch(message) {
+      // TODO: Consider a re-specification of what is thrown/caught in regards to loaders,
+      //       basically "throw 'plain string';" vs. "throw new Error('wrapped');"
+      //       The latter makes much more sense from a standards perspective and probably
+      //       should be specified as a new default, but supporting both still would make
+      //       sense for the sake of convenience and robustness.
+
       throw errors.valueError(this._context, message, this._instruction);
     }
   }
