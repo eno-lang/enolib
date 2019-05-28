@@ -62,10 +62,10 @@ describe('lookup', () => {
     const lineColumnLookup = enolib.lookup({ line, column }, input);
 
     if(indexLookup.range !== lineColumnLookup.range)
-      throw `Lookup by index produced a different range (${indexLookup.range}) than by line/column (${lineColumnLookup.range})`;
+      throw new Error(`Lookup by index produced a different range (${indexLookup.range}) than by line/column (${lineColumnLookup.range})`);
 
     if(indexLookup.element.stringKey() !== lineColumnLookup.element.stringKey())
-      throw `Lookup by index produced a different key (${indexLookup.element.stringKey()}) than by line/column (${lineColumnLookup.element.stringKey()})`;
+      throw new Error(`Lookup by index produced a different key (${indexLookup.element.stringKey()}) than by line/column (${lineColumnLookup.element.stringKey()})`);
 
     const { element, range } = indexLookup;
     const key = element.stringKey() === null ? 'document' : element.stringKey();

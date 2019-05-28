@@ -12,7 +12,7 @@ const selection = value => {
   const match = value.match(/\[([0-9]+),([0-9]+)\] => \[([0-9]+),([0-9]+)\]/);
 
   if(!match)
-    throw 'Illegal selection data - allowed format: [line,column] => [line,column]'
+    throw new Error('Illegal selection data - allowed format: [line,column] => [line,column]');
 
   return [[parseInt(match[1]), parseInt(match[2])], [parseInt(match[3]), parseInt(match[4])]];
 };

@@ -32,7 +32,7 @@ class SectionElement extends ElementBase {
   toEmpty() {
     if(!this._empty) {
       if(this._yielded)
-        throw `This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a empty.`;
+        throw new Error(`This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a empty.`);
 
       if(this._instruction.type !== EMPTY_ELEMENT)
         throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedEmpty');
@@ -47,7 +47,7 @@ class SectionElement extends ElementBase {
   toField() {
     if(!this._field) {
       if(this._yielded)
-        throw `This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a field.`;
+        throw new Error(`This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a field.`);
 
       if(this._instruction.type != FIELD &&
          this._instruction.type !== MULTILINE_FIELD_BEGIN &&
@@ -64,7 +64,7 @@ class SectionElement extends ElementBase {
   toFieldset() {
     if(!this._fieldset) {
       if(this._yielded)
-        throw `This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a fieldset.`;
+        throw new Error(`This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a fieldset.`);
 
       if(this._instruction.type !== FIELDSET && this._instruction.type !== EMPTY_ELEMENT)
         throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedFieldset');
@@ -79,7 +79,7 @@ class SectionElement extends ElementBase {
   toList() {
     if(!this._list) {
       if(this._yielded)
-        throw `This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a list.`;
+        throw new Error(`This element was already yielded as ${PRETTY_TYPES[this._yielded]} and can't be yielded again as a list.`);
 
       if(this._instruction.type !== LIST && this._instruction.type !== EMPTY_ELEMENT)
         throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedList');

@@ -9,7 +9,7 @@ const { ValueElementBase } = require('./elements/value_element_base.js');
 
 const _register = (name, func) => {
   if(name.match(/^\s*$/))
-    throw 'Anonymous functions cannot be registered as loaders, please use register({ myName: myFunc }) or register({ myFunc }) syntax to explicitly provide a name.';
+    throw new Error('Anonymous functions cannot be registered as loaders, please use register({ myName: myFunc }) or register({ myFunc }) syntax to explicitly provide a name.');
 
   const titleCased = name.replace(/^./, inital => inital.toUpperCase());
 
