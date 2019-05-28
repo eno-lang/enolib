@@ -67,7 +67,17 @@ def check_fieldset_by_line(fieldset, line)
 
   fieldset[:entries].each do |entry|
     return { element: entry, instruction: entry } if line == entry[:line]
-    return { element: fieldset, instruction: nil } if line < entry[:line]
+
+    if line < entry[:line]
+      if entry.has_key?(:comments) && line >= entry[:comments][0][:line]
+        return {
+          element: entry,
+          instruction: entry[:comments].find { |comment| line == comment[:line] }
+        }
+      end
+
+      return { element: fieldset, instruction: nil }
+    end
 
     match_in_entry = check_field_by_line(entry, line)
 
@@ -82,7 +92,17 @@ def check_fieldset_by_index(fieldset, index)
                       index <= fieldset[:entries].last[:ranges][:line][RANGE_END]
 
   fieldset[:entries].each do |entry|
-    return { element: fieldset, instruction: nil } if index < entry[:ranges][:line][RANGE_BEGIN]
+    if index < entry[:ranges][:line][RANGE_BEGIN]
+      if entry.has_key?(:comments) && index >= entry[:comments][0][:ranges][:line][RANGE_BEGIN]
+        return {
+          element: entry,
+          instruction: entry[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
+        }
+      end
+
+      return { element: fieldset, instruction: nil }
+    end
+
     return { element: entry, instruction: entry } if index <= entry[:ranges][:line][RANGE_END]
 
     match_in_entry = check_field_by_index(entry, index)
@@ -98,7 +118,17 @@ def check_list_by_line(list, line)
 
   list[:items].each do |item|
     return { element: item, instruction: item } if line == item[:line]
-    return { element: list, instruction: nil } if line < item[:line]
+
+    if line < item[:line]
+      if item.has_key?(:comments) && line >= item[:comments][0][:line]
+        return {
+          element: item,
+          instruction: item[:comments].find { |comment| line == comment[:line] }
+        }
+      end
+
+      return { element: list, instruction: nil }
+    end
 
     match_in_item = check_field_by_line(item, line)
 
@@ -113,7 +143,17 @@ def check_list_by_index(list, index)
                       index > list[:items].last[:ranges][:line][RANGE_END]
 
   list[:items].each do |item|
-    return { element: list, instruction: nil } if index < item[:ranges][:line][RANGE_BEGIN]
+    if index < item[:ranges][:line][RANGE_BEGIN]
+      if item.has_key?(:comments) && index >= item[:comments][0][:ranges][:line][RANGE_BEGIN]
+        return {
+          element: item,
+          instruction: item[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
+        }
+      end
+
+      return { element: list, instruction: nil }
+    end
+
     return { element: item, instruction: item } if index <= item[:ranges][:line][RANGE_END]
 
     match_in_item = check_field_by_index(item, index)
@@ -124,6 +164,17 @@ end
 
 def check_in_section_by_line(section, line)
   section[:elements].reverse_each do |element|
+    if element.has_key?(:comments)
+      next if line < element[:comments][0][:line]
+
+      if line <= element[:comments][-1][:line]
+        return {
+          element: element,
+          instruction: element[:comments].find { |comment| line == comment[:line] }
+        }
+      end
+    end
+
     next if element[:line] > line
 
     return { element: element, instruction: element } if element[:line] == line
@@ -155,6 +206,17 @@ end
 
 def check_in_section_by_index(section, index)
   section[:elements].reverse_each do |element|
+    if element.has_key?(:comments)
+      next if index < element[:comments][0][:ranges][:line][RANGE_BEGIN]
+
+      if index <= element[:comments][-1][:ranges][:line][RANGE_END]
+        return {
+          element: element,
+          instruction: element[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
+        }
+      end
+    end
+
     next if index < element[:ranges][:line][RANGE_BEGIN]
 
     return { element: element, instruction: element } if index <= element[:ranges][:line][RANGE_END]
@@ -211,7 +273,14 @@ module Enolib
     instruction = match[:instruction]
 
     unless instruction
-      instruction = context.meta.find { |candidate| candidate[:line] == line }
+      if index
+        instruction = context.meta.find do |candidate|
+          index >= candidate[:ranges][:line][RANGE_BEGIN] && index <= candidate[:ranges][:line][RANGE_END]
+        end
+      else
+        instruction = context.meta.find { |candidate| candidate[:line] == line }
+      end
+
       return result unless instruction
     end
 

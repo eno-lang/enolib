@@ -85,7 +85,13 @@ def check_fieldset_by_line(fieldset, line):
     for entry in fieldset['entries']:
         if line == entry['line']:
             return { 'element': entry, 'instruction': entry }
+
         if line < entry['line']:
+            if 'comments' in entry and line >= entry['comments'][0]['line']:
+                for comment in entry['comments']:
+                    if line == comment['line']:
+                        return { 'element': entry, 'instruction': comment }
+
             return { 'element': fieldset, 'instruction': None }
 
         match_in_entry = check_field_by_line(entry, line)
@@ -105,7 +111,13 @@ def check_fieldset_by_index(fieldset, index):
 
     for entry in fieldset['entries']:
         if index < entry['ranges']['line'][BEGIN]:
+            if 'comments' in entry and index >= entry['comments'][0]['ranges']['line'][BEGIN]:
+                for comment in entry['comments']:
+                    if index <= comment['ranges']['line'][END]:
+                        return { 'element': entry, 'instruction': comment }
+
             return { 'element': fieldset, 'instruction': None }
+
         if index <= entry['ranges']['line'][END]:
             return { 'element': entry, 'instruction': entry }
 
@@ -127,7 +139,13 @@ def check_list_by_line(list, line):
     for item in list['items']:
         if line == item['line']:
             return { 'element': item, 'instruction': item }
+
         if line < item['line']:
+            if 'comments' in item and line >= item['comments'][0]['line']:
+                for comment in item['comments']:
+                    if line == comment['line']:
+                        return { 'element': item, 'instruction': comment }
+
             return { 'element': list, 'instruction': None }
 
         match_in_item = check_field_by_line(item, line)
@@ -147,7 +165,13 @@ def check_list_by_index(list, index):
 
     for item in list['items']:
         if index < item['ranges']['line'][BEGIN]:
+            if 'comments' in item and index >= item['comments'][0]['ranges']['line'][BEGIN]:
+                for comment in item['comments']:
+                    if index <= comment['ranges']['line'][END]:
+                        return { 'element': item, 'instruction': comment }
+
             return { 'element': list, 'instruction': None }
+
         if index <= item['ranges']['line'][END]:
             return { 'element': item, 'instruction': item }
 
@@ -158,6 +182,14 @@ def check_list_by_index(list, index):
 
 def check_in_section_by_line(section, line):
     for element in reversed(section['elements']):
+        if 'comments' in element:
+            if line < element['comments'][0]['line']:
+                continue
+            if line <= element['comments'][-1]['line']:
+                for comment in element['comments']:
+                    if line == comment['line']:
+                        return { 'element': element, 'instruction': comment }
+
         if element['line'] > line:
             continue
 
@@ -190,6 +222,14 @@ def check_in_section_by_line(section, line):
 
 def check_in_section_by_index(section, index):
     for element in reversed(section['elements']):
+        if 'comments' in element:
+            if index < element['comments'][0]['ranges']['line'][BEGIN]:
+                continue
+            if index <= element['comments'][-1]['ranges']['line'][END]:
+                for comment in element['comments']:
+                    if index <= comment['ranges']['line'][END]:
+                        return { 'element': element, 'instruction': comment }
+
         if index < element['ranges']['line'][BEGIN]:
             continue
 
@@ -244,7 +284,10 @@ def lookup(input: str, *, column=None, index=None, line=None, **options):
     instruction = match['instruction']
 
     if not instruction:
-        instruction = next((i for i in context.meta if i['line'] == line), None)
+        if index is None:
+            instruction = next((i for i in context.meta if i['line'] == line), None)
+        else:
+            instruction = next((i for i in context.meta if index >= i['ranges']['line'][BEGIN] and index <= i['ranges']['line'][END]), None)
 
         if not instruction:
             return result

@@ -4,16 +4,20 @@ const enolib = require('..');
 //       (all implementations)
 
 const input = `
+> comment
+
 field: value
 
 list:
 - item
 
+> comment
 - item
 
 fieldset:
 entry = value
 
+> comment
 entry = value
 
 copied_field < field
@@ -22,6 +26,7 @@ copied_list < list
 
 # section
 
+> comment
 -- empty
 -- empty
 

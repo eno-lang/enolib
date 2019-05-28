@@ -3,16 +3,20 @@ import enolib
 from tests.util import snapshot
 
 input = '''
+> comment
+
 field: value
 
 list:
 - item
 
+> comment
 - item
 
 fieldset:
 entry = value
 
+> comment
 entry = value
 
 copied_field < field
@@ -21,6 +25,7 @@ copied_list < list
 
 # section
 
+> comment
 -- empty
 -- empty
 
@@ -62,10 +67,10 @@ def test_lookup():
         line_column_lookup = enolib.lookup(input, line=line, column=column)
 
         if index_lookup['range'] != line_column_lookup['range']:
-            raise f"Lookup by index produced a different range ({index_lookup['range']}) than by line/column (${line_column_lookup['range']})"
+            raise AssertionError(f"Lookup by index produced a different range ({index_lookup['range']}) than by line/column ({line_column_lookup['range']})")
 
         if index_lookup['element'].string_key() != line_column_lookup['element'].string_key():
-            raise f"Lookup by index produced a different key ({index_lookup['element'].string_key()}) than by line/column (${line_column_lookup['element'].string_key()})"
+            raise AssertionError(f"Lookup by index produced a different key ({index_lookup['element'].string_key()}) than by line/column ({line_column_lookup['element'].string_key()})")
 
         key = 'document' if index_lookup['element'].string_key() is None else index_lookup['element'].string_key()
         summary += f"{str(index).ljust(5)}  {snippet(index).rjust(9)}   =>   {key.ljust(20)} {index_lookup['range']}\n"

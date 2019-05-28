@@ -27,7 +27,7 @@ const checkMultilineFieldByLine = (field, line) => {
 };
 
 const checkMultilineFieldByIndex = (field, index) => {
-  if(index < field.ranges.line[BEGIN] || index > field.end.ranges.line[END])  // TODO: Consider terminology 'range' => 'indices' everywhere ? (the "range name" then is the "range" simply)
+  if(index < field.ranges.line[BEGIN] || index > field.end.ranges.line[END])
     return false;
 
   if(index <= field.ranges.line[END])
@@ -94,8 +94,16 @@ const checkFieldsetByLine = (fieldset, line) => {
   for(const entry of fieldset.entries) {
     if(line === entry.line)
       return { element: entry, instruction: entry };
-    if(line < entry.line)
-      return { element: fieldset, instruction: null };
+
+      if(line < entry.line) {
+        if(entry.hasOwnProperty('comments') && line >= entry.comments[0].line) {
+          return {
+            element: entry,
+            instruction: entry.comments.find(comment => line == comment.line)
+          };
+        }
+        return { element: fieldset, instruction: null };
+      }
 
     const matchInEntry = checkFieldByLine(entry, line);
 
@@ -117,8 +125,16 @@ const checkFieldsetByIndex = (fieldset, index) => {
     return false;
 
   for(const entry of fieldset.entries) {
-    if(index < entry.ranges.line[BEGIN])
+    if(index < entry.ranges.line[BEGIN]) {
+      if(entry.hasOwnProperty('comments') && index >= entry.comments[0].ranges.line[BEGIN]) {
+        return {
+          element: entry,
+          instruction: entry.comments.find(comment => index <= comment.ranges.line[END])
+        };
+      }
       return { element: fieldset, instruction: null };
+    }
+
     if(index <= entry.ranges.line[END])
       return { element: entry, instruction: entry };
 
@@ -143,8 +159,16 @@ const checkListByLine = (list, line) => {
   for(const item of list.items) {
     if(line === item.line)
       return { element: item, instruction: item };
-    if(line < item.line)
+
+    if(line < item.line) {
+      if(item.hasOwnProperty('comments') && line >= item.comments[0].line) {
+        return {
+          element: item,
+          instruction: item.comments.find(comment => line == comment.line)
+        };
+      }
       return { element: list, instruction: null };
+    }
 
     const matchInItem = checkFieldByLine(item, line);
 
@@ -165,8 +189,16 @@ const checkListByIndex = (list, index) => {
     return false;
 
   for(const item of list.items) {
-    if(index < item.ranges.line[BEGIN])
+    if(index < item.ranges.line[BEGIN]) {
+      if(item.hasOwnProperty('comments') && index >= item.comments[0].ranges.line[BEGIN]) {
+        return {
+          element: item,
+          instruction: item.comments.find(comment => index <= comment.ranges.line[END])
+        };
+      }
       return { element: list, instruction: null };
+    }
+
     if(index <= item.ranges.line[END])
       return { element: item, instruction: item };
 
@@ -180,6 +212,17 @@ const checkListByIndex = (list, index) => {
 const checkInSectionByLine = (section, line) => {
   for(let elementIndex = section.elements.length - 1; elementIndex >= 0; elementIndex--) {
     const element = section.elements[elementIndex];
+
+    if(element.hasOwnProperty('comments')) {
+      if(line < element.comments[0].line) continue;
+
+      if(line <= element.comments[element.comments.length - 1].line) {
+        return {
+          element: element,
+          instruction: element.comments.find(comment => line == comment.line)
+        };
+      }
+    }
 
     if(element.line > line)
       continue;
@@ -220,6 +263,17 @@ const checkInSectionByLine = (section, line) => {
 const checkInSectionByIndex = (section, index) => {
   for(let elementIndex = section.elements.length - 1; elementIndex >= 0; elementIndex--) {
     const element = section.elements[elementIndex];
+
+    if(element.hasOwnProperty('comments')) {
+      if(index < element.comments[0].ranges.line[BEGIN]) continue;
+
+      if(index <= element.comments[element.comments.length - 1].ranges.line[END]) {
+        return {
+          element: element,
+          instruction: element.comments.find(comment => index <= comment.ranges.line[END])
+        };
+      }
+    }
 
     if(index < element.ranges.line[BEGIN])
       continue;
@@ -284,7 +338,13 @@ exports.lookup = (position, input, options = {}) => {
   let instruction = match.instruction;
 
   if(!instruction) {
-    instruction = context._meta.find(instruction => instruction.line === line);
+    if(index === undefined) {
+      instruction = context._meta.find(instruction => instruction.line === line);
+    } else {
+      instruction = context._meta.find(instruction =>
+        index >= instruction.ranges.line[BEGIN] && index <= instruction.ranges.line[END]
+      );
+    }
 
     if(!instruction)
       return result;
