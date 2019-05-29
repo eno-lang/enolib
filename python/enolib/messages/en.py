@@ -1,6 +1,7 @@
-#  GENERATED ON 2019-03-27T16:01:07 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 content_header = 'Content'
+expected_document = 'The document was expected.'
 expected_empty = 'An empty element was expected.'
 expected_field = 'A field was expected.'
 expected_fields = 'Only fields were expected.'

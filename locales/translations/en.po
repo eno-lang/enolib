@@ -94,6 +94,9 @@ msgstr "The multiline field '[KEY]' starting in line [LINE] is not terminated un
 msgid "There is a problem with the comment of this element: [MESSAGE]"
 msgstr "There is a problem with the comment of this element: [MESSAGE]"
 
+msgid "The document was expected."
+msgstr "The document was expected."
+
 msgid "An empty element was expected."
 msgstr "An empty element was expected."
 

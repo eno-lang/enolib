@@ -1,6 +1,7 @@
-#  GENERATED ON 2019-03-27T16:01:07 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 content_header = 'Contenido'
+expected_document = 'Se esperaba el documento.'
 expected_empty = 'Se esperaba un elemento vacío.'
 expected_field = 'Se esperaba una casilla.'
 expected_fields = 'Solo se esperaban casillas.'

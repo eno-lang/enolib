@@ -1,7 +1,8 @@
-//  GENERATED ON 2019-03-09T07:56:43 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 exports.es = {
   contentHeader: 'Contenido',
+  expectedDocument: 'Se esperaba el documento.',
   expectedEmpty: 'Se esperaba un elemento vacío.',
   expectedField: 'Se esperaba una casilla.',
   expectedFields: 'Solo se esperaban casillas.',

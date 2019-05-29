@@ -85,6 +85,10 @@ module Enolib
       @list
     end
 
+    def to_s
+      "#<Enolib::SectionElement key=#{@instruction[:key]}>"
+    end
+
     def to_section
       unless instance_variable_defined?(:@section)
         unless @instruction[:type] == :section
@@ -132,10 +136,6 @@ module Enolib
 
     def yields_section?
       @instruction[:type] == :section
-    end
-
-    def to_s
-      "#<Enolib::SectionElement key=#{@instruction[:key]}>"
     end
   end
 end

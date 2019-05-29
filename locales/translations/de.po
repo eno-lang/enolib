@@ -94,6 +94,9 @@ msgstr "Das Mehrzeilenfeld '[KEY]' dass in Zeile [LINE] beginnt wird bis zum End
 msgid "There is a problem with the comment of this element: [MESSAGE]"
 msgstr "Es gibt ein Problem mit dem Kommentar dieses Elements: [MESSAGE]"
 
+msgid "The document was expected."
+msgstr "Das Dokument wurde erwartet."
+
 msgid "An empty element was expected."
 msgstr "Ein leeres Element wurde erwartet."
 

@@ -94,6 +94,9 @@ msgstr "La casilla de múltiples líneas '[KEY]' que comienza en la línea [LINE
 msgid "There is a problem with the comment of this element: [MESSAGE]"
 msgstr "Hay un problema con el comentario de este elemento: [MESSAGE]"
 
+msgid "The document was expected."
+msgstr "Se esperaba el documento."
+
 msgid "An empty element was expected."
 msgstr "Se esperaba un elemento vacío."
 

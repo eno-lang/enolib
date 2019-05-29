@@ -1,7 +1,8 @@
-//  GENERATED ON 2019-03-09T07:56:43 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 exports.en = {
   contentHeader: 'Content',
+  expectedDocument: 'The document was expected.',
   expectedEmpty: 'An empty element was expected.',
   expectedField: 'A field was expected.',
   expectedFields: 'Only fields were expected.',

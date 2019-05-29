@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-04-10T13:57:55 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Messages
     module En
       CONTENT_HEADER = 'Content'
+      EXPECTED_DOCUMENT = 'The document was expected.'
       EXPECTED_EMPTY = 'An empty element was expected.'
       EXPECTED_FIELD = 'A field was expected.'
       EXPECTED_FIELDS = 'Only fields were expected.'

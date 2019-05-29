@@ -1,4 +1,4 @@
-from ..constants import FIELDSET_ENTRY, LIST_ITEM
+from ..constants import DOCUMENT, FIELDSET_ENTRY, LIST_ITEM
 from ..errors.validation import Validation
 from . import fieldset_entry
 from . import list_item
@@ -9,6 +9,16 @@ class Element(SectionElement):
     # TODO: Revisit (also: missing in js implementation)
     def __repr__(self):
         return f"<class Element key={self._instruction['key']}>"
+
+    def to_document(self):
+        if self._instruction['type'] != DOCUMENT:
+            raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_document')
+
+        if not hasattr(self, '_section'):
+            self._section = section.Section(self._context, self._instruction)
+            self._yielded = SECTION
+
+        return self._section
 
     def to_fieldset_entry(self):
         if not hasattr(self, '_fieldset_entry'):
@@ -28,8 +38,25 @@ class Element(SectionElement):
 
         return self._list_item
 
+    def to_section(self):
+        if not hasattr(self, '_section'):
+            if self._instruction['type'] != SECTION and self._instruction['type'] != DOCUMENT:
+                raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_section')
+
+            self._section = section.Section(self._context, self._instruction)
+            self._yielded = SECTION
+
+        return self._section
+
+    def yields_document(self):
+        return self._instruction['type'] == DOCUMENT
+
     def yields_fieldset_entry(self):
         return self._instruction['type'] == FIELDSET_ENTRY
 
     def yields_list_item(self):
         return self._instruction['type'] == LIST_ITEM
+
+    def yields_section(self):
+        return (self._instruction['type'] == SECTION or
+                self._instruction['type'] == DOCUMENT)

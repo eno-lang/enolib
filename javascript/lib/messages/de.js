@@ -1,7 +1,8 @@
-//  GENERATED ON 2019-03-09T07:56:43 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 exports.de = {
   contentHeader: 'Inhalt',
+  expectedDocument: 'Das Dokument wurde erwartet.',
   expectedEmpty: 'Ein leeres Element wurde erwartet.',
   expectedField: 'Ein Feld wurde erwartet.',
   expectedFields: 'Nur Felder wurden erwartet.',

@@ -79,6 +79,8 @@ KEY, LINE = The multiline field '[KEY]' starting in line [LINE] is not terminate
 Comment Error:
 MESSAGE = There is a problem with the comment of this element: [MESSAGE]
 
+Expected Document: The document was expected.
+
 Expected Empty: An empty element was expected.
 Expected Empty With Key:
 KEY = An empty element with the key '[KEY]' was expected.

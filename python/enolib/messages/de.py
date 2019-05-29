@@ -1,6 +1,7 @@
-#  GENERATED ON 2019-03-27T16:01:07 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
 
 content_header = 'Inhalt'
+expected_document = 'Das Dokument wurde erwartet.'
 expected_empty = 'Ein leeres Element wurde erwartet.'
 expected_field = 'Ein Feld wurde erwartet.'
 expected_fields = 'Nur Felder wurden erwartet.'
