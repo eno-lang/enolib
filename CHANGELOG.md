@@ -4,9 +4,32 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.6.0
+
+### All implementations
+
+- Extended, refined and more robust string debugging for element proxies `5b2466b`
+- Implement document methods/specifics for the unresolved element proxy `962e7bb`
+- Implement missing logic for looking up comments in all implementations `7233bf7`
+- Safe-guard against re-registering the native string type `4b6291c`
+
+### Javascript
+
+- Throw proper javascript error objects on misc runtime error conditions `e1d98aa`
+
+### Python
+
+- Explicitly handle document key requests in python/ruby implementations `44219e3`
+
+### Ruby
+
+- Upgrade to bundler 2 `4b2903e`
+- Explicitly handle document key requests in python/ruby implementations `44219e3`
+- Add link to official ruby documentation `c6bc3c9`
+
 ## 0.5.2
 
-## All implementations
+### All implementations
 
 - Replace misleading tag_element method naming with tag_children `14e3d59`
 - Replace wrong static tag assignment with passed parameter in tag_section `ca7d081`
