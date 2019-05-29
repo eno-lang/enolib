@@ -29,6 +29,13 @@ class SectionElement extends ElementBase {
     if(this._section) return this._section._untouched();
   }
 
+  _yields() {
+    if(this._instruction.type === EMPTY_ELEMENT)
+      return `${PRETTY_TYPES[EMPTY_ELEMENT]},${PRETTY_TYPES[FIELD]},${PRETTY_TYPES[FIELDSET]},${PRETTY_TYPES[LIST]}`;
+
+    return PRETTY_TYPES[this._instruction.type];
+  }
+
   toEmpty() {
     if(!this._empty) {
       if(this._yielded)
@@ -101,6 +108,15 @@ class SectionElement extends ElementBase {
     }
 
     return this._section;
+  }
+
+  /**
+   * Returns a debug representation of this {@link SectionElement} in the form of `[object SectionElement key=foo yields=field]`.
+   *
+   * @return {string} A debug representation of this {@link SectionElement}.
+   */
+  toString() {
+    return `[object SectionElement key=${this._key()} yields=${this._yields()}]`;
   }
 
   touch() {

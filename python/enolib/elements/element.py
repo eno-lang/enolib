@@ -4,11 +4,9 @@ from . import fieldset_entry
 from . import list_item
 from .section_element import SectionElement
 
-
 class Element(SectionElement):
-    # TODO: Revisit (also: missing in js implementation)
     def __repr__(self):
-        return f"<class Element key={self._instruction['key']}>"
+        return f"<class Element key={self._key()} yields={self._yields()}>"
 
     def to_document(self):
         if self._instruction['type'] != DOCUMENT:

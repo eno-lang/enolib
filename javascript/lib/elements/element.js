@@ -54,6 +54,15 @@ class Element extends SectionElement {
     return this._section;
   }
 
+  /**
+   * Returns a debug representation of this {@link Element} in the form of `[object Element key=foo yields=field]`.
+   *
+   * @return {string} A debug representation of this {@link Element}.
+   */
+  toString() {
+    return `[object Element key=${this._key()} yields=${this._yields()}]`;
+  }
+
   yieldsDocument() {
     return this._instruction.type === DOCUMENT;
   }

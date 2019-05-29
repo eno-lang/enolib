@@ -86,7 +86,7 @@ module Enolib
     end
 
     def to_s
-      "#<Enolib::SectionElement key=#{@instruction[:key]}>"
+      "#<Enolib::SectionElement key=#{_key} yields=#{_yields}>"
     end
 
     def to_section
@@ -136,6 +136,16 @@ module Enolib
 
     def yields_section?
       @instruction[:type] == :section
+    end
+
+    private
+
+    def _yields
+      if @instruction[:type] == :empty_element
+          return "#{PRETTY_TYPES[:empty_element]},#{PRETTY_TYPES[:field]},#{PRETTY_TYPES[:fieldset]},#{PRETTY_TYPES[:list]}"
+      end
+
+      PRETTY_TYPES[@instruction[:type]]
     end
   end
 end

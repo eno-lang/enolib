@@ -16,9 +16,14 @@ from ..constants import (
 )
 
 class SectionElement(ElementBase):
-    # TODO: Revisit
     def __repr__(self):
-        return f"<class SectionElement key={self._instruction['key']}>"
+        return f"<class SectionElement key={self._key()} yields={self._yields()}>"
+
+    def _yields(self):
+        if self._instruction['type'] == EMPTY_ELEMENT:
+            return f"{PRETTY_TYPES[EMPTY_ELEMENT]},{PRETTY_TYPES[FIELD]},{PRETTY_TYPES[FIELDSET]},{PRETTY_TYPES[LIST]}"
+
+        return PRETTY_TYPES[self._instruction['type']]
 
     def _untouched(self):
         if not hasattr(self, '_yielded'):

@@ -40,6 +40,10 @@ module Enolib
       @list_item
     end
 
+    def to_s
+      "#<Enolib::Element key=#{_key} yields=#{_yields}>"
+    end
+
     def to_section
       unless instance_variable_defined?(:@section)
         unless @instruction[:type] == :section || @instruction[:type] == :document
@@ -51,10 +55,6 @@ module Enolib
       end
 
       @section
-    end
-
-    def to_s
-      "#<Enolib::Element key=#{@instruction[:key]}>"
     end
 
     def yields_fieldset_entry?
