@@ -7,7 +7,8 @@ const { interpolatify } = require('../../utilities.js');
 const camelCase = string => string.toLowerCase().replace(/[ \-][a-z]/g, boundary => boundary.charAt(1).toUpperCase());
 
 module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, `../../javascript/lib/locales`)
+  const directory = path.join(__dirname, `../../javascript/lib/locales`);
+
   await fsExtra.emptyDir(directory);
 
   const messageFunction = message => {
@@ -30,11 +31,21 @@ module.exports = async (meta, locales) => {
     const code = interpolatify`
       // ${meta}
 
-      exports.${locale} = {
+      module.exports = {
         ${messages.map(messageFunction).join(',\n')}
       };
     `;
 
     await fs.promises.writeFile(path.join(directory, `${locale}.js`), code);
   }
+
+  const requireModule = path.join(__dirname, `../../javascript/locales.js`);
+
+  const code = interpolatify`
+    module.exports = {
+      ${Object.keys(locales).map(locale => `${locale}: require('./lib/locales/${locale}.js')`).join(',\n')}
+    };
+  `;
+
+  await fs.promises.writeFile(requireModule, code);
 };

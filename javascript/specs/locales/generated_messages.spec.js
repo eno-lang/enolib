@@ -3,7 +3,7 @@ const locales = ['de', 'en', 'es'];
 describe('Message locales', () => {
   for(const locale of locales) {
     describe(locale, () => {
-      const messages = require(`../lib/locales/${locale}.js`)[locale];
+      const messages = require(`../../lib/locales/${locale}.js`);
 
       for(const [message, translation] of Object.entries(messages)) {
         describe(message, () => {

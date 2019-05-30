@@ -1,6 +1,6 @@
-//  GENERATED ON 2019-05-30T07:54:15 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2019-05-30T11:42:58 - DO NOT EDIT MANUALLY
 
-exports.en = {
+module.exports = {
   contentHeader: 'Content',
   expectedDocument: 'The document was expected.',
   expectedEmpty: 'An empty element was expected.',
