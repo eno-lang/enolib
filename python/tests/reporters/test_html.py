@@ -1,5 +1,5 @@
 import enolib
-from enolib.reporters import HtmlReporter
+from enolib import HtmlReporter
 
 from tests.util import snapshot
 

@@ -1,5 +1,5 @@
 import enolib
-from enolib.reporters import TerminalReporter
+from enolib import TerminalReporter
 
 from tests.util import snapshot
 
