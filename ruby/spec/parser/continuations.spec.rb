@@ -30,13 +30,6 @@ List with empty item:
 | Direct line continuation
 DOC
 
-context = {
-  indexing: 1,
-  input: input,
-  messages: Enolib::Messages::En,
-  reporter: Enolib::TextReporter
-}
-
 describe Enolib::Parser do
   describe 'Continuations' do
     context = Enolib::Context.new(input)
