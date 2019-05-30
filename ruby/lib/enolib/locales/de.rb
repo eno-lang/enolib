@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-05-29T07:40:09 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-05-30T07:54:15 - DO NOT EDIT MANUALLY
 
 module Enolib
-  module Messages
+  module Locales
     module De
       CONTENT_HEADER = 'Inhalt'
       EXPECTED_DOCUMENT = 'Das Dokument wurde erwartet.'

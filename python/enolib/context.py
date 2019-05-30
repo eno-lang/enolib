@@ -1,6 +1,6 @@
 import math
 from .analyzer import Analyzer
-from .messages import en
+from .locales import en
 from .reporters.text_reporter import TextReporter
 from .resolver import Resolver
 from .constants import (

@@ -9,7 +9,7 @@ const snakeCase = string => string.toLowerCase().replace(/[ \-]/g, '_');
 const titleCase = string => string.replace(/^./, initial => initial.toUpperCase());
 
 module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, '../../ruby/lib/enolib/messages');
+  const directory = path.join(__dirname, '../../ruby/lib/enolib/locales');
   await fsExtra.emptyDir(directory);
 
   const messageFunction = message => {
@@ -37,7 +37,7 @@ module.exports = async (meta, locales) => {
       # ${meta}
 
       module Enolib
-        module Messages
+        module Locales
           module ${titleCase(locale)}
             ${messages.map(messageFunction).join('\n')}
           end

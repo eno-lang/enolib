@@ -7,7 +7,7 @@ const { interpolatify } = require('../../utilities.js');
 const camelCase = string => string.toLowerCase().replace(/[ \-][a-z]/g, boundary => boundary.charAt(1).toUpperCase());
 
 module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, `../../javascript/lib/messages`)
+  const directory = path.join(__dirname, `../../javascript/lib/locales`)
   await fsExtra.emptyDir(directory);
 
   const messageFunction = message => {

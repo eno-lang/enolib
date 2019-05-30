@@ -10,20 +10,20 @@ This directory maintains the canonical, translated message catalog that is utili
 ## How to add new locales
 
 1. Add the locale code and name to the list in `specification.eno`
-2. Run `npm run messages` in the parent directory (A `.po` file for your locale will be created in the  `/translations/` directory)
+2. Run `npm run locales` in the parent directory (A `.po` file for your locale will be created in the  `/translations/` directory)
 3. Translate all messages in your newly created `.po` file
-4. Run `npm run messages` in the parent directory again, this adds your translations to the generated message catalogs inside the implementation directories
+4. Run `npm run locales` in the parent directory again, this adds your translations to the generated message catalogs inside the implementation directories
 5. If you missed any translations, the update script will inform you with a warning.
 
 ## How to update existing locales
 
 1. Open `[locale-code].po` in the `translations/` directory
 2. Make the changes
-3. Run `npm run messages` in the parent directory, this adds your changes to the generated catalogs
+3. Run `npm run locales` in the parent directory, this adds your changes to the generated catalogs
 
 ## How to add a new catalog for a not yet supported programming language
 
-Duplicate one of the generators in `generators/*` and adapt it, also add a call to the new generator at the bottom of `generate.js`. Then run and re-run `npm run messages` and tweak your generator until the result meets your needs. If you don't feel comfortable editing javascript, you can alternatively open an issue and provide a template of what kind of code your eno implementation in language X requires (variable casing, object hierarchy, block/lambda/function syntax required should be made clear), and wait for a kind soul to do the work.
+Duplicate one of the generators in `generators/*` and adapt it, also add a call to the new generator at the bottom of `generate.js`. Then run and re-run `npm run locales` and tweak your generator until the result meets your needs. If you don't feel comfortable editing javascript, you can alternatively open an issue and provide a template of what kind of code your eno implementation in language X requires (variable casing, object hierarchy, block/lambda/function syntax required should be made clear), and wait for a kind soul to do the work.
 
 ## How to add/update messages, e.g. introducing a new type of error
 
@@ -47,4 +47,4 @@ On the one hand this contains the list of all locales currently available to eno
 
 `generate.js`
 
-This script reads all specified locales and messages from `specification.eno`, creates `.po` files for all locales that are not yet present in the `translations/` directory, adds missing `msgstr` and `msgid` entries to already existing `.po` files and removes those translations from `.po` files that are no longer present in the specification. It also generates the final catalog code in the various implementation directories. Execute `node generate.js` inside this or `npm run messages` inside the parent directory to run the script.
+This script reads all specified locales and messages from `specification.eno`, creates `.po` files for all locales that are not yet present in the `translations/` directory, adds missing `msgstr` and `msgid` entries to already existing `.po` files and removes those translations from `.po` files that are no longer present in the specification. It also generates the final catalog code in the various implementation directories. Execute `node generate.js` inside this or `npm run locales` inside the parent directory to run the script.

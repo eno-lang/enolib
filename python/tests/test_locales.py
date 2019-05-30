@@ -1,5 +1,5 @@
 import inspect
-from enolib.messages import de, en, es
+from enolib.locales import de, en, es
 
 def test_message_locales_outside_default_en_locale():
     for locale in [de, en, es]:

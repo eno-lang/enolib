@@ -1,5 +1,5 @@
 const { analyze } = require('./analyze.js');
-const { en } = require('./messages/en.js');
+const { en } = require('./locales/en.js');
 const { resolve } =  require('./resolve.js');
 const { TextReporter } = require('./reporters/text_reporter.js');
 

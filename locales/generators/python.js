@@ -7,7 +7,7 @@ const { interpolatify } = require('../../utilities.js');
 const snakeCase = string => string.toLowerCase().replace(/[ \-]/g, '_');
 
 module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, '../../python/enolib/messages');
+  const directory = path.join(__dirname, '../../python/enolib/locales');
 
   await fsExtra.emptyDir(directory);
   await fsExtra.ensureFile(path.join(directory, '__init__.py'));

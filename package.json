@@ -20,7 +20,7 @@
     "url": "git+https://github.com/eno-lang/enolib.git"
   },
   "scripts": {
-    "messages": "node locales/generate.js",
+    "locales": "node locales/generate.js",
     "specs": "node specs/generate.js"
   }
 }

@@ -4,7 +4,7 @@ module Enolib
   class Context
     attr_accessor :document, :input, :line_count, :messages, :meta, :reporter, :source
 
-    def initialize(input, locale: Messages::En, reporter: TextReporter, source: nil)
+    def initialize(input, locale: Locales::En, reporter: TextReporter, source: nil)
       @input = input
       @messages = locale
       @reporter = reporter

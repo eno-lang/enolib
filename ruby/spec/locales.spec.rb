@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-describe Enolib::Messages::En do
-  Enolib::Messages::En.constants.each do |name|
+describe Enolib::Locales::En do
+  Enolib::Locales::En.constants.each do |name|
     describe name do
-      translation = Enolib::Messages::En.const_get(name)
+      translation = Enolib::Locales::En.const_get(name)
 
       if translation.is_a?(Proc)
         it 'contains a dynamic translated message generator function' do
