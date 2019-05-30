@@ -47,4 +47,14 @@ module.exports = async (meta, locales) => {
 
     await fs.promises.writeFile(path.join(directory, `${locale}.rb`), code);
   }
+
+  const requireFile = path.join(__dirname, `../../ruby/lib/enolib/locales.rb`);
+
+  const code = interpolatify`
+    # frozen_string_literal: true
+
+    ${Object.keys(locales).filter(locale => locale !== 'en').map(locale => `require 'enolib/locales/${locale}'`).join('\n')}
+  `;
+
+  await fs.promises.writeFile(requireFile, code);
 };

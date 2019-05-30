@@ -1,0 +1,11 @@
+---
+"./spec/locales/require_file.spec.rb[1:1:1]": |-
+  Zeile 1 folgt keinem spezifierten Muster.
+
+    Zeile | Inhalt
+   >    1 | invalid
+"./spec/locales/require_file.spec.rb[1:2:1]": |-
+  Línea 1 no sigue un patrón especificado.
+
+    Línea | Contenido
+   >    1 | invalid
