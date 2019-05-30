@@ -7,8 +7,6 @@ describe 'Copying a section that does not exist' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 1 the section \'section\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Copying a section whose key only exists on a field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 3 the section \'field\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -66,8 +62,6 @@ describe 'Copying a section whose key only exists on a fieldset' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 4 the section \'fieldset\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -98,8 +92,6 @@ describe 'Copying a section whose key only exists on a list' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 4 the section \'list\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -131,8 +123,6 @@ describe 'Copying a section whose key only exists on a multiline field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 5 the section \'multiline_field\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -163,8 +153,6 @@ describe 'Copying a section whose key only exists on an empty multiline field' d
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 4 the section \'multiline_field\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -195,8 +183,6 @@ describe 'Copying a section whose key only exists on a fieldset entry' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 4 the section \'entry\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)

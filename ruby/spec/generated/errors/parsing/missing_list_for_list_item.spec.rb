@@ -7,8 +7,6 @@ describe 'Parsing a list item without any previous element' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 1 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Parsing a list item preceded by a line continuation' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 3 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)
@@ -65,8 +61,6 @@ describe 'Parsing a list item preceded by a fieldset entry' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 3 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)
@@ -96,8 +90,6 @@ describe 'Parsing a list item preceded by a copied field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 4 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)
@@ -129,8 +121,6 @@ describe 'Parsing a list item preceded by a copied fieldset' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 5 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)
@@ -163,8 +153,6 @@ describe 'Parsing a list item preceded by a multiline field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 6 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)
@@ -196,8 +184,6 @@ describe 'Parsing a list item preceded by an empty multiline field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 5 contains a list item without a list being specified before.'
       
       expect(error.text).to eq(text)

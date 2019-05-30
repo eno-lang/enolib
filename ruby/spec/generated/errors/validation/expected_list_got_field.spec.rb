@@ -7,8 +7,6 @@ describe 'Expecting a list but getting a field' do
     begin
       Enolib.parse(input).list('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A list with the key \'field\' was expected.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Expecting a list but getting a field with continuations' do
     begin
       Enolib.parse(input).list('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A list with the key \'field\' was expected.'
       
       expect(error.text).to eq(text)
@@ -68,8 +64,6 @@ describe 'Expecting a list but getting a field with continuations separated by i
     begin
       Enolib.parse(input).list('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A list with the key \'field\' was expected.'
       
       expect(error.text).to eq(text)

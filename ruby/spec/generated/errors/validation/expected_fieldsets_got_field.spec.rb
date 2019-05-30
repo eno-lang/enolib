@@ -7,8 +7,6 @@ describe 'Expecting fieldsets but getting a field' do
     begin
       Enolib.parse(input).fieldsets('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'field\' were expected.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Expecting fieldsets but getting a field with continuations' do
     begin
       Enolib.parse(input).fieldsets('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'field\' were expected.'
       
       expect(error.text).to eq(text)
@@ -68,8 +64,6 @@ describe 'Expecting fieldsets but getting a field with continuations separated b
     begin
       Enolib.parse(input).fieldsets('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'field\' were expected.'
       
       expect(error.text).to eq(text)

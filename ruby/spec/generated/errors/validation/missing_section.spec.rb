@@ -7,8 +7,6 @@ describe 'Querying an empty document for a required but missing section' do
     begin
       Enolib.parse(input).required_section('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The section \'section\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)
@@ -33,8 +31,6 @@ describe 'Querying a section for a required but missing section' do
     begin
       Enolib.parse(input).section('section').required_section('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The section \'section\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)

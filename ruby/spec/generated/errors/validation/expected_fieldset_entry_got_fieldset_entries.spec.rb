@@ -9,8 +9,6 @@ describe 'Expecting a fieldset entry but getting two fieldset entries' do
     begin
       Enolib.parse(input).fieldset('fieldset').entry('entry')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single fieldset entry with the key \'entry\' was expected.'
       
       expect(error.text).to eq(text)
@@ -45,8 +43,6 @@ describe 'Expecting a fieldset entry but getting two fieldset entries with comme
     begin
       Enolib.parse(input).fieldset('fieldset').entry('entry')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single fieldset entry with the key \'entry\' was expected.'
       
       expect(error.text).to eq(text)

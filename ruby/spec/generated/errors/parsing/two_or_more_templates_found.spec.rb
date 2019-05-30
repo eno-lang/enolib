@@ -10,8 +10,6 @@ describe 'Copying a field that exists twice' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'There are at least two elements with the key \'field\' that qualify for being copied here, it is not clear which to copy.'
       
       expect(error.text).to eq(text)
@@ -43,8 +41,6 @@ describe 'Copying a section that exists twice' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'There are at least two elements with the key \'section\' that qualify for being copied here, it is not clear which to copy.'
       
       expect(error.text).to eq(text)

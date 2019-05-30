@@ -8,8 +8,6 @@ describe 'Expecting a section but getting a fieldset with one item' do
     begin
       Enolib.parse(input).section('fieldset')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A section with the key \'fieldset\' was expected.'
       
       expect(error.text).to eq(text)
@@ -42,8 +40,6 @@ describe 'Expecting a section but getting a fieldset with empty lines and multip
     begin
       Enolib.parse(input).section('fieldset')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A section with the key \'fieldset\' was expected.'
       
       expect(error.text).to eq(text)
@@ -80,8 +76,6 @@ describe 'Expecting a section but getting a fieldset with two entries with comme
     begin
       Enolib.parse(input).section('fieldset')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A section with the key \'fieldset\' was expected.'
       
       expect(error.text).to eq(text)

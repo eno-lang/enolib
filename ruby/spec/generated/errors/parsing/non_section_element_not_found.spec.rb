@@ -7,8 +7,6 @@ describe 'Copying a non-section element that does not exist' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 1 the non-section element \'element\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -37,8 +35,6 @@ describe 'Copying a non-section element whose key only exists on a section' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 5 the non-section element \'section\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -71,8 +67,6 @@ describe 'Copying an implied fieldset whose key only exists on a section' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 5 the non-section element \'section\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)
@@ -106,8 +100,6 @@ describe 'Copying an implied list whose key only exists on a section' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 5 the non-section element \'section\' should be copied, but it was not found.'
       
       expect(error.text).to eq(text)

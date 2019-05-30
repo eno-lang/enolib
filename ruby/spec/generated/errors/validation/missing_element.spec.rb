@@ -7,8 +7,6 @@ describe 'Querying a section for a required but missing element' do
     begin
       Enolib.parse(input).section('section').required_element('element')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The element \'element\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)

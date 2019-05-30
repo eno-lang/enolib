@@ -7,8 +7,6 @@ describe 'Expecting sections but getting an empty element' do
     begin
       Enolib.parse(input).sections('element')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only sections with the key \'element\' were expected.'
       
       expect(error.text).to eq(text)

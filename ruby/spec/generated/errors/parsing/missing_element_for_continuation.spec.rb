@@ -7,8 +7,6 @@ describe 'Parsing a line continuation without any prior element' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 1 contains a line continuation without a continuable element being specified before.'
       
       expect(error.text).to eq(text)
@@ -36,8 +34,6 @@ describe 'Parsing a line continuation preceded by a copied field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 4 contains a line continuation without a continuable element being specified before.'
       
       expect(error.text).to eq(text)

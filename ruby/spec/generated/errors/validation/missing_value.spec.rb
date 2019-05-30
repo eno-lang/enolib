@@ -8,8 +8,6 @@ describe 'Querying a fieldset entry for a required but missing value' do
     begin
       Enolib.parse(input).fieldset('fieldset').entry('entry').required_string_value
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The fieldset entry \'entry\' must contain a value.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Querying a field for a required but missing value' do
     begin
       Enolib.parse(input).field('field').required_string_value
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The field \'field\' must contain a value.'
       
       expect(error.text).to eq(text)
@@ -64,8 +60,6 @@ describe 'Querying a field with empty line continuations for a required but miss
     begin
       Enolib.parse(input).field('field').required_string_value
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The field \'field\' must contain a value.'
       
       expect(error.text).to eq(text)
@@ -95,8 +89,6 @@ describe 'Querying a list with an empty item for required values' do
     begin
       Enolib.parse(input).list('list').required_string_values
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The list \'list\' may not contain empty items.'
       
       expect(error.text).to eq(text)

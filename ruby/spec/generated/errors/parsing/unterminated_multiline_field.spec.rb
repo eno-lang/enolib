@@ -11,8 +11,6 @@ describe 'A multiline field with an incomplete multiline field operator in the e
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'The multiline field \'multiline_field\' starting in line 1 is not terminated until the end of the document.'
       
       expect(error.text).to eq(text)
@@ -45,8 +43,6 @@ describe 'A multiline field with an edge case key and missing space in the endin
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'The multiline field \'-\' starting in line 1 is not terminated until the end of the document.'
       
       expect(error.text).to eq(text)

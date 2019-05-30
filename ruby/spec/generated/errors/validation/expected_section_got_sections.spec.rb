@@ -10,8 +10,6 @@ describe 'Expecting a section but getting two sections' do
     begin
       Enolib.parse(input).section('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single section with the key \'section\' was expected.'
       
       expect(error.text).to eq(text)
@@ -50,8 +48,6 @@ describe 'Expecting a section but getting two sections with elements, empty line
     begin
       Enolib.parse(input).section('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single section with the key \'section\' was expected.'
       
       expect(error.text).to eq(text)

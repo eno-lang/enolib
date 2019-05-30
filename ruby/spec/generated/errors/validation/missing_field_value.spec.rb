@@ -7,8 +7,6 @@ describe 'Querying a field for a required but missing value' do
     begin
       Enolib.parse(input).field('field').required_string_value
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The field \'field\' must contain a value.'
       
       expect(error.text).to eq(text)

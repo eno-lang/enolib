@@ -17,8 +17,6 @@ describe 'Asserting everything was touched on an untouched document containing a
     begin
       Enolib.parse(input).assert_all_touched
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.'
       
       expect(error.text).to eq(text)
@@ -43,8 +41,6 @@ describe 'Asserting everything was touched on an untouched document containing a
     begin
       Enolib.parse(input).assert_all_touched('my message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'my message'
       
       expect(error.text).to eq(text)
@@ -69,8 +65,6 @@ describe 'Asserting everything was touched on an untouched document containing a
     begin
       Enolib.parse(input).assert_all_touched { |element| "my generated message for unexpected element '#{element.string_key}'" }
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'my generated message for unexpected element \'field\''
       
       expect(error.text).to eq(text)

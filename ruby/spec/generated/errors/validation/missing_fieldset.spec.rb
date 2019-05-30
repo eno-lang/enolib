@@ -7,8 +7,6 @@ describe 'Querying a section for a required but missing fieldset' do
     begin
       Enolib.parse(input).section('section').required_fieldset('fieldset')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The fieldset \'fieldset\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)

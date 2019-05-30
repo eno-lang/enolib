@@ -7,8 +7,6 @@ describe 'Parsing a fieldset entry without a fieldset' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 1 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Parsing a fieldset entry preceded by a line continuation' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 3 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -64,8 +60,6 @@ describe 'Parsing a fieldset entry preceded by a field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 2 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -93,8 +87,6 @@ describe 'Parsing a fieldset entry preceded by a list item' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 3 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -124,8 +116,6 @@ describe 'Parsing a fieldset entry preceded by a copied field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 4 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -157,8 +147,6 @@ describe 'Parsing a fieldset entry preceded by a copied list' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 5 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -190,8 +178,6 @@ describe 'Parsing a fieldset entry preceded by a copied empty multiline field' d
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 5 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)
@@ -224,8 +210,6 @@ describe 'Parsing a fieldset entry preceded by a copied multiline field' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 6 contains a fieldset entry without a fieldset being specified before.'
       
       expect(error.text).to eq(text)

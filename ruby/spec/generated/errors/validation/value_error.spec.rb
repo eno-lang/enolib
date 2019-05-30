@@ -7,8 +7,6 @@ describe 'Querying a value from a field with a loader that always produces an er
     begin
       Enolib.parse(input).field('field').required_value { |value| raise "my error for '#{value}'" }
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my error for \'value\''
       
       expect(error.text).to eq(text)
@@ -33,8 +31,6 @@ describe 'Requesting a value error from a field with a static message' do
     begin
       raise Enolib.parse(input).field('field').value_error('my static message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my static message'
       
       expect(error.text).to eq(text)
@@ -59,8 +55,6 @@ describe 'Requesting a value error from a field with a dynamically generated mes
     begin
       raise(Enolib.parse(input).field('field').value_error { |value| "my generated message for '#{value}'" })
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my generated message for \'value\''
       
       expect(error.text).to eq(text)
@@ -87,8 +81,6 @@ describe 'Requesting a value error from a multiline field with a static message'
     begin
       raise Enolib.parse(input).field('multiline_field').value_error('my static message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my static message'
       
       expect(error.text).to eq(text)
@@ -117,8 +109,6 @@ describe 'Requesting a value error from a multiline field with a dynamically gen
     begin
       raise(Enolib.parse(input).field('multiline_field').value_error { |value| "my generated message for '#{value}'" })
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my generated message for \'value\''
       
       expect(error.text).to eq(text)
@@ -146,8 +136,6 @@ describe 'Requesting a value error from an empty multiline field with a static m
     begin
       raise Enolib.parse(input).field('multiline_field').value_error('my static message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my static message'
       
       expect(error.text).to eq(text)
@@ -174,8 +162,6 @@ describe 'Requesting a value error from an empty multiline field with a dynamica
     begin
       raise(Enolib.parse(input).field('multiline_field').value_error { |_value| 'my generated message' })
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my generated message'
       
       expect(error.text).to eq(text)
@@ -206,8 +192,6 @@ describe 'Requesting a value error from a field with continuations with a static
     begin
       raise Enolib.parse(input).field('field').value_error('my static message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my static message'
       
       expect(error.text).to eq(text)
@@ -242,8 +226,6 @@ describe 'Requesting a value error from a field with continuations with a dynami
     begin
       raise(Enolib.parse(input).field('field').value_error { |value| "my generated message for '#{value}'" })
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my generated message for \'value continuation continuation\''
       
       expect(error.text).to eq(text)

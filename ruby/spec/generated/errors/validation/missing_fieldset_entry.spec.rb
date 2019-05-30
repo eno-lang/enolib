@@ -7,8 +7,6 @@ describe 'Querying an empty fieldset for a required but missing entry' do
     begin
       Enolib.parse(input).fieldset('fieldset').required_entry('entry')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The fieldset entry \'entry\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Querying a fieldset with two entries for a required but missing entry'
     begin
       Enolib.parse(input).fieldset('fieldset').required_entry('missing')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The fieldset entry \'missing\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)
@@ -69,8 +65,6 @@ describe 'Querying a fieldset with entries, empty lines and comments for a requi
     begin
       Enolib.parse(input).fieldset('fieldset').required_entry('missing')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The fieldset entry \'missing\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)

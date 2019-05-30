@@ -7,8 +7,6 @@ describe 'Expecting sections but getting a field' do
     begin
       Enolib.parse(input).sections('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only sections with the key \'field\' were expected.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Expecting sections but getting a field with continuations' do
     begin
       Enolib.parse(input).sections('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only sections with the key \'field\' were expected.'
       
       expect(error.text).to eq(text)
@@ -68,8 +64,6 @@ describe 'Expecting sections but getting a field with continuations separated by
     begin
       Enolib.parse(input).sections('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only sections with the key \'field\' were expected.'
       
       expect(error.text).to eq(text)

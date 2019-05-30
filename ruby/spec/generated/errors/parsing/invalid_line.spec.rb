@@ -10,8 +10,6 @@ describe 'A line without operators' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 4 does not follow any specified pattern.'
       
       expect(error.text).to eq(text)

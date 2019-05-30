@@ -8,8 +8,6 @@ describe 'Starting a section two levels deeper than the current one' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 2 starts a section that is more than one level deeper than the current one.'
       
       expect(error.text).to eq(text)
@@ -35,8 +33,6 @@ describe 'Starting the first section in the document at a deep level' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'Line 1 starts a section that is more than one level deeper than the current one.'
       
       expect(error.text).to eq(text)

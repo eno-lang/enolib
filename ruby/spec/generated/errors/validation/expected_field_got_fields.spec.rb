@@ -8,8 +8,6 @@ describe 'Expecting a field but getting two fields' do
     begin
       Enolib.parse(input).field('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single field with the key \'field\' was expected.'
       
       expect(error.text).to eq(text)
@@ -43,8 +41,6 @@ describe 'Expecting a field but getting two fields with comments, empty lines an
     begin
       Enolib.parse(input).field('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single field with the key \'field\' was expected.'
       
       expect(error.text).to eq(text)

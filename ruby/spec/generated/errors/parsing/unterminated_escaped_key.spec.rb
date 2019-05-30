@@ -7,8 +7,6 @@ describe 'A single field with an terminated escaped key' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.'
       
       expect(error.text).to eq(text)
@@ -33,8 +31,6 @@ describe 'A single section with an unterminated escaped key' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.'
       
       expect(error.text).to eq(text)

@@ -10,8 +10,6 @@ describe 'Expecting a list but getting two lists' do
     begin
       Enolib.parse(input).list('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single list with the key \'list\' was expected.'
       
       expect(error.text).to eq(text)
@@ -48,8 +46,6 @@ describe 'Expecting a list but getting two lists with comments, empty lines and 
     begin
       Enolib.parse(input).list('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single list with the key \'list\' was expected.'
       
       expect(error.text).to eq(text)

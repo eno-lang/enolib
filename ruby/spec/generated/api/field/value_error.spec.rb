@@ -7,8 +7,6 @@ describe 'Obtaining and throwing an error with a custom message in the context o
     begin
       raise Enolib.parse(input).field('field').value_error('my message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my message'
       
       expect(error.text).to eq(text)
@@ -33,8 +31,6 @@ describe 'Obtaining and throwing an error with a custom generated message in the
     begin
       raise(Enolib.parse(input).field('field').value_error { |value| "my generated message for value '#{value}'" })
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'There is a problem with the value of this element: my generated message for value \'value\''
       
       expect(error.text).to eq(text)

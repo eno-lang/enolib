@@ -16,7 +16,7 @@ module.exports = async specs => {
       if(test.hasOwnProperty('error')) {
         const { cursor, selection, snippet, text, type } = test.error;
 
-        const expectations = [`expect(error).to be_a(Enolib::${type})`];
+        const expectations = [];
 
         if(text) {
           expectations.push(interpolatify`

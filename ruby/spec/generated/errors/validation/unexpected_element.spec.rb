@@ -7,8 +7,6 @@ describe 'Asserting everything was touched on an untouched document' do
     begin
       Enolib.parse(input).assert_all_touched
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.'
       
       expect(error.text).to eq(text)
@@ -33,8 +31,6 @@ describe 'Asserting everything was touched on an untouched document, with a cust
     begin
       Enolib.parse(input).assert_all_touched('my custom message')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'my custom message'
       
       expect(error.text).to eq(text)

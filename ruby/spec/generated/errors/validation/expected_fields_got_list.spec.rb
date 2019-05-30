@@ -8,8 +8,6 @@ describe 'Expecting fields but getting a list with one item' do
     begin
       Enolib.parse(input).fields('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fields with the key \'list\' were expected.'
       
       expect(error.text).to eq(text)
@@ -42,8 +40,6 @@ describe 'Expecting fields but getting a list with empty lines and multiple item
     begin
       Enolib.parse(input).fields('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fields with the key \'list\' were expected.'
       
       expect(error.text).to eq(text)
@@ -80,8 +76,6 @@ describe 'Expecting fields but getting a list with two items with comments' do
     begin
       Enolib.parse(input).fields('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fields with the key \'list\' were expected.'
       
       expect(error.text).to eq(text)

@@ -17,8 +17,6 @@ describe 'Multiple sections with multiple cyclical copy chains' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 10 \'section_1\' is copied into itself.'
       
       expect(error.text).to eq(text)
@@ -55,8 +53,6 @@ describe 'Three empty elements copying each other, two of them cyclically' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 3 \'empty\' is copied into itself.'
       
       expect(error.text).to eq(text)
@@ -85,8 +81,6 @@ describe 'Three sections with one being copied into its own subsection' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 2 \'section\' is copied into itself.'
       
       expect(error.text).to eq(text)
@@ -115,8 +109,6 @@ describe 'Three sections with one being copied into its own subsubsection' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 3 \'section\' is copied into itself.'
       
       expect(error.text).to eq(text)
@@ -147,8 +139,6 @@ describe 'Two fieldsets mutually copying each other' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 4 \'copy\' is copied into itself.'
       
       expect(error.text).to eq(text)
@@ -181,8 +171,6 @@ describe 'Two lists mutually copying each other' do
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      expect(error).to be_a(Enolib::ParseError)
-      
       text = 'In line 4 \'copy\' is copied into itself.'
       
       expect(error.text).to eq(text)

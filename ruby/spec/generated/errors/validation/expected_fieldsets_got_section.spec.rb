@@ -7,8 +7,6 @@ describe 'Expecting fieldsets but getting an empty section' do
     begin
       Enolib.parse(input).fieldsets('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'section\' were expected.'
       
       expect(error.text).to eq(text)
@@ -39,8 +37,6 @@ describe 'Expecting fieldsets but getting a section with a field and a list' do
     begin
       Enolib.parse(input).fieldsets('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'section\' were expected.'
       
       expect(error.text).to eq(text)
@@ -81,8 +77,6 @@ describe 'Expecting fieldsets but getting a section with subsections' do
     begin
       Enolib.parse(input).fieldsets('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'section\' were expected.'
       
       expect(error.text).to eq(text)

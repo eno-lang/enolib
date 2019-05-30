@@ -7,8 +7,6 @@ describe 'Querying a section for a required but missing comment' do
     begin
       Enolib.parse(input).section('section').required_string_comment
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'A required comment for this element is missing.'
       
       expect(error.text).to eq(text)

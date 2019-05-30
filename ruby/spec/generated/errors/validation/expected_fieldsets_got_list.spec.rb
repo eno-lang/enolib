@@ -8,8 +8,6 @@ describe 'Expecting fieldsets but getting a list with one item' do
     begin
       Enolib.parse(input).fieldsets('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'list\' were expected.'
       
       expect(error.text).to eq(text)
@@ -42,8 +40,6 @@ describe 'Expecting fieldsets but getting a list with empty lines and multiple i
     begin
       Enolib.parse(input).fieldsets('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'list\' were expected.'
       
       expect(error.text).to eq(text)
@@ -80,8 +76,6 @@ describe 'Expecting fieldsets but getting a list with two items with comments' d
     begin
       Enolib.parse(input).fieldsets('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only fieldsets with the key \'list\' were expected.'
       
       expect(error.text).to eq(text)

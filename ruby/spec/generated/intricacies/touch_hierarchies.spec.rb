@@ -15,8 +15,6 @@ describe 'Touching elements in a section that were copied from another section d
       
       document.assert_all_touched
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.'
       
       expect(error.text).to eq(text)

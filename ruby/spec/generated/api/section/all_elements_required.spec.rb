@@ -10,8 +10,6 @@ describe 'Querying a missing field on the document when all elements are require
       document.all_elements_required
       document.field('field')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The field \'field\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)
@@ -29,8 +27,6 @@ describe 'Querying a missing fieldset on the document when all elements are requ
       document.all_elements_required
       document.fieldset('fieldset')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The fieldset \'fieldset\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)
@@ -48,8 +44,6 @@ describe 'Querying a missing list on the document when all elements are required
       document.all_elements_required
       document.list('list')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The list \'list\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)
@@ -67,8 +61,6 @@ describe 'Querying a missing section on the document when all elements are requi
       document.all_elements_required
       document.section('section')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The section \'section\' is missing - in case it has been specified look for typos and also check for correct capitalization.'
       
       expect(error.text).to eq(text)

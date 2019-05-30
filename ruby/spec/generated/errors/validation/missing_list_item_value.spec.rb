@@ -8,8 +8,6 @@ describe 'Directly querying a list item for a required but missing value' do
     begin
       Enolib.parse(input).list('list').items.first.required_string_value
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The list \'list\' may not contain empty items.'
       
       expect(error.text).to eq(text)
@@ -36,8 +34,6 @@ describe 'Indirectly querying a list with empty items for required values' do
     begin
       Enolib.parse(input).list('list').required_string_values
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'The list \'list\' may not contain empty items.'
       
       expect(error.text).to eq(text)

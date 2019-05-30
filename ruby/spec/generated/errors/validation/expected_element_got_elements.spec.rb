@@ -8,8 +8,6 @@ describe 'Expecting an element but getting two elements' do
     begin
       Enolib.parse(input).element('element')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single element with the key \'element\' was expected.'
       
       expect(error.text).to eq(text)
@@ -39,8 +37,6 @@ describe 'Expecting an element but getting two elements with comments and empty 
     begin
       Enolib.parse(input).element('element')
     rescue Enolib::ValidationError => error
-      expect(error).to be_a(Enolib::ValidationError)
-      
       text = 'Only a single element with the key \'element\' was expected.'
       
       expect(error.text).to eq(text)
