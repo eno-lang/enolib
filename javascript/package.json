@@ -10,7 +10,8 @@
     "jest": "^24.8.0"
   },
   "files": [
-    "lib/"
+    "lib/",
+    "locales.js"
   ],
   "name": "enolib",
   "description": "The eno standard library",
