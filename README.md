@@ -1,10 +1,10 @@
 # enolib
 
-Cross-language eno standard library
+The eno standard library – available for JavaScript, Python and Ruby.
 
 ## Documentation
 
-Complete documentation is available at [eno-lang.org/enolib](https://eno-lang.org/enolib/) and in the respective subfolders in this repository.
+Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
 
 ## Development overview
 

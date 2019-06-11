@@ -1,6 +1,6 @@
 # enolib
 
-The cross-language eno standard library
+The eno standard library.
 
 ## Installation
 
