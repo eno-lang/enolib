@@ -4,6 +4,48 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.7.0
+
+### Breaking
+
+Additional locales (and reporters, only in python) are now only available through new, simpler interfaces:
+
+#### Javascript
+
+```javascript
+const { es } = require('enolib/lib/messages/es');  // not available anymore
+const { es } = require('enolib/locales');  // use this instead
+```
+
+#### Python
+
+```python
+from enolib.messages import es  # not available anymore
+from enolib.locales import es  # use this instead
+```
+
+```python
+from enolib.reporters import HtmlReporter, TerminalReporter  # do not use anymore
+from enolib import HtmlReporter, TerminalReporter  # use this instead
+```
+
+#### Ruby
+
+```ruby
+# not available anymore (including the provided Enolib::Messages::Es)
+require 'enolib/lib/messages/es'  
+
+# use this instead (now provides Enolib::Locales::Es, Enolib::Locales::De, etc.)
+require 'enolib/locales'
+```
+
+### Commits
+
+- Use 'locales' as a consistent namespace/term for all message collections `3110f16`
+- Publicly expose javascript locales through convenience require module `5264e216`
+- Publicly expose ruby locales through convenience require file `d5b5dfc`
+- Directly expose reporter classes at module root in python implementation `6d9c975`
+
 ## 0.6.0
 
 ### All implementations

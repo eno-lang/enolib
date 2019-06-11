@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rubocop', '~> 0.68.1')
   spec.add_development_dependency('rubocop-performance', '~> 1.3.0')
   spec.author = 'Simon Repp'
-  spec.description = 'The cross-language eno standard library'
+  spec.description = 'The eno standard library'
   spec.email = 'simon@fdpl.io'
   spec.files = `git ls-files -z lib LICENSE.txt README.md`.split("\0")
   spec.homepage = 'https://eno-lang.org/enolib/'
@@ -21,6 +21,6 @@ Gem::Specification.new do |spec|
   }
   spec.name = 'enolib'
   spec.required_ruby_version = '>= 2.4.0'
-  spec.summary = 'The cross-language eno standard library'
-  spec.version = '0.6.0'
+  spec.summary = 'The eno standard library'
+  spec.version = '0.7.0'
 end
