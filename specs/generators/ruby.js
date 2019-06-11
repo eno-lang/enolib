@@ -43,6 +43,7 @@ module.exports = async specs => {
           `);
         }
 
+        // TODO: This doesn't make sure anymore that there is always an error raised?
         tests.push(interpolatify`
           describe '${escapeSingleQuotes(test.description)}' do
             it 'raises the expected ${type}' do
