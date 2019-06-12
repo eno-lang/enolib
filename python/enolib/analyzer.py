@@ -351,6 +351,8 @@ class Analyzer:
                 last_non_section_element = instruction
 
                 if not terminator_match:
+                    # TODO: We can actually semantically identify/type the following lines as regular value lines in all implementations
+                    #       (The somewhat differently implemented javascript parsing implementation does this due to how it works)
                     self._parse_after_error()
                     raise Parsing.unterminated_multiline_field(self._context, instruction)
 
