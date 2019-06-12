@@ -27,40 +27,37 @@ class Analyzer:
         self._index = 0
         self._line = 0
 
-    def _tokenize_error_context(self):
-        first_instruction = None
+    def _parse_after_error(self, error_instruction=None):
+        if error_instruction:
+            self._context.meta.append(error_instruction)
+            self._index = error_instruction['ranges']['line'][END] + 1
+            self._line += 1
 
-        while True:
+        while self._index < len(self._context.input):
             end_of_line_index = self._context.input.find('\n', self._index)
 
             if end_of_line_index == -1:
-                instruction = {
-                    'ranges': { 'line': (self._index, len(self._context.input)) },
-                    'line': self._line
-                }
+                end_of_line_index = len(self._context.input)
 
-                if first_instruction is not None:
-                    instruction['type'] = UNPARSED
+            instruction = {
+                'line': self._line,
+                'ranges': { 'line': (self._index, end_of_line_index) },
+                'type': UNPARSED
+            }
 
-                self._context.line_count = self._line + 1
-                self._context.meta.append(instruction)
+            if not error_instruction:
+                error_instruction = instruction
 
-                return first_instruction or instruction
-            else:
-                instruction = {
-                    'ranges': { 'line': (self._index, end_of_line_index) },
-                    'line': self._line
-                }
+            self._context.meta.append(instruction)
+            self._index = end_of_line_index + 1
+            self._line += 1
 
-                self._context.meta.append(instruction)
+        if self._context.input[-1] == '\n':
+            self._context.line_count = self._line + 1
+        else:
+            self._context.line_count = self._line
 
-                if first_instruction is None:
-                    first_instruction = instruction
-                else:
-                    instruction['type'] = UNPARSED
-
-                self._index = end_of_line_index + 1
-                self._line += 1
+        return error_instruction
 
     def analyze(self):
         if len(self._context.input) == 0:
@@ -76,7 +73,7 @@ class Analyzer:
             match = Grammar.REGEX.search(self._context.input, self._index)
 
             if not match or match.start() != self._index:
-                instruction = self._tokenize_error_context()
+                instruction = self._parse_after_error()
                 raise Parsing.invalid_line(self._context, instruction)
 
             instruction = {
@@ -142,7 +139,7 @@ class Analyzer:
                     instruction['value'] = value
 
                 if last_non_section_element is None:
-                    instruction = self._tokenize_error_context()
+                    self._parse_after_error(instruction)
                     raise Parsing.missing_list_for_list_item(self._context, instruction)
                 elif last_non_section_element['type'] == LIST:
                     last_non_section_element['items'].append(instruction)
@@ -150,7 +147,7 @@ class Analyzer:
                     last_non_section_element['items'] = [instruction]
                     last_non_section_element['type'] = LIST
                 else:
-                    instruction = self._tokenize_error_context()
+                    self._parse_after_error(instruction)
                     raise Parsing.missing_list_for_list_item(self._context, instruction)
 
                 instruction['parent'] = last_non_section_element
@@ -184,7 +181,7 @@ class Analyzer:
                     instruction['value'] = value
 
                 if last_non_section_element is None:
-                    instruction = self._tokenize_error_context()
+                    self._parse_after_error(instruction)
                     raise Parsing.missing_fieldset_for_fieldset_entry(self._context, instruction)
                 elif last_non_section_element['type'] == FIELDSET:
                     last_non_section_element['entries'].append(instruction)
@@ -192,17 +189,13 @@ class Analyzer:
                     last_non_section_element['entries'] = [instruction]
                     last_non_section_element['type'] = FIELDSET
                 else:
-                    instruction = self._tokenize_error_context()
+                    self._parse_after_error(instruction)
                     raise Parsing.missing_fieldset_for_fieldset_entry(self._context, instruction)
 
                 instruction['parent'] = last_non_section_element
                 last_continuable_element = instruction
 
             elif match.group(Grammar.SPACED_LINE_CONTINUATION_OPERATOR_INDEX) is not None:
-
-                if last_continuable_element is None:
-                    instruction = self._tokenize_error_context()
-                    raise Parsing.missing_element_for_continuation(self._context, instruction)
 
                 instruction['spaced'] = True
                 instruction['ranges']['spaced_line_continuation_operator'] = match.span(Grammar.SPACED_LINE_CONTINUATION_OPERATOR_INDEX)
@@ -213,6 +206,10 @@ class Analyzer:
                 if value is not None:
                     instruction['ranges']['value'] = match.span(Grammar.SPACED_LINE_CONTINUATION_VALUE_INDEX)
                     instruction['value'] = value
+
+                if last_continuable_element is None:
+                    self._parse_after_error(instruction)
+                    raise Parsing.missing_element_for_continuation(self._context, instruction)
 
                 if 'continuations' in last_continuable_element:
                     last_continuable_element['continuations'].append(instruction)
@@ -228,10 +225,6 @@ class Analyzer:
 
             elif match.group(Grammar.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX) is not None:
 
-                if last_continuable_element is None:
-                    instruction = self._tokenize_error_context()
-                    raise Parsing.missing_element_for_continuation(self._context, instruction)
-
                 instruction['ranges']['direct_line_continuation_operator'] = match.span(Grammar.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX)
                 instruction['type'] = CONTINUATION
 
@@ -240,6 +233,10 @@ class Analyzer:
                 if value is not None:
                     instruction['ranges']['value'] = match.span(Grammar.DIRECT_LINE_CONTINUATION_VALUE_INDEX)
                     instruction['value'] = value
+
+                if last_continuable_element is None:
+                    self._parse_after_error(instruction)
+                    raise Parsing.missing_element_for_continuation(self._context, instruction)
 
                 if 'continuations' in last_continuable_element:
                     last_continuable_element['continuations'].append(instruction)
@@ -263,46 +260,21 @@ class Analyzer:
                 instruction['ranges']['section_operator'] = match.span(Grammar.SECTION_OPERATOR_INDEX)
                 instruction['type'] = SECTION
 
-                new_depth = instruction['ranges']['section_operator'][END] - instruction['ranges']['section_operator'][BEGIN]
-
-                if new_depth == self._depth + 1:
-                    instruction['parent'] = last_section
-                    self._depth = new_depth
-                elif new_depth == self._depth:
-                    instruction['parent'] = last_section['parent']
-                elif new_depth < self._depth:
-                    while new_depth < self._depth:
-                        last_section = last_section['parent']
-                        self._depth -= 1
-
-                    instruction['parent'] = last_section['parent']
-                else:
-                    instruction = self._tokenize_error_context()
-                    raise Parsing.section_hierarchy_layer_skip(self._context, instruction, last_section)
-
-                instruction['parent']['elements'].append(instruction)
-                last_section = instruction
-
                 instruction['key'] = match.group(Grammar.SECTION_KEY_UNESCAPED_INDEX)
 
-                if instruction['key'] is None:
+                if instruction['key']:
+                    instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_UNESCAPED_INDEX)
+                else:
                     instruction['key'] = match.group(Grammar.SECTION_KEY_ESCAPED_INDEX)
                     instruction['ranges']['escape_begin_operator'] = match.span(Grammar.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
                     instruction['ranges']['escape_end_operator'] = match.span(Grammar.SECTION_KEY_ESCAPE_END_OPERATOR_INDEX)
                     instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_ESCAPED_INDEX)
-                else:
-                    instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_UNESCAPED_INDEX)
 
                 template = match.group(Grammar.SECTION_TEMPLATE_INDEX)
 
-                if template is not None:
+                if template:
                     instruction['ranges']['template'] = match.span(Grammar.SECTION_TEMPLATE_INDEX)
                     instruction['template'] = template
-
-                    parent = instruction['parent']
-                    while parent['type'] != DOCUMENT:
-                        parent['deep_resolve'] = True
-                        parent = parent['parent']
 
                     copy_operator_range = match.span(Grammar.SECTION_COPY_OPERATOR_INDEX)
 
@@ -322,6 +294,32 @@ class Analyzer:
 
                     instruction['copy'] = self._context._copy_sections[template]
 
+                new_depth = instruction['ranges']['section_operator'][END] - instruction['ranges']['section_operator'][BEGIN]
+
+                if new_depth == self._depth + 1:
+                    instruction['parent'] = last_section
+                    self._depth = new_depth
+                elif new_depth == self._depth:
+                    instruction['parent'] = last_section['parent']
+                elif new_depth < self._depth:
+                    while new_depth < self._depth:
+                        last_section = last_section['parent']
+                        self._depth -= 1
+
+                    instruction['parent'] = last_section['parent']
+                else:
+                    self._parse_after_error(instruction)
+                    raise Parsing.section_hierarchy_layer_skip(self._context, instruction, last_section)
+
+                instruction['parent']['elements'].append(instruction)
+
+                if template:
+                    parent = instruction['parent']
+                    while parent['type'] != DOCUMENT:
+                        parent['deep_resolve'] = True
+                        parent = parent['parent']
+
+                last_section = instruction
                 last_continuable_element = None
                 last_non_section_element = None
 
@@ -353,7 +351,7 @@ class Analyzer:
                 last_non_section_element = instruction
 
                 if not terminator_match:
-                    self._tokenize_error_context()
+                    self._parse_after_error()
                     raise Parsing.unterminated_multiline_field(self._context, instruction)
 
                 end_of_multiline_field_index = terminator_match.start()

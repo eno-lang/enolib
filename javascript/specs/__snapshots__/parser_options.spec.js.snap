@@ -10,7 +10,7 @@ exports[`Parser options source is printed in terminal reports if provided 1`] = 
 "Line 1 does not follow any specified pattern.
 
 [30m[101m >      [0m [1m/some/dubious-file.eno[0m
-[30m[101m >    1 [0m boom!"
+[30m[101m >    1 [0m [90mboom![0m"
 `;
 
 exports[`Parser options source is printed in text reports if provided 1`] = `

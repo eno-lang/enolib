@@ -5,6 +5,7 @@ const {
   CONTINUATION,
   DOCUMENT,
   EMPTY_ELEMENT,
+  END,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
@@ -17,41 +18,38 @@ const {
   UNPARSED
 } = require('./constants.js');
 
-const tokenizeErrorContext = (context, index, line) => {
-  let firstInstruction = null;
+const parseAfterError = (context, index, line, errorInstruction = null) => {
+  if(errorInstruction) {
+    context._meta.push(errorInstruction);
+    index = errorInstruction.ranges.line[END];
+    line++;
+  }
 
-  let endOfLineIndex;
-  while((endOfLineIndex = context._input.indexOf('\n', index)) !== -1) {
-    const instruction = {
-      line: line,
-      ranges: { line: [index, endOfLineIndex] }
-    };
+  while(index < context._input.length) {
+    let endOfLineIndex = context._input.indexOf('\n', index);
 
-    context._meta.push(instruction);
-
-    if(firstInstruction) {
-      instruction.type = UNPARSED;
-    } else {
-      firstInstruction = instruction;
+    if(endOfLineIndex === -1) {
+      endOfLineIndex = context._input.length;
     }
 
+    const instruction = {
+      line: line,
+      ranges: { line: [index, endOfLineIndex] },
+      type: UNPARSED
+    };
+
+    if(errorInstruction === null) {
+      errorInstruction = instruction;
+    }
+
+    context._meta.push(instruction);
     index = endOfLineIndex + 1;
     line++;
   }
 
-  const instruction = {
-    line: line,
-    ranges: { line: [index, context._input.length ] }
-  };
+  context._lineCount = context._input[context._input.length - 1] === '\n' ? line + 1 : line;
 
-  if(firstInstruction) {
-    instruction.type = UNPARSED;
-  }
-
-  context._lineCount = line + 1;
-  context._meta.push(instruction);
-
-  return firstInstruction || instruction;
+  return errorInstruction;
 };
 
 exports.analyze = function() {
@@ -90,7 +88,7 @@ exports.analyze = function() {
     const match = matcherRegex.exec(this._input);
 
     if(match === null) {
-      const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing
+      instruction = parseAfterError(this, index, line);
       throw errors.invalidLine(this, instruction);
     } else {
       instruction = {
@@ -177,7 +175,7 @@ exports.analyze = function() {
       }
 
       if(lastNonSectionElement === null) {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        parseAfterError(this, index, line, instruction);
         throw errors.missingListForListItem(this, instruction);
       } else if(lastNonSectionElement.type === LIST) {
         lastNonSectionElement.items.push(instruction);
@@ -185,7 +183,7 @@ exports.analyze = function() {
         lastNonSectionElement.items = [instruction];
         lastNonSectionElement.type = LIST;
       } else {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        parseAfterError(this, index, line, instruction);
         throw errors.missingListForListItem(this, instruction);
       }
 
@@ -237,7 +235,7 @@ exports.analyze = function() {
       }
 
       if(lastNonSectionElement === null) {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        parseAfterError(this, index, line, instruction);
         throw errors.missingFieldsetForFieldsetEntry(this, instruction);
       } else if(lastNonSectionElement.type === FIELDSET) {
         lastNonSectionElement.entries.push(instruction);
@@ -245,7 +243,7 @@ exports.analyze = function() {
         lastNonSectionElement.entries = [instruction];
         lastNonSectionElement.type = FIELDSET;
       } else {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
+        parseAfterError(this, index, line, instruction);
         throw errors.missingFieldsetForFieldsetEntry(this, instruction);
       }
 
@@ -253,11 +251,6 @@ exports.analyze = function() {
       lastContinuableElement = instruction;
 
     } else if(match[matcher.SPACED_LINE_CONTINUATION_OPERATOR_INDEX] !== undefined) {
-
-      if(lastContinuableElement === null) {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingElementForContinuation(this, instruction);
-      }
 
       instruction.spaced = true;
       instruction.type = CONTINUATION;
@@ -272,6 +265,11 @@ exports.analyze = function() {
 
         const valueIndex = this._input.indexOf(instruction.value, operatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
+      }
+
+      if(lastContinuableElement === null) {
+        parseAfterError(this, index, line, instruction);
+        throw errors.missingElementForContinuation(this, instruction);
       }
 
       if(lastContinuableElement.type === EMPTY_ELEMENT) {
@@ -289,11 +287,6 @@ exports.analyze = function() {
 
     } else if(match[matcher.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX] !== undefined) {
 
-      if(lastContinuableElement === null) {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.missingElementForContinuation(this, instruction);
-      }
-
       instruction.spaced = false;  // TODO: Just leave out
       instruction.type = CONTINUATION;
 
@@ -306,6 +299,11 @@ exports.analyze = function() {
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       } else {
         instruction.value = null;
+      }
+
+      if(lastContinuableElement === null) {
+        parseAfterError(this, index, line, instruction);
+        throw errors.missingElementForContinuation(this, instruction);
       }
 
       if(lastContinuableElement.type === EMPTY_ELEMENT) {
@@ -332,24 +330,6 @@ exports.analyze = function() {
       instruction.depth = sectionOperator.length;
       instruction.elements = [];
       instruction.type = SECTION;
-
-      if(instruction.depth === lastSection.depth + 1) {
-        instruction.parent = lastSection;
-      } else if(instruction.depth === lastSection.depth) {
-        instruction.parent = lastSection.parent;
-      } else if(instruction.depth < lastSection.depth) {
-        while(instruction.depth < lastSection.depth) {
-          lastSection = lastSection.parent;
-        }
-
-        instruction.parent = lastSection.parent;
-      } else {
-        const instruction = tokenizeErrorContext(this, index, line);  // TODO: variable shadowing etc., generally whack
-        throw errors.sectionHierarchyLayerSkip(this, instruction, lastSection);
-      }
-
-      instruction.parent.elements.push(instruction);
-      lastSection = instruction;
 
       const sectionOperatorIndex = this._input.indexOf(sectionOperator, index);
       instruction.key = match[matcher.SECTION_KEY_UNESCAPED_INDEX];
@@ -379,10 +359,6 @@ exports.analyze = function() {
       if(match[matcher.SECTION_TEMPLATE_INDEX] !== undefined) {
         instruction.template = match[matcher.SECTION_TEMPLATE_INDEX];
 
-        for(let parent = instruction.parent; parent.hasOwnProperty('parent'); parent = parent.parent) {
-          parent.deepResolve = true;
-        }
-
         const copyOperator = match[matcher.SECTION_COPY_OPERATOR_INDEX];
         const copyOperatorIndex = this._input.indexOf(copyOperator, keyEndIndex);
         const templateIndex = this._input.indexOf(instruction.template, copyOperatorIndex + copyOperator.length);
@@ -406,6 +382,30 @@ exports.analyze = function() {
         instruction.copy = this.copy.sections[instruction.template];
       }
 
+      if(instruction.depth === lastSection.depth + 1) {
+        instruction.parent = lastSection;
+      } else if(instruction.depth === lastSection.depth) {
+        instruction.parent = lastSection.parent;
+      } else if(instruction.depth < lastSection.depth) {
+        while(instruction.depth < lastSection.depth) {
+          lastSection = lastSection.parent;
+        }
+
+        instruction.parent = lastSection.parent;
+      } else {
+        parseAfterError(this, index, line, instruction);
+        throw errors.sectionHierarchyLayerSkip(this, instruction, lastSection);
+      }
+
+      instruction.parent.elements.push(instruction);
+
+      if(instruction.hasOwnProperty('template')) {
+        for(let parent = instruction.parent; parent.type !== DOCUMENT; parent = parent.parent) {
+          parent.deepResolve = true;
+        }
+      }
+
+      lastSection = instruction;
       lastContinuableElement = null;
       lastNonSectionElement = null; // TODO: Actually wrong terminology - it's a Field/List/Fieldset but can't be List Item or Fieldset Entry!
 
