@@ -19,5 +19,5 @@ setup(author='Simon Repp',
       name='enolib',
       packages=find_packages(exclude=['performance', 'performance.*', 'tests', 'tests.*']),
       url='https://eno-lang.org/enolib/',
-      version='0.7.0',
+      version='0.7.2',
       zip_safe=False)
