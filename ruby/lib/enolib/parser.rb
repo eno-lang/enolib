@@ -42,8 +42,6 @@ module Enolib
 
         if match[Grammar::EMPTY_LINE_INDEX]
 
-          instruction[:type] = :empty_line
-
           if comments
             @context.meta.concat(comments)
             comments = nil
