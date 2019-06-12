@@ -163,7 +163,7 @@ exports.analyze = function() {
         comments = null;
       }
 
-      instruction.continuations = [];
+      instruction.continuations = [];  // TODO: Forward allocation of this kind is planned to be removed like in python implementation
       instruction.type = LIST_ITEM;
       instruction.value = match[matcher.LIST_ITEM_VALUE_INDEX] || null;
 
