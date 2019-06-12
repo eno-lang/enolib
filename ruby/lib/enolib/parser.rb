@@ -40,6 +40,9 @@ module Enolib
 
         multiline_field = false
 
+        # TODO: In all implementations we could optimize the often occurring
+        #       empty line case - we need not allocate the instruction object
+        #       because it is discarded anyway
         if match[Grammar::EMPTY_LINE_INDEX]
 
           if comments
