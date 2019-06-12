@@ -10,7 +10,7 @@
     "gettext-parser": "^4.0.0",
     "speakingurl": "^14.0.1"
   },
-  "description": "The cross-language eno standard library",
+  "description": "The eno standard library",
   "homepage": "https://eno-lang.org/enolib/",
   "license": "MIT",
   "name": "enolib",
