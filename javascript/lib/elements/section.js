@@ -149,6 +149,10 @@ class Section extends ElementBase {
 
     const element = elements[0];
 
+    // TODO: Here and elsewhere these multiple checks are repeated in toField/to* again,
+    //       should be optimized e.g. by going through a private toField cast mechanism
+    //       without redundant checks. (or reconsidering the whole concept of storing
+    //       SectionElement instances by default in sections)
     if(element._instruction.type !== FIELD &&
        element._instruction.type !== MULTILINE_FIELD_BEGIN &&
        element._instruction.type !== EMPTY_ELEMENT)
