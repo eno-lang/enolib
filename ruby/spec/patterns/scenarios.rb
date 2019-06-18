@@ -57,10 +57,10 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::MULTILINE_FIELD_OPERATOR_INDEX => '--',
-      Enolib::Grammar::MULTILINE_FIELD_KEY_INDEX => 'Name'
+      Enolib::Grammar::MULTILINE_FIELD_KEY_INDEX => 'Key'
     },
-    syntax: '-- Name',
-    variants: space('--', 'Name')
+    syntax: '-- Key',
+    variants: space('--', 'Key')
   },
   {
     captures: {
@@ -73,10 +73,10 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::MULTILINE_FIELD_OPERATOR_INDEX => '---',
-      Enolib::Grammar::MULTILINE_FIELD_KEY_INDEX => 'The Name'
+      Enolib::Grammar::MULTILINE_FIELD_KEY_INDEX => 'The Key'
     },
-    syntax: '--- The Name',
-    variants: space('---', 'The Name')
+    syntax: '--- The Key',
+    variants: space('---', 'The Key')
   },
   {
     captures: {
@@ -124,68 +124,68 @@ SCENARIOS = [
   # COPY_SCENARIOS
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::TEMPLATE_INDEX => 'Other Name'
+      Enolib::Grammar::TEMPLATE_INDEX => 'Other Key'
     },
-    syntax: 'Name < Other Name',
-    variants: space('Name', '<', 'Other Name')
+    syntax: 'Key < Other Key',
+    variants: space('Key', '<', 'Other Key')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::COPY_OPERATOR_INDEX => '<',
       Enolib::Grammar::TEMPLATE_INDEX => '<'
     },
-    syntax: 'Name < <',
-    variants: space('Name', '<', ' ', '<')
+    syntax: 'Key < <',
+    variants: space('Key', '<', ' ', '<')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::COPY_OPERATOR_INDEX => '<<',
       Enolib::Grammar::TEMPLATE_INDEX => '<'
     },
-    syntax: 'Name << <',
-    variants: space('Name', '<<', '<')
+    syntax: 'Key << <',
+    variants: space('Key', '<<', '<')
   },
 
   # FIELDSET_ENTRY_SCENARIOS
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::FIELDSET_ENTRY_OPERATOR_INDEX => '=',
       Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => 'Value'
     },
-    syntax: 'Name = Value',
-    variants: space('Name', '=', 'Value')
+    syntax: 'Key = Value',
+    variants: space('Key', '=', 'Value')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'The Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'The Key',
       Enolib::Grammar::FIELDSET_ENTRY_OPERATOR_INDEX => '=',
       Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => 'The Value'
     },
-    syntax: 'The Name = The Value',
-    variants: space('The Name', '=', 'The Value')
+    syntax: 'The Key = The Value',
+    variants: space('The Key', '=', 'The Value')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::FIELDSET_ENTRY_OPERATOR_INDEX => '=',
       Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => '='
     },
-    syntax: 'Name = =',
-    variants: space('Name', '=', ' ', '=')
+    syntax: 'Key = =',
+    variants: space('Key', '=', ' ', '=')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::FIELDSET_ENTRY_OPERATOR_INDEX => '=',
       Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => ':'
     },
-    syntax: 'Name = :',
-    variants: space('Name', '=', ' ', ':')
+    syntax: 'Key = :',
+    variants: space('Key', '=', ' ', ':')
   },
   {
     captures: {
@@ -222,30 +222,30 @@ SCENARIOS = [
   # FIELD_SCENARIOS
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':',
       Enolib::Grammar::FIELD_VALUE_INDEX => 'Value'
     },
-    syntax: 'Name: Value',
-    variants: space('Name', ':', 'Value')
+    syntax: 'Key: Value',
+    variants: space('Key', ':', 'Value')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'The Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'The Key',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':',
       Enolib::Grammar::FIELD_VALUE_INDEX => 'The Value'
     },
-    syntax: 'The Name: The Value',
-    variants: space('The Name', ':', 'The Value')
+    syntax: 'The Key: The Value',
+    variants: space('The Key', ':', 'The Value')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':',
       Enolib::Grammar::FIELD_VALUE_INDEX => ':'
     },
-    syntax: 'Name: :',
-    variants: space('Name', ':', ' ', ':')
+    syntax: 'Key: :',
+    variants: space('Key', ':', ' ', ':')
   },
   {
     captures: {
@@ -364,19 +364,19 @@ SCENARIOS = [
   # KEY_SCENARIOS
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':'
     },
-    syntax: 'Name:',
-    variants: space('Name', ':')
+    syntax: 'Key:',
+    variants: space('Key', ':')
   },
   {
     captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'The Name',
+      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'The Key',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':'
     },
-    syntax: 'The Name:',
-    variants: space('The Name', ':')
+    syntax: 'The Key:',
+    variants: space('The Key', ':')
   },
   {
     captures: {
@@ -403,28 +403,28 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'Name'
+      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'Key'
     },
-    syntax: '# Name',
-    variants: space('#', 'Name')
+    syntax: '# Key',
+    variants: space('#', 'Key')
   },
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '##',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'The Name'
+      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'The Key'
     },
-    syntax: '## The Name',
-    variants: space('##', 'The Name')
+    syntax: '## The Key',
+    variants: space('##', 'The Key')
   },
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
       Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => '#',
       Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => 'Other Name'
+      Enolib::Grammar::SECTION_TEMPLATE_INDEX => 'Other Key'
     },
-    syntax: '# # < Other Name',
-    variants: space('#', ' ', '#', '<', 'Other Name')
+    syntax: '# # < Other Key',
+    variants: space('#', ' ', '#', '<', 'Other Key')
   },
   {
     captures: {
@@ -463,11 +463,11 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'Name',
+      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'Key',
       Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => 'Other Name'
+      Enolib::Grammar::SECTION_TEMPLATE_INDEX => 'Other Key'
     },
-    syntax: '# Name << Other Name',
-    variants: space('#', ' ', 'Name', '<<', 'Other Name')
+    syntax: '# Key << Other Key',
+    variants: space('#', ' ', 'Key', '<<', 'Other Key')
   }
 ].freeze
