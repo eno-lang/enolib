@@ -348,6 +348,9 @@ module Enolib
 
       element = elements[0]
 
+      # TODO: Other implementations use a direct check here (['type'] == :foo)
+      #       Should this be unified across implementations? Follow up.
+      #       (guess is that the main reason is stricter visibility in ruby currently)
       unless element.yields_empty?
         raise Errors::Validation.unexpected_element_type(
           @context,
