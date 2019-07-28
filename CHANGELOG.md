@@ -4,6 +4,18 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.8.0
+
+### Features/Breaking
+
+This release implements the new [empties](https://github.com/eno-lang/eno/blob/master/rfcs-final-spec/explicit-empty.md). All methods that up to now referred to empty elements (in the sense of empty fields, fieldsets or lists) now refer to the new, explicit empties instead.
+
+- Implement empties `d259aaa`
+
+### Improvements
+
+- Improve touching of ambiguous, uninstantiated document branches `e6f767d`
+
 ## 0.7.2
 
 ### All implementations
