@@ -26,7 +26,7 @@ class SectionElement(ElementBase):
         return PRETTY_TYPES[self._instruction['type']]
 
     def _untouched(self):
-        if not hasattr(self, '_yielded'):
+        if not hasattr(self, '_yielded') and not hasattr(self, '_touched'):
             return self._instruction
 
         if hasattr(self, '_empty') and not hasattr(self._empty, '_touched'):
@@ -109,23 +109,17 @@ class SectionElement(ElementBase):
         return self._section
 
     def touch(self):
-        # TODO: Here and elsewhere: This needs to touch anyway; possibly not so small implications
         if not hasattr(self, '_yielded'):
-            return
-
-        if hasattr(self, '_empty'):
+            self._touched = True
+        elif hasattr(self, '_empty'):
             self._empty._touched = True
-
-        if hasattr(self, '_field'):
+        elif hasattr(self, '_field'):
             self._field._touched = True
-
-        if hasattr(self, '_fieldset'):
+        elif hasattr(self, '_fieldset'):
             self._fieldset.touch()
-
-        if hasattr(self, '_list'):
+        elif hasattr(self, '_list'):
             self._list.touch()
-
-        if hasattr(self, '_section'):
+        elif hasattr(self, '_section'):
             self._section.touch()
 
     def yields_empty(self):

@@ -5,7 +5,9 @@ module Enolib
     attr_reader :instruction # TODO: Revisit this hacky exposition
 
     def _untouched
-      return @instruction unless instance_variable_defined?(:@yielded)
+      unless instance_variable_defined?(:@yielded)
+        return instance_variable_defined?(:@touched) ? false : @instruction
+      end
 
       return @instruction if instance_variable_defined?(:@empty) && !@empty.instance_variable_defined?(:@touched)
       return @instruction if instance_variable_defined?(:@field) && !@field.instance_variable_defined?(:@touched)
@@ -103,15 +105,20 @@ module Enolib
     end
 
     def touch
-      # TODO: Here and other implementations: This needs to touch anyway; possibly not so small implications
-      return unless instance_variable_defined?(:@yielded)
-
       # TODO: Revisit setting touched on foreign instances
-      @empty.touched = true if instance_variable_defined?(:@empty)
-      @field.touched = true if instance_variable_defined?(:@field)
-      @fieldset.touch if instance_variable_defined?(:@fieldset)
-      @list.touch if instance_variable_defined?(:@list)
-      @section.touch if instance_variable_defined?(:@section)
+      if !instance_variable_defined?(:@yielded)
+        @touched = true
+      elsif instance_variable_defined?(:@empty)
+        @empty.touched = true
+      elsif instance_variable_defined?(:@field)
+        @field.touched = true
+      elsif instance_variable_defined?(:@fieldset)
+        @fieldset.touch
+      elsif instance_variable_defined?(:@list)
+        @list.touch
+      elsif instance_variable_defined?(:@section)
+        @section.touch
+      end
     end
 
     def yields_empty?

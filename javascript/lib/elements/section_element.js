@@ -17,16 +17,28 @@ const {
   SECTION
 } = require('../constants.js');
 
+// TODO: If this SectionElement gets touched (this._touched = true;),
+//       the touched flag needs to be propagated down the hierarchy
+//       when toSomething() is called to typecast the SectionElement.
+//       I.e. the constructors for Field/Fieldset/etc. need to accept
+//       this extra init parameter probably and it has to be passed
+//       on lazily all the way down to the terminal leaves of the tree.
+//       (applies to all implementations)
+
 class SectionElement extends ElementBase {
   _untouched() {
-    if(!this._yielded)
+    if(!this.hasOwnProperty('_yielded') && !this.hasOwnProperty('_touched'))
       return this._instruction;
-
-    if(this._empty && !this._empty._touched) return this._instruction;
-    if(this._field && !this._field._touched) return this._instruction;
-    if(this._fieldset) return this._fieldset._untouched();
-    if(this._list) return this._list._untouched();
-    if(this._section) return this._section._untouched();
+    if(this.hasOwnProperty('_empty') && !this._empty.hasOwnProperty('_touched'))
+      return this._instruction;
+    if(this.hasOwnProperty('_field') && !this._field.hasOwnProperty('_touched'))
+      return this._instruction;
+    if(this.hasOwnProperty('_fieldset'))
+      return this._fieldset._untouched();
+    if(this.hasOwnProperty('_list'))
+      return this._list._untouched();
+    if(this.hasOwnProperty('_section'))
+      return this._section._untouched();
   }
 
   _yields() {
@@ -120,14 +132,19 @@ class SectionElement extends ElementBase {
   }
 
   touch() {
-    if(!this._yielded)  // TODO: Here we accutely would need the "marked touched below" with later repropagation mechanism
-      return;
-
-    if(this._empty) { this._empty._touched = true; }
-    if(this._field) { this._field._touched = true; }
-    if(this._fieldset) { this._fieldset.touch(); }
-    if(this._list) { this._list.touch(); }
-    if(this._section) { this._section.touch(); }
+    if(!this.hasOwnProperty('_yielded')) {
+      this._touched = true;
+    } else if(this.hasOwnProperty('_empty')) {
+      this._empty._touched = true;
+    } else if(this.hasOwnProperty('_field')) {
+      this._field._touched = true;
+    } else if(this.hasOwnProperty('_fieldset')) {
+      this._fieldset.touch();
+    } else if(this.hasOwnProperty('_list')) {
+      this._list.touch();
+    } else if(this.hasOwnProperty('_section')) {
+      this._section.touch();
+    }
   }
 
   yieldsEmpty() {
