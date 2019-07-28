@@ -5,9 +5,9 @@
   },
   "dependencies": {
     "enotype": "^0.3.0",
-    "fast-glob": "^2.2.7",
-    "fs-extra": "^8.0.1",
-    "gettext-parser": "^4.0.0",
+    "fast-glob": "^3.0.4",
+    "fs-extra": "^8.1.0",
+    "gettext-parser": "^4.0.1",
     "speakingurl": "^14.0.1"
   },
   "description": "The eno standard library",
