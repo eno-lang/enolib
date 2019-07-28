@@ -2,7 +2,7 @@
 
 describe Enolib::Empty do
   before(:each) do
-    @empty = Enolib.parse('element:').empty
+    @empty = Enolib.parse('empty').empty
   end
 
   it 'is untouched after initialization' do
@@ -19,7 +19,7 @@ describe Enolib::Empty do
     context 'with a message Proc' do
       it 'returns a custom error' do
         message_proc = proc do |element|
-          "my custom generated message for empty element '#{element.string_key}'"
+          "my custom generated message for empty '#{element.string_key}'"
         end
 
         expect(@empty.error(message_proc).message).to match_snapshot
@@ -30,8 +30,8 @@ describe Enolib::Empty do
   describe '#raw' do
     it 'returns a native object representation' do
       expect(@empty.raw).to eq(
-        key: 'element',
-        type: :empty_element
+        key: 'empty',
+        type: :empty
       )
     end
   end
@@ -45,7 +45,7 @@ describe Enolib::Empty do
 
   describe '#to_s' do
     it 'returns a debug abstraction' do
-      expect(@empty.to_s).to eq('#<Enolib::Empty key=element>')
+      expect(@empty.to_s).to eq('#<Enolib::Empty key=empty>')
     end
   end
 end

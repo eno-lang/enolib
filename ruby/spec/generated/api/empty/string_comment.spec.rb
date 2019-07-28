@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-describe 'Querying an existing, single-line, required string comment from an empty element' do
+describe 'Querying an existing, single-line, required string comment from an empty' do
   it 'produces the expected result' do
     input = "> comment\n" \
-            'element:'
+            'empty'
 
-    output = Enolib.parse(input).element('element').required_string_comment
+    output = Enolib.parse(input).empty('empty').required_string_comment
 
     expected = 'comment'
     
@@ -13,13 +13,13 @@ describe 'Querying an existing, single-line, required string comment from an emp
   end
 end
 
-describe 'Querying an existing, two-line, required string comment from an empty element' do
+describe 'Querying an existing, two-line, required string comment from an empty' do
   it 'produces the expected result' do
     input = ">comment\n" \
             ">  comment\n" \
-            'element:'
+            'empty'
 
-    output = Enolib.parse(input).element('element').required_string_comment
+    output = Enolib.parse(input).empty('empty').required_string_comment
 
     expected = "comment\n" \
                '  comment'
@@ -28,7 +28,7 @@ describe 'Querying an existing, two-line, required string comment from an empty 
   end
 end
 
-describe 'Querying an existing, required string comment with blank lines from an empty element' do
+describe 'Querying an existing, required string comment with blank lines from an empty' do
   it 'produces the expected result' do
     input = ">\n" \
             ">     comment\n" \
@@ -37,9 +37,9 @@ describe 'Querying an existing, required string comment with blank lines from an
             ">\n" \
             "> comment\n" \
             ">\n" \
-            'element:'
+            'empty'
 
-    output = Enolib.parse(input).element('element').required_string_comment
+    output = Enolib.parse(input).empty('empty').required_string_comment
 
     expected = "    comment\n" \
                "\n" \
@@ -51,12 +51,12 @@ describe 'Querying an existing, required string comment with blank lines from an
   end
 end
 
-describe 'Querying an optional, existing string comment from an empty element' do
+describe 'Querying an optional, existing string comment from an empty' do
   it 'produces the expected result' do
     input = "> comment\n" \
-            'element:'
+            'empty'
 
-    output = Enolib.parse(input).element('element').optional_string_comment
+    output = Enolib.parse(input).empty('empty').optional_string_comment
 
     expected = 'comment'
     
@@ -64,11 +64,11 @@ describe 'Querying an optional, existing string comment from an empty element' d
   end
 end
 
-describe 'Querying an optional, missing string comment from an empty element' do
+describe 'Querying an optional, missing string comment from an empty' do
   it 'produces the expected result' do
-    input = 'element:'
+    input = 'empty'
 
-    output = Enolib.parse(input).element('element').optional_string_comment
+    output = Enolib.parse(input).empty('empty').optional_string_comment
 
     expect(output).to be_nil
   end

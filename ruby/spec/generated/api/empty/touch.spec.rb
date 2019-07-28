@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-describe 'Asserting everything was touched when the only present empty element was not touched' do
+describe 'Asserting everything was touched when the only present empty was not touched' do
   it 'raises the expected ValidationError' do
-    input = 'element:'
+    input = 'empty'
 
     begin
       Enolib.parse(input).assert_all_touched
@@ -12,64 +12,25 @@ describe 'Asserting everything was touched when the only present empty element w
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                ' >    1 | element:'
+                ' >    1 | empty'
       
       expect(error.snippet).to eq(snippet)
       
       expect(error.selection[:from][:line]).to eq(0)
       expect(error.selection[:from][:column]).to eq(0)
       expect(error.selection[:to][:line]).to eq(0)
-      expect(error.selection[:to][:column]).to eq(8)
+      expect(error.selection[:to][:column]).to eq(5)
     end
   end
 end
 
-describe 'Asserting everything was touched when the only present empty element was touched' do
+describe 'Asserting everything was touched when the only present empty was touched' do
   it 'produces the expected result' do
-    input = 'element:'
+    input = 'empty'
 
     document = Enolib.parse(input)
     
-    document.empty('element').touch
-    document.assert_all_touched
-
-    expect('it passes').to be_truthy
-  end
-end
-
-describe 'Asserting everything was touched when the only present empty element was touched after typecasting to a field' do
-  it 'produces the expected result' do
-    input = 'field:'
-
-    document = Enolib.parse(input)
-    
-    document.field('field').touch
-    document.assert_all_touched
-
-    expect('it passes').to be_truthy
-  end
-end
-
-describe 'Asserting everything was touched when the only present empty element was touched after typecasting to a fieldset' do
-  it 'produces the expected result' do
-    input = 'fieldset:'
-
-    document = Enolib.parse(input)
-    
-    document.fieldset('fieldset').touch
-    document.assert_all_touched
-
-    expect('it passes').to be_truthy
-  end
-end
-
-describe 'Asserting everything was touched when the only present empty element was touched after typecasting to a list' do
-  it 'produces the expected result' do
-    input = 'list:'
-
-    document = Enolib.parse(input)
-    
-    document.list('list').touch
+    document.empty('empty').touch
     document.assert_all_touched
 
     expect('it passes').to be_truthy

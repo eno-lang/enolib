@@ -16,8 +16,8 @@
 msgid "Document"
 msgstr "Document"
 
-msgid "Empty Element"
-msgstr "Empty Element"
+msgid "Empty"
+msgstr "Empty"
 
 msgid "Field"
 msgstr "Field"
@@ -97,11 +97,11 @@ msgstr "There is a problem with the comment of this element: [MESSAGE]"
 msgid "The document was expected."
 msgstr "The document was expected."
 
-msgid "An empty element was expected."
-msgstr "An empty element was expected."
+msgid "An empty was expected."
+msgstr "An empty was expected."
 
-msgid "An empty element with the key '[KEY]' was expected."
-msgstr "An empty element with the key '[KEY]' was expected."
+msgid "An empty with the key '[KEY]' was expected."
+msgstr "An empty with the key '[KEY]' was expected."
 
 msgid "A field was expected."
 msgstr "A field was expected."
@@ -163,11 +163,11 @@ msgstr "Only a single element was expected."
 msgid "Only a single element with the key '[KEY]' was expected."
 msgstr "Only a single element with the key '[KEY]' was expected."
 
-msgid "Only a single empty element was expected."
-msgstr "Only a single empty element was expected."
+msgid "Only a single empty was expected."
+msgstr "Only a single empty was expected."
 
-msgid "Only a single empty element with the key '[KEY]' was expected."
-msgstr "Only a single empty element with the key '[KEY]' was expected."
+msgid "Only a single empty with the key '[KEY]' was expected."
+msgstr "Only a single empty with the key '[KEY]' was expected."
 
 msgid "Only a single field was expected."
 msgstr "Only a single field was expected."
@@ -211,11 +211,11 @@ msgstr "A single element is required - it can have any key."
 msgid "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 
-msgid "A single empty element is required - it can have any key."
-msgstr "A single empty element is required - it can have any key."
+msgid "A single empty is required - it can have any key."
+msgstr "A single empty is required - it can have any key."
 
-msgid "The empty element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "The empty element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgid "The empty '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "The empty '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 
 msgid "A single field is required - it can have any key."
 msgstr "A single field is required - it can have any key."

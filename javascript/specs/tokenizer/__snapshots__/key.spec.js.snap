@@ -23,7 +23,7 @@ Object {
             4,
           ],
         },
-        "type": Symbol(Empty Element),
+        "type": Symbol(Field, Fieldset or List),
       },
       Object {
         "key": "key",
@@ -43,7 +43,7 @@ Object {
             10,
           ],
         },
-        "type": Symbol(Empty Element),
+        "type": Symbol(Field, Fieldset or List),
       },
       Object {
         "key": "key",
@@ -63,7 +63,7 @@ Object {
             20,
           ],
         },
-        "type": Symbol(Empty Element),
+        "type": Symbol(Field, Fieldset or List),
       },
       Object {
         "key": "key",
@@ -83,7 +83,7 @@ Object {
             34,
           ],
         },
-        "type": Symbol(Empty Element),
+        "type": Symbol(Field, Fieldset or List),
       },
       Object {
         "key": "key",
@@ -103,7 +103,7 @@ Object {
             40,
           ],
         },
-        "type": Symbol(Empty Element),
+        "type": Symbol(Field, Fieldset or List),
       },
     ],
     "type": Symbol(Document),

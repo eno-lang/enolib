@@ -4,9 +4,9 @@ const {
   BEGIN,
   END,
   DOCUMENT,
-  EMPTY_ELEMENT,
   FIELD,
   FIELDSET_ENTRY,
+  FIELD_OR_FIELDSET_OR_LIST,
   LIST_ITEM,
   MULTILINE_FIELD_BEGIN
 } = require('../constants.js');
@@ -57,12 +57,11 @@ exports.errors = {
   // TODO: Revisit and polish the two core value errors again at some point (missingValue / valueError)
   //       (In terms of quality of results and architecture - DRY up probably)
   //       Share best implementation among other eno libraries
-
   missingValue: (context, element) => {
     let message;
     const selection = {};
 
-    if(element.type === FIELD || element.type === EMPTY_ELEMENT || element.type === MULTILINE_FIELD_BEGIN) {
+    if(element.type === FIELD || element.type === FIELD_OR_FIELDSET_OR_LIST || element.type === MULTILINE_FIELD_BEGIN) {
       message = context.messages.missingFieldValue(element.key);
 
       if(element.ranges.hasOwnProperty('template')) {

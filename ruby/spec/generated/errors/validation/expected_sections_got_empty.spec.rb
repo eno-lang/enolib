@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Expecting sections but getting an empty element' do
+describe 'Expecting sections but getting an ambiguous element' do
   it 'raises the expected ValidationError' do
     input = 'element:'
 

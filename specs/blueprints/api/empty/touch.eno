@@ -1,7 +1,7 @@
-# Asserting everything was touched when the only present empty element was not touched
+# Asserting everything was touched when the only present empty was not touched
 
 -- input
-element:
+empty
 -- input
 
 -- javascript
@@ -28,150 +28,42 @@ This element was not expected, make sure it is at the right place in the documen
 
 -- snippet
    Line | Content
- >    1 | element:
+ >    1 | empty
 -- snippet
 
-selection: [0,0] => [0,8]
+selection: [0,0] => [0,5]
 
-# Asserting everything was touched when the only present empty element was touched
+# Asserting everything was touched when the only present empty was touched
 
 -- input
-element:
+empty
 -- input
 
 -- javascript
 const document = enolib.parse(input);
 
-document.empty('element').touch();
+document.empty('empty').touch();
 document.assertAllTouched();
 -- javascript
 
 -- php
 $document = Enolib\Parser::parse($input);
 
-$document->empty('element')->touch();
+$document->empty('empty')->touch();
 $document->assertAllTouched();
 -- php
 
 -- python
 document = enolib.parse(input)
 
-document.empty('element').touch()
+document.empty('empty').touch()
 document.assert_all_touched()
 -- python
 
 -- ruby
 document = Enolib.parse(input)
 
-document.empty('element').touch
-document.assert_all_touched
--- ruby
-
-## Passes
-
-# Asserting everything was touched when the only present empty element was touched after typecasting to a field
-
--- input
-field:
--- input
-
--- javascript
-const document = enolib.parse(input);
-
-document.field('field').touch();
-document.assertAllTouched();
--- javascript
-
--- php
-$document = Enolib\Parser::parse($input);
-
-$document->field('field')->touch();
-$document->assertAllTouched();
--- php
-
--- python
-document = enolib.parse(input)
-
-document.field('field').touch()
-document.assert_all_touched()
--- python
-
--- ruby
-document = Enolib.parse(input)
-
-document.field('field').touch
-document.assert_all_touched
--- ruby
-
-## Passes
-
-# Asserting everything was touched when the only present empty element was touched after typecasting to a fieldset
-
--- input
-fieldset:
--- input
-
--- javascript
-const document = enolib.parse(input);
-
-document.fieldset('fieldset').touch();
-document.assertAllTouched();
--- javascript
-
--- php
-$document = Enolib\Parser::parse($input);
-
-$document->fieldset('fieldset')->touch();
-$document->assertAllTouched();
--- php
-
--- python
-document = enolib.parse(input)
-
-document.fieldset('fieldset').touch()
-document.assert_all_touched()
--- python
-
--- ruby
-document = Enolib.parse(input)
-
-document.fieldset('fieldset').touch
-document.assert_all_touched
--- ruby
-
-## Passes
-
-# Asserting everything was touched when the only present empty element was touched after typecasting to a list
-
--- input
-list:
--- input
-
--- javascript
-const document = enolib.parse(input);
-
-document.list('list').touch();
-document.assertAllTouched();
--- javascript
-
--- php
-$document = Enolib\Parser::parse($input);
-
-$document->list('list')->touch();
-$document->assertAllTouched();
--- php
-
--- python
-document = enolib.parse(input)
-
-document.list('list').touch()
-document.assert_all_touched()
--- python
-
--- ruby
-document = Enolib.parse(input)
-
-document.list('list').touch
+document.empty('empty').touch
 document.assert_all_touched
 -- ruby
 

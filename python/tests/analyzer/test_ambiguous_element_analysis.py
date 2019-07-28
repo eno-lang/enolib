@@ -9,7 +9,7 @@ key    :
 key:
 """.strip()
 
-def test_empty_element_analysis():
+def test_ambiguous_element_analysis():
     analysis = analyze(input)
 
-    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/empty_element_analysis.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/ambiguous_element_analysis.snap.yaml')

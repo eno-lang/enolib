@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Empty elements correctly parses 1`] = `
+exports[`Elements without values correctly parses 1`] = `
 Object {
   "elements": Array [
     Object {
       "key": "empty",
-      "type": "emptyElement",
+      "type": "fieldOrFieldsetOrList",
     },
     Object {
       "items": Array [
@@ -27,11 +27,11 @@ Object {
     },
     Object {
       "key": "nichts",
-      "type": "emptyElement",
+      "type": "fieldOrFieldsetOrList",
     },
     Object {
       "key": "nada",
-      "type": "emptyElement",
+      "type": "fieldOrFieldsetOrList",
     },
     Object {
       "elements": Array [
@@ -39,11 +39,11 @@ Object {
           "elements": Array [
             Object {
               "key": "void",
-              "type": "emptyElement",
+              "type": "fieldOrFieldsetOrList",
             },
             Object {
               "key": "emptyness",
-              "type": "emptyElement",
+              "type": "fieldOrFieldsetOrList",
             },
             Object {
               "key": "leere",
@@ -80,11 +80,11 @@ Object {
         },
         Object {
           "key": "non",
-          "type": "emptyElement",
+          "type": "fieldOrFieldsetOrList",
         },
         Object {
           "key": "end",
-          "type": "emptyElement",
+          "type": "fieldOrFieldsetOrList",
         },
       ],
       "key": "ningun",

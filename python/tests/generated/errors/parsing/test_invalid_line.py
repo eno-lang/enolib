@@ -6,7 +6,7 @@ def test_a_line_without_operators_raises_the_expected_parseerror():
     input = ("list:\n"
              "- item\n"
              "- item\n"
-             "illegal")
+             ":illegal")
 
     try:
         enolib.parse(input)
@@ -26,11 +26,11 @@ def test_a_line_without_operators_raises_the_expected_parseerror():
                  "   ...\n"
                  "      2 | - item\n"
                  "      3 | - item\n"
-                 " >    4 | illegal")
+                 " >    4 | :illegal")
     
     assert error.snippet == snippet
     
     assert error.selection['from']['line'] == 3
     assert error.selection['from']['column'] == 0
     assert error.selection['to']['line'] == 3
-    assert error.selection['to']['column'] == 7
+    assert error.selection['to']['column'] == 8

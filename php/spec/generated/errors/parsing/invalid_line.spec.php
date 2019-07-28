@@ -7,7 +7,7 @@ describe('A line without operators', function() {
     $input = "list:\n" .
              "- item\n" .
              "- item\n" .
-             "illegal";
+             ":illegal";
 
     try {
       Enolib\Parser::parse($input);
@@ -25,13 +25,13 @@ describe('A line without operators', function() {
                "   ...\n" .
                "      2 | - item\n" .
                "      3 | - item\n" .
-               " >    4 | illegal";
+               " >    4 | :illegal";
     
     expect($error->snippet)->toEqual($snippet);
     
     expect($error->selection['from']['line'])->toEqual(3);
     expect($error->selection['from']['column'])->toEqual(0);
     expect($error->selection['to']['line'])->toEqual(3);
-    expect($error->selection['to']['column'])->toEqual(7);
+    expect($error->selection['to']['column'])->toEqual(8);
   });
 });

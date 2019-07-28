@@ -4,7 +4,7 @@ describe('Empty', () => {
   let empty;
 
   beforeEach(() => {
-    empty = enolib.parse('element:').empty('element');
+    empty = enolib.parse('empty').empty('empty');
   });
 
   it('is untouched after initialization', () => {
@@ -13,13 +13,13 @@ describe('Empty', () => {
 
   describe('raw()', () => {
     it('returns a native object representation', () => {
-      expect(empty.raw()).toEqual({ key: 'element', type: 'emptyElement' });
+      expect(empty.raw()).toEqual({ key: 'empty', type: 'empty' });
     });
   });
 
   describe('toString()', () => {
     it('returns a debug abstraction', () => {
-      expect(empty.toString()).toEqual('[object Empty key=element]');
+      expect(empty.toString()).toEqual('[object Empty key=empty]');
     });
   });
 

@@ -13,7 +13,7 @@ document: &id001
       line: !!python/tuple
       - 0
       - 9
-    type: Empty Element
+    type: Empty
   - key: key
     line: 2
     parent: *id001
@@ -37,7 +37,7 @@ document: &id001
       - 19
       - 27
     template: template
-    type: Empty Element
+    type: Empty
   - key: ke`y
     line: 3
     parent: *id001
@@ -61,7 +61,7 @@ document: &id001
       - 39
       - 47
     template: template
-    type: Empty Element
+    type: Empty
   - key: k``ey
     line: 4
     parent: *id001
@@ -85,7 +85,7 @@ document: &id001
       - 65
       - 73
     template: template
-    type: Empty Element
+    type: Empty
   - key: '`key`'
     line: 5
     parent: *id001
@@ -109,7 +109,7 @@ document: &id001
       - 95
       - 103
     template: template
-    type: Empty Element
+    type: Empty
   - key: key
     line: 6
     parent: *id001
@@ -133,7 +133,7 @@ document: &id001
       - 112
       - 120
     template: template
-    type: Empty Element
+    type: Empty
   type: Document
 line_count: 7
 meta: []

@@ -4,9 +4,9 @@ from ..constants import (
     BEGIN,
     END,
     DOCUMENT,
-    EMPTY_ELEMENT,
     FIELD,
     FIELDSET_ENTRY,
+    FIELD_OR_FIELDSET_OR_LIST,
     LIST_ITEM,
     MULTILINE_FIELD_BEGIN
 )
@@ -60,7 +60,7 @@ class Validation:
         selection_data = {}
 
         if (element['type'] == FIELD or
-            element['type'] == EMPTY_ELEMENT or
+            element['type'] == FIELD_OR_FIELDSET_OR_LIST or
             element['type'] == MULTILINE_FIELD_BEGIN):
             message = context.messages.missing_field_value(element['key'])
 

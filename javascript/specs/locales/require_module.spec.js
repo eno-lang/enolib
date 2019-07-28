@@ -8,7 +8,7 @@ describe('Requiring through public convenience module', () => {
   for(const [locale, messages] of Object.entries(locales)) {
     describe(locale, () => {
       it('provides a working locale', () => {
-        expect(() => enolib.parse('invalid', { locale: messages })).toThrowErrorMatchingSnapshot();
+        expect(() => enolib.parse(':invalid', { locale: messages })).toThrowErrorMatchingSnapshot();
       });
     });
   }

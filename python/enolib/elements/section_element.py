@@ -6,9 +6,10 @@ from . import list as list_module  # don't globally override built-in list funct
 from . import section
 from .element_base import ElementBase
 from ..constants import (
-    EMPTY_ELEMENT,
+    EMPTY,
     FIELD,
     FIELDSET,
+    FIELD_OR_FIELDSET_OR_LIST,
     LIST,
     MULTILINE_FIELD_BEGIN,
     PRETTY_TYPES,
@@ -18,12 +19,6 @@ from ..constants import (
 class SectionElement(ElementBase):
     def __repr__(self):
         return f"<class SectionElement key={self._key()} yields={self._yields()}>"
-
-    def _yields(self):
-        if self._instruction['type'] == EMPTY_ELEMENT:
-            return f"{PRETTY_TYPES[EMPTY_ELEMENT]},{PRETTY_TYPES[FIELD]},{PRETTY_TYPES[FIELDSET]},{PRETTY_TYPES[LIST]}"
-
-        return PRETTY_TYPES[self._instruction['type']]
 
     def _untouched(self):
         if not hasattr(self, '_yielded') and not hasattr(self, '_touched'):
@@ -44,16 +39,19 @@ class SectionElement(ElementBase):
         if hasattr(self, '_section'):
             return self._section._untouched()
 
+    def _yields(self):
+        if self._instruction['type'] == FIELD_OR_FIELDSET_OR_LIST:
+            return f"{PRETTY_TYPES[FIELD]},{PRETTY_TYPES[FIELDSET]},{PRETTY_TYPES[LIST]}"
+
+        return PRETTY_TYPES[self._instruction['type']]
+
     def to_empty(self):
         if not hasattr(self, '_empty'):
-            if hasattr(self, '_yielded'):
-                raise TypeError(f"This element was already yielded as {PRETTY_TYPES[self._yielded]} and can't be yielded again as an empty.")
-
-            if self._instruction['type'] != EMPTY_ELEMENT:
+            if self._instruction['type'] != EMPTY:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_empty')
 
             self._empty = empty.Empty(self._context, self._instruction, self._parent)
-            self._yielded = EMPTY_ELEMENT
+            self._yielded = EMPTY
 
         return self._empty
 
@@ -64,7 +62,7 @@ class SectionElement(ElementBase):
 
             if (self._instruction['type'] != FIELD and
                 self._instruction['type'] != MULTILINE_FIELD_BEGIN and
-                self._instruction['type'] != EMPTY_ELEMENT):
+                self._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST):
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_field')
 
             self._field = field.Field(self._context, self._instruction, self._parent)
@@ -77,7 +75,7 @@ class SectionElement(ElementBase):
             if hasattr(self, '_yielded'):
                 raise TypeError(f"This element was already yielded as {PRETTY_TYPES[self._yielded]} and can't be yielded again as a fieldset.")
 
-            if self._instruction['type'] != FIELDSET and self._instruction['type'] != EMPTY_ELEMENT:
+            if self._instruction['type'] != FIELDSET and self._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_fieldset')
 
             self._fieldset = fieldset.Fieldset(self._context, self._instruction, self._parent)
@@ -90,7 +88,7 @@ class SectionElement(ElementBase):
             if hasattr(self, '_yielded'):
                 raise TypeError(f"This element was already yielded as {PRETTY_TYPES[self._yielded]} and can't be yielded again as a list.")
 
-            if self._instruction['type'] != LIST and self._instruction['type'] != EMPTY_ELEMENT:
+            if self._instruction['type'] != LIST and self._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST:
                 raise Validation.unexpected_element_type(self._context, None, self._instruction, 'expected_list')
 
             self._list = list_module.List(self._context, self._instruction, self._parent)
@@ -123,20 +121,20 @@ class SectionElement(ElementBase):
             self._section.touch()
 
     def yields_empty(self):
-        return self._instruction['type'] == EMPTY_ELEMENT
+        return self._instruction['type'] == EMPTY
 
     def yields_field(self):
         return (self._instruction['type'] == FIELD or
                 self._instruction['type'] == MULTILINE_FIELD_BEGIN or
-                self._instruction['type'] == EMPTY_ELEMENT)
+                self._instruction['type'] == FIELD_OR_FIELDSET_OR_LIST)
 
     def yields_fieldset(self):
         return (self._instruction['type'] == FIELDSET or
-                self._instruction['type'] == EMPTY_ELEMENT)
+                self._instruction['type'] == FIELD_OR_FIELDSET_OR_LIST)
 
     def yields_list(self):
         return (self._instruction['type'] == LIST or
-                self._instruction['type'] == EMPTY_ELEMENT)
+                self._instruction['type'] == FIELD_OR_FIELDSET_OR_LIST)
 
     def yields_section(self):
         return self._instruction['type'] == SECTION

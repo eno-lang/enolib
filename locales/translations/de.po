@@ -16,8 +16,8 @@
 msgid "Document"
 msgstr "Dokument"
 
-msgid "Empty Element"
-msgstr "Leeres Element"
+msgid "Empty"
+msgstr "Leerfeld"
 
 msgid "Field"
 msgstr "Feld"
@@ -97,11 +97,11 @@ msgstr "Es gibt ein Problem mit dem Kommentar dieses Elements: [MESSAGE]"
 msgid "The document was expected."
 msgstr "Das Dokument wurde erwartet."
 
-msgid "An empty element was expected."
-msgstr "Ein leeres Element wurde erwartet."
+msgid "An empty was expected."
+msgstr "Ein Leerfeld wurde erwartet."
 
-msgid "An empty element with the key '[KEY]' was expected."
-msgstr "Ein leeres Element mit dem Schlüssel '[KEY]' wurde erwartet."
+msgid "An empty with the key '[KEY]' was expected."
+msgstr "Ein Leerfeld mit dem Schlüssel '[KEY]' wurde erwartet."
 
 msgid "A field was expected."
 msgstr "Ein Feld wurde erwartet."
@@ -163,11 +163,11 @@ msgstr "Nur ein einzelnes Element wurde erwartet."
 msgid "Only a single element with the key '[KEY]' was expected."
 msgstr "Nur ein einzelnes Element mit dem Schlüssel '[KEY]' wurde erwartet."
 
-msgid "Only a single empty element was expected."
-msgstr "Nur ein einzelnes leeres Element wurde erwartet."
+msgid "Only a single empty was expected."
+msgstr "Nur ein einzelnes Leerfeld wurde erwartet."
 
-msgid "Only a single empty element with the key '[KEY]' was expected."
-msgstr "Nur ein einzelnes leeres Element mit dem Schlüssel '[KEY]' wurde erwartet."
+msgid "Only a single empty with the key '[KEY]' was expected."
+msgstr "Nur ein einzelnes Leerfeld mit dem Schlüssel '[KEY]' wurde erwartet."
 
 msgid "Only a single field was expected."
 msgstr "Nur ein einzelnes Feld wurde erwartet."
@@ -211,11 +211,11 @@ msgstr "Ein einzelnes Element ist erforderlich - es kann einen beliebigen Schlü
 msgid "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Das Element '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
 
-msgid "A single empty element is required - it can have any key."
-msgstr "Ein einzelnes leeres Element ist erforderlich - es kann einen beliebigen Schlüssel haben."
+msgid "A single empty is required - it can have any key."
+msgstr "Ein einzelnes Leerfeld ist erforderlich - es kann einen beliebigen Schlüssel haben."
 
-msgid "The empty element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
-msgstr "Das leere Element '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
+msgid "The empty '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgstr "Das Leerfeld '[KEY]' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
 
 msgid "A single field is required - it can have any key."
 msgstr "Ein einzelnes Feld ist erforderlich - es kann einen beliebigen Schlüssel haben."

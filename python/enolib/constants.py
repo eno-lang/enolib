@@ -9,10 +9,11 @@ END = 1
 COMMENT = 'Comment'
 CONTINUATION = 'Continuation'
 DOCUMENT = 'Document'
-EMPTY_ELEMENT = 'Empty Element'
+EMPTY = 'Empty'
 FIELD = 'Field'
 FIELDSET = 'Fieldset'
 FIELDSET_ENTRY = 'Fieldset Entry'
+FIELD_OR_FIELDSET_OR_LIST = 'Field, Fieldset or List'
 LIST = 'List'
 LIST_ITEM = 'List Item'
 MULTILINE_FIELD_BEGIN = 'Multiline Field Begin'
@@ -23,10 +24,11 @@ UNPARSED = 'Unparsed'
 
 PRETTY_TYPES = {
     DOCUMENT: 'document',
-    EMPTY_ELEMENT: 'empty_element',
+    EMPTY: 'empty',
     FIELD: 'field',
     FIELDSET: 'fieldset',
     FIELDSET_ENTRY: 'fieldset_entry',
+    FIELD_OR_FIELDSET_OR_LIST: 'field_or_fieldset_or_list',
     LIST: 'list',
     LIST_ITEM: 'list_item',
     MULTILINE_FIELD_BEGIN: 'field',

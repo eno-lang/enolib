@@ -10,7 +10,7 @@ module Enolib
     REQUIRED = /(\S[^\n]*?)/.source
 
     #
-    EMPTY = /()/.source
+    EMPTY_LINE = /()/.source
     EMPTY_LINE_INDEX = 1
 
     # | value
@@ -78,7 +78,7 @@ module Enolib
 
     # :
     # : value
-    ELEMENT_OR_FIELD = /(:)[^\S\n]*#{OPTIONAL}/.source
+    FIELD_OR_FIELDSET_OR_LIST = /(:)[^\S\n]*#{OPTIONAL}/.source
     ELEMENT_OPERATOR_INDEX = 23
     FIELD_VALUE_INDEX = 24
 
@@ -94,10 +94,10 @@ module Enolib
     COPY_OPERATOR_INDEX = 27
     TEMPLATE_INDEX = 28
 
-    LATE_DETERMINED = /#{KEY}\s*(?:#{ELEMENT_OR_FIELD}|#{FIELDSET_ENTRY}|#{COPY})/.source
+    LATE_DETERMINED = /#{KEY}\s*(?:#{FIELD_OR_FIELDSET_OR_LIST}|#{FIELDSET_ENTRY}|#{COPY})?/.source
 
-    NOT_EMPTY = /(?:#{EARLY_DETERMINED}|#{LATE_DETERMINED})/.source
+    NON_EMPTY_LINE = /(?:#{EARLY_DETERMINED}|#{LATE_DETERMINED})/.source
 
-    REGEX = /[^\S\n]*(?:#{EMPTY}|#{NOT_EMPTY})[^\S\n]*(?=\n|$)/.freeze
+    REGEX = /[^\S\n]*(?:#{EMPTY_LINE}|#{NON_EMPTY_LINE})[^\S\n]*(?=\n|$)/.freeze
   end
 end

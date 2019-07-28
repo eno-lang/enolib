@@ -272,10 +272,6 @@ SCENARIOS = [
 
   # INVALID_SCENARIOS
   {
-    syntax: 'Invalid',
-    variants: space('Invalid')
-  },
-  {
     syntax: 'Invalid <',
     variants: space('Invalid', '<')
   },
@@ -320,12 +316,12 @@ SCENARIOS = [
     variants: space('---')
   },
   {
-    syntax: "Invalid\nValid:",
-    variants: space('Invalid', "\n", 'Valid', ':')
+    syntax: ": Invalid\nValid:",
+    variants: space(':', 'Invalid', "\n", 'Valid', ':')
   },
   {
-    syntax: "Invalid\nValid:Valid",
-    variants: space('Invalid', "\n", 'Valid', ':', 'Valid')
+    syntax: ": Invalid\nValid:Valid",
+    variants: space(':', 'Invalid', "\n", 'Valid', ':', 'Valid')
   },
 
   # LIST_ITEM_SCENARIOS
@@ -361,7 +357,7 @@ SCENARIOS = [
     variants: space('-', ' ', '-')
   },
 
-  # KEY_SCENARIOS
+  # FIELD_OR_FIELDSET_OR_LIST_SCENARIOS
   {
     captures: {
       Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',

@@ -49,7 +49,7 @@ def test_multiple_sections_with_multiple_cyclical_copy_chains_raises_the_expecte
     assert error.selection['to']['line'] == 9
     assert error.selection['to']['column'] == 27
 
-def test_three_empty_elements_copying_each_other_two_of_them_cyclically_raises_the_expected_parseerror():
+def test_three_ambiguous_elements_copying_each_other_two_of_them_cyclically_raises_the_expected_parseerror():
     error = None
 
     input = ("copy < empty\n"

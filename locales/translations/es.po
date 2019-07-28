@@ -16,7 +16,7 @@
 msgid "Document"
 msgstr "Documento"
 
-msgid "Empty Element"
+msgid "Empty"
 msgstr "Elemento Vacío"
 
 msgid "Field"
@@ -97,10 +97,10 @@ msgstr "Hay un problema con el comentario de este elemento: [MESSAGE]"
 msgid "The document was expected."
 msgstr "Se esperaba el documento."
 
-msgid "An empty element was expected."
+msgid "An empty was expected."
 msgstr "Se esperaba un elemento vacío."
 
-msgid "An empty element with the key '[KEY]' was expected."
+msgid "An empty with the key '[KEY]' was expected."
 msgstr "Se esperaba un elemento vacío con la clave '[KEY]'."
 
 msgid "A field was expected."
@@ -163,10 +163,10 @@ msgstr "Solo se esperaba un único elemento."
 msgid "Only a single element with the key '[KEY]' was expected."
 msgstr "Solo se esperaba un único elemento con la clave '[KEY]'."
 
-msgid "Only a single empty element was expected."
+msgid "Only a single empty was expected."
 msgstr "Solo se esperaba un único elemento vacío."
 
-msgid "Only a single empty element with the key '[KEY]' was expected."
+msgid "Only a single empty with the key '[KEY]' was expected."
 msgstr "Solo se esperaba un único elemento vacío con la clave '[KEY]'."
 
 msgid "Only a single field was expected."
@@ -211,10 +211,10 @@ msgstr "Se requiere un único elemento - puede tener cualquier clave."
 msgid "The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Falta el elemento '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
 
-msgid "A single empty element is required - it can have any key."
+msgid "A single empty is required - it can have any key."
 msgstr "Se requiere un único elemento vacío - puede tener cualquier clave."
 
-msgid "The empty element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
+msgid "The empty '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization."
 msgstr "Falta el elemento vacío '[KEY]' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
 
 msgid "A single field is required - it can have any key."

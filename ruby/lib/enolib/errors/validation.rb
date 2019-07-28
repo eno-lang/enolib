@@ -47,7 +47,7 @@ module Enolib
         selection = {}
 
         if element[:type] == :field ||
-           element[:type] == :empty_element ||
+           element[:type] == :field_or_fieldset_or_list ||
            element[:type] == :multiline_field_begin
           message = context.messages.missing_field_value(element[:key])
 

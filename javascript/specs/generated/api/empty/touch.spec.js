@@ -1,10 +1,10 @@
 const enolib = require('../../../..');
 
-describe('Asserting everything was touched when the only present empty element was not touched', () => {
+describe('Asserting everything was touched when the only present empty was not touched', () => {
   it('throws the expected ValidationError', () => {
     let error = null;
 
-    const input = `element:`;
+    const input = `empty`;
 
     try {
       enolib.parse(input).assertAllTouched()
@@ -23,63 +23,24 @@ describe('Asserting everything was touched when the only present empty element w
     expect(error.text).toEqual(text);
     
     const snippet = `   Line | Content\n` +
-                    ` >    1 | element:`;
+                    ` >    1 | empty`;
     
     expect(error.snippet).toEqual(snippet);
     
     expect(error.selection.from.line).toEqual(0);
     expect(error.selection.from.column).toEqual(0);
     expect(error.selection.to.line).toEqual(0);
-    expect(error.selection.to.column).toEqual(8);
+    expect(error.selection.to.column).toEqual(5);
   });
 });
 
-describe('Asserting everything was touched when the only present empty element was touched', () => {
+describe('Asserting everything was touched when the only present empty was touched', () => {
   it('produces the expected result', () => {
-    const input = `element:`;
+    const input = `empty`;
 
     const document = enolib.parse(input);
     
-    document.empty('element').touch();
-    document.assertAllTouched();
-
-    expect('it passes').toBeTruthy();
-  });
-});
-
-describe('Asserting everything was touched when the only present empty element was touched after typecasting to a field', () => {
-  it('produces the expected result', () => {
-    const input = `field:`;
-
-    const document = enolib.parse(input);
-    
-    document.field('field').touch();
-    document.assertAllTouched();
-
-    expect('it passes').toBeTruthy();
-  });
-});
-
-describe('Asserting everything was touched when the only present empty element was touched after typecasting to a fieldset', () => {
-  it('produces the expected result', () => {
-    const input = `fieldset:`;
-
-    const document = enolib.parse(input);
-    
-    document.fieldset('fieldset').touch();
-    document.assertAllTouched();
-
-    expect('it passes').toBeTruthy();
-  });
-});
-
-describe('Asserting everything was touched when the only present empty element was touched after typecasting to a list', () => {
-  it('produces the expected result', () => {
-    const input = `list:`;
-
-    const document = enolib.parse(input);
-    
-    document.list('list').touch();
+    document.empty('empty').touch();
     document.assertAllTouched();
 
     expect('it passes').toBeTruthy();

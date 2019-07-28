@@ -1,6 +1,6 @@
 const enolib = require('../../../..');
 
-describe('Expecting sections but getting an empty element', () => {
+describe('Expecting sections but getting an ambiguous element', () => {
   it('throws the expected ValidationError', () => {
     let error = null;
 

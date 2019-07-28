@@ -1,13 +1,13 @@
 ---
-"./spec/elements/empty.spec.rb[1:2:3:1]": "my custom generated message for empty element
-  language with value \n\n   Line | Content\n >    1 | language:\n"
+"./spec/elements/empty.spec.rb[1:2:3:1]": "my custom generated message for empty language
+  with value \n\n   Line | Content\n >    1 | language:\n"
 "./spec/elements/empty.spec.rb[1:2:1:1]": |-
   my custom error
 
      Line | Content
-   >    1 | element:
+   >    1 | empty
 "./spec/elements/empty.spec.rb[1:2:2:1]": |-
-  my custom generated message for empty element 'element'
+  my custom generated message for empty 'empty'
 
      Line | Content
-   >    1 | element:
+   >    1 | empty

@@ -1,0 +1,151 @@
+# Querying an existing, single-line, required string comment from an ambiguous element
+
+-- input
+> comment
+ambiguous:
+-- input
+
+-- javascript
+const output = enolib.parse(input).element('ambiguous').requiredStringComment();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->element('ambiguous')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).element('ambiguous').required_string_comment()
+-- python
+
+-- ruby
+output = Enolib.parse(input).element('ambiguous').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+comment
+-- string
+
+# Querying an existing, two-line, required string comment from an ambiguous element
+
+-- input
+>comment
+>  comment
+ambiguous:
+-- input
+
+-- javascript
+const output = enolib.parse(input).element('ambiguous').requiredStringComment();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->element('ambiguous')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).element('ambiguous').required_string_comment()
+-- python
+
+-- ruby
+output = Enolib.parse(input).element('ambiguous').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+comment
+  comment
+-- string
+
+# Querying an existing, required string comment with blank lines from an ambiguous element
+
+-- input
+>
+>     comment
+>
+>   comment
+>
+> comment
+>
+ambiguous:
+-- input
+
+-- javascript
+const output = enolib.parse(input).element('ambiguous').requiredStringComment();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->element('ambiguous')->requiredStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).element('ambiguous').required_string_comment()
+-- python
+
+-- ruby
+output = Enolib.parse(input).element('ambiguous').required_string_comment
+-- ruby
+
+## Result
+
+-- string
+    comment
+
+  comment
+
+comment
+-- string
+
+# Querying an optional, existing string comment from an ambiguous element
+
+-- input
+> comment
+ambiguous:
+-- input
+
+-- javascript
+const output = enolib.parse(input).element('ambiguous').optionalStringComment();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->element('ambiguous')->optionalStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).element('ambiguous').optional_string_comment()
+-- python
+
+-- ruby
+output = Enolib.parse(input).element('ambiguous').optional_string_comment
+-- ruby
+
+## Result
+
+-- string
+comment
+-- string
+
+# Querying an optional, missing string comment from an ambiguous element
+
+-- input
+ambiguous:
+-- input
+
+-- javascript
+const output = enolib.parse(input).element('ambiguous').optionalStringComment();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->element('ambiguous')->optionalStringComment();
+-- php
+
+-- python
+output = enolib.parse(input).element('ambiguous').optional_string_comment()
+-- python
+
+-- ruby
+output = Enolib.parse(input).element('ambiguous').optional_string_comment
+-- ruby
+
+## Nothing

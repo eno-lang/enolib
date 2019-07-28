@@ -5,10 +5,11 @@ const { TextReporter } = require('./reporters/text_reporter.js');
 
 const {
   DOCUMENT,
-  EMPTY_ELEMENT,
+  EMPTY,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
+  FIELD_OR_FIELDSET_OR_LIST,
   LIST,
   LIST_ITEM,
   MULTILINE_FIELD_BEGIN,
@@ -183,7 +184,8 @@ class Context {
     }
 
     switch(element.type) {
-      case EMPTY_ELEMENT:
+      case FIELD_OR_FIELDSET_OR_LIST:  // fall through
+      case EMPTY:
         result.key = element.key;
         break;
       case FIELD:

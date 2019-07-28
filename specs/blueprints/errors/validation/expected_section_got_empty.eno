@@ -1,4 +1,4 @@
-# Expecting a section but getting an empty element
+# Expecting a section but getting an ambiguous element
 
 -- input
 element:

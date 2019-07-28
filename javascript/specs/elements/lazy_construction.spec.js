@@ -3,7 +3,7 @@ const { Field } = require('../../lib/elements/field.js');
 const { Fieldset } = require('../../lib/elements/fieldset.js');
 const { List } = require('../../lib/elements/list.js');
 
-describe('Fetching an empty element through fieldset()', () => {
+describe('Fetching an ambiguous element through fieldset()', () => {
   let fieldset;
 
   beforeEach(() => {
@@ -33,7 +33,7 @@ describe('Fetching an empty element through fieldset()', () => {
   });
 });
 
-describe('Fetching an empty element through fieldsets()', () => {
+describe('Fetching an ambiguous element through fieldsets()', () => {
   let fieldsets;
 
   beforeEach(() => {
@@ -67,7 +67,7 @@ describe('Fetching an empty element through fieldsets()', () => {
   });
 });
 
-describe('Fetching an empty element through fields()', () => {
+describe('Fetching an ambiguous element through fields()', () => {
   let fields;
 
   beforeEach(() => {
@@ -83,7 +83,7 @@ describe('Fetching an empty element through fields()', () => {
   });
 });
 
-describe('Fetching an empty element through lists()', () => {
+describe('Fetching an ambiguous element through lists()', () => {
   let lists;
 
   beforeEach(() => {

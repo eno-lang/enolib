@@ -20,7 +20,7 @@
       - 1
       - 4
     :key: key
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 7
     :line: 1
@@ -41,7 +41,7 @@
       - 9
       - 13
     :key: k`ey
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 17
     :line: 2
@@ -62,7 +62,7 @@
       - 20
       - 25
     :key: ke``y
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 34
     :line: 3
@@ -83,6 +83,6 @@
       - 41
       - 46
     :key: "`key`"
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   :type: :document

@@ -32,7 +32,7 @@ non:
 end:
 `;
 
-describe('Empty elements', () => {
+describe('Elements without values', () => {
   it('correctly parses', () => {
     const doc = parse(sample);
     expect(doc.raw()).toMatchSnapshot();

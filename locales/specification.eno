@@ -21,7 +21,7 @@ es: Spanish
 ## Terminology
 
 Document: Document
-Empty: Empty Element
+Empty: Empty
 Field: Field
 Fieldset: Fieldset
 Fieldset Entry: Fieldset Entry
@@ -81,9 +81,9 @@ MESSAGE = There is a problem with the comment of this element: [MESSAGE]
 
 Expected Document: The document was expected.
 
-Expected Empty: An empty element was expected.
+Expected Empty: An empty was expected.
 Expected Empty With Key:
-KEY = An empty element with the key '[KEY]' was expected.
+KEY = An empty with the key '[KEY]' was expected.
 
 Expected Field: A field was expected.
 Expected Field With Key:
@@ -123,9 +123,9 @@ Expected Single Element: Only a single element was expected.
 Expected Single Element With Key:
 KEY = Only a single element with the key '[KEY]' was expected.
 
-Expected Single Empty: Only a single empty element was expected.
+Expected Single Empty: Only a single empty was expected.
 Expected Single Empty With Key:
-KEY = Only a single empty element with the key '[KEY]' was expected.
+KEY = Only a single empty with the key '[KEY]' was expected.
 
 Expected Single Field: Only a single field was expected.
 Expected Single Field With Key:
@@ -159,10 +159,10 @@ Missing Element: A single element is required - it can have any key.
 Missing Element With Key:
 KEY = The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
-Missing Empty: A single empty element is required - it can have any key.
+Missing Empty: A single empty is required - it can have any key.
 
 Missing Empty With Key:
-KEY = The empty element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+KEY = The empty '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
 
 Missing Field: A single field is required - it can have any key.

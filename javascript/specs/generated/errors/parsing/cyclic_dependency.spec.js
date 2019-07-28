@@ -54,7 +54,7 @@ describe('Multiple sections with multiple cyclical copy chains', () => {
   });
 });
 
-describe('Three empty elements copying each other, two of them cyclically', () => {
+describe('Three ambiguous elements copying each other, two of them cyclically', () => {
   it('throws the expected ParseError', () => {
     let error = null;
 

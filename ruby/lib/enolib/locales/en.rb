@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-05-30T07:54:15 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
     module En
       CONTENT_HEADER = 'Content'
       EXPECTED_DOCUMENT = 'The document was expected.'
-      EXPECTED_EMPTY = 'An empty element was expected.'
+      EXPECTED_EMPTY = 'An empty was expected.'
       EXPECTED_FIELD = 'A field was expected.'
       EXPECTED_FIELDS = 'Only fields were expected.'
       EXPECTED_FIELDSET = 'A fieldset was expected.'
@@ -19,7 +19,7 @@ module Enolib
       EXPECTED_SECTION = 'A section was expected.'
       EXPECTED_SECTIONS = 'Only sections were expected.'
       EXPECTED_SINGLE_ELEMENT = 'Only a single element was expected.'
-      EXPECTED_SINGLE_EMPTY = 'Only a single empty element was expected.'
+      EXPECTED_SINGLE_EMPTY = 'Only a single empty was expected.'
       EXPECTED_SINGLE_FIELD = 'Only a single field was expected.'
       EXPECTED_SINGLE_FIELDSET = 'Only a single fieldset was expected.'
       EXPECTED_SINGLE_FIELDSET_ENTRY = 'Only a single fieldset entry was expected.'
@@ -28,7 +28,7 @@ module Enolib
       GUTTER_HEADER = 'Line'
       MISSING_COMMENT = 'A required comment for this element is missing.'
       MISSING_ELEMENT = 'A single element is required - it can have any key.'
-      MISSING_EMPTY = 'A single empty element is required - it can have any key.'
+      MISSING_EMPTY = 'A single empty is required - it can have any key.'
       MISSING_FIELD = 'A single field is required - it can have any key.'
       MISSING_FIELDSET = 'A single fieldset is required - it can have any key.'
       MISSING_FIELDSET_ENTRY = 'A single fieldset entry is required - it can have any key.'
@@ -37,7 +37,7 @@ module Enolib
       UNEXPECTED_ELEMENT = 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.'
       def self.comment_error(message) "There is a problem with the comment of this element: #{message}" end
       def self.cyclic_dependency(line, key) "In line #{line} '#{key}' is copied into itself." end
-      def self.expected_empty_with_key(key) "An empty element with the key '#{key}' was expected." end
+      def self.expected_empty_with_key(key) "An empty with the key '#{key}' was expected." end
       def self.expected_field_with_key(key) "A field with the key '#{key}' was expected." end
       def self.expected_fields_with_key(key) "Only fields with the key '#{key}' were expected." end
       def self.expected_fieldset_with_key(key) "A fieldset with the key '#{key}' was expected." end
@@ -47,7 +47,7 @@ module Enolib
       def self.expected_section_with_key(key) "A section with the key '#{key}' was expected." end
       def self.expected_sections_with_key(key) "Only sections with the key '#{key}' were expected." end
       def self.expected_single_element_with_key(key) "Only a single element with the key '#{key}' was expected." end
-      def self.expected_single_empty_with_key(key) "Only a single empty element with the key '#{key}' was expected." end
+      def self.expected_single_empty_with_key(key) "Only a single empty with the key '#{key}' was expected." end
       def self.expected_single_field_with_key(key) "Only a single field with the key '#{key}' was expected." end
       def self.expected_single_fieldset_entry_with_key(key) "Only a single fieldset entry with the key '#{key}' was expected." end
       def self.expected_single_fieldset_with_key(key) "Only a single fieldset with the key '#{key}' was expected." end
@@ -57,7 +57,7 @@ module Enolib
       def self.key_error(message) "There is a problem with the key of this element: #{message}" end
       def self.missing_element_for_continuation(line) "Line #{line} contains a line continuation without a continuable element being specified before." end
       def self.missing_element_with_key(key) "The element '#{key}' is missing - in case it has been specified look for typos and also check for correct capitalization." end
-      def self.missing_empty_with_key(key) "The empty element '#{key}' is missing - in case it has been specified look for typos and also check for correct capitalization." end
+      def self.missing_empty_with_key(key) "The empty '#{key}' is missing - in case it has been specified look for typos and also check for correct capitalization." end
       def self.missing_field_value(key) "The field '#{key}' must contain a value." end
       def self.missing_field_with_key(key) "The field '#{key}' is missing - in case it has been specified look for typos and also check for correct capitalization." end
       def self.missing_fieldset_entry_value(key) "The fieldset entry '#{key}' must contain a value." end

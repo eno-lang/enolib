@@ -37,7 +37,7 @@ In line 10 'section_1' is copied into itself.
 
 selection: [9,18] => [9,27]
 
-# Three empty elements copying each other, two of them cyclically
+# Three ambiguous elements copying each other, two of them cyclically
 
 -- input
 copy < empty

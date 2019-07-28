@@ -4,11 +4,12 @@ const {
   COMMENT,
   CONTINUATION,
   DOCUMENT,
-  EMPTY_ELEMENT,
+  EMPTY,
   END,
   FIELD,
   FIELDSET,
   FIELDSET_ENTRY,
+  FIELD_OR_FIELDSET_OR_LIST,
   LIST,
   LIST_ITEM,
   MULTILINE_FIELD_BEGIN,
@@ -146,7 +147,7 @@ exports.analyze = function() {
         const valueIndex = this._input.indexOf(value, elementOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + value.length];
       } else {
-        instruction.type = EMPTY_ELEMENT;
+        instruction.type = FIELD_OR_FIELDSET_OR_LIST;
       }
 
       instruction.parent = lastSection;
@@ -179,7 +180,7 @@ exports.analyze = function() {
         throw errors.missingListForListItem(this, instruction);
       } else if(lastNonSectionElement.type === LIST) {
         lastNonSectionElement.items.push(instruction);
-      } else if(lastNonSectionElement.type === EMPTY_ELEMENT) {
+      } else if(lastNonSectionElement.type === FIELD_OR_FIELDSET_OR_LIST) {
         lastNonSectionElement.items = [instruction];
         lastNonSectionElement.type = LIST;
       } else {
@@ -239,7 +240,7 @@ exports.analyze = function() {
         throw errors.missingFieldsetForFieldsetEntry(this, instruction);
       } else if(lastNonSectionElement.type === FIELDSET) {
         lastNonSectionElement.entries.push(instruction);
-      } else if(lastNonSectionElement.type === EMPTY_ELEMENT) {
+      } else if(lastNonSectionElement.type === FIELD_OR_FIELDSET_OR_LIST) {
         lastNonSectionElement.entries = [instruction];
         lastNonSectionElement.type = FIELDSET;
       } else {
@@ -272,7 +273,7 @@ exports.analyze = function() {
         throw errors.missingElementForContinuation(this, instruction);
       }
 
-      if(lastContinuableElement.type === EMPTY_ELEMENT) {
+      if(lastContinuableElement.type === FIELD_OR_FIELDSET_OR_LIST) {
         lastContinuableElement.continuations = [instruction];
         lastContinuableElement.type = FIELD;
       } else {
@@ -306,7 +307,7 @@ exports.analyze = function() {
         throw errors.missingElementForContinuation(this, instruction);
       }
 
-      if(lastContinuableElement.type === EMPTY_ELEMENT) {
+      if(lastContinuableElement.type === FIELD_OR_FIELDSET_OR_LIST) {
         lastContinuableElement.continuations = [instruction];
         lastContinuableElement.type = FIELD;
       } else {
@@ -502,7 +503,7 @@ exports.analyze = function() {
       }
 
       instruction.template = match[matcher.TEMPLATE_INDEX]; // TODO: We can possibly make this ephemeral (local variable) because the new copyData reference replaces its function
-      instruction.type = EMPTY_ELEMENT;
+      instruction.type = FIELD_OR_FIELDSET_OR_LIST;
 
       let copyOperatorIndex;
 
@@ -567,6 +568,49 @@ exports.analyze = function() {
       } else {
         instruction.comment = null;
       }
+
+    } else if(match[matcher.KEY_UNESCAPED_INDEX] !== undefined) {
+
+      if(comments) {
+        instruction.comments = comments;
+        comments = null;
+      }
+
+      instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
+      instruction.type = EMPTY;
+
+      const keyIndex = this._input.indexOf(instruction.key, index);
+
+      instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
+
+      instruction.parent = lastSection;
+      lastSection.elements.push(instruction);
+      lastContinuableElement = null;
+      lastNonSectionElement = instruction;
+
+    } else if(match[matcher.KEY_ESCAPED_INDEX] !== undefined) {
+
+      if(comments) {
+        instruction.comments = comments;
+        comments = null;
+      }
+
+      instruction.key = match[matcher.KEY_ESCAPED_INDEX];
+      instruction.type = EMPTY;
+
+      const escapeOperator = match[matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
+      const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
+      const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
+      const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
+
+      instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
+      instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
+      instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
+
+      instruction.parent = lastSection;
+      lastSection.elements.push(instruction);
+      lastContinuableElement = null;
+      lastNonSectionElement = instruction;
 
     }
 

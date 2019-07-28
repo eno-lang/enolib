@@ -3,14 +3,14 @@
 exports[`Parser options source is printed in html reports if provided 1`] = `
 "Line 1 does not follow any specified pattern.
 
-<div><div>/some/dubious-file.eno</div><pre class=\\"eno-report\\"><div class=\\"eno-report-line \\"><div class=\\"eno-report-gutter\\">      Line</div><div class=\\"eno-report-content\\">Content</div></div><div class=\\"eno-report-line eno-report-line-emphasized\\"><div class=\\"eno-report-gutter\\">         1</div><div class=\\"eno-report-content\\">boom!</div></div></pre></div>"
+<div><div>/some/dubious-file.eno</div><pre class=\\"eno-report\\"><div class=\\"eno-report-line \\"><div class=\\"eno-report-gutter\\">      Line</div><div class=\\"eno-report-content\\">Content</div></div><div class=\\"eno-report-line eno-report-line-emphasized\\"><div class=\\"eno-report-gutter\\">         1</div><div class=\\"eno-report-content\\">:invalid</div></div></pre></div>"
 `;
 
 exports[`Parser options source is printed in terminal reports if provided 1`] = `
 "Line 1 does not follow any specified pattern.
 
 [30m[101m >      [0m [1m/some/dubious-file.eno[0m
-[30m[101m >    1 [0m [90mboom![0m"
+[30m[101m >    1 [0m [90m:invalid[0m"
 `;
 
 exports[`Parser options source is printed in text reports if provided 1`] = `
@@ -19,5 +19,5 @@ exports[`Parser options source is printed in text reports if provided 1`] = `
 -- /some/dubious-file.eno --
 
    Line | Content
- >    1 | boom!"
+ >    1 | :invalid"
 `;

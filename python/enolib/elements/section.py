@@ -9,9 +9,10 @@ from .missing import missing_section
 from .missing import missing_section_element
 from ..constants import (
     DOCUMENT,
-    EMPTY_ELEMENT,
+    EMPTY,
     FIELD,
     FIELDSET,
+    FIELD_OR_FIELDSET_OR_LIST,
     LIST,
     MULTILINE_FIELD_BEGIN,
     SECTION
@@ -91,7 +92,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != EMPTY_ELEMENT:
+        if element._instruction['type'] != EMPTY:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_empty')
 
         return element.to_empty()
@@ -125,7 +126,7 @@ class Section(ElementBase):
 
         if (element._instruction['type'] != FIELD and
             element._instruction['type'] != MULTILINE_FIELD_BEGIN and
-            element._instruction['type'] != EMPTY_ELEMENT):
+            element._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST):
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_field')
 
         return element.to_field()
@@ -157,7 +158,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != FIELDSET and element._instruction['type'] != EMPTY_ELEMENT:
+        if element._instruction['type'] != FIELDSET and element._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_fieldset')
 
         return element.to_fieldset()
@@ -209,7 +210,7 @@ class Section(ElementBase):
 
         element = elements[0]
 
-        if element._instruction['type'] != LIST and element._instruction['type'] != EMPTY_ELEMENT:
+        if element._instruction['type'] != LIST and element._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST:
             raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_list')
 
         return element.to_list()
@@ -324,7 +325,7 @@ class Section(ElementBase):
         def cast(element):
             if (element._instruction['type'] != FIELD and
                 element._instruction['type'] != MULTILINE_FIELD_BEGIN and
-                element._instruction['type'] != EMPTY_ELEMENT):
+                element._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST):
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_fields')
 
             return element.to_field()
@@ -344,7 +345,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         def cast(element):
-            if element._instruction['type'] != FIELDSET and element._instruction['type'] != EMPTY_ELEMENT:
+            if element._instruction['type'] != FIELDSET and element._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST:
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_fieldsets')
 
             return element.to_fieldset()
@@ -364,7 +365,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         def cast(element):
-            if element._instruction['type'] != LIST and element._instruction['type'] != EMPTY_ELEMENT:
+            if element._instruction['type'] != LIST and element._instruction['type'] != FIELD_OR_FIELDSET_OR_LIST:
                 raise Validation.unexpected_element_type(self._context, key, element._instruction, 'expected_lists')
 
             return element.to_list()

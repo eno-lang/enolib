@@ -50,7 +50,7 @@ describe('Multiple sections with multiple cyclical copy chains', function() {
   });
 });
 
-describe('Three empty elements copying each other, two of them cyclically', function() {
+describe('Three ambiguous elements copying each other, two of them cyclically', function() {
   it('throws the expected ParseError', function() {
     $error = null;
 

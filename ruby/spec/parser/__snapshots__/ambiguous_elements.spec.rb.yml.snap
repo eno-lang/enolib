@@ -1,5 +1,5 @@
 ---
-"./spec/parser/empty_elements.spec.rb[1:1:1]": &1
+"./spec/parser/ambiguous_elements.spec.rb[1:1:1]": &1
   :elements:
   - :index: 0
     :line: 0
@@ -14,7 +14,7 @@
       - 0
       - 3
     :key: key
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 5
     :line: 1
@@ -29,7 +29,7 @@
       - 5
       - 13
     :key: long key
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 15
     :line: 2
@@ -44,7 +44,7 @@
       - 19
       - 22
     :key: key
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 24
     :line: 3
@@ -59,6 +59,6 @@
       - 28
       - 31
     :key: key
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   :type: :document

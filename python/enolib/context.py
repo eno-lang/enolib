@@ -6,10 +6,11 @@ from .resolver import Resolver
 from .constants import (
     BEGIN,
     DOCUMENT,
-    EMPTY_ELEMENT,
+    EMPTY,
     FIELD,
     FIELDSET,
     FIELDSET_ENTRY,
+    FIELD_OR_FIELDSET_OR_LIST,
     LIST,
     LIST_ITEM,
     MULTILINE_FIELD_BEGIN,
@@ -151,7 +152,7 @@ class Context:
         if 'comments' in element:
             result['comment'] = self.comment(element)
 
-        if element['type'] == EMPTY_ELEMENT:
+        if element['type'] == FIELD_OR_FIELDSET_OR_LIST or element['type'] == EMPTY:
             result['key'] = element['key']
         elif element['type'] == FIELD:
             result['key'] = element['key']

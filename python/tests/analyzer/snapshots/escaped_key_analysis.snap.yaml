@@ -19,7 +19,7 @@ document: &id001
       line: !!python/tuple
       - 0
       - 6
-    type: Empty Element
+    type: Field, Fieldset or List
   - key: k`ey
     line: 2
     parent: *id001
@@ -39,7 +39,7 @@ document: &id001
       line: !!python/tuple
       - 8
       - 17
-    type: Empty Element
+    type: Field, Fieldset or List
   - key: ke``y
     line: 4
     parent: *id001
@@ -59,7 +59,7 @@ document: &id001
       line: !!python/tuple
       - 19
       - 35
-    type: Empty Element
+    type: Field, Fieldset or List
   - key: '`key`'
     line: 6
     parent: *id001
@@ -79,7 +79,7 @@ document: &id001
       line: !!python/tuple
       - 37
       - 57
-    type: Empty Element
+    type: Field, Fieldset or List
   - key: key
     line: 8
     parent: *id001
@@ -99,7 +99,7 @@ document: &id001
       line: !!python/tuple
       - 59
       - 65
-    type: Empty Element
+    type: Field, Fieldset or List
   type: Document
 line_count: 9
 meta: []

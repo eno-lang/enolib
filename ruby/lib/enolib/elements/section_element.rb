@@ -18,17 +18,13 @@ module Enolib
 
     def to_empty
       unless instance_variable_defined?(:@empty)
-        if instance_variable_defined?(:@yielded)
-          raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as an empty."
-        end
-
-        unless @instruction[:type] == :empty_element
+        unless @instruction[:type] == :empty
           # TODO: Below and in all implementations - why nil for key as second parameter?
           raise Errors::Validation.unexpected_element_type(@context, nil, @instruction, 'expected_empty')
         end
 
         @empty = Empty.new(@context, @instruction, @parent)
-        @yielded = :empty_element
+        @yielded = :empty
       end
 
       @empty
@@ -42,7 +38,7 @@ module Enolib
 
         unless @instruction[:type] == :field ||
                @instruction[:type] == :multiline_field_begin ||
-               @instruction[:type] == :empty_element
+               @instruction[:type] == :field_or_fieldset_or_list
           raise Errors::Validation.unexpected_element_type(@context, nil, @instruction, 'expected_field')
         end
 
@@ -59,7 +55,7 @@ module Enolib
           raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a fieldset."
         end
 
-        unless @instruction[:type] == :fieldset || @instruction[:type] == :empty_element
+        unless @instruction[:type] == :fieldset || @instruction[:type] == :field_or_fieldset_or_list
           raise Errors::Validation.unexpected_element_type(@context, nil, @instruction, 'expected_fieldset')
         end
 
@@ -76,7 +72,7 @@ module Enolib
           raise TypeError, "This element was already yielded as #{PRETTY_TYPES[@yielded]} and can't be yielded again as a list."
         end
 
-        unless @instruction[:type] == :list || @instruction[:type] == :empty_element
+        unless @instruction[:type] == :list || @instruction[:type] == :field_or_fieldset_or_list
           raise Errors::Validation.unexpected_element_type(@context, nil, @instruction, 'expected_list')
         end
 
@@ -122,23 +118,23 @@ module Enolib
     end
 
     def yields_empty?
-      @instruction[:type] == :empty_element
+      @instruction[:type] == :empty
     end
 
     def yields_field?
       @instruction[:type] == :field ||
       @instruction[:type] == :multiline_field_begin ||
-      @instruction[:type] == :empty_element
+      @instruction[:type] == :field_or_fieldset_or_list
     end
 
     def yields_fieldset?
       @instruction[:type] == :fieldset ||
-      @instruction[:type] == :empty_element
+      @instruction[:type] == :field_or_fieldset_or_list
     end
 
     def yields_list?
       @instruction[:type] == :list ||
-      @instruction[:type] == :empty_element
+      @instruction[:type] == :field_or_fieldset_or_list
     end
 
     def yields_section?
@@ -148,8 +144,8 @@ module Enolib
     private
 
     def _yields
-      if @instruction[:type] == :empty_element
-          return "#{PRETTY_TYPES[:empty_element]},#{PRETTY_TYPES[:field]},#{PRETTY_TYPES[:fieldset]},#{PRETTY_TYPES[:list]}"
+      if @instruction[:type] == :field_or_fieldset_or_list
+          return "#{PRETTY_TYPES[:field]},#{PRETTY_TYPES[:fieldset]},#{PRETTY_TYPES[:list]}"
       end
 
       PRETTY_TYPES[@instruction[:type]]

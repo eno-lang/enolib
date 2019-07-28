@@ -1,11 +1,11 @@
 const enolib = require('../../../..');
 
-describe('Querying an existing, single-line, required string comment from an empty element', () => {
+describe('Querying an existing, single-line, required string comment from an empty', () => {
   it('produces the expected result', () => {
     const input = `> comment\n` +
-                  `element:`;
+                  `empty`;
 
-    const output = enolib.parse(input).element('element').requiredStringComment();
+    const output = enolib.parse(input).empty('empty').requiredStringComment();
 
     const expected = `comment`;
     
@@ -13,13 +13,13 @@ describe('Querying an existing, single-line, required string comment from an emp
   });
 });
 
-describe('Querying an existing, two-line, required string comment from an empty element', () => {
+describe('Querying an existing, two-line, required string comment from an empty', () => {
   it('produces the expected result', () => {
     const input = `>comment\n` +
                   `>  comment\n` +
-                  `element:`;
+                  `empty`;
 
-    const output = enolib.parse(input).element('element').requiredStringComment();
+    const output = enolib.parse(input).empty('empty').requiredStringComment();
 
     const expected = `comment\n` +
                      `  comment`;
@@ -28,7 +28,7 @@ describe('Querying an existing, two-line, required string comment from an empty 
   });
 });
 
-describe('Querying an existing, required string comment with blank lines from an empty element', () => {
+describe('Querying an existing, required string comment with blank lines from an empty', () => {
   it('produces the expected result', () => {
     const input = `>\n` +
                   `>     comment\n` +
@@ -37,9 +37,9 @@ describe('Querying an existing, required string comment with blank lines from an
                   `>\n` +
                   `> comment\n` +
                   `>\n` +
-                  `element:`;
+                  `empty`;
 
-    const output = enolib.parse(input).element('element').requiredStringComment();
+    const output = enolib.parse(input).empty('empty').requiredStringComment();
 
     const expected = `    comment\n` +
                      `\n` +
@@ -51,12 +51,12 @@ describe('Querying an existing, required string comment with blank lines from an
   });
 });
 
-describe('Querying an optional, existing string comment from an empty element', () => {
+describe('Querying an optional, existing string comment from an empty', () => {
   it('produces the expected result', () => {
     const input = `> comment\n` +
-                  `element:`;
+                  `empty`;
 
-    const output = enolib.parse(input).element('element').optionalStringComment();
+    const output = enolib.parse(input).empty('empty').optionalStringComment();
 
     const expected = `comment`;
     
@@ -64,11 +64,11 @@ describe('Querying an optional, existing string comment from an empty element', 
   });
 });
 
-describe('Querying an optional, missing string comment from an empty element', () => {
+describe('Querying an optional, missing string comment from an empty', () => {
   it('produces the expected result', () => {
-    const input = `element:`;
+    const input = `empty`;
 
-    const output = enolib.parse(input).element('element').optionalStringComment();
+    const output = enolib.parse(input).empty('empty').optionalStringComment();
 
     expect(output).toBeNull();
   });

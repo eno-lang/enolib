@@ -4,7 +4,7 @@ const OPTIONAL = '([^\\n]+?)?';
 const REQUIRED = '(\\S[^\\n]*?)';
 
 //
-const EMPTY = '()';
+const EMPTY_LINE = '()';
 exports.EMPTY_LINE_INDEX = 1;
 
 // | value
@@ -72,7 +72,7 @@ const KEY = `(?:${KEY_UNESCAPED}|${KEY_ESCAPED})`;
 
 // :
 // : value
-const ELEMENT_OR_FIELD = `(:)[^\\S\\n]*${OPTIONAL}`;
+const FIELD_OR_FIELDSET_OR_LIST = `(:)[^\\S\\n]*${OPTIONAL}`;
 exports.ELEMENT_OPERATOR_INDEX = 21;
 exports.FIELD_VALUE_INDEX = 22;
 
@@ -86,8 +86,8 @@ exports.FIELDSET_ENTRY_VALUE_INDEX = 24;
 const TEMPLATE = `<\\s*${REQUIRED}`;
 exports.TEMPLATE_INDEX = 25;
 
-const LATE_DETERMINED = `${KEY}\\s*(?:${ELEMENT_OR_FIELD}|${FIELDSET_ENTRY}|${TEMPLATE})`;
+const LATE_DETERMINED = `${KEY}\\s*(?:${FIELD_OR_FIELDSET_OR_LIST}|${FIELDSET_ENTRY}|${TEMPLATE})?`;
 
-const NOT_EMPTY = `(?:${EARLY_DETERMINED}|${LATE_DETERMINED})`;
+const NON_EMPTY_LINE = `(?:${EARLY_DETERMINED}|${LATE_DETERMINED})`;
 
-exports.GRAMMAR_REGEXP = new RegExp(`[^\\S\\n]*(?:${EMPTY}|${NOT_EMPTY})[^\\S\\n]*(?=\\n|$)`, 'y');
+exports.GRAMMAR_REGEXP = new RegExp(`[^\\S\\n]*(?:${EMPTY_LINE}|${NON_EMPTY_LINE})[^\\S\\n]*(?=\\n|$)`, 'y');

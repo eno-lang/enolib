@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-05-30T07:54:15 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
     module De
       CONTENT_HEADER = 'Inhalt'
       EXPECTED_DOCUMENT = 'Das Dokument wurde erwartet.'
-      EXPECTED_EMPTY = 'Ein leeres Element wurde erwartet.'
+      EXPECTED_EMPTY = 'Ein Leerfeld wurde erwartet.'
       EXPECTED_FIELD = 'Ein Feld wurde erwartet.'
       EXPECTED_FIELDS = 'Nur Felder wurden erwartet.'
       EXPECTED_FIELDSET = 'Ein Fieldset wurde erwartet.'
@@ -19,7 +19,7 @@ module Enolib
       EXPECTED_SECTION = 'Eine Sektion wurde erwartet.'
       EXPECTED_SECTIONS = 'Nur Sektionen wurden erwartet.'
       EXPECTED_SINGLE_ELEMENT = 'Nur ein einzelnes Element wurde erwartet.'
-      EXPECTED_SINGLE_EMPTY = 'Nur ein einzelnes leeres Element wurde erwartet.'
+      EXPECTED_SINGLE_EMPTY = 'Nur ein einzelnes Leerfeld wurde erwartet.'
       EXPECTED_SINGLE_FIELD = 'Nur ein einzelnes Feld wurde erwartet.'
       EXPECTED_SINGLE_FIELDSET = 'Nur ein einzelnes Fieldset wurde erwartet.'
       EXPECTED_SINGLE_FIELDSET_ENTRY = 'Nur ein einzelner Fieldset Eintrag wurde erwartet.'
@@ -28,7 +28,7 @@ module Enolib
       GUTTER_HEADER = 'Zeile'
       MISSING_COMMENT = 'Ein erforderlicher Kommentar zu diesem Feld fehlt.'
       MISSING_ELEMENT = 'Ein einzelnes Element ist erforderlich - es kann einen beliebigen Schlüssel haben.'
-      MISSING_EMPTY = 'Ein einzelnes leeres Element ist erforderlich - es kann einen beliebigen Schlüssel haben.'
+      MISSING_EMPTY = 'Ein einzelnes Leerfeld ist erforderlich - es kann einen beliebigen Schlüssel haben.'
       MISSING_FIELD = 'Ein einzelnes Feld ist erforderlich - es kann einen beliebigen Schlüssel haben.'
       MISSING_FIELDSET = 'Ein einzelnes Fieldset ist erforderlich - es kann einen beliebigen Schlüssel haben.'
       MISSING_FIELDSET_ENTRY = 'Ein einzelner Fieldset Eintrag ist erforderlich - er kann einen beliebigen Schlüssel haben.'
@@ -37,7 +37,7 @@ module Enolib
       UNEXPECTED_ELEMENT = 'Dieses Element wurde nicht erwartet, prüfe ob es am richtigen Platz ist und dass der Schlüssel keine Tippfehler enthält.'
       def self.comment_error(message) "Es gibt ein Problem mit dem Kommentar dieses Elements: #{message}" end
       def self.cyclic_dependency(line, key) "In Zeile #{line} wird '#{key}' in sich selbst kopiert." end
-      def self.expected_empty_with_key(key) "Ein leeres Element mit dem Schlüssel '#{key}' wurde erwartet." end
+      def self.expected_empty_with_key(key) "Ein Leerfeld mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_field_with_key(key) "Ein Feld mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_fields_with_key(key) "Nur Felder mit dem Schlüssel '#{key}' wurden erwartet." end
       def self.expected_fieldset_with_key(key) "Ein Fieldset mit dem Schlüssel '#{key}' wurde erwartet." end
@@ -47,7 +47,7 @@ module Enolib
       def self.expected_section_with_key(key) "Eine Sektion mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_sections_with_key(key) "Nur Sektionen mit dem Schlüssel '#{key}' wurden erwartet." end
       def self.expected_single_element_with_key(key) "Nur ein einzelnes Element mit dem Schlüssel '#{key}' wurde erwartet." end
-      def self.expected_single_empty_with_key(key) "Nur ein einzelnes leeres Element mit dem Schlüssel '#{key}' wurde erwartet." end
+      def self.expected_single_empty_with_key(key) "Nur ein einzelnes Leerfeld mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_single_field_with_key(key) "Nur ein einzelnes Feld mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_single_fieldset_entry_with_key(key) "Nur ein einzelner Fieldset Eintrag mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_single_fieldset_with_key(key) "Nur ein einzelnes Fieldset mit dem Schlüssel '#{key}' wurde erwartet." end
@@ -57,7 +57,7 @@ module Enolib
       def self.key_error(message) "Es gibt ein Problem mit dem Schlüssel dieses Elements: #{message}" end
       def self.missing_element_for_continuation(line) "Zeile #{line} enthält eine Zeilenfortsetzung ohne dass davor ein fortsetzbares Element begonnen wurde." end
       def self.missing_element_with_key(key) "Das Element '#{key}' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten." end
-      def self.missing_empty_with_key(key) "Das leere Element '#{key}' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten." end
+      def self.missing_empty_with_key(key) "Das Leerfeld '#{key}' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten." end
       def self.missing_field_value(key) "Das Feld '#{key}' muss einen Wert enthalten." end
       def self.missing_field_with_key(key) "Das Feld '#{key}' fehlt - falls es angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten." end
       def self.missing_fieldset_entry_value(key) "Der Fieldset Eintrag '#{key}' muss einen Wert enthalten." end

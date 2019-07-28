@@ -44,7 +44,7 @@ describe 'Multiple sections with multiple cyclical copy chains' do
   end
 end
 
-describe 'Three empty elements copying each other, two of them cyclically' do
+describe 'Three ambiguous elements copying each other, two of them cyclically' do
   it 'raises the expected ParseError' do
     input = "copy < empty\n" \
             "empty < cyclic\n" \

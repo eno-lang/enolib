@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-describe('Asserting everything was touched when the only present empty element was not touched', function() {
+describe('Asserting everything was touched when the only present empty was not touched', function() {
   it('throws the expected ValidationError', function() {
     $error = null;
 
-    $input = "element:";
+    $input = "empty";
 
     try {
       Enolib\Parser::parse($input)->assertAllTouched();
@@ -19,63 +19,24 @@ describe('Asserting everything was touched when the only present empty element w
     expect($error->text)->toEqual($text);
     
     $snippet = "   Line | Content\n" .
-               " >    1 | element:";
+               " >    1 | empty";
     
     expect($error->snippet)->toEqual($snippet);
     
     expect($error->selection['from']['line'])->toEqual(0);
     expect($error->selection['from']['column'])->toEqual(0);
     expect($error->selection['to']['line'])->toEqual(0);
-    expect($error->selection['to']['column'])->toEqual(8);
+    expect($error->selection['to']['column'])->toEqual(5);
   });
 });
 
-describe('Asserting everything was touched when the only present empty element was touched', function() {
+describe('Asserting everything was touched when the only present empty was touched', function() {
   it('produces the expected result', function() {
-    $input = "element:";
+    $input = "empty";
 
     $document = Enolib\Parser::parse($input);
     
-    $document->empty('element')->touch();
-    $document->assertAllTouched();
-
-    expect('it passes')->toBeTruthy();
-  });
-});
-
-describe('Asserting everything was touched when the only present empty element was touched after typecasting to a field', function() {
-  it('produces the expected result', function() {
-    $input = "field:";
-
-    $document = Enolib\Parser::parse($input);
-    
-    $document->field('field')->touch();
-    $document->assertAllTouched();
-
-    expect('it passes')->toBeTruthy();
-  });
-});
-
-describe('Asserting everything was touched when the only present empty element was touched after typecasting to a fieldset', function() {
-  it('produces the expected result', function() {
-    $input = "fieldset:";
-
-    $document = Enolib\Parser::parse($input);
-    
-    $document->fieldset('fieldset')->touch();
-    $document->assertAllTouched();
-
-    expect('it passes')->toBeTruthy();
-  });
-});
-
-describe('Asserting everything was touched when the only present empty element was touched after typecasting to a list', function() {
-  it('produces the expected result', function() {
-    $input = "list:";
-
-    $document = Enolib\Parser::parse($input);
-    
-    $document->list('list')->touch();
+    $document->empty('empty')->touch();
     $document->assertAllTouched();
 
     expect('it passes')->toBeTruthy();

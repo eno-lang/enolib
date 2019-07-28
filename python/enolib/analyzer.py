@@ -6,11 +6,12 @@ from .constants import (
     COMMENT,
     CONTINUATION,
     DOCUMENT,
-    EMPTY_ELEMENT,
+    EMPTY,
     END,
     FIELD,
     FIELDSET,
     FIELDSET_ENTRY,
+    FIELD_OR_FIELDSET_OR_LIST,
     LIST,
     LIST_ITEM,
     MULTILINE_FIELD_BEGIN,
@@ -111,12 +112,12 @@ class Analyzer:
 
                 value = match.group(Grammar.FIELD_VALUE_INDEX)
 
-                if value is None:
-                    instruction['type'] = EMPTY_ELEMENT
-                else:
+                if value:
                     instruction['type'] = FIELD
                     instruction['value'] = value
                     instruction['ranges']['value'] = match.span(Grammar.FIELD_VALUE_INDEX)
+                else:
+                    instruction['type'] = FIELD_OR_FIELDSET_OR_LIST
 
                 instruction['parent'] = last_section
                 last_section['elements'].append(instruction)
@@ -143,7 +144,7 @@ class Analyzer:
                     raise Parsing.missing_list_for_list_item(self._context, instruction)
                 elif last_non_section_element['type'] == LIST:
                     last_non_section_element['items'].append(instruction)
-                elif last_non_section_element['type'] == EMPTY_ELEMENT:
+                elif last_non_section_element['type'] == FIELD_OR_FIELDSET_OR_LIST:
                     last_non_section_element['items'] = [instruction]
                     last_non_section_element['type'] = LIST
                 else:
@@ -185,7 +186,7 @@ class Analyzer:
                     raise Parsing.missing_fieldset_for_fieldset_entry(self._context, instruction)
                 elif last_non_section_element['type'] == FIELDSET:
                     last_non_section_element['entries'].append(instruction)
-                elif last_non_section_element['type'] == EMPTY_ELEMENT:
+                elif last_non_section_element['type'] == FIELD_OR_FIELDSET_OR_LIST:
                     last_non_section_element['entries'] = [instruction]
                     last_non_section_element['type'] = FIELDSET
                 else:
@@ -214,7 +215,7 @@ class Analyzer:
                 if 'continuations' in last_continuable_element:
                     last_continuable_element['continuations'].append(instruction)
                 else:
-                    if last_continuable_element['type'] == EMPTY_ELEMENT:
+                    if last_continuable_element['type'] == FIELD_OR_FIELDSET_OR_LIST:
                         last_continuable_element['type'] = FIELD
 
                     last_continuable_element['continuations'] = [instruction]
@@ -241,7 +242,7 @@ class Analyzer:
                 if 'continuations' in last_continuable_element:
                     last_continuable_element['continuations'].append(instruction)
                 else:
-                    if last_continuable_element['type'] == EMPTY_ELEMENT:
+                    if last_continuable_element['type'] == FIELD_OR_FIELDSET_OR_LIST:
                         last_continuable_element['type'] = FIELD
 
                     last_continuable_element['continuations'] = [instruction]
@@ -436,7 +437,7 @@ class Analyzer:
                 instruction['ranges']['copy_operator'] = match.span(Grammar.COPY_OPERATOR_INDEX)
                 instruction['ranges']['template'] = match.span(Grammar.TEMPLATE_INDEX)
                 instruction['template'] = template
-                instruction['type'] = EMPTY_ELEMENT
+                instruction['type'] = FIELD_OR_FIELDSET_OR_LIST
 
                 instruction['key'] = match.group(Grammar.KEY_UNESCAPED_INDEX)
 
@@ -462,6 +463,39 @@ class Analyzer:
                     self._context._copy_non_section_elements[template] = { 'targets': [instruction] }
 
                 instruction['copy'] = self._context._copy_non_section_elements[template]
+
+            elif match.group(Grammar.KEY_UNESCAPED_INDEX) is not None:
+
+                if comments is not None:
+                    instruction['comments'] = comments
+                    comments = None
+
+                instruction['key'] = match.group(Grammar.KEY_UNESCAPED_INDEX)
+                instruction['ranges']['key'] = match.span(Grammar.KEY_ESCAPED_INDEX)
+                instruction['type'] = EMPTY
+
+                instruction['parent'] = last_section
+                last_section['elements'].append(instruction)
+                last_continuable_element = None
+                last_non_section_element = instruction
+
+            elif match.group(Grammar.KEY_ESCAPED_INDEX) is not None:
+
+                if comments is not None:
+                    instruction['comments'] = comments
+                    comments = None
+
+                instruction['key'] = match.group(Grammar.KEY_ESCAPED_INDEX)
+                instruction['ranges']['escape_begin_operator'] = match.span(Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
+                instruction['ranges']['escape_end_operator'] = match.span(Grammar.KEY_ESCAPE_END_OPERATOR_INDEX)
+                instruction['ranges']['key'] = match.span(Grammar.KEY_ESCAPED_INDEX)
+                instruction['type'] = EMPTY
+
+                instruction['parent'] = last_section
+                last_section['elements'].append(instruction)
+                last_continuable_element = None
+                last_non_section_element = instruction
+
 
             if not multiline_field:
                 self._index = match.end() + 1

@@ -13,7 +13,7 @@ describe 'Locales required through require file' do
         errored = false
 
         begin
-          Enolib.parse('invalid', locale: Enolib::Locales.const_get(locale_code))
+          Enolib.parse(':invalid', locale: Enolib::Locales.const_get(locale_code))
         rescue Enolib::ParseError => error
           expect(error.message).to match_snapshot
           errored = true

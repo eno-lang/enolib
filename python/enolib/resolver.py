@@ -1,8 +1,8 @@
 from .errors.parsing import Parsing
 from .constants import (
-    EMPTY_ELEMENT,
     FIELD,
     FIELDSET,
+    FIELD_OR_FIELDSET_OR_LIST,
     LIST,
     MULTILINE_FIELD_BEGIN,
     SECTION
@@ -20,7 +20,7 @@ class Resolver:
         if 'comments' in template and not 'comments' in element:
             element['comments'] = template['comments']
 
-        if element['type'] == EMPTY_ELEMENT:
+        if element['type'] == FIELD_OR_FIELDSET_OR_LIST:
             if template['type'] == MULTILINE_FIELD_BEGIN:
                 element['type'] = FIELD  # TODO: Revisit this - maybe should be MULTILINE_FIELD_COPY or something else - consider implications all around.
                 self.mirror(element, template)

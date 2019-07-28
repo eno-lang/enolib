@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-describe('Querying an existing, single-line, required string comment from an empty element', function() {
+describe('Querying an existing, single-line, required string comment from an empty', function() {
   it('produces the expected result', function() {
     $input = "> comment\n" .
-             "element:";
+             "empty";
 
-    $output = Enolib\Parser::parse($input)->element('element')->requiredStringComment();
+    $output = Enolib\Parser::parse($input)->empty('empty')->requiredStringComment();
 
     $expected = "comment";
     
@@ -13,13 +13,13 @@ describe('Querying an existing, single-line, required string comment from an emp
   });
 });
 
-describe('Querying an existing, two-line, required string comment from an empty element', function() {
+describe('Querying an existing, two-line, required string comment from an empty', function() {
   it('produces the expected result', function() {
     $input = ">comment\n" .
              ">  comment\n" .
-             "element:";
+             "empty";
 
-    $output = Enolib\Parser::parse($input)->element('element')->requiredStringComment();
+    $output = Enolib\Parser::parse($input)->empty('empty')->requiredStringComment();
 
     $expected = "comment\n" .
                 "  comment";
@@ -28,7 +28,7 @@ describe('Querying an existing, two-line, required string comment from an empty 
   });
 });
 
-describe('Querying an existing, required string comment with blank lines from an empty element', function() {
+describe('Querying an existing, required string comment with blank lines from an empty', function() {
   it('produces the expected result', function() {
     $input = ">\n" .
              ">     comment\n" .
@@ -37,9 +37,9 @@ describe('Querying an existing, required string comment with blank lines from an
              ">\n" .
              "> comment\n" .
              ">\n" .
-             "element:";
+             "empty";
 
-    $output = Enolib\Parser::parse($input)->element('element')->requiredStringComment();
+    $output = Enolib\Parser::parse($input)->empty('empty')->requiredStringComment();
 
     $expected = "    comment\n" .
                 "\n" .
@@ -51,12 +51,12 @@ describe('Querying an existing, required string comment with blank lines from an
   });
 });
 
-describe('Querying an optional, existing string comment from an empty element', function() {
+describe('Querying an optional, existing string comment from an empty', function() {
   it('produces the expected result', function() {
     $input = "> comment\n" .
-             "element:";
+             "empty";
 
-    $output = Enolib\Parser::parse($input)->element('element')->optionalStringComment();
+    $output = Enolib\Parser::parse($input)->empty('empty')->optionalStringComment();
 
     $expected = "comment";
     
@@ -64,11 +64,11 @@ describe('Querying an optional, existing string comment from an empty element', 
   });
 });
 
-describe('Querying an optional, missing string comment from an empty element', function() {
+describe('Querying an optional, missing string comment from an empty', function() {
   it('produces the expected result', function() {
-    $input = "element:";
+    $input = "empty";
 
-    $output = Enolib\Parser::parse($input)->element('element')->optionalStringComment();
+    $output = Enolib\Parser::parse($input)->empty('empty')->optionalStringComment();
 
     expect($output)->toBeNull();
   });

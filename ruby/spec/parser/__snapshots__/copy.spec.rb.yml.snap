@@ -1,133 +1,4 @@
 ---
-"./spec/tokenizer/copy.spec.rb[1:1:1]":
-- :index: 0
-  :line: 0
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 4
-    - 5
-    :key:
-    - 0
-    - 4
-    :template:
-    - 5
-    - 13
-  :template: template
-  :type: :element
-  :length: 13
-- :index: 14
-  :line: 1
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 4
-    - 6
-    :key:
-    - 0
-    - 4
-    :template:
-    - 6
-    - 14
-  :template: template
-  :type: :element
-  :length: 14
-- :index: 29
-  :line: 2
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 5
-    - 6
-    :key:
-    - 0
-    - 4
-    :template:
-    - 7
-    - 15
-  :template: template
-  :type: :element
-  :length: 15
-- :index: 45
-  :line: 3
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 5
-    - 7
-    :key:
-    - 0
-    - 4
-    :template:
-    - 8
-    - 16
-  :template: template
-  :type: :element
-  :length: 16
-- :index: 62
-  :line: 4
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 9
-    - 10
-    :key:
-    - 0
-    - 4
-    :template:
-    - 11
-    - 24
-  :template: more template
-  :type: :element
-  :length: 24
-- :index: 87
-  :line: 5
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 9
-    - 11
-    :key:
-    - 0
-    - 4
-    :template:
-    - 12
-    - 25
-  :template: more template
-  :type: :element
-  :length: 25
-- :index: 113
-  :line: 6
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 15
-    - 16
-    :key:
-    - 5
-    - 9
-    :template:
-    - 17
-    - 25
-  :template: template
-  :type: :element
-  :length: 25
-- :index: 139
-  :line: 7
-  :key: name
-  :ranges:
-    :copy_operator:
-    - 15
-    - 17
-    :key:
-    - 5
-    - 9
-    :template:
-    - 18
-    - 26
-  :template: template
-  :type: :element
-  :length: 26
 "./spec/parser/copy.spec.rb[1:1:1]": &1
   :elements:
   - :index: 0
@@ -143,7 +14,7 @@
       - 0
       - 8
     :key: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :parent: *1
   - :index: 10
     :line: 1
@@ -161,7 +32,7 @@
       - 10
       - 13
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 23
@@ -180,7 +51,7 @@
       - 23
       - 26
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 37
@@ -199,7 +70,7 @@
       - 37
       - 40
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 52
@@ -218,7 +89,7 @@
       - 52
       - 55
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 68
@@ -237,7 +108,7 @@
       - 68
       - 71
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 87
@@ -256,7 +127,7 @@
       - 87
       - 90
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 107
@@ -275,7 +146,7 @@
       - 112
       - 115
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   - :index: 132
@@ -294,7 +165,7 @@
       - 137
       - 140
     :template: template
-    :type: :empty_element
+    :type: :field_or_fieldset_or_list
     :key: key
     :parent: *1
   :type: :document

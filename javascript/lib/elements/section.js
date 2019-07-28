@@ -13,9 +13,10 @@ const { ElementBase } = require('./element_base.js');
 
 const {
   DOCUMENT,
-  EMPTY_ELEMENT,
+  EMPTY,
   FIELD,
   FIELDSET,
+  FIELD_OR_FIELDSET_OR_LIST,
   LIST,
   MULTILINE_FIELD_BEGIN,
   SECTION
@@ -112,7 +113,7 @@ class Section extends ElementBase {
 
     const element = elements[0];
 
-    if(element._instruction.type !== EMPTY_ELEMENT)
+    if(element._instruction.type !== EMPTY)
       throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedEmpty');
 
     return element.toEmpty();
@@ -155,7 +156,7 @@ class Section extends ElementBase {
     //       SectionElement instances by default in sections)
     if(element._instruction.type !== FIELD &&
        element._instruction.type !== MULTILINE_FIELD_BEGIN &&
-       element._instruction.type !== EMPTY_ELEMENT)
+       element._instruction.type !== FIELD_OR_FIELDSET_OR_LIST)
       throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedField');
 
     return element.toField();
@@ -192,7 +193,7 @@ class Section extends ElementBase {
 
     const element = elements[0];
 
-    if(element._instruction.type !== FIELDSET && element._instruction.type !== EMPTY_ELEMENT)
+    if(element._instruction.type !== FIELDSET && element._instruction.type !== FIELD_OR_FIELDSET_OR_LIST)
       throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFieldset');
 
     return element.toFieldset();
@@ -255,7 +256,7 @@ class Section extends ElementBase {
 
     const element = elements[0];
 
-    if(element._instruction.type !== LIST && element._instruction.type !== EMPTY_ELEMENT)
+    if(element._instruction.type !== LIST && element._instruction.type !== FIELD_OR_FIELDSET_OR_LIST)
       throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedList');
 
     return element.toList();
@@ -424,7 +425,7 @@ class Section extends ElementBase {
     return elements.map(element => {
       if(element._instruction.type !== FIELD &&
          element._instruction.type !== MULTILINE_FIELD_BEGIN &&
-         element._instruction.type !== EMPTY_ELEMENT)
+         element._instruction.type !== FIELD_OR_FIELDSET_OR_LIST)
         throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFields');
 
       return element.toField();
@@ -447,7 +448,7 @@ class Section extends ElementBase {
     }
 
     return elements.map(element => {
-      if(element._instruction.type !== FIELDSET && element._instruction.type !== EMPTY_ELEMENT)
+      if(element._instruction.type !== FIELDSET && element._instruction.type !== FIELD_OR_FIELDSET_OR_LIST)
         throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFieldsets');
 
       return element.toFieldset();
@@ -470,7 +471,7 @@ class Section extends ElementBase {
     }
 
     return elements.map(element => {
-      if(element._instruction.type !== LIST && element._instruction.type !== EMPTY_ELEMENT)
+      if(element._instruction.type !== LIST && element._instruction.type !== FIELD_OR_FIELDSET_OR_LIST)
         throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedLists');
 
       return element.toList();

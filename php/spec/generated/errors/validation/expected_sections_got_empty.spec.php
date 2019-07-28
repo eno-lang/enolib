@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-describe('Expecting sections but getting an empty element', function() {
+describe('Expecting sections but getting an ambiguous element', function() {
   it('throws the expected ValidationError', function() {
     $error = null;
 

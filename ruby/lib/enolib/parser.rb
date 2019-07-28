@@ -77,7 +77,7 @@ module Enolib
             instruction[:type] = :field
             instruction[:value] = value
           else
-            instruction[:type] = :empty_element
+            instruction[:type] = :field_or_fieldset_or_list
           end
 
           instruction[:parent] = last_section
@@ -107,7 +107,7 @@ module Enolib
             raise Errors::Parsing.missing_list_for_list_item(@context, instruction)
           elsif last_non_section_element[:type] == :list
             last_non_section_element[:items].push(instruction)
-          elsif last_non_section_element[:type] == :empty_element
+          elsif last_non_section_element[:type] == :field_or_fieldset_or_list
             last_non_section_element[:items] = [instruction]
             last_non_section_element[:type] = :list
           else
@@ -152,7 +152,7 @@ module Enolib
             raise Errors::Parsing.missing_fieldset_for_fieldset_entry(@context, instruction)
           elsif last_non_section_element[:type] == :fieldset
             last_non_section_element[:entries].push(instruction)
-          elsif last_non_section_element[:type] == :empty_element
+          elsif last_non_section_element[:type] == :field_or_fieldset_or_list
             last_non_section_element[:entries] = [instruction]
             last_non_section_element[:type] = :fieldset
           else
@@ -184,7 +184,7 @@ module Enolib
           if last_continuable_element.has_key?(:continuations)
             last_continuable_element[:continuations].push(instruction)
           else
-            if last_continuable_element[:type] == :empty_element
+            if last_continuable_element[:type] == :field_or_fieldset_or_list
               last_continuable_element[:type] = :field
             end
 
@@ -216,7 +216,7 @@ module Enolib
           if last_continuable_element.has_key?(:continuations)
             last_continuable_element[:continuations].push(instruction)
           else
-            if last_continuable_element[:type] == :empty_element
+            if last_continuable_element[:type] == :field_or_fieldset_or_list
               last_continuable_element[:type] = :field
             end
 
@@ -427,7 +427,7 @@ module Enolib
           instruction[:ranges][:copy_operator] = match.offset(Grammar::COPY_OPERATOR_INDEX)
           instruction[:ranges][:template] = match.offset(Grammar::TEMPLATE_INDEX)
           instruction[:template] = template
-          instruction[:type] = :empty_element
+          instruction[:type] = :field_or_fieldset_or_list
 
           instruction[:key] = match[Grammar::KEY_UNESCAPED_INDEX]
 
@@ -452,6 +452,40 @@ module Enolib
           end
 
           instruction[:copy] = @unresolved_non_section_elements[template]
+        elsif match[Grammar::KEY_UNESCAPED_INDEX]
+
+          if comments
+            instruction[:comments] = comments
+            comments = nil
+          end
+
+          instruction[:key] = match[Grammar::KEY_UNESCAPED_INDEX]
+          instruction[:ranges][:key] = match.offset(Grammar::KEY_UNESCAPED_INDEX)
+          instruction[:type] = :empty
+
+          instruction[:parent] = last_section
+          last_section[:elements].push(instruction)
+          last_continuable_element = nil
+          last_non_section_element = instruction
+
+        elsif match[Grammar::KEY_ESCAPED_INDEX]
+
+          if comments
+            instruction[:comments] = comments
+            comments = nil
+          end
+
+          instruction[:key] = match[Grammar::KEY_ESCAPED_INDEX]
+          instruction[:ranges][:escape_begin_operator] = match.offset(Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
+          instruction[:ranges][:escape_end_operator] = match.offset(Grammar::KEY_ESCAPE_END_OPERATOR_INDEX)
+          instruction[:ranges][:key] = match.offset(Grammar::KEY_ESCAPED_INDEX)
+          instruction[:type] = :empty
+
+          instruction[:parent] = last_section
+          last_section[:elements].push(instruction)
+          last_continuable_element = nil
+          last_non_section_element = instruction
+
         end
 
         unless multiline_field
@@ -474,7 +508,7 @@ module Enolib
       end
 
       case element[:type]
-      when :empty_element
+      when :field_or_fieldset_or_list
         case template[:type]
         when :multiline_field_begin
           element[:type] = :field

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-05-30T07:54:15 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales

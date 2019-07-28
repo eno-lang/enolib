@@ -14,7 +14,7 @@ def test_parse():
 
 def test_parse_with_invalid_syntax():
     with pytest.raises(ParseError) as excinfo:
-        enolib.parse('language eno')
+        enolib.parse(':invalid')
 
     assert str(excinfo.value) == snapshot(str(excinfo.value), 'tests/snapshots/parse_with_invalid_syntax.snap.txt')
 

@@ -8,7 +8,7 @@ class Grammar:
     REQUIRED = r'(\S[^\n]*?)'
 
     #
-    EMPTY = '()'
+    EMPTY_LINE = '()'
     EMPTY_LINE_INDEX = 1
 
     # TODO: Here and in other implementations possibly unify CONTINUATION REGEX into one, evaluate type of continuation operator in analyzer then
@@ -77,7 +77,7 @@ class Grammar:
 
     # :
     # : value
-    ELEMENT_OR_FIELD = rf"(:)[^\S\n]*{OPTIONAL}"
+    FIELD_OR_FIELDSET_OR_LIST = rf"(:)[^\S\n]*{OPTIONAL}"
     ELEMENT_OPERATOR_INDEX = 23
     FIELD_VALUE_INDEX = 24
 
@@ -92,8 +92,8 @@ class Grammar:
     COPY_OPERATOR_INDEX = 27
     TEMPLATE_INDEX = 28
 
-    LATE_DETERMINED = rf"{KEY}\s*(?:{ELEMENT_OR_FIELD}|{FIELDSET_ENTRY}|{COPY})"
+    LATE_DETERMINED = rf"{KEY}\s*(?:{FIELD_OR_FIELDSET_OR_LIST}|{FIELDSET_ENTRY}|{COPY})?"
 
-    NOT_EMPTY = f"(?:{EARLY_DETERMINED}|{LATE_DETERMINED})"
+    NON_EMPTY_LINE = f"(?:{EARLY_DETERMINED}|{LATE_DETERMINED})"
 
-    REGEX = re.compile(rf"[^\S\n]*(?:{EMPTY}|{NOT_EMPTY})[^\S\n]*(?=\n|$)")
+    REGEX = re.compile(rf"[^\S\n]*(?:{EMPTY_LINE}|{NON_EMPTY_LINE})[^\S\n]*(?=\n|$)")

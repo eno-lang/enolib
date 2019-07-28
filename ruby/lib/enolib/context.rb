@@ -150,7 +150,7 @@ module Enolib
       result[:comment] = comment(element) if element.has_key?(:comments)
 
       case element[:type]
-      when :empty_element
+      when :field_or_fieldset_or_list, :empty
         result[:key] = element[:key]
       when :field
         result[:key] = element[:key]

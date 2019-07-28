@@ -15,7 +15,7 @@ Object {
     },
     Object {
       "key": "Bild",
-      "type": "emptyElement",
+      "type": "fieldOrFieldsetOrList",
     },
     Object {
       "items": Array [
@@ -88,7 +88,7 @@ Object {
     },
     Object {
       "key": "Buchbesprechungen",
-      "type": "emptyElement",
+      "type": "fieldOrFieldsetOrList",
     },
     Object {
       "key": "Lesbar",
@@ -97,7 +97,7 @@ Object {
     },
     Object {
       "key": "Urbanize",
-      "type": "emptyElement",
+      "type": "fieldOrFieldsetOrList",
     },
     Object {
       "key": "Abstract",

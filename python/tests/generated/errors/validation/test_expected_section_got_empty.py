@@ -1,6 +1,6 @@
 import enolib
 
-def test_expecting_a_section_but_getting_an_empty_element_raises_the_expected_validationerror():
+def test_expecting_a_section_but_getting_an_ambiguous_element_raises_the_expected_validationerror():
     error = None
 
     input = ("element:")
