@@ -1,8 +1,8 @@
-pylint-2.3.1
-pytest==5.0.1
-pytest-cov==2.7.1
-pyyaml==5.1.1
-hypothesis==4.31.1
-setuptools==41.0.1
-twine==1.13.0
-wheel==0.33.4
+pylint-2.4.2
+pytest==5.2.1
+pytest-cov==2.8.1
+pyyaml==5.1.2
+hypothesis==4.40.1
+setuptools==41.4.0
+twine==2.0.0
+wheel==0.33.6
