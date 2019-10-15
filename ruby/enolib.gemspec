@@ -22,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.name = 'enolib'
   spec.required_ruby_version = '>= 2.4.0'
   spec.summary = 'The eno standard library'
-  spec.version = '0.8.0'
+  spec.version = '0.8.1'
 end

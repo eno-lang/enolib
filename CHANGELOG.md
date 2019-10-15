@@ -4,6 +4,17 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.8.1
+
+### Functionality
+
+- Allow optional_* queries to explicitly override all_elements_required `b46bb05`
+
+### Fixes
+
+- Update unsupported optional keyword in entry query delegation in ruby `715efca`
+- Fix accidental optional-by-default query of fieldset entries in python `ecbc8f7`
+
 ## 0.8.0
 
 ### Features/Breaking
