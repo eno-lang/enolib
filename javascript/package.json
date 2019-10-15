@@ -5,9 +5,9 @@
   },
   "devDependencies": {
     "esdoc": "^1.1.0",
-    "esdoc-node": "^1.0.4",
+    "esdoc-node": "^1.0.5",
     "esdoc-standard-plugin": "^1.0.0",
-    "jest": "^24.8.0"
+    "jest": "^24.9.0"
   },
   "files": [
     "lib/",
