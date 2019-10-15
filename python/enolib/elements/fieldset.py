@@ -22,7 +22,7 @@ class Fieldset(ElementBase):
 
         return self._instantiated_entries_map if as_map else self._instantiated_entries
 
-    def _entry(self, key, *, required=False):
+    def _entry(self, key, *, required=None):
         self._touched = True
 
         if not key:
