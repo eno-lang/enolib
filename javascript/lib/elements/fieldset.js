@@ -38,7 +38,7 @@ class Fieldset extends ElementBase {
     }
 
     if(entries.length === 0) {
-      if(required || this._allEntriesRequired) {
+      if(required || required === null && this._allEntriesRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingFieldsetEntry');
       } else if(required === null) {
         return new missing_fieldset_entry_module.MissingFieldsetEntry(key, this);

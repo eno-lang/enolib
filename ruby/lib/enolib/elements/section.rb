@@ -286,7 +286,7 @@ module Enolib
       end
 
       if elements.empty?
-        if required || @all_elements_required
+        if required || required == nil && @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_element')
         elsif required == nil
           return MissingSectionElement.new(key, self)
@@ -328,7 +328,7 @@ module Enolib
       end
 
       if elements.empty?
-        if required || @all_elements_required
+        if required || required == nil && @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_empty')
         elsif required == nil
           return MissingEmpty.new(key, self)
@@ -374,7 +374,7 @@ module Enolib
       end
 
       if elements.empty?
-        if required || @all_elements_required
+        if required || required == nil && @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_field')
         elsif required == nil
           return MissingField.new(key, self)
@@ -417,7 +417,7 @@ module Enolib
       end
 
       if elements.empty?
-        if required || @all_elements_required
+        if required || required == nil && @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_fieldset')
         elsif required == nil
           return MissingFieldset.new(key, self)
@@ -483,7 +483,7 @@ module Enolib
       end
 
       if elements.empty?
-        if required || @all_elements_required
+        if required || required == nil && @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_list')
         elsif required == nil
           return MissingList.new(key, self)
@@ -526,7 +526,7 @@ module Enolib
       end
 
       if elements.empty?
-        if required || @all_elements_required
+        if required || required == nil && @all_elements_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_section')
         elsif required == nil
           return MissingSection.new(key, self)

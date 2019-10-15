@@ -40,7 +40,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         if len(elements) == 0:
-            if required or self._all_elements_required:
+            if required or required is None and self._all_elements_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_element')
             elif required is None:
                 return missing_section_element.MissingSectionElement(key, self)
@@ -75,7 +75,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         if len(elements) == 0:
-            if required or self._all_elements_required:
+            if required or required is None and self._all_elements_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_empty')
             elif required is None:
                 return missing_empty.MissingEmpty(key, self)
@@ -107,7 +107,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         if len(elements) == 0:
-            if required or self._all_elements_required:
+            if required or required is None and self._all_elements_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_field')
             elif required is None:
                 return missing_field.MissingField(key, self)
@@ -141,7 +141,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         if len(elements) == 0:
-            if required or self._all_elements_required:
+            if required or required is None and self._all_elements_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_fieldset')
             elif required is None:
                 return missing_fieldset.MissingFieldset(key, self)
@@ -193,7 +193,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         if len(elements) == 0:
-            if required or self._all_elements_required:
+            if required or required is None and self._all_elements_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_list')
             elif required is None:
                 return missing_list.MissingList(key, self)
@@ -237,7 +237,7 @@ class Section(ElementBase):
             elements = elements_map[key] if key in elements_map else []
 
         if len(elements) == 0:
-            if required or self._all_elements_required:
+            if required or required is None and self._all_elements_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_section')
             elif required is None:
                 return missing_section.MissingSection(key, self)

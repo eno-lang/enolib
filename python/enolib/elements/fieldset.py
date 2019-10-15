@@ -32,7 +32,7 @@ class Fieldset(ElementBase):
             entries = entries_map[key] if key in entries_map else []
 
         if len(entries) == 0:
-            if required or self._all_entries_required:
+            if required or required is None and self._all_entries_required:
                 raise Validation.missing_element(self._context, key, self._instruction, 'missing_fieldset_entry')
             elif required is None:
                 return missing_fieldset_entry.MissingFieldsetEntry(key, self)

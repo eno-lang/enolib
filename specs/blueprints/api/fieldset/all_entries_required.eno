@@ -153,3 +153,39 @@ fieldset.entry('entry')
 -- ruby
 
 ## Passes
+
+# Querying a missing but explicitly optional entry on a fieldset when requiring all entries is enabled 
+
+-- input
+fieldset:
+-- input
+
+-- javascript
+const fieldset = enolib.parse(input).fieldset('fieldset');
+
+fieldset.allEntriesRequired();
+fieldset.optionalEntry('entry');
+-- javascript
+
+-- php
+$fieldset = Enolib\Parser::parse($input)->fieldset('fieldset');
+
+$fieldset->allEntriesRequired();
+$fieldset->optionalEntry('entry');
+-- php
+
+-- python
+fieldset = enolib.parse(input).fieldset('fieldset')
+
+fieldset.all_entries_required()
+fieldset.optional_entry('entry')
+-- python
+
+-- ruby
+fieldset = Enolib.parse(input).fieldset('fieldset')
+
+fieldset.all_entries_required
+fieldset.optional_entry('entry')
+-- ruby
+
+## Passes

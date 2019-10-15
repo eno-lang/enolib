@@ -233,3 +233,219 @@ document.field('field')
 -- ruby
 
 ## Passes
+
+# Querying a missing but explicitly optional element on the document when requiring all elements is enabled 
+
+-- input
+
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.allElementsRequired();
+document.optionalElement('element');
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->optionalElement('element');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.optional_element('element')
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.all_elements_required
+document.optional_element('element')
+-- ruby
+
+## Passes
+
+# Querying a missing but explicitly optional empty on the document when requiring all elements is enabled 
+
+-- input
+
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.allElementsRequired();
+document.optionalEmpty('empty');
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->optionalEmpty('empty');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.optional_empty('empty')
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.all_elements_required
+document.optional_empty('empty')
+-- ruby
+
+## Passes
+
+# Querying a missing but explicitly optional field on the document when requiring all elements is enabled 
+
+-- input
+
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.allElementsRequired();
+document.optionalField('field');
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->optionalField('field');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.optional_field('field')
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.all_elements_required
+document.optional_field('field')
+-- ruby
+
+## Passes
+
+# Querying a missing but explicitly optional fieldset on the document when requiring all elements is enabled 
+
+-- input
+
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.allElementsRequired();
+document.optionalFieldset('fieldset');
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->optionalFieldset('fieldset');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.optional_fieldset('fieldset')
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.all_elements_required
+document.optional_fieldset('fieldset')
+-- ruby
+
+## Passes
+
+# Querying a missing but explicitly optional list on the document when requiring all elements is enabled 
+
+-- input
+
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.allElementsRequired();
+document.optionalList('list');
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->optionalList('list');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.optional_list('list')
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.all_elements_required
+document.optional_list('list')
+-- ruby
+
+## Passes
+
+# Querying a missing but explicitly optional section on the document when requiring all elements is enabled 
+
+-- input
+
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.allElementsRequired();
+document.optionalSection('section');
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->allElementsRequired();
+$document->optionalSection('section');
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.all_elements_required()
+document.optional_section('section')
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.all_elements_required
+document.optional_section('section')
+-- ruby
+
+## Passes

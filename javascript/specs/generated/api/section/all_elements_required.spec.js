@@ -134,3 +134,81 @@ describe('Querying a missing field on the document when requiring all elements i
     expect('it passes').toBeTruthy();
   });
 });
+
+describe('Querying a missing but explicitly optional element on the document when requiring all elements is enabled', () => {
+  it('produces the expected result', () => {
+    const input = ``;
+
+    const document = enolib.parse(input);
+    
+    document.allElementsRequired();
+    document.optionalElement('element');
+
+    expect('it passes').toBeTruthy();
+  });
+});
+
+describe('Querying a missing but explicitly optional empty on the document when requiring all elements is enabled', () => {
+  it('produces the expected result', () => {
+    const input = ``;
+
+    const document = enolib.parse(input);
+    
+    document.allElementsRequired();
+    document.optionalEmpty('empty');
+
+    expect('it passes').toBeTruthy();
+  });
+});
+
+describe('Querying a missing but explicitly optional field on the document when requiring all elements is enabled', () => {
+  it('produces the expected result', () => {
+    const input = ``;
+
+    const document = enolib.parse(input);
+    
+    document.allElementsRequired();
+    document.optionalField('field');
+
+    expect('it passes').toBeTruthy();
+  });
+});
+
+describe('Querying a missing but explicitly optional fieldset on the document when requiring all elements is enabled', () => {
+  it('produces the expected result', () => {
+    const input = ``;
+
+    const document = enolib.parse(input);
+    
+    document.allElementsRequired();
+    document.optionalFieldset('fieldset');
+
+    expect('it passes').toBeTruthy();
+  });
+});
+
+describe('Querying a missing but explicitly optional list on the document when requiring all elements is enabled', () => {
+  it('produces the expected result', () => {
+    const input = ``;
+
+    const document = enolib.parse(input);
+    
+    document.allElementsRequired();
+    document.optionalList('list');
+
+    expect('it passes').toBeTruthy();
+  });
+});
+
+describe('Querying a missing but explicitly optional section on the document when requiring all elements is enabled', () => {
+  it('produces the expected result', () => {
+    const input = ``;
+
+    const document = enolib.parse(input);
+    
+    document.allElementsRequired();
+    document.optionalSection('section');
+
+    expect('it passes').toBeTruthy();
+  });
+});

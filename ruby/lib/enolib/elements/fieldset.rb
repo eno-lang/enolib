@@ -104,7 +104,7 @@ module Enolib
       end
 
       if entries.empty?
-        if required || @all_entries_required
+        if required || required == nil && @all_entries_required
           raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_fieldset_entry')
         elsif required == nil
           return MissingFieldsetEntry.new(key, self)

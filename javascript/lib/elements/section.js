@@ -50,7 +50,7 @@ class Section extends ElementBase {
     }
 
     if(elements.length === 0) {
-      if(required || this._allElementsRequired) {
+      if(required || required === null && this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingElement');
       } else if(required === null) {
         return new missing_section_element_module.MissingSectionElement(key, this);
@@ -92,7 +92,7 @@ class Section extends ElementBase {
     }
 
     if(elements.length === 0) {
-      if(required || this._allElementsRequired) {
+      if(required || required === null && this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingEmpty');
       } else if(required === null) {
         return new missing_empty_module.MissingEmpty(key, this);
@@ -129,7 +129,7 @@ class Section extends ElementBase {
     }
 
     if(elements.length === 0) {
-      if(required || this._allElementsRequired) {
+      if(required || required === null && this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingField');
       } else if(required === null) {
         return new missing_field_module.MissingField(key, this);
@@ -172,7 +172,7 @@ class Section extends ElementBase {
     }
 
     if(elements.length === 0) {
-      if(required || this._allElementsRequired) {
+      if(required || required === null && this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingFieldset');
       } else if(required === null) {
         return new missing_fieldset_module.MissingFieldset(key, this);
@@ -235,7 +235,7 @@ class Section extends ElementBase {
     }
 
     if(elements.length === 0) {
-      if(required || this._allElementsRequired) {
+      if(required || required === null && this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingList');
       } else if(required === null) {
         return new missing_list_module.MissingList(key, this);
@@ -287,7 +287,7 @@ class Section extends ElementBase {
     }
 
     if(elements.length === 0) {
-      if(required || this._allElementsRequired) {
+      if(required || required === null && this._allElementsRequired) {
         throw errors.missingElement(this._context, key, this._instruction, 'missingSection');
       } else if(required === null) {
         return new missing_section_module.MissingSection(key, this);

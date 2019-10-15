@@ -60,3 +60,16 @@ describe 'Querying a missing entry on a fieldset when requiring all entries is e
     expect('it passes').to be_truthy
   end
 end
+
+describe 'Querying a missing but explicitly optional entry on a fieldset when requiring all entries is enabled' do
+  it 'produces the expected result' do
+    input = 'fieldset:'
+
+    fieldset = Enolib.parse(input).fieldset('fieldset')
+    
+    fieldset.all_entries_required
+    fieldset.optional_entry('entry')
+
+    expect('it passes').to be_truthy
+  end
+end

@@ -64,3 +64,13 @@ def test_querying_a_missing_entry_on_a_fieldset_when_requiring_all_entries_is_en
     fieldset.entry('entry')
 
     assert bool('it passes') is True
+
+def test_querying_a_missing_but_explicitly_optional_entry_on_a_fieldset_when_requiring_all_entries_is_enabled_produces_the_expected_result():
+    input = ("fieldset:")
+
+    fieldset = enolib.parse(input).fieldset('fieldset')
+    
+    fieldset.all_entries_required()
+    fieldset.optional_entry('entry')
+
+    assert bool('it passes') is True

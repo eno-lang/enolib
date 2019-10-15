@@ -94,3 +94,81 @@ describe 'Querying a missing field on the document when requiring all elements i
     expect('it passes').to be_truthy
   end
 end
+
+describe 'Querying a missing but explicitly optional element on the document when requiring all elements is enabled' do
+  it 'produces the expected result' do
+    input = ''
+
+    document = Enolib.parse(input)
+    
+    document.all_elements_required
+    document.optional_element('element')
+
+    expect('it passes').to be_truthy
+  end
+end
+
+describe 'Querying a missing but explicitly optional empty on the document when requiring all elements is enabled' do
+  it 'produces the expected result' do
+    input = ''
+
+    document = Enolib.parse(input)
+    
+    document.all_elements_required
+    document.optional_empty('empty')
+
+    expect('it passes').to be_truthy
+  end
+end
+
+describe 'Querying a missing but explicitly optional field on the document when requiring all elements is enabled' do
+  it 'produces the expected result' do
+    input = ''
+
+    document = Enolib.parse(input)
+    
+    document.all_elements_required
+    document.optional_field('field')
+
+    expect('it passes').to be_truthy
+  end
+end
+
+describe 'Querying a missing but explicitly optional fieldset on the document when requiring all elements is enabled' do
+  it 'produces the expected result' do
+    input = ''
+
+    document = Enolib.parse(input)
+    
+    document.all_elements_required
+    document.optional_fieldset('fieldset')
+
+    expect('it passes').to be_truthy
+  end
+end
+
+describe 'Querying a missing but explicitly optional list on the document when requiring all elements is enabled' do
+  it 'produces the expected result' do
+    input = ''
+
+    document = Enolib.parse(input)
+    
+    document.all_elements_required
+    document.optional_list('list')
+
+    expect('it passes').to be_truthy
+  end
+end
+
+describe 'Querying a missing but explicitly optional section on the document when requiring all elements is enabled' do
+  it 'produces the expected result' do
+    input = ''
+
+    document = Enolib.parse(input)
+    
+    document.all_elements_required
+    document.optional_section('section')
+
+    expect('it passes').to be_truthy
+  end
+end

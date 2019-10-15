@@ -72,3 +72,16 @@ describe('Querying a missing entry on a fieldset when requiring all entries is e
     expect('it passes')->toBeTruthy();
   });
 });
+
+describe('Querying a missing but explicitly optional entry on a fieldset when requiring all entries is enabled', function() {
+  it('produces the expected result', function() {
+    $input = "fieldset:";
+
+    $fieldset = Enolib\Parser::parse($input)->fieldset('fieldset');
+    
+    $fieldset->allEntriesRequired();
+    $fieldset->optionalEntry('entry');
+
+    expect('it passes')->toBeTruthy();
+  });
+});
