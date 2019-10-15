@@ -34,7 +34,7 @@ module Enolib
 
         entries.each do |entry|
           next if entry.touched  # TODO: Revisit instance var existance question in ruby
-          
+
           if message.is_a?(Proc)
             message = message.call(entry)
           end
@@ -60,7 +60,7 @@ module Enolib
     end
 
     def optional_entry(key)
-      _entry(key, optional: true)
+      _entry(key, required: false)
     end
 
     def parent
