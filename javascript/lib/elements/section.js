@@ -22,8 +22,6 @@ const {
   SECTION
 } = require('../constants.js');
 
-// TODO: Consider keeping documentation on master / in release branch so users get intellisense and jsdoc typechecking through released package
-
 // TODO: For each value store the representational type as well ? (e.g. string may come from "- foo" or -- foo\nxxx\n-- foo) and use that for precise error messages?
 
 // TODO: These things ->   case MULTILINE_FIELD_BEGIN: /* handled in FIELD below */
