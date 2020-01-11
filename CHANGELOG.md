@@ -4,6 +4,12 @@ This project follows semantic versioning.
 
 All enolib implementations across supported languages share the same version number, consequently not every minor or patch version is released for all languages, but only for those affected by the changes.
 
+## 0.8.2
+
+### Javascript
+
+- Fix unsafe instruction prop access in javascript reporter implementation `b7692d9`
+
 ## 0.8.1
 
 ### Functionality
