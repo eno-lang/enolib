@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.add_development_dependency('deep-cover', '~> 0.7.5')
-  spec.add_development_dependency('rspec', '~> 3.8.0')
+  spec.add_development_dependency('deep-cover', '~> 0.7.6')
+  spec.add_development_dependency('rspec', '~> 3.9.0')
   spec.add_development_dependency('rspec-cheki', '~> 0.1.0')
-  spec.add_development_dependency('rubocop', '~> 0.68.1')
-  spec.add_development_dependency('rubocop-performance', '~> 1.3.0')
+  spec.add_development_dependency('rubocop', '~> 0.78.0')
+  spec.add_development_dependency('rubocop-performance', '~> 1.5.2')
   spec.author = 'Simon Repp'
   spec.description = 'The eno standard library'
   spec.email = 'simon@fdpl.io'
