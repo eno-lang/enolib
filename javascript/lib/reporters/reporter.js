@@ -44,8 +44,10 @@ class Reporter {
         if(element.type === SECTION) {
           traverse(element);
         } else if(element.type === FIELD) {
-          for(const continuation of element.continuations) {
-            this._index[continuation.line] = continuation;
+          if(element.hasOwnProperty('continuations')) {
+            for(const continuation of element.continuations) {
+              this._index[continuation.line] = continuation;
+            }
           }
         } else if(element.type === MULTILINE_FIELD_BEGIN) {
           // Missing when reporting an unterminated multiline field
@@ -57,23 +59,27 @@ class Reporter {
             this._index[line.line] = line;
           }
         } else if(element.type === LIST) {
-          for(const item of element.items) {
-            indexComments(item);
+          if(element.hasOwnProperty('items')) {
+            for(const item of element.items) {
+              indexComments(item);
 
-            this._index[item.line] = item;
+              this._index[item.line] = item;
 
-            for(const continuation of item.continuations) {
-              this._index[continuation.line] = continuation;
+              for(const continuation of item.continuations) {
+                this._index[continuation.line] = continuation;
+              }
             }
           }
         } else if(element.type === FIELDSET) {
-          for(const entry of element.entries) {
-            indexComments(entry);
+          if(element.hasOwnProperty('entries')) {
+            for(const entry of element.entries) {
+              indexComments(entry);
 
-            this._index[entry.line] = entry;
+              this._index[entry.line] = entry;
 
-            for(const continuation of entry.continuations) {
-              this._index[continuation.line] = continuation;
+              for(const continuation of entry.continuations) {
+                this._index[continuation.line] = continuation;
+              }
             }
           }
         }
