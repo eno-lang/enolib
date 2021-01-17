@@ -22,4 +22,4 @@ console.log( document.field('Greeting').requiredStringValue() );  // prints 'Hel
 
 ## Documentation
 
-Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
+Available at [eno-lang.org/javascript](https://eno-lang.org/javascript/).

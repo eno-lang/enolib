@@ -18,6 +18,6 @@ setup(author='Simon Repp',
       license='MIT',
       name='enolib',
       packages=find_packages(exclude=['performance', 'performance.*', 'tests', 'tests.*']),
-      url='https://eno-lang.org/enolib/',
+      url='https://eno-lang.org/python/',
       version='0.8.1',
       zip_safe=False)

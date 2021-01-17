@@ -4,7 +4,7 @@ The eno standard library – available for JavaScript, Python and Ruby.
 
 ## Documentation
 
-Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
+Available at [eno-lang.org](https://eno-lang.org/).
 
 ## Development overview
 

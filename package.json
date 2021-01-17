@@ -11,7 +11,7 @@
     "speakingurl": "^14.0.1"
   },
   "description": "The eno standard library",
-  "homepage": "https://eno-lang.org/enolib/",
+  "homepage": "https://eno-lang.org/",
   "license": "MIT",
   "name": "enolib",
   "private": true,

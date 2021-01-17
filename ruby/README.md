@@ -39,4 +39,4 @@ puts document.field('Greeting').required_string_value  #=> 'Hello World!'
 
 ## Documentation
 
-Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
+Available at [eno-lang.org/ruby](https://eno-lang.org/ruby/).

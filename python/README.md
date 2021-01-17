@@ -21,4 +21,4 @@ A minimal example to read an eno document directly from a string with `enolib`:
 
 ## Documentation
 
-Available at [eno-lang.org/enolib](https://eno-lang.org/enolib/).
+Available at [eno-lang.org/python](https://eno-lang.org/python/).

@@ -15,7 +15,7 @@
   ],
   "name": "enolib",
   "description": "The eno standard library",
-  "homepage": "https://eno-lang.org/enolib/",
+  "homepage": "https://eno-lang.org/javascript/",
   "license": "MIT",
   "main": "./lib/main.js",
   "keywords": [

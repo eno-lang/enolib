@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
   spec.description = 'The eno standard library'
   spec.email = 'simon@fdpl.io'
   spec.files = `git ls-files -z lib LICENSE.txt README.md`.split("\0")
-  spec.homepage = 'https://eno-lang.org/enolib/'
+  spec.homepage = 'https://eno-lang.org/ruby/'
   spec.license = 'MIT'
   spec.metadata = {
     'bug_tracker_uri' => 'https://github.com/eno-lang/enolib/issues',
     'changelog_uri' => 'https://github.com/eno-lang/enolib/blob/master/CHANGELOG.md',
-    'documentation_uri' => 'https://eno-lang.org/enolib/',
-    'homepage_uri' => 'https://eno-lang.org/enolib/',
+    'documentation_uri' => 'https://eno-lang.org/ruby/',
+    'homepage_uri' => 'https://eno-lang.org/ruby/',
     'source_code_uri' => 'https://github.com/eno-lang/enolib/'
   }
   spec.name = 'enolib'
