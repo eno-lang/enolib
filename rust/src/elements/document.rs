@@ -5,43 +5,52 @@ use crate::error::Error;
 use crate::errors::validation;
 use crate::instruction::SectionInstruction;
 use super::element::Element;
-use super::document::Document;
+use super::section::Parent;
+use super::section::Section;
 
 const DOCUMENT_NAME: &str = "<>#:=|\\_ENO_DOCUMENT";
 
-pub enum Parent<'a> {
-    Document(&'a Document<'a>),
-    Section(&'a Section<'a>)
-}
-
-pub struct Section<'a> {
-    context: &'a Context<'a>,
+pub struct Document<'a> {
+    context: Context<'a>,
     elements: Vec<Element<'a>>,
     elements_associative: HashMap<&'a str, Vec<&'a Element<'a>>>,
     instruction: SectionInstruction,
-    parent: Parent<'a>,
     touched: bool
 }
 
-impl<'a> Section<'a> {
+impl<'a> Document<'a> {
     pub fn name(&self) -> &str {
         &self.instruction.name
     }
 
-    pub fn new(context: &'a Context<'a>, instruction: SectionInstruction, parent: Parent<'a>) -> Section<'a> {
-        let instruction = SectionInstruction::new(0, 0, 0);
-        Section {
+    pub fn context(&self) -> &Context<'a> {
+        &self.context
+    }
+
+    pub fn add(&mut self, element: Element<'a>) {
+        self.elements.push(element);
+        // self.elements.push(element); TODO: elements_associative
+    }
+
+    pub fn new(context: Context<'a>) -> Document<'a> {
+        let mut document_instruction = SectionInstruction::new(0, 0, 0);
+
+        document_instruction.name =  String::from(DOCUMENT_NAME);
+
+        let mut document = Document {
             context,
             elements: Vec::new(),
             elements_associative: HashMap::new(),
-            instruction,
-            parent: parent,
+            instruction: document_instruction,
             touched: false
-        }
-    }
+        };
 
-    pub fn parent(&self) -> &Parent {
-        &self.parent
+        let section_instruction = SectionInstruction::new(0, 0, 0);
+        let section = Section::new(document.context(), section_instruction, Parent::Document(&document));
+
+        document.add(Element::Section(section));
+
+        document
     }
 
     pub fn string(&self, name: &str, required: bool) -> Result<Option<&str>, Error> {

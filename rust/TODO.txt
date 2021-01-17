@@ -1,0 +1,5 @@
+- Solving the self-referential struct conundrum:
+  Maybe
+    https://internals.rust-lang.org/t/improving-self-referential-structs/4808/48
+    &
+    https://internals.rust-lang.org/t/improving-self-referential-structs/4808/75

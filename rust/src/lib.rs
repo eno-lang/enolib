@@ -10,18 +10,17 @@ pub mod messages;
 pub mod reporter;
 
 use crate::context::Context;
-use crate::elements::section::Section;
+use crate::elements::document::Document;
 use crate::error::Error;
 use crate::reporter::Reporter;
 use crate::tokenizer::tokenize;
 
-// TODO: Integrate -> Result<Section, Error> again when solution for context owner is found
-pub fn parse(input: &str, zero_indexing: bool) {
+pub fn parse(input: &str, zero_indexing: bool) -> Result<Document, Error> {
     let mut context = Context::new(input, Reporter::Text, Some(String::new()), zero_indexing);
 
     tokenize(&mut context);
 
-    let document = Section::document(&context);
+    let document = Document::new(context);
 
-    // Ok(document)
+    Ok(document)
 }
