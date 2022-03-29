@@ -16,28 +16,3 @@ Line 1 contains a line continuation without a continuable element being specifie
 -- snippet
 
 selection: [0,0] => [0,14]
-
-# Parsing a line continuation preceded by a copied field
-
--- input
-field: value
-
-copy < field
-| illegal_continuation
--- input
-
-## ParseError
-
--- text
-Line 4 contains a line continuation without a continuable element being specified before.
--- text
-
--- snippet
-   Line | Content
-   ...
-      2 | 
-      3 | copy < field
- >    4 | | illegal_continuation
--- snippet
-
-selection: [3,0] => [3,22]
