@@ -60,20 +60,6 @@ field:
     expect(document.field('field').requiredStringValue()).toEqual('foo bar');
   });
 
-  test('newlines copied from multiline fields are not trimmed away', () => {
-    const document = enolib.parse(`
--- multiline field
-
-[inbetween whitespace]
-
--- multiline field
-
-field < multiline field
-    `.trim());
-
-    expect(document.field('field').requiredStringValue()).toEqual('\n[inbetween whitespace]\n');
-  });
-
   test('line continuations can not be applied to multiline fields', () => {
     const input = `
 -- multiline field

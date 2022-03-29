@@ -1,8 +1,6 @@
 const matcher = require('../../lib/grammar_matcher.js');
 const { space } = require('./space.js');
 
-// TODO: Left bounding ````` foo ```, right bounding `foo`` scenarios?
-
 exports.SCENARIOS = [
   // DIRECT_LINE_CONTINUATION_SCENARIOS
   {
@@ -122,32 +120,6 @@ exports.SCENARIOS = [
     variants: ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
   },
 
-  // COPY_SCENARIOS
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.TEMPLATE_INDEX]: 'Other Key'
-    },
-    syntax: 'Key < Other Key',
-    variants: space('Key', '<', 'Other Key')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.TEMPLATE_INDEX]: '<'
-    },
-    syntax: 'Key < <',
-    variants: space('Key', '<', '<')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.TEMPLATE_INDEX]: '<'
-    },
-    syntax: 'Key <<',
-    variants: space('Key', '<<')
-  },
-
   // FIELDSET_ENTRY_SCENARIOS
   {
     captures: {
@@ -188,22 +160,22 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.KEY_ESCAPED_INDEX]: '<=:',
+      [matcher.KEY_ESCAPED_INDEX]: '=:',
       [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '`<=:`'
+      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '`=:`'
     },
-    syntax: '`<=:` = `<=:`',
-    variants: space('`', '<=:', '`', '=', '`<=:`')
+    syntax: '`=:` = `=:`',
+    variants: space('`', '=:', '`', '=', '`=:`')
   },
   {
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.KEY_ESCAPED_INDEX]: '<`=``:',
+      [matcher.KEY_ESCAPED_INDEX]: '`=``:',
       [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '`<=:`'
+      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '`=:`'
     },
-    syntax: '```<`=``:``` = `<=:`',
-    variants: space('```', '<`=``:', '```', '=', '`<=:`')
+    syntax: '``` `=``:``` = `=:`',
+    variants: space('```', ' ', '`=``:', '```', '=', '`=:`')
   },
 
   // EMPTY_LINE_SCENARIOS
@@ -246,37 +218,25 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.KEY_ESCAPED_INDEX]: '<=:',
+      [matcher.KEY_ESCAPED_INDEX]: '=:',
       [matcher.ELEMENT_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: '`<=:`'
+      [matcher.FIELD_VALUE_INDEX]: '`=:`'
     },
-    syntax: '`<=:` : `<=:`',
-    variants: space('`', '<=:', '`', ':', '`<=:`')
+    syntax: '`=:` : `=:`',
+    variants: space('`', '=:', '`', ':', '`=:`')
   },
   {
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.KEY_ESCAPED_INDEX]: '<`=``:',
+      [matcher.KEY_ESCAPED_INDEX]: '`=``:',
       [matcher.ELEMENT_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: '`<=:`'
+      [matcher.FIELD_VALUE_INDEX]: '`=:`'
     },
-    syntax: '```<`=``:``` : `<=:`',
-    variants: space('```', '<`=``:', '```', ':', '`<=:`')
+    syntax: '``` `=``:``` : `=:`',
+    variants: space('```', ' ', '`=``:', '```', ':', '`=:`')
   },
 
   // INVALID_SCENARIOS
-  {
-    syntax: 'Invalid <',
-    variants: space('Invalid', '<')
-  },
-  {
-    syntax: '< Invalid',
-    variants: space('<', 'Invalid')
-  },
-  {
-    syntax: '<',
-    variants: space('<')
-  },
   {
     syntax: '#',
     variants: space('#')
@@ -371,20 +331,20 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.KEY_ESCAPED_INDEX]: '<=:',
+      [matcher.KEY_ESCAPED_INDEX]: '=:',
       [matcher.ELEMENT_OPERATOR_INDEX]: ':'
     },
-    syntax: '`<=:`:',
-    variants: space('`', '<=:', '`', ':')
+    syntax: '`=:`:',
+    variants: space('`', '=:', '`', ':')
   },
   {
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.KEY_ESCAPED_INDEX]: '<`=``:',
+      [matcher.KEY_ESCAPED_INDEX]: '`=``:',
       [matcher.ELEMENT_OPERATOR_INDEX]: ':'
     },
-    syntax: '```<`=``:```:',
-    variants: space('```', '<`=``:', '```', ':')
+    syntax: '``` `=``:```:',
+    variants: space('```', ' ','`=``:', '```', ':')
   },
 
   // SECTION_SCENARIOS
@@ -407,53 +367,17 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: '#',
-      [matcher.SECTION_COPY_OPERATOR_INDEX]: '<',
-      [matcher.SECTION_TEMPLATE_INDEX]: 'Other Key'
+      [matcher.SECTION_KEY_UNESCAPED_INDEX]: '# Other Key'
     },
-    syntax: '# # < Other Key',
-    variants: space('#', ' ', '#', '<', 'Other Key')
+    syntax: '# # Other Key',
+    variants: space('#', ' ', '# Other Key')
   },
   {
     captures: {
       [matcher.SECTION_OPERATOR_INDEX]: '###',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: '##',
-      [matcher.SECTION_COPY_OPERATOR_INDEX]: '<',
-      [matcher.SECTION_TEMPLATE_INDEX]: '###'
+      [matcher.SECTION_KEY_UNESCAPED_INDEX]: '## ###'
     },
-    syntax: '### ## < ###',
-    variants: space('###', ' ', '##', '<', '###')
-  },
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.SECTION_KEY_ESCAPED_INDEX]: '<=:',
-      [matcher.SECTION_COPY_OPERATOR_INDEX]: '<',
-      [matcher.SECTION_TEMPLATE_INDEX]: '`<=:`'
-    },
-    syntax: '# `<=:` < `<=:`',
-    variants: space('#', '`<=:`', '<', '`<=:`')
-  },
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.SECTION_KEY_ESCAPED_INDEX]: '<`=``:',
-      [matcher.SECTION_COPY_OPERATOR_INDEX]: '<',
-      [matcher.SECTION_TEMPLATE_INDEX]: '```<`=``:```'
-    },
-    syntax: '# ```<`=``:``` < ```<`=``:```',
-    variants: space('#', '```<`=``:```', '<', '```<`=``:```')
-  },
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.SECTION_COPY_OPERATOR_INDEX]: '<<',
-      [matcher.SECTION_TEMPLATE_INDEX]: 'Other Key'
-    },
-    syntax: '# Key << Other Key',
-    variants: space('#', ' ', 'Key', '<<', 'Other Key')
+    syntax: '### ## ###',
+    variants: space('###', ' ', '## ###')
   }
 ];

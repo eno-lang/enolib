@@ -49,11 +49,6 @@ something",
         Object {
           "elements": Array [
             Object {
-              "elements": Array [],
-              "key": "Left Arm",
-              "type": "section",
-            },
-            Object {
               "elements": Array [
                 Object {
                   "key": "--format pretty",
@@ -71,7 +66,7 @@ something",
                       "value": "Frankenstein",
                     },
                   ],
-                  "key": "> Friends <",
+                  "key": "> Friends",
                   "type": "list",
                 },
                 Object {
@@ -91,7 +86,7 @@ something",
                   "type": "fieldset",
                 },
               ],
-              "key": "Right Arm",
+              "key": "Left Arm",
               "type": "section",
             },
           ],

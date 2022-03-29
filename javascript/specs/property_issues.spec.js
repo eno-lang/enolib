@@ -32,34 +32,6 @@ describe('Property issues', () => {
       });
     });
 
-    describe('toString as missing template', () => {
-      it('does not have any side effects', () => {
-        expect(() => enolib.parse('check < toString')).toThrowErrorMatchingSnapshot();
-      });
-    });
-
-    describe('toString as key in a complex merge', () => {
-      it('does not have any side effects', () => {
-        const document = enolib.parse(`
-          # a
-          ## toString
-          toString:
-          toString = discarded
-
-          # b < a
-          ## toString
-          toString: ok
-
-          # c << a
-          ## toString
-          toString:
-          toString = kept
-        `);
-
-        expect(document.raw()).toMatchSnapshot();
-      });
-    });
-
     describe('fetching from a missing toString field', () => {
       it('does not have any side effects', () => {
         const document = enolib.parse('');
