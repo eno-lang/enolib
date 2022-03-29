@@ -1,20 +1,17 @@
-const spacingVariants = (tokens) => {
-  if(tokens.length > 1) {
-    const results = [];
-
-    for(let variant of spacingVariants(tokens.slice(1))) {
-      results.push(`${tokens[0]}${variant}`);
-      results.push(`   ${tokens[0]}${variant}`);
+const spacingVariants = tokens => {
+    if (tokens.length === 1)
+        return [tokens[0], `   ${tokens[0]}`];
+        
+    const variants = [];
+    for (const variant of spacingVariants(tokens.slice(1))) {
+        variants.push(`${tokens[0]}${variant}`);
+        variants.push(`   ${tokens[0]}${variant}`);
     }
-
-    return results;
-  } else {
-    return [tokens[0], `   ${tokens[0]}`];
-  }
+    return variants;
 };
 
 exports.space = (...tokens) => {
-  tokens.push('');
-
-  return spacingVariants(tokens).filter((variant, index, variants) => variants.indexOf(variant) === index);
+    tokens.push('');
+    
+    return spacingVariants(tokens).filter((variant, index, variants) => variants.indexOf(variant) === index);
 }
