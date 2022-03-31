@@ -1,56 +1,29 @@
 {
-  "reference": {
-    "_evaluated": "2018-07-05T15:06:18.952Z",
-    "configuration": {
-      "change": "~0 ips (same)",
-      "ips": 44496
-    },
-    "content": {
-      "change": "~0 ips (same)",
-      "ips": 111186
-    },
-    "hierarchy": {
-      "change": "~0 ips (same)",
-      "ips": 57911
-    },
-    "invoice": {
-      "change": "~0 ips (same)",
-      "ips": 25551
-    },
-    "journey": {
-      "change": "~0 ips (same)",
-      "ips": 28301
-    },
-    "post": {
-      "change": "~0 ips (same)",
-      "ips": 130451
-    }
-  },
   "modifications": {
-    "_evaluated": "2018-07-05T15:07:13.458Z",
+    "_evaluated": "2022-03-31T09:03:36.277Z",
     "configuration": {
-      "change": "-2281 ips (1.05× slower)",
-      "ips": 42215
+      "change": "~0 ips (same)",
+      "ips": 53509
     },
     "content": {
-      "change": "-5943 ips (1.06× slower)",
-      "ips": 105243
+      "change": "~0 ips (same)",
+      "ips": 135157
     },
     "hierarchy": {
-      "change": "-210 ips (1.00× slower)",
-      "ips": 57701
+      "change": "~0 ips (same)",
+      "ips": 84161
     },
     "invoice": {
-      "change": "-1038 ips (1.04× slower)",
-      "ips": 24513
+      "change": "~0 ips (same)",
+      "ips": 43854
     },
     "journey": {
-      "change": "-194 ips (1.01× slower)",
-      "ips": 28107
+      "change": "~0 ips (same)",
+      "ips": 37098
     },
     "post": {
-      "change": "-8453 ips (1.07× slower)",
-      "ips": 121998
+      "change": "~0 ips (same)",
+      "ips": 163332
     }
   }
 }
