@@ -44,8 +44,8 @@ module Enolib
       _items.length
     end
 
-    def optional_comment(loader = nil)
-      loader = Proc.new if block_given?
+    def optional_comment(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       if loader
         _comment(loader, required: false)
@@ -60,8 +60,8 @@ module Enolib
       _items.map(&:optional_string_value)
     end
 
-    def optional_values(loader = nil)
-      loader = Proc.new if block_given?
+    def optional_values(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       @touched = true
 
@@ -82,8 +82,8 @@ module Enolib
       _items.map(&:required_string_value)
     end
 
-    def required_values(loader = nil)
-      loader = Proc.new if block_given?
+    def required_values(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       @touched = true
 

@@ -36,8 +36,8 @@ module Enolib
       Errors::Validation.element_error(@context, message, @instruction)
     end
 
-    def key(loader = nil)
-      loader = Proc.new if block_given?
+    def key(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       @touched = true
 
@@ -88,8 +88,8 @@ module Enolib
       @context.raw(@instruction)
     end
 
-    def required_comment(loader = nil)
-      loader = Proc.new if block_given?
+    def required_comment(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       unless loader
         raise ArgumentError, 'A loader function must be provided'

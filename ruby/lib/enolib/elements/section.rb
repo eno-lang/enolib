@@ -52,8 +52,8 @@ module Enolib
       @all_elements_required
     end
 
-    def assert_all_touched(message = nil, except: nil, only: nil)
-      message = Proc.new if block_given?
+    def assert_all_touched(message = nil, except: nil, only: nil, &block)
+      message = Proc.new(&block) if block_given?
 
       _elements(map: true).each do |key, elements|
         next if except && except.include?(key) || only && !only.include?(key)

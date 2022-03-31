@@ -6,8 +6,8 @@ module Enolib
       _value(required: false)
     end
 
-    def optional_value(loader = nil)
-      loader = Proc.new if block_given?
+    def optional_value(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       unless loader
         raise ArgumentError, 'A loader function must be provided'
@@ -20,8 +20,8 @@ module Enolib
       _value(required: true)
     end
 
-    def required_value(loader = nil)
-      loader = Proc.new if block_given?
+    def required_value(loader = nil, &block)
+      loader = Proc.new(&block) if block_given?
 
       unless loader
         raise ArgumentError, 'A loader function must be provided'
