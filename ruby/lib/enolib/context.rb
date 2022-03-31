@@ -64,8 +64,6 @@ module Enolib
     end
 
     def elements(section)
-      return elements(section[:mirror]) if section.has_key?(:mirror)
-
       unless section.has_key?(:computed_elements)
         section[:computed_elements] = section[:elements]
         section[:computed_elements_map] = {}
@@ -77,28 +75,12 @@ module Enolib
             section[:computed_elements_map][element[:key]] = [element]
           end
         end
-
-        if section.has_key?(:extend)
-          copied_elements = elements(section[:extend]).reject { |element| section[:computed_elements_map].has_key?(element[:key]) }
-
-          section[:computed_elements] = copied_elements + section[:computed_elements]
-
-          copied_elements.each do |element|
-            if section[:computed_elements_map].has_key?(element[:key])
-              section[:computed_elements_map][element[:key]].push(element)
-            else
-              section[:computed_elements_map][element[:key]] = [element]
-            end
-          end
-        end
       end
 
       section[:computed_elements]
     end
 
     def entries(fieldset)
-      return entries(fieldset[:mirror]) if fieldset.has_key?(:mirror)
-
       unless fieldset.has_key?(:computed_entries)
         fieldset[:computed_entries] = fieldset[:entries]
         fieldset[:computed_entries_map] = {}
@@ -110,31 +92,13 @@ module Enolib
             fieldset[:computed_entries_map][entry[:key]] = [entry]
           end
         end
-
-        if fieldset.has_key?(:extend)
-          copied_entries = entries(fieldset[:extend]).reject { |entry| fieldset[:computed_entries_map].has_key?(entry[:key]) }
-
-          fieldset[:computed_entries] = copied_entries + fieldset[:computed_entries]
-
-          copied_entries.each do |entry|
-            if fieldset[:computed_entries_map].has_key?(entry[:key])
-              fieldset[:computed_entries_map][entry[:key]].push(entry)
-            else
-              fieldset[:computed_entries_map][entry[:key]] = [entry]
-            end
-          end
-        end
       end
 
       fieldset[:computed_entries]
     end
 
     def items(list)
-      if list.has_key?(:mirror)
-        items(list[:mirror])
-      elsif list.has_key?(:extend)
-        items(list[:extend]) + list[:items]
-      elsif list.has_key?(:items)
+      if list.has_key?(:items)
         list[:items]
       else
         []
@@ -181,8 +145,6 @@ module Enolib
 
     def value(element)
       unless element.has_key?(:computed_value)
-        return value(element[:mirror]) if element.has_key?(:mirror)
-
         element[:computed_value] = nil
 
         if element[:type] == :multiline_field_begin

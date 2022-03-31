@@ -450,26 +450,20 @@ module Enolib
     end
 
     def instantiate_elements(section)
-      if section.has_key?(:mirror)
-        instantiate_elements(section[:mirror])
-      else
-        filtered = section[:elements].reject { |element| @instantiated_elements_map.has_key?(element[:key]) }
-        instantiated = filtered.map do |element|
-          instance = SectionElement.new(@context, element, self)
+      filtered = section[:elements].reject { |element| @instantiated_elements_map.has_key?(element[:key]) }
+      instantiated = filtered.map do |element|
+        instance = SectionElement.new(@context, element, self)
 
-          if @instantiated_elements_map.has_key?(element[:key])
-            @instantiated_elements_map[element[:key]].push(instance)
-          else
-            @instantiated_elements_map[element[:key]] = [instance]
-          end
-
-          instance
+        if @instantiated_elements_map.has_key?(element[:key])
+          @instantiated_elements_map[element[:key]].push(instance)
+        else
+          @instantiated_elements_map[element[:key]] = [instance]
         end
 
-        @instantiated_elements.concat(instantiated) # TODO: Revisit order of this and the following
-
-        instantiate_elements(section[:extend]) if section.has_key?(:extend)
+        instance
       end
+
+      @instantiated_elements.concat(instantiated)
     end
 
     def _list(key = nil, required: nil)

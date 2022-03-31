@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
@@ -36,7 +36,6 @@ module Enolib
       MISSING_SECTION = 'Eine einzelne Sektion ist erforderlich - sie kann einen beliebigen Schlüssel haben.'
       UNEXPECTED_ELEMENT = 'Dieses Element wurde nicht erwartet, prüfe ob es am richtigen Platz ist und dass der Schlüssel keine Tippfehler enthält.'
       def self.comment_error(message) "Es gibt ein Problem mit dem Kommentar dieses Elements: #{message}" end
-      def self.cyclic_dependency(line, key) "In Zeile #{line} wird '#{key}' in sich selbst kopiert." end
       def self.expected_empty_with_key(key) "Ein Leerfeld mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_field_with_key(key) "Ein Feld mit dem Schlüssel '#{key}' wurde erwartet." end
       def self.expected_fields_with_key(key) "Nur Felder mit dem Schlüssel '#{key}' wurden erwartet." end
@@ -68,10 +67,7 @@ module Enolib
       def self.missing_list_item_value(key) "Die Liste '#{key}' darf keine leeren Einträge enthalten." end
       def self.missing_list_with_key(key) "Die Liste '#{key}' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten." end
       def self.missing_section_with_key(key) "Die Sektion '#{key}' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten." end
-      def self.non_section_element_not_found(line, key) "In Zeile #{line} soll das Nicht-Sektions Element '#{key}' kopiert werden, es wurde aber nicht gefunden." end
       def self.section_hierarchy_layer_skip(line) "Zeile #{line} beginnt eine Sektion die mehr als eine Ebene tiefer liegt als die aktuelle." end
-      def self.section_not_found(line, key) "In Zeile #{line} soll die Sektion '#{key}' kopiert werden, sie wurde aber nicht gefunden." end
-      def self.two_or_more_templates_found(key) "Es gibt mindestens zwei Elemente mit dem Schlüssel '#{key}' die hier zum kopieren in Frage kommen, es ist nicht klar welches kopiert werden soll." end
       def self.unterminated_escaped_key(line) "In Zeile #{line} wird der Schlüssel eines Elements escaped, jedoch wird diese Escape Sequenz bis zum Ende der Zeile nicht mehr beendet." end
       def self.unterminated_multiline_field(key, line) "Das Mehrzeilenfeld '#{key}' dass in Zeile #{line} beginnt wird bis zum Ende des Dokuments nicht mehr beendet." end
       def self.value_error(message) "Es gibt ein Problem mit dem Wert dieses Elements: #{message}" end

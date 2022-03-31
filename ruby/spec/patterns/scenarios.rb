@@ -121,35 +121,6 @@ SCENARIOS = [
     variants: ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
   },
 
-  # COPY_SCENARIOS
-  {
-    captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
-      Enolib::Grammar::COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::TEMPLATE_INDEX => 'Other Key'
-    },
-    syntax: 'Key < Other Key',
-    variants: space('Key', '<', 'Other Key')
-  },
-  {
-    captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
-      Enolib::Grammar::COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::TEMPLATE_INDEX => '<'
-    },
-    syntax: 'Key < <',
-    variants: space('Key', '<', ' ', '<')
-  },
-  {
-    captures: {
-      Enolib::Grammar::KEY_UNESCAPED_INDEX => 'Key',
-      Enolib::Grammar::COPY_OPERATOR_INDEX => '<<',
-      Enolib::Grammar::TEMPLATE_INDEX => '<'
-    },
-    syntax: 'Key << <',
-    variants: space('Key', '<<', '<')
-  },
-
   # FIELDSET_ENTRY_SCENARIOS
   {
     captures: {
@@ -190,24 +161,24 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '`',
-      Enolib::Grammar::KEY_ESCAPED_INDEX => '<=:',
+      Enolib::Grammar::KEY_ESCAPED_INDEX => '=:',
       Enolib::Grammar::KEY_ESCAPE_END_OPERATOR_INDEX => '`',
       Enolib::Grammar::FIELDSET_ENTRY_OPERATOR_INDEX => '=',
-      Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => '`<=:`'
+      Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => '`=:`'
     },
-    syntax: '`<=:` = `<=:`',
-    variants: space('`', '<=:', '`', '=', '`<=:`')
+    syntax: '`=:` = `=:`',
+    variants: space('`', '=:', '`', '=', '`=:`')
   },
   {
     captures: {
       Enolib::Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '```',
-      Enolib::Grammar::KEY_ESCAPED_INDEX => '<`=``:',
+      Enolib::Grammar::KEY_ESCAPED_INDEX => '`=``:',
       Enolib::Grammar::KEY_ESCAPE_END_OPERATOR_INDEX => '```',
       Enolib::Grammar::FIELDSET_ENTRY_OPERATOR_INDEX => '=',
-      Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => '`<=:`'
+      Enolib::Grammar::FIELDSET_ENTRY_VALUE_INDEX => '`=:`'
     },
-    syntax: '```<`=``:``` = `<=:`',
-    variants: space('```', '<`=``:', '```', '=', '`<=:`')
+    syntax: '``` `=``:``` = `=:`',
+    variants: space('```', ' ', '`=``:', '```', '=', '`=:`')
   },
 
   # EMPTY_LINE_SCENARIOS
@@ -250,39 +221,27 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '`',
-      Enolib::Grammar::KEY_ESCAPED_INDEX => '<=:',
+      Enolib::Grammar::KEY_ESCAPED_INDEX => '=:',
       Enolib::Grammar::KEY_ESCAPE_END_OPERATOR_INDEX => '`',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':',
-      Enolib::Grammar::FIELD_VALUE_INDEX => '`<=:`'
+      Enolib::Grammar::FIELD_VALUE_INDEX => '`=:`'
     },
-    syntax: '`<=:` : `<=:`',
-    variants: space('`', '<=:', '`', ':', '`<=:`')
+    syntax: '`=:` : `=:`',
+    variants: space('`', '=:', '`', ':', '`=:`')
   },
   {
     captures: {
       Enolib::Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '```',
-      Enolib::Grammar::KEY_ESCAPED_INDEX => '<`=``:',
+      Enolib::Grammar::KEY_ESCAPED_INDEX => '`=``:',
       Enolib::Grammar::KEY_ESCAPE_END_OPERATOR_INDEX => '```',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':',
-      Enolib::Grammar::FIELD_VALUE_INDEX => '`<=:`'
+      Enolib::Grammar::FIELD_VALUE_INDEX => '`=:`'
     },
-    syntax: '```<`=``:``` : `<=:`',
-    variants: space('```', '<`=``:', '```', ':', '`<=:`')
+    syntax: '``` `=``:``` : `=:`',
+    variants: space('```', ' ', '`=``:', '```', ':', '`=:`')
   },
 
   # INVALID_SCENARIOS
-  {
-    syntax: 'Invalid <',
-    variants: space('Invalid', '<')
-  },
-  {
-    syntax: '< Invalid',
-    variants: space('<', 'Invalid')
-  },
-  {
-    syntax: '<',
-    variants: space('<')
-  },
   {
     syntax: '#',
     variants: space('#')
@@ -306,10 +265,6 @@ SCENARIOS = [
   {
     syntax: '= Invalid',
     variants: space('=', 'Invalid')
-  },
-  {
-    syntax: '### `Invalid',
-    variants: space('###', '`Invalid')
   },
   {
     syntax: '---',
@@ -377,29 +332,29 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '`',
-      Enolib::Grammar::KEY_ESCAPED_INDEX => '<=:',
+      Enolib::Grammar::KEY_ESCAPED_INDEX => '=:',
       Enolib::Grammar::KEY_ESCAPE_END_OPERATOR_INDEX => '`',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':'
     },
-    syntax: '`<=:`:',
-    variants: space('`', '<=:', '`', ':')
+    syntax: '`=:`:',
+    variants: space('`', '=:', '`', ':')
   },
   {
     captures: {
       Enolib::Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '```',
-      Enolib::Grammar::KEY_ESCAPED_INDEX => '<`=``:',
+      Enolib::Grammar::KEY_ESCAPED_INDEX => '`=``:',
       Enolib::Grammar::KEY_ESCAPE_END_OPERATOR_INDEX => '```',
       Enolib::Grammar::ELEMENT_OPERATOR_INDEX => ':'
     },
-    syntax: '```<`=``:```:',
-    variants: space('```', '<`=``:', '```', ':')
+    syntax: '``` `=``:```:',
+    variants: space('```', ' ', '`=``:', '```', ':')
   },
 
   # SECTION_SCENARIOS
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'Key'
+      Enolib::Grammar::SECTION_KEY_INDEX => 'Key'
     },
     syntax: '# Key',
     variants: space('#', 'Key')
@@ -407,7 +362,7 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '##',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'The Key'
+      Enolib::Grammar::SECTION_KEY_INDEX => 'The Key'
     },
     syntax: '## The Key',
     variants: space('##', 'The Key')
@@ -415,55 +370,33 @@ SCENARIOS = [
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => '#',
-      Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => 'Other Key'
+      Enolib::Grammar::SECTION_KEY_INDEX => '# Other Key'
     },
-    syntax: '# # < Other Key',
-    variants: space('#', ' ', '#', '<', 'Other Key')
+    syntax: '# # Other Key',
+    variants: space('#', ' ', '# Other Key')
   },
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '###',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => '##',
-      Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => '###'
+      Enolib::Grammar::SECTION_KEY_INDEX => '## ###'
     },
-    syntax: '### ## < ###',
-    variants: space('###', ' ', '##', '<', '###')
+    syntax: '### ## ###',
+    variants: space('###', ' ', '## ###')
   },
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '`',
-      Enolib::Grammar::SECTION_KEY_ESCAPED_INDEX => '<=:',
-      Enolib::Grammar::SECTION_KEY_ESCAPE_END_OPERATOR_INDEX => '`',
-      Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => '`<=:`'
+      Enolib::Grammar::SECTION_KEY_INDEX => '`=:` `=:`'
     },
-    syntax: '# `<=:` < `<=:`',
-    variants: space('#', '`<=:`', '<', '`<=:`')
+    syntax: '# `=:` `=:`',
+    variants: space('#', '`=:` `=:`')
   },
   {
     captures: {
       Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX => '```',
-      Enolib::Grammar::SECTION_KEY_ESCAPED_INDEX => '<`=``:',
-      Enolib::Grammar::SECTION_KEY_ESCAPE_END_OPERATOR_INDEX => '```',
-      Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => '```<`=``:```'
+      Enolib::Grammar::SECTION_KEY_INDEX => '``` `=``:```  ``` `=``:```'
     },
-    syntax: '# ```<`=``:``` < ```<`=``:```',
-    variants: space('#', '```<`=``:```', '<', '```<`=``:```')
-  },
-  {
-    captures: {
-      Enolib::Grammar::SECTION_OPERATOR_INDEX => '#',
-      Enolib::Grammar::SECTION_KEY_UNESCAPED_INDEX => 'Key',
-      Enolib::Grammar::SECTION_COPY_OPERATOR_INDEX => '<<',
-      Enolib::Grammar::SECTION_TEMPLATE_INDEX => 'Other Key'
-    },
-    syntax: '# Key << Other Key',
-    variants: space('#', ' ', 'Key', '<<', 'Other Key')
+    syntax: '# ``` `=``:```  ``` `=``:```',
+    variants: space('#', '``` `=``:```  ``` `=``:```')
   }
 ].freeze

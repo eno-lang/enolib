@@ -43,18 +43,12 @@
       :elements:
       - :type: :section
         :key: Left Arm
-        :elements: []
-      - :type: :section
-        :key: Right Arm
-        :elements: []
-      - :type: :section
-        :key: Right Arm
         :elements:
         - :type: :field
           :key: "--format pretty"
           :value: Pretty formatting option
         - :type: :list
-          :key: "> Friends <"
+          :key: "> Friends"
           :items:
           - :type: :list_item
             :value: Jack the Ripper

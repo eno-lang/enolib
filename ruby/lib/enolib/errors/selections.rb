@@ -75,9 +75,5 @@ module Enolib
     def self.select_line(element)
       selection(element, :line, RANGE_BEGIN, RANGE_END)
     end
-
-    def self.select_template(element)
-      selection(element, :template, RANGE_BEGIN, RANGE_END)
-    end
   end
 end

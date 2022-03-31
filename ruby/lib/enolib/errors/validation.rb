@@ -104,10 +104,7 @@ module Enolib
       end
 
       def self.value_error(context, message, element)
-        if element.has_key?(:mirror)
-          snippet = context.reporter.new(context).report_line(element).snippet
-          select = select_key(element)
-        elsif element[:type] == :multiline_field_begin
+        if element[:type] == :multiline_field_begin
           if element.has_key?(:lines)
             snippet = context.reporter.new(context).report_multiline_value(element).snippet
             select = Selections.selection(element[:lines][0], :line, RANGE_BEGIN, element[:lines][-1], :line, RANGE_END)

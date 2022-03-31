@@ -7,8 +7,6 @@ module Enolib
       @depth = 0
       @index = 0
       @line = 0
-      @unresolved_non_section_elements = {}
-      @unresolved_sections = {}
     end
 
     def run
@@ -40,9 +38,6 @@ module Enolib
 
         multiline_field = false
 
-        # TODO: In all implementations we could optimize the often occurring
-        #       empty line case - we need not allocate the instruction object
-        #       because it is discarded anyway
         if match[Grammar::EMPTY_LINE_INDEX]
 
           if comments
@@ -239,40 +234,8 @@ module Enolib
           instruction[:ranges][:section_operator] = match.offset(Grammar::SECTION_OPERATOR_INDEX)
           instruction[:type] = :section
 
-          instruction[:key] = match[Grammar::SECTION_KEY_UNESCAPED_INDEX]
-
-          if instruction[:key]
-            instruction[:ranges][:key] = match.offset(Grammar::SECTION_KEY_UNESCAPED_INDEX)
-          else
-            instruction[:key] = match[Grammar::SECTION_KEY_ESCAPED_INDEX]
-            instruction[:ranges][:escape_begin_operator] = match.offset(Grammar::SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
-            instruction[:ranges][:escape_end_operator] = match.offset(Grammar::SECTION_KEY_ESCAPE_END_OPERATOR_INDEX)
-            instruction[:ranges][:key] = match.offset(Grammar::SECTION_KEY_ESCAPED_INDEX)
-          end
-
-          template = match[Grammar::SECTION_TEMPLATE_INDEX]
-
-          if template
-            instruction[:ranges][:template] = match.offset(Grammar::SECTION_TEMPLATE_INDEX)
-            instruction[:template] = template
-
-            copy_operator_offset = match.offset(Grammar::SECTION_COPY_OPERATOR_INDEX)
-
-            if copy_operator_offset[1] - copy_operator_offset[0] == 2
-              instruction[:deep_copy] = true
-              instruction[:ranges][:deep_copy_operator] = copy_operator_offset
-            else
-              instruction[:ranges][:copy_operator] = copy_operator_offset
-            end
-
-            if @unresolved_sections.has_key?(template)
-              @unresolved_sections[template][:targets].push(instruction)
-            else
-              @unresolved_sections[template] = { targets: [instruction] }
-            end
-
-            instruction[:copy] = @unresolved_sections[template]
-          end
+          instruction[:key] = match[Grammar::SECTION_KEY_INDEX]
+          instruction[:ranges][:key] = match.offset(Grammar::SECTION_KEY_INDEX)
 
           new_depth = instruction[:ranges][:section_operator][1] - instruction[:ranges][:section_operator][0]
 
@@ -294,14 +257,6 @@ module Enolib
           end
 
           instruction[:parent][:elements].push(instruction)
-
-          if template
-            parent = instruction[:parent]
-            while parent[:type] != :document
-              parent[:deep_resolve] = true
-              parent = parent[:parent]
-            end
-          end
 
           last_section = instruction
           last_continuable_element = nil
@@ -415,43 +370,6 @@ module Enolib
             instruction[:ranges][:comment] = match.offset(Grammar::COMMENT_VALUE_INDEX)
           end
 
-        elsif match[Grammar::COPY_OPERATOR_INDEX]
-
-          if comments
-            instruction[:comments] = comments
-            comments = nil
-          end
-
-          template = match[Grammar::TEMPLATE_INDEX]
-
-          instruction[:ranges][:copy_operator] = match.offset(Grammar::COPY_OPERATOR_INDEX)
-          instruction[:ranges][:template] = match.offset(Grammar::TEMPLATE_INDEX)
-          instruction[:template] = template
-          instruction[:type] = :field_or_fieldset_or_list
-
-          instruction[:key] = match[Grammar::KEY_UNESCAPED_INDEX]
-
-          if instruction[:key]
-            instruction[:ranges][:key] = match.offset(Grammar::KEY_UNESCAPED_INDEX)
-          else
-            instruction[:key] = match[Grammar::KEY_ESCAPED_INDEX]
-            instruction[:ranges][:escape_begin_operator] = match.offset(Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
-            instruction[:ranges][:escape_end_operator] = match.offset(Grammar::KEY_ESCAPE_END_OPERATOR_INDEX)
-            instruction[:ranges][:key] = match.offset(Grammar::KEY_ESCAPED_INDEX)
-          end
-
-          instruction[:parent] = last_section
-          last_section[:elements].push(instruction)
-          last_continuable_element = nil
-          last_non_section_element = instruction
-
-          if @unresolved_non_section_elements.has_key?(template)
-            @unresolved_non_section_elements[template][:targets].push(instruction)
-          else
-            @unresolved_non_section_elements[template] = { targets: [instruction] }
-          end
-
-          instruction[:copy] = @unresolved_non_section_elements[template]
         elsif match[Grammar::KEY_UNESCAPED_INDEX]
 
           if comments
@@ -496,205 +414,9 @@ module Enolib
 
       @context.line_count = @context.input[-1] == "\n" ? @line + 1 : @line
       @context.meta.concat(comments) if comments
-
-      resolve unless @unresolved_non_section_elements.empty? && @unresolved_sections.empty?
     end
 
     private
-
-    def consolidate_non_section_elements(element, template)
-      if template.has_key?(:comments) && !element.has_key?(:comments)
-        element[:comments] = template[:comments]
-      end
-
-      case element[:type]
-      when :field_or_fieldset_or_list
-        case template[:type]
-        when :multiline_field_begin
-          element[:type] = :field
-          mirror(element, template)
-        when :field
-          element[:type] = :field
-          mirror(element, template)
-        when :fieldset
-          element[:type] = :fieldset
-          mirror(element, template)
-        when :list
-          element[:type] = :list
-          mirror(element, template)
-        end
-      when :fieldset
-        case template[:type]
-        when :fieldset
-          element[:extend] = template
-        when :field, :list, :multiline_field_begin
-          raise Errors::Parsing.missing_fieldset_for_fieldset_entry(@context, element[:entries].first)
-        end
-      when :list
-        case template[:type]
-        when :list
-          element[:extend] = template
-        when :field, :fieldset, :multiline_field_begin
-          raise Errors::Parsing.missing_list_for_list_item(@context, element[:items].first)
-        end
-      end
-    end
-
-    def consolidate_sections(section, template, deep_merge)
-      if template.has_key?(:comments) && !section.has_key?(:comments)
-        section[:comments] = template[:comments]
-      end
-
-      if section[:elements].empty?
-        mirror(section, template)
-      else
-        # TODO: Handle possibility of two templates (one hardcoded in the document, one implicitly derived through deep merging)
-        #       Possibly also elswhere (e.g. up there in the mirror branch?)
-        section[:extend] = template
-
-        return unless deep_merge
-
-        merge_map = {}
-
-        section[:elements].each do |section_element|
-          merge_map[section_element[:key]] =
-            if section_element[:type] != :section || merge_map.has_key?(section_element[:key])
-              false # non-mergable (no section or multiple instructions with same key)
-            else
-              { section: section_element }
-            end
-        end
-
-        template[:elements].each do |section_element|
-          next unless merge_map.has_key?(section_element[:key])
-
-          merger = merge_map[section_element[:key]]
-
-          next unless merger
-
-          if section_element[:type] != :section || merger.has_key?(:template)
-            merge_map[section_element[:key]] = false # non-mergable (no section or multiple template instructions with same key)
-          else
-            merger[:template] = section_element
-          end
-        end
-
-        merge_map.each_value do |merger|
-          if merger && merger.has_key?(:template)
-            consolidate_sections(merger[:section], merger[:template], true)
-          end
-        end
-      end
-    end
-
-    def mirror(element, template)
-      if template.has_key?(:mirror)
-        element[:mirror] = template[:mirror]
-      else
-        element[:mirror] = template
-      end
-    end
-
-    def index(section)
-      section[:elements].each do |element|
-        if element[:type] == :section
-          index(element)
-
-          if @unresolved_sections &&
-             @unresolved_sections.has_key?(element[:key]) &&
-             element[:key] != element[:template]
-            copy_data = @unresolved_sections[element[:key]]
-
-            if copy_data.has_key?(:template)
-              raise Errors::Parsing.two_or_more_templates_found(@context, copy_data[:targets].first, copy_data[:template], element)
-            end
-
-            copy_data[:template] = element
-          end
-        elsif @unresolved_non_section_elements &&
-              @unresolved_non_section_elements.has_key?(element[:key]) &&
-              element[:key] != element[:template]
-          copy_data = @unresolved_non_section_elements[element[:key]]
-
-          if copy_data.has_key?(:template)
-            raise Errors::Parsing.two_or_more_templates_found(@context, copy_data[:targets].first, copy_data[:template], element)
-          end
-
-          copy_data[:template] = element
-        end
-      end
-    end
-
-    def resolve
-      index(@context.document)
-
-      if @unresolved_non_section_elements
-        @unresolved_non_section_elements.each_value do |copy|
-          unless copy.has_key?(:template)
-            raise Errors::Parsing.non_section_element_not_found(@context, copy[:targets].first)
-          end
-
-          copy[:targets].each do |target|
-            resolve_non_section_element(target) if target.has_key?(:copy)
-          end
-        end
-      end
-
-      if @unresolved_sections
-        @unresolved_sections.each_value do |copy|
-          unless copy.has_key?(:template)
-            raise Errors::Parsing.section_not_found(@context, copy[:targets].first)
-          end
-
-          copy[:targets].each do |target|
-            resolve_section(target) if target.has_key?(:copy)
-          end
-        end
-      end
-    end
-
-    def resolve_non_section_element(element, previous_elements = [])
-      if previous_elements.include?(element)
-        raise Errors::Parsing.cyclic_dependency(@context, element, previous_elements)
-      end
-
-      template = element[:copy][:template]
-
-      if template.has_key?(:copy)
-        resolve_non_section_element(template, [*previous_elements, element])
-      end
-
-      consolidate_non_section_elements(element, template)
-
-      element.delete(:copy)
-    end
-
-    def resolve_section(section, previous_sections = [])
-      if previous_sections.include?(section)
-        raise Errors::Parsing.cyclic_dependency(@context, section, previous_sections)
-      end
-
-      if section.has_key?(:deep_resolve)
-        section[:elements].each do |section_element|
-          if section_element[:type] == :section &&
-             (section_element.has_key?(:copy) || section_element.has_key?(:deep_resolve))
-            resolve_section(section_element, [*previous_sections, section])
-          end
-        end
-      end
-
-      if section.has_key?(:copy)
-        template = section[:copy][:template]
-
-        if template.has_key?(:copy) || template.has_key?(:deep_resolve)
-          resolve_section(template, [*previous_sections, section])
-        end
-
-        consolidate_sections(section, template, section.has_key?(:deep_copy))
-
-        section.delete(:copy)
-      end
-    end
 
     def parse_after_error(error_instruction = nil)
       if error_instruction

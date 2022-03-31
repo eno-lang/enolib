@@ -1,56 +1,29 @@
 {
   "reference": {
-    "_evaluated": "2018-07-11 09:58:04 +0200",
+    "_evaluated": "2022-03-31 17:23:22 +0200",
     "configuration": {
       "change": "~0 ips (same)",
-      "ips": 7049
+      "ips": 9174
     },
     "content": {
       "change": "~0 ips (same)",
-      "ips": 10403
+      "ips": 16512
     },
     "hierarchy": {
       "change": "~0 ips (same)",
-      "ips": 8590
+      "ips": 15646
     },
     "invoice": {
       "change": "~0 ips (same)",
-      "ips": 4341
+      "ips": 7875
     },
     "journey": {
       "change": "~0 ips (same)",
-      "ips": 4915
+      "ips": 7923
     },
     "post": {
       "change": "~0 ips (same)",
-      "ips": 14061
-    }
-  },
-  "modifications": {
-    "_evaluated": "2018-07-11 10:05:01 +0200",
-    "configuration": {
-      "change": "+66 ips (1.009× faster)",
-      "ips": 7115
-    },
-    "content": {
-      "change": "-168 ips (1.016× slower)",
-      "ips": 10235
-    },
-    "hierarchy": {
-      "change": "-196 ips (1.023× slower)",
-      "ips": 8394
-    },
-    "invoice": {
-      "change": "-97 ips (1.023× slower)",
-      "ips": 4244
-    },
-    "journey": {
-      "change": "-107 ips (1.022× slower)",
-      "ips": 4808
-    },
-    "post": {
-      "change": "-366 ips (1.027× slower)",
-      "ips": 13695
+      "ips": 19276
     }
   }
 }

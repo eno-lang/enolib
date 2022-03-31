@@ -5,11 +5,7 @@ module Enolib
     attr_reader :instruction
 
     def _instantiate_items(list)
-      if list.has_key?(:mirror)
-        _instantiate_items(list[:mirror])
-      elsif list.has_key?(:extend)
-        _instantiate_items(list[:extend]) + list[:items].map { |item| ListItem.new(@context, item, self) }
-      elsif list.has_key?(:items)
+      if list.has_key?(:items)
         list[:items].map { |item| ListItem.new(@context, item, self) }
       else
         []

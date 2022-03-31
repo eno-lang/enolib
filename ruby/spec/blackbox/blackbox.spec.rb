@@ -30,9 +30,9 @@ describe 'Global blackbox test' do
       it 'returns the "I" correctly' do
         body = document.section('Body')
         limbs = body.section('Limbs')
-        right_arms = limbs.sections('Right Arm')
+        left_arm = limbs.section('Left Arm')
 
-        expect(right_arms[1].field('I').required_string_value).to eq('append allthe things')
+        expect(left_arm.field('I').required_string_value).to eq('append allthe things')
       end
     end
   end

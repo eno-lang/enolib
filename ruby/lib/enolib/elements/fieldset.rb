@@ -126,9 +126,7 @@ module Enolib
     end
 
     def instantiate_entries(fieldset)
-      if fieldset.has_key?(:mirror)
-        instantiate_entries(fieldset[:mirror])
-      elsif fieldset.has_key?(:entries)
+      if fieldset.has_key?(:entries)
         filtered = fieldset[:entries].reject { |entry| @instantiated_entries_map.has_key?(entry[:key]) }
         native_entries = filtered.map do |entry|
           instance = FieldsetEntry.new(@context, entry, self)
@@ -141,8 +139,6 @@ module Enolib
 
           instance
         end
-
-        instantiate_entries(fieldset[:extend]) if fieldset.has_key?(:extend)
 
         @instantiated_entries.concat(native_entries)
       end

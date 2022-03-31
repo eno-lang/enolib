@@ -1,518 +1,4 @@
 ---
-"./spec/tokenizer/complex_example.spec.rb[1:1:1]":
-- :index: 0
-  :line: 0
-  :comment: " Text of Comment"
-  :ranges:
-    :comment:
-    - 1
-    - 17
-    :comment_operator:
-    - 0
-    - 1
-  :type: :comment
-  :length: 17
-- :index: 18
-  :line: 1
-  :type: :empty_line
-  :length: 0
-- :index: 19
-  :line: 2
-  :key: Date
-  :ranges:
-    :key:
-    - 0
-    - 4
-    :element_operator:
-    - 4
-    - 5
-    :value:
-    - 6
-    - 38
-  :type: :field
-  :value: 1st of November in the year 2017
-  :length: 38
-- :index: 58
-  :line: 3
-  :type: :empty_line
-  :length: 0
-- :index: 59
-  :line: 4
-  :key: Book Description
-  :type: :multiline_field_begin
-  :length: 19
-  :ranges:
-    :multiline_field_operator:
-    - 0
-    - 2
-    :key:
-    - 3
-    - 19
-  :value_range:
-  - 79
-  - 107
-- :index: 79
-  :length: 19
-  :line: 5
-  :ranges:
-    :content:
-    - 0
-    - 19
-  :type: :multiline_field_value
-- :index: 99
-  :length: 9
-  :line: 6
-  :ranges:
-    :content:
-    - 0
-    - 9
-  :type: :multiline_field_value
-- :index: 109
-  :length: 19
-  :line: 7
-  :ranges:
-    :multiline_field_operator:
-    - 0
-    - 2
-    :key:
-    - 3
-    - 19
-  :type: :multiline_field_end
-- :index: 129
-  :line: 8
-  :type: :empty_line
-  :length: 0
-- :index: 130
-  :line: 9
-  :key: Shopping List
-  :ranges:
-    :key:
-    - 0
-    - 13
-    :element_operator:
-    - 13
-    - 14
-  :type: :element
-  :length: 14
-- :index: 145
-  :line: 10
-  :type: :list_item
-  :ranges:
-    :item_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 8
-  :value: Apples
-  :length: 8
-- :index: 154
-  :line: 11
-  :type: :list_item
-  :ranges:
-    :item_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 9
-  :value: Oranges
-  :length: 9
-- :index: 164
-  :line: 12
-  :type: :empty_line
-  :length: 0
-- :index: 165
-  :line: 13
-  :key: Telephone Numbers
-  :ranges:
-    :key:
-    - 0
-    - 17
-    :element_operator:
-    - 17
-    - 18
-  :type: :element
-  :length: 18
-- :index: 184
-  :line: 14
-  :key: Ben
-  :ranges:
-    :entry_operator:
-    - 4
-    - 5
-    :key:
-    - 0
-    - 3
-    :value:
-    - 6
-    - 23
-  :type: :fieldset_entry
-  :value: "+49 1943 24724784"
-  :length: 23
-- :index: 208
-  :line: 15
-  :key: Rachel
-  :ranges:
-    :entry_operator:
-    - 7
-    - 8
-    :key:
-    - 0
-    - 6
-    :value:
-    - 9
-    - 26
-  :type: :fieldset_entry
-  :value: "+59 3459 35935593"
-  :length: 26
-- :index: 235
-  :line: 16
-  :key: Dave
-  :ranges:
-    :escape_begin_operator:
-    - 0
-    - 1
-    :escape_end_operator:
-    - 5
-    - 6
-    :entry_operator:
-    - 7
-    - 8
-    :key:
-    - 1
-    - 5
-    :value:
-    - 9
-    - 26
-  :type: :fieldset_entry
-  :value: "+69 9025 93593531"
-  :length: 26
-- :index: 262
-  :line: 17
-  :type: :empty_line
-  :length: 0
-- :index: 263
-  :line: 18
-  :depth: 1
-  :type: :section
-  :key: Body
-  :ranges:
-    :key:
-    - 2
-    - 6
-    :section_operator:
-    - 0
-    - 1
-  :length: 6
-- :index: 270
-  :line: 19
-  :depth: 2
-  :type: :section
-  :key: Limbs
-  :ranges:
-    :escape_begin_operator:
-    - 3
-    - 4
-    :escape_end_operator:
-    - 9
-    - 10
-    :key:
-    - 4
-    - 9
-    :section_operator:
-    - 0
-    - 2
-  :length: 10
-- :index: 281
-  :line: 20
-  :depth: 3
-  :type: :section
-  :key: Left Arm
-  :ranges:
-    :key:
-    - 4
-    - 12
-    :section_operator:
-    - 0
-    - 3
-  :length: 12
-- :index: 294
-  :line: 21
-  :type: :empty_line
-  :length: 0
-- :index: 295
-  :line: 22
-  :depth: 3
-  :type: :section
-  :key: Right Arm
-  :ranges:
-    :escape_begin_operator:
-    - 4
-    - 5
-    :escape_end_operator:
-    - 14
-    - 15
-    :key:
-    - 5
-    - 14
-    :section_operator:
-    - 0
-    - 3
-    :copy_operator:
-    - 16
-    - 17
-    :template:
-    - 18
-    - 26
-  :template: Left Arm
-  :deep_copy: false
-  :length: 26
-- :index: 322
-  :line: 23
-  :depth: 3
-  :type: :section
-  :key: Right Arm
-  :ranges:
-    :escape_begin_operator:
-    - 4
-    - 5
-    :escape_end_operator:
-    - 14
-    - 15
-    :key:
-    - 5
-    - 14
-    :section_operator:
-    - 0
-    - 3
-    :deep_copy_operator:
-    - 16
-    - 18
-    :template:
-    - 19
-    - 27
-  :template: Left Arm
-  :deep_copy: true
-  :length: 27
-- :index: 350
-  :line: 24
-  :type: :empty_line
-  :length: 0
-- :index: 351
-  :line: 25
-  :key: "--format pretty"
-  :ranges:
-    :escape_begin_operator:
-    - 0
-    - 1
-    :escape_end_operator:
-    - 16
-    - 17
-    :element_operator:
-    - 17
-    - 18
-    :key:
-    - 1
-    - 16
-    :value:
-    - 19
-    - 43
-  :type: :field
-  :value: Pretty formatting option
-  :length: 43
-- :index: 395
-  :line: 26
-  :type: :empty_line
-  :length: 0
-- :index: 396
-  :line: 27
-  :key: "> Friends <"
-  :ranges:
-    :escape_begin_operator:
-    - 0
-    - 1
-    :escape_end_operator:
-    - 12
-    - 13
-    :element_operator:
-    - 13
-    - 14
-    :key:
-    - 1
-    - 12
-  :type: :element
-  :length: 14
-- :index: 411
-  :line: 28
-  :type: :list_item
-  :ranges:
-    :item_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 17
-  :value: Jack the Ripper
-  :length: 17
-- :index: 429
-  :line: 29
-  :type: :list_item
-  :ranges:
-    :item_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 14
-  :value: Frankenstein
-  :length: 14
-- :index: 444
-  :line: 30
-  :type: :empty_line
-  :length: 0
-- :index: 445
-  :line: 31
-  :key: Use `${arg}` style options
-  :ranges:
-    :escape_begin_operator:
-    - 0
-    - 2
-    :escape_end_operator:
-    - 28
-    - 30
-    :element_operator:
-    - 30
-    - 31
-    :key:
-    - 2
-    - 28
-  :type: :element
-  :length: 31
-- :index: 477
-  :line: 32
-  :key: "'--output dir'"
-  :ranges:
-    :entry_operator:
-    - 15
-    - 16
-    :key:
-    - 0
-    - 14
-    :value:
-    - 17
-    - 53
-  :type: :fieldset_entry
-  :value: Specify a different output directory
-  :length: 53
-- :index: 531
-  :line: 33
-  :key: "'--filters disabled'"
-  :ranges:
-    :entry_operator:
-    - 21
-    - 22
-    :key:
-    - 0
-    - 20
-    :value:
-    - 23
-    - 45
-  :type: :fieldset_entry
-  :value: Enable/disable filters
-  :length: 45
-- :index: 577
-  :line: 34
-  :type: :empty_line
-  :length: 0
-- :index: 578
-  :line: 35
-  :key: I
-  :ranges:
-    :key:
-    - 0
-    - 1
-    :element_operator:
-    - 1
-    - 2
-  :type: :element
-  :length: 2
-- :index: 581
-  :line: 36
-  :spaced: false
-  :type: :continuation
-  :value:
-  :ranges:
-    :newline_continuation_operator:
-    - 0
-    - 1
-  :length: 1
-- :index: 583
-  :line: 37
-  :spaced: true
-  :type: :continuation
-  :value: append
-  :ranges:
-    :line_continuation_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 8
-  :length: 8
-- :index: 592
-  :line: 38
-  :spaced: true
-  :type: :continuation
-  :value:
-  :ranges:
-    :line_continuation_operator:
-    - 0
-    - 1
-  :length: 1
-- :index: 594
-  :line: 39
-  :spaced: false
-  :type: :continuation
-  :value: all
-  :ranges:
-    :newline_continuation_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 5
-  :length: 5
-- :index: 600
-  :line: 40
-  :spaced: false
-  :type: :continuation
-  :value: the
-  :ranges:
-    :newline_continuation_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 5
-  :length: 5
-- :index: 606
-  :line: 41
-  :spaced: true
-  :type: :continuation
-  :value: things
-  :ranges:
-    :line_continuation_operator:
-    - 0
-    - 1
-    :value:
-    - 2
-    - 8
-  :length: 8
-- :index: 615
-  :length: 0
-  :line: 42
-  :type: :empty_line
 "./spec/parser/complex_example.spec.rb[1:1:1]": &1
   :elements:
   - :index: 19
@@ -709,7 +195,7 @@
       :key: Dave
       :value: "+69 9025 93593531"
       :parent: *3
-  - &9
+  - &8
     :index: 263
     :line: 18
     :ranges:
@@ -723,345 +209,275 @@
       - 265
       - 269
     :elements:
-    - &4
+    - &7
       :index: 270
       :line: 19
       :ranges:
         :line:
         - 270
-        - 280
+        - 278
         :section_operator:
         - 270
         - 272
-        :escape_begin_operator:
-        - 273
-        - 274
-        :escape_end_operator:
-        - 279
-        - 280
         :key:
-        - 274
-        - 279
+        - 273
+        - 278
       :elements:
-      - &5
-        :index: 281
+      - &4
+        :index: 279
         :line: 20
         :ranges:
           :line:
-          - 281
-          - 293
+          - 279
+          - 291
           :section_operator:
-          - 281
-          - 284
+          - 279
+          - 282
           :key:
-          - 285
-          - 293
-        :elements: []
-        :type: :section
-        :parent: *4
-        :key: Left Arm
-      - :index: 295
-        :line: 22
-        :ranges:
-          :line:
-          - 295
-          - 321
-          :section_operator:
-          - 295
-          - 298
-          :escape_begin_operator:
-          - 299
-          - 300
-          :escape_end_operator:
-          - 309
-          - 310
-          :key:
-          - 300
-          - 309
-          :template:
-          - 313
-          - 321
-          :copy_operator:
-          - 311
-          - 312
-        :elements: []
-        :type: :section
-        :parent: *4
-        :key: Right Arm
-        :template: Left Arm
-        :mirror: *5
-      - &6
-        :index: 322
-        :line: 23
-        :ranges:
-          :line:
-          - 322
-          - 349
-          :section_operator:
-          - 322
-          - 325
-          :escape_begin_operator:
-          - 326
-          - 327
-          :escape_end_operator:
-          - 336
-          - 337
-          :key:
-          - 327
-          - 336
-          :template:
-          - 341
-          - 349
-          :deep_copy_operator:
-          - 338
-          - 340
+          - 283
+          - 291
         :elements:
-        - :index: 351
-          :line: 25
+        - :index: 293
+          :line: 22
           :ranges:
             :line:
-            - 351
-            - 394
+            - 293
+            - 336
             :element_operator:
-            - 368
-            - 369
+            - 310
+            - 311
             :escape_begin_operator:
-            - 351
-            - 352
+            - 293
+            - 294
             :escape_end_operator:
-            - 367
-            - 368
+            - 309
+            - 310
             :key:
-            - 352
-            - 367
+            - 294
+            - 309
             :value:
-            - 370
-            - 394
+            - 312
+            - 336
           :key: "--format pretty"
           :type: :field
           :value: Pretty formatting option
-          :parent: *6
-        - &7
-          :index: 396
-          :line: 27
+          :parent: *4
+        - &5
+          :index: 338
+          :line: 24
           :ranges:
             :line:
-            - 396
-            - 410
+            - 338
+            - 350
             :element_operator:
-            - 409
-            - 410
+            - 349
+            - 350
             :escape_begin_operator:
-            - 396
-            - 397
+            - 338
+            - 339
             :escape_end_operator:
-            - 408
-            - 409
+            - 348
+            - 349
             :key:
-            - 397
-            - 408
-          :key: "> Friends <"
+            - 339
+            - 348
+          :key: "> Friends"
           :type: :list
-          :parent: *6
+          :parent: *4
           :items:
-          - :index: 411
-            :line: 28
+          - :index: 351
+            :line: 25
             :ranges:
               :line:
-              - 411
-              - 428
+              - 351
+              - 368
               :item_operator:
-              - 411
-              - 412
+              - 351
+              - 352
               :value:
-              - 413
-              - 428
+              - 353
+              - 368
             :type: :list_item
             :value: Jack the Ripper
-            :parent: *7
-          - :index: 429
+            :parent: *5
+          - :index: 369
+            :line: 26
+            :ranges:
+              :line:
+              - 369
+              - 383
+              :item_operator:
+              - 369
+              - 370
+              :value:
+              - 371
+              - 383
+            :type: :list_item
+            :value: Frankenstein
+            :parent: *5
+        - &6
+          :index: 385
+          :line: 28
+          :ranges:
+            :line:
+            - 385
+            - 416
+            :element_operator:
+            - 415
+            - 416
+            :escape_begin_operator:
+            - 385
+            - 387
+            :escape_end_operator:
+            - 413
+            - 415
+            :key:
+            - 387
+            - 413
+          :key: Use `${arg}` style options
+          :type: :fieldset
+          :parent: *4
+          :entries:
+          - :index: 417
             :line: 29
             :ranges:
               :line:
-              - 429
-              - 443
-              :item_operator:
-              - 429
-              - 430
-              :value:
+              - 417
+              - 470
+              :key:
+              - 417
               - 431
-              - 443
-            :type: :list_item
-            :value: Frankenstein
-            :parent: *7
-        - &8
-          :index: 445
-          :line: 31
-          :ranges:
-            :line:
-            - 445
-            - 476
-            :element_operator:
-            - 475
-            - 476
-            :escape_begin_operator:
-            - 445
-            - 447
-            :escape_end_operator:
-            - 473
-            - 475
-            :key:
-            - 447
-            - 473
-          :key: Use `${arg}` style options
-          :type: :fieldset
-          :parent: *6
-          :entries:
-          - :index: 477
-            :line: 32
+              :entry_operator:
+              - 432
+              - 433
+              :value:
+              - 434
+              - 470
+            :type: :fieldset_entry
+            :key: "'--output dir'"
+            :value: Specify a different output directory
+            :parent: *6
+          - :index: 471
+            :line: 30
             :ranges:
               :line:
-              - 477
-              - 530
+              - 471
+              - 516
               :key:
-              - 477
+              - 471
               - 491
               :entry_operator:
               - 492
               - 493
               :value:
               - 494
-              - 530
-            :type: :fieldset_entry
-            :key: "'--output dir'"
-            :value: Specify a different output directory
-            :parent: *8
-          - :index: 531
-            :line: 33
-            :ranges:
-              :line:
-              - 531
-              - 576
-              :key:
-              - 531
-              - 551
-              :entry_operator:
-              - 552
-              - 553
-              :value:
-              - 554
-              - 576
+              - 516
             :type: :fieldset_entry
             :key: "'--filters disabled'"
             :value: Enable/disable filters
-            :parent: *8
-        - :index: 578
-          :line: 35
+            :parent: *6
+        - :index: 518
+          :line: 32
           :ranges:
             :line:
-            - 578
-            - 580
+            - 518
+            - 520
             :element_operator:
-            - 579
-            - 580
+            - 519
+            - 520
             :key:
-            - 578
-            - 579
+            - 518
+            - 519
           :key: I
           :type: :field
-          :parent: *6
+          :parent: *4
           :continuations:
-          - :index: 581
-            :line: 36
+          - :index: 521
+            :line: 33
             :ranges:
               :line:
-              - 581
-              - 582
+              - 521
+              - 522
               :direct_line_continuation_operator:
-              - 581
-              - 582
+              - 521
+              - 522
             :type: :continuation
-          - :index: 583
-            :line: 37
+          - :index: 523
+            :line: 34
             :ranges:
               :line:
-              - 583
-              - 591
+              - 523
+              - 531
               :spaced_line_continuation_operator:
-              - 583
-              - 584
+              - 523
+              - 524
               :value:
-              - 585
-              - 591
+              - 525
+              - 531
             :spaced: true
             :type: :continuation
             :value: append
-          - :index: 592
+          - :index: 532
+            :line: 35
+            :ranges:
+              :line:
+              - 532
+              - 533
+              :spaced_line_continuation_operator:
+              - 532
+              - 533
+            :spaced: true
+            :type: :continuation
+          - :index: 534
+            :line: 36
+            :ranges:
+              :line:
+              - 534
+              - 539
+              :direct_line_continuation_operator:
+              - 534
+              - 535
+              :value:
+              - 536
+              - 539
+            :type: :continuation
+            :value: all
+          - :index: 540
+            :line: 37
+            :ranges:
+              :line:
+              - 540
+              - 545
+              :direct_line_continuation_operator:
+              - 540
+              - 541
+              :value:
+              - 542
+              - 545
+            :type: :continuation
+            :value: the
+          - :index: 546
             :line: 38
             :ranges:
               :line:
-              - 592
-              - 593
+              - 546
+              - 554
               :spaced_line_continuation_operator:
-              - 592
-              - 593
-            :spaced: true
-            :type: :continuation
-          - :index: 594
-            :line: 39
-            :ranges:
-              :line:
-              - 594
-              - 599
-              :direct_line_continuation_operator:
-              - 594
-              - 595
+              - 546
+              - 547
               :value:
-              - 596
-              - 599
-            :type: :continuation
-            :value: all
-          - :index: 600
-            :line: 40
-            :ranges:
-              :line:
-              - 600
-              - 605
-              :direct_line_continuation_operator:
-              - 600
-              - 601
-              :value:
-              - 602
-              - 605
-            :type: :continuation
-            :value: the
-          - :index: 606
-            :line: 41
-            :ranges:
-              :line:
-              - 606
-              - 614
-              :spaced_line_continuation_operator:
-              - 606
-              - 607
-              :value:
-              - 608
-              - 614
+              - 548
+              - 554
             :spaced: true
             :type: :continuation
             :value: things
         :type: :section
-        :parent: *4
-        :key: Right Arm
-        :template: Left Arm
-        :deep_copy: true
-        :extend: *5
+        :key: Left Arm
+        :parent: *7
       :type: :section
-      :parent: *9
       :key: Limbs
-      :deep_resolve: true
+      :parent: *8
     :type: :section
-    :parent: *1
     :key: Body
-    :deep_resolve: true
+    :parent: *1
   :type: :document

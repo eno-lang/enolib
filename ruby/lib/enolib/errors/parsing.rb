@@ -3,32 +3,7 @@
 module Enolib
   module Errors
     module Parsing
-      UNTERMINATED_ESCAPED_KEY = /^\s*#*\s*(`+)(?!`)((?:(?!\1).)+)$/.freeze
-
-      def self.cyclic_dependency(context, instruction, instruction_chain)
-        first_occurrence = instruction_chain.find_index(instruction)
-        feedback_chain = instruction_chain[first_occurrence..-1]
-
-        if feedback_chain.last.has_key?(:template)
-          copy_instruction = feedback_chain.last
-        elsif feedback_chain.first.has_key?(:template)  # TODO: Here and elsewhere, do we even need to check this? One has to be it, right?
-          copy_instruction = feedback_chain.first
-        end
-
-        reporter = context.reporter.new(context)
-
-        reporter.report_line(copy_instruction)
-
-        feedback_chain.each do |element|
-          reporter.indicate_line(element) if element != copy_instruction
-        end
-
-        ParseError.new(
-          context.messages.cyclic_dependency(copy_instruction[:line] + Enolib::HUMAN_INDEXING, copy_instruction[:template]),
-          reporter.snippet,
-          Selections.select_template(copy_instruction)
-        )
-      end
+      UNTERMINATED_ESCAPED_KEY = /^\s*(`+)(?!`)((?:(?!\1).)+)$/.freeze
 
       def self.invalid_line(context, instruction)
         line = context.input[instruction[:ranges][:line][RANGE_BEGIN]..instruction[:ranges][:line][RANGE_END]]
@@ -67,14 +42,6 @@ module Enolib
         )
       end
 
-      def self.non_section_element_not_found(context, copy)
-        ParseError.new(
-          context.messages.non_section_element_not_found(copy[:line] + Enolib::HUMAN_INDEXING, copy[:template]),
-          context.reporter.new(context).report_line(copy).snippet,
-          Selections.select_line(copy)
-        )
-      end
-
       def self.section_hierarchy_layer_skip(context, section, super_section)
         reporter = context.reporter.new(context).report_line(section)
 
@@ -84,14 +51,6 @@ module Enolib
           context.messages.section_hierarchy_layer_skip(section[:line] + Enolib::HUMAN_INDEXING),
           reporter.snippet,
           Selections.select_line(section)
-        )
-      end
-
-      def self.section_not_found(context, copy)
-        ParseError.new(
-          context.messages.section_not_found(copy[:line] + Enolib::HUMAN_INDEXING, copy[:template]),
-          context.reporter.new(context).report_line(copy).snippet,
-          Selections.select_line(copy)
         )
       end
 
@@ -107,14 +66,6 @@ module Enolib
             },
             to: Selections.cursor(instruction, :line, RANGE_END)
           }
-        )
-      end
-
-      def self.two_or_more_templates_found(context, copy, first_template, second_template)
-        ParseError.new(
-          context.messages.two_or_more_templates_found(copy[:template]),
-          context.reporter.new(context).report_line(copy).question_line(first_template).question_line(second_template).snippet,
-          Selections.select_line(copy)
         )
       end
 

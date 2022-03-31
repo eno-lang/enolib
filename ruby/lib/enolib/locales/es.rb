@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
@@ -36,7 +36,6 @@ module Enolib
       MISSING_SECTION = 'Se requiere una sola sección - puede tener cualquier clave.'
       UNEXPECTED_ELEMENT = 'Este elemento no se esperaba, averigua si es en el sitio correcto y que no contiene un error tipográfico la clave.'
       def self.comment_error(message) "Hay un problema con el comentario de este elemento: #{message}" end
-      def self.cyclic_dependency(line, key) "En la línea #{line} '#{key}' se copia en sí mismo." end
       def self.expected_empty_with_key(key) "Se esperaba un elemento vacío con la clave '#{key}'." end
       def self.expected_field_with_key(key) "Se esperaba una casilla con la clave '#{key}'." end
       def self.expected_fields_with_key(key) "Solo se esperaban casillas con la clave '#{key}'." end
@@ -68,10 +67,7 @@ module Enolib
       def self.missing_list_item_value(key) "La lista '#{key}' no debe contener entradas vacías." end
       def self.missing_list_with_key(key) "Falta la lista '#{key}' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas." end
       def self.missing_section_with_key(key) "Falta la sección '#{key}' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas." end
-      def self.non_section_element_not_found(line, key) "En la línea #{line} debe ser copiado el elemento no sección '#{key}', pero no se encontró." end
       def self.section_hierarchy_layer_skip(line) "Línea #{line} inicia una sección que es más de un nivel más bajo el actual." end
-      def self.section_not_found(line, key) "En la línea #{line} debe ser copiado la sección '#{key}', pero no se encontró." end
-      def self.two_or_more_templates_found(key) "Hay como mínimo dos elementos con la clave '#{key}' que se clasifiquen para estar copiado, no está claro cual debe ser copiado." end
       def self.unterminated_escaped_key(line) "En la línea #{line}, la clave de un elemento se escapa, pero esta secuencia de escape no termina hasta el final de la línea." end
       def self.unterminated_multiline_field(key, line) "La casilla de múltiples líneas '#{key}' que comienza en la línea #{line} no termina hasta el final del documento." end
       def self.value_error(message) "Hay un problema con el valor de este elemento: #{message}" end

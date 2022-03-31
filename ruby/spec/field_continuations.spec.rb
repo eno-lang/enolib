@@ -37,24 +37,5 @@ describe Enolib::Field do
         expect(value).to eq('foo bar')
       end
     end
-
-    context 'leading and trailing empty lines copied from block' do
-      let(:input) do
-        <<~DOC
-        -- block
-
-        inbetween
-
-        -- block
-
-        field < block
-        DOC
-      end
-
-      it 'retains all empty lines' do
-        value = Enolib.parse(input).field('field').required_string_value
-        expect(value).to eq("\ninbetween\n")
-      end
-    end
   end
 end

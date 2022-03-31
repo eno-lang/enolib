@@ -2,8 +2,6 @@
 
 # Note: Study this file from the bottom up
 
-# TODO: Try out possesive quantifiers (careful x{2,}+ does not work in ruby, only xx++ (!)) - benchmark?
-
 module Enolib
   module Grammar
     OPTIONAL = /([^\n]+?)?/.source
@@ -40,61 +38,38 @@ module Enolib
     MULTILINE_FIELD_OPERATOR_INDEX = 10
     MULTILINE_FIELD_KEY_INDEX = 11
 
-    # #
-    SECTION_OPERATOR = /(#+)(?!#)/.source
-    SECTION_OPERATOR_INDEX = 12
-
     # # key
-    SECTION_KEY_UNESCAPED = /([^\s`<][^<\n]*?)/.source
-    SECTION_KEY_UNESCAPED_INDEX = 13
-
-    # # `key`
-    SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 14
-    SECTION_KEY_ESCAPED = /(`+)(?!`)[^\S\n]*(\S[^\n]*?)[^\S\n]*(#{"\\#{SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX}"})/.source # TODO: Should this exclude the backreference inside the quotes? (as in ((?:(?!\1).)+) ) here and elsewhere (probably not because it's not greedy.?!
-    SECTION_KEY_ESCAPED_INDEX = 15
-    SECTION_KEY_ESCAPE_END_OPERATOR_INDEX = 16
-
-    # # key < template
-    # # `key` < template
-    SECTION_KEY = /(?:#{SECTION_KEY_UNESCAPED}|#{SECTION_KEY_ESCAPED})/.source
-    SECTION_TEMPLATE = /(?:(<(?!<)|<<)[^\S\n]*#{REQUIRED})?/.source
-    SECTION = /#{SECTION_OPERATOR}\s*#{SECTION_KEY}[^\S\n]*#{SECTION_TEMPLATE}/.source
-    SECTION_COPY_OPERATOR_INDEX = 17
-    SECTION_TEMPLATE_INDEX = 18
+    SECTION = /(#+)(?!#)[^\S\n]*#{REQUIRED}/.source
+    SECTION_OPERATOR_INDEX = 12
+    SECTION_KEY_INDEX = 13
 
     EARLY_DETERMINED = /#{CONTINUATION}|#{COMMENT}|#{LIST_ITEM}|#{MULTILINE_FIELD}|#{SECTION}/.source
 
     # key
     KEY_UNESCAPED = /([^\s>#\-`\\|:=<][^\n:=<]*?)/.source
-    KEY_UNESCAPED_INDEX = 19
+    KEY_UNESCAPED_INDEX = 14
 
     # `key`
-    KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 20
+    KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 15
     KEY_ESCAPED = /(`+)(?!`)[^\S\n]*(\S[^\n]*?)[^\S\n]*(#{"\\#{KEY_ESCAPE_BEGIN_OPERATOR_INDEX}"})/.source
-    KEY_ESCAPED_INDEX = 21
-    KEY_ESCAPE_END_OPERATOR_INDEX = 22
+    KEY_ESCAPED_INDEX = 16
+    KEY_ESCAPE_END_OPERATOR_INDEX = 17
 
     KEY = /(?:#{KEY_UNESCAPED}|#{KEY_ESCAPED})/.source
 
     # :
     # : value
     FIELD_OR_FIELDSET_OR_LIST = /(:)[^\S\n]*#{OPTIONAL}/.source
-    ELEMENT_OPERATOR_INDEX = 23
-    FIELD_VALUE_INDEX = 24
+    ELEMENT_OPERATOR_INDEX = 18
+    FIELD_VALUE_INDEX = 19
 
     # =
     # = value
     FIELDSET_ENTRY = /(=)[^\S\n]*#{OPTIONAL}/.source
-    FIELDSET_ENTRY_OPERATOR_INDEX = 25
-    FIELDSET_ENTRY_VALUE_INDEX = 26
+    FIELDSET_ENTRY_OPERATOR_INDEX = 20
+    FIELDSET_ENTRY_VALUE_INDEX = 21
 
-    # < template
-    # << template
-    COPY = /(<(?!<)|<<)\s*#{REQUIRED}/.source
-    COPY_OPERATOR_INDEX = 27
-    TEMPLATE_INDEX = 28
-
-    LATE_DETERMINED = /#{KEY}\s*(?:#{FIELD_OR_FIELDSET_OR_LIST}|#{FIELDSET_ENTRY}|#{COPY})?/.source
+    LATE_DETERMINED = /#{KEY}\s*(?:#{FIELD_OR_FIELDSET_OR_LIST}|#{FIELDSET_ENTRY})?/.source
 
     NON_EMPTY_LINE = /(?:#{EARLY_DETERMINED}|#{LATE_DETERMINED})/.source
 

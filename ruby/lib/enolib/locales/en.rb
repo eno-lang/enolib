@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
@@ -36,7 +36,6 @@ module Enolib
       MISSING_SECTION = 'A single section is required - it can have any key.'
       UNEXPECTED_ELEMENT = 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.'
       def self.comment_error(message) "There is a problem with the comment of this element: #{message}" end
-      def self.cyclic_dependency(line, key) "In line #{line} '#{key}' is copied into itself." end
       def self.expected_empty_with_key(key) "An empty with the key '#{key}' was expected." end
       def self.expected_field_with_key(key) "A field with the key '#{key}' was expected." end
       def self.expected_fields_with_key(key) "Only fields with the key '#{key}' were expected." end
@@ -68,10 +67,7 @@ module Enolib
       def self.missing_list_item_value(key) "The list '#{key}' may not contain empty items." end
       def self.missing_list_with_key(key) "The list '#{key}' is missing - in case it has been specified look for typos and also check for correct capitalization." end
       def self.missing_section_with_key(key) "The section '#{key}' is missing - in case it has been specified look for typos and also check for correct capitalization." end
-      def self.non_section_element_not_found(line, key) "In line #{line} the non-section element '#{key}' should be copied, but it was not found." end
       def self.section_hierarchy_layer_skip(line) "Line #{line} starts a section that is more than one level deeper than the current one." end
-      def self.section_not_found(line, key) "In line #{line} the section '#{key}' should be copied, but it was not found." end
-      def self.two_or_more_templates_found(key) "There are at least two elements with the key '#{key}' that qualify for being copied here, it is not clear which to copy." end
       def self.unterminated_escaped_key(line) "In line #{line} the key of an element is escaped, but the escape sequence is not terminated until the end of the line." end
       def self.unterminated_multiline_field(key, line) "The multiline field '#{key}' starting in line #{line} is not terminated until the end of the document." end
       def self.value_error(message) "There is a problem with the value of this element: #{message}" end
