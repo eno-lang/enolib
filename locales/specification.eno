@@ -41,9 +41,6 @@ Gutter Header: Line
 
 ## Parsing
 
-Cyclic Dependency:
-LINE, KEY = In line [LINE] '[KEY]' is copied into itself.
-
 Invalid Line:
 LINE = Line [LINE] does not follow any specified pattern.
 
@@ -56,17 +53,8 @@ LINE = Line [LINE] contains a fieldset entry without a fieldset being specified 
 Missing List For List Item:
 LINE = Line [LINE] contains a list item without a list being specified before.
 
-Non-Section Element Not Found:
-LINE, KEY = In line [LINE] the non-section element '[KEY]' should be copied, but it was not found.
-
 Section Hierarchy Layer Skip:
 LINE = Line [LINE] starts a section that is more than one level deeper than the current one.
-
-Section Not Found:
-LINE, KEY = In line [LINE] the section '[KEY]' should be copied, but it was not found.
-
-Two Or More Templates Found:
-KEY = There are at least two elements with the key '[KEY]' that qualify for being copied here, it is not clear which to copy.
 
 Unterminated Escaped Key:
 LINE = In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line.

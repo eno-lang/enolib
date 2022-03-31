@@ -56,9 +56,6 @@ msgstr "Línea"
 
 # Message group 'Parsing'
 
-msgid "In line [LINE] '[KEY]' is copied into itself."
-msgstr "En la línea [LINE] '[KEY]' se copia en sí mismo."
-
 msgid "Line [LINE] does not follow any specified pattern."
 msgstr "Línea [LINE] no sigue un patrón especificado."
 
@@ -71,17 +68,8 @@ msgstr "Línea [LINE] contiene una casilla de collecíon sin una collecíon de c
 msgid "Line [LINE] contains a list item without a list being specified before."
 msgstr "Línea [LINE] contiene una entrada de lista sin una lista empezada antes."
 
-msgid "In line [LINE] the non-section element '[KEY]' should be copied, but it was not found."
-msgstr "En la línea [LINE] debe ser copiado el elemento no sección '[KEY]', pero no se encontró."
-
 msgid "Line [LINE] starts a section that is more than one level deeper than the current one."
 msgstr "Línea [LINE] inicia una sección que es más de un nivel más bajo el actual."
-
-msgid "In line [LINE] the section '[KEY]' should be copied, but it was not found."
-msgstr "En la línea [LINE] debe ser copiado la sección '[KEY]', pero no se encontró."
-
-msgid "There are at least two elements with the key '[KEY]' that qualify for being copied here, it is not clear which to copy."
-msgstr "Hay como mínimo dos elementos con la clave '[KEY]' que se clasifiquen para estar copiado, no está claro cual debe ser copiado."
 
 msgid "In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line."
 msgstr "En la línea [LINE], la clave de un elemento se escapa, pero esta secuencia de escape no termina hasta el final de la línea."

@@ -56,9 +56,6 @@ msgstr "Zeile"
 
 # Message group 'Parsing'
 
-msgid "In line [LINE] '[KEY]' is copied into itself."
-msgstr "In Zeile [LINE] wird '[KEY]' in sich selbst kopiert."
-
 msgid "Line [LINE] does not follow any specified pattern."
 msgstr "Zeile [LINE] folgt keinem spezifierten Muster."
 
@@ -71,17 +68,8 @@ msgstr "Zeile [LINE] enthält einen Fieldset Eintrag ohne dass davor ein Fieldse
 msgid "Line [LINE] contains a list item without a list being specified before."
 msgstr "Zeile [LINE] enthält einen Listeneintrag ohne dass davor ein eine Liste begonnen wurde."
 
-msgid "In line [LINE] the non-section element '[KEY]' should be copied, but it was not found."
-msgstr "In Zeile [LINE] soll das Nicht-Sektions Element '[KEY]' kopiert werden, es wurde aber nicht gefunden."
-
 msgid "Line [LINE] starts a section that is more than one level deeper than the current one."
 msgstr "Zeile [LINE] beginnt eine Sektion die mehr als eine Ebene tiefer liegt als die aktuelle."
-
-msgid "In line [LINE] the section '[KEY]' should be copied, but it was not found."
-msgstr "In Zeile [LINE] soll die Sektion '[KEY]' kopiert werden, sie wurde aber nicht gefunden."
-
-msgid "There are at least two elements with the key '[KEY]' that qualify for being copied here, it is not clear which to copy."
-msgstr "Es gibt mindestens zwei Elemente mit dem Schlüssel '[KEY]' die hier zum kopieren in Frage kommen, es ist nicht klar welches kopiert werden soll."
 
 msgid "In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line."
 msgstr "In Zeile [LINE] wird der Schlüssel eines Elements escaped, jedoch wird diese Escape Sequenz bis zum Ende der Zeile nicht mehr beendet."

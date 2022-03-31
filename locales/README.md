@@ -1,6 +1,6 @@
 # locales
 
-This directory maintains the canonical, translated message catalog that is utilized across all enolib implementations across different (programming-)languages. These messages are by about 90% made up of the errors that can occur during tokenization, analysis, dependency resolution and validation of an eno document. The remaining 10% are separate strings that name the elements of an eno document as well as miscellaneous labels used by the error reporters.
+This directory maintains the canonical, translated message catalog that is utilized across all enolib implementations across different (programming-)languages. These messages are by about 90% made up of the errors that can occur during tokenization, analysis and validation of an eno document. The remaining 10% are separate strings that name the elements of an eno document as well as miscellaneous labels used by the error reporters.
 
 ## Prerequisites for making changes
 
