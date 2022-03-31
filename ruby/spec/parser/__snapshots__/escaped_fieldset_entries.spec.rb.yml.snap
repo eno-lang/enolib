@@ -83,7 +83,7 @@
     - 7
     - 13
   :type: :fieldset_entry
-  :value: 
+  :value:
   :length: 22
 "./spec/parser/escaped_fieldset_entries.spec.rb[1:1:1]": &1
   :elements:

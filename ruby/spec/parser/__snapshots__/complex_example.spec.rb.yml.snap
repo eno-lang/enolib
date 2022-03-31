@@ -441,7 +441,7 @@
   :line: 36
   :spaced: false
   :type: :continuation
-  :value: 
+  :value:
   :ranges:
     :newline_continuation_operator:
     - 0
@@ -464,7 +464,7 @@
   :line: 38
   :spaced: true
   :type: :continuation
-  :value: 
+  :value:
   :ranges:
     :line_continuation_operator:
     - 0
