@@ -8,18 +8,10 @@ class List extends ElementBase {
   }
 
   _instantiateItems(list) {
-    if(list.hasOwnProperty('mirror')) {
-      return this._instantiateItems(list.mirror);
-    } else if(list.hasOwnProperty('extend')) {
-      return [
-        ...this._instantiateItems(list.extend),
-        ...list.items.map(item => new list_item_module.ListItem(this._context, item, this))
-      ];
-    } else if(list.hasOwnProperty('items')) {
+    if(list.hasOwnProperty('items'))
       return list.items.map(item => new list_item_module.ListItem(this._context, item, this));
-    } else {
-      return [];
-    }
+      
+    return [];
   }
 
   _items() {
@@ -106,7 +98,7 @@ class List extends ElementBase {
   touch() {
     this._touched = true;
 
-    for(const item of this.items()) {
+    for (const item of this.items()) {
       item._touched = true;
     }
   }

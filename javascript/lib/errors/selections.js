@@ -76,4 +76,3 @@ exports.selectComments = selectComments;
 exports.selectElement = element => selection(element, 'line', BEGIN, lastIn(element), 'line', END);
 exports.selectKey = element => selection(element, 'key', BEGIN, END);
 exports.selectLine = element => selection(element, 'line', BEGIN, END);
-exports.selectTemplate = element => selection(element, 'template', BEGIN, END);

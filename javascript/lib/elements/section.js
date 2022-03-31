@@ -198,9 +198,6 @@ class Section extends ElementBase {
   }
 
   _instantiateElements(section) {
-    if(section.hasOwnProperty('mirror')) {
-      this._instantiateElements(section.mirror);
-    } else {
       this._instantiatedElements.push(
         ...section.elements.filter(element =>
           !this._instantiatedElementsMap.hasOwnProperty(element.key)
@@ -216,11 +213,6 @@ class Section extends ElementBase {
           return instance;
         })
       );
-
-      if(section.hasOwnProperty('extend')) {
-        this._instantiateElements(section.extend);
-      }
-    }
   }
 
   _list(key, required = null) {

@@ -60,12 +60,6 @@ exports.analyze = function() {
     type: DOCUMENT
   };
 
-  // TODO: Possibly flatten into two properties?
-  this.copy = {
-    nonSectionElements: {},
-    sections: {}
-  };
-
   this._meta = [];
 
   if(this._input.length === 0) {
@@ -333,55 +327,12 @@ exports.analyze = function() {
       instruction.type = SECTION;
 
       const sectionOperatorIndex = this._input.indexOf(sectionOperator, index);
-      instruction.key = match[matcher.SECTION_KEY_UNESCAPED_INDEX];
-      let keyEndIndex;
+      instruction.key = match[matcher.SECTION_KEY_INDEX];
 
-      if(instruction.key !== undefined) {
-        const keyIndex = this._input.indexOf(instruction.key, sectionOperatorIndex + sectionOperator.length);
-        keyEndIndex = keyIndex + instruction.key.length;
+      const keyIndex = this._input.indexOf(instruction.key, sectionOperatorIndex + sectionOperator.length);
 
-        instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
-        instruction.ranges.sectionOperator = [sectionOperatorIndex, sectionOperatorIndex + sectionOperator.length];
-      } else {
-        instruction.key = match[matcher.SECTION_KEY_ESCAPED_INDEX];
-
-        const escapeOperator = match[matcher.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
-        const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, sectionOperatorIndex + sectionOperator.length);
-        const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
-        const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        keyEndIndex = escapeEndOperatorIndex + escapeOperator.length;
-
-        instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
-        instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
-        instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
-        instruction.ranges.sectionOperator = [sectionOperatorIndex, sectionOperatorIndex + sectionOperator.length];
-      }
-
-      if(match[matcher.SECTION_TEMPLATE_INDEX] !== undefined) {
-        instruction.template = match[matcher.SECTION_TEMPLATE_INDEX];
-
-        const copyOperator = match[matcher.SECTION_COPY_OPERATOR_INDEX];
-        const copyOperatorIndex = this._input.indexOf(copyOperator, keyEndIndex);
-        const templateIndex = this._input.indexOf(instruction.template, copyOperatorIndex + copyOperator.length);
-
-        instruction.deepCopy = copyOperator.length > 1;
-
-        if(instruction.deepCopy) {
-          instruction.ranges.deepCopyOperator = [copyOperatorIndex, copyOperatorIndex + copyOperator.length];
-        } else {
-          instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + copyOperator.length];
-        }
-
-        instruction.ranges.template = [templateIndex, templateIndex + instruction.template.length];
-
-        if(this.copy.sections.hasOwnProperty(instruction.template)) {
-          this.copy.sections[instruction.template].targets.push(instruction);
-        } else {
-          this.copy.sections[instruction.template] = { targets: [instruction] };
-        }
-
-        instruction.copy = this.copy.sections[instruction.template];
-      }
+      instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
+      instruction.ranges.sectionOperator = [sectionOperatorIndex, sectionOperatorIndex + sectionOperator.length];
 
       if(instruction.depth === lastSection.depth + 1) {
         instruction.parent = lastSection;
@@ -399,12 +350,6 @@ exports.analyze = function() {
       }
 
       instruction.parent.elements.push(instruction);
-
-      if(instruction.hasOwnProperty('template')) {
-        for(let parent = instruction.parent; parent.type !== DOCUMENT; parent = parent.parent) {
-          parent.deepResolve = true;
-        }
-      }
 
       lastSection = instruction;
       lastContinuableElement = null;
@@ -495,61 +440,9 @@ exports.analyze = function() {
         }
       }
 
-    } else if(match[matcher.TEMPLATE_INDEX] !== undefined) {
+    } else if (match[matcher.COMMENT_OPERATOR_INDEX] !== undefined) {
 
-      if(comments) {
-        instruction.comments = comments;
-        comments = null;
-      }
-
-      instruction.template = match[matcher.TEMPLATE_INDEX]; // TODO: We can possibly make this ephemeral (local variable) because the new copyData reference replaces its function
-      instruction.type = FIELD_OR_FIELDSET_OR_LIST;
-
-      let copyOperatorIndex;
-
-      instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
-
-      if(instruction.key !== undefined) {
-        const keyIndex = this._input.indexOf(instruction.key, index);
-        instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
-
-        copyOperatorIndex = this._input.indexOf('<', keyIndex + instruction.key.length);
-      } else {
-        instruction.key = match[matcher.KEY_ESCAPED_INDEX];
-
-        const escapeOperator = match[matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX];
-        const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
-        const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
-        const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-
-        instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
-        instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
-        instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
-
-        copyOperatorIndex = this._input.indexOf('<', escapeEndOperatorIndex + escapeOperator.length);
-      }
-
-      instruction.ranges.copyOperator = [copyOperatorIndex, copyOperatorIndex + 1];
-
-      const templateIndex = this._input.indexOf(instruction.template, copyOperatorIndex + 1);
-      instruction.ranges.template = [templateIndex, templateIndex + instruction.template.length];
-
-      instruction.parent = lastSection;
-      lastSection.elements.push(instruction);
-      lastContinuableElement = null;
-      lastNonSectionElement = instruction;
-
-      if(this.copy.nonSectionElements.hasOwnProperty(instruction.template)) {
-        this.copy.nonSectionElements[instruction.template].targets.push(instruction);
-      } else {
-        this.copy.nonSectionElements[instruction.template] = { targets: [instruction] };
-      }
-
-      instruction.copy = this.copy.nonSectionElements[instruction.template];
-
-    } else if(match[matcher.COMMENT_OPERATOR_INDEX] !== undefined) {
-
-      if(comments === null) {
+      if (comments === null) {
         comments = [instruction];
       } else {
         comments.push(instruction);

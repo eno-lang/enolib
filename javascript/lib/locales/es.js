@@ -1,4 +1,4 @@
-//  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 module.exports = {
   contentHeader: 'Contenido',
@@ -32,7 +32,6 @@ module.exports = {
   missingSection: 'Se requiere una sola sección - puede tener cualquier clave.',
   unexpectedElement: 'Este elemento no se esperaba, averigua si es en el sitio correcto y que no contiene un error tipográfico la clave.',
   commentError: (message) => `Hay un problema con el comentario de este elemento: ${message}`,
-  cyclicDependency: (line, key) => `En la línea ${line} '${key}' se copia en sí mismo.`,
   expectedEmptyWithKey: (key) => `Se esperaba un elemento vacío con la clave '${key}'.`,
   expectedFieldWithKey: (key) => `Se esperaba una casilla con la clave '${key}'.`,
   expectedFieldsWithKey: (key) => `Solo se esperaban casillas con la clave '${key}'.`,
@@ -64,10 +63,7 @@ module.exports = {
   missingListItemValue: (key) => `La lista '${key}' no debe contener entradas vacías.`,
   missingListWithKey: (key) => `Falta la lista '${key}' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas.`,
   missingSectionWithKey: (key) => `Falta la sección '${key}' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas.`,
-  nonSectionElementNotFound: (line, key) => `En la línea ${line} debe ser copiado el elemento no sección '${key}', pero no se encontró.`,
   sectionHierarchyLayerSkip: (line) => `Línea ${line} inicia una sección que es más de un nivel más bajo el actual.`,
-  sectionNotFound: (line, key) => `En la línea ${line} debe ser copiado la sección '${key}', pero no se encontró.`,
-  twoOrMoreTemplatesFound: (key) => `Hay como mínimo dos elementos con la clave '${key}' que se clasifiquen para estar copiado, no está claro cual debe ser copiado.`,
   unterminatedEscapedKey: (line) => `En la línea ${line}, la clave de un elemento se escapa, pero esta secuencia de escape no termina hasta el final de la línea.`,
   unterminatedMultilineField: (key, line) => `La casilla de múltiples líneas '${key}' que comienza en la línea ${line} no termina hasta el final del documento.`,
   valueError: (message) => `Hay un problema con el valor de este elemento: ${message}`

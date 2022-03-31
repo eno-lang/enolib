@@ -117,10 +117,7 @@ exports.errors = {
   valueError: (context, message, element) => {
     let snippet, select;
 
-    if(element.mirror) {
-      snippet = new context.reporter(context).reportLine(element).snippet();
-      select = selectKey(element);
-    } else if(element.type === MULTILINE_FIELD_BEGIN) {
+    if(element.type === MULTILINE_FIELD_BEGIN) {
       if(element.lines.length > 0) {
         snippet = new context.reporter(context).reportMultilineValue(element).snippet();
         select = selection(element.lines[0], 'line', BEGIN, element.lines[element.lines.length - 1], 'line', END);

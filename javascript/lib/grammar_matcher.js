@@ -34,59 +34,38 @@ const MULTILINE_FIELD = `(-{2,})(?!-)[^\\S\\n]*${REQUIRED}`;
 exports.MULTILINE_FIELD_OPERATOR_INDEX = 10;
 exports.MULTILINE_FIELD_KEY_INDEX = 11;
 
-// #
-const SECTION_OPERATOR = '(#+)(?!#)';
-exports.SECTION_OPERATOR_INDEX = 12;
-
 // # key
-const SECTION_KEY_UNESCAPED = '([^`\\s<][^<\\n]*?)';
-exports.SECTION_KEY_UNESCAPED_INDEX = 13;
-
-// # `key`
-const SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 14
-const SECTION_KEY_ESCAPED = `(\`+)(?!\`)[^\\S\\n]*(\\S[^\\n]*?)[^\\S\\n]*\\${SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX}`; // TODO: Should this exclude the backreference inside the quotes? (as in ((?:(?!\\1).)+) ) here and elsewhere (probably not because it's not greedy.?)
-exports.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX = SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX;
-exports.SECTION_KEY_ESCAPED_INDEX = 15;
-
-// # key <(<) template
-// # `key` <(<) template
-const SECTION_KEY = `(?:${SECTION_KEY_UNESCAPED}|${SECTION_KEY_ESCAPED})`;
-const SECTION_TEMPLATE = `(?:(<(?!<)|<<)[^\\S\\n]*${REQUIRED})?`;
-const SECTION = `${SECTION_OPERATOR}\\s*${SECTION_KEY}[^\\S\\n]*${SECTION_TEMPLATE}`;
-exports.SECTION_COPY_OPERATOR_INDEX = 16;
-exports.SECTION_TEMPLATE_INDEX = 17;
+const SECTION = `(#+)(?!#)[^\\S\\n]*${REQUIRED}`;
+exports.SECTION_OPERATOR_INDEX = 12;
+exports.SECTION_KEY_INDEX = 13;
 
 const EARLY_DETERMINED = `${CONTINUATION}|${COMMENT}|${LIST_ITEM}|${MULTILINE_FIELD}|${SECTION}`;
 
 // key
 const KEY_UNESCAPED = '([^\\s>#\\-`\\\\|:=<][^:=<\\n]*?)';
-exports.KEY_UNESCAPED_INDEX = 18;
+exports.KEY_UNESCAPED_INDEX = 14;
 
 // `key`
-const KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 19
+const KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 15;
 const KEY_ESCAPED = `(\`+)(?!\`)[^\\S\\n]*(\\S[^\\n]*?)[^\\S\\n]*\\${KEY_ESCAPE_BEGIN_OPERATOR_INDEX}`;
 exports.KEY_ESCAPE_BEGIN_OPERATOR_INDEX = KEY_ESCAPE_BEGIN_OPERATOR_INDEX;
-exports.KEY_ESCAPED_INDEX = 20;
+exports.KEY_ESCAPED_INDEX = 16;
 
 const KEY = `(?:${KEY_UNESCAPED}|${KEY_ESCAPED})`;
 
 // :
 // : value
 const FIELD_OR_FIELDSET_OR_LIST = `(:)[^\\S\\n]*${OPTIONAL}`;
-exports.ELEMENT_OPERATOR_INDEX = 21;
-exports.FIELD_VALUE_INDEX = 22;
+exports.ELEMENT_OPERATOR_INDEX = 17;
+exports.FIELD_VALUE_INDEX = 18;
 
 // =
 // = value
 const FIELDSET_ENTRY = `(=)[^\\S\\n]*${OPTIONAL}`;
-exports.FIELDSET_ENTRY_OPERATOR_INDEX = 23;
-exports.FIELDSET_ENTRY_VALUE_INDEX = 24;
+exports.FIELDSET_ENTRY_OPERATOR_INDEX = 19;
+exports.FIELDSET_ENTRY_VALUE_INDEX = 20;
 
-// < template
-const TEMPLATE = `<\\s*${REQUIRED}`;
-exports.TEMPLATE_INDEX = 25;
-
-const LATE_DETERMINED = `${KEY}\\s*(?:${FIELD_OR_FIELDSET_OR_LIST}|${FIELDSET_ENTRY}|${TEMPLATE})?`;
+const LATE_DETERMINED = `${KEY}\\s*(?:${FIELD_OR_FIELDSET_OR_LIST}|${FIELDSET_ENTRY})?`;
 
 const NON_EMPTY_LINE = `(?:${EARLY_DETERMINED}|${LATE_DETERMINED})`;
 

@@ -1,4 +1,4 @@
-//  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 module.exports = {
   contentHeader: 'Inhalt',
@@ -32,7 +32,6 @@ module.exports = {
   missingSection: 'Eine einzelne Sektion ist erforderlich - sie kann einen beliebigen Schlüssel haben.',
   unexpectedElement: 'Dieses Element wurde nicht erwartet, prüfe ob es am richtigen Platz ist und dass der Schlüssel keine Tippfehler enthält.',
   commentError: (message) => `Es gibt ein Problem mit dem Kommentar dieses Elements: ${message}`,
-  cyclicDependency: (line, key) => `In Zeile ${line} wird '${key}' in sich selbst kopiert.`,
   expectedEmptyWithKey: (key) => `Ein Leerfeld mit dem Schlüssel '${key}' wurde erwartet.`,
   expectedFieldWithKey: (key) => `Ein Feld mit dem Schlüssel '${key}' wurde erwartet.`,
   expectedFieldsWithKey: (key) => `Nur Felder mit dem Schlüssel '${key}' wurden erwartet.`,
@@ -64,10 +63,7 @@ module.exports = {
   missingListItemValue: (key) => `Die Liste '${key}' darf keine leeren Einträge enthalten.`,
   missingListWithKey: (key) => `Die Liste '${key}' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten.`,
   missingSectionWithKey: (key) => `Die Sektion '${key}' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten.`,
-  nonSectionElementNotFound: (line, key) => `In Zeile ${line} soll das Nicht-Sektions Element '${key}' kopiert werden, es wurde aber nicht gefunden.`,
   sectionHierarchyLayerSkip: (line) => `Zeile ${line} beginnt eine Sektion die mehr als eine Ebene tiefer liegt als die aktuelle.`,
-  sectionNotFound: (line, key) => `In Zeile ${line} soll die Sektion '${key}' kopiert werden, sie wurde aber nicht gefunden.`,
-  twoOrMoreTemplatesFound: (key) => `Es gibt mindestens zwei Elemente mit dem Schlüssel '${key}' die hier zum kopieren in Frage kommen, es ist nicht klar welches kopiert werden soll.`,
   unterminatedEscapedKey: (line) => `In Zeile ${line} wird der Schlüssel eines Elements escaped, jedoch wird diese Escape Sequenz bis zum Ende der Zeile nicht mehr beendet.`,
   unterminatedMultilineField: (key, line) => `Das Mehrzeilenfeld '${key}' dass in Zeile ${line} beginnt wird bis zum Ende des Dokuments nicht mehr beendet.`,
   valueError: (message) => `Es gibt ein Problem mit dem Wert dieses Elements: ${message}`

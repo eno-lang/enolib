@@ -59,10 +59,8 @@ class Fieldset extends ElementBase {
   }
 
   _instantiateEntries(fieldset) {
-    if(fieldset.hasOwnProperty('mirror')) {
-      this._instantiateEntries(fieldset.mirror);
-    } else if(fieldset.hasOwnProperty('entries')) {
-      const nativeEntries = fieldset.entries.filter(entry =>
+    if(fieldset.hasOwnProperty('entries')) {
+      this._instantiatedEntries = fieldset.entries.filter(entry =>
         !this._instantiatedEntriesMap.hasOwnProperty(entry.key)
       ).map(entry => {
         const instance = new fieldset_entry_module.FieldsetEntry(this._context, entry, this);
@@ -75,12 +73,6 @@ class Fieldset extends ElementBase {
 
         return instance;
       });
-
-      if(fieldset.hasOwnProperty('extend')) {
-        this._instantiateEntries(fieldset.extend);
-      }
-
-      this._instantiatedEntries.push(...nativeEntries);
     }
   }
 

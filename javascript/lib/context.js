@@ -1,6 +1,5 @@
 const { analyze } = require('./analyze.js');
 const en = require('./locales/en.js');
-const { resolve } =  require('./resolve.js');
 const { TextReporter } = require('./reporters/text_reporter.js');
 
 const {
@@ -25,10 +24,6 @@ class Context {
     this.source = options.hasOwnProperty('source') ? options.source : null;
 
     this._analyze();
-
-    if(this.hasOwnProperty('copy')) {
-      this._resolve();
-    }
   }
 
   // TODO: Here and elsewhere - don't manually copy over copied comments field in resolve.js
@@ -86,10 +81,7 @@ class Context {
   }
 
   elements(section) {
-    if(section.hasOwnProperty('mirror')) {
-      return this.elements(section.mirror);
-    } else {
-      if(!section.hasOwnProperty('computedElements')) {
+      if (!section.hasOwnProperty('computedElements')) {
         section.computedElementsMap = {};
         section.computedElements = section.elements;
 
@@ -100,33 +92,13 @@ class Context {
             section.computedElementsMap[element.key] = [element];
           }
         }
-
-        if(section.hasOwnProperty('extend')) {
-          const copiedElements = this.elements(section.extend).filter(element =>
-            !section.computedElementsMap.hasOwnProperty(element.key)
-          );
-
-          section.computedElements = copiedElements.concat(section.computedElements);  // TODO: .push(...xy) somehow possible too? (but careful about order, which is relevant)
-
-          for(const element of copiedElements) {
-            if(section.computedElementsMap.hasOwnProperty(element.key)) {
-              section.computedElementsMap[element.key].push(element);
-            } else {
-              section.computedElementsMap[element.key] = [element];
-            }
-          }
-        }
       }
 
       return section.computedElements;
-    }
   }
 
   entries(fieldset) {
-    if(fieldset.hasOwnProperty('mirror')) {
-      return this.entries(fieldset.mirror);
-    } else {
-      if(!fieldset.hasOwnProperty('computedEntries')) {
+      if (!fieldset.hasOwnProperty('computedEntries')) {
         fieldset.computedEntriesMap = {};
         fieldset.computedEntries = fieldset.entries;
 
@@ -137,43 +109,15 @@ class Context {
             fieldset.computedEntriesMap[entry.key] = [entry];
           }
         }
-
-        if(fieldset.hasOwnProperty('extend')) {
-          const copiedEntries = this.entries(fieldset.extend).filter(entry =>
-            !fieldset.computedEntriesMap.hasOwnProperty(entry.key)
-          );
-
-          fieldset.computedEntries = copiedEntries.concat(fieldset.computedEntries); // TODO: .push(...xy) somehow possible too? (but careful about order, which is relevant)
-
-          for(const entry of copiedEntries) {
-            if(fieldset.computedEntriesMap.hasOwnProperty(entry.key)) {
-              fieldset.computedEntriesMap[entry.key].push(entry);
-            } else {
-              fieldset.computedEntriesMap[entry.key] = [entry];
-            }
-          }
-        }
       }
 
       return fieldset.computedEntries;
-    }
   }
 
   items(list) {
-    if(list.hasOwnProperty('mirror')) {
-      return this.items(list.mirror);
-    } else if(!list.hasOwnProperty('extend')) {
       return list.items;
-    } else {
-      if(!list.hasOwnProperty('computedItems')) {
-        list.computedItems = [...this.items(list.extend), ...list.items];
-      }
-
-      return list.computedItems;
-    }
   }
 
-  // TODO: raw() implies this would be the actual underlying structure used - maybe something like toNative or toJson is better (json would be good for interchangeable specs)
   raw(element) {
     const result = {
       type: PRETTY_TYPES[element.type]
@@ -223,10 +167,7 @@ class Context {
   }
 
   value(element) {
-    if(!element.hasOwnProperty('computedValue')) {
-      if(element.hasOwnProperty('mirror'))
-        return this.value(element.mirror);
-
+    if (!element.hasOwnProperty('computedValue')) {
       element.computedValue = null;
 
       if(element.type === MULTILINE_FIELD_BEGIN) {
@@ -266,6 +207,5 @@ class Context {
 }
 
 Context.prototype._analyze = analyze;
-Context.prototype._resolve = resolve;
 
 exports.Context = Context;

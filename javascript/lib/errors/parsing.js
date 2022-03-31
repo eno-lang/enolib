@@ -1,5 +1,5 @@
 const { BEGIN, DOCUMENT, END, HUMAN_INDEXING } = require('../constants.js');
-const { cursor, selectLine, selectTemplate } = require('./selections.js');
+const { cursor, selectLine } = require('./selections.js');
 const { ParseError } = require('../error_types.js');
 
 // ```key: value
@@ -16,37 +16,6 @@ const unterminatedEscapedKey = (context, instruction, unterminated) => {
 };
 
 exports.errors = {
-  cyclicDependency: (context, instruction, instructionChain) => {
-    const firstOccurrence = instructionChain.indexOf(instruction);
-    const feedbackChain = instructionChain.slice(firstOccurrence);
-
-    const firstInstruction = feedbackChain[0];
-    const lastInstruction = feedbackChain[feedbackChain.length - 1];
-
-    let copyInstruction;
-    if(lastInstruction.hasOwnProperty('template')) {
-      copyInstruction = lastInstruction;
-    } else if(firstInstruction.hasOwnProperty('template')) {
-      copyInstruction = firstInstruction;
-    }
-
-    const reporter = new context.reporter(context);
-
-    reporter.reportLine(copyInstruction);
-
-    for(const element of feedbackChain) {
-      if(element !== copyInstruction) {
-        reporter.indicateLine(element);
-      }
-    }
-
-    return new ParseError(
-      context.messages.cyclicDependency(copyInstruction.line + HUMAN_INDEXING, copyInstruction.template),
-      reporter.snippet(),
-      selectTemplate(copyInstruction)
-    );
-  },
-
   invalidLine: (context, instruction) => {
     const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
 
@@ -88,14 +57,6 @@ exports.errors = {
     );
   },
 
-  nonSectionElementNotFound: (context, copy) => {
-    return new ParseError(
-      context.messages.nonSectionElementNotFound(copy.line + HUMAN_INDEXING, copy.template),
-      new context.reporter(context).reportLine(copy).snippet(),
-      selectLine(copy)
-    );
-  },
-
   sectionHierarchyLayerSkip: (context, section, superSection) => {
     const reporter = new context.reporter(context).reportLine(section);
 
@@ -107,22 +68,6 @@ exports.errors = {
       context.messages.sectionHierarchyLayerSkip(section.line + HUMAN_INDEXING),
       reporter.snippet(),
       selectLine(section)
-    );
-  },
-
-  sectionNotFound: (context, copy) => {
-    return new ParseError(
-      context.messages.sectionNotFound(copy.line + HUMAN_INDEXING, copy.template),
-      new context.reporter(context).reportLine(copy).snippet(),
-      selectLine(copy)
-    );
-  },
-
-  twoOrMoreTemplatesFound: (context, copy, firstTemplate, secondTemplate) => {
-    return new ParseError(
-      context.messages.twoOrMoreTemplatesFound(copy.template),
-      new context.reporter(context).reportLine(copy).questionLine(firstTemplate).questionLine(secondTemplate).snippet(),
-      selectLine(copy)
     );
   },
 

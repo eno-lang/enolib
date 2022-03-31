@@ -1,4 +1,4 @@
-//  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 module.exports = {
   contentHeader: 'Content',
@@ -32,7 +32,6 @@ module.exports = {
   missingSection: 'A single section is required - it can have any key.',
   unexpectedElement: 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.',
   commentError: (message) => `There is a problem with the comment of this element: ${message}`,
-  cyclicDependency: (line, key) => `In line ${line} '${key}' is copied into itself.`,
   expectedEmptyWithKey: (key) => `An empty with the key '${key}' was expected.`,
   expectedFieldWithKey: (key) => `A field with the key '${key}' was expected.`,
   expectedFieldsWithKey: (key) => `Only fields with the key '${key}' were expected.`,
@@ -64,10 +63,7 @@ module.exports = {
   missingListItemValue: (key) => `The list '${key}' may not contain empty items.`,
   missingListWithKey: (key) => `The list '${key}' is missing - in case it has been specified look for typos and also check for correct capitalization.`,
   missingSectionWithKey: (key) => `The section '${key}' is missing - in case it has been specified look for typos and also check for correct capitalization.`,
-  nonSectionElementNotFound: (line, key) => `In line ${line} the non-section element '${key}' should be copied, but it was not found.`,
   sectionHierarchyLayerSkip: (line) => `Line ${line} starts a section that is more than one level deeper than the current one.`,
-  sectionNotFound: (line, key) => `In line ${line} the section '${key}' should be copied, but it was not found.`,
-  twoOrMoreTemplatesFound: (key) => `There are at least two elements with the key '${key}' that qualify for being copied here, it is not clear which to copy.`,
   unterminatedEscapedKey: (line) => `In line ${line} the key of an element is escaped, but the escape sequence is not terminated until the end of the line.`,
   unterminatedMultilineField: (key, line) => `The multiline field '${key}' starting in line ${line} is not terminated until the end of the document.`,
   valueError: (message) => `There is a problem with the value of this element: ${message}`

@@ -262,10 +262,6 @@ exports.SCENARIOS = [
     variants: space('=', 'Invalid')
   },
   {
-    syntax: '### `Invalid',
-    variants: space('###', '`Invalid')
-  },
-  {
     syntax: '---',
     variants: space('---')
   },
@@ -351,7 +347,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: 'Key'
+      [matcher.SECTION_KEY_INDEX]: 'Key'
     },
     syntax: '# Key',
     variants: space('#', 'Key')
@@ -359,7 +355,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.SECTION_OPERATOR_INDEX]: '##',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: 'The Key'
+      [matcher.SECTION_KEY_INDEX]: 'The Key'
     },
     syntax: '## The Key',
     variants: space('##', 'The Key')
@@ -367,7 +363,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: '# Other Key'
+      [matcher.SECTION_KEY_INDEX]: '# Other Key'
     },
     syntax: '# # Other Key',
     variants: space('#', ' ', '# Other Key')
@@ -375,7 +371,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.SECTION_OPERATOR_INDEX]: '###',
-      [matcher.SECTION_KEY_UNESCAPED_INDEX]: '## ###'
+      [matcher.SECTION_KEY_INDEX]: '## ###'
     },
     syntax: '### ## ###',
     variants: space('###', ' ', '## ###')
