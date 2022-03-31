@@ -3,7 +3,7 @@ const { cursor, selectLine } = require('./selections.js');
 const { ParseError } = require('../error_types.js');
 
 // ```key: value
-const UNTERMINATED_ESCAPED_KEY = /^\s*#*\s*(`+)(?!`)((?:(?!\1).)+)$/;
+const UNTERMINATED_ESCAPED_KEY = /^\s*(`+)(?!`)((?:(?!\1).)+)$/;
 const unterminatedEscapedKey = (context, instruction, unterminated) => {
   const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
   const selectionColumn = line.lastIndexOf(unterminated);

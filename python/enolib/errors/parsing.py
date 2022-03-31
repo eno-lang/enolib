@@ -4,7 +4,7 @@ from ..error_types import ParseError
 from .selections import cursor, select_line
 
 class Parsing:
-    UNTERMINATED_ESCAPED_KEY = re.compile(r'^\s*#*\s*(`+)(?!`)((?:(?!\1).)+)$')
+    UNTERMINATED_ESCAPED_KEY = re.compile(r'^\s*(`+)(?!`)((?:(?!\1).)+)$')
 
     @staticmethod
     def invalid_line(context, instruction):
