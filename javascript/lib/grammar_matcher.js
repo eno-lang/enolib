@@ -42,7 +42,7 @@ exports.SECTION_KEY_INDEX = 13;
 const EARLY_DETERMINED = `${CONTINUATION}|${COMMENT}|${LIST_ITEM}|${MULTILINE_FIELD}|${SECTION}`;
 
 // key
-const KEY_UNESCAPED = '([^\\s>#\\-`\\\\|:=<][^:=<\\n]*?)';
+const KEY_UNESCAPED = '([^\\s>#\\-`\\\\|:=][^:=\\n]*?)';
 exports.KEY_UNESCAPED_INDEX = 14;
 
 // `key`
