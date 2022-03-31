@@ -23,7 +23,7 @@ reference = analysis['reference'] if 'reference' in analysis else None
 modifications = { '_evaluated': str(datetime.now()) }
 
 for name, content in SAMPLES.items():
-    before = time.clock()
+    before = time.process_time()
     seconds = 0
     iterations = 0
 
@@ -32,7 +32,7 @@ for name, content in SAMPLES.items():
             parse(content)
 
         iterations += 1000
-        seconds = time.clock() - before
+        seconds = time.process_time() - before
 
     ips = int(iterations / seconds)
     delta = ips - reference[name]['ips'] if reference else 0
