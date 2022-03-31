@@ -1,4 +1,4 @@
-#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 content_header = 'Content'
 expected_document = 'The document was expected.'
@@ -31,7 +31,6 @@ missing_list = 'A single list is required - it can have any key.'
 missing_section = 'A single section is required - it can have any key.'
 unexpected_element = 'This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.'
 comment_error = lambda message: f"There is a problem with the comment of this element: {message}"
-cyclic_dependency = lambda line, key: f"In line {line} '{key}' is copied into itself."
 expected_empty_with_key = lambda key: f"An empty with the key '{key}' was expected."
 expected_field_with_key = lambda key: f"A field with the key '{key}' was expected."
 expected_fields_with_key = lambda key: f"Only fields with the key '{key}' were expected."
@@ -63,10 +62,7 @@ missing_list_for_list_item = lambda line: f"Line {line} contains a list item wit
 missing_list_item_value = lambda key: f"The list '{key}' may not contain empty items."
 missing_list_with_key = lambda key: f"The list '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization."
 missing_section_with_key = lambda key: f"The section '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization."
-non_section_element_not_found = lambda line, key: f"In line {line} the non-section element '{key}' should be copied, but it was not found."
 section_hierarchy_layer_skip = lambda line: f"Line {line} starts a section that is more than one level deeper than the current one."
-section_not_found = lambda line, key: f"In line {line} the section '{key}' should be copied, but it was not found."
-two_or_more_templates_found = lambda key: f"There are at least two elements with the key '{key}' that qualify for being copied here, it is not clear which to copy."
 unterminated_escaped_key = lambda line: f"In line {line} the key of an element is escaped, but the escape sequence is not terminated until the end of the line."
 unterminated_multiline_field = lambda key, line: f"The multiline field '{key}' starting in line {line} is not terminated until the end of the document."
 value_error = lambda message: f"There is a problem with the value of this element: {message}"

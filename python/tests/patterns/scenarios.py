@@ -121,35 +121,6 @@ SCENARIOS = [
         'variants': ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
     },
 
-    # COPY_SCENARIOS
-    {
-        'captures': {
-            Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.COPY_OPERATOR_INDEX: '<',
-            Grammar.TEMPLATE_INDEX: 'Other Key'
-        },
-        'syntax': 'Key < Other Key',
-        'variants': space('Key', '<', 'Other Key')
-    },
-    {
-        'captures': {
-            Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.COPY_OPERATOR_INDEX: '<',
-            Grammar.TEMPLATE_INDEX: '<'
-        },
-        'syntax': 'Key < <',
-        'variants': space('Key', '<', '<')
-    },
-    {
-        'captures': {
-            Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.COPY_OPERATOR_INDEX: '<',
-            Grammar.TEMPLATE_INDEX: '<'
-        },
-        'syntax': 'Key <<',
-        'variants': space('Key', '<<')
-    },
-
     # FIELDSET_ENTRY_SCENARIOS
     {
         'captures': {
@@ -190,24 +161,24 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
-            Grammar.KEY_ESCAPED_INDEX: '<=:',
+            Grammar.KEY_ESCAPED_INDEX: '=:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '`',
             Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '`<=:`'
+            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '`=:`'
         },
-        'syntax': '`<=:` = `<=:`',
-        'variants': space('`', '<=:', '`', '=', '`<=:`')
+        'syntax': '`=:` = `=:`',
+        'variants': space('`', '=:', '`', '=', '`=:`')
     },
     {
         'captures': {
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
-            Grammar.KEY_ESCAPED_INDEX: '<`=``:',
+            Grammar.KEY_ESCAPED_INDEX: '`=``:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '```',
             Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '`<=:`'
+            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '`=:`'
         },
-        'syntax': '```<`=``:``` = `<=:`',
-        'variants': space('```', '<`=``:', '```', '=', '`<=:`')
+        'syntax': '``` `=``:``` = `=:`',
+        'variants': space('```', ' ', '`=``:', '```', '=', '`=:`')
     },
 
     # EMPTY_LINE_SCENARIOS
@@ -250,39 +221,27 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
-            Grammar.KEY_ESCAPED_INDEX: '<=:',
+            Grammar.KEY_ESCAPED_INDEX: '=:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '`',
             Grammar.ELEMENT_OPERATOR_INDEX: ':',
-            Grammar.FIELD_VALUE_INDEX: '`<=:`'
+            Grammar.FIELD_VALUE_INDEX: '`=:`'
         },
-        'syntax': '`<=:` : `<=:`',
-        'variants': space('`', '<=:', '`', ':', '`<=:`')
+        'syntax': '`=:` : `=:`',
+        'variants': space('`', '=:', '`', ':', '`=:`')
     },
     {
         'captures': {
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
-            Grammar.KEY_ESCAPED_INDEX: '<`=``:',
+            Grammar.KEY_ESCAPED_INDEX: '`=``:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '```',
             Grammar.ELEMENT_OPERATOR_INDEX: ':',
-            Grammar.FIELD_VALUE_INDEX: '`<=:`'
+            Grammar.FIELD_VALUE_INDEX: '`=:`'
         },
-        'syntax': '```<`=``:``` : `<=:`',
-        'variants': space('```', '<`=``:', '```', ':', '`<=:`')
+        'syntax': '``` `=``:``` : `=:`',
+        'variants': space('```', ' ', '`=``:', '```', ':', '`=:`')
     },
 
     # INVALID_SCENARIOS
-    {
-      'syntax': 'Invalid <',
-        'variants': space('Invalid', '<')
-    },
-    {
-      'syntax': '< Invalid',
-        'variants': space('<', 'Invalid')
-    },
-    {
-      'syntax': '<',
-        'variants': space('<')
-    },
     {
       'syntax': '#',
         'variants': space('#')
@@ -306,10 +265,6 @@ SCENARIOS = [
     {
       'syntax': '= Invalid',
         'variants': space('=', 'Invalid')
-    },
-    {
-      'syntax': '### `Invalid',
-        'variants': space('###', '`Invalid')
     },
     {
       'syntax': '---',
@@ -377,29 +332,29 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
-            Grammar.KEY_ESCAPED_INDEX: '<=:',
+            Grammar.KEY_ESCAPED_INDEX: '=:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '`',
             Grammar.ELEMENT_OPERATOR_INDEX: ':'
         },
-        'syntax': '`<=:`:',
-        'variants': space('`', '<=:', '`', ':')
+        'syntax': '`=:`:',
+        'variants': space('`', '=:', '`', ':')
     },
     {
         'captures': {
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
-            Grammar.KEY_ESCAPED_INDEX: '<`=``:',
+            Grammar.KEY_ESCAPED_INDEX: '`=``:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '```',
             Grammar.ELEMENT_OPERATOR_INDEX: ':'
         },
-        'syntax': '```<`=``:```:',
-        'variants': space('```', '<`=``:', '```', ':')
+        'syntax': '``` `=``:```:',
+        'variants': space('```', ' ', '`=``:', '```', ':')
     },
 
     # SECTION_SCENARIOS
     {
         'captures': {
             Grammar.SECTION_OPERATOR_INDEX: '#',
-            Grammar.SECTION_KEY_UNESCAPED_INDEX: 'Key'
+            Grammar.SECTION_KEY_INDEX: 'Key'
         },
         'syntax': '# Key',
         'variants': space('#', 'Key')
@@ -407,7 +362,7 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.SECTION_OPERATOR_INDEX: '##',
-            Grammar.SECTION_KEY_UNESCAPED_INDEX: 'The Key'
+            Grammar.SECTION_KEY_INDEX: 'The Key'
         },
         'syntax': '## The Key',
         'variants': space('##', 'The Key')
@@ -415,55 +370,33 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.SECTION_OPERATOR_INDEX: '#',
-            Grammar.SECTION_KEY_UNESCAPED_INDEX: '#',
-            Grammar.SECTION_COPY_OPERATOR_INDEX: '<',
-            Grammar.SECTION_TEMPLATE_INDEX: 'Other Key'
+            Grammar.SECTION_KEY_INDEX: '# Other Key'
         },
-        'syntax': '# # < Other Key',
-        'variants': space('#', ' ', '#', '<', 'Other Key')
+        'syntax': '# # Other Key',
+        'variants': space('#', ' ', '# Other Key')
     },
     {
         'captures': {
             Grammar.SECTION_OPERATOR_INDEX: '###',
-            Grammar.SECTION_KEY_UNESCAPED_INDEX: '##',
-            Grammar.SECTION_COPY_OPERATOR_INDEX: '<',
-            Grammar.SECTION_TEMPLATE_INDEX: '###'
+            Grammar.SECTION_KEY_INDEX: '## ###'
         },
-        'syntax': '### ## < ###',
-        'variants': space('###', ' ', '##', '<', '###')
+        'syntax': '### ## ###',
+        'variants': space('###', ' ', '## ###')
     },
     {
         'captures': {
             Grammar.SECTION_OPERATOR_INDEX: '#',
-            Grammar.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
-            Grammar.SECTION_KEY_ESCAPED_INDEX: '<=:',
-            Grammar.SECTION_KEY_ESCAPE_END_OPERATOR_INDEX: '`',
-            Grammar.SECTION_COPY_OPERATOR_INDEX: '<',
-            Grammar.SECTION_TEMPLATE_INDEX: '`<=:`'
+            Grammar.SECTION_KEY_INDEX: '`=:` `=:`'
         },
-        'syntax': '# `<=:` < `<=:`',
-        'variants': space('#', '`<=:`', '<', '`<=:`')
+        'syntax': '# `=:` `=:`',
+        'variants': space('#', '`=:` `=:`')
     },
     {
         'captures': {
             Grammar.SECTION_OPERATOR_INDEX: '#',
-            Grammar.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
-            Grammar.SECTION_KEY_ESCAPED_INDEX: '<`=``:',
-            Grammar.SECTION_KEY_ESCAPE_END_OPERATOR_INDEX: '```',
-            Grammar.SECTION_COPY_OPERATOR_INDEX: '<',
-            Grammar.SECTION_TEMPLATE_INDEX: '```<`=``:```'
+            Grammar.SECTION_KEY_INDEX: '``` `=``:``` ``` `=``:```'
         },
-        'syntax': '# ```<`=``:``` < ```<`=``:```',
-        'variants': space('#', '```<`=``:```', '<', '```<`=``:```')
-    },
-    {
-        'captures': {
-            Grammar.SECTION_OPERATOR_INDEX: '#',
-            Grammar.SECTION_KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.SECTION_COPY_OPERATOR_INDEX: '<<',
-            Grammar.SECTION_TEMPLATE_INDEX: 'Other Key'
-        },
-        'syntax': '# Key << Other Key',
-        'variants': space('#', ' ', 'Key', '<<', 'Other Key')
+        'syntax': '# ``` `=``:``` ``` `=``:```',
+        'variants': space('#', '``` `=``:``` ``` `=``:```')
     }
 ]

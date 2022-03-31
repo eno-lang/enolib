@@ -116,10 +116,7 @@ class Validation:
 
     @staticmethod
     def value_error(context, message, element):
-        if 'mirror' in element:
-            snippet = context.reporter(context).report_line(element).snippet()
-            select = select_key(element)
-        elif element['type'] == MULTILINE_FIELD_BEGIN:
+        if element['type'] == MULTILINE_FIELD_BEGIN:
             if 'lines' in element:
                 snippet = context.reporter(context).report_multiline_value(element).snippet()
                 select = selection(element['lines'][0], 'line', BEGIN, element['lines'][-1], 'line', END)

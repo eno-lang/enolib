@@ -50,9 +50,7 @@ class Fieldset(ElementBase):
         return entries[0]
 
     def _instantiate_entries(self, fieldset):
-        if 'mirror' in fieldset:
-            self._instantiate_entries(fieldset['mirror'])
-        elif 'entries' in fieldset:
+        if 'entries' in fieldset:
             def instantiate_and_index(entry):
                 instance = fieldset_entry.FieldsetEntry(self._context, entry, self)
 
@@ -65,9 +63,6 @@ class Fieldset(ElementBase):
 
             filtered = [entry for entry in fieldset['entries'] if entry['key'] not in self._instantiated_entries_map]
             native_entries = [instantiate_and_index(entry) for entry in filtered]
-
-            if 'extend' in fieldset:
-                self._instantiate_entries(fieldset['extend'])
 
             self._instantiated_entries.extend(native_entries)
 

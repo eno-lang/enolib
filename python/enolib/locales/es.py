@@ -1,4 +1,4 @@
-#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 content_header = 'Contenido'
 expected_document = 'Se esperaba el documento.'
@@ -31,7 +31,6 @@ missing_list = 'Se requiere una sola lista - puede tener cualquier clave.'
 missing_section = 'Se requiere una sola sección - puede tener cualquier clave.'
 unexpected_element = 'Este elemento no se esperaba, averigua si es en el sitio correcto y que no contiene un error tipográfico la clave.'
 comment_error = lambda message: f"Hay un problema con el comentario de este elemento: {message}"
-cyclic_dependency = lambda line, key: f"En la línea {line} '{key}' se copia en sí mismo."
 expected_empty_with_key = lambda key: f"Se esperaba un elemento vacío con la clave '{key}'."
 expected_field_with_key = lambda key: f"Se esperaba una casilla con la clave '{key}'."
 expected_fields_with_key = lambda key: f"Solo se esperaban casillas con la clave '{key}'."
@@ -63,10 +62,7 @@ missing_list_for_list_item = lambda line: f"Línea {line} contiene una entrada d
 missing_list_item_value = lambda key: f"La lista '{key}' no debe contener entradas vacías."
 missing_list_with_key = lambda key: f"Falta la lista '{key}' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
 missing_section_with_key = lambda key: f"Falta la sección '{key}' - si se proporcionó, mira por errores ortográficos y también distingue entre mayúsculas y minúsculas."
-non_section_element_not_found = lambda line, key: f"En la línea {line} debe ser copiado el elemento no sección '{key}', pero no se encontró."
 section_hierarchy_layer_skip = lambda line: f"Línea {line} inicia una sección que es más de un nivel más bajo el actual."
-section_not_found = lambda line, key: f"En la línea {line} debe ser copiado la sección '{key}', pero no se encontró."
-two_or_more_templates_found = lambda key: f"Hay como mínimo dos elementos con la clave '{key}' que se clasifiquen para estar copiado, no está claro cual debe ser copiado."
 unterminated_escaped_key = lambda line: f"En la línea {line}, la clave de un elemento se escapa, pero esta secuencia de escape no termina hasta el final de la línea."
 unterminated_multiline_field = lambda key, line: f"La casilla de múltiples líneas '{key}' que comienza en la línea {line} no termina hasta el final del documento."
 value_error = lambda message: f"Hay un problema con el valor de este elemento: {message}"

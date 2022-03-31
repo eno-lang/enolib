@@ -2,7 +2,6 @@ import math
 from .analyzer import Analyzer
 from .locales import en
 from .reporters.text_reporter import TextReporter
-from .resolver import Resolver
 from .constants import (
     BEGIN,
     DOCUMENT,
@@ -33,9 +32,6 @@ class Context:
         self.meta = []
 
         Analyzer(self).analyze()
-
-        if hasattr(self, '_copy_non_section_elements') or hasattr(self, '_copy_sections'):
-            Resolver(self).resolve()
 
     def comment(self, element):
         if not 'computed_comment' in element:
@@ -78,36 +74,19 @@ class Context:
         return element['computed_comment']
 
     def elements(self, section):
-        if 'mirror' in section:
-            self.elements(section['mirror'])
-        else:
-            if not 'computed_elements' in section:
-                section['computed_elements_map'] = {}
-                section['computed_elements'] = section['elements']
+        if not 'computed_elements' in section:
+            section['computed_elements_map'] = {}
+            section['computed_elements'] = section['elements']
 
-                for element in section['computed_elements']:
-                    if element['key'] in section['computed_elements_map']:
-                        section['computed_elements_map'][element['key']].append(element)
-                    else:
-                        section['computed_elements_map'][element['key']] = [element]
+            for element in section['computed_elements']:
+                if element['key'] in section['computed_elements_map']:
+                    section['computed_elements_map'][element['key']].append(element)
+                else:
+                    section['computed_elements_map'][element['key']] = [element]
 
-                if 'extend' in section:
-                    copied_elements = [element for element in self.elements(section['extend']) if element['key'] not in section['computed_elements_map']]
-
-                    section['computed_elements'] = copied_elements + section['computed_elements']
-
-                    for element in copied_elements:
-                        if element['key'] in section['computed_elements_map']:
-                            section['computed_elements_map'][element['key']].append(element)
-                        else:
-                            section['computed_elements_map'][element['key']] = [element]
-
-            return section['computed_elements']
+        return section['computed_elements']
 
     def entries(self, fieldset):
-        if 'mirror' in fieldset:
-            return self.entries(fieldset['mirror'])
-
         if not 'computed_entries' in fieldset:
             fieldset['computed_entries_map'] = {}
             fieldset['computed_entries'] = fieldset['entries']
@@ -118,29 +97,9 @@ class Context:
                 else:
                     fieldset['computed_entries_map'][entry['key']] = [entry]
 
-            if 'extend' in fieldset:
-                copied_entries = [entry for entry in self.entries(fieldset['extend']) if entry['key'] not in fieldset['computed_entries_map']]
-
-                fieldset['computed_entries'] = copied_entries + fieldset['computed_entries']
-
-                for entry in copied_entries:
-                    if entry['key'] in fieldset['computed_entries_map']:
-                        fieldset['computed_entries_map'][entry['key']].append(entry)
-                    else:
-                        fieldset['computed_entries_map'][entry['key']] = [entry]
-
         return fieldset['computed_entries']
 
     def items(self, list):
-        if 'mirror' in list:
-            return self.items(list['mirror'])
-
-        if 'extend' in list:
-            if not 'computed_items' in list:
-                list['computed_items'] = self.items(list['extend']) + list['items']
-
-            return list['computed_items']
-
         if 'items' in list:
             return list['items']
 
@@ -181,9 +140,6 @@ class Context:
 
     def value(self, element):
         if 'computed_value' not in element:
-            if 'mirror' in element:
-                return self.value(element['mirror'])
-
             element['computed_value'] = None
 
             if element['type'] is MULTILINE_FIELD_BEGIN:

@@ -1,35 +1,10 @@
 import re
 from ..constants import BEGIN, DOCUMENT, END, HUMAN_INDEXING
 from ..error_types import ParseError
-from .selections import cursor, select_line, select_template
+from .selections import cursor, select_line
 
 class Parsing:
     UNTERMINATED_ESCAPED_KEY = re.compile(r'^\s*#*\s*(`+)(?!`)((?:(?!\1).)+)$')
-
-    @staticmethod
-    def cyclic_dependency(context, instruction, instruction_chain):
-        first_occurrence = instruction_chain.index(instruction)
-        feedback_chain = instruction_chain[first_occurrence:]
-
-        if 'template' in feedback_chain[-1]:
-            copy_instruction = feedback_chain[-1]
-        elif 'template' in feedback_chain[0]:
-            copy_instruction = feedback_chain[0]
-
-        reporter = context.reporter(context)
-
-        reporter.report_line(copy_instruction)
-
-        for element in feedback_chain:
-            if element != copy_instruction:
-                reporter.indicate_line(element)
-
-        return ParseError(
-            context.messages.cyclic_dependency(copy_instruction['line'] + HUMAN_INDEXING, copy_instruction['template']),
-            reporter.snippet(),
-            select_template(copy_instruction)
-        )
-
 
     @staticmethod
     def invalid_line(context, instruction):
@@ -70,14 +45,6 @@ class Parsing:
         )
 
     @staticmethod
-    def non_section_element_not_found(context, copy):
-        return ParseError(
-            context.messages.non_section_element_not_found(copy['line'] + HUMAN_INDEXING, copy['template']),
-            context.reporter(context).report_line(copy).snippet(),
-            select_line(copy)
-        )
-
-    @staticmethod
     def section_hierarchy_layer_skip(context, section, super_section):
         reporter = context.reporter(context).report_line(section)
 
@@ -91,14 +58,6 @@ class Parsing:
         )
 
     @staticmethod
-    def section_not_found(context, copy):
-        return ParseError(
-            context.messages.section_not_found(copy['line'] + HUMAN_INDEXING, copy['template']),
-            context.reporter(context).report_line(copy).snippet(),
-            select_line(copy)
-        )
-
-    @staticmethod
     def unterminated_escaped_key(context, instruction, selection_column):
         return ParseError(
             context.messages.unterminated_escaped_key(instruction['line'] + HUMAN_INDEXING),
@@ -107,14 +66,6 @@ class Parsing:
                 'from': { 'column': selection_column, 'index': instruction['ranges']['line'][BEGIN] + selection_column, 'line': instruction['line'] },
                 'to': cursor(instruction, 'line', END)
             }
-        )
-
-    @staticmethod
-    def two_or_more_templates_found(context, copy, first_template, second_template):
-        return ParseError(
-            context.messages.two_or_more_templates_found(copy['template']),
-            context.reporter(context).report_line(copy).question_line(first_template).question_line(second_template).snippet(),
-            select_line(copy)
         )
 
     @staticmethod

@@ -1,4 +1,4 @@
-#  GENERATED ON 2019-06-18T08:50:41 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-03-29T14:08:57 - DO NOT EDIT MANUALLY
 
 content_header = 'Inhalt'
 expected_document = 'Das Dokument wurde erwartet.'
@@ -31,7 +31,6 @@ missing_list = 'Eine einzelne Liste ist erforderlich - sie kann einen beliebigen
 missing_section = 'Eine einzelne Sektion ist erforderlich - sie kann einen beliebigen Schlüssel haben.'
 unexpected_element = 'Dieses Element wurde nicht erwartet, prüfe ob es am richtigen Platz ist und dass der Schlüssel keine Tippfehler enthält.'
 comment_error = lambda message: f"Es gibt ein Problem mit dem Kommentar dieses Elements: {message}"
-cyclic_dependency = lambda line, key: f"In Zeile {line} wird '{key}' in sich selbst kopiert."
 expected_empty_with_key = lambda key: f"Ein Leerfeld mit dem Schlüssel '{key}' wurde erwartet."
 expected_field_with_key = lambda key: f"Ein Feld mit dem Schlüssel '{key}' wurde erwartet."
 expected_fields_with_key = lambda key: f"Nur Felder mit dem Schlüssel '{key}' wurden erwartet."
@@ -63,10 +62,7 @@ missing_list_for_list_item = lambda line: f"Zeile {line} enthält einen Listenei
 missing_list_item_value = lambda key: f"Die Liste '{key}' darf keine leeren Einträge enthalten."
 missing_list_with_key = lambda key: f"Die Liste '{key}' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
 missing_section_with_key = lambda key: f"Die Sektion '{key}' fehlt - falls sie angegeben wurde eventuell nach Tippfehlern Ausschau halten und auch die Gross/Kleinschreibung beachten."
-non_section_element_not_found = lambda line, key: f"In Zeile {line} soll das Nicht-Sektions Element '{key}' kopiert werden, es wurde aber nicht gefunden."
 section_hierarchy_layer_skip = lambda line: f"Zeile {line} beginnt eine Sektion die mehr als eine Ebene tiefer liegt als die aktuelle."
-section_not_found = lambda line, key: f"In Zeile {line} soll die Sektion '{key}' kopiert werden, sie wurde aber nicht gefunden."
-two_or_more_templates_found = lambda key: f"Es gibt mindestens zwei Elemente mit dem Schlüssel '{key}' die hier zum kopieren in Frage kommen, es ist nicht klar welches kopiert werden soll."
 unterminated_escaped_key = lambda line: f"In Zeile {line} wird der Schlüssel eines Elements escaped, jedoch wird diese Escape Sequenz bis zum Ende der Zeile nicht mehr beendet."
 unterminated_multiline_field = lambda key, line: f"Das Mehrzeilenfeld '{key}' dass in Zeile {line} beginnt wird bis zum Ende des Dokuments nicht mehr beendet."
 value_error = lambda message: f"Es gibt ein Problem mit dem Wert dieses Elements: {message}"

@@ -19,10 +19,6 @@ entry = value
 > comment
 entry = value
 
-copied_field < field
-copied_fieldset < fieldset
-copied_list < list
-
 # section
 
 > comment
@@ -34,10 +30,7 @@ value
 value
 -- multiline
 
-copied_multiline < multiline
-
 ## subsection
-## copy < subsection
 '''.strip()
 
 SNIPPET_PADDING_WIDTH = 3

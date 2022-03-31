@@ -8,14 +8,10 @@ class List(ElementBase):
         return f"<class List key={self._instruction['key']} items={len(self._items())}>"
 
     def _instantiate_items(self, list):
-        if 'mirror' in list:
-            return self._instantiate_items(list['mirror'])
-        elif 'extend' in list:
-            return self._instantiate_items(list['extend']) + [list_item.ListItem(self._context, item, self) for item in list['items']]
-        elif 'items' in list:
+        if 'items' in list:
             return [list_item.ListItem(self._context, item, self) for item in list['items']]
-        else:
-            return []
+
+        return []
 
     def _items(self):
         if not hasattr(self, '_instantiated_items'):

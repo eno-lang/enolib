@@ -71,6 +71,3 @@ def select_key(element):
 
 def select_line(element):
     return selection(element, 'line', BEGIN, END)
-
-def select_template(element):
-    return selection(element, 'template', BEGIN, END)

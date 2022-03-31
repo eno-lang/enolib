@@ -24,7 +24,7 @@ from .constants import (
 class Analyzer:
     def __init__(self, context):
         self._context = context
-        self._depth = 0 # TODO: Make depth only a local temporary variable in analysis in js implementation too
+        self._depth = 0
         self._index = 0
         self._line = 0
 
@@ -261,39 +261,8 @@ class Analyzer:
                 instruction['ranges']['section_operator'] = match.span(Grammar.SECTION_OPERATOR_INDEX)
                 instruction['type'] = SECTION
 
-                instruction['key'] = match.group(Grammar.SECTION_KEY_UNESCAPED_INDEX)
-
-                if instruction['key']:
-                    instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_UNESCAPED_INDEX)
-                else:
-                    instruction['key'] = match.group(Grammar.SECTION_KEY_ESCAPED_INDEX)
-                    instruction['ranges']['escape_begin_operator'] = match.span(Grammar.SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
-                    instruction['ranges']['escape_end_operator'] = match.span(Grammar.SECTION_KEY_ESCAPE_END_OPERATOR_INDEX)
-                    instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_ESCAPED_INDEX)
-
-                template = match.group(Grammar.SECTION_TEMPLATE_INDEX)
-
-                if template:
-                    instruction['ranges']['template'] = match.span(Grammar.SECTION_TEMPLATE_INDEX)
-                    instruction['template'] = template
-
-                    copy_operator_range = match.span(Grammar.SECTION_COPY_OPERATOR_INDEX)
-
-                    if copy_operator_range[1] - copy_operator_range[0] == 2:
-                        instruction['deep_copy'] = True
-                        instruction['ranges']['deep_copy_operator'] = copy_operator_range
-                    else:
-                        instruction['ranges']['copy_operator'] = copy_operator_range
-
-                    if not hasattr(self._context, '_copy_sections'):
-                        self._context._copy_sections = {}
-
-                    if template in self._context._copy_sections:
-                        self._context._copy_sections[template]['targets'].append(instruction)
-                    else:
-                        self._context._copy_sections[template] = { 'targets': [instruction] }
-
-                    instruction['copy'] = self._context._copy_sections[template]
+                instruction['key'] = match.group(Grammar.SECTION_KEY_INDEX)
+                instruction['ranges']['key'] = match.span(Grammar.SECTION_KEY_INDEX)
 
                 new_depth = instruction['ranges']['section_operator'][END] - instruction['ranges']['section_operator'][BEGIN]
 
@@ -313,12 +282,6 @@ class Analyzer:
                     raise Parsing.section_hierarchy_layer_skip(self._context, instruction, last_section)
 
                 instruction['parent']['elements'].append(instruction)
-
-                if template:
-                    parent = instruction['parent']
-                    while parent['type'] != DOCUMENT:
-                        parent['deep_resolve'] = True
-                        parent = parent['parent']
 
                 last_section = instruction
                 last_continuable_element = None
@@ -425,44 +388,6 @@ class Analyzer:
                 if comment is not None:
                     instruction['comment'] = comment
                     instruction['ranges']['comment'] = match.span(Grammar.COMMENT_VALUE_INDEX)
-
-            elif match.group(Grammar.COPY_OPERATOR_INDEX) is not None:
-
-                if comments is not None:
-                    instruction['comments'] = comments
-                    comments = None
-
-                template = match.group(Grammar.TEMPLATE_INDEX)
-
-                instruction['ranges']['copy_operator'] = match.span(Grammar.COPY_OPERATOR_INDEX)
-                instruction['ranges']['template'] = match.span(Grammar.TEMPLATE_INDEX)
-                instruction['template'] = template
-                instruction['type'] = FIELD_OR_FIELDSET_OR_LIST
-
-                instruction['key'] = match.group(Grammar.KEY_UNESCAPED_INDEX)
-
-                if instruction['key'] is None:
-                    instruction['key'] = match.group(Grammar.KEY_ESCAPED_INDEX)
-                    instruction['ranges']['escape_begin_operator'] = match.span(Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
-                    instruction['ranges']['escape_end_operator'] = match.span(Grammar.KEY_ESCAPE_END_OPERATOR_INDEX)
-                    instruction['ranges']['key'] = match.span(Grammar.KEY_ESCAPED_INDEX)
-                else:
-                    instruction['ranges']['key'] = match.span(Grammar.KEY_UNESCAPED_INDEX)
-
-                instruction['parent'] = last_section
-                last_section['elements'].append(instruction)
-                last_continuable_element = None
-                last_non_section_element = instruction
-
-                if not hasattr(self._context, '_copy_non_section_elements'):
-                    self._context._copy_non_section_elements = {}
-
-                if template in self._context._copy_non_section_elements:
-                    self._context._copy_non_section_elements[template]['targets'].append(instruction)
-                else:
-                    self._context._copy_non_section_elements[template] = { 'targets': [instruction] }
-
-                instruction['copy'] = self._context._copy_non_section_elements[template]
 
             elif match.group(Grammar.KEY_UNESCAPED_INDEX) is not None:
 

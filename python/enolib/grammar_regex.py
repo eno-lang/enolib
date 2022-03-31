@@ -39,60 +39,38 @@ class Grammar:
     MULTILINE_FIELD_OPERATOR_INDEX = 10
     MULTILINE_FIELD_KEY_INDEX = 11
 
-    # #
-    SECTION_OPERATOR = '(#+)(?!#)'
+    # key
+    SECTION = rf"(#+)(?!#)[^\S\n]*{REQUIRED}"
     SECTION_OPERATOR_INDEX = 12
-
-    # # key
-    SECTION_KEY_UNESCAPED = r'([^\s`<][^<\n]*?)'
-    SECTION_KEY_UNESCAPED_INDEX = 13
-
-    # # `key`
-    SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 14
-    SECTION_KEY_ESCAPED = rf"(`+)(?!`)[^\S\n]*(\S[^\n]*?)[^\S\n]*(\{SECTION_KEY_ESCAPE_BEGIN_OPERATOR_INDEX})" # TODO: Should this exclude the backreference inside the quotes? (as in ((?:(?!\\1).)+) ) here and elsewhere (probably not because it's not greedy.?)
-    SECTION_KEY_ESCAPED_INDEX = 15
-    SECTION_KEY_ESCAPE_END_OPERATOR_INDEX = 16
-
-    # # key < template
-    # # `key` < template
-    SECTION_KEY = f"(?:{SECTION_KEY_UNESCAPED}|{SECTION_KEY_ESCAPED})"
-    SECTION_TEMPLATE = rf"(?:(<(?!<)|<<)[^\S\n]*{REQUIRED})?"
-    SECTION = rf"{SECTION_OPERATOR}\s*{SECTION_KEY}[^\S\n]*{SECTION_TEMPLATE}"
-    SECTION_COPY_OPERATOR_INDEX = 17
-    SECTION_TEMPLATE_INDEX = 18
+    SECTION_KEY_INDEX = 13
 
     EARLY_DETERMINED = f"{CONTINUATION}|{COMMENT}|{LIST_ITEM}|{MULTILINE_FIELD}|{SECTION}"
 
     # key
-    KEY_UNESCAPED = r'([^\s>#\-`\\|:=<][^\n:=<]*?)'
-    KEY_UNESCAPED_INDEX = 19
+    KEY_UNESCAPED = r'([^\s>#\-`\\|:=][^\n:=]*?)'
+    KEY_UNESCAPED_INDEX = 14
 
     # `key`
-    KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 20
+    KEY_ESCAPE_BEGIN_OPERATOR_INDEX = 15
     KEY_ESCAPED = rf"(`+)(?!`)[^\S\n]*(\S[^\n]*?)[^\S\n]*(\{KEY_ESCAPE_BEGIN_OPERATOR_INDEX})"
-    KEY_ESCAPED_INDEX = 21
-    KEY_ESCAPE_END_OPERATOR_INDEX = 22
+    KEY_ESCAPED_INDEX = 16
+    KEY_ESCAPE_END_OPERATOR_INDEX = 17
 
     KEY = f"(?:{KEY_UNESCAPED}|{KEY_ESCAPED})"
 
     # :
     # : value
     FIELD_OR_FIELDSET_OR_LIST = rf"(:)[^\S\n]*{OPTIONAL}"
-    ELEMENT_OPERATOR_INDEX = 23
-    FIELD_VALUE_INDEX = 24
+    ELEMENT_OPERATOR_INDEX = 18
+    FIELD_VALUE_INDEX = 19
 
     # =
     # = value
     FIELDSET_ENTRY = rf"(=)[^\S\n]*{OPTIONAL}"
-    FIELDSET_ENTRY_OPERATOR_INDEX = 25
-    FIELDSET_ENTRY_VALUE_INDEX = 26
+    FIELDSET_ENTRY_OPERATOR_INDEX = 20
+    FIELDSET_ENTRY_VALUE_INDEX = 21
 
-    # < template
-    COPY = rf"(<)\s*{REQUIRED}"
-    COPY_OPERATOR_INDEX = 27
-    TEMPLATE_INDEX = 28
-
-    LATE_DETERMINED = rf"{KEY}\s*(?:{FIELD_OR_FIELDSET_OR_LIST}|{FIELDSET_ENTRY}|{COPY})?"
+    LATE_DETERMINED = rf"{KEY}\s*(?:{FIELD_OR_FIELDSET_OR_LIST}|{FIELDSET_ENTRY})?"
 
     NON_EMPTY_LINE = f"(?:{EARLY_DETERMINED}|{LATE_DETERMINED})"
 
