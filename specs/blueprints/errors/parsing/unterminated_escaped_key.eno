@@ -16,22 +16,3 @@ In line 1 the key of an element is escaped, but the escape sequence is not termi
 -- snippet
 
 selection: [0,1] => [0,13]
-
-# A single section with an unterminated escaped key
-
--- input
-# `field: value
--- input
-
-## ParseError
-
--- text
-In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.
--- text
-
--- snippet
-   Line | Content
- >    1 | # `field: value
--- snippet
-
-selection: [0,3] => [0,15]
