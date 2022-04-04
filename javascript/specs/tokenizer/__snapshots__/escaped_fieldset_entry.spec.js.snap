@@ -34,7 +34,7 @@ Object {
                 17,
               ],
             },
-            "type": Symbol(Fieldset Entry),
+            "type": Symbol(Attribute),
             "value": null,
           },
           Object {
@@ -64,7 +64,7 @@ Object {
                 29,
               ],
             },
-            "type": Symbol(Fieldset Entry),
+            "type": Symbol(Attribute),
             "value": null,
           },
           Object {
@@ -94,7 +94,7 @@ Object {
                 47,
               ],
             },
-            "type": Symbol(Fieldset Entry),
+            "type": Symbol(Attribute),
             "value": null,
           },
           Object {
@@ -124,7 +124,7 @@ Object {
                 69,
               ],
             },
-            "type": Symbol(Fieldset Entry),
+            "type": Symbol(Attribute),
             "value": null,
           },
           Object {
@@ -154,7 +154,7 @@ Object {
                 78,
               ],
             },
-            "type": Symbol(Fieldset Entry),
+            "type": Symbol(Attribute),
             "value": null,
           },
         ],

@@ -25,9 +25,9 @@ exports.COMMENT_OPERATOR_INDEX = 6;
 exports.COMMENT_INDEX = 7;
 
 // - value
-const LIST_ITEM = `(-)(?!-)[^\\S\\n]*${OPTIONAL}`;
-exports.LIST_ITEM_OPERATOR_INDEX = 8;
-exports.LIST_ITEM_VALUE_INDEX = 9;
+const ITEM = `(-)(?!-)[^\\S\\n]*${OPTIONAL}`;
+exports.ITEM_OPERATOR_INDEX = 8;
+exports.ITEM_VALUE_INDEX = 9;
 
 // -- key
 const MULTILINE_FIELD = `(-{2,})(?!-)[^\\S\\n]*${REQUIRED}`;
@@ -39,7 +39,7 @@ const SECTION = `(#+)(?!#)[^\\S\\n]*${REQUIRED}`;
 exports.SECTION_OPERATOR_INDEX = 12;
 exports.SECTION_KEY_INDEX = 13;
 
-const EARLY_DETERMINED = `${CONTINUATION}|${COMMENT}|${LIST_ITEM}|${MULTILINE_FIELD}|${SECTION}`;
+const EARLY_DETERMINED = `${CONTINUATION}|${COMMENT}|${ITEM}|${MULTILINE_FIELD}|${SECTION}`;
 
 // key
 const KEY_UNESCAPED = '([^\\s>#\\-`\\\\|:=][^:=\\n]*?)';
@@ -55,17 +55,17 @@ const KEY = `(?:${KEY_UNESCAPED}|${KEY_ESCAPED})`;
 
 // :
 // : value
-const FIELD_OR_FIELDSET_OR_LIST = `(:)[^\\S\\n]*${OPTIONAL}`;
-exports.ELEMENT_OPERATOR_INDEX = 17;
+const FIELD = `(:)[^\\S\\n]*${OPTIONAL}`;
+exports.FIELD_OPERATOR_INDEX = 17;
 exports.FIELD_VALUE_INDEX = 18;
 
 // =
 // = value
-const FIELDSET_ENTRY = `(=)[^\\S\\n]*${OPTIONAL}`;
-exports.FIELDSET_ENTRY_OPERATOR_INDEX = 19;
-exports.FIELDSET_ENTRY_VALUE_INDEX = 20;
+const ATTRIBUTE = `(=)[^\\S\\n]*${OPTIONAL}`;
+exports.ATTRIBUTE_OPERATOR_INDEX = 19;
+exports.ATTRIBUTE_VALUE_INDEX = 20;
 
-const LATE_DETERMINED = `${KEY}\\s*(?:${FIELD_OR_FIELDSET_OR_LIST}|${FIELDSET_ENTRY})?`;
+const LATE_DETERMINED = `${KEY}\\s*(?:${FIELD}|${ATTRIBUTE})?`;
 
 const NON_EMPTY_LINE = `(?:${EARLY_DETERMINED}|${LATE_DETERMINED})`;
 

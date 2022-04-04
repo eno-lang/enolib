@@ -1,5 +1,5 @@
 const { errors } = require('../errors/validation.js');
-const { DOCUMENT, LIST_ITEM } = require('../constants.js');
+const { DOCUMENT, ITEM } = require('../constants.js');
 
 class ElementBase {
   constructor(context, instruction, parent = null) {
@@ -30,13 +30,13 @@ class ElementBase {
     }
   }
 
-  _key() {
-    switch(this._instruction.type) {
-      case DOCUMENT: return null;
-      case LIST_ITEM: return this._instruction.parent.key;
-      default: return this._instruction.key;
+    _key() {
+        switch(this._instruction.type) {
+            case DOCUMENT: return null;
+            case ITEM: return this._instruction.parent.key;
+            default: return this._instruction.key;
+        }
     }
-  }
 
   /**
    * Constructs and returns a {@link ValidationError} with the supplied message in the context of this element's comment.

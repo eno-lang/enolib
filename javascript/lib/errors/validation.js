@@ -1,14 +1,14 @@
 const { ValidationError } = require('../error_types.js');
 const { cursor, DOCUMENT_BEGIN, selection, selectComments, selectElement, selectKey } = require('./selections.js');
 const {
-  BEGIN,
-  END,
-  DOCUMENT,
-  FIELD,
-  FIELDSET_ENTRY,
-  FIELD_OR_FIELDSET_OR_LIST,
-  LIST_ITEM,
-  MULTILINE_FIELD_BEGIN
+    ATTRIBUTE,
+    BEGIN,
+    END,
+    DOCUMENT,
+    FIELD,
+    FIELD_OR_FIELDSET_OR_LIST,
+    ITEM,
+    MULTILINE_FIELD_BEGIN
 } = require('../constants.js');
 
 // TODO: Here and prominently also elsewhere - consider replacing instruction.ranges.line with instruction[LINE_RANGE] (where LINE_RANGE = Symbol('descriptive'))
@@ -71,10 +71,10 @@ exports.errors = {
       } else {
         selection.from = cursor(element, 'line', END);
       }
-    } else if(element.type === FIELDSET_ENTRY) {
+    } else if (element.type === ATTRIBUTE) {
       message = context.messages.missingFieldsetEntryValue(element.key);
       selection.from = cursor(element, 'entryOperator', END);
-    } else if(element.type === LIST_ITEM) {
+    } else if (element.type === ITEM) {
       message = context.messages.missingListItemValue(element.parent.key);
       selection.from = cursor(element, 'itemOperator', END);
     }
@@ -135,7 +135,7 @@ exports.errors = {
         select.from = cursor(element, 'elementOperator', END);
       } else if(element.ranges.hasOwnProperty('entryOperator')) {
         select.from = cursor(element, 'entryOperator', END);
-      } else if(element.type === LIST_ITEM) {
+      } else if (element.type === ITEM) {
         select.from = cursor(element, 'itemOperator', END);
       } else {
         // TODO: Possibly never reached - think through state permutations

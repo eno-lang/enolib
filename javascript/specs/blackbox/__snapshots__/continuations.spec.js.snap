@@ -12,7 +12,7 @@ Object {
       "entries": Array [
         Object {
           "key": "Entry",
-          "type": "fieldsetEntry",
+          "type": "attribute",
           "value": "[value] [spaced_line_continuation][direct_line_continuation]",
         },
       ],
@@ -22,7 +22,7 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "[value] [spaced_line_continuation][direct_line_continuation]",
         },
       ],
@@ -38,7 +38,7 @@ Object {
       "entries": Array [
         Object {
           "key": "Empty entry",
-          "type": "fieldsetEntry",
+          "type": "attribute",
           "value": "[spaced_line_continuation][direct_line_continuation]",
         },
       ],
@@ -48,7 +48,7 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "[spaced_line_continuation][direct_line_continuation]",
         },
       ],

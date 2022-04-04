@@ -120,12 +120,12 @@ exports.SCENARIOS = [
     variants: ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
   },
 
-  // FIELDSET_ENTRY_SCENARIOS
+  // ATTRIBUTE_SCENARIOS
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: 'Value'
+      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
+      [matcher.ATTRIBUTE_VALUE_INDEX]: 'Value'
     },
     syntax: 'Key = Value',
     variants: space('Key', '=', 'Value')
@@ -133,8 +133,8 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'The Key',
-      [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: 'The Value'
+      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
+      [matcher.ATTRIBUTE_VALUE_INDEX]: 'The Value'
     },
     syntax: 'The Key = The Value',
     variants: space('The Key', '=', 'The Value')
@@ -142,8 +142,8 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '='
+      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
+      [matcher.ATTRIBUTE_VALUE_INDEX]: '='
     },
     syntax: 'Key = =',
     variants: space('Key', '=', ' ', '=')
@@ -151,8 +151,8 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: ':'
+      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
+      [matcher.ATTRIBUTE_VALUE_INDEX]: ':'
     },
     syntax: 'Key = :',
     variants: space('Key', '=', ' ', ':')
@@ -161,8 +161,8 @@ exports.SCENARIOS = [
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
       [matcher.KEY_ESCAPED_INDEX]: '=:',
-      [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '`=:`'
+      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
+      [matcher.ATTRIBUTE_VALUE_INDEX]: '`=:`'
     },
     syntax: '`=:` = `=:`',
     variants: space('`', '=:', '`', '=', '`=:`')
@@ -171,8 +171,8 @@ exports.SCENARIOS = [
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
       [matcher.KEY_ESCAPED_INDEX]: '`=``:',
-      [matcher.FIELDSET_ENTRY_OPERATOR_INDEX]: '=',
-      [matcher.FIELDSET_ENTRY_VALUE_INDEX]: '`=:`'
+      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
+      [matcher.ATTRIBUTE_VALUE_INDEX]: '`=:`'
     },
     syntax: '``` `=``:``` = `=:`',
     variants: space('```', ' ', '`=``:', '```', '=', '`=:`')
@@ -191,7 +191,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':',
+      [matcher.FIELD_OPERATOR_INDEX]: ':',
       [matcher.FIELD_VALUE_INDEX]: 'Value'
     },
     syntax: 'Key: Value',
@@ -200,7 +200,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'The Key',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':',
+      [matcher.FIELD_OPERATOR_INDEX]: ':',
       [matcher.FIELD_VALUE_INDEX]: 'The Value'
     },
     syntax: 'The Key: The Value',
@@ -209,7 +209,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':',
+      [matcher.FIELD_OPERATOR_INDEX]: ':',
       [matcher.FIELD_VALUE_INDEX]: ':'
     },
     syntax: 'Key: :',
@@ -219,7 +219,7 @@ exports.SCENARIOS = [
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
       [matcher.KEY_ESCAPED_INDEX]: '=:',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':',
+      [matcher.FIELD_OPERATOR_INDEX]: ':',
       [matcher.FIELD_VALUE_INDEX]: '`=:`'
     },
     syntax: '`=:` : `=:`',
@@ -229,7 +229,7 @@ exports.SCENARIOS = [
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
       [matcher.KEY_ESCAPED_INDEX]: '`=``:',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':',
+      [matcher.FIELD_OPERATOR_INDEX]: ':',
       [matcher.FIELD_VALUE_INDEX]: '`=:`'
     },
     syntax: '``` `=``:``` : `=:`',
@@ -274,34 +274,34 @@ exports.SCENARIOS = [
     variants: space(':', 'Invalid', '\n', 'Valid', ':', 'Valid')
   },
 
-  // LIST_ITEM_SCENARIOS
+  // ITEM_SCENARIOS
   {
     captures: {
-      [matcher.LIST_ITEM_OPERATOR_INDEX]: '-'
+      [matcher.ITEM_OPERATOR_INDEX]: '-'
     },
     syntax: '-',
     variants: space('-')
   },
   {
     captures: {
-      [matcher.LIST_ITEM_OPERATOR_INDEX]: '-',
-      [matcher.LIST_ITEM_VALUE_INDEX]: 'Item'
+      [matcher.ITEM_OPERATOR_INDEX]: '-',
+      [matcher.ITEM_VALUE_INDEX]: 'Item'
     },
     syntax: '- Item',
     variants: space('-', 'Item')
   },
   {
     captures: {
-      [matcher.LIST_ITEM_OPERATOR_INDEX]: '-',
-      [matcher.LIST_ITEM_VALUE_INDEX]: 'The Item'
+      [matcher.ITEM_OPERATOR_INDEX]: '-',
+      [matcher.ITEM_VALUE_INDEX]: 'The Item'
     },
     syntax: '- The Item',
     variants: space('-', 'The Item')
   },
   {
     captures: {
-      [matcher.LIST_ITEM_OPERATOR_INDEX]: '-',
-      [matcher.LIST_ITEM_VALUE_INDEX]: '-'
+      [matcher.ITEM_OPERATOR_INDEX]: '-',
+      [matcher.ITEM_VALUE_INDEX]: '-'
     },
     syntax: '- -',
     variants: space('-', ' ', '-')
@@ -311,7 +311,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':'
+      [matcher.FIELD_OPERATOR_INDEX]: ':'
     },
     syntax: 'Key:',
     variants: space('Key', ':')
@@ -319,7 +319,7 @@ exports.SCENARIOS = [
   {
     captures: {
       [matcher.KEY_UNESCAPED_INDEX]: 'The Key',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':'
+      [matcher.FIELD_OPERATOR_INDEX]: ':'
     },
     syntax: 'The Key:',
     variants: space('The Key', ':')
@@ -328,7 +328,7 @@ exports.SCENARIOS = [
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
       [matcher.KEY_ESCAPED_INDEX]: '=:',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':'
+      [matcher.FIELD_OPERATOR_INDEX]: ':'
     },
     syntax: '`=:`:',
     variants: space('`', '=:', '`', ':')
@@ -337,7 +337,7 @@ exports.SCENARIOS = [
     captures: {
       [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
       [matcher.KEY_ESCAPED_INDEX]: '`=``:',
-      [matcher.ELEMENT_OPERATOR_INDEX]: ':'
+      [matcher.FIELD_OPERATOR_INDEX]: ':'
     },
     syntax: '``` `=``:```:',
     variants: space('```', ' ','`=``:', '```', ':')

@@ -24,7 +24,7 @@ describe('Field', () => {
 
     describe('without key, with value', () => {
       it('returns a native representation', () => {
-        expect(item.raw()).toEqual({ type: 'listItem', value: 'item' });
+        expect(item.raw()).toEqual({ type: 'item', value: 'item' });
       });
     });
   });

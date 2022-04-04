@@ -1,19 +1,19 @@
 const {
-  BEGIN,
-  END,
-  FIELD,
-  FIELDSET,
-  FIELDSET_ENTRY,
-  LIST,
-  LIST_ITEM,
-  MULTILINE_FIELD_BEGIN,
-  SECTION
+    ATTRIBUTE,
+    BEGIN,
+    END,
+    FIELD,
+    FIELDSET,
+    ITEM,
+    LIST,
+    MULTILINE_FIELD_BEGIN,
+    SECTION
 } = require('../constants.js');
 
 // TODO: Strongly consider reverse iteration and/or last subinstruction checks to speed up some lastIn/etc. algorithms here
 
 const lastIn = element => {
-  if((element.type === FIELD || element.type === LIST_ITEM || element.type === FIELDSET_ENTRY) && element.continuations.length > 0) {
+  if ((element.type === FIELD || element.type === ITEM || element.type === ATTRIBUTE) && element.continuations.length > 0) {
     return element.continuations[element.continuations.length - 1];
   } else if(element.type === LIST && element.items.length > 0) {
     return lastIn(element.items[element.items.length - 1]);

@@ -20,7 +20,7 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Georg Oswald",
         },
       ],
@@ -40,11 +40,11 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Besprechung",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Film",
         },
       ],
@@ -54,27 +54,27 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Mexiko",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Tlatelolco",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Olympische Spiele",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Architektur",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Mexico City",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Polizeigewalt",
         },
       ],

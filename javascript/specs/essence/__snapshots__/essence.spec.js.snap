@@ -17,11 +17,11 @@ something",
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Apples",
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": "Oranges",
         },
       ],
@@ -32,12 +32,12 @@ something",
       "entries": Array [
         Object {
           "key": "Ben",
-          "type": "fieldsetEntry",
+          "type": "attribute",
           "value": "+49 1943 24724784",
         },
         Object {
           "key": "Rachel",
-          "type": "fieldsetEntry",
+          "type": "attribute",
           "value": "+59 3459 35935593",
         },
       ],
@@ -58,11 +58,11 @@ something",
                 Object {
                   "items": Array [
                     Object {
-                      "type": "listItem",
+                      "type": "item",
                       "value": "Jack the Ripper",
                     },
                     Object {
-                      "type": "listItem",
+                      "type": "item",
                       "value": "Frankenstein",
                     },
                   ],
@@ -73,12 +73,12 @@ something",
                   "entries": Array [
                     Object {
                       "key": "'--output dir'",
-                      "type": "fieldsetEntry",
+                      "type": "attribute",
                       "value": "Specify a different output directory",
                     },
                     Object {
                       "key": "'--filters disabled'",
-                      "type": "fieldsetEntry",
+                      "type": "attribute",
                       "value": "Enable/disable filters",
                     },
                   ],

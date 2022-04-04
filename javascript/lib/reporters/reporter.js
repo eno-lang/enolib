@@ -1,12 +1,12 @@
 const {
-  DOCUMENT,
-  FIELD,
-  FIELDSET,
-  FIELDSET_ENTRY,
-  LIST,
-  LIST_ITEM,
-  MULTILINE_FIELD_BEGIN,
-  SECTION
+    ATTRIBUTE,
+    DOCUMENT,
+    FIELD,
+    FIELDSET,
+    ITEM,
+    LIST,
+    MULTILINE_FIELD_BEGIN,
+    SECTION
 } = require('../constants.js');
 
 // TODO: Better simple lastIn() / lastMissingIn() utility function usage to get m...n range for tagging?
@@ -133,7 +133,7 @@ class Reporter {
   }
 
   _tagChildren(element, tag) {
-    if(element.type === FIELD || element.type === LIST_ITEM || element.type === FIELDSET_ENTRY) {
+    if (element.type === FIELD || element.type === ITEM || element.type === ATTRIBUTE) {
       return this._tagContinuations(element, tag);
     } else if(element.type === LIST) {
       return this._tagContinuables(element, 'items', tag);

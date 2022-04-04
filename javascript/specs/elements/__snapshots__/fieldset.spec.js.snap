@@ -5,12 +5,12 @@ Object {
   "entries": Array [
     Object {
       "key": "entry",
-      "type": "fieldsetEntry",
+      "type": "attribute",
       "value": "value",
     },
     Object {
       "key": "other",
-      "type": "fieldsetEntry",
+      "type": "attribute",
       "value": "value",
     },
   ],

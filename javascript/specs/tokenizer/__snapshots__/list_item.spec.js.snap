@@ -25,7 +25,7 @@ Object {
                 14,
               ],
             },
-            "type": Symbol(List Item),
+            "type": Symbol(Item),
             "value": "value",
           },
           Object {
@@ -46,7 +46,7 @@ Object {
                 26,
               ],
             },
-            "type": Symbol(List Item),
+            "type": Symbol(Item),
             "value": "value",
           },
           Object {
@@ -67,7 +67,7 @@ Object {
                 39,
               ],
             },
-            "type": Symbol(List Item),
+            "type": Symbol(Item),
             "value": "value",
           },
           Object {
@@ -88,7 +88,7 @@ Object {
                 55,
               ],
             },
-            "type": Symbol(List Item),
+            "type": Symbol(Item),
             "value": "value",
           },
           Object {
@@ -109,7 +109,7 @@ Object {
                 64,
               ],
             },
-            "type": Symbol(List Item),
+            "type": Symbol(Item),
             "value": "value",
           },
         ],

@@ -10,15 +10,15 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": null,
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": null,
         },
         Object {
-          "type": "listItem",
+          "type": "item",
           "value": null,
         },
       ],
@@ -63,15 +63,15 @@ Object {
         Object {
           "items": Array [
             Object {
-              "type": "listItem",
+              "type": "item",
               "value": null,
             },
             Object {
-              "type": "listItem",
+              "type": "item",
               "value": null,
             },
             Object {
-              "type": "listItem",
+              "type": "item",
               "value": null,
             },
           ],

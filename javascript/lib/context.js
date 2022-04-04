@@ -3,17 +3,17 @@ const en = require('./locales/en.js');
 const { TextReporter } = require('./reporters/text_reporter.js');
 
 const {
-  DOCUMENT,
-  EMPTY,
-  FIELD,
-  FIELDSET,
-  FIELDSET_ENTRY,
-  FIELD_OR_FIELDSET_OR_LIST,
-  LIST,
-  LIST_ITEM,
-  MULTILINE_FIELD_BEGIN,
-  PRETTY_TYPES,
-  SECTION
+    ATTRIBUTE,
+    DOCUMENT,
+    EMPTY,
+    FIELD,
+    FIELDSET,
+    FIELD_OR_FIELDSET_OR_LIST,
+    ITEM,
+    LIST,
+    MULTILINE_FIELD_BEGIN,
+    PRETTY_TYPES,
+    SECTION
 } = require('./constants.js');
 
 class Context {
@@ -26,8 +26,6 @@ class Context {
     this._analyze();
   }
 
-  // TODO: Here and elsewhere - don't manually copy over copied comments field in resolve.js
-  //       but instead also derive a copied comment in here, lazily, just as in this.value() ?
   comment(element) {
     if(!element.hasOwnProperty('computedComment')) {
       if(element.hasOwnProperty('comments')) {
@@ -128,6 +126,10 @@ class Context {
     }
 
     switch(element.type) {
+      case ATTRIBUTE:
+        result.key = element.key;
+        result.value = this.value(element);
+        break;
       case FIELD_OR_FIELDSET_OR_LIST:  // fall through
       case EMPTY:
         result.key = element.key;
@@ -136,11 +138,7 @@ class Context {
         result.key = element.key;
         result.value = this.value(element);
         break;
-      case LIST_ITEM:
-        result.value = this.value(element);
-        break;
-      case FIELDSET_ENTRY:
-        result.key = element.key;
+      case ITEM:
         result.value = this.value(element);
         break;
       case MULTILINE_FIELD_BEGIN:

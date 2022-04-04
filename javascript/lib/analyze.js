@@ -1,22 +1,22 @@
 const { errors } = require('./errors/parsing.js');
 const matcher = require('./grammar_matcher.js');
 const {
-  COMMENT,
-  CONTINUATION,
-  DOCUMENT,
-  EMPTY,
-  END,
-  FIELD,
-  FIELDSET,
-  FIELDSET_ENTRY,
-  FIELD_OR_FIELDSET_OR_LIST,
-  LIST,
-  LIST_ITEM,
-  MULTILINE_FIELD_BEGIN,
-  MULTILINE_FIELD_END,
-  MULTILINE_FIELD_VALUE,
-  SECTION,
-  UNPARSED
+    ATTRIBUTE,
+    COMMENT,
+    CONTINUATION,
+    DOCUMENT,
+    EMPTY,
+    END,
+    FIELD,
+    FIELDSET,
+    FIELD_OR_FIELDSET_OR_LIST,
+    ITEM,
+    LIST,
+    MULTILINE_FIELD_BEGIN,
+    MULTILINE_FIELD_END,
+    MULTILINE_FIELD_VALUE,
+    SECTION,
+    UNPARSED
 } = require('./constants.js');
 
 const parseAfterError = (context, index, line, errorInstruction = null) => {
@@ -101,7 +101,7 @@ exports.analyze = function() {
         comments = null;
       }
 
-    } else if(match[matcher.ELEMENT_OPERATOR_INDEX] !== undefined) {
+  } else if (match[matcher.FIELD_OPERATOR_INDEX] !== undefined) {
 
       if(comments) {
         instruction.comments = comments;
@@ -149,7 +149,7 @@ exports.analyze = function() {
       lastContinuableElement = instruction;
       lastNonSectionElement = instruction;
 
-    } else if(match[matcher.LIST_ITEM_OPERATOR_INDEX] !== undefined) {
+  } else if (match[matcher.ITEM_OPERATOR_INDEX] !== undefined) {
 
       if(comments) {
         instruction.comments = comments;
@@ -157,8 +157,8 @@ exports.analyze = function() {
       }
 
       instruction.continuations = [];  // TODO: Forward allocation of this kind is planned to be removed like in python implementation
-      instruction.type = LIST_ITEM;
-      instruction.value = match[matcher.LIST_ITEM_VALUE_INDEX] || null;
+      instruction.type = ITEM;
+      instruction.value = match[matcher.ITEM_VALUE_INDEX] || null;
 
       const operatorIndex = this._input.indexOf('-', index);
 
@@ -185,7 +185,7 @@ exports.analyze = function() {
       instruction.parent = lastNonSectionElement;
       lastContinuableElement = instruction;
 
-    } else if(match[matcher.FIELDSET_ENTRY_OPERATOR_INDEX] !== undefined) {
+  } else if (match[matcher.ATTRIBUTE_OPERATOR_INDEX] !== undefined) {
 
       if(comments) {
         instruction.comments = comments;
@@ -193,7 +193,7 @@ exports.analyze = function() {
       }
 
       instruction.continuations = []; // TODO: Only create ad-hoc, remove here and elsewhere, generally follow this pattern of allocation sparsity
-      instruction.type = FIELDSET_ENTRY;
+      instruction.type = ATTRIBUTE;
 
       let entryOperatorIndex;
 
@@ -220,10 +220,10 @@ exports.analyze = function() {
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
       }
 
-      if(match[matcher.FIELDSET_ENTRY_VALUE_INDEX] === undefined) {
+      if (match[matcher.ATTRIBUTE_VALUE_INDEX] === undefined) {
         instruction.value = null;
       } else {
-        instruction.value = match[matcher.FIELDSET_ENTRY_VALUE_INDEX];
+        instruction.value = match[matcher.ATTRIBUTE_VALUE_INDEX];
 
         const valueIndex = this._input.indexOf(instruction.value, entryOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];

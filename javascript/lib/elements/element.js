@@ -2,7 +2,7 @@ const fieldset_entry_module = require('./fieldset_entry.js');
 const list_item_module = require('./list_item.js');
 
 const { errors } = require('../errors/validation.js');
-const { DOCUMENT, FIELDSET_ENTRY, LIST_ITEM } = require('../constants.js');
+const { ATTRIBUTE, DOCUMENT, ITEM } = require('../constants.js');
 const { SectionElement } = require('./section_element.js');
 
 // TODO: parent() implementation on Element and SectionElement ?
@@ -22,7 +22,7 @@ class Element extends SectionElement {
 
   toFieldsetEntry() {
     if(!this._fieldsetEntry) {
-      if(this._instruction.type !== FIELDSET_ENTRY)
+      if (this._instruction.type !== ATTRIBUTE)
         throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedFieldsetEntry');
 
       this._fieldsetEntry = new fieldset_entry_module.Fieldset(this._context, this._instruction); // TODO: parent missing? or: what if casting Element to Field (inherited from SectionElement) but does not have parent because originating from lookup? investigate
@@ -32,11 +32,11 @@ class Element extends SectionElement {
   }
 
   toListItem() {
-    if(!this._listItem) {
-      if(this._instruction.type !== LIST_ITEM)
-        throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedListItem');
+    if (!this._listItem) {
+        if (this._instruction.type !== ITEM)
+            throw errors.unexpectedElementType(this._context, null, this._instruction, 'expectedListItem');
 
-      this._listItem = new list_item_module.ListItem(this._context, this._instruction); // TODO: parent missing? or: what if casting Element to Field (inherited from SectionElement) but does not have parent because originating from lookup? investigate
+        this._listItem = new list_item_module.ListItem(this._context, this._instruction); // TODO: parent missing? or: what if casting Element to Field (inherited from SectionElement) but does not have parent because originating from lookup? investigate
     }
 
     return this._listItem;
@@ -67,13 +67,13 @@ class Element extends SectionElement {
     return this._instruction.type === DOCUMENT;
   }
 
-  yieldsFieldsetEntry() {
-    return this._instruction.type === FIELDSET_ENTRY;
-  }
+    yieldsFieldsetEntry() {
+        return this._instruction.type === ATTRIBUTE;
+    }
 
-  yieldsListItem() {
-    return this._instruction.type === LIST_ITEM;
-  }
+    yieldsListItem() {
+        return this._instruction.type === ITEM;
+    }
 
   yieldsSection() {
     return this._instruction.type === SECTION ||

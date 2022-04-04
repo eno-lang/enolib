@@ -20,7 +20,7 @@ Object {
       "entries": Array [
         Object {
           "key": "toString",
-          "type": "fieldsetEntry",
+          "type": "attribute",
           "value": "ok",
         },
       ],
@@ -39,7 +39,7 @@ Object {
       "entries": Array [
         Object {
           "key": "check",
-          "type": "fieldsetEntry",
+          "type": "attribute",
           "value": "ok",
         },
       ],

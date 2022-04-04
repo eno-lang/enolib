@@ -17,11 +17,11 @@ Object {
                 Object {
                   "items": Array [
                     Object {
-                      "type": "listItem",
+                      "type": "item",
                       "value": "Value",
                     },
                     Object {
-                      "type": "listItem",
+                      "type": "item",
                       "value": "Value",
                     },
                   ],
