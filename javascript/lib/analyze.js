@@ -110,12 +110,12 @@ exports.analyze = function() {
 
       instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
 
-      let elementOperatorIndex;
+      let fieldOperatorIndex;
       if(instruction.key !== undefined) {
         const keyIndex = this._input.indexOf(instruction.key, index);
-        elementOperatorIndex = this._input.indexOf(':', keyIndex + instruction.key.length);
+        fieldOperatorIndex = this._input.indexOf(':', keyIndex + instruction.key.length);
 
-        instruction.ranges.elementOperator = [elementOperatorIndex, elementOperatorIndex + 1];
+        instruction.ranges.fieldOperator = [fieldOperatorIndex, fieldOperatorIndex + 1];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
       } else {
         instruction.key = match[matcher.KEY_ESCAPED_INDEX];
@@ -124,11 +124,11 @@ exports.analyze = function() {
         const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
         const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
         const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        elementOperatorIndex = this._input.indexOf(':', escapeEndOperatorIndex + escapeOperator.length);
+        fieldOperatorIndex = this._input.indexOf(':', escapeEndOperatorIndex + escapeOperator.length);
 
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
         instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
-        instruction.ranges.elementOperator = [elementOperatorIndex, elementOperatorIndex + 1];
+        instruction.ranges.fieldOperator = [fieldOperatorIndex, fieldOperatorIndex + 1];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
       }
 
@@ -138,7 +138,7 @@ exports.analyze = function() {
         instruction.type = FIELD;
         instruction.value = value;
 
-        const valueIndex = this._input.indexOf(value, elementOperatorIndex + 1);
+        const valueIndex = this._input.indexOf(value, fieldOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + value.length];
       } else {
         instruction.type = FIELD_OR_FIELDSET_OR_LIST;

@@ -54,9 +54,6 @@ exports.errors = {
     );
   },
 
-  // TODO: Revisit and polish the two core value errors again at some point (missingValue / valueError)
-  //       (In terms of quality of results and architecture - DRY up probably)
-  //       Share best implementation among other eno libraries
   missingValue: (context, element) => {
     let message;
     const selection = {};
@@ -66,8 +63,8 @@ exports.errors = {
 
       if(element.ranges.hasOwnProperty('template')) {
         selection.from = cursor(element, 'template', END);
-      } else if(element.ranges.hasOwnProperty('elementOperator')) {
-        selection.from = cursor(element, 'elementOperator', END);
+      } else if (element.ranges.hasOwnProperty('fieldOperator')) {
+        selection.from = cursor(element, 'fieldOperator', END);
       } else {
         selection.from = cursor(element, 'line', END);
       }

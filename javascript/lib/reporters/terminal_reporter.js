@@ -29,9 +29,9 @@ const GUTTER_STYLE = {
 };
 
 const RANGE_STYLE = {
-  'elementOperator': WHITE,
   'escapeBeginOperator': WHITE,
   'escapeEndOperator': WHITE,
+  'fieldOperator': WHITE,
   'itemOperator': WHITE,
   'entryOperator': WHITE,
   'sectionOperator': WHITE,

@@ -20,8 +20,8 @@ INDEX  SNIPPET            KEY                  RANGE
 13     ⏎fi  e  ld:   =>   field                key
 14     fie  l  d:␣   =>   field                key
 15     iel  d  :␣v   =>   field                key
-16     eld  :  ␣va   =>   field                elementOperator
-17     ld:  ␣  val   =>   field                elementOperator
+16     eld  :  ␣va   =>   field                fieldOperator
+17     ld:  ␣  val   =>   field                fieldOperator
 18     d:␣  v  alu   =>   field                value
 19     :␣v  a  lue   =>   field                value
 20     ␣va  l  ue⏎   =>   field                value
@@ -33,8 +33,8 @@ INDEX  SNIPPET            KEY                  RANGE
 26     ⏎⏎l  i  st:   =>   list                 key
 27     ⏎li  s  t:⏎   =>   list                 key
 28     lis  t  :⏎-   =>   list                 key
-29     ist  :  ⏎-␣   =>   list                 elementOperator
-30     st:  ⏎  -␣i   =>   list                 elementOperator
+29     ist  :  ⏎-␣   =>   list                 fieldOperator
+30     st:  ⏎  -␣i   =>   list                 fieldOperator
 31     t:⏎  -  ␣it   =>   list                 itemOperator
 32     :⏎-  ␣  ite   =>   list                 itemOperator
 33     ⏎-␣  i  tem   =>   list                 value
@@ -69,8 +69,8 @@ INDEX  SNIPPET            KEY                  RANGE
 62     eld  s  et:   =>   fieldset             key
 63     lds  e  t:⏎   =>   fieldset             key
 64     dse  t  :⏎e   =>   fieldset             key
-65     set  :  ⏎en   =>   fieldset             elementOperator
-66     et:  ⏎  ent   =>   fieldset             elementOperator
+65     set  :  ⏎en   =>   fieldset             fieldOperator
+66     et:  ⏎  ent   =>   fieldset             fieldOperator
 67     t:⏎  e  ntr   =>   entry                key
 68     :⏎e  n  try   =>   entry                key
 69     ⏎en  t  ry␣   =>   entry                key

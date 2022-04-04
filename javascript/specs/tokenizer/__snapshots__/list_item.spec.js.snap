@@ -117,7 +117,7 @@ Object {
         "line": 0,
         "parent": [Circular],
         "ranges": Object {
-          "elementOperator": Array [
+          "fieldOperator": Array [
             4,
             5,
           ],
