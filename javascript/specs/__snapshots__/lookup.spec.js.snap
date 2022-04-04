@@ -77,8 +77,8 @@ INDEX  SNIPPET            KEY                  RANGE
 70     ent  r  y␣=   =>   entry                key
 71     ntr  y  ␣=␣   =>   entry                key
 72     try  ␣  =␣v   =>   entry                key
-73     ry␣  =  ␣va   =>   entry                entryOperator
-74     y␣=  ␣  val   =>   entry                entryOperator
+73     ry␣  =  ␣va   =>   entry                attributeOperator
+74     y␣=  ␣  val   =>   entry                attributeOperator
 75     ␣=␣  v  alu   =>   entry                value
 76     =␣v  a  lue   =>   entry                value
 77     ␣va  l  ue⏎   =>   entry                value
@@ -102,8 +102,8 @@ INDEX  SNIPPET            KEY                  RANGE
 95     ent  r  y␣=   =>   entry                key
 96     ntr  y  ␣=␣   =>   entry                key
 97     try  ␣  =␣v   =>   entry                key
-98     ry␣  =  ␣va   =>   entry                entryOperator
-99     y␣=  ␣  val   =>   entry                entryOperator
+98     ry␣  =  ␣va   =>   entry                attributeOperator
+99     y␣=  ␣  val   =>   entry                attributeOperator
 100    ␣=␣  v  alu   =>   entry                value
 101    =␣v  a  lue   =>   entry                value
 102    ␣va  l  ue⏎   =>   entry                value

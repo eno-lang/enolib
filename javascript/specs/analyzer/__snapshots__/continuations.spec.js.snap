@@ -121,7 +121,7 @@ Object {
             "line": 5,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 73,
                 74,
               ],
@@ -356,7 +356,7 @@ Object {
             "line": 19,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 279,
                 280,
               ],

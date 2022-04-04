@@ -195,7 +195,7 @@ exports.analyze = function() {
       instruction.continuations = []; // TODO: Only create ad-hoc, remove here and elsewhere, generally follow this pattern of allocation sparsity
       instruction.type = ATTRIBUTE;
 
-      let entryOperatorIndex;
+      let attributeOperatorIndex;
 
       if(match[matcher.KEY_UNESCAPED_INDEX] === undefined) {
         instruction.key = match[matcher.KEY_ESCAPED_INDEX];
@@ -204,19 +204,19 @@ exports.analyze = function() {
         const escapeBeginOperatorIndex = this._input.indexOf(escapeOperator, index);
         const keyIndex = this._input.indexOf(instruction.key, escapeBeginOperatorIndex + escapeOperator.length);
         const escapeEndOperatorIndex = this._input.indexOf(escapeOperator, keyIndex + instruction.key.length);
-        entryOperatorIndex = this._input.indexOf('=', escapeEndOperatorIndex + escapeOperator.length);
+        attributeOperatorIndex = this._input.indexOf('=', escapeEndOperatorIndex + escapeOperator.length);
 
         instruction.ranges.escapeBeginOperator = [escapeBeginOperatorIndex, escapeBeginOperatorIndex + escapeOperator.length];
         instruction.ranges.escapeEndOperator = [escapeEndOperatorIndex, escapeEndOperatorIndex + escapeOperator.length];
-        instruction.ranges.entryOperator = [entryOperatorIndex, entryOperatorIndex + 1];
+        instruction.ranges.attributeOperator = [attributeOperatorIndex, attributeOperatorIndex + 1];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
       } else {
         instruction.key = match[matcher.KEY_UNESCAPED_INDEX];
 
         const keyIndex = this._input.indexOf(instruction.key, index);
-        entryOperatorIndex = this._input.indexOf('=', keyIndex + instruction.key.length);
+        attributeOperatorIndex = this._input.indexOf('=', keyIndex + instruction.key.length);
 
-        instruction.ranges.entryOperator = [entryOperatorIndex, entryOperatorIndex + 1];
+        instruction.ranges.attributeOperator = [attributeOperatorIndex, attributeOperatorIndex + 1];
         instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
       }
 
@@ -225,7 +225,7 @@ exports.analyze = function() {
       } else {
         instruction.value = match[matcher.ATTRIBUTE_VALUE_INDEX];
 
-        const valueIndex = this._input.indexOf(instruction.value, entryOperatorIndex + 1);
+        const valueIndex = this._input.indexOf(instruction.value, attributeOperatorIndex + 1);
         instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
       }
 

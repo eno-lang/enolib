@@ -29,7 +29,7 @@ const GUTTER_STYLE = {
 };
 
 const RANGE_STYLE = {
-    'entryOperator': WHITE,
+    'attributeOperator': WHITE,
     'directLineContinuationOperator': WHITE,
     'escapeBeginOperator': WHITE,
     'escapeEndOperator': WHITE,

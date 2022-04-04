@@ -68,7 +68,7 @@ exports.errors = {
       }
     } else if (element.type === ATTRIBUTE) {
       message = context.messages.missingFieldsetEntryValue(element.key);
-      selection.from = cursor(element, 'entryOperator', END);
+      selection.from = cursor(element, 'attributeOperator', END);
     } else if (element.type === ITEM) {
       message = context.messages.missingListItemValue(element.parent.key);
       selection.from = cursor(element, 'itemOperator', END);
@@ -128,8 +128,8 @@ exports.errors = {
         select.from = cursor(element, 'value', BEGIN);
       } else if(element.ranges.hasOwnProperty('elementOperator')) {
         select.from = cursor(element, 'elementOperator', END);
-      } else if(element.ranges.hasOwnProperty('entryOperator')) {
-        select.from = cursor(element, 'entryOperator', END);
+    } else if(element.ranges.hasOwnProperty('attributeOperator')) {
+        select.from = cursor(element, 'attributeOperator', END);
       } else if (element.type === ITEM) {
         select.from = cursor(element, 'itemOperator', END);
       } else {

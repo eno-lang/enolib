@@ -13,7 +13,7 @@ Object {
             "line": 2,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 17,
                 18,
               ],
@@ -39,7 +39,7 @@ Object {
             "line": 4,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 35,
                 36,
               ],
@@ -65,7 +65,7 @@ Object {
             "line": 6,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 54,
                 55,
               ],
@@ -91,7 +91,7 @@ Object {
             "line": 8,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 76,
                 77,
               ],
@@ -117,7 +117,7 @@ Object {
             "line": 10,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 98,
                 99,
               ],
@@ -143,7 +143,7 @@ Object {
             "line": 12,
             "parent": [Circular],
             "ranges": Object {
-              "entryOperator": Array [
+              "attributeOperator": Array [
                 116,
                 117,
               ],
