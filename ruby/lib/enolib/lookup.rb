@@ -190,10 +190,8 @@ def check_in_section_by_line(section, line)
       match_in_list = check_list_by_line(element, line)
       return match_in_list if match_in_list
     when :multiline_field_begin
-      unless element.has_key?(:template)
-        match_in_multiline_field = check_multiline_field_by_line(element, line)
-        return match_in_multiline_field if match_in_multiline_field
-      end
+      match_in_multiline_field = check_multiline_field_by_line(element, line)
+      return match_in_multiline_field if match_in_multiline_field
     when :section
       return check_in_section_by_line(element, line)
     end
@@ -232,10 +230,8 @@ def check_in_section_by_index(section, index)
       match_in_list = check_list_by_index(element, index)
       return match_in_list if match_in_list
     when :multiline_field_begin
-      unless element.has_key?(:template)
-        match_in_multiline_field = check_multiline_field_by_index(element, index)
-        return match_in_multiline_field if match_in_multiline_field
-      end
+      match_in_multiline_field = check_multiline_field_by_index(element, index)
+      return match_in_multiline_field if match_in_multiline_field
     when :section
       return check_in_section_by_index(element, index)
     end

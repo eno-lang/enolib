@@ -29,20 +29,17 @@ const GUTTER_STYLE = {
 };
 
 const RANGE_STYLE = {
-  'escapeBeginOperator': WHITE,
-  'escapeEndOperator': WHITE,
-  'fieldOperator': WHITE,
-  'itemOperator': WHITE,
-  'entryOperator': WHITE,
-  'sectionOperator': WHITE,
-  'copyOperator': WHITE,
-  'deepCopyOperator': WHITE,
-  'multilineFieldOperator': WHITE,
-  'directLineContinuationOperator': WHITE,
-  'spacedLineContinuationOperator': WHITE,
-  'key': BOLD + BRIGHT_WHITE,
-  'template': BOLD + BRIGHT_WHITE,
-  'value': DIM + WHITE
+    'entryOperator': WHITE,
+    'directLineContinuationOperator': WHITE,
+    'escapeBeginOperator': WHITE,
+    'escapeEndOperator': WHITE,
+    'fieldOperator': WHITE,
+    'itemOperator': WHITE,
+    'key': BOLD + BRIGHT_WHITE,
+    'multilineFieldOperator': WHITE,
+    'sectionOperator': WHITE,
+    'spacedLineContinuationOperator': WHITE,
+    'value': DIM + WHITE
 };
 
 class TerminalReporter extends Reporter {

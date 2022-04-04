@@ -64,9 +64,7 @@ class Validation:
             element['type'] == MULTILINE_FIELD_BEGIN):
             message = context.messages.missing_field_value(element['key'])
 
-            if 'template' in element['ranges']:
-                selection_data['from'] = cursor(element, 'template', END)
-            elif 'element_operator' in element['ranges']:
+            if 'element_operator' in element['ranges']:
                 selection_data['from'] = cursor(element, 'element_operator', END)
             else:
                 selection_data['from'] = cursor(element, 'line', END)

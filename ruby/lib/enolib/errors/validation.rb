@@ -52,9 +52,7 @@ module Enolib
           message = context.messages.missing_field_value(element[:key])
 
           selection[:from] =
-            if element[:ranges].has_key?(:template)
-              Selections.cursor(element, :template, RANGE_END)
-            elsif element[:ranges].has_key?(:element_operator)
+            if element[:ranges].has_key?(:element_operator)
               Selections.cursor(element, :element_operator, RANGE_END)
             else
               Selections.cursor(element, :line, RANGE_END)

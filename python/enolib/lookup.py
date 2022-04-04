@@ -209,10 +209,9 @@ def check_in_section_by_line(section, line):
             if match_in_list:
                 return match_in_list
         elif element['type'] is MULTILINE_FIELD_BEGIN:
-            if not 'template' in element:  # TODO: More elegant copy detection?
-                match_in_multiline_field = check_multiline_field_by_line(element, line)
-                if match_in_multiline_field:
-                    return match_in_multiline_field
+            match_in_multiline_field = check_multiline_field_by_line(element, line)
+            if match_in_multiline_field:
+                return match_in_multiline_field
         elif element['type'] is SECTION:
             return check_in_section_by_line(element, line)
 
@@ -249,10 +248,9 @@ def check_in_section_by_index(section, index):
             if match_in_list:
                 return match_in_list
         elif element['type'] is MULTILINE_FIELD_BEGIN:
-            if not 'template' in element:  # TODO: More elegant copy detection?
-                match_in_multiline_field = check_multiline_field_by_index(element, index)
-                if match_in_multiline_field:
-                    return match_in_multiline_field
+            match_in_multiline_field = check_multiline_field_by_index(element, index)
+            if match_in_multiline_field:
+                return match_in_multiline_field
         elif element['type'] is SECTION:
             return check_in_section_by_index(element, index)
 

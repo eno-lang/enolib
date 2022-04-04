@@ -61,9 +61,7 @@ exports.errors = {
     if(element.type === FIELD || element.type === FIELD_OR_FIELDSET_OR_LIST || element.type === MULTILINE_FIELD_BEGIN) {
       message = context.messages.missingFieldValue(element.key);
 
-      if(element.ranges.hasOwnProperty('template')) {
-        selection.from = cursor(element, 'template', END);
-      } else if (element.ranges.hasOwnProperty('fieldOperator')) {
+      if (element.ranges.hasOwnProperty('fieldOperator')) {
         selection.from = cursor(element, 'fieldOperator', END);
       } else {
         selection.from = cursor(element, 'line', END);

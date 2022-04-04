@@ -247,11 +247,9 @@ const checkInSectionByLine = (section, line) => {
         break;
       }
       case MULTILINE_FIELD_BEGIN:
-        if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
           const matchInMultilineField = checkMultilineFieldByLine(element, line);
           if(matchInMultilineField) return matchInMultilineField;
-        }
-        break;
+          break;
       case SECTION:
         return checkInSectionByLine(element, line);
     }
@@ -298,11 +296,9 @@ const checkInSectionByIndex = (section, index) => {
         break;
       }
       case MULTILINE_FIELD_BEGIN:
-        if(!element.hasOwnProperty('template')) {  // TODO: More elegant copy detection?
           const matchInMultilineField = checkMultilineFieldByIndex(element, index);
           if(matchInMultilineField) return matchInMultilineField;
-        }
-        break;
+          break;
       case SECTION:
         return checkInSectionByIndex(element, index);
     }

@@ -34,13 +34,10 @@ RANGE_STYLE = {
   'item_operator': WHITE,
   'entry_operator': WHITE,
   'section_operator': WHITE,
-  'copy_operator': WHITE,
-  'deepCopy_operator': WHITE,
   'multiline_field_operator': WHITE,
   'direct_line_continuation_operator': WHITE,
   'spaced_line_continuation_operator': WHITE,
   'key': BOLD + BRIGHT_WHITE,
-  'template': BOLD + BRIGHT_WHITE,
   'value': DIM + WHITE
 }.freeze
 
