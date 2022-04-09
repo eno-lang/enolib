@@ -1,0 +1,73 @@
+# Asserting everything was touched when the only present field with attributes was not touched
+
+-- input
+field:
+attribute = value
+-- input
+
+-- javascript
+enolib.parse(input).assertAllTouched();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched()
+-- python
+
+-- ruby
+Enolib.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | attribute = value
+-- snippet
+
+selection: [0,0] => [1,13]
+
+# Asserting everything was touched when the only present field with attributes was touched
+
+-- input
+field:
+attribute = value
+-- input
+
+-- javascript
+const document = enolib.parse(input);
+
+document.field('field').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->field('field')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.field('field').touch()
+document.assert_all_touched()
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.field('field').touch
+document.assert_all_touched
+-- ruby
+
+## Passes

@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item tokenization performs as specified 1`] = `
+Object {
+  "_document": Object {
+    "depth": 0,
+    "elements": Array [
+      Object {
+        "items": Array [
+          Object {
+            "line": 2,
+            "parent": [Circular],
+            "ranges": Object {
+              "itemOperator": Array [
+                7,
+                8,
+              ],
+              "line": Array [
+                7,
+                14,
+              ],
+              "value": Array [
+                9,
+                14,
+              ],
+            },
+            "type": Symbol(Item),
+            "value": "value",
+          },
+          Object {
+            "line": 4,
+            "parent": [Circular],
+            "ranges": Object {
+              "itemOperator": Array [
+                16,
+                17,
+              ],
+              "line": Array [
+                16,
+                26,
+              ],
+              "value": Array [
+                21,
+                26,
+              ],
+            },
+            "type": Symbol(Item),
+            "value": "value",
+          },
+          Object {
+            "line": 6,
+            "parent": [Circular],
+            "ranges": Object {
+              "itemOperator": Array [
+                32,
+                33,
+              ],
+              "line": Array [
+                28,
+                39,
+              ],
+              "value": Array [
+                34,
+                39,
+              ],
+            },
+            "type": Symbol(Item),
+            "value": "value",
+          },
+          Object {
+            "line": 8,
+            "parent": [Circular],
+            "ranges": Object {
+              "itemOperator": Array [
+                45,
+                46,
+              ],
+              "line": Array [
+                41,
+                55,
+              ],
+              "value": Array [
+                50,
+                55,
+              ],
+            },
+            "type": Symbol(Item),
+            "value": "value",
+          },
+          Object {
+            "line": 10,
+            "parent": [Circular],
+            "ranges": Object {
+              "itemOperator": Array [
+                57,
+                58,
+              ],
+              "line": Array [
+                57,
+                64,
+              ],
+              "value": Array [
+                59,
+                64,
+              ],
+            },
+            "type": Symbol(Item),
+            "value": "value",
+          },
+        ],
+        "key": "list",
+        "line": 0,
+        "parent": [Circular],
+        "ranges": Object {
+          "fieldOperator": Array [
+            4,
+            5,
+          ],
+          "key": Array [
+            0,
+            4,
+          ],
+          "line": Array [
+            0,
+            5,
+          ],
+        },
+        "type": Symbol(Field),
+      },
+    ],
+    "type": Symbol(Document),
+  },
+  "_lineCount": 11,
+  "_meta": Array [],
+}
+`;

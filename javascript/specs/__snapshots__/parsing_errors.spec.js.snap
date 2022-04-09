@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parsing errors attribute_outside_field (#01) builds and throws a proper error 1`] = `
+"The attribute in line 1 is not contained within a field.
+
+   Line | Content
+ >    1 | attribute = value"
+`;
+
+exports[`Parsing errors attribute_without_key (#01) builds and throws a proper error 1`] = `
+"The attribute in line 1 has no key.
+
+   Line | Content
+ >    1 | ="
+`;
+
+exports[`Parsing errors attribute_without_key (#11) builds and throws a proper error 1`] = `
+"The attribute in line 1 has no key.
+
+   Line | Content
+ >    1 | = value"
+`;
+
+exports[`Parsing errors continuation_outside_field (#01) builds and throws a proper error 1`] = `
+"The continuation in line 1 is not contained within a field.
+
+   Line | Content
+ >    1 | | continuation"
+`;
+
+exports[`Parsing errors embed_without_key (#01) builds and throws a proper error 1`] = `
+"The embed in line 1 has no key.
+
+   Line | Content
+ >    1 | --"
+`;
+
+exports[`Parsing errors embed_without_key (#11) builds and throws a proper error 1`] = `
+"The embed in line 1 has no key.
+
+   Line | Content
+ >    1 | -----"
+`;
+
+exports[`Parsing errors field_without_key (#01) builds and throws a proper error 1`] = `
+"The field in line 1 has no key.
+
+   Line | Content
+ >    1 | :"
+`;
+
+exports[`Parsing errors field_without_key (#11) builds and throws a proper error 1`] = `
+"The field in line 1 has no key.
+
+   Line | Content
+ >    1 | : value"
+`;
+
+exports[`Parsing errors item_outside_field (#01) builds and throws a proper error 1`] = `
+"The item in line 1 is not contained within a field.
+
+   Line | Content
+ >    1 | -"
+`;
+
+exports[`Parsing errors item_outside_field (#11) builds and throws a proper error 1`] = `
+"The item in line 1 is not contained within a field.
+
+   Line | Content
+ >    1 | - item"
+`;
+
+exports[`Parsing errors mixed_field_content (#01) builds and throws a proper error 1`] = `
+"The field in line 1 must contain either only attributes, only items, or only a value.
+
+   Line | Content
+ *    1 | field: value
+ >    2 | attribute = value"
+`;
+
+exports[`Parsing errors mixed_field_content (#11) builds and throws a proper error 1`] = `
+"The field in line 1 must contain either only attributes, only items, or only a value.
+
+   Line | Content
+ *    1 | field:
+ *    2 | | value
+ >    3 | attribute = value"
+`;
+
+exports[`Parsing errors mixed_field_content (#21) builds and throws a proper error 1`] = `
+"The field in line 1 must contain either only attributes, only items, or only a value.
+
+   Line | Content
+ *    1 | field:
+ *    2 | - item
+ >    3 | attribute = value"
+`;
+
+exports[`Parsing errors mixed_field_content (#31) builds and throws a proper error 1`] = `
+"The field in line 1 must contain either only attributes, only items, or only a value.
+
+   Line | Content
+ *    1 | field: value
+ >    2 | - item"
+`;
+
+exports[`Parsing errors mixed_field_content (#41) builds and throws a proper error 1`] = `
+"The field in line 1 must contain either only attributes, only items, or only a value.
+
+   Line | Content
+ *    1 | field:
+ *    2 | | value
+ >    3 | - item"
+`;
+
+exports[`Parsing errors mixed_field_content (#51) builds and throws a proper error 1`] = `
+"The field in line 1 must contain either only attributes, only items, or only a value.
+
+   Line | Content
+ *    1 | field:
+ *    2 | attribute = value
+ >    3 | - item"
+`;
+
+exports[`Parsing errors section_level_skip (#01) builds and throws a proper error 1`] = `
+"The section in line 1 is more than one level deeper than the one it is contained in.
+
+   Line | Content
+ >    1 | ## section"
+`;
+
+exports[`Parsing errors section_level_skip (#11) builds and throws a proper error 1`] = `
+"The section in line 2 is more than one level deeper than the one it is contained in.
+
+   Line | Content
+ *    1 | # section
+ >    2 | ### section"
+`;
+
+exports[`Parsing errors section_level_skip (#21) builds and throws a proper error 1`] = `
+"The section in line 3 is more than one level deeper than the one it is contained in.
+
+   Line | Content
+      1 | # section
+ *    2 | ## section
+ >    3 | #### section"
+`;
+
+exports[`Parsing errors section_without_key (#01) builds and throws a proper error 1`] = `
+"The section in line 1 has no key.
+
+   Line | Content
+ >    1 | #"
+`;
+
+exports[`Parsing errors section_without_key (#11) builds and throws a proper error 1`] = `
+"The section in line 1 has no key.
+
+   Line | Content
+ >    1 | ##"
+`;
+
+exports[`Parsing errors section_without_key (#21) builds and throws a proper error 1`] = `
+"The section in line 1 has no key.
+
+   Line | Content
+ >    1 | ####"
+`;
+
+exports[`Parsing errors unterminated_embed (#01) builds and throws a proper error 1`] = `
+"The embed 'embed' starting in line 1 is not terminated until the end of the document.
+
+   Line | Content
+ >    1 | -- embed
+ *    2 | ..."
+`;
+
+exports[`Parsing errors unterminated_embed (#11) builds and throws a proper error 1`] = `
+"The embed '--' starting in line 1 is not terminated until the end of the document.
+
+   Line | Content
+ >    1 | ---- --
+ *    2 | ..."
+`;
+
+exports[`Parsing errors unterminated_escaped_key (#01) builds and throws a proper error 1`] = `
+"The key escape sequence in line 1 is not terminated before the end of the line.
+
+   Line | Content
+ >    1 | \`"
+`;
+
+exports[`Parsing errors unterminated_escaped_key (#11) builds and throws a proper error 1`] = `
+"The key escape sequence in line 1 is not terminated before the end of the line.
+
+   Line | Content
+ >    1 | \`key"
+`;

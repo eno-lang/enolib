@@ -1,4 +1,5 @@
-const { parse } = require('..');
+import { parse } from '../lib/esm/main.js';
+import { unpack } from './unpack.js';
 
 const sample = `
 empty:
@@ -33,8 +34,8 @@ end:
 `;
 
 describe('Elements without values', () => {
-  it('correctly parses', () => {
-    const doc = parse(sample);
-    expect(doc.raw()).toMatchSnapshot();
-  });
+    it('correctly parses', () => {
+        const document = parse(sample);
+        expect(unpack(document)).toMatchSnapshot();
+    });
 });

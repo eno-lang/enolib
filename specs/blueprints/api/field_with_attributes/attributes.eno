@@ -1,0 +1,91 @@
+# Querying all attributes from a field
+
+-- input
+field:
+1 = 1
+2 = 2
+-- input
+
+-- javascript
+const output = enolib.parse(input).field('field').attributes().map(entry => entry.requiredStringValue());
+-- javascript
+
+-- php
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->field('field')->attributes()
+);
+-- php
+
+-- python
+output = [entry.required_string_value() for entry in enolib.parse(input).field('field').attributes()]
+-- python
+
+-- ruby
+output = Enolib.parse(input).field('field').attributes.map(&:required_string_value)
+-- ruby
+
+## Result
+
+-- javascript
+['1', '2']
+-- javascript
+
+-- php
+['1', '2']
+-- php
+
+-- python
+['1', '2']
+-- python
+
+-- ruby
+['1', '2']
+-- ruby
+
+
+# Querying attributes from a field by key
+
+-- input
+field:
+entry = value
+other = one
+other = two
+-- input
+
+-- javascript
+const output = enolib.parse(input).field('field').attributes('other').map(entry => entry.requiredStringValue());
+-- javascript
+
+-- php
+$output = array_map(
+  function($entry) { return $entry->requiredStringValue(); },
+  Enolib\Parser::parse($input)->field('field')->attributes('other')
+);
+-- php
+
+-- python
+output = [entry.required_string_value() for entry in enolib.parse(input).field('field').attributes('other')]
+-- python
+
+-- ruby
+output = Enolib.parse(input).field('field').attributes('other').map(&:required_string_value)
+-- ruby
+
+## Result
+
+-- javascript
+['one', 'two']
+-- javascript
+
+-- php
+['one', 'two']
+-- php
+
+-- python
+['one', 'two']
+-- python
+
+-- ruby
+['one', 'two']
+-- ruby

@@ -1,52 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Property issues Section toString as attribute key does not have any side effects 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "attributes": Array [
+        Object {
+          "key": "toString",
+          "value": "value",
+        },
+      ],
+      "key": "check",
+      "type": "field",
+    },
+  ],
+  "key": null,
+  "type": "section",
+}
+`;
+
 exports[`Property issues Section toString as field key does not have any side effects 1`] = `
 Object {
   "elements": Array [
     Object {
       "key": "toString",
       "type": "field",
-      "value": "ok",
+      "value": "value",
     },
   ],
-  "type": "document",
+  "key": null,
+  "type": "section",
 }
 `;
 
-exports[`Property issues Section toString as fieldset entry does not have any side effects 1`] = `
+exports[`Property issues Section toString as flag key does not have any side effects 1`] = `
 Object {
   "elements": Array [
     Object {
-      "entries": Array [
-        Object {
-          "key": "toString",
-          "type": "attribute",
-          "value": "ok",
-        },
-      ],
-      "key": "check",
-      "type": "fieldset",
-    },
-  ],
-  "type": "document",
-}
-`;
-
-exports[`Property issues Section toString as fieldset key does not have any side effects 1`] = `
-Object {
-  "elements": Array [
-    Object {
-      "entries": Array [
-        Object {
-          "key": "check",
-          "type": "attribute",
-          "value": "ok",
-        },
-      ],
       "key": "toString",
-      "type": "fieldset",
+      "type": "flag",
     },
   ],
-  "type": "document",
+  "key": null,
+  "type": "section",
 }
 `;

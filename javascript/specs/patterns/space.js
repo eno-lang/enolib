@@ -10,7 +10,7 @@ const spacingVariants = tokens => {
     return variants;
 };
 
-exports.space = (...tokens) => {
+export function space(...tokens) {
     tokens.push('');
     
     return spacingVariants(tokens).filter((variant, index, variants) => variants.indexOf(variant) === index);

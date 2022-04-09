@@ -1,4 +1,4 @@
-const { inspectTokenization } = require('./util.js');
+import { inspectTokenization } from './util.js';
 
 const input = `
 # key
@@ -13,7 +13,7 @@ const input = `
 `.trim();
 
 describe('Section tokenization', () => {
-  it('performs as specified', () => {
-    expect(inspectTokenization(input)).toMatchSnapshot();
-  });
+    it('performs as specified', () => {
+        expect(inspectTokenization(input)).toMatchSnapshot();
+    });
 });

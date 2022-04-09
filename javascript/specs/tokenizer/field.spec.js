@@ -1,19 +1,19 @@
-const { inspectTokenization } = require('./util.js');
+import { inspectTokenization } from './util.js';
 
 const input = `
-key: value
+key:
 
-key:    value
+key:
 
-key    : value
+key    :
 
-    key    :    value
+    key    :
 
-key: value
+key:
 `.trim();
 
-describe('Field tokenization', () => {
-  it('performs as specified', () => {
-    expect(inspectTokenization(input)).toMatchSnapshot();
-  });
+describe('Key tokenization', () => {
+    it('performs as specified', () => {
+        expect(inspectTokenization(input)).toMatchSnapshot();
+    });
 });

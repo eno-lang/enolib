@@ -1,0 +1,191 @@
+# Querying a missing attribute on a field with attributes when all attributes are required
+
+-- input
+field:
+-- input
+
+-- javascript
+const field = enolib.parse(input).field('field');
+
+field.allAttributesRequired();
+field.attribute('attribute');
+-- javascript
+
+-- php
+$field = Enolib\Parser::parse($input)->field('field');
+
+$field->allAttributesRequired();
+$field->attribute('attribute');
+-- php
+
+-- python
+field = enolib.parse(input).field('field')
+
+field.all_attributes_required()
+field.attribute('attribute')
+-- python
+
+-- ruby
+field = Enolib.parse(input).field('field')
+
+field.all_attributes_required
+field.attribute('attribute')
+-- ruby
+
+## ValidationError
+
+-- text
+The attribute 'attribute' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+# Querying a missing attribute on a field with attributes when all requiring all attributes is explicitly enabled
+
+-- input
+field:
+-- input
+
+-- javascript
+const field = enolib.parse(input).field('field');
+
+field.allAttributesRequired(true);
+field.attribute('attribute');
+-- javascript
+
+-- php
+$field = Enolib\Parser::parse($input)->field('field');
+
+$field->allAttributesRequired(true);
+$field->attribute('attribute');
+-- php
+
+-- python
+field = enolib.parse(input).field('field')
+
+field.all_attributes_required(True)
+field.attribute('attribute')
+-- python
+
+-- ruby
+field = Enolib.parse(input).field('field')
+
+field.all_attributes_required(true)
+field.attribute('attribute')
+-- ruby
+
+## ValidationError
+
+-- text
+The attribute 'attribute' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+# Querying a missing attribute on a field with attributes when requiring all attributes is explicitly disabled
+
+-- input
+field:
+-- input
+
+-- javascript
+const field = enolib.parse(input).field('field');
+
+field.allAttributesRequired(false);
+field.attribute('attribute');
+-- javascript
+
+-- php
+$field = Enolib\Parser::parse($input)->field('field');
+
+$field->allAttributesRequired(false);
+$field->attribute('attribute');
+-- php
+
+-- python
+field = enolib.parse(input).field('field')
+
+field.all_attributes_required(False)
+field.attribute('attribute')
+-- python
+
+-- ruby
+field = Enolib.parse(input).field('field')
+
+field.all_attributes_required(false)
+field.attribute('attribute')
+-- ruby
+
+## Passes
+
+# Querying a missing attribute on a field with attributes when requiring all attributes is enabled and disabled again
+
+-- input
+field:
+-- input
+
+-- javascript
+const field = enolib.parse(input).field('field');
+
+field.allAttributesRequired(true);
+field.allAttributesRequired(false);
+field.attribute('attribute');
+-- javascript
+
+-- php
+$field = Enolib\Parser::parse($input)->field('field');
+
+$field->allAttributesRequired(true);
+$field->allAttributesRequired(false);
+$field->attribute('attribute');
+-- php
+
+-- python
+field = enolib.parse(input).field('field')
+
+field.all_attributes_required(True)
+field.all_attributes_required(False)
+field.attribute('attribute')
+-- python
+
+-- ruby
+field = Enolib.parse(input).field('field')
+
+field.all_attributes_required(true)
+field.all_attributes_required(false)
+field.attribute('attribute')
+-- ruby
+
+## Passes
+
+# Querying a missing but explicitly optional attribute on a field with attributes when requiring all attributes is enabled 
+
+-- input
+field:
+-- input
+
+-- javascript
+const field = enolib.parse(input).field('field');
+
+field.allAttributesRequired();
+field.optionalEntry('attribute');
+-- javascript
+
+-- php
+$field = Enolib\Parser::parse($input)->field('field');
+
+$field->allAttributesRequired();
+$field->optionalEntry('attribute');
+-- php
+
+-- python
+field = enolib.parse(input).field('field')
+
+field.all_attributes_required()
+field.optional_attribute('attribute')
+-- python
+
+-- ruby
+field = Enolib.parse(input).field('field')
+
+field.all_attributes_required
+field.optional_attribute('attribute')
+-- ruby
+
+## Passes

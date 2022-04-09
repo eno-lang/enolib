@@ -1,5 +1,5 @@
-module.exports = {
-  collectCoverageFrom: ["lib/**"],
-  setupFilesAfterEnv: ['./jest.setup.js'],
-  testRegex: '/specs/.*\\.spec\\.js$'
+export default {
+    collectCoverageFrom: ["lib/esm/**"],
+    testRegex: '/specs/.*\\.spec\\.js$',
+    transform: {}
 };

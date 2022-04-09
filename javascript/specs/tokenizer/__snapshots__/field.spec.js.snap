@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Field tokenization performs as specified 1`] = `
+exports[`Key tokenization performs as specified 1`] = `
 Object {
   "_document": Object {
     "depth": 0,
     "elements": Array [
       Object {
-        "continuations": Array [],
         "key": "key",
         "line": 0,
         "parent": [Circular],
@@ -21,119 +20,90 @@ Object {
           ],
           "line": Array [
             0,
-            10,
-          ],
-          "value": Array [
-            5,
-            10,
+            4,
           ],
         },
         "type": Symbol(Field),
-        "value": "value",
       },
       Object {
-        "continuations": Array [],
         "key": "key",
         "line": 2,
         "parent": [Circular],
         "ranges": Object {
           "fieldOperator": Array [
-            15,
-            16,
+            9,
+            10,
           ],
           "key": Array [
-            12,
-            15,
+            6,
+            9,
           ],
           "line": Array [
-            12,
-            25,
-          ],
-          "value": Array [
-            20,
-            25,
+            6,
+            10,
           ],
         },
         "type": Symbol(Field),
-        "value": "value",
       },
       Object {
-        "continuations": Array [],
         "key": "key",
         "line": 4,
         "parent": [Circular],
         "ranges": Object {
           "fieldOperator": Array [
-            34,
-            35,
+            19,
+            20,
           ],
           "key": Array [
-            27,
-            30,
+            12,
+            15,
           ],
           "line": Array [
-            27,
-            41,
-          ],
-          "value": Array [
-            36,
-            41,
+            12,
+            20,
           ],
         },
         "type": Symbol(Field),
-        "value": "value",
       },
       Object {
-        "continuations": Array [],
         "key": "key",
         "line": 6,
         "parent": [Circular],
         "ranges": Object {
           "fieldOperator": Array [
-            54,
-            55,
+            33,
+            34,
           ],
           "key": Array [
-            47,
-            50,
+            26,
+            29,
           ],
           "line": Array [
-            43,
-            64,
-          ],
-          "value": Array [
-            59,
-            64,
+            22,
+            34,
           ],
         },
         "type": Symbol(Field),
-        "value": "value",
       },
       Object {
-        "continuations": Array [],
         "key": "key",
         "line": 8,
         "parent": [Circular],
         "ranges": Object {
           "fieldOperator": Array [
-            69,
-            70,
+            39,
+            40,
           ],
           "key": Array [
-            66,
-            69,
+            36,
+            39,
           ],
           "line": Array [
-            66,
-            76,
-          ],
-          "value": Array [
-            71,
-            76,
+            36,
+            40,
           ],
         },
         "type": Symbol(Field),
-        "value": "value",
       },
     ],
     "type": Symbol(Document),

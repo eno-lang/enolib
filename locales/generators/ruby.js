@@ -1,60 +1,55 @@
-const fs = require('fs');
-const fsExtra = require('fs-extra');
-const path = require('path');
+import fs from 'fs';
+import fsExtra from 'fs-extra';
+import path from 'path';
 
-const { interpolatify } = require('../../utilities.js');
+import { interpolatify } from '../../utilities.js';
 
-const screamingSnakeCase = string => string.toUpperCase().replace(/[ \-]/g, '_');
-const snakeCase = string => string.toLowerCase().replace(/[ \-]/g, '_');
-const titleCase = string => string.replace(/^./, initial => initial.toUpperCase());
+const upperCaseInitial = string => string.replace(/^./, initial => initial.toUpperCase());
 
-module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, '../../ruby/lib/enolib/locales');
-  await fsExtra.emptyDir(directory);
-
-  const messageFunction = message => {
-    let translation = message.translation
-
-    if(message.arguments) {
-      const arguments = message.arguments.map(argument => {
-        const snakeCased = snakeCase(argument);
-        translation = translation.replace(new RegExp(`\\[${argument}\\]`, 'g'), `#{${snakeCased}}`);
-        return snakeCased;
-      });
-
-      return `def self.${snakeCase(message.name)}(${arguments.join(', ')}) "${translation}" end`;
-    } else {
-      return `${screamingSnakeCase(message.name)} = '${translation.replace(/'/g, "\\'")}'`;
+export function ruby(meta, locales) {
+    const directory = path.resolve('ruby/lib/enolib/locales');
+    
+    fsExtra.emptyDirSync(directory);
+    
+    const messageFunction = message => {
+        let translation = message.translation
+        
+        if (message.arguments) {
+            for (const argument of message.arguments) {
+                translation = translation.replace(new RegExp(`{${argument}}`, 'g'), `#{${argument}}`);
+            }
+            
+            return `def self.${message.name}(${message.arguments.join(', ')}) "${translation}" end`;
+        } else {
+            return `${message.name.toUpperCase()} = '${translation.replace(/'/g, "\\'")}'`;
+        }
+    };
+    
+    for (const [locale, messages] of Object.entries(locales)) {
+        const code = interpolatify`
+            # frozen_string_literal: true
+            
+            # ${meta}
+            
+            module Enolib
+              module Locales
+                module ${upperCaseInitial(locale)}
+                  ${messages.map(messageFunction).join('\n')}
+                end
+              end
+            end
+        `;
+        
+        fs.writeFileSync(path.join(directory, `${locale}.rb`), code);
     }
-  };
-
-  for(const [locale, messages] of Object.entries(locales)) {
-    const titleCaseLocale = locale.replace(/^./, initial => initial.toUpperCase());
-
+    
+    const requireFile = path.resolve('ruby/lib/enolib/locales.rb');
+    
     const code = interpolatify`
-      # frozen_string_literal: true
-
-      # ${meta}
-
-      module Enolib
-        module Locales
-          module ${titleCase(locale)}
-            ${messages.map(messageFunction).join('\n')}
-          end
-        end
-      end
+        # frozen_string_literal: true
+        
+        ${Object.keys(locales).filter(locale => locale !== 'en').map(locale => `require 'enolib/locales/${locale}'`).join('\n')}
     `;
-
-    await fs.promises.writeFile(path.join(directory, `${locale}.rb`), code);
-  }
-
-  const requireFile = path.join(__dirname, `../../ruby/lib/enolib/locales.rb`);
-
-  const code = interpolatify`
-    # frozen_string_literal: true
-
-    ${Object.keys(locales).filter(locale => locale !== 'en').map(locale => `require 'enolib/locales/${locale}'`).join('\n')}
-  `;
-
-  await fs.promises.writeFile(requireFile, code);
+    
+    fs.writeFileSync(requireFile, code);
 };

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A basic testrun succeeds 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "elements": Array [
+        Object {
+          "elements": Array [
+            Object {
+              "elements": Array [
+                Object {
+                  "key": "field",
+                  "type": "field",
+                  "value": "value",
+                },
+                Object {
+                  "attributes": Array [
+                    Object {
+                      "key": "attribute",
+                      "type": "attribute",
+                      "value": "value",
+                    },
+                    Object {
+                      "key": "attribute",
+                      "type": "attribute",
+                      "value": "value",
+                    },
+                  ],
+                  "key": "field",
+                  "type": "field",
+                },
+                Object {
+                  "items": Array [
+                    Object {
+                      "type": "item",
+                      "value": "item",
+                    },
+                    Object {
+                      "type": "item",
+                      "value": "item",
+                    },
+                  ],
+                  "key": "field",
+                  "type": "field",
+                },
+                Object {
+                  "key": "embed",
+                  "type": "field",
+                  "value": "value",
+                },
+              ],
+              "key": "section",
+              "type": "section",
+            },
+          ],
+          "key": "section",
+          "type": "section",
+        },
+      ],
+      "key": "section",
+      "type": "section",
+    },
+  ],
+  "type": "document",
+}
+`;

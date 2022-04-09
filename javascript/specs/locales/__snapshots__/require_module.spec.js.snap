@@ -1,21 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Requiring through public convenience module de provides a working locale 1`] = `
-"Zeile 1 folgt keinem spezifierten Muster.
+"Das Feld in Zeile 1 hat keinen Key.
 
   Zeile | Inhalt
  >    1 | :invalid"
 `;
 
-exports[`Requiring through public convenience module en provides a working locale 1`] = `
-"Line 1 does not follow any specified pattern.
-
-   Line | Content
- >    1 | :invalid"
-`;
-
 exports[`Requiring through public convenience module es provides a working locale 1`] = `
-"Línea 1 no sigue un patrón especificado.
+"La casilla en línea 1 no tiene clave.
 
   Línea | Contenido
  >    1 | :invalid"

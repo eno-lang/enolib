@@ -7,187 +7,164 @@
 > upgraded in the various eno implementations. The message groups however are
 > deliberately ordered a different way to aid the translation process instead.
 
-# Locales
+# locales
 
 de: German
 en: English
 es: Spanish
 
-> TODO: Switch to snake_case key definitions in here globally to ease processing
->       and make things more consistent among the whole project?
+# messages
 
-# Messages
+## terminology
 
-## Terminology
-
-Document: Document
-Empty: Empty
-Field: Field
-Fieldset: Fieldset
-Fieldset Entry: Fieldset Entry
-Key: Key
-List: List
-List Item: List Item
-Multiline Field: Multiline Field
-Section: Section
-Value: Value
+attribute: Attribute
+document: Document
+embed: Embed
+field: Field
+flag: Flag
+item: Item
+key: Key
+section: Section
+value: Value
 
 
-## Reporting
+## reporting
 
-Content Header: Content
-Gutter Header: Line
-
-
-## Parsing
-
-Invalid Line:
-LINE = Line [LINE] does not follow any specified pattern.
-
-Missing Element For Continuation:
-LINE = Line [LINE] contains a line continuation without a continuable element being specified before.
-
-Missing Fieldset For Fieldset Entry:
-LINE = Line [LINE] contains a fieldset entry without a fieldset being specified before.
-
-Missing List For List Item:
-LINE = Line [LINE] contains a list item without a list being specified before.
-
-Section Hierarchy Layer Skip:
-LINE = Line [LINE] starts a section that is more than one level deeper than the current one.
-
-Unterminated Escaped Key:
-LINE = In line [LINE] the key of an element is escaped, but the escape sequence is not terminated until the end of the line.
-
-Unterminated Multiline Field:
-KEY, LINE = The multiline field '[KEY]' starting in line [LINE] is not terminated until the end of the document.
-
-## Validation
-
-Comment Error:
-MESSAGE = There is a problem with the comment of this element: [MESSAGE]
-
-Expected Document: The document was expected.
-
-Expected Empty: An empty was expected.
-Expected Empty With Key:
-KEY = An empty with the key '[KEY]' was expected.
-
-Expected Field: A field was expected.
-Expected Field With Key:
-KEY = A field with the key '[KEY]' was expected.
-
-Expected Fields: Only fields were expected.
-Expected Fields With Key:
-KEY = Only fields with the key '[KEY]' were expected.
-
-Expected Fieldset: A fieldset was expected.
-Expected Fieldset Entry: A fieldset entry was expected.
-Expected Fieldset With Key:
-KEY = A fieldset with the key '[KEY]' was expected.
-
-Expected Fieldsets: Only fieldsets were expected.
-Expected Fieldsets With Key:
-KEY = Only fieldsets with the key '[KEY]' were expected.
-
-Expected List: A list was expected.
-Expected List Item: A list item was expected.
-Expected List With Key:
-KEY = A list with the key '[KEY]' was expected.
-
-Expected Lists: Only lists were expected.
-Expected Lists With Key:
-KEY = Only lists with the key '[KEY]' were expected.
-
-Expected Section: A section was expected.
-Expected Section With Key:
-KEY = A section with the key '[KEY]' was expected.
-
-Expected Sections: Only sections were expected.
-Expected Sections With Key:
-KEY = Only sections with the key '[KEY]' were expected.
-
-Expected Single Element: Only a single element was expected.
-Expected Single Element With Key:
-KEY = Only a single element with the key '[KEY]' was expected.
-
-Expected Single Empty: Only a single empty was expected.
-Expected Single Empty With Key:
-KEY = Only a single empty with the key '[KEY]' was expected.
-
-Expected Single Field: Only a single field was expected.
-Expected Single Field With Key:
-KEY = Only a single field with the key '[KEY]' was expected.
-
-Expected Single Fieldset: Only a single fieldset was expected.
-
-Expected Single Fieldset Entry: Only a single fieldset entry was expected.
-
-Expected Single Fieldset Entry With Key:
-KEY = Only a single fieldset entry with the key '[KEY]' was expected.
-
-Expected Single Fieldset With Key:
-KEY = Only a single fieldset with the key '[KEY]' was expected.
-
-Expected Single List: Only a single list was expected.
-Expected Single List With Key:
-KEY = Only a single list with the key '[KEY]' was expected.
-
-Expected Single Section: Only a single section was expected.
-Expected Single Section With Key:
-KEY = Only a single section with the key '[KEY]' was expected.
-
-Key Error:
-MESSAGE = There is a problem with the key of this element: [MESSAGE]
-
-Missing Comment: A required comment for this element is missing.
-
-Missing Element: A single element is required - it can have any key.
-
-Missing Element With Key:
-KEY = The element '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
-
-Missing Empty: A single empty is required - it can have any key.
-
-Missing Empty With Key:
-KEY = The empty '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+content_header: Content
+gutter_header: Line
 
 
-Missing Field: A single field is required - it can have any key.
+## parsing
 
-Missing Field Value:
-KEY = The field '[KEY]' must contain a value.
+attribute_outside_field:
+line = The attribute in line {line} is not contained within a field.
 
-Missing Field With Key:
-KEY = The field '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+attribute_without_key:
+line = The attribute in line {line} has no key.
 
-Missing Fieldset: A single fieldset is required - it can have any key.
+continuation_outside_field:
+line = The continuation in line {line} is not contained within a field.
 
-Missing Fieldset Entry: A single fieldset entry is required - it can have any key.
+embed_without_key:
+line = The embed in line {line} has no key.
 
-Missing Fieldset Entry Value:
-KEY = The fieldset entry '[KEY]' must contain a value.
+field_without_key:
+line = The field in line {line} has no key.
 
-Missing Fieldset Entry With Key:
-KEY = The fieldset entry '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+item_outside_field:
+line = The item in line {line} is not contained within a field.
 
-Missing Fieldset With Key:
-KEY = The fieldset '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+mixed_field_content:
+line = The field in line {line} must contain either only attributes, only items, or only a value.
 
-Missing List: A single list is required - it can have any key.
+section_level_skip:
+line = The section in line {line} is more than one level deeper than the one it is contained in.
 
-Missing List Item Value:
-KEY = The list '[KEY]' may not contain empty items.
+section_without_key:
+line = The section in line {line} has no key.
 
-Missing List With Key:
-KEY = The list '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+unterminated_embed:
+key, line = The embed '{key}' starting in line {line} is not terminated until the end of the document.
 
-Missing Section: A single section is required - it can have any key.
+unterminated_escaped_key:
+line = The key escape sequence in line {line} is not terminated before the end of the line.
 
-Missing Section With Key:
-KEY = The section '[KEY]' is missing - in case it has been specified look for typos and also check for correct capitalization.
+## validation
 
-Unexpected Element: This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+comment_error:
+message = There is a problem with the comment of this element: {message}
 
-Value Error:
-MESSAGE = There is a problem with the value of this element: [MESSAGE]
+expected_attribute: An attribute was expected.
+
+expected_document: The document was expected.
+
+expected_field: A field was expected.
+expected_field_with_key:
+key = A field with the key '{key}' was expected.
+
+expected_fields: Only fields were expected.
+expected_fields_with_key:
+key = Only fields with the key '{key}' were expected.
+
+expected_flag: A flag was expected.
+expected_flag_with_key:
+key = A flag with the key '{key}' was expected.
+
+expected_item: An item was expected.
+
+expected_section: A section was expected.
+expected_section_with_key:
+key = A section with the key '{key}' was expected.
+
+expected_sections: Only sections were expected.
+expected_sections_with_key:
+key = Only sections with the key '{key}' were expected.
+
+expected_single_attribute: Only a single attribute was expected.
+expected_single_attribute_with_key:
+key = Only a single attribute with the key '{key}' was expected.
+
+expected_single_element: Only a single element was expected.
+expected_single_element_with_key:
+key = Only a single element with the key '{key}' was expected.
+
+expected_single_field: Only a single field was expected.
+expected_single_field_with_key:
+key = Only a single field with the key '{key}' was expected.
+
+expected_single_flag: Only a single flag was expected.
+expected_single_flag_with_key:
+key = Only a single flag with the key '{key}' was expected.
+
+expected_single_section: Only a single section was expected.
+expected_single_section_with_key:
+key = Only a single section with the key '{key}' was expected.
+
+key_error:
+message = There is a problem with the key of this element: {message}
+
+missing_attribute: A single attribute is required - it can have any key.
+
+missing_attribute_value:
+key = The attribute '{key}' must contain a value.
+
+missing_attribute_with_key:
+key = The attribute '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+missing_comment: A required comment for this element is missing.
+
+missing_element: A single element is required - it can have any key.
+
+missing_element_with_key:
+key = The element '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+missing_embed: A single embed is required - it can have any key.
+
+missing_embed_with_key:
+key = The embed '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+missing_field: A single field is required - it can have any key.
+
+missing_field_value:
+key = The field '{key}' must contain a value.
+
+missing_field_with_key:
+key = The field '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+missing_flag: A single flag is required - it can have any key.
+
+missing_flag_with_key:
+key = The flag '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+missing_item_value:
+key = The field '{key}' may not contain empty items.
+
+missing_section: A single section is required - it can have any key.
+
+missing_section_with_key:
+key = The section '{key}' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+unexpected_element: This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+
+value_error:
+message = There is a problem with the value of this element: {message}

@@ -1,51 +1,46 @@
-const fs = require('fs');
-const fsExtra = require('fs-extra');
-const path = require('path');
+import fs from 'fs';
+import fsExtra from 'fs-extra';
+import path from 'path';
 
-const { interpolatify } = require('../../utilities.js');
+import { interpolatify } from '../../utilities.js';
 
-const camelCase = string => string.toLowerCase().replace(/[ \-][a-z]/g, boundary => boundary.charAt(1).toUpperCase());
+const camelCase = string => string.replace(/_[a-z]/g, boundary => boundary.charAt(1).toUpperCase());
 
-module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, `../../javascript/lib/locales`);
-
-  await fsExtra.emptyDir(directory);
-
-  const messageFunction = message => {
-    let translation = message.translation;
-
-    if(message.arguments) {
-      const arguments = message.arguments.map(argument => {
-        const camelCased = camelCase(argument);
-        translation = translation.replace(new RegExp(`\\[${argument}\\]`, 'g'), `\${${camelCased}}`);
-        return camelCased;
-      });
-
-      return `${camelCase(message.name)}: (${arguments.join(', ')}) => \`${translation}\``;
-    } else {
-      return `${camelCase(message.name)}: '${translation.replace(/'/g, "\\'")}'`;
-    }
-  };
-
-  for(const [locale, messages] of Object.entries(locales)) {
-    const code = interpolatify`
-      // ${meta}
-
-      module.exports = {
-        ${messages.map(messageFunction).join(',\n')}
-      };
-    `;
-
-    await fs.promises.writeFile(path.join(directory, `${locale}.js`), code);
-  }
-
-  const requireModule = path.join(__dirname, `../../javascript/locales.js`);
-
-  const code = interpolatify`
-    module.exports = {
-      ${Object.keys(locales).map(locale => `${locale}: require('./lib/locales/${locale}.js')`).join(',\n')}
+export function javascript(meta, locales) {
+    const defaultMessages = path.resolve('javascript/src/messages.ts');
+    const localesDirectory = path.resolve('javascript/locales');
+    
+    fsExtra.emptyDirSync(localesDirectory);
+    
+    const messageFunction = message => {
+        let translation = message.translation;
+        
+        if (message.arguments) {
+            const args = message.arguments.map(argument => {
+                const camelCased = camelCase(argument);
+                translation = translation.replace(new RegExp(`{${argument}}`, 'g'), `\${${camelCased}}`);
+                return camelCased;
+            });
+            
+            return `${camelCase(message.name)}: (${args.join(', ')}) => \`${translation}\``;
+        } else {
+            return `${camelCase(message.name)}: '${translation.replace(/'/g, "\\'")}'`;
+        }
     };
-  `;
-
-  await fs.promises.writeFile(requireModule, code);
+    
+    for (const [locale, messages] of Object.entries(locales)) {
+        const code = interpolatify`
+            // ${meta}
+            
+            export default {
+                ${messages.map(messageFunction).join(',\n')}
+            };
+        `;
+        
+        if (locale === 'en') {
+            fs.writeFileSync(defaultMessages, code);
+        } else {
+            fs.writeFileSync(path.join(localesDirectory, `${locale}.js`), code);
+        }
+    }
 };

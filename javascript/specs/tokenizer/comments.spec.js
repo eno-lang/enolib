@@ -1,4 +1,4 @@
-const { inspectTokenization } = require('./util.js');
+import { inspectTokenization } from './util.js';
 
 const input = '> value\n' +
               '> more value  \n' +
@@ -6,7 +6,7 @@ const input = '> value\n' +
               '    >    ';
 
 describe('Comment tokenization', () => {
-  it('performs as specified', () => {
-    expect(inspectTokenization(input)).toMatchSnapshot();
-  });
+    it('performs as specified', () => {
+        expect(inspectTokenization(input)).toMatchSnapshot();
+    });
 });

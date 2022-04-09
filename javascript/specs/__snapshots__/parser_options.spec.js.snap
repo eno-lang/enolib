@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Parser options source is printed in html reports if provided 1`] = `
-"Line 1 does not follow any specified pattern.
+"The field in line 1 has no key.
 
-<div><div>/some/dubious-file.eno</div><pre class=\\"eno-report\\"><div class=\\"eno-report-line \\"><div class=\\"eno-report-gutter\\">      Line</div><div class=\\"eno-report-content\\">Content</div></div><div class=\\"eno-report-line eno-report-line-emphasized\\"><div class=\\"eno-report-gutter\\">         1</div><div class=\\"eno-report-content\\">:invalid</div></div></pre></div>"
+<div><div>custom-source.eno</div><pre class=\\"eno-report\\"><div class=\\"eno-report-line \\"><div class=\\"eno-report-gutter\\">      Line</div><div class=\\"eno-report-content\\">Content</div></div><div class=\\"eno-report-line eno-report-line-emphasized\\"><div class=\\"eno-report-gutter\\">         1</div><div class=\\"eno-report-content\\">:invalid</div></div></pre></div>"
 `;
 
 exports[`Parser options source is printed in terminal reports if provided 1`] = `
-"Line 1 does not follow any specified pattern.
+"The field in line 1 has no key.
 
-[30m[101m >      [0m [1m/some/dubious-file.eno[0m
+[30m[101m >      [0m [1mcustom-source.eno[0m
 [30m[101m >    1 [0m [90m:invalid[0m"
 `;
 
 exports[`Parser options source is printed in text reports if provided 1`] = `
-"Line 1 does not follow any specified pattern.
+"The field in line 1 has no key.
 
--- /some/dubious-file.eno --
+-- custom-source.eno --
 
    Line | Content
  >    1 | :invalid"

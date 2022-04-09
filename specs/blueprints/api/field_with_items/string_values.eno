@@ -1,0 +1,125 @@
+# Querying existing required string values from a field with items
+
+-- input
+field:
+- item
+- item
+-- input
+
+-- javascript
+const output = enolib.parse(input).field('field').requiredStringValues();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->field('field')->requiredStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).field('field').required_string_values()
+-- python
+
+-- ruby
+output = Enolib.parse(input).field('field').required_string_values
+-- ruby
+
+## Result
+
+-- javascript
+['item', 'item']
+-- javascript
+
+-- php
+['item', 'item']
+-- php
+
+-- python
+['item', 'item']
+-- python
+
+-- ruby
+['item', 'item']
+-- ruby
+
+# Querying existing optional string values from a field with items
+
+-- input
+field:
+- item
+- item
+-- input
+
+-- javascript
+const output = enolib.parse(input).field('field').optionalStringValues();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->field('field')->optionalStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).field('field').optional_string_values()
+-- python
+
+-- ruby
+output = Enolib.parse(input).field('field').optional_string_values
+-- ruby
+
+## Result
+
+-- javascript
+['item', 'item']
+-- javascript
+
+-- php
+['item', 'item']
+-- php
+
+-- python
+['item', 'item']
+-- python
+
+-- ruby
+['item', 'item']
+-- ruby
+
+# Querying missing optional string values from a field with items
+
+-- input
+field:
+-
+-
+-- input
+
+-- javascript
+const output = enolib.parse(input).field('field').optionalStringValues();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->field('field')->optionalStringValues();
+-- php
+
+-- python
+output = enolib.parse(input).field('field').optional_string_values()
+-- python
+
+-- ruby
+output = Enolib.parse(input).field('field').optional_string_values
+-- ruby
+
+## Result
+
+-- javascript
+[null, null]
+-- javascript
+
+-- php
+[null, null]
+-- php
+
+-- python
+[None, None]
+-- python
+
+-- ruby
+[nil, nil]
+-- ruby

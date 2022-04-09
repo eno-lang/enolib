@@ -1,42 +1,34 @@
-const fs = require('fs');
-const fsExtra = require('fs-extra');
-const path = require('path');
+import fs from 'fs';
+import fsExtra from 'fs-extra';
+import path from 'path';
 
-const { interpolatify } = require('../../utilities.js');
+import { interpolatify } from '../../utilities.js';
 
-const snakeCase = string => string.toLowerCase().replace(/[ \-]/g, '_');
-
-module.exports = async (meta, locales) => {
-  const directory = path.join(__dirname, '../../python/enolib/locales');
-
-  await fsExtra.emptyDir(directory);
-  await fsExtra.ensureFile(path.join(directory, '__init__.py'));
-
-  const messageFunction = message => {
-    let translation = message.translation
-
-    if(message.arguments) {
-      const arguments = message.arguments.map(argument => {
-        const snakeCased = snakeCase(argument);
-        translation = translation.replace(new RegExp(`\\[${argument}\\]`, 'g'), `{${snakeCased}}`);
-        return snakeCased;
-      });
-
-      return `${snakeCase(message.name)} = lambda ${arguments.join(', ')}: f"${translation}"`;
-    } else {
-      return `${snakeCase(message.name)} = '${translation.replace(/'/g, "\\'")}'`;
+export function python(meta, locales) {
+    const directory = path.resolve('python/enolib/locales');
+    
+    fsExtra.emptyDirSync(directory);
+    fsExtra.ensureFileSync(path.join(directory, '__init__.py'));
+    
+    const messageFunction = message => {
+        let translation = message.translation
+        
+        if (message.arguments) {
+            return `${message.name} = lambda ${message.arguments.join(', ')}: f"${translation}"`;
+        } else {
+            return `${message.name} = '${translation.replace(/'/g, "\\'")}'`;
+        }
+    };
+    
+    for (const [locale, messages] of Object.entries(locales)) {
+        const titleCaseLocale = locale.replace(/^./, initial => initial.toUpperCase());
+        
+        const code = interpolatify`
+            # ${meta}
+            
+            ${messages.map(messageFunction).join('\n')}
+        `;
+        
+        fs.writeFileSync(path.join(directory, `${locale}.py`), code);
     }
-  };
-
-  for(const [locale, messages] of Object.entries(locales)) {
-    const titleCaseLocale = locale.replace(/^./, initial => initial.toUpperCase());
-
-    const code = interpolatify`
-      # ${meta}
-
-      ${messages.map(messageFunction).join('\n')}
-    `;
-
-    await fs.promises.writeFile(path.join(directory, `${locale}.py`), code);
-  }
 };

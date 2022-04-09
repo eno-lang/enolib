@@ -1,4 +1,4 @@
-const { inspectTokenization } = require('./util.js');
+import { inspectTokenization } from './util.js';
 
 let input = '\n' +
             ' \n' +
@@ -10,13 +10,13 @@ let input = '\n' +
             '   \n';
 
 describe('Empty line tokenization', () => {
-  it('performs as specified', () => {
-    expect(inspectTokenization(input)).toMatchSnapshot();
-  });
-
-  describe('Zero-length input', () => {
     it('performs as specified', () => {
-      expect(inspectTokenization('')).toMatchSnapshot();
+        expect(inspectTokenization(input)).toMatchSnapshot();
     });
-  })
+    
+    describe('Zero-length input', () => {
+        it('performs as specified', () => {
+            expect(inspectTokenization('')).toMatchSnapshot();
+        });
+    })
 });

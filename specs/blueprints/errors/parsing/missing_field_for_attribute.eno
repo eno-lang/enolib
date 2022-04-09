@@ -1,0 +1,88 @@
+# Parsing an attribute without a fieldset
+
+-- input
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+Line 1 contains an attribute without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | attribute = value
+-- snippet
+
+selection: [0,0] => [0,13]
+
+
+# Parsing an attribute preceded by a line continuation
+
+-- input
+field:
+| line_continuation
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+Line 3 contains an attribute without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | field:
+      2 | | line_continuation
+ >    3 | attribute = value
+-- snippet
+
+selection: [2,0] => [2,13]
+
+
+# Parsing an attribute preceded by a field
+
+-- input
+field: value
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+Line 2 contains an attribute without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | field: value
+ >    2 | attribute = value
+-- snippet
+
+selection: [1,0] => [1,13]
+
+
+# Parsing an attribute preceded by a list item
+
+-- input
+list:
+- item
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+Line 3 contains an attribute without a fieldset being specified before.
+-- text
+
+-- snippet
+   Line | Content
+      1 | list:
+      2 | - item
+ >    3 | attribute = value
+-- snippet
+
+selection: [2,0] => [2,13]

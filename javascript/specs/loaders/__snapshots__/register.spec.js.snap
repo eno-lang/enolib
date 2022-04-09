@@ -1,22 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`register on MissingEmbed registers a customKey accessor 1`] = `
+"The embed 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
+`;
+
+exports[`register on MissingEmbed registers a requiredCustomComment accessor 1`] = `
+"The embed 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+
+   Line | Content
+ ?    1 | > comment
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
+`;
+
 exports[`register on MissingField registers a customKey accessor 1`] = `
 "The field 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
    Line | Content
  ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
 `;
 
 exports[`register on MissingField registers a requiredCustomComment accessor 1`] = `
@@ -24,94 +86,80 @@ exports[`register on MissingField registers a requiredCustomComment accessor 1`]
 
    Line | Content
  ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
 `;
 
-exports[`register on MissingFieldset registers a customKey accessor 1`] = `
-"The fieldset 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+exports[`register on MissingFlag registers a customKey accessor 1`] = `
+"The flag 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
    Line | Content
  ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
 `;
 
-exports[`register on MissingFieldset registers a requiredCustomComment accessor 1`] = `
-"The fieldset 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+exports[`register on MissingFlag registers a requiredCustomComment accessor 1`] = `
+"The flag 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
 
    Line | Content
  ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
-`;
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
 
-exports[`register on MissingList registers a customKey accessor 1`] = `
-"The list 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
-
-   Line | Content
- ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
-`;
-
-exports[`register on MissingList registers a requiredCustomComment accessor 1`] = `
-"The list 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
-
-   Line | Content
- ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
+ ?   19 | > comment
+ ?   20 | # section"
 `;
 
 exports[`register on MissingSection registers a customKey accessor 1`] = `
@@ -119,18 +167,26 @@ exports[`register on MissingSection registers a customKey accessor 1`] = `
 
    Line | Content
  ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
 `;
 
 exports[`register on MissingSection registers a requiredCustomComment accessor 1`] = `
@@ -138,16 +194,24 @@ exports[`register on MissingSection registers a requiredCustomComment accessor 1
 
    Line | Content
  ?    1 | > comment
- ?    2 | field: value
- ?    3 | 
- ?    4 | > comment
- ?    5 | fieldset:
- ?    6 | entry = value
- ?    7 | 
- ?    8 | > comment
- ?    9 | list:
- ?   10 | - value
- ?   11 | 
- ?   12 | > comment
- ?   13 | # section"
+ ?    2 | -- embed
+ ?    3 | value
+ ?    4 | -- embed
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | field: value
+ ?    8 | 
+ ?    9 | > comment
+ ?   10 | field_with_attributes:
+ ?   11 | attribute = value
+ ?   12 | 
+ ?   13 | > comment
+ ?   14 | field_with_items:
+ ?   15 | - item
+ ?   16 | 
+ ?   17 | > comment
+ ?   18 | flag
+
+ ?   19 | > comment
+ ?   20 | # section"
 `;

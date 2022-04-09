@@ -1,0 +1,131 @@
+# Expecting a field containing a value but getting a field containing one item
+
+-- input
+field:
+- item
+-- input
+
+-- javascript
+enolib.parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+A field containing a value was expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | - item
+-- snippet
+
+selection: [0,0] => [1,6]
+
+
+# Expecting a field containing a value but getting a field containing three items with empty lines
+
+-- input
+field:
+
+- item
+
+- item
+
+- item
+
+-- input
+
+-- javascript
+enolib.parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+A field containing a value was expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | 
+ *    3 | - item
+ *    4 | 
+ *    5 | - item
+ *    6 | 
+ *    7 | - item
+      8 | 
+-- snippet
+
+selection: [0,0] => [6,6]
+
+# Expecting a field containing a value but getting a field with two items with comments
+
+-- input
+field:
+> comment
+- item
+
+> comment
+- item
+-- input
+
+-- javascript
+enolib.parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+A field containing a value was expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | > comment
+ *    3 | - item
+ *    4 | 
+ *    5 | > comment
+ *    6 | - item
+-- snippet
+
+selection: [0,0] => [5,6]

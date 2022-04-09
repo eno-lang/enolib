@@ -15,17 +15,16 @@ Object {
     },
     Object {
       "key": "Bild",
-      "type": "fieldOrFieldsetOrList",
+      "type": "field",
     },
     Object {
       "items": Array [
         Object {
-          "type": "item",
           "value": "Georg Oswald",
         },
       ],
       "key": "Autoren",
-      "type": "list",
+      "type": "field",
     },
     Object {
       "key": "Datum",
@@ -40,46 +39,38 @@ Object {
     Object {
       "items": Array [
         Object {
-          "type": "item",
           "value": "Besprechung",
         },
         Object {
-          "type": "item",
           "value": "Film",
         },
       ],
       "key": "Kategorien",
-      "type": "list",
+      "type": "field",
     },
     Object {
       "items": Array [
         Object {
-          "type": "item",
           "value": "Mexiko",
         },
         Object {
-          "type": "item",
           "value": "Tlatelolco",
         },
         Object {
-          "type": "item",
           "value": "Olympische Spiele",
         },
         Object {
-          "type": "item",
           "value": "Architektur",
         },
         Object {
-          "type": "item",
           "value": "Mexico City",
         },
         Object {
-          "type": "item",
           "value": "Polizeigewalt",
         },
       ],
       "key": "Tags",
-      "type": "list",
+      "type": "field",
     },
     Object {
       "key": "Permalink",
@@ -88,7 +79,7 @@ Object {
     },
     Object {
       "key": "Buchbesprechungen",
-      "type": "fieldOrFieldsetOrList",
+      "type": "field",
     },
     Object {
       "key": "Lesbar",
@@ -97,25 +88,24 @@ Object {
     },
     Object {
       "key": "Urbanize",
-      "type": "fieldOrFieldsetOrList",
+      "type": "field",
     },
     Object {
       "key": "Abstract",
-      "type": "field",
-      "value": null,
+      "type": "embed",
     },
     Object {
       "key": "Text",
-      "type": "field",
+      "type": "embed",
       "value": "Der Stadtteil Tlatelolco ist ein Ort, ...
 ...Österreich, Mexiko, 75 min",
     },
     Object {
       "key": "Literaturverzeichnis",
-      "type": "field",
-      "value": null,
+      "type": "embed",
     },
   ],
-  "type": "document",
+  "key": null,
+  "type": "section",
 }
 `;

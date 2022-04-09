@@ -5,12 +5,12 @@ const python = require('./generators/python.js');
 const ruby = require('./generators/ruby.js');
 
 const generate = async () => {
-  const scenarios = await source();
-
-  await javascript(scenarios);
-  await php(scenarios);
-  await python(scenarios);
-  await ruby(scenarios);
+    const scenarios = source();
+    
+    await javascript(scenarios);
+    await php(scenarios);
+    await python(scenarios);
+    await ruby(scenarios);
 };
 
 generate();

@@ -5,33 +5,24 @@ Object {
   "elements": Array [
     Object {
       "key": "empty",
-      "type": "fieldOrFieldsetOrList",
+      "type": "field",
     },
     Object {
       "items": Array [
-        Object {
-          "type": "item",
-          "value": null,
-        },
-        Object {
-          "type": "item",
-          "value": null,
-        },
-        Object {
-          "type": "item",
-          "value": null,
-        },
+        Object {},
+        Object {},
+        Object {},
       ],
       "key": "leer",
-      "type": "list",
+      "type": "field",
     },
     Object {
       "key": "nichts",
-      "type": "fieldOrFieldsetOrList",
+      "type": "field",
     },
     Object {
       "key": "nada",
-      "type": "fieldOrFieldsetOrList",
+      "type": "field",
     },
     Object {
       "elements": Array [
@@ -39,16 +30,15 @@ Object {
           "elements": Array [
             Object {
               "key": "void",
-              "type": "fieldOrFieldsetOrList",
+              "type": "field",
             },
             Object {
               "key": "emptyness",
-              "type": "fieldOrFieldsetOrList",
+              "type": "field",
             },
             Object {
               "key": "leere",
-              "type": "field",
-              "value": null,
+              "type": "embed",
             },
           ],
           "key": "none",
@@ -62,35 +52,27 @@ Object {
       "elements": Array [
         Object {
           "items": Array [
-            Object {
-              "type": "item",
-              "value": null,
-            },
-            Object {
-              "type": "item",
-              "value": null,
-            },
-            Object {
-              "type": "item",
-              "value": null,
-            },
+            Object {},
+            Object {},
+            Object {},
           ],
           "key": "absence",
-          "type": "list",
+          "type": "field",
         },
         Object {
           "key": "non",
-          "type": "fieldOrFieldsetOrList",
+          "type": "field",
         },
         Object {
           "key": "end",
-          "type": "fieldOrFieldsetOrList",
+          "type": "field",
         },
       ],
       "key": "ningun",
       "type": "section",
     },
   ],
-  "type": "document",
+  "key": null,
+  "type": "section",
 }
 `;

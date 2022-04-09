@@ -1,100 +1,66 @@
-const enolib = require('../..');
-const { Field } = require('../../lib/elements/field.js');
-const { Fieldset } = require('../../lib/elements/fieldset.js');
-const { List } = require('../../lib/elements/list.js');
+import { parse } from '../../lib/esm/main.js';
+import { Field } from '../../lib/esm/elements/field.js';
 
-describe('Fetching an ambiguous element through fieldset()', () => {
-  let fieldset;
-
-  beforeEach(() => {
-    fieldset = enolib.parse('fieldset:').fieldset('fieldset');
-  });
-
-  it('returns a fieldset', () => {
-    expect(fieldset).toBeInstanceOf(Fieldset);
-  });
-
-  it('returns a fieldset with allEntriesRequired disabled', () => {
-    expect(fieldset._allEntriesRequired).toBe(false);
-  });
-
-  describe('when allElementsRequired was enabled on the document', () => {
+describe('Fetching an ambiguous element through field()', () => {
+    let field;
+    
     beforeEach(() => {
-      const document = enolib.parse('fieldset:');
-
-      document.allElementsRequired();
-
-      fieldset = document.fieldset('fieldset');
+        field = parse('field:').field('field');
     });
-
-    it('returns a fieldset with allEntriesRequired enabled', () => {
-      expect(fieldset._allEntriesRequired).toBe(true);
+    
+    it('returns a field', () => {
+        expect(field).toBeInstanceOf(Field);
     });
-  });
-});
-
-describe('Fetching an ambiguous element through fieldsets()', () => {
-  let fieldsets;
-
-  beforeEach(() => {
-    fieldsets = enolib.parse('fieldset:').fieldsets('fieldset');
-  });
-
-  it('returns one element', () => {
-    expect(fieldsets.length).toBe(1);
-  });
-
-  it('returns a fieldset as first element', () => {
-    expect(fieldsets[0]).toBeInstanceOf(Fieldset);
-  });
-
-  it('returns a fieldset with allEntriesRequired disabled', () => {
-    expect(fieldsets[0]._allEntriesRequired).toBe(false);
-  });
-
-  describe('when allElementsRequired was enabled on the document', () => {
-    beforeEach(() => {
-      const document = enolib.parse('fieldset:');
-
-      document.allElementsRequired();
-
-      fieldsets = document.fieldsets('fieldset');
+    
+    it('returns a field with allAttributesRequired disabled', () => {
+        expect(field._allAttributesRequired).toBe(false);
     });
-
-    it('returns a fieldset with allEntriesRequired enabled', () => {
-      expect(fieldsets[0]._allEntriesRequired).toBe(true);
+    
+    describe('when allElementsRequired was enabled on the document', () => {
+        beforeEach(() => {
+            const document = parse('field:');
+            
+            document.allElementsRequired();
+            
+            field = document.field('field');
+        });
+        
+        it('returns a field with allAttributesRequired enabled', () => {
+            expect(field._allAttributesRequired).toBe(true);
+        });
     });
-  });
 });
 
 describe('Fetching an ambiguous element through fields()', () => {
-  let fields;
-
-  beforeEach(() => {
-    fields = enolib.parse('field:').fields('field');
-  });
-
-  it('returns one element', () => {
-    expect(fields.length).toBe(1);
-  });
-
-  it('returns a field as first element', () => {
-    expect(fields[0]).toBeInstanceOf(Field);
-  });
-});
-
-describe('Fetching an ambiguous element through lists()', () => {
-  let lists;
-
-  beforeEach(() => {
-    lists = enolib.parse('list:').lists('list');
-  });
-
-  it('returns one element', () => {
-    expect(lists.length).toBe(1);
-  });
-
-  it('returns a list as first element', () => {
-    expect(lists[0]).toBeInstanceOf(List);
-  });
+    let fields;
+    
+    beforeEach(() => {
+        fields = parse('field:').fields('field');
+    });
+    
+    it('returns one element', () => {
+        expect(fields.length).toBe(1);
+    });
+    
+    it('returns a field as first element', () => {
+        expect(fields[0]).toBeInstanceOf(Field);
+    });
+    
+    it('returns a field with allAttributesRequired disabled', () => {
+        expect(fields[0]._allAttributesRequired).toBe(false);
+    });
+    
+    describe('when allElementsRequired was enabled on the document', () => {
+        beforeEach(() => {
+            const document = parse('field:');
+            
+            document.allElementsRequired();
+            
+            fields = document.fields('field');
+        });
+        
+        it('returns a field with allAttributesRequired enabled', () => {
+            expect(fields[0]._allAttributesRequired).toBe(true);
+        });
+    });
 });

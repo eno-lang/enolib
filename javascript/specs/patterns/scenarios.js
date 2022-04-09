@@ -1,379 +1,398 @@
-const matcher = require('../../lib/grammar_matcher.js');
-const { space } = require('./space.js');
+import { space } from './space.js';
+import {
+    ATTRIBUTE_OPERATOR_INDEX,
+    ATTRIBUTE_VALUE_INDEX,
+    COMMENT_INDEX,
+    COMMENT_OPERATOR_INDEX,
+    CONTINUATION_OPERATOR_INDEX,
+    CONTINUATION_VALUE_INDEX,
+    EMBED_KEY_INDEX,
+    EMBED_OPERATOR_INDEX,
+    EMPTY_LINE_INDEX,
+    FIELD_OPERATOR_INDEX,
+    FIELD_VALUE_INDEX,
+    ITEM_OPERATOR_INDEX,
+    ITEM_VALUE_INDEX,
+    KEY_ESCAPE_BEGIN_OPERATOR_INDEX,
+    KEY_ESCAPED_INDEX,
+    KEY_UNESCAPED_INDEX,
+    SECTION_KEY_INDEX,
+    SECTION_OPERATOR_INDEX
+} from '../../lib/esm/grammar_matcher.js';
 
-exports.SCENARIOS = [
-  // DIRECT_LINE_CONTINUATION_SCENARIOS
-  {
-    captures: {
-      [matcher.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX]: '|'
+export const SCENARIOS = [
+    // SPACED_CONTINUATION_SCENARIOS
+    {
+        captures: {
+            [CONTINUATION_OPERATOR_INDEX]: '|'
+        },
+        syntax: '|',
+        variants: space('|')
     },
-    syntax: '|',
-    variants: space('|')
-  },
-  {
-    captures: {
-      [matcher.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX]: '|',
-      [matcher.DIRECT_LINE_CONTINUATION_VALUE_INDEX]: 'Value'
+    {
+        captures: {
+            [CONTINUATION_OPERATOR_INDEX]: '|',
+            [CONTINUATION_VALUE_INDEX]: 'Value'
+        },
+        syntax: '| Value',
+        variants: space('|', 'Value')
     },
-    syntax: '| Value',
-    variants: space('|', 'Value')
-  },
-  {
-    captures: {
-      [matcher.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX]: '|',
-      [matcher.DIRECT_LINE_CONTINUATION_VALUE_INDEX]: '|'
+    {
+        captures: {
+            [CONTINUATION_OPERATOR_INDEX]: '|',
+            [CONTINUATION_VALUE_INDEX]: '|'
+        },
+        syntax: '| |',
+        variants: space('|', '|')
     },
-    syntax: '| |',
-    variants: space('|', '|')
-  },
-
-  // SPACED_LINE_CONTINUATION_SCENARIOS
-  {
-    captures: {
-      [matcher.SPACED_LINE_CONTINUATION_OPERATOR_INDEX]: '\\'
+    
+    // SPACED_CONTINUATION_SCENARIOS
+    {
+        captures: {
+            [CONTINUATION_OPERATOR_INDEX]: '\\'
+        },
+        syntax: '\\',
+        variants: space('\\')
     },
-    syntax: '\\',
-    variants: space('\\')
-  },
-  {
-    captures: {
-      [matcher.SPACED_LINE_CONTINUATION_OPERATOR_INDEX]: '\\',
-      [matcher.SPACED_LINE_CONTINUATION_VALUE_INDEX]: 'Value'
+    {
+        captures: {
+            [CONTINUATION_OPERATOR_INDEX]: '\\',
+            [CONTINUATION_VALUE_INDEX]: 'Value'
+        },
+        syntax: '\\ Value',
+        variants: space('\\', 'Value')
     },
-    syntax: '\\ Value',
-    variants: space('\\', 'Value')
-  },
-  {
-    captures: {
-      [matcher.SPACED_LINE_CONTINUATION_OPERATOR_INDEX]: '\\',
-      [matcher.SPACED_LINE_CONTINUATION_VALUE_INDEX]: '\\'
+    {
+        captures: {
+            [CONTINUATION_OPERATOR_INDEX]: '\\',
+            [CONTINUATION_VALUE_INDEX]: '\\'
+        },
+        syntax: '\\ \\',
+        variants: space('\\', '\\')
     },
-    syntax: '\\ \\',
-    variants: space('\\', '\\')
-  },
-
-  // MULTILINE_FIELD_SCENARIOS
-  {
-    captures: {
-      [matcher.MULTILINE_FIELD_OPERATOR_INDEX]: '--',
-      [matcher.MULTILINE_FIELD_KEY_INDEX]: 'Key'
+    
+    // EMBED_SCENARIOS
+    {
+        captures: {
+            [EMBED_OPERATOR_INDEX]: '--',
+            [EMBED_KEY_INDEX]: 'Key'
+        },
+        syntax: '-- Key',
+        variants: space('--', 'Key')
     },
-    syntax: '-- Key',
-    variants: space('--', 'Key')
-  },
-  {
-    captures: {
-      [matcher.MULTILINE_FIELD_OPERATOR_INDEX]: '--',
-      [matcher.MULTILINE_FIELD_KEY_INDEX]: '--'
+    {
+        captures: {
+            [EMBED_OPERATOR_INDEX]: '--',
+            [EMBED_KEY_INDEX]: '--'
+        },
+        syntax: '-- --',
+        variants: space('--', ' ', '--')
     },
-    syntax: '-- --',
-    variants: space('--', ' ', '--')
-  },
-  {
-    captures: {
-      [matcher.MULTILINE_FIELD_OPERATOR_INDEX]: '---',
-      [matcher.MULTILINE_FIELD_KEY_INDEX]: 'The Key'
+    {
+        captures: {
+            [EMBED_OPERATOR_INDEX]: '---',
+            [EMBED_KEY_INDEX]: 'The Key'
+        },
+        syntax: '--- The Key',
+        variants: space('---', 'The Key')
     },
-    syntax: '--- The Key',
-    variants: space('---', 'The Key')
-  },
-  {
-    captures: {
-      [matcher.MULTILINE_FIELD_OPERATOR_INDEX]: '---',
-      [matcher.MULTILINE_FIELD_KEY_INDEX]: '---'
+    {
+        captures: {
+            [EMBED_OPERATOR_INDEX]: '---',
+            [EMBED_KEY_INDEX]: '---'
+        },
+        syntax: '--- ---',
+        variants: space('---', ' ', '---')
     },
-    syntax: '--- ---',
-    variants: space('---', ' ', '---')
-  },
-
-  // COMMENT_SCENARIOS
-  {
-    captures: {
-      [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_INDEX]: 'Comment Value'
+    
+    // COMMENT_SCENARIOS
+    {
+        captures: {
+            [COMMENT_OPERATOR_INDEX]: '>',
+            [COMMENT_INDEX]: 'Comment Value'
+        },
+        syntax: '>Comment Value',
+        variants: ['>Comment Value', ' >Comment Value', '   >Comment Value']
     },
-    syntax: '>Comment Value',
-    variants: ['>Comment Value', ' >Comment Value', '   >Comment Value']
-  },
-  {
-    captures: {
-      [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_INDEX]: 'Comment Value'
+    {
+        captures: {
+            [COMMENT_OPERATOR_INDEX]: '>',
+            [COMMENT_INDEX]: 'Comment Value'
+        },
+        syntax: '> Comment Value',
+        variants: ['> Comment Value', ' > Comment Value', '   > Comment Value']
     },
-    syntax: '> Comment Value',
-    variants: ['> Comment Value', ' > Comment Value', '   > Comment Value']
-  },
-  {
-    captures: {
-      [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_INDEX]: 'Comment Value'
+    {
+        captures: {
+            [COMMENT_OPERATOR_INDEX]: '>',
+            [COMMENT_INDEX]: 'Comment Value'
+        },
+        syntax: '> Comment Value ',
+        variants: ['> Comment Value ', ' > Comment Value ', '   > Comment Value ']
     },
-    syntax: '> Comment Value ',
-    variants: ['> Comment Value ', ' > Comment Value ', '   > Comment Value ']
-  },
-  {
-    captures: {
-      [matcher.COMMENT_OPERATOR_INDEX]: '>',
-      [matcher.COMMENT_INDEX]: 'Comment Value'
+    {
+        captures: {
+            [COMMENT_OPERATOR_INDEX]: '>',
+            [COMMENT_INDEX]: 'Comment Value'
+        },
+        syntax: '>   Comment Value   ',
+        variants: ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
     },
-    syntax: '>   Comment Value   ',
-    variants: ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
-  },
-
-  // ATTRIBUTE_SCENARIOS
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
-      [matcher.ATTRIBUTE_VALUE_INDEX]: 'Value'
+    
+    // ATTRIBUTE_SCENARIOS
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'Key',
+            [ATTRIBUTE_OPERATOR_INDEX]: '=',
+            [ATTRIBUTE_VALUE_INDEX]: 'Value'
+        },
+        syntax: 'Key = Value',
+        variants: space('Key', '=', 'Value')
     },
-    syntax: 'Key = Value',
-    variants: space('Key', '=', 'Value')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'The Key',
-      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
-      [matcher.ATTRIBUTE_VALUE_INDEX]: 'The Value'
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'The Key',
+            [ATTRIBUTE_OPERATOR_INDEX]: '=',
+            [ATTRIBUTE_VALUE_INDEX]: 'The Value'
+        },
+        syntax: 'The Key = The Value',
+        variants: space('The Key', '=', 'The Value')
     },
-    syntax: 'The Key = The Value',
-    variants: space('The Key', '=', 'The Value')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
-      [matcher.ATTRIBUTE_VALUE_INDEX]: '='
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'Key',
+            [ATTRIBUTE_OPERATOR_INDEX]: '=',
+            [ATTRIBUTE_VALUE_INDEX]: '='
+        },
+        syntax: 'Key = =',
+        variants: space('Key', '=', ' ', '=')
     },
-    syntax: 'Key = =',
-    variants: space('Key', '=', ' ', '=')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
-      [matcher.ATTRIBUTE_VALUE_INDEX]: ':'
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'Key',
+            [ATTRIBUTE_OPERATOR_INDEX]: '=',
+            [ATTRIBUTE_VALUE_INDEX]: ':'
+        },
+        syntax: 'Key = :',
+        variants: space('Key', '=', ' ', ':')
     },
-    syntax: 'Key = :',
-    variants: space('Key', '=', ' ', ':')
-  },
-  {
-    captures: {
-      [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.KEY_ESCAPED_INDEX]: '=:',
-      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
-      [matcher.ATTRIBUTE_VALUE_INDEX]: '`=:`'
+    {
+        captures: {
+            [KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
+            [KEY_ESCAPED_INDEX]: '=:',
+            [ATTRIBUTE_OPERATOR_INDEX]: '=',
+            [ATTRIBUTE_VALUE_INDEX]: '`=:`'
+        },
+        syntax: '`=:` = `=:`',
+        variants: space('`', '=:', '`', '=', '`=:`')
     },
-    syntax: '`=:` = `=:`',
-    variants: space('`', '=:', '`', '=', '`=:`')
-  },
-  {
-    captures: {
-      [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.KEY_ESCAPED_INDEX]: '`=``:',
-      [matcher.ATTRIBUTE_OPERATOR_INDEX]: '=',
-      [matcher.ATTRIBUTE_VALUE_INDEX]: '`=:`'
+    {
+        captures: {
+            [KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
+            [KEY_ESCAPED_INDEX]: '`=``:',
+            [ATTRIBUTE_OPERATOR_INDEX]: '=',
+            [ATTRIBUTE_VALUE_INDEX]: '`=:`'
+        },
+        syntax: '``` `=``:``` = `=:`',
+        variants: space('```', ' ', '`=``:', '```', '=', '`=:`')
     },
-    syntax: '``` `=``:``` = `=:`',
-    variants: space('```', ' ', '`=``:', '```', '=', '`=:`')
-  },
-
-  // EMPTY_LINE_SCENARIOS
-  {
-    captures: {
-      [matcher.EMPTY_LINE_INDEX]: ''
+    
+    // EMPTY_LINE_SCENARIOS
+    {
+        captures: {
+            [EMPTY_LINE_INDEX]: ''
+        },
+        syntax: '',
+        variants: space('')
     },
-    syntax: '',
-    variants: space('')
-  },
-
-  // FIELD_SCENARIOS
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.FIELD_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: 'Value'
+    
+    // FIELD_SCENARIOS
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'Key',
+            [FIELD_OPERATOR_INDEX]: ':',
+            [FIELD_VALUE_INDEX]: 'Value'
+        },
+        syntax: 'Key: Value',
+        variants: space('Key', ':', 'Value')
     },
-    syntax: 'Key: Value',
-    variants: space('Key', ':', 'Value')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'The Key',
-      [matcher.FIELD_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: 'The Value'
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'The Key',
+            [FIELD_OPERATOR_INDEX]: ':',
+            [FIELD_VALUE_INDEX]: 'The Value'
+        },
+        syntax: 'The Key: The Value',
+        variants: space('The Key', ':', 'The Value')
     },
-    syntax: 'The Key: The Value',
-    variants: space('The Key', ':', 'The Value')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.FIELD_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: ':'
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'Key',
+            [FIELD_OPERATOR_INDEX]: ':',
+            [FIELD_VALUE_INDEX]: ':'
+        },
+        syntax: 'Key: :',
+        variants: space('Key', ':', ' ', ':')
     },
-    syntax: 'Key: :',
-    variants: space('Key', ':', ' ', ':')
-  },
-  {
-    captures: {
-      [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.KEY_ESCAPED_INDEX]: '=:',
-      [matcher.FIELD_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: '`=:`'
+    {
+        captures: {
+            [KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
+            [KEY_ESCAPED_INDEX]: '=:',
+            [FIELD_OPERATOR_INDEX]: ':',
+            [FIELD_VALUE_INDEX]: '`=:`'
+        },
+        syntax: '`=:` : `=:`',
+        variants: space('`', '=:', '`', ':', '`=:`')
     },
-    syntax: '`=:` : `=:`',
-    variants: space('`', '=:', '`', ':', '`=:`')
-  },
-  {
-    captures: {
-      [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.KEY_ESCAPED_INDEX]: '`=``:',
-      [matcher.FIELD_OPERATOR_INDEX]: ':',
-      [matcher.FIELD_VALUE_INDEX]: '`=:`'
+    {
+        captures: {
+            [KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
+            [KEY_ESCAPED_INDEX]: '`=``:',
+            [FIELD_OPERATOR_INDEX]: ':',
+            [FIELD_VALUE_INDEX]: '`=:`'
+        },
+        syntax: '``` `=``:``` : `=:`',
+        variants: space('```', ' ', '`=``:', '```', ':', '`=:`')
     },
-    syntax: '``` `=``:``` : `=:`',
-    variants: space('```', ' ', '`=``:', '```', ':', '`=:`')
-  },
-
-  // INVALID_SCENARIOS
-  {
-    syntax: '#',
-    variants: space('#')
-  },
-  {
-    syntax: '--',
-    variants: space('--')
-  },
-  {
-    syntax: ':',
-    variants: space(':')
-  },
-  {
-    syntax: ': Invalid',
-    variants: space(':', 'Invalid')
-  },
-  {
-    syntax: '=',
-    variants: space('=')
-  },
-  {
-    syntax: '= Invalid',
-    variants: space('=', 'Invalid')
-  },
-  {
-    syntax: '---',
-    variants: space('---')
-  },
-  {
-    syntax: ': Invalid\nValid:',
-    variants: space(':', 'Invalid', '\n', 'Valid', ':')
-  },
-  {
-    syntax: ': Invalid\nValid:Valid',
-    variants: space(':', 'Invalid', '\n', 'Valid', ':', 'Valid')
-  },
-
-  // ITEM_SCENARIOS
-  {
-    captures: {
-      [matcher.ITEM_OPERATOR_INDEX]: '-'
+    
+    // INVALID_SCENARIOS
+    {
+        syntax: '#',
+        variants: space('#')
     },
-    syntax: '-',
-    variants: space('-')
-  },
-  {
-    captures: {
-      [matcher.ITEM_OPERATOR_INDEX]: '-',
-      [matcher.ITEM_VALUE_INDEX]: 'Item'
+    {
+        syntax: '--',
+        variants: space('--')
     },
-    syntax: '- Item',
-    variants: space('-', 'Item')
-  },
-  {
-    captures: {
-      [matcher.ITEM_OPERATOR_INDEX]: '-',
-      [matcher.ITEM_VALUE_INDEX]: 'The Item'
+    {
+        syntax: ':',
+        variants: space(':')
     },
-    syntax: '- The Item',
-    variants: space('-', 'The Item')
-  },
-  {
-    captures: {
-      [matcher.ITEM_OPERATOR_INDEX]: '-',
-      [matcher.ITEM_VALUE_INDEX]: '-'
+    {
+        syntax: ': Invalid',
+        variants: space(':', 'Invalid')
     },
-    syntax: '- -',
-    variants: space('-', ' ', '-')
-  },
-
-  // FIELD_OR_FIELDSET_OR_LIST_SCENARIOS
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'Key',
-      [matcher.FIELD_OPERATOR_INDEX]: ':'
+    {
+        syntax: '=',
+        variants: space('=')
     },
-    syntax: 'Key:',
-    variants: space('Key', ':')
-  },
-  {
-    captures: {
-      [matcher.KEY_UNESCAPED_INDEX]: 'The Key',
-      [matcher.FIELD_OPERATOR_INDEX]: ':'
+    {
+        syntax: '= Invalid',
+        variants: space('=', 'Invalid')
     },
-    syntax: 'The Key:',
-    variants: space('The Key', ':')
-  },
-  {
-    captures: {
-      [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
-      [matcher.KEY_ESCAPED_INDEX]: '=:',
-      [matcher.FIELD_OPERATOR_INDEX]: ':'
+    {
+        syntax: '---',
+        variants: space('---')
     },
-    syntax: '`=:`:',
-    variants: space('`', '=:', '`', ':')
-  },
-  {
-    captures: {
-      [matcher.KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
-      [matcher.KEY_ESCAPED_INDEX]: '`=``:',
-      [matcher.FIELD_OPERATOR_INDEX]: ':'
+    {
+        syntax: ': Invalid\nValid:',
+        variants: space(':', 'Invalid', '\n', 'Valid', ':')
     },
-    syntax: '``` `=``:```:',
-    variants: space('```', ' ','`=``:', '```', ':')
-  },
-
-  // SECTION_SCENARIOS
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_INDEX]: 'Key'
+    {
+        syntax: ': Invalid\nValid:Valid',
+        variants: space(':', 'Invalid', '\n', 'Valid', ':', 'Valid')
     },
-    syntax: '# Key',
-    variants: space('#', 'Key')
-  },
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '##',
-      [matcher.SECTION_KEY_INDEX]: 'The Key'
+    
+    // ITEM_SCENARIOS
+    {
+        captures: {
+            [ITEM_OPERATOR_INDEX]: '-'
+        },
+        syntax: '-',
+        variants: space('-')
     },
-    syntax: '## The Key',
-    variants: space('##', 'The Key')
-  },
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '#',
-      [matcher.SECTION_KEY_INDEX]: '# Other Key'
+    {
+        captures: {
+            [ITEM_OPERATOR_INDEX]: '-',
+            [ITEM_VALUE_INDEX]: 'Item'
+        },
+        syntax: '- Item',
+        variants: space('-', 'Item')
     },
-    syntax: '# # Other Key',
-    variants: space('#', ' ', '# Other Key')
-  },
-  {
-    captures: {
-      [matcher.SECTION_OPERATOR_INDEX]: '###',
-      [matcher.SECTION_KEY_INDEX]: '## ###'
+    {
+        captures: {
+            [ITEM_OPERATOR_INDEX]: '-',
+            [ITEM_VALUE_INDEX]: 'The Item'
+        },
+        syntax: '- The Item',
+        variants: space('-', 'The Item')
     },
-    syntax: '### ## ###',
-    variants: space('###', ' ', '## ###')
-  }
+    {
+        captures: {
+            [ITEM_OPERATOR_INDEX]: '-',
+            [ITEM_VALUE_INDEX]: '-'
+        },
+        syntax: '- -',
+        variants: space('-', ' ', '-')
+    },
+    
+    // EMPTY_FIELD_SCENARIOS
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'Key',
+            [FIELD_OPERATOR_INDEX]: ':'
+        },
+        syntax: 'Key:',
+        variants: space('Key', ':')
+    },
+    {
+        captures: {
+            [KEY_UNESCAPED_INDEX]: 'The Key',
+            [FIELD_OPERATOR_INDEX]: ':'
+        },
+        syntax: 'The Key:',
+        variants: space('The Key', ':')
+    },
+    {
+        captures: {
+            [KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '`',
+            [KEY_ESCAPED_INDEX]: '=:',
+            [FIELD_OPERATOR_INDEX]: ':'
+        },
+        syntax: '`=:`:',
+        variants: space('`', '=:', '`', ':')
+    },
+    {
+        captures: {
+            [KEY_ESCAPE_BEGIN_OPERATOR_INDEX]: '```',
+            [KEY_ESCAPED_INDEX]: '`=``:',
+            [FIELD_OPERATOR_INDEX]: ':'
+        },
+        syntax: '``` `=``:```:',
+        variants: space('```', ' ','`=``:', '```', ':')
+    },
+    
+    // SECTION_SCENARIOS
+    {
+        captures: {
+            [SECTION_OPERATOR_INDEX]: '#',
+            [SECTION_KEY_INDEX]: 'Key'
+        },
+        syntax: '# Key',
+        variants: space('#', 'Key')
+    },
+    {
+        captures: {
+            [SECTION_OPERATOR_INDEX]: '##',
+            [SECTION_KEY_INDEX]: 'The Key'
+        },
+        syntax: '## The Key',
+        variants: space('##', 'The Key')
+    },
+    {
+        captures: {
+            [SECTION_OPERATOR_INDEX]: '#',
+            [SECTION_KEY_INDEX]: '# Other Key'
+        },
+        syntax: '# # Other Key',
+        variants: space('#', ' ', '# Other Key')
+    },
+    {
+        captures: {
+            [SECTION_OPERATOR_INDEX]: '###',
+            [SECTION_KEY_INDEX]: '## ###'
+        },
+        syntax: '### ## ###',
+        variants: space('###', ' ', '## ###')
+    }
 ];

@@ -1,5 +1,5 @@
 {
-  "modifications": {
+  "reference": {
     "_evaluated": "2022-03-31T09:03:36.277Z",
     "configuration": {
       "change": "~0 ips (same)",
@@ -24,6 +24,33 @@
     "post": {
       "change": "~0 ips (same)",
       "ips": 163332
+    }
+  },
+  "modifications": {
+    "_evaluated": "2022-04-09T22:07:09.134Z",
+    "configuration": {
+      "change": "+8829 ips (1.17× faster)",
+      "ips": 62338
+    },
+    "content": {
+      "change": "+30356 ips (1.22× faster)",
+      "ips": 165513
+    },
+    "hierarchy": {
+      "change": "+17115 ips (1.20× faster)",
+      "ips": 101276
+    },
+    "invoice": {
+      "change": "+13807 ips (1.31× faster)",
+      "ips": 57661
+    },
+    "journey": {
+      "change": "+985 ips (1.03× faster)",
+      "ips": 38083
+    },
+    "post": {
+      "change": "+40280 ips (1.25× faster)",
+      "ips": 203612
     }
   }
 }

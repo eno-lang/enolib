@@ -1,45 +1,45 @@
-const { parse } = require('..');
+import { parse } from '../lib/esm/main.js';
 
 const sample = `
-Field: Value
-List:
-- Value
-- Value
-Fieldset:
-Foo = Bar
-Bar = Baz
-Empty List:
-`;
+field: value
+items:
+- item
+- item
+attributes:
+foo = bar
+bar = baz
+empty:
+`.trim();
 
 const expected = {
-  fieldset: {
-    foo: 'Bar',
-    bar: 'Baz'
-  },
-  emptyList: [],
-  field: 'Value',
-  list: [
-    'Value',
-    'Value'
-  ]
+    attributes: {
+        foo: 'bar',
+        bar: 'baz'
+    },
+    empty: [],
+    field: 'value',
+    items: [
+        'item',
+        'item'
+    ]
 };
 
 describe('Getters', () => {
-  test('return values as expected', () => {
-    const document = parse(sample);
-
-    const result = {
-      fieldset: document.fieldset('Fieldset'),
-      emptyList: document.list('Empty List').requiredStringValues(),
-      field: document.field('Field').requiredStringValue(),
-      list: document.list('List').requiredStringValues()
-    };
-
-    result.fieldset  = {
-      foo: result.fieldset.entry('Foo').requiredStringValue(),
-      bar: result.fieldset.entry('Bar').requiredStringValue()
-    };
-
-    expect(result).toEqual(expected);
-  });
+    test('return values as expected', () => {
+        const document = parse(sample);
+        
+        const result = {
+            attributes: document.field('attributes'),
+            empty: document.field('empty').requiredStringValues(),
+            field: document.field('field').requiredStringValue(),
+            items: document.field('items').requiredStringValues()
+        };
+        
+        result.attributes  = {
+            foo: result.attributes.attribute('foo').requiredStringValue(),
+            bar: result.attributes.attribute('bar').requiredStringValue()
+        };
+        
+        expect(result).toEqual(expected);
+    });
 });

@@ -1,15 +1,18 @@
-const enolib = require('../..');
+import { parse } from '../../lib/esm/main.js';
 
-// .js omitted here to reflect convention for vendor library includes
-// (perspective for outside users: "const { en } = require('enolib/locales');")
-const locales = require('../../locales');
+// TODO: Make this generic/auto expanding to dynamically available locales (?)
+
+import de from '../../locales/de.js';
+import es from '../../locales/es.js';
+
+const locales = { de, es };
 
 describe('Requiring through public convenience module', () => {
-  for(const [locale, messages] of Object.entries(locales)) {
-    describe(locale, () => {
-      it('provides a working locale', () => {
-        expect(() => enolib.parse(':invalid', { locale: messages })).toThrowErrorMatchingSnapshot();
-      });
-    });
-  }
+    for (const [locale, messages] of Object.entries(locales)) {
+        describe(locale, () => {
+            it('provides a working locale', () => {
+                expect(() => parse(':invalid', { locale: messages })).toThrowErrorMatchingSnapshot();
+            });
+        });
+    }
 });

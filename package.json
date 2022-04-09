@@ -22,5 +22,6 @@
   "scripts": {
     "locales": "node locales/generate.js",
     "specs": "node specs/generate.js"
-  }
+  },
+  "type": "module"
 }
