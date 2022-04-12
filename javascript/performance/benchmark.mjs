@@ -25,7 +25,7 @@ if (fs.existsSync(analysisFile)) {
 reference = analysis.hasOwnProperty('reference') ? analysis.reference : null;
 analysis.modifications = { _evaluated: new Date() };
 
-for (let [name, content] of Object.entries(SAMPLES)) {
+for (const [name, content] of Object.entries(SAMPLES)) {
     const before = performance.now();
     let milliseconds = 0;
     let iterations = 0;

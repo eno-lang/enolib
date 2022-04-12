@@ -18,7 +18,7 @@ other = value
         });
         
         it('has only untouched attributes after initialization', () => {
-            for (let attribute of field.attributes()) {
+            for (const attribute of field.attributes()) {
                 expect(attribute._touched).toBeUndefined();
             }
         });
