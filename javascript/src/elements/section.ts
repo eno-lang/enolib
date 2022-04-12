@@ -7,7 +7,6 @@ import { MissingField} from './missing/missing_field.js';
 import { MissingFlag } from './missing/missing_flag.js';
 import { MissingSectionElement } from './missing/missing_section_element.js';
 import { MissingSection } from './missing/missing_section.js';
-import { SectionElement } from './section_element.js';
 
 // TODO: touch() on ambiguous and/or missing elements
 import { errors } from '../errors/validation.js';
@@ -321,7 +320,7 @@ export class Section extends ElementBase {
                 
                 if (untouched) {
                     if (typeof message === 'function') {
-                        // TODO: This doesn't make use of a possible cached Element, although, SectionElement would be unusable here anyway ...
+                        // TODO: Replace with instantiation of actual element type, then delete Element (?)
                         message = message(new Element(this._context, untouched, this));
                     }
                     

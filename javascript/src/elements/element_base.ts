@@ -1,5 +1,6 @@
 import { errors } from '../errors/validation.js';
 import {
+    ATTRIBUTE,
     DOCUMENT,
     EMBED_BEGIN,
     FIELD,
@@ -43,6 +44,13 @@ export class ElementBase {
             case ITEM: return this._instruction.parent.key;
             default: return this._instruction.key;
         }
+    }
+    
+    _untouched() {
+        if (!this._touched)
+            return this._instruction;
+        
+        return false;
     }
     
     /**
@@ -107,16 +115,28 @@ export class ElementBase {
         return this._instruction.hasOwnProperty('continuations') || this._instruction.hasOwnProperty('value');
     }
     
+    isAttribute() {
+        return this._instruction.type === ATTRIBUTE;
+    }
+    
+    isDocument() {
+        return this._instruction.type === DOCUMENT;
+    }
+    
     isEmbed() {
         return this._instruction.type === EMBED_BEGIN;
+    }
+    
+    isField() {
+        return this._instruction.type === FIELD;
     }
     
     isFlag() {
         return this._instruction.type === FLAG;
     }
     
-    isField() {
-        return this._instruction.type === FIELD;
+    isItem() {
+        return this._instruction.type === ITEM;
     }
     
     isSection() {
