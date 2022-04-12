@@ -7,7 +7,7 @@ field:
 -- input
 
 -- javascript
-const output = enolib.parse(input).field('field').requiredStringValues();
+const output = parse(input).field('field').requiredStringValues();
 -- javascript
 
 -- php
@@ -49,7 +49,7 @@ field:
 -- input
 
 -- javascript
-const output = enolib.parse(input).field('field').optionalStringValues();
+const output = parse(input).field('field').optionalStringValues();
 -- javascript
 
 -- php
@@ -91,7 +91,7 @@ field:
 -- input
 
 -- javascript
-const output = enolib.parse(input).field('field').optionalStringValues();
+const output = parse(input).field('field').optionalStringValues();
 -- javascript
 
 -- php

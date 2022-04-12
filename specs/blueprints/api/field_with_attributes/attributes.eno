@@ -7,7 +7,7 @@ field:
 -- input
 
 -- javascript
-const output = enolib.parse(input).field('field').attributes().map(entry => entry.requiredStringValue());
+const output = parse(input).field('field').attributes().map(entry => entry.requiredStringValue());
 -- javascript
 
 -- php
@@ -54,7 +54,7 @@ other = two
 -- input
 
 -- javascript
-const output = enolib.parse(input).field('field').attributes('other').map(entry => entry.requiredStringValue());
+const output = parse(input).field('field').attributes('other').map(entry => entry.requiredStringValue());
 -- javascript
 
 -- php

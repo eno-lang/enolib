@@ -5,7 +5,7 @@ field: value
 -- input
 
 -- javascript
-enolib.parse(input).fieldsets('field');
+parse(input).fieldsets('field');
 -- javascript
 
 -- php
@@ -43,7 +43,7 @@ field:
 -- input
 
 -- javascript
-enolib.parse(input).fieldsets('field');
+parse(input).fieldsets('field');
 -- javascript
 
 -- php
@@ -85,7 +85,7 @@ field: value
 -- input
 
 -- javascript
-enolib.parse(input).fieldsets('field');
+parse(input).fieldsets('field');
 -- javascript
 
 -- php

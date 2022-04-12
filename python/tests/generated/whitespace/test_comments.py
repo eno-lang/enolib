@@ -9,9 +9,9 @@ def test_querying_a_comment_with_complex_indentation_from_a_section_produces_the
              "                              > indented 26 spaces\n"
              "                                 >\n"
              "# section")
-
+    
     output = enolib.parse(input).section('section').required_string_comment()
-
+    
     expected = ("indented 0 spaces\n"
                 "\n"
                 "    indented 4 spaces\n"

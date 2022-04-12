@@ -2,10 +2,10 @@ import enolib
 
 def test_triggering_an_error_inside_a_custom_loader_when_querying_a_required_comment_on_a_field_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("> comment\n"
              "field: value")
-
+    
     try:
         def loader(value):
           raise ValueError('my error')
@@ -23,9 +23,9 @@ def test_triggering_an_error_inside_a_custom_loader_when_querying_a_required_com
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | > comment\n"
-                 " *    2 | field: value")
+    snippet = ("   Line | Content\n"
+               " >    1 | > comment\n"
+               " *    2 | field: value")
     
     assert error.snippet == snippet
     

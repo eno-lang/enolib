@@ -2,9 +2,9 @@ import enolib
 
 def test_triggering_an_error_inside_a_custom_loader_when_querying_the_key_of_a_field_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field: value")
-
+    
     try:
         def loader(value):
           raise ValueError('my error')
@@ -22,8 +22,8 @@ def test_triggering_an_error_inside_a_custom_loader_when_querying_the_key_of_a_f
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field: value")
+    snippet = ("   Line | Content\n"
+               " >    1 | field: value")
     
     assert error.snippet == snippet
     

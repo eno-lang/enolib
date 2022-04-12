@@ -6,7 +6,7 @@ list:
 -- input
 
 -- javascript
-enolib.parse(input).sections('list');
+parse(input).sections('list');
 -- javascript
 
 -- php
@@ -50,7 +50,7 @@ list:
 -- input
 
 -- javascript
-enolib.parse(input).sections('list');
+parse(input).sections('list');
 -- javascript
 
 -- php
@@ -97,7 +97,7 @@ list:
 -- input
 
 -- javascript
-enolib.parse(input).sections('list');
+parse(input).sections('list');
 -- javascript
 
 -- php

@@ -2,10 +2,10 @@ import enolib
 
 def test_expecting_a_fieldset_but_getting_a_list_with_one_item_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("list:\n"
              "- item")
-
+    
     try:
         enolib.parse(input).fieldset('list')
     except enolib.ValidationError as _error:
@@ -20,9 +20,9 @@ def test_expecting_a_fieldset_but_getting_a_list_with_one_item_raises_the_expect
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | list:\n"
-                 " *    2 | - item")
+    snippet = ("   Line | Content\n"
+               " >    1 | list:\n"
+               " *    2 | - item")
     
     assert error.snippet == snippet
     
@@ -33,7 +33,7 @@ def test_expecting_a_fieldset_but_getting_a_list_with_one_item_raises_the_expect
 
 def test_expecting_a_fieldset_but_getting_a_list_with_empty_lines_and_multiple_items_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("list:\n"
              "\n"
              "- item\n"
@@ -42,7 +42,7 @@ def test_expecting_a_fieldset_but_getting_a_list_with_empty_lines_and_multiple_i
              "\n"
              "- item\n"
              "")
-
+    
     try:
         enolib.parse(input).fieldset('list')
     except enolib.ValidationError as _error:
@@ -57,15 +57,15 @@ def test_expecting_a_fieldset_but_getting_a_list_with_empty_lines_and_multiple_i
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | list:\n"
-                 " *    2 | \n"
-                 " *    3 | - item\n"
-                 " *    4 | \n"
-                 " *    5 | - item\n"
-                 " *    6 | \n"
-                 " *    7 | - item\n"
-                 "      8 | ")
+    snippet = ("   Line | Content\n"
+               " >    1 | list:\n"
+               " *    2 | \n"
+               " *    3 | - item\n"
+               " *    4 | \n"
+               " *    5 | - item\n"
+               " *    6 | \n"
+               " *    7 | - item\n"
+               "      8 | ")
     
     assert error.snippet == snippet
     
@@ -76,14 +76,14 @@ def test_expecting_a_fieldset_but_getting_a_list_with_empty_lines_and_multiple_i
 
 def test_expecting_a_fieldset_but_getting_a_list_with_two_items_with_comments_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("list:\n"
              "> comment\n"
              "- item\n"
              "\n"
              "> comment\n"
              "- item")
-
+    
     try:
         enolib.parse(input).fieldset('list')
     except enolib.ValidationError as _error:
@@ -98,13 +98,13 @@ def test_expecting_a_fieldset_but_getting_a_list_with_two_items_with_comments_ra
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | list:\n"
-                 " *    2 | > comment\n"
-                 " *    3 | - item\n"
-                 " *    4 | \n"
-                 " *    5 | > comment\n"
-                 " *    6 | - item")
+    snippet = ("   Line | Content\n"
+               " >    1 | list:\n"
+               " *    2 | > comment\n"
+               " *    3 | - item\n"
+               " *    4 | \n"
+               " *    5 | > comment\n"
+               " *    6 | - item")
     
     assert error.snippet == snippet
     

@@ -2,12 +2,12 @@ import enolib
 
 def test_expecting_a_section_but_getting_two_sections_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("# section\n"
              "\n"
              "# section\n"
              "")
-
+    
     try:
         enolib.parse(input).section('section')
     except enolib.ValidationError as _error:
@@ -22,11 +22,11 @@ def test_expecting_a_section_but_getting_two_sections_raises_the_expected_valida
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | # section\n"
-                 "      2 | \n"
-                 " >    3 | # section\n"
-                 "      4 | ")
+    snippet = ("   Line | Content\n"
+               " >    1 | # section\n"
+               "      2 | \n"
+               " >    3 | # section\n"
+               "      4 | ")
     
     assert error.snippet == snippet
     
@@ -37,7 +37,7 @@ def test_expecting_a_section_but_getting_two_sections_raises_the_expected_valida
 
 def test_expecting_a_section_but_getting_two_sections_with_elements_empty_lines_and_continuations_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("> comment\n"
              "# section\n"
              "\n"
@@ -50,7 +50,7 @@ def test_expecting_a_section_but_getting_two_sections_with_elements_empty_lines_
              "\\ continuation\n"
              "\n"
              "- item")
-
+    
     try:
         enolib.parse(input).section('section')
     except enolib.ValidationError as _error:
@@ -65,19 +65,19 @@ def test_expecting_a_section_but_getting_two_sections_with_elements_empty_lines_
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 "      1 | > comment\n"
-                 " >    2 | # section\n"
-                 " *    3 | \n"
-                 " *    4 | field: value\n"
-                 "      5 | \n"
-                 " >    6 | # section\n"
-                 " *    7 | \n"
-                 " *    8 | list:\n"
-                 " *    9 | - item\n"
-                 " *   10 | \\ continuation\n"
-                 " *   11 | \n"
-                 " *   12 | - item")
+    snippet = ("   Line | Content\n"
+               "      1 | > comment\n"
+               " >    2 | # section\n"
+               " *    3 | \n"
+               " *    4 | field: value\n"
+               "      5 | \n"
+               " >    6 | # section\n"
+               " *    7 | \n"
+               " *    8 | list:\n"
+               " *    9 | - item\n"
+               " *   10 | \\ continuation\n"
+               " *   11 | \n"
+               " *   12 | - item")
     
     assert error.snippet == snippet
     

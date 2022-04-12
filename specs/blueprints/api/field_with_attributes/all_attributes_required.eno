@@ -5,7 +5,7 @@ field:
 -- input
 
 -- javascript
-const field = enolib.parse(input).field('field');
+const field = parse(input).field('field');
 
 field.allAttributesRequired();
 field.attribute('attribute');
@@ -45,7 +45,7 @@ field:
 -- input
 
 -- javascript
-const field = enolib.parse(input).field('field');
+const field = parse(input).field('field');
 
 field.allAttributesRequired(true);
 field.attribute('attribute');
@@ -85,7 +85,7 @@ field:
 -- input
 
 -- javascript
-const field = enolib.parse(input).field('field');
+const field = parse(input).field('field');
 
 field.allAttributesRequired(false);
 field.attribute('attribute');
@@ -121,7 +121,7 @@ field:
 -- input
 
 -- javascript
-const field = enolib.parse(input).field('field');
+const field = parse(input).field('field');
 
 field.allAttributesRequired(true);
 field.allAttributesRequired(false);
@@ -161,7 +161,7 @@ field:
 -- input
 
 -- javascript
-const field = enolib.parse(input).field('field');
+const field = parse(input).field('field');
 
 field.allAttributesRequired();
 field.optionalEntry('attribute');

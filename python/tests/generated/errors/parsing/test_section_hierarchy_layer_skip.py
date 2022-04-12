@@ -2,10 +2,10 @@ import enolib
 
 def test_starting_a_section_two_levels_deeper_than_the_current_one_raises_the_expected_parseerror():
     error = None
-
+    
     input = ("# section\n"
              "### subsubsection")
-
+    
     try:
         enolib.parse(input)
     except enolib.ParseError as _error:
@@ -20,9 +20,9 @@ def test_starting_a_section_two_levels_deeper_than_the_current_one_raises_the_ex
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " *    1 | # section\n"
-                 " >    2 | ### subsubsection")
+    snippet = ("   Line | Content\n"
+               " *    1 | # section\n"
+               " >    2 | ### subsubsection")
     
     assert error.snippet == snippet
     
@@ -33,9 +33,9 @@ def test_starting_a_section_two_levels_deeper_than_the_current_one_raises_the_ex
 
 def test_starting_the_first_section_in_the_document_at_a_deep_level_raises_the_expected_parseerror():
     error = None
-
+    
     input = ("### section")
-
+    
     try:
         enolib.parse(input)
     except enolib.ParseError as _error:
@@ -50,8 +50,8 @@ def test_starting_the_first_section_in_the_document_at_a_deep_level_raises_the_e
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | ### section")
+    snippet = ("   Line | Content\n"
+               " >    1 | ### section")
     
     assert error.snippet == snippet
     

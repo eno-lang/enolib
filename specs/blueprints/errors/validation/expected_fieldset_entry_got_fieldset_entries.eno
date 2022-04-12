@@ -7,7 +7,7 @@ entry = value
 -- input
 
 -- javascript
-enolib.parse(input).fieldset('fieldset').entry('entry');
+parse(input).fieldset('fieldset').entry('entry');
 -- javascript
 
 -- php
@@ -52,7 +52,7 @@ entry = value
 -- input
 
 -- javascript
-enolib.parse(input).fieldset('fieldset').entry('entry');
+parse(input).fieldset('fieldset').entry('entry');
 -- javascript
 
 -- php

@@ -2,10 +2,10 @@ import enolib
 
 def test_querying_a_fieldset_entry_for_a_required_but_missing_value_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("fieldset:\n"
              "entry =")
-
+    
     try:
         enolib.parse(input).fieldset('fieldset').entry('entry').required_string_value()
     except enolib.ValidationError as _error:
@@ -20,9 +20,9 @@ def test_querying_a_fieldset_entry_for_a_required_but_missing_value_raises_the_e
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 "      1 | fieldset:\n"
-                 " >    2 | entry =")
+    snippet = ("   Line | Content\n"
+               "      1 | fieldset:\n"
+               " >    2 | entry =")
     
     assert error.snippet == snippet
     
@@ -33,9 +33,9 @@ def test_querying_a_fieldset_entry_for_a_required_but_missing_value_raises_the_e
 
 def test_querying_a_field_for_a_required_but_missing_value_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field:")
-
+    
     try:
         enolib.parse(input).field('field').required_string_value()
     except enolib.ValidationError as _error:
@@ -50,8 +50,8 @@ def test_querying_a_field_for_a_required_but_missing_value_raises_the_expected_v
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field:")
+    snippet = ("   Line | Content\n"
+               " >    1 | field:")
     
     assert error.snippet == snippet
     
@@ -62,12 +62,12 @@ def test_querying_a_field_for_a_required_but_missing_value_raises_the_expected_v
 
 def test_querying_a_field_with_empty_line_continuations_for_a_required_but_missing_value_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field:\n"
              "|\n"
              "\n"
              "|")
-
+    
     try:
         enolib.parse(input).field('field').required_string_value()
     except enolib.ValidationError as _error:
@@ -82,11 +82,11 @@ def test_querying_a_field_with_empty_line_continuations_for_a_required_but_missi
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field:\n"
-                 " *    2 | |\n"
-                 " *    3 | \n"
-                 " *    4 | |")
+    snippet = ("   Line | Content\n"
+               " >    1 | field:\n"
+               " *    2 | |\n"
+               " *    3 | \n"
+               " *    4 | |")
     
     assert error.snippet == snippet
     
@@ -97,11 +97,11 @@ def test_querying_a_field_with_empty_line_continuations_for_a_required_but_missi
 
 def test_querying_a_list_with_an_empty_item_for_required_values_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("list:\n"
              "- item\n"
              "-")
-
+    
     try:
         enolib.parse(input).list('list').required_string_values()
     except enolib.ValidationError as _error:
@@ -116,10 +116,10 @@ def test_querying_a_list_with_an_empty_item_for_required_values_raises_the_expec
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 "      1 | list:\n"
-                 "      2 | - item\n"
-                 " >    3 | -")
+    snippet = ("   Line | Content\n"
+               "      1 | list:\n"
+               "      2 | - item\n"
+               " >    3 | -")
     
     assert error.snippet == snippet
     

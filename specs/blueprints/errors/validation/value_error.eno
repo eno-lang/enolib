@@ -7,7 +7,7 @@ field: value
 -- javascript
 const loader = value => { throw `my error for '${value}'`; };
 
-enolib.parse(input).field('field').requiredValue(loader);
+parse(input).field('field').requiredValue(loader);
 -- javascript
 
 -- php
@@ -49,7 +49,7 @@ field: value
 -- input
 
 -- javascript
-throw enolib.parse(input).field('field').valueError('my static message');
+throw parse(input).field('field').valueError('my static message');
 -- javascript
 
 -- php
@@ -84,7 +84,7 @@ field: value
 -- input
 
 -- javascript
-throw enolib.parse(input).field('field').valueError(value => `my generated message for '${value}'`);
+throw parse(input).field('field').valueError(value => `my generated message for '${value}'`);
 -- javascript
 
 -- php
@@ -121,7 +121,7 @@ value
 -- input
 
 -- javascript
-throw enolib.parse(input).field('multiline_field').valueError('my static message');
+throw parse(input).field('multiline_field').valueError('my static message');
 -- javascript
 
 -- php
@@ -160,7 +160,7 @@ value
 -- input
 
 -- javascript
-throw enolib.parse(input).field('multiline_field').valueError(value => `my generated message for '${value}'`);
+throw parse(input).field('multiline_field').valueError(value => `my generated message for '${value}'`);
 -- javascript
 
 -- php
@@ -198,7 +198,7 @@ selection: [1,0] => [1,5]
 -- input
 
 -- javascript
-throw enolib.parse(input).field('multiline_field').valueError('my static message');
+throw parse(input).field('multiline_field').valueError('my static message');
 -- javascript
 
 -- php
@@ -235,7 +235,7 @@ selection: [0,18] => [0,18]
 -- input
 
 -- javascript
-throw enolib.parse(input).field('multiline_field').valueError(_value => `my generated message`);
+throw parse(input).field('multiline_field').valueError(_value => `my generated message`);
 -- javascript
 
 -- php
@@ -276,7 +276,7 @@ field: value
 -- input
 
 -- javascript
-throw enolib.parse(input).field('field').valueError('my static message');
+throw parse(input).field('field').valueError('my static message');
 -- javascript
 
 -- php
@@ -321,7 +321,7 @@ field: value
 -- input
 
 -- javascript
-throw enolib.parse(input).field('field').valueError(value => `my generated message for '${value}'`);
+throw parse(input).field('field').valueError(value => `my generated message for '${value}'`);
 -- javascript
 
 -- php

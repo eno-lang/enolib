@@ -6,7 +6,7 @@ entry = value
 -- input
 
 -- javascript
-enolib.parse(input).section('fieldset');
+parse(input).section('fieldset');
 -- javascript
 
 -- php
@@ -50,7 +50,7 @@ entry = value
 -- input
 
 -- javascript
-enolib.parse(input).section('fieldset');
+parse(input).section('fieldset');
 -- javascript
 
 -- php
@@ -97,7 +97,7 @@ entry = value
 -- input
 
 -- javascript
-enolib.parse(input).section('fieldset');
+parse(input).section('fieldset');
 -- javascript
 
 -- php

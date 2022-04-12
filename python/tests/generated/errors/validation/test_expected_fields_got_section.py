@@ -2,9 +2,9 @@ import enolib
 
 def test_expecting_fields_but_getting_an_empty_section_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("# section")
-
+    
     try:
         enolib.parse(input).fields('section')
     except enolib.ValidationError as _error:
@@ -19,8 +19,8 @@ def test_expecting_fields_but_getting_an_empty_section_raises_the_expected_valid
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | # section")
+    snippet = ("   Line | Content\n"
+               " >    1 | # section")
     
     assert error.snippet == snippet
     
@@ -31,7 +31,7 @@ def test_expecting_fields_but_getting_an_empty_section_raises_the_expected_valid
 
 def test_expecting_fields_but_getting_a_section_with_a_field_and_a_list_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("# section\n"
              "\n"
              "field: value\n"
@@ -39,7 +39,7 @@ def test_expecting_fields_but_getting_a_section_with_a_field_and_a_list_raises_t
              "list:\n"
              "- item\n"
              "- item")
-
+    
     try:
         enolib.parse(input).fields('section')
     except enolib.ValidationError as _error:
@@ -54,14 +54,14 @@ def test_expecting_fields_but_getting_a_section_with_a_field_and_a_list_raises_t
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | # section\n"
-                 " *    2 | \n"
-                 " *    3 | field: value\n"
-                 " *    4 | \n"
-                 " *    5 | list:\n"
-                 " *    6 | - item\n"
-                 " *    7 | - item")
+    snippet = ("   Line | Content\n"
+               " >    1 | # section\n"
+               " *    2 | \n"
+               " *    3 | field: value\n"
+               " *    4 | \n"
+               " *    5 | list:\n"
+               " *    6 | - item\n"
+               " *    7 | - item")
     
     assert error.snippet == snippet
     
@@ -72,7 +72,7 @@ def test_expecting_fields_but_getting_a_section_with_a_field_and_a_list_raises_t
 
 def test_expecting_fields_but_getting_a_section_with_subsections_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("# section\n"
              "\n"
              "## subsection\n"
@@ -84,7 +84,7 @@ def test_expecting_fields_but_getting_a_section_with_subsections_raises_the_expe
              "list:\n"
              "- item\n"
              "- item")
-
+    
     try:
         enolib.parse(input).fields('section')
     except enolib.ValidationError as _error:
@@ -99,18 +99,18 @@ def test_expecting_fields_but_getting_a_section_with_subsections_raises_the_expe
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | # section\n"
-                 " *    2 | \n"
-                 " *    3 | ## subsection\n"
-                 " *    4 | \n"
-                 " *    5 | field: value\n"
-                 " *    6 | \n"
-                 " *    7 | ## subsection\n"
-                 " *    8 | \n"
-                 " *    9 | list:\n"
-                 " *   10 | - item\n"
-                 " *   11 | - item")
+    snippet = ("   Line | Content\n"
+               " >    1 | # section\n"
+               " *    2 | \n"
+               " *    3 | ## subsection\n"
+               " *    4 | \n"
+               " *    5 | field: value\n"
+               " *    6 | \n"
+               " *    7 | ## subsection\n"
+               " *    8 | \n"
+               " *    9 | list:\n"
+               " *   10 | - item\n"
+               " *   11 | - item")
     
     assert error.snippet == snippet
     

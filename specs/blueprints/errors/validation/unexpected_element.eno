@@ -5,7 +5,7 @@ field: value
 -- input
 
 -- javascript
-enolib.parse(input).assertAllTouched();
+parse(input).assertAllTouched();
 -- javascript
 
 -- php
@@ -40,7 +40,7 @@ field: value
 -- input
 
 -- javascript
-enolib.parse(input).assertAllTouched('my custom message');
+parse(input).assertAllTouched('my custom message');
 -- javascript
 
 -- php

@@ -2,9 +2,9 @@ import enolib
 
 def test_asserting_everything_was_touched_when_the_only_present_section_was_not_touched_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("# section")
-
+    
     try:
         enolib.parse(input).assert_all_touched()
     except enolib.ValidationError as _error:
@@ -19,8 +19,8 @@ def test_asserting_everything_was_touched_when_the_only_present_section_was_not_
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | # section")
+    snippet = ("   Line | Content\n"
+               " >    1 | # section")
     
     assert error.snippet == snippet
     
@@ -31,10 +31,10 @@ def test_asserting_everything_was_touched_when_the_only_present_section_was_not_
 
 def test_asserting_everything_was_touched_when_the_only_present_section_was_touched_produces_the_expected_result():
     input = ("# section")
-
+    
     document = enolib.parse(input)
     
     document.section('section').touch()
     document.assert_all_touched()
-
+    
     assert bool('it passes') is True

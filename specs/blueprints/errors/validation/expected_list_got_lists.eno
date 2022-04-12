@@ -8,7 +8,7 @@ list:
 -- input
 
 -- javascript
-enolib.parse(input).list('list');
+parse(input).list('list');
 -- javascript
 
 -- php
@@ -55,7 +55,7 @@ list:
 -- input
 
 -- javascript
-enolib.parse(input).list('list');
+parse(input).list('list');
 -- javascript
 
 -- php

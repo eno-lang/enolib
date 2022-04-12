@@ -27,12 +27,12 @@ end
 describe 'Asserting everything was touched when the only present field was touched' do
   it 'produces the expected result' do
     input = 'field: value'
-
+    
     document = Enolib.parse(input)
     
     document.field('field').touch
     document.assert_all_touched
-
+    
     expect('it passes').to be_truthy
   end
 end

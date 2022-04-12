@@ -6,7 +6,7 @@ attribute = value
 -- input
 
 -- javascript
-enolib.parse(input).assertAllTouched();
+parse(input).assertAllTouched();
 -- javascript
 
 -- php
@@ -43,7 +43,7 @@ attribute = value
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.field('field').touch();
 document.assertAllTouched();

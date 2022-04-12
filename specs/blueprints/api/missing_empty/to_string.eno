@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-const output = enolib.parse(input).empty().toString();
+const output = parse(input).empty().toString();
 -- javascript
 
 -- php
@@ -45,7 +45,7 @@ output = Enolib.parse(input).empty.to_s
 -- input
 
 -- javascript
-const output = enolib.parse(input).empty('key').toString();
+const output = parse(input).empty('key').toString();
 -- javascript
 
 -- php

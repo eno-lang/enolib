@@ -5,7 +5,7 @@ element:
 -- input
 
 -- javascript
-enolib.parse(input).section('element');
+parse(input).section('element');
 -- javascript
 
 -- php

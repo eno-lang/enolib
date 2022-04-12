@@ -27,12 +27,12 @@ end
 describe 'Asserting everything was touched when the only present section was touched' do
   it 'produces the expected result' do
     input = '# section'
-
+    
     document = Enolib.parse(input)
     
     document.section('section').touch
     document.assert_all_touched
-
+    
     expect('it passes').to be_truthy
   end
 end

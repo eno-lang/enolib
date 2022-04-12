@@ -2,9 +2,9 @@ import enolib
 
 def test_parsing_a_line_continuation_without_any_prior_element_raises_the_expected_parseerror():
     error = None
-
+    
     input = ("| continuation")
-
+    
     try:
         enolib.parse(input)
     except enolib.ParseError as _error:
@@ -19,8 +19,8 @@ def test_parsing_a_line_continuation_without_any_prior_element_raises_the_expect
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | | continuation")
+    snippet = ("   Line | Content\n"
+               " >    1 | | continuation")
     
     assert error.snippet == snippet
     

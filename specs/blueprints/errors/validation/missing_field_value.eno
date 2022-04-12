@@ -5,7 +5,7 @@ field:
 -- input
 
 -- javascript
-enolib.parse(input).field('field').requiredStringValue();
+parse(input).field('field').requiredStringValue();
 -- javascript
 
 -- php

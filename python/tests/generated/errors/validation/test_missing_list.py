@@ -2,9 +2,9 @@ import enolib
 
 def test_querying_the_document_for_a_required_but_missing_list_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("")
-
+    
     try:
         enolib.parse(input).required_list('list')
     except enolib.ValidationError as _error:
@@ -19,8 +19,8 @@ def test_querying_the_document_for_a_required_but_missing_list_raises_the_expect
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " ?    1 | ")
+    snippet = ("   Line | Content\n"
+               " ?    1 | ")
     
     assert error.snippet == snippet
     
@@ -31,9 +31,9 @@ def test_querying_the_document_for_a_required_but_missing_list_raises_the_expect
 
 def test_querying_a_section_for_a_required_but_missing_list_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("# section")
-
+    
     try:
         enolib.parse(input).section('section').required_list('list')
     except enolib.ValidationError as _error:
@@ -48,8 +48,8 @@ def test_querying_a_section_for_a_required_but_missing_list_raises_the_expected_
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " *    1 | # section")
+    snippet = ("   Line | Content\n"
+               " *    1 | # section")
     
     assert error.snippet == snippet
     

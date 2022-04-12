@@ -6,7 +6,7 @@ field: value
 -- input
 
 -- javascript
-enolib.parse(input).field('field').requiredComment(() => { throw 'my error'; });
+parse(input).field('field').requiredComment(() => { throw 'my error'; });
 -- javascript
 
 -- php

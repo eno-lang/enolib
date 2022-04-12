@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired();
 document.field('field');
@@ -45,7 +45,7 @@ The field 'field' is missing - in case it has been specified look for typos and 
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired();
 document.section('section');
@@ -85,7 +85,7 @@ The section 'section' is missing - in case it has been specified look for typos 
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired(false);
 document.field('field');
@@ -121,7 +121,7 @@ document.field('field')
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired(true);
 document.allElementsRequired(false);
@@ -161,7 +161,7 @@ document.field('field')
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired();
 document.optionalElement('element');
@@ -197,7 +197,7 @@ document.optional_element('element')
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired();
 document.optionalEmpty('empty');
@@ -233,7 +233,7 @@ document.optional_empty('empty')
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired();
 document.optionalField('field');
@@ -269,7 +269,7 @@ document.optional_field('field')
 -- input
 
 -- javascript
-const document = enolib.parse(input);
+const document = parse(input);
 
 document.allElementsRequired();
 document.optionalSection('section');

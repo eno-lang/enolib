@@ -2,9 +2,9 @@ import enolib
 
 def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_error_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field: value")
-
+    
     try:
         def loader(value):
           raise ValueError(f"my error for '{value}'")
@@ -22,8 +22,8 @@ def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_err
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field: value")
+    snippet = ("   Line | Content\n"
+               " >    1 | field: value")
     
     assert error.snippet == snippet
     
@@ -34,9 +34,9 @@ def test_querying_a_value_from_a_field_with_a_loader_that_always_produces_an_err
 
 def test_requesting_a_value_error_from_a_field_with_a_static_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field: value")
-
+    
     try:
         raise enolib.parse(input).field('field').value_error('my static message')
     except enolib.ValidationError as _error:
@@ -51,8 +51,8 @@ def test_requesting_a_value_error_from_a_field_with_a_static_message_raises_the_
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field: value")
+    snippet = ("   Line | Content\n"
+               " >    1 | field: value")
     
     assert error.snippet == snippet
     
@@ -63,9 +63,9 @@ def test_requesting_a_value_error_from_a_field_with_a_static_message_raises_the_
 
 def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field: value")
-
+    
     try:
         raise enolib.parse(input).field('field').value_error(lambda value: f"my generated message for '{value}'")
     except enolib.ValidationError as _error:
@@ -80,8 +80,8 @@ def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_mess
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field: value")
+    snippet = ("   Line | Content\n"
+               " >    1 | field: value")
     
     assert error.snippet == snippet
     
@@ -92,11 +92,11 @@ def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_mess
 
 def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("-- multiline_field\n"
              "value\n"
              "-- multiline_field")
-
+    
     try:
         raise enolib.parse(input).field('multiline_field').value_error('my static message')
     except enolib.ValidationError as _error:
@@ -111,10 +111,10 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_r
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 "      1 | -- multiline_field\n"
-                 " >    2 | value\n"
-                 "      3 | -- multiline_field")
+    snippet = ("   Line | Content\n"
+               "      1 | -- multiline_field\n"
+               " >    2 | value\n"
+               "      3 | -- multiline_field")
     
     assert error.snippet == snippet
     
@@ -125,11 +125,11 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_r
 
 def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("-- multiline_field\n"
              "value\n"
              "-- multiline_field")
-
+    
     try:
         raise enolib.parse(input).field('multiline_field').value_error(lambda value: f"my generated message for '{value}'")
     except enolib.ValidationError as _error:
@@ -144,10 +144,10 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_gene
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 "      1 | -- multiline_field\n"
-                 " >    2 | value\n"
-                 "      3 | -- multiline_field")
+    snippet = ("   Line | Content\n"
+               "      1 | -- multiline_field\n"
+               " >    2 | value\n"
+               "      3 | -- multiline_field")
     
     assert error.snippet == snippet
     
@@ -158,10 +158,10 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_gene
 
 def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("-- multiline_field\n"
              "-- multiline_field")
-
+    
     try:
         raise enolib.parse(input).field('multiline_field').value_error('my static message')
     except enolib.ValidationError as _error:
@@ -176,9 +176,9 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_me
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | -- multiline_field\n"
-                 " *    2 | -- multiline_field")
+    snippet = ("   Line | Content\n"
+               " >    1 | -- multiline_field\n"
+               " *    2 | -- multiline_field")
     
     assert error.snippet == snippet
     
@@ -189,10 +189,10 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_me
 
 def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("-- multiline_field\n"
              "-- multiline_field")
-
+    
     try:
         raise enolib.parse(input).field('multiline_field').value_error(lambda _value: f"my generated message")
     except enolib.ValidationError as _error:
@@ -207,9 +207,9 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamical
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | -- multiline_field\n"
-                 " *    2 | -- multiline_field")
+    snippet = ("   Line | Content\n"
+               " >    1 | -- multiline_field\n"
+               " *    2 | -- multiline_field")
     
     assert error.snippet == snippet
     
@@ -220,14 +220,14 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamical
 
 def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field: value\n"
              "\\ continuation\n"
              "\\ continuation\n"
              "|\n"
              "\n"
              "|")
-
+    
     try:
         raise enolib.parse(input).field('field').value_error('my static message')
     except enolib.ValidationError as _error:
@@ -242,13 +242,13 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field: value\n"
-                 " *    2 | \\ continuation\n"
-                 " *    3 | \\ continuation\n"
-                 " *    4 | |\n"
-                 " *    5 | \n"
-                 " *    6 | |")
+    snippet = ("   Line | Content\n"
+               " >    1 | field: value\n"
+               " *    2 | \\ continuation\n"
+               " *    3 | \\ continuation\n"
+               " *    4 | |\n"
+               " *    5 | \n"
+               " *    6 | |")
     
     assert error.snippet == snippet
     
@@ -259,14 +259,14 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_
 
 def test_requesting_a_value_error_from_a_field_with_continuations_with_a_dynamically_generated_message_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("field: value\n"
              "\\ continuation\n"
              "\\ continuation\n"
              "|\n"
              "\n"
              "|")
-
+    
     try:
         raise enolib.parse(input).field('field').value_error(lambda value: f"my generated message for '{value}'")
     except enolib.ValidationError as _error:
@@ -281,13 +281,13 @@ def test_requesting_a_value_error_from_a_field_with_continuations_with_a_dynamic
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " >    1 | field: value\n"
-                 " *    2 | \\ continuation\n"
-                 " *    3 | \\ continuation\n"
-                 " *    4 | |\n"
-                 " *    5 | \n"
-                 " *    6 | |")
+    snippet = ("   Line | Content\n"
+               " >    1 | field: value\n"
+               " *    2 | \\ continuation\n"
+               " *    3 | \\ continuation\n"
+               " *    4 | |\n"
+               " *    5 | \n"
+               " *    6 | |")
     
     assert error.snippet == snippet
     

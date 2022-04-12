@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-enolib.parse(input).requiredList('list');
+parse(input).requiredList('list');
 -- javascript
 
 -- php
@@ -40,7 +40,7 @@ selection: [0,0] => [0,0]
 -- input
 
 -- javascript
-enolib.parse(input).section('section').requiredList('list');
+parse(input).section('section').requiredList('list');
 -- javascript
 
 -- php

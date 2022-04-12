@@ -2,9 +2,9 @@ import enolib
 
 def test_querying_an_empty_fieldset_for_a_required_but_missing_entry_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("fieldset:")
-
+    
     try:
         enolib.parse(input).fieldset('fieldset').required_entry('entry')
     except enolib.ValidationError as _error:
@@ -19,8 +19,8 @@ def test_querying_an_empty_fieldset_for_a_required_but_missing_entry_raises_the_
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " *    1 | fieldset:")
+    snippet = ("   Line | Content\n"
+               " *    1 | fieldset:")
     
     assert error.snippet == snippet
     
@@ -31,11 +31,11 @@ def test_querying_an_empty_fieldset_for_a_required_but_missing_entry_raises_the_
 
 def test_querying_a_fieldset_with_two_entries_for_a_required_but_missing_entry_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("fieldset:\n"
              "entry = value\n"
              "entry = value")
-
+    
     try:
         enolib.parse(input).fieldset('fieldset').required_entry('missing')
     except enolib.ValidationError as _error:
@@ -50,10 +50,10 @@ def test_querying_a_fieldset_with_two_entries_for_a_required_but_missing_entry_r
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " *    1 | fieldset:\n"
-                 " ?    2 | entry = value\n"
-                 " ?    3 | entry = value")
+    snippet = ("   Line | Content\n"
+               " *    1 | fieldset:\n"
+               " ?    2 | entry = value\n"
+               " ?    3 | entry = value")
     
     assert error.snippet == snippet
     
@@ -64,7 +64,7 @@ def test_querying_a_fieldset_with_two_entries_for_a_required_but_missing_entry_r
 
 def test_querying_a_fieldset_with_entries_empty_lines_and_comments_for_a_required_but_missing_entry_raises_the_expected_validationerror():
     error = None
-
+    
     input = ("fieldset:\n"
              "\n"
              "> comment\n"
@@ -72,7 +72,7 @@ def test_querying_a_fieldset_with_entries_empty_lines_and_comments_for_a_require
              "\n"
              "> comment\n"
              "entry = value")
-
+    
     try:
         enolib.parse(input).fieldset('fieldset').required_entry('missing')
     except enolib.ValidationError as _error:
@@ -87,14 +87,14 @@ def test_querying_a_fieldset_with_entries_empty_lines_and_comments_for_a_require
     
     assert error.text == text
     
-    snippet   = ("   Line | Content\n"
-                 " *    1 | fieldset:\n"
-                 " ?    2 | \n"
-                 " ?    3 | > comment\n"
-                 " ?    4 | entry = value\n"
-                 " ?    5 | \n"
-                 " ?    6 | > comment\n"
-                 " ?    7 | entry = value")
+    snippet = ("   Line | Content\n"
+               " *    1 | fieldset:\n"
+               " ?    2 | \n"
+               " ?    3 | > comment\n"
+               " ?    4 | entry = value\n"
+               " ?    5 | \n"
+               " ?    6 | > comment\n"
+               " ?    7 | entry = value")
     
     assert error.snippet == snippet
     

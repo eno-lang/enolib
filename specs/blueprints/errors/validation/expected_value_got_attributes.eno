@@ -6,7 +6,7 @@ attribute = value
 -- input
 
 -- javascript
-enolib.parse(input).field('field');
+parse(input).field('field');
 -- javascript
 
 -- php
@@ -50,7 +50,7 @@ attribute = value
 -- input
 
 -- javascript
-enolib.parse(input).field('field');
+parse(input).field('field');
 -- javascript
 
 -- php
@@ -97,7 +97,7 @@ attribute = value
 -- input
 
 -- javascript
-enolib.parse(input).field('field');
+parse(input).field('field');
 -- javascript
 
 -- php

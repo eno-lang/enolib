@@ -5,7 +5,7 @@
 -- input
 
 -- javascript
-enolib.parse(input).requiredSection('section');
+parse(input).requiredSection('section');
 -- javascript
 
 -- php
@@ -41,7 +41,7 @@ selection: [0,0] => [0,0]
 -- input
 
 -- javascript
-enolib.parse(input).section('section').requiredSection('section');
+parse(input).section('section').requiredSection('section');
 -- javascript
 
 -- php

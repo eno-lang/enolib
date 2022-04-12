@@ -6,7 +6,7 @@ entry =
 -- input
 
 -- javascript
-enolib.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
+parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
 -- javascript
 
 -- php

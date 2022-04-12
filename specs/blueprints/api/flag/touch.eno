@@ -1,0 +1,70 @@
+# Asserting everything was touched when the only present flag was not touched
+
+-- input
+flag
+-- input
+
+-- javascript
+parse(input).assertAllTouched()
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->assertAllTouched();
+-- php
+
+-- python
+enolib.parse(input).assert_all_touched()
+-- python
+
+-- ruby
+Enolib.parse(input).assert_all_touched
+-- ruby
+
+## ValidationError
+
+-- text
+This element was not expected, make sure it is at the right place in the document and that its key is not mis-typed.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | flag
+-- snippet
+
+selection: [0,0] => [0,4]
+
+# Asserting everything was touched when the only present flag was touched
+
+-- input
+flag
+-- input
+
+-- javascript
+const document = parse(input);
+
+document.flag('flag').touch();
+document.assertAllTouched();
+-- javascript
+
+-- php
+$document = Enolib\Parser::parse($input);
+
+$document->flag('flag')->touch();
+$document->assertAllTouched();
+-- php
+
+-- python
+document = enolib.parse(input)
+
+document.flag('flag').touch()
+document.assert_all_touched()
+-- python
+
+-- ruby
+document = Enolib.parse(input)
+
+document.flag('flag').touch
+document.assert_all_touched
+-- ruby
+
+## Passes

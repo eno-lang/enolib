@@ -6,7 +6,7 @@ entry =
 -- input
 
 -- javascript
-enolib.parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
+parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
 -- javascript
 
 -- php
@@ -42,7 +42,7 @@ field:
 -- input
 
 -- javascript
-enolib.parse(input).field('field').requiredStringValue();
+parse(input).field('field').requiredStringValue();
 -- javascript
 
 -- php
@@ -80,7 +80,7 @@ field:
 -- input
 
 -- javascript
-enolib.parse(input).field('field').requiredStringValue();
+parse(input).field('field').requiredStringValue();
 -- javascript
 
 -- php
@@ -120,7 +120,7 @@ list:
 -- input
 
 -- javascript
-enolib.parse(input).list('list').requiredStringValues();
+parse(input).list('list').requiredStringValues();
 -- javascript
 
 -- php
