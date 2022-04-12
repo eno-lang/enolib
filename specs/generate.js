@@ -1,16 +1,16 @@
-const source = require('./source.js');
-const javascript = require('./generators/javascript.js');
-const php = require('./generators/php.js');
-const python = require('./generators/python.js');
-const ruby = require('./generators/ruby.js');
+import { source } from './source.js';
+import { javascript } from './generators/javascript.js';
+import { php } from './generators/php.js';
+import { python } from './generators/python.js';
+import { ruby } from './generators/ruby.js';
 
-const generate = async () => {
+function generate() {
     const scenarios = source();
     
-    await javascript(scenarios);
-    await php(scenarios);
-    await python(scenarios);
-    await ruby(scenarios);
+    javascript(scenarios);
+    php(scenarios);
+    python(scenarios);
+    ruby(scenarios);
 };
 
 generate();

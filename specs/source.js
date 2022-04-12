@@ -1,9 +1,7 @@
-const enolib = require('../javascript');
-const glob = require('fast-glob');
-const fs = require('fs');
-const path = require('path');
-
-const { TerminalReporter } = require('../javascript');
+import { parse, TerminalReporter } from '../javascript/lib/esm/main.js';
+import glob from 'fast-glob';
+import fs from 'fs';
+import path from 'path';
 
 const LANGUAGES = ['javascript', 'php', 'python', 'ruby'];
 const LOCALES = ['de', 'en', 'es'];
@@ -12,23 +10,23 @@ const selection = value => {
     const match = value.match(/\[([0-9]+),([0-9]+)\] => \[([0-9]+),([0-9]+)\]/);
     
     if (!match)
-    throw new Error('Illegal selection data - allowed format: [line,column] => [line,column]');
+        throw new Error('Illegal selection data - allowed format: [line,column] => [line,column]');
     
     return [[parseInt(match[1]), parseInt(match[2])], [parseInt(match[3]), parseInt(match[4])]];
 };
 
-module.exports = () => {
+export function source() {
     const specs = [];
     
-    const blueprints = glob.sync('**/*.eno', { cwd: path.join(__dirname, 'blueprints') })
+    const blueprints = glob.sync('**/*.eno', { cwd: path.resolve('specs/blueprints') })
     
     for (const file of blueprints.sort()) {
-        const specContent = fs.readFileSync(path.join(__dirname, 'blueprints', file), 'utf-8');
-        const specDocument = enolib.parse(specContent, { reporter: TerminalReporter, source: file });
+        const specContent = fs.readFileSync(path.resolve('specs/blueprints', file), 'utf-8');
+        const specDocument = parse(specContent, { reporter: TerminalReporter, source: file });
         
         const tests = [];
         
-        for (testSection of specDocument.sections()) {
+        for (const testSection of specDocument.sections()) {
             const test = {
                 description: testSection.stringKey(),
                 input: testSection.field('input').requiredStringValue()
@@ -76,7 +74,6 @@ module.exports = () => {
             
             if (nothingSection) {
                 test.result = { nothing: true };
-                
                 nothingSection.touch();
             }
             
@@ -84,7 +81,6 @@ module.exports = () => {
             
             if (passesSection) {
                 test.result = { passes: true };
-                
                 passesSection.touch();
             }
             
