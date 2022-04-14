@@ -1,24 +1,13 @@
 {
-  "author": "Simon Repp <simon@fdpl.io>",
-  "bugs": {
-    "url": "https://github.com/eno-lang/enolib/issues"
-  },
-  "dependencies": {
+  "devDependencies": {
     "enotype": "^0.3.0",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.0.1",
-    "gettext-parser": "^5.1.1",
+    "gettext-parser": "^5.1.2",
     "speakingurl": "^14.0.1"
   },
-  "description": "The eno standard library",
-  "homepage": "https://eno-lang.org/",
-  "license": "MIT",
-  "name": "enolib",
+  "name": "enolib-internal-tooling",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eno-lang/enolib.git"
-  },
   "scripts": {
     "locales": "node locales/generate.js",
     "specs": "node specs/generate.js"
