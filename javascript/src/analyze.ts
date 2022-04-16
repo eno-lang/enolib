@@ -27,13 +27,13 @@ import {
     COMMENT,
     CONTINUATION,
     DOCUMENT,
+    EMBED_BEGIN,
+    EMBED_END,
+    EMBED_VALUE,
     END,
     FLAG,
     FIELD,
     ITEM,
-    EMBED_BEGIN,
-    EMBED_END,
-    EMBED_VALUE,
     SECTION,
     UNPARSED
 } from './constants.js';
@@ -176,13 +176,13 @@ export function analyze() {
             }
             
             instruction.type = ITEM;
-            instruction.value = match[ITEM_VALUE_INDEX] || null;
             
             const operatorIndex = this._input.indexOf('-', index);
             
             instruction.ranges.itemOperator = [operatorIndex, operatorIndex + 1];
             
-            if (instruction.value) {
+            if (match[ITEM_VALUE_INDEX] !== undefined) {
+                instruction.value = match[ITEM_VALUE_INDEX];
                 const valueIndex = this._input.indexOf(instruction.value, operatorIndex + 1);
                 instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
             }
@@ -238,11 +238,8 @@ export function analyze() {
                 instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
             }
             
-            if (match[ATTRIBUTE_VALUE_INDEX] === undefined) {
-                instruction.value = null;
-            } else {
+            if (match[ATTRIBUTE_VALUE_INDEX] !== undefined) {
                 instruction.value = match[ATTRIBUTE_VALUE_INDEX];
-                
                 const valueIndex = this._input.indexOf(instruction.value, attributeOperatorIndex + 1);
                 instruction.ranges.value = [valueIndex, valueIndex + instruction.value.length];
             }
