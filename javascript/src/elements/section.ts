@@ -353,6 +353,25 @@ export class Section extends ElementBase {
         return this._embed(key);
     }
     
+    embeds(key = null) {
+        this._touched = true;
+        
+        let elements;
+        if (key === null) {
+            elements = this._elements();
+        } else {
+            const elementsMap = this._elements(true);
+            elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+        }
+        
+        return elements.map(element => {
+            if (element._instruction.type !== EMBED_BEGIN)
+                throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedEmbeds');
+                
+            return element;
+        });
+    }
+    
     field(key = null) {
         return this._field(key);
     }
@@ -378,6 +397,25 @@ export class Section extends ElementBase {
     
     flag(key = null) {
         return this._flag(key);
+    }
+    
+    flags(key = null) {
+        this._touched = true;
+        
+        let elements;
+        if (key === null) {
+            elements = this._elements();
+        } else {
+            const elementsMap = this._elements(true);
+            elements = elementsMap.hasOwnProperty(key) ? elementsMap[key] : [];
+        }
+        
+        return elements.map(element => {
+            if (element._instruction.type !== FLAG)
+                throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFlags');
+                
+            return element;
+        });
     }
     
     optionalElement(key = null) {
