@@ -2,8 +2,7 @@
   "destination": "./docs",
   "outputAST": false,
   "plugins": [
-    { "name": "esdoc-standard-plugin" },
-    { "name": "esdoc-node" }
+    { "name": "esdoc-standard-plugin" }
   ],
-  "source": "./lib"
+  "source": "./lib/esm/"
 }

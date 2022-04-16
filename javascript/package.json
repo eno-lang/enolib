@@ -27,6 +27,7 @@
     "build": "npm run build:cjs; npm run build:esm",
     "build:cjs": "tsc -p tsconfig_cjs.json",
     "build:esm": "tsc -p tsconfig_esm.json",
+    "docs": "esdoc",
     "performance": "npm run build; node performance/benchmark.js",
     "test": "npm run build; jest --watch",
     "test-esm": "NODE_OPTIONS=--experimental-vm-modules jest"
