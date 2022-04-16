@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Asserting everything was touched when the only present embed was not touched', () => {
     it('throws the expected ValidationError', () => {

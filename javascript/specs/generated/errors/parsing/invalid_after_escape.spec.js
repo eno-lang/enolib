@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('A valid escape sequence, continued invalidly', () => {
     it('throws the expected ParseError', () => {

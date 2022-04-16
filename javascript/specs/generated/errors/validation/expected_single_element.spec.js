@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Expecting an element but getting two elements', () => {
     it('throws the expected ValidationError', () => {

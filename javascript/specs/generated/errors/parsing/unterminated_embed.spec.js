@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('An embed with an incomplete embed operator in the ending line', () => {
     it('throws the expected ParseError', () => {

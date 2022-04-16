@@ -1,5 +1,5 @@
-import { parse } from '../../lib/esm/main.js';
-import { Field } from '../../lib/esm/elements/field.js';
+import { parse } from '../..';
+import { Field } from '../../lib/elements/field.js';
 
 describe('Fetching an ambiguous element through field()', () => {
     let field;

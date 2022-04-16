@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Querying the document for a required but missing flag', () => {
     it('throws the expected ValidationError', () => {

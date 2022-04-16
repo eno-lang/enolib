@@ -1,7 +1,7 @@
-import { parse } from '../../lib/esm/main.js';
+import { parse } from '../..';
 
 import de from '../../locales/de.js';
-import en from '../../lib/esm/messages.js';
+import en from '../../lib/messages.js';
 import es from '../../locales/es.js';
 
 const locales = { de, en, es };

@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Directly querying an item for a required but missing value', () => {
     it('throws the expected ValidationError', () => {

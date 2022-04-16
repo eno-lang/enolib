@@ -1,4 +1,4 @@
-import { parse, HtmlReporter, TerminalReporter } from '../lib/esm/main.js';
+import { parse, HtmlReporter, TerminalReporter } from '..';
 
 describe('Parser options', () => {
     describe('source', () => {

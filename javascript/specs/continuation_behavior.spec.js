@@ -1,4 +1,4 @@
-import { parse } from '../lib/esm/main.js';
+import { parse } from '..';
 
 describe('Continuation behaviour', () => {
     test('empty direct continuations are always ignored', () => {

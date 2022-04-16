@@ -1,4 +1,4 @@
-import { parse } from '../../lib/esm/main.js';
+import { parse } from '../..';
 
 const reverseLoader = value => value.split('').reverse().join('');
 const upperCaseLoader = value => value.toUpperCase();

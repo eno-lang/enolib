@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Querying an existing, single-line, required string comment from a field with attributes', () => {
     it('produces the expected result', () => {

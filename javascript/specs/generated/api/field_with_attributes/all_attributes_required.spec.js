@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Querying a missing attribute on a field with attributes when all attributes are required', () => {
     it('throws the expected ValidationError', () => {

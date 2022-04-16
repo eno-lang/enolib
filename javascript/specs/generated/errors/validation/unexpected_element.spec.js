@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Asserting everything was touched on an untouched document', () => {
     it('throws the expected ValidationError', () => {

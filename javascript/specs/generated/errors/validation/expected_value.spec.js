@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Expecting a field with a value but getting a field with an attribute', () => {
     it('throws the expected ValidationError', () => {

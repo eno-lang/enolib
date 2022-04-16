@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Obtaining and throwing an error with a custom message in the context of a field\'s value', () => {
     it('throws the expected ValidationError', () => {

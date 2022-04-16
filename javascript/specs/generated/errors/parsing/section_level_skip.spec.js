@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Starting a section two levels deeper than the current one', () => {
     it('throws the expected ParseError', () => {

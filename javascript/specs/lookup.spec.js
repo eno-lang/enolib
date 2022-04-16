@@ -1,4 +1,4 @@
-import { lookup } from '../lib/esm/main.js';
+import { lookup } from '..';
 
 // TODO: Error case lookups (indices -1/length+1 etc. and same for line/column)
 //       (all implementations)

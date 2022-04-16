@@ -1,4 +1,4 @@
-import { TerminalReporter, parse, register } from '../javascript/lib/esm/main.js';
+import { TerminalReporter, parse, register } from '../javascript/lib/main.js';
 import fs from 'fs';
 import gettextParser from 'gettext-parser';
 

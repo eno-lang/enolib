@@ -1,4 +1,4 @@
-import { parse, TerminalReporter } from '../javascript/lib/esm/main.js';
+import { parse, TerminalReporter } from '../javascript/lib/main.js';
 import glob from 'fast-glob';
 import fs from 'fs';
 import path from 'path';

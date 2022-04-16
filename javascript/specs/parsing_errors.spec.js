@@ -1,4 +1,4 @@
-import { parse } from '../lib/esm/main.js';
+import { parse } from '..';
 
 const ERROR_SCENARIOS = {
     'attribute_outside_field': [

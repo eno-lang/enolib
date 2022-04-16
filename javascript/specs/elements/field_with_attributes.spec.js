@@ -1,6 +1,6 @@
-import { parse } from '../../lib/esm/main.js';
-import { Attribute } from '../../lib/esm/elements/attribute.js';
-import { MissingAttribute } from '../../lib/esm/elements/missing/missing_attribute.js';
+import { parse } from '../..';
+import { Attribute } from '../../lib/elements/attribute.js';
+import { MissingAttribute } from '../../lib/elements/missing/missing_attribute.js';
 
 describe('Field', () => {
     let field;

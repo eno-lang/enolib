@@ -1,4 +1,4 @@
-import { parse, HtmlReporter } from '../../lib/esm/main.js';
+import { parse, HtmlReporter } from '../..';
 
 const input = `
 > comment

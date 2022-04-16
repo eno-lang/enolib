@@ -1,4 +1,4 @@
-import { parse } from '../lib/esm/main.js';
+import { parse } from '../lib/main.js';
 import fs from 'fs';
 import path from 'path';
 import { performance } from 'perf_hooks';

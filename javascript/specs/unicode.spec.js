@@ -1,4 +1,4 @@
-import { parse } from '../lib/esm/main.js';
+import { parse } from '..';
 
 describe('Unicode special characters', () => {
     test('Line separator is handled correctly', () => {

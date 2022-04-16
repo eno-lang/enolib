@@ -1,4 +1,4 @@
-import { parse, TerminalReporter } from '../../lib/esm/main.js';
+import { parse, TerminalReporter } from '../..';
 
 const input = `
 > comment

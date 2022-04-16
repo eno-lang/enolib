@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('A missing flag queried without a key leaves out the key in the debug string representation', () => {
     it('produces the expected result', () => {

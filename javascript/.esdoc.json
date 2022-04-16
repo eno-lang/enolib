@@ -4,5 +4,5 @@
   "plugins": [
     { "name": "esdoc-standard-plugin" }
   ],
-  "source": "./lib/esm/"
+  "source": "./lib/"
 }

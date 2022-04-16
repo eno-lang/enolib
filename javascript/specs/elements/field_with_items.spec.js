@@ -1,5 +1,5 @@
-import { parse } from '../../lib/esm/main.js';
-import { Item } from '../../lib/esm/elements/item.js';
+import { parse } from '../..';
+import { Item } from '../../lib/elements/item.js';
 
 describe('Field', () => {
     let field;

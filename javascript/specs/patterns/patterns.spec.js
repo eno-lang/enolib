@@ -18,7 +18,7 @@ import {
     KEY_UNESCAPED_INDEX,
     SECTION_KEY_INDEX,
     SECTION_OPERATOR_INDEX
-} from '../../lib/esm/grammar_matcher.js';
+} from '../../lib/grammar_matcher.js';
 import { SCENARIOS } from './scenarios.js';
 
 // TODO: See if there is a way to (more) generically do this (reflection), manual setup might lead to patchy spec coverage

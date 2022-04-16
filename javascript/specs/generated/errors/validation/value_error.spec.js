@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Querying a value from a field with a loader that always produces an error', () => {
     it('throws the expected ValidationError', () => {

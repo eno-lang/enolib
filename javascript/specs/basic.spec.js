@@ -1,4 +1,4 @@
-import { parse } from '../lib/esm/main.js';
+import { parse } from '..';
 
 const input = `
 > comment

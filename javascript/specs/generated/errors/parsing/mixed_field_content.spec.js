@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../../..';
 
 describe('Parsing an attribute preceded by a continuation', () => {
     it('throws the expected ParseError', () => {

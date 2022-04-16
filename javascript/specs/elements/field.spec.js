@@ -1,4 +1,4 @@
-import { parse } from '../../lib/esm/main.js';
+import { parse } from '../..';
 
 describe('Field', () => {
     let emptyField, emptyItem, field, item, itemWithLongValue;

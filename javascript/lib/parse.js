@@ -7,7 +7,7 @@ import { Section } from './elements/section.js';
  * @param {object} options Optional parser settings
  * @param {string} options.source A source label to include in error messages - provide (e.g.) a filename or path to let users know in which file the error occured.
  */
-export function parse(input: string, options = {}) {
+export function parse(input, options = {}) {
     const context = new Context(input, options);
 
     return new Section(context, context._document);

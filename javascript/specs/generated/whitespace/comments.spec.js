@@ -1,4 +1,4 @@
-import { parse, ParseError, ValidationError } from '../../../lib/esm/main.js';
+import { parse, ParseError, ValidationError } from '../../..';
 
 describe('Querying a comment with complex indentation from a section', () => {
     it('produces the expected result', () => {

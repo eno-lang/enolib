@@ -98,7 +98,7 @@ export function javascript(specs) {
         }
         
         const code = interpolatify`
-            import { parse, ParseError, ValidationError } from '../..${'/..'.repeat((spec.path.match(/\//g) || []).length)}/lib/esm/main.js';
+            import { parse, ParseError, ValidationError } from '../..${'/..'.repeat((spec.path.match(/\//g) || []).length)}';
             
             ${tests.join('\n\n')}
         `;

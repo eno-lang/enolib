@@ -1,4 +1,4 @@
-import { parse } from '../../lib/esm/main.js';
+import { parse } from '../..';
 import { unpack } from '../unpack.js';
 
 const input = `

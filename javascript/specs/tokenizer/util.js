@@ -1,4 +1,4 @@
-import { Context } from '../../lib/esm/context.js';
+import { Context } from '../../lib/context.js';
 
 export function inspectTokenization(input) {
     const context = new Context(input, {});

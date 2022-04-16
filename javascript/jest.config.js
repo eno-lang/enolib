@@ -1,5 +1,5 @@
 export default {
-    collectCoverageFrom: ["lib/esm/**"],
+    collectCoverageFrom: ['lib/**'],
     testRegex: '/specs/.*\\.spec\\.js$',
     transform: {}
-};
+}

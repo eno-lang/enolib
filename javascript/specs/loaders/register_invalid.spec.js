@@ -1,4 +1,4 @@
-import { register } from '../../lib/esm/main.js';
+import { register } from '../..';
 
 describe('register (with invalid arguments)', () => {
     describe("trying to register 'string'", () => {

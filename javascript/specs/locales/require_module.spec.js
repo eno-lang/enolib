@@ -1,4 +1,4 @@
-import { parse } from '../../lib/esm/main.js';
+import { parse } from '../..';
 
 // TODO: Make this generic/auto expanding to dynamically available locales (?)
 

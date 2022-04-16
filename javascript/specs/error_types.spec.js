@@ -1,4 +1,4 @@
-import { EnoError, ParseError, ValidationError } from '../lib/esm/main.js';
+import { EnoError, ParseError, ValidationError } from '..';
 
 const text = 'My error';
 const snippet = 'My snippet';
