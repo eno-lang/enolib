@@ -90,15 +90,15 @@ def test_requesting_a_value_error_from_a_field_with_a_dynamically_generated_mess
     assert error.selection['to']['line'] == 0
     assert error.selection['to']['column'] == 12
 
-def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_raises_the_expected_validationerror():
+def test_requesting_a_value_error_from_an_embed_with_a_static_message_raises_the_expected_validationerror():
     error = None
     
-    input = ("-- multiline_field\n"
+    input = ("-- embed\n"
              "value\n"
-             "-- multiline_field")
+             "-- embed")
     
     try:
-        raise enolib.parse(input).field('multiline_field').value_error('my static message')
+        raise enolib.parse(input).embed('embed').value_error('my static message')
     except enolib.ValidationError as _error:
         if isinstance(_error, enolib.ValidationError):
             error = _error
@@ -112,9 +112,9 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_r
     assert error.text == text
     
     snippet = ("   Line | Content\n"
-               "      1 | -- multiline_field\n"
+               "      1 | -- embed\n"
                " >    2 | value\n"
-               "      3 | -- multiline_field")
+               "      3 | -- embed")
     
     assert error.snippet == snippet
     
@@ -123,15 +123,15 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_static_message_r
     assert error.selection['to']['line'] == 1
     assert error.selection['to']['column'] == 5
 
-def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
+def test_requesting_a_value_error_from_an_embed_with_a_dynamically_generated_message_raises_the_expected_validationerror():
     error = None
     
-    input = ("-- multiline_field\n"
+    input = ("-- embed\n"
              "value\n"
-             "-- multiline_field")
+             "-- embed")
     
     try:
-        raise enolib.parse(input).field('multiline_field').value_error(lambda value: f"my generated message for '{value}'")
+        raise enolib.parse(input).embed('embed').value_error(lambda value: f"my generated message for '{value}'")
     except enolib.ValidationError as _error:
         if isinstance(_error, enolib.ValidationError):
             error = _error
@@ -145,9 +145,9 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_gene
     assert error.text == text
     
     snippet = ("   Line | Content\n"
-               "      1 | -- multiline_field\n"
+               "      1 | -- embed\n"
                " >    2 | value\n"
-               "      3 | -- multiline_field")
+               "      3 | -- embed")
     
     assert error.snippet == snippet
     
@@ -156,14 +156,14 @@ def test_requesting_a_value_error_from_a_multiline_field_with_a_dynamically_gene
     assert error.selection['to']['line'] == 1
     assert error.selection['to']['column'] == 5
 
-def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_message_raises_the_expected_validationerror():
+def test_requesting_a_value_error_from_an_empty_embed_with_a_static_message_raises_the_expected_validationerror():
     error = None
     
-    input = ("-- multiline_field\n"
-             "-- multiline_field")
+    input = ("-- embed\n"
+             "-- embed")
     
     try:
-        raise enolib.parse(input).field('multiline_field').value_error('my static message')
+        raise enolib.parse(input).embed('embed').value_error('my static message')
     except enolib.ValidationError as _error:
         if isinstance(_error, enolib.ValidationError):
             error = _error
@@ -177,24 +177,24 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_static_me
     assert error.text == text
     
     snippet = ("   Line | Content\n"
-               " >    1 | -- multiline_field\n"
-               " *    2 | -- multiline_field")
+               " >    1 | -- embed\n"
+               " *    2 | -- embed")
     
     assert error.snippet == snippet
     
     assert error.selection['from']['line'] == 0
-    assert error.selection['from']['column'] == 18
+    assert error.selection['from']['column'] == 8
     assert error.selection['to']['line'] == 0
-    assert error.selection['to']['column'] == 18
+    assert error.selection['to']['column'] == 8
 
-def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamically_generated_message_raises_the_expected_validationerror():
+def test_requesting_a_value_error_from_an_empty_embed_with_a_dynamically_generated_message_raises_the_expected_validationerror():
     error = None
     
-    input = ("-- multiline_field\n"
-             "-- multiline_field")
+    input = ("-- embed\n"
+             "-- embed")
     
     try:
-        raise enolib.parse(input).field('multiline_field').value_error(lambda _value: f"my generated message")
+        raise enolib.parse(input).embed('embed').value_error(lambda _value: f"my generated message")
     except enolib.ValidationError as _error:
         if isinstance(_error, enolib.ValidationError):
             error = _error
@@ -208,15 +208,15 @@ def test_requesting_a_value_error_from_an_empty_multiline_field_with_a_dynamical
     assert error.text == text
     
     snippet = ("   Line | Content\n"
-               " >    1 | -- multiline_field\n"
-               " *    2 | -- multiline_field")
+               " >    1 | -- embed\n"
+               " *    2 | -- embed")
     
     assert error.snippet == snippet
     
     assert error.selection['from']['line'] == 0
-    assert error.selection['from']['column'] == 18
+    assert error.selection['from']['column'] == 8
     assert error.selection['to']['line'] == 0
-    assert error.selection['to']['column'] == 18
+    assert error.selection['to']['column'] == 8
 
 def test_requesting_a_value_error_from_a_field_with_continuations_with_a_static_message_raises_the_expected_validationerror():
     error = None

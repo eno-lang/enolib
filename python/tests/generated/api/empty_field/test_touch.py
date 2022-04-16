@@ -27,7 +27,7 @@ def test_asserting_everything_was_touched_when_the_only_present_empty_field_was_
     assert error.selection['from']['line'] == 0
     assert error.selection['from']['column'] == 0
     assert error.selection['to']['line'] == 0
-    assert error.selection['to']['column'] == 5
+    assert error.selection['to']['column'] == 6
 
 def test_asserting_everything_was_touched_when_the_only_present_empty_field_was_touched_as_an_element_produces_the_expected_result():
     input = ("field:")

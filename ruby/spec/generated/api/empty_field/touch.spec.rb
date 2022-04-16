@@ -19,7 +19,7 @@ describe 'Asserting everything was touched when the only present, empty field wa
       expect(error.selection[:from][:line]).to eq(0)
       expect(error.selection[:from][:column]).to eq(0)
       expect(error.selection[:to][:line]).to eq(0)
-      expect(error.selection[:to][:column]).to eq(5)
+      expect(error.selection[:to][:column]).to eq(6)
     end
   end
 end

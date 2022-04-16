@@ -1,0 +1,79 @@
+# A missing flag queried without a key leaves out the key in the debug string representation
+
+-- input
+
+-- input
+
+-- javascript
+const output = parse(input).flag().toString();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->flag()->toString();
+-- php
+
+-- python
+output = repr(enolib.parse(input).flag())
+-- python
+
+-- ruby
+output = Enolib.parse(input).flag.to_s
+-- ruby
+
+## Result
+
+-- javascript
+'[object MissingFlag]'
+-- javascript
+
+-- php
+'[MissingFlag]'
+-- php
+
+-- python
+'<class MissingFlag>'
+-- python
+
+-- ruby
+'#<Enolib::MissingFlag>'
+-- ruby
+
+# A missing flag queried with a key includes the key in the debug string representation
+
+-- input
+
+-- input
+
+-- javascript
+const output = parse(input).flag('key').toString();
+-- javascript
+
+-- php
+$output = Enolib\Parser::parse($input)->flag('key')->toString();
+-- php
+
+-- python
+output = repr(enolib.parse(input).flag('key'))
+-- python
+
+-- ruby
+output = Enolib.parse(input).flag('key').to_s
+-- ruby
+
+## Result
+
+-- javascript
+'[object MissingFlag key=key]'
+-- javascript
+
+-- php
+'[MissingFlag key=key]'
+-- php
+
+-- python
+'<class MissingFlag key=key>'
+-- python
+
+-- ruby
+'#<Enolib::MissingFlag key=key>'
+-- ruby

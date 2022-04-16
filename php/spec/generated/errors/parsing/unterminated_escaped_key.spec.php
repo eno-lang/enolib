@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-describe('A single field with an terminated escaped key', function() {
+describe('A single field with an unterminated escaped key', function() {
     it('throws the expected ParseError', function() {
         $error = null;
         
@@ -14,7 +14,7 @@ describe('A single field with an terminated escaped key', function() {
         
         expect($error)->toBeAnInstanceOf('Enolib\ParseError');
         
-        $text = "In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.";
+        $text = "The key escape sequence in line 1 is not terminated before the end of the line.";
         
         expect($error->text)->toEqual($text);
         

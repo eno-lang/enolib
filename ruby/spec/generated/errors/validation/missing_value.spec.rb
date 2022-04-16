@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
-describe 'Querying a fieldset entry for a required but missing value' do
+describe 'Querying an attribute for a required but missing value' do
   it 'raises the expected ValidationError' do
-    input = "fieldset:\n" \
-            'entry ='
+    input = "field:\n" \
+            'attribute ='
 
     begin
-      Enolib.parse(input).fieldset('fieldset').entry('entry').required_string_value
+      Enolib.parse(input).field('field').attribute('attribute').required_string_value
     rescue Enolib::ValidationError => error
-      text = 'The fieldset entry \'entry\' must contain a value.'
+      text = 'The attribute \'attribute\' must contain a value.'
       
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                "      1 | fieldset:\n" \
-                ' >    2 | entry ='
+                "      1 | field:\n" \
+                ' >    2 | attribute ='
       
       expect(error.snippet).to eq(snippet)
       
       expect(error.selection[:from][:line]).to eq(1)
-      expect(error.selection[:from][:column]).to eq(7)
+      expect(error.selection[:from][:column]).to eq(11)
       expect(error.selection[:to][:line]).to eq(1)
-      expect(error.selection[:to][:column]).to eq(7)
+      expect(error.selection[:to][:column]).to eq(11)
     end
   end
 end
@@ -80,21 +80,21 @@ describe 'Querying a field with empty line continuations for a required but miss
   end
 end
 
-describe 'Querying a list with an empty item for required values' do
+describe 'Querying a field with an empty item for required values' do
   it 'raises the expected ValidationError' do
-    input = "list:\n" \
+    input = "field:\n" \
             "- item\n" \
             '-'
 
     begin
-      Enolib.parse(input).list('list').required_string_values
+      Enolib.parse(input).field('field').required_string_values
     rescue Enolib::ValidationError => error
-      text = 'The list \'list\' may not contain empty items.'
+      text = 'The field \'field\' may not contain empty items.'
       
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                "      1 | list:\n" \
+                "      1 | field:\n" \
                 "      2 | - item\n" \
                 ' >    3 | -'
       

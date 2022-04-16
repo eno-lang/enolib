@@ -30,7 +30,7 @@ describe('Asserting everything was touched when the only present embed was not t
         expect($error->selection['from']['line'])->toEqual(0);
         expect($error->selection['from']['column'])->toEqual(0);
         expect($error->selection['to']['line'])->toEqual(2);
-        expect($error->selection['to']['column'])->toEqual(18);
+        expect($error->selection['to']['column'])->toEqual(8);
     });
 });
 

@@ -31,7 +31,7 @@ def test_asserting_everything_was_touched_when_the_only_present_embed_was_not_to
     assert error.selection['from']['line'] == 0
     assert error.selection['from']['column'] == 0
     assert error.selection['to']['line'] == 2
-    assert error.selection['to']['column'] == 18
+    assert error.selection['to']['column'] == 8
 
 def test_asserting_everything_was_touched_when_the_only_present_embed_was_touched_produces_the_expected_result():
     input = ("-- embed\n"

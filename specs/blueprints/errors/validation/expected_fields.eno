@@ -1,0 +1,290 @@
+# Expecting fields but getting an empty embed
+
+-- input
+-- element
+-- element
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | -- element
+ *    2 | -- element
+-- snippet
+
+selection: [0,0] => [1,10]
+
+
+# Expecting fields but getting an embed with a value
+
+-- input
+-- element
+value
+-- element
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | -- element
+ *    2 | value
+ *    3 | -- element
+-- snippet
+
+selection: [0,0] => [2,10]
+
+# Expecting fields but getting an embed with a comment
+
+-- input
+> comment
+-- element
+value
+-- element
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+      1 | > comment
+ >    2 | -- element
+ *    3 | value
+ *    4 | -- element
+-- snippet
+
+selection: [1,0] => [3,10]
+
+# Expecting fields but getting a flag
+
+-- input
+element
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | element
+-- snippet
+
+selection: [0,0] => [0,7]
+
+# Expecting fields but getting an empty section
+
+-- input
+# element
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # element
+-- snippet
+
+selection: [0,0] => [0,9]
+
+
+# Expecting fields but getting a section with a field with a value and a field with items
+
+-- input
+# element
+
+field: value
+
+field:
+- item
+- item
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # element
+ *    2 | 
+ *    3 | field: value
+ *    4 | 
+ *    5 | field:
+ *    6 | - item
+ *    7 | - item
+-- snippet
+
+selection: [0,0] => [6,6]
+
+# Expecting fields but getting a section with subsections
+
+-- input
+# element
+
+## section
+
+field: value
+
+## section
+
+field:
+- item
+- item
+-- input
+
+-- javascript
+parse(input).fields('element');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->fields('element');
+-- php
+
+-- python
+enolib.parse(input).fields('element')
+-- python
+
+-- ruby
+Enolib.parse(input).fields('element')
+-- ruby
+
+## ValidationError
+
+-- text
+Only fields with the key 'element' were expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | # element
+ *    2 | 
+ *    3 | ## section
+ *    4 | 
+ *    5 | field: value
+ *    6 | 
+ *    7 | ## section
+ *    8 | 
+ *    9 | field:
+ *   10 | - item
+ *   11 | - item
+-- snippet
+
+selection: [0,0] => [10,6]

@@ -1,0 +1,115 @@
+# Parsing an attribute preceded by a continuation
+
+-- input
+field:
+| continuation
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+The field in line 1 must contain either only attributes, only items, or only a value.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+ *    2 | | continuation
+ >    3 | attribute = value
+-- snippet
+
+selection: [2,0] => [2,17]
+
+
+# Parsing an attribute preceded by a value
+
+-- input
+field: value
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+The field in line 1 must contain either only attributes, only items, or only a value.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field: value
+ >    2 | attribute = value
+-- snippet
+
+selection: [1,0] => [1,17]
+
+
+# Parsing an attribute preceded by a item
+
+-- input
+field:
+- item
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+The field in line 1 must contain either only attributes, only items, or only a value.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+ *    2 | - item
+ >    3 | attribute = value
+-- snippet
+
+selection: [2,0] => [2,17]
+
+# Parsing an item preceded by a continuation
+
+-- input
+field:
+| continuation
+- item
+-- input
+
+## ParseError
+
+-- text
+The field in line 1 must contain either only attributes, only items, or only a value.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+ *    2 | | continuation
+ >    3 | - item
+-- snippet
+
+selection: [2,0] => [2,6]
+
+
+# Parsing an item preceded by an attribute
+
+-- input
+field:
+attribute = value
+- item
+-- input
+
+## ParseError
+
+-- text
+The field in line 1 must contain either only attributes, only items, or only a value.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+ *    2 | attribute = value
+ >    3 | - item
+-- snippet
+
+selection: [2,0] => [2,6]

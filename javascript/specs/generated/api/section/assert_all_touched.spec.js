@@ -17,7 +17,7 @@ describe('Asserting everything was touched on an untouched document containing a
         const input = `field: value`;
         
         try {
-            enolib.parse(input).assertAllTouched();
+            parse(input).assertAllTouched();
         } catch(_error) {
             if (_error instanceof ValidationError) {
                 error = _error;

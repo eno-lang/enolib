@@ -190,7 +190,7 @@ document.optional_element('element')
 
 ## Passes
 
-# Querying a missing but explicitly optional empty on the document when requiring all elements is enabled 
+# Querying a missing but explicitly optional flag on the document when requiring all elements is enabled 
 
 -- input
 
@@ -200,28 +200,28 @@ document.optional_element('element')
 const document = parse(input);
 
 document.allElementsRequired();
-document.optionalEmpty('empty');
+document.optionalFlag('flag');
 -- javascript
 
 -- php
 $document = Enolib\Parser::parse($input);
 
 $document->allElementsRequired();
-$document->optionalEmpty('empty');
+$document->optionalFlag('flag');
 -- php
 
 -- python
 document = enolib.parse(input)
 
 document.all_elements_required()
-document.optional_empty('empty')
+document.optional_flag('flag')
 -- python
 
 -- ruby
 document = Enolib.parse(input)
 
 document.all_elements_required
-document.optional_empty('empty')
+document.optional_flag('flag')
 -- ruby
 
 ## Passes

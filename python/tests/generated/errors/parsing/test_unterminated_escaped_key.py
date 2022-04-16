@@ -1,6 +1,6 @@
 import enolib
 
-def test_a_single_field_with_an_terminated_escaped_key_raises_the_expected_parseerror():
+def test_a_single_field_with_an_unterminated_escaped_key_raises_the_expected_parseerror():
     error = None
     
     input = ("`field: value")
@@ -15,7 +15,7 @@ def test_a_single_field_with_an_terminated_escaped_key_raises_the_expected_parse
 
     assert type(error) is enolib.ParseError
     
-    text = ("In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.")
+    text = ("The key escape sequence in line 1 is not terminated before the end of the line.")
     
     assert error.text == text
     

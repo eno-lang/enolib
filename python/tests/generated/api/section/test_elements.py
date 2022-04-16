@@ -15,6 +15,6 @@ def test_querying_elements_from_a_section_by_key_produces_the_expected_result():
              "other: one\n"
              "other: two")
     
-    output = [element.to_field().required_string_value() for element in enolib.parse(input).section('section').elements('other')]
+    output = [element.required_string_value() for element in enolib.parse(input).section('section').elements('other')]
     
     assert output == ['one', 'two']

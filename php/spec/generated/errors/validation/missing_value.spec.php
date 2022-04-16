@@ -1,34 +1,34 @@
 <?php declare(strict_types=1);
 
-describe('Querying a fieldset entry for a required but missing value', function() {
+describe('Querying an attribute for a required but missing value', function() {
     it('throws the expected ValidationError', function() {
         $error = null;
         
-        $input = "fieldset:\n" .
-                 "entry =";
+        $input = "field:\n" .
+                 "attribute =";
         
         try {
-            Enolib\Parser::parse($input)->fieldset('fieldset')->entry('entry')->requiredStringValue();
+            Enolib\Parser::parse($input)->field('field')->attribute('attribute')->requiredStringValue();
         } catch(Enolib\ValidationError $_error) {
             $error = $_error;
         }
         
         expect($error)->toBeAnInstanceOf('Enolib\ValidationError');
         
-        $text = "The fieldset entry 'entry' must contain a value.";
+        $text = "The attribute 'attribute' must contain a value.";
         
         expect($error->text)->toEqual($text);
         
         $snippet = "   Line | Content\n" .
-                   "      1 | fieldset:\n" .
-                   " >    2 | entry =";
+                   "      1 | field:\n" .
+                   " >    2 | attribute =";
         
         expect($error->snippet)->toEqual($snippet);
         
         expect($error->selection['from']['line'])->toEqual(1);
-        expect($error->selection['from']['column'])->toEqual(7);
+        expect($error->selection['from']['column'])->toEqual(11);
         expect($error->selection['to']['line'])->toEqual(1);
-        expect($error->selection['to']['column'])->toEqual(7);
+        expect($error->selection['to']['column'])->toEqual(11);
     });
 });
 
@@ -98,28 +98,28 @@ describe('Querying a field with empty line continuations for a required but miss
     });
 });
 
-describe('Querying a list with an empty item for required values', function() {
+describe('Querying a field with an empty item for required values', function() {
     it('throws the expected ValidationError', function() {
         $error = null;
         
-        $input = "list:\n" .
+        $input = "field:\n" .
                  "- item\n" .
                  "-";
         
         try {
-            Enolib\Parser::parse($input)->list('list')->requiredStringValues();
+            Enolib\Parser::parse($input)->field('field')->requiredStringValues();
         } catch(Enolib\ValidationError $_error) {
             $error = $_error;
         }
         
         expect($error)->toBeAnInstanceOf('Enolib\ValidationError');
         
-        $text = "The list 'list' may not contain empty items.";
+        $text = "The field 'field' may not contain empty items.";
         
         expect($error->text)->toEqual($text);
         
         $snippet = "   Line | Content\n" .
-                   "      1 | list:\n" .
+                   "      1 | field:\n" .
                    "      2 | - item\n" .
                    " >    3 | -";
         

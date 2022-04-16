@@ -94,14 +94,14 @@ describe('Querying a missing but explicitly optional element on the document whe
     });
 });
 
-describe('Querying a missing but explicitly optional empty on the document when requiring all elements is enabled', () => {
+describe('Querying a missing but explicitly optional flag on the document when requiring all elements is enabled', () => {
     it('produces the expected result', () => {
         const input = ``;
         
         const document = parse(input);
         
         document.allElementsRequired();
-        document.optionalEmpty('empty');
+        document.optionalFlag('flag');
         
         expect('it passes').toBeTruthy();
     });

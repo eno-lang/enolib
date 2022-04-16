@@ -1,0 +1,273 @@
+# Expecting a field but getting two fields
+
+-- input
+field: value
+field: value
+-- input
+
+-- javascript
+parse(input).field('field');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+Only a single field with the key 'field' was expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+ >    2 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]
+
+# Expecting a field but getting two fields with comments, empty lines and continuations
+
+-- input
+> comment
+field: value
+\ continuation
+
+\ continuation
+
+field: value
+> comment
+| continutation
+-- input
+
+-- javascript
+parse(input).field('field');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+Only a single field with the key 'field' was expected.
+-- text
+
+-- snippet
+   Line | Content
+      1 | > comment
+ >    2 | field: value
+ *    3 | \ continuation
+ *    4 | 
+ *    5 | \ continuation
+      6 | 
+ >    7 | field: value
+ *    8 | > comment
+ *    9 | | continutation
+-- snippet
+
+selection: [1,0] => [4,14]
+
+# Expecting a field but getting two fields
+
+-- input
+field:
+attribute = value
+field:
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+Only a single field with the key 'field' was expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | attribute = value
+ >    3 | field:
+ *    4 | attribute = value
+-- snippet
+
+selection: [0,0] => [1,17]
+
+# Expecting a field but getting two fields with attributes, comments, empty lines and continuations
+
+-- input
+> comment
+field:
+attribute = value
+
+attribute = value
+
+field:
+> comment
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+Only a single field with the key 'field' was expected.
+-- text
+
+-- snippet
+   Line | Content
+      1 | > comment
+ >    2 | field:
+ *    3 | attribute = value
+ *    4 | 
+ *    5 | attribute = value
+      6 | 
+ >    7 | field:
+ *    8 | > comment
+ *    9 | attribute = value
+-- snippet
+
+selection: [1,0] => [4,17]
+
+# Expecting a field but getting two fields with items
+
+-- input
+field:
+- item
+field:
+- item
+-- input
+
+-- javascript
+parse(input).field('field');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+Only a single field with the key 'field' was expected.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | - item
+ >    3 | field:
+ *    4 | - item
+-- snippet
+
+selection: [0,0] => [1,6]
+
+# Expecting a field but getting two fields with items, comments, empty lines and continuations
+
+-- input
+> comment
+field:
+- item
+
+- item
+
+field:
+> comment
+- item
+\ continuation
+-- input
+
+-- javascript
+parse(input).field('field');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field');
+-- php
+
+-- python
+enolib.parse(input).field('field')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field')
+-- ruby
+
+## ValidationError
+
+-- text
+Only a single field with the key 'field' was expected.
+-- text
+
+-- snippet
+   Line | Content
+      1 | > comment
+ >    2 | field:
+ *    3 | - item
+ *    4 | 
+ *    5 | - item
+      6 | 
+ >    7 | field:
+ *    8 | > comment
+ *    9 | - item
+ *   10 | \ continuation
+-- snippet
+
+selection: [1,0] => [4,6]

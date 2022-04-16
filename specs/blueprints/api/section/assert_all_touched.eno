@@ -29,7 +29,7 @@ field: value
 -- input
 
 -- javascript
-enolib.parse(input).assertAllTouched();
+parse(input).assertAllTouched();
 -- javascript
 
 -- php

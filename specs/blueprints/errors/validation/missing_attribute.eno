@@ -1,0 +1,120 @@
+# Querying an empty field for a required but missing attribute 
+
+-- input
+field:
+-- input
+
+-- javascript
+parse(input).field('field').requiredAttribute('attribute');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredAttribute('attribute');
+-- php
+
+-- python
+enolib.parse(input).field('field').required_attribute('attribute')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_attribute('attribute')
+-- ruby
+
+## ValidationError
+
+-- text
+The attribute 'attribute' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+-- snippet
+
+selection: [0,6] => [0,6]
+
+# Querying a field with two attributes for a required but missing attribute 
+
+-- input
+field:
+attribute = value
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field').requiredAttribute('missing');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredAttribute('missing');
+-- php
+
+-- python
+enolib.parse(input).field('field').required_attribute('missing')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_attribute('missing')
+-- ruby
+
+## ValidationError
+
+-- text
+The attribute 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+ ?    2 | attribute = value
+ ?    3 | attribute = value
+-- snippet
+
+selection: [0,6] => [0,6]
+
+# Querying a field with attributes, empty lines and comments for a required but missing attribute 
+
+-- input
+field:
+
+> comment
+attribute = value
+
+> comment
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field').requiredAttribute('missing');
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredAttribute('missing');
+-- php
+
+-- python
+enolib.parse(input).field('field').required_attribute('missing')
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_attribute('missing')
+-- ruby
+
+## ValidationError
+
+-- text
+The attribute 'missing' is missing - in case it has been specified look for typos and also check for correct capitalization.
+-- text
+
+-- snippet
+   Line | Content
+ *    1 | field:
+ ?    2 | 
+ ?    3 | > comment
+ ?    4 | attribute = value
+ ?    5 | 
+ ?    6 | > comment
+ ?    7 | attribute = value
+-- snippet
+
+selection: [0,6] => [0,6]

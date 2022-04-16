@@ -7,7 +7,7 @@ describe('Querying all attributes from a field', function() {
                  "2 = 2";
         
         $output = array_map(
-          function($entry) { return $entry->requiredStringValue(); },
+          function($attribute) { return $attribute->requiredStringValue(); },
           Enolib\Parser::parse($input)->field('field')->attributes()
         );
         
@@ -18,12 +18,12 @@ describe('Querying all attributes from a field', function() {
 describe('Querying attributes from a field by key', function() {
     it('produces the expected result', function() {
         $input = "field:\n" .
-                 "entry = value\n" .
+                 "attribute = value\n" .
                  "other = one\n" .
                  "other = two";
         
         $output = array_map(
-          function($entry) { return $entry->requiredStringValue(); },
+          function($attribute) { return $attribute->requiredStringValue(); },
           Enolib\Parser::parse($input)->field('field')->attributes('other')
         );
         

@@ -29,7 +29,7 @@ def test_asserting_everything_was_touched_when_the_only_present_field_with_attri
     assert error.selection['from']['line'] == 0
     assert error.selection['from']['column'] == 0
     assert error.selection['to']['line'] == 1
-    assert error.selection['to']['column'] == 13
+    assert error.selection['to']['column'] == 17
 
 def test_asserting_everything_was_touched_when_the_only_present_field_with_attributes_was_touched_produces_the_expected_result():
     input = ("field:\n"

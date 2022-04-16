@@ -1,0 +1,263 @@
+# Expecting a field with a value but getting a field with an attribute
+
+-- input
+field:
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | attribute = value
+-- snippet
+
+selection: [0,0] => [1,17]
+
+
+# Expecting a field containing a value but getting a field containing three attributes with empty lines
+
+-- input
+field:
+
+attribute = value
+
+attribute = value
+
+attribute = value
+
+-- input
+
+-- javascript
+parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | 
+ *    3 | attribute = value
+ *    4 | 
+ *    5 | attribute = value
+ *    6 | 
+ *    7 | attribute = value
+      8 | 
+-- snippet
+
+selection: [0,0] => [6,17]
+
+# Expecting a field containing a value but getting a field containing two attributes with comments
+
+-- input
+field:
+> comment
+attribute = value
+
+> comment
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | > comment
+ *    3 | attribute = value
+ *    4 | 
+ *    5 | > comment
+ *    6 | attribute = value
+-- snippet
+
+selection: [0,0] => [5,17]
+
+# Expecting a field containing a value but getting a field containing one item
+
+-- input
+field:
+- item
+-- input
+
+-- javascript
+parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | - item
+-- snippet
+
+selection: [0,0] => [1,6]
+
+
+# Expecting a field containing a value but getting a field containing three items with empty lines
+
+-- input
+field:
+
+- item
+
+- item
+
+- item
+
+-- input
+
+-- javascript
+parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | 
+ *    3 | - item
+ *    4 | 
+ *    5 | - item
+ *    6 | 
+ *    7 | - item
+      8 | 
+-- snippet
+
+selection: [0,0] => [6,6]
+
+# Expecting a field containing a value but getting a field with two items with comments
+
+-- input
+field:
+> comment
+- item
+
+> comment
+- item
+-- input
+
+-- javascript
+parse(input).field('field').requiredStringValue();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->requiredStringValue();
+-- php
+
+-- python
+enolib.parse(input).field('field').required_string_value()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').required_string_value
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only a value.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | > comment
+ *    3 | - item
+ *    4 | 
+ *    5 | > comment
+ *    6 | - item
+-- snippet
+
+selection: [0,0] => [5,6]

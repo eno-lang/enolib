@@ -38,7 +38,7 @@ describe('Asserting everything was touched when the only present section was tou
     it('produces the expected result', () => {
         const input = `# section`;
         
-        const document = enolib.parse(input);
+        const document = parse(input);
         
         document.section('section').touch();
         document.assertAllTouched();

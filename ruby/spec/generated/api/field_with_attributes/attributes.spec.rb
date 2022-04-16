@@ -15,7 +15,7 @@ end
 describe 'Querying attributes from a field by key' do
   it 'produces the expected result' do
     input = "field:\n" \
-            "entry = value\n" \
+            "attribute = value\n" \
             "other = one\n" \
             'other = two'
     

@@ -19,7 +19,7 @@ describe('Querying elements from a section by key', () => {
                       `other: one\n` +
                       `other: two`;
         
-        const output = parse(input).section('section').elements('other').map(element => element.toField().requiredStringValue());
+        const output = parse(input).section('section').elements('other').map(element => element.requiredStringValue());
         
         expect(output).toEqual(['one', 'two']);
     });

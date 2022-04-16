@@ -86,14 +86,14 @@ describe('Querying a missing but explicitly optional element on the document whe
     });
 });
 
-describe('Querying a missing but explicitly optional empty on the document when requiring all elements is enabled', function() {
+describe('Querying a missing but explicitly optional flag on the document when requiring all elements is enabled', function() {
     it('produces the expected result', function() {
         $input = "";
         
         $document = Enolib\Parser::parse($input);
         
         $document->allElementsRequired();
-        $document->optionalEmpty('empty');
+        $document->optionalFlag('flag');
         
         expect('it passes')->toBeTruthy();
     });

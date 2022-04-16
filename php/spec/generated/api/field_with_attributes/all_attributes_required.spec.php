@@ -80,7 +80,7 @@ describe('Querying a missing but explicitly optional attribute on a field with a
         $field = Enolib\Parser::parse($input)->field('field');
         
         $field->allAttributesRequired();
-        $field->optionalEntry('attribute');
+        $field->optionalAttribute('attribute');
         
         expect('it passes')->toBeTruthy();
     });

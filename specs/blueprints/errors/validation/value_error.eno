@@ -112,28 +112,28 @@ There is a problem with the value of this element: my generated message for 'val
 
 selection: [0,7] => [0,12]
 
-# Requesting a value error from a multiline field with a static message
+# Requesting a value error from an embed with a static message
 
 -- input
--- multiline_field
+-- embed
 value
--- multiline_field
+-- embed
 -- input
 
 -- javascript
-throw parse(input).field('multiline_field').valueError('my static message');
+throw parse(input).embed('embed').valueError('my static message');
 -- javascript
 
 -- php
-throw Enolib\Parser::parse($input)->field('multiline_field')->valueError('my static message');
+throw Enolib\Parser::parse($input)->embed('embed')->valueError('my static message');
 -- php
 
 -- python
-raise enolib.parse(input).field('multiline_field').value_error('my static message')
+raise enolib.parse(input).embed('embed').value_error('my static message')
 -- python
 
 -- ruby
-raise Enolib.parse(input).field('multiline_field').value_error('my static message')
+raise Enolib.parse(input).embed('embed').value_error('my static message')
 -- ruby
 
 ## ValidationError
@@ -144,35 +144,35 @@ There is a problem with the value of this element: my static message
 
 -- snippet
    Line | Content
-      1 | -- multiline_field
+      1 | -- embed
  >    2 | value
-      3 | -- multiline_field
+      3 | -- embed
 -- snippet
 
 selection: [1,0] => [1,5]
 
-# Requesting a value error from a multiline field with a dynamically generated message
+# Requesting a value error from an embed with a dynamically generated message
 
 -- input
--- multiline_field
+-- embed
 value
--- multiline_field
+-- embed
 -- input
 
 -- javascript
-throw parse(input).field('multiline_field').valueError(value => `my generated message for '${value}'`);
+throw parse(input).embed('embed').valueError(value => `my generated message for '${value}'`);
 -- javascript
 
 -- php
-throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message for '{$value}'"; });
+throw Enolib\Parser::parse($input)->embed('embed')->valueError(function($value) { return "my generated message for '{$value}'"; });
 -- php
 
 -- python
-raise enolib.parse(input).field('multiline_field').value_error(lambda value: f"my generated message for '{value}'")
+raise enolib.parse(input).embed('embed').value_error(lambda value: f"my generated message for '{value}'")
 -- python
 
 -- ruby
-raise(Enolib.parse(input).field('multiline_field').value_error { |value| "my generated message for '#{value}'" })
+raise(Enolib.parse(input).embed('embed').value_error { |value| "my generated message for '#{value}'" })
 -- ruby
 
 ## ValidationError
@@ -183,34 +183,34 @@ There is a problem with the value of this element: my generated message for 'val
 
 -- snippet
    Line | Content
-      1 | -- multiline_field
+      1 | -- embed
  >    2 | value
-      3 | -- multiline_field
+      3 | -- embed
 -- snippet
 
 selection: [1,0] => [1,5]
 
-# Requesting a value error from an empty multiline field with a static message
+# Requesting a value error from an empty embed with a static message
 
 -- input
--- multiline_field
--- multiline_field
+-- embed
+-- embed
 -- input
 
 -- javascript
-throw parse(input).field('multiline_field').valueError('my static message');
+throw parse(input).embed('embed').valueError('my static message');
 -- javascript
 
 -- php
-throw Enolib\Parser::parse($input)->field('multiline_field')->valueError('my static message');
+throw Enolib\Parser::parse($input)->embed('embed')->valueError('my static message');
 -- php
 
 -- python
-raise enolib.parse(input).field('multiline_field').value_error('my static message')
+raise enolib.parse(input).embed('embed').value_error('my static message')
 -- python
 
 -- ruby
-raise Enolib.parse(input).field('multiline_field').value_error('my static message')
+raise Enolib.parse(input).embed('embed').value_error('my static message')
 -- ruby
 
 ## ValidationError
@@ -221,33 +221,33 @@ There is a problem with the value of this element: my static message
 
 -- snippet
    Line | Content
- >    1 | -- multiline_field
- *    2 | -- multiline_field
+ >    1 | -- embed
+ *    2 | -- embed
 -- snippet
 
-selection: [0,18] => [0,18]
+selection: [0,8] => [0,8]
 
-# Requesting a value error from an empty multiline field with a dynamically generated message
+# Requesting a value error from an empty embed with a dynamically generated message
 
 -- input
--- multiline_field
--- multiline_field
+-- embed
+-- embed
 -- input
 
 -- javascript
-throw parse(input).field('multiline_field').valueError(_value => `my generated message`);
+throw parse(input).embed('embed').valueError(_value => `my generated message`);
 -- javascript
 
 -- php
-throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($_value) { return "my generated message"; });
+throw Enolib\Parser::parse($input)->embed('embed')->valueError(function($_value) { return "my generated message"; });
 -- php
 
 -- python
-raise enolib.parse(input).field('multiline_field').value_error(lambda _value: f"my generated message")
+raise enolib.parse(input).embed('embed').value_error(lambda _value: f"my generated message")
 -- python
 
 -- ruby
-raise(Enolib.parse(input).field('multiline_field').value_error { |_value| 'my generated message' })
+raise(Enolib.parse(input).embed('embed').value_error { |_value| 'my generated message' })
 -- ruby
 
 ## ValidationError
@@ -258,11 +258,11 @@ There is a problem with the value of this element: my generated message
 
 -- snippet
    Line | Content
- >    1 | -- multiline_field
- *    2 | -- multiline_field
+ >    1 | -- embed
+ *    2 | -- embed
 -- snippet
 
-selection: [0,18] => [0,18]
+selection: [0,8] => [0,8]
 
 # Requesting a value error from a field with continuations with a static message
 

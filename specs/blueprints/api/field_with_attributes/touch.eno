@@ -33,7 +33,7 @@ This element was not expected, make sure it is at the right place in the documen
  *    2 | attribute = value
 -- snippet
 
-selection: [0,0] => [1,13]
+selection: [0,0] => [1,17]
 
 # Asserting everything was touched when the only present field with attributes was touched
 

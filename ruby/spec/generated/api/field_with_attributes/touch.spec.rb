@@ -21,7 +21,7 @@ describe 'Asserting everything was touched when the only present field with attr
       expect(error.selection[:from][:line]).to eq(0)
       expect(error.selection[:from][:column]).to eq(0)
       expect(error.selection[:to][:line]).to eq(1)
-      expect(error.selection[:to][:column]).to eq(13)
+      expect(error.selection[:to][:column]).to eq(17)
     end
   end
 end

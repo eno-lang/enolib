@@ -1,0 +1,252 @@
+# Expecting a field containing items but getting a field containing a value
+
+-- input
+field: value
+-- input
+
+-- javascript
+parse(input).field('field').items();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->items();
+-- php
+
+-- python
+enolib.parse(input).field('field').items()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').items
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only items.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,12]
+
+
+# Expecting a field containing items but getting a field containing continuations
+
+-- input
+field:
+| continuation
+| continuation
+-- input
+
+-- javascript
+parse(input).field('field').items();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->items();
+-- php
+
+-- python
+enolib.parse(input).field('field').items()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').items
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only items.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | | continuation
+ *    3 | | continuation
+-- snippet
+
+selection: [0,0] => [2,14]
+
+# Expecting a field with items but getting a field containing a value and continuations separated by idle lines
+
+-- input
+field: value
+| continuation
+| continuation
+
+> comment
+| continuation
+-- input
+
+-- javascript
+parse(input).field('field').items();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->items();
+-- php
+
+-- python
+enolib.parse(input).field('field').items()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').items
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only items.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field: value
+ *    2 | | continuation
+ *    3 | | continuation
+ *    4 | 
+ *    5 | > comment
+ *    6 | | continuation
+-- snippet
+
+selection: [0,0] => [5,14]
+
+# Expecting a field containing items but getting a field with one attribute
+
+-- input
+field:
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field').items();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->items();
+-- php
+
+-- python
+enolib.parse(input).field('field').items()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').items
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only items.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | attribute = value
+-- snippet
+
+selection: [0,0] => [1,17]
+
+
+# Expecting a field containing items but getting a field containing empty lines and three attributes
+
+-- input
+field:
+
+attribute = value
+
+attribute = value
+
+attribute = value
+
+-- input
+
+-- javascript
+parse(input).field('field').items();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->items();
+-- php
+
+-- python
+enolib.parse(input).field('field').items()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').items
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only items.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | 
+ *    3 | attribute = value
+ *    4 | 
+ *    5 | attribute = value
+ *    6 | 
+ *    7 | attribute = value
+      8 | 
+-- snippet
+
+selection: [0,0] => [6,17]
+
+# Expecting a field containing items but getting a field containing two attributes with comments
+
+-- input
+field:
+> comment
+attribute = value
+
+> comment
+attribute = value
+-- input
+
+-- javascript
+parse(input).field('field').items();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->field('field')->items();
+-- php
+
+-- python
+enolib.parse(input).field('field').items()
+-- python
+
+-- ruby
+Enolib.parse(input).field('field').items
+-- ruby
+
+## ValidationError
+
+-- text
+This field was expected to contain only items.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | field:
+ *    2 | > comment
+ *    3 | attribute = value
+ *    4 | 
+ *    5 | > comment
+ *    6 | attribute = value
+-- snippet
+
+selection: [0,0] => [5,17]
+

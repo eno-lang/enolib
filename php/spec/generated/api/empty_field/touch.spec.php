@@ -26,7 +26,7 @@ describe('Asserting everything was touched when the only present, empty field wa
         expect($error->selection['from']['line'])->toEqual(0);
         expect($error->selection['from']['column'])->toEqual(0);
         expect($error->selection['to']['line'])->toEqual(0);
-        expect($error->selection['to']['column'])->toEqual(5);
+        expect($error->selection['to']['column'])->toEqual(6);
     });
 });
 

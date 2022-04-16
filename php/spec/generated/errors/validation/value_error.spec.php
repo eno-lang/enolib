@@ -94,16 +94,16 @@ describe('Requesting a value error from a field with a dynamically generated mes
     });
 });
 
-describe('Requesting a value error from a multiline field with a static message', function() {
+describe('Requesting a value error from an embed with a static message', function() {
     it('throws the expected ValidationError', function() {
         $error = null;
         
-        $input = "-- multiline_field\n" .
+        $input = "-- embed\n" .
                  "value\n" .
-                 "-- multiline_field";
+                 "-- embed";
         
         try {
-            throw Enolib\Parser::parse($input)->field('multiline_field')->valueError('my static message');
+            throw Enolib\Parser::parse($input)->embed('embed')->valueError('my static message');
         } catch(Enolib\ValidationError $_error) {
             $error = $_error;
         }
@@ -115,9 +115,9 @@ describe('Requesting a value error from a multiline field with a static message'
         expect($error->text)->toEqual($text);
         
         $snippet = "   Line | Content\n" .
-                   "      1 | -- multiline_field\n" .
+                   "      1 | -- embed\n" .
                    " >    2 | value\n" .
-                   "      3 | -- multiline_field";
+                   "      3 | -- embed";
         
         expect($error->snippet)->toEqual($snippet);
         
@@ -128,16 +128,16 @@ describe('Requesting a value error from a multiline field with a static message'
     });
 });
 
-describe('Requesting a value error from a multiline field with a dynamically generated message', function() {
+describe('Requesting a value error from an embed with a dynamically generated message', function() {
     it('throws the expected ValidationError', function() {
         $error = null;
         
-        $input = "-- multiline_field\n" .
+        $input = "-- embed\n" .
                  "value\n" .
-                 "-- multiline_field";
+                 "-- embed";
         
         try {
-            throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($value) { return "my generated message for '{$value}'"; });
+            throw Enolib\Parser::parse($input)->embed('embed')->valueError(function($value) { return "my generated message for '{$value}'"; });
         } catch(Enolib\ValidationError $_error) {
             $error = $_error;
         }
@@ -149,9 +149,9 @@ describe('Requesting a value error from a multiline field with a dynamically gen
         expect($error->text)->toEqual($text);
         
         $snippet = "   Line | Content\n" .
-                   "      1 | -- multiline_field\n" .
+                   "      1 | -- embed\n" .
                    " >    2 | value\n" .
-                   "      3 | -- multiline_field";
+                   "      3 | -- embed";
         
         expect($error->snippet)->toEqual($snippet);
         
@@ -162,15 +162,15 @@ describe('Requesting a value error from a multiline field with a dynamically gen
     });
 });
 
-describe('Requesting a value error from an empty multiline field with a static message', function() {
+describe('Requesting a value error from an empty embed with a static message', function() {
     it('throws the expected ValidationError', function() {
         $error = null;
         
-        $input = "-- multiline_field\n" .
-                 "-- multiline_field";
+        $input = "-- embed\n" .
+                 "-- embed";
         
         try {
-            throw Enolib\Parser::parse($input)->field('multiline_field')->valueError('my static message');
+            throw Enolib\Parser::parse($input)->embed('embed')->valueError('my static message');
         } catch(Enolib\ValidationError $_error) {
             $error = $_error;
         }
@@ -182,27 +182,27 @@ describe('Requesting a value error from an empty multiline field with a static m
         expect($error->text)->toEqual($text);
         
         $snippet = "   Line | Content\n" .
-                   " >    1 | -- multiline_field\n" .
-                   " *    2 | -- multiline_field";
+                   " >    1 | -- embed\n" .
+                   " *    2 | -- embed";
         
         expect($error->snippet)->toEqual($snippet);
         
         expect($error->selection['from']['line'])->toEqual(0);
-        expect($error->selection['from']['column'])->toEqual(18);
+        expect($error->selection['from']['column'])->toEqual(8);
         expect($error->selection['to']['line'])->toEqual(0);
-        expect($error->selection['to']['column'])->toEqual(18);
+        expect($error->selection['to']['column'])->toEqual(8);
     });
 });
 
-describe('Requesting a value error from an empty multiline field with a dynamically generated message', function() {
+describe('Requesting a value error from an empty embed with a dynamically generated message', function() {
     it('throws the expected ValidationError', function() {
         $error = null;
         
-        $input = "-- multiline_field\n" .
-                 "-- multiline_field";
+        $input = "-- embed\n" .
+                 "-- embed";
         
         try {
-            throw Enolib\Parser::parse($input)->field('multiline_field')->valueError(function($_value) { return "my generated message"; });
+            throw Enolib\Parser::parse($input)->embed('embed')->valueError(function($_value) { return "my generated message"; });
         } catch(Enolib\ValidationError $_error) {
             $error = $_error;
         }
@@ -214,15 +214,15 @@ describe('Requesting a value error from an empty multiline field with a dynamica
         expect($error->text)->toEqual($text);
         
         $snippet = "   Line | Content\n" .
-                   " >    1 | -- multiline_field\n" .
-                   " *    2 | -- multiline_field";
+                   " >    1 | -- embed\n" .
+                   " *    2 | -- embed";
         
         expect($error->snippet)->toEqual($snippet);
         
         expect($error->selection['from']['line'])->toEqual(0);
-        expect($error->selection['from']['column'])->toEqual(18);
+        expect($error->selection['from']['column'])->toEqual(8);
         expect($error->selection['to']['line'])->toEqual(0);
-        expect($error->selection['to']['column'])->toEqual(18);
+        expect($error->selection['to']['column'])->toEqual(8);
     });
 });
 

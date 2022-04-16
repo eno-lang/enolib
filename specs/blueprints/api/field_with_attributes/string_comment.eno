@@ -38,7 +38,7 @@ entry = value
 -- input
 
 -- javascript
-const output = enolib.parse(input).field('field').requiredStringComment();
+const output = parse(input).field('field').requiredStringComment();
 -- javascript
 
 -- php

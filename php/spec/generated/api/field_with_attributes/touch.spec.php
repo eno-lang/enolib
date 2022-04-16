@@ -28,7 +28,7 @@ describe('Asserting everything was touched when the only present field with attr
         expect($error->selection['from']['line'])->toEqual(0);
         expect($error->selection['from']['column'])->toEqual(0);
         expect($error->selection['to']['line'])->toEqual(1);
-        expect($error->selection['to']['column'])->toEqual(13);
+        expect($error->selection['to']['column'])->toEqual(17);
     });
 });
 

@@ -72,23 +72,23 @@ describe 'Requesting a value error from a field with a dynamically generated mes
   end
 end
 
-describe 'Requesting a value error from a multiline field with a static message' do
+describe 'Requesting a value error from an embed with a static message' do
   it 'raises the expected ValidationError' do
-    input = "-- multiline_field\n" \
+    input = "-- embed\n" \
             "value\n" \
-            '-- multiline_field'
+            '-- embed'
 
     begin
-      raise Enolib.parse(input).field('multiline_field').value_error('my static message')
+      raise Enolib.parse(input).embed('embed').value_error('my static message')
     rescue Enolib::ValidationError => error
       text = 'There is a problem with the value of this element: my static message'
       
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                "      1 | -- multiline_field\n" \
+                "      1 | -- embed\n" \
                 " >    2 | value\n" \
-                '      3 | -- multiline_field'
+                '      3 | -- embed'
       
       expect(error.snippet).to eq(snippet)
       
@@ -100,23 +100,23 @@ describe 'Requesting a value error from a multiline field with a static message'
   end
 end
 
-describe 'Requesting a value error from a multiline field with a dynamically generated message' do
+describe 'Requesting a value error from an embed with a dynamically generated message' do
   it 'raises the expected ValidationError' do
-    input = "-- multiline_field\n" \
+    input = "-- embed\n" \
             "value\n" \
-            '-- multiline_field'
+            '-- embed'
 
     begin
-      raise(Enolib.parse(input).field('multiline_field').value_error { |value| "my generated message for '#{value}'" })
+      raise(Enolib.parse(input).embed('embed').value_error { |value| "my generated message for '#{value}'" })
     rescue Enolib::ValidationError => error
       text = 'There is a problem with the value of this element: my generated message for \'value\''
       
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                "      1 | -- multiline_field\n" \
+                "      1 | -- embed\n" \
                 " >    2 | value\n" \
-                '      3 | -- multiline_field'
+                '      3 | -- embed'
       
       expect(error.snippet).to eq(snippet)
       
@@ -128,54 +128,54 @@ describe 'Requesting a value error from a multiline field with a dynamically gen
   end
 end
 
-describe 'Requesting a value error from an empty multiline field with a static message' do
+describe 'Requesting a value error from an empty embed with a static message' do
   it 'raises the expected ValidationError' do
-    input = "-- multiline_field\n" \
-            '-- multiline_field'
+    input = "-- embed\n" \
+            '-- embed'
 
     begin
-      raise Enolib.parse(input).field('multiline_field').value_error('my static message')
+      raise Enolib.parse(input).embed('embed').value_error('my static message')
     rescue Enolib::ValidationError => error
       text = 'There is a problem with the value of this element: my static message'
       
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                " >    1 | -- multiline_field\n" \
-                ' *    2 | -- multiline_field'
+                " >    1 | -- embed\n" \
+                ' *    2 | -- embed'
       
       expect(error.snippet).to eq(snippet)
       
       expect(error.selection[:from][:line]).to eq(0)
-      expect(error.selection[:from][:column]).to eq(18)
+      expect(error.selection[:from][:column]).to eq(8)
       expect(error.selection[:to][:line]).to eq(0)
-      expect(error.selection[:to][:column]).to eq(18)
+      expect(error.selection[:to][:column]).to eq(8)
     end
   end
 end
 
-describe 'Requesting a value error from an empty multiline field with a dynamically generated message' do
+describe 'Requesting a value error from an empty embed with a dynamically generated message' do
   it 'raises the expected ValidationError' do
-    input = "-- multiline_field\n" \
-            '-- multiline_field'
+    input = "-- embed\n" \
+            '-- embed'
 
     begin
-      raise(Enolib.parse(input).field('multiline_field').value_error { |_value| 'my generated message' })
+      raise(Enolib.parse(input).embed('embed').value_error { |_value| 'my generated message' })
     rescue Enolib::ValidationError => error
       text = 'There is a problem with the value of this element: my generated message'
       
       expect(error.text).to eq(text)
       
       snippet = "   Line | Content\n" \
-                " >    1 | -- multiline_field\n" \
-                ' *    2 | -- multiline_field'
+                " >    1 | -- embed\n" \
+                ' *    2 | -- embed'
       
       expect(error.snippet).to eq(snippet)
       
       expect(error.selection[:from][:line]).to eq(0)
-      expect(error.selection[:from][:column]).to eq(18)
+      expect(error.selection[:from][:column]).to eq(8)
       expect(error.selection[:to][:line]).to eq(0)
-      expect(error.selection[:to][:column]).to eq(18)
+      expect(error.selection[:to][:column]).to eq(8)
     end
   end
 end

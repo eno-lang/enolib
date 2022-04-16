@@ -75,13 +75,13 @@ def test_querying_a_missing_but_explicitly_optional_element_on_the_document_when
     
     assert bool('it passes') is True
 
-def test_querying_a_missing_but_explicitly_optional_empty_on_the_document_when_requiring_all_elements_is_enabled_produces_the_expected_result():
+def test_querying_a_missing_but_explicitly_optional_flag_on_the_document_when_requiring_all_elements_is_enabled_produces_the_expected_result():
     input = ("")
     
     document = enolib.parse(input)
     
     document.all_elements_required()
-    document.optional_empty('empty')
+    document.optional_flag('flag')
     
     assert bool('it passes') is True
 

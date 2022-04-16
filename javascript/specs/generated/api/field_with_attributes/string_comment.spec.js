@@ -21,7 +21,7 @@ describe('Querying an existing, two-line, required string comment from a field w
                       `field:\n` +
                       `entry = value`;
         
-        const output = enolib.parse(input).field('field').requiredStringComment();
+        const output = parse(input).field('field').requiredStringComment();
         
         const expected = `comment\n` +
                          `  comment`;

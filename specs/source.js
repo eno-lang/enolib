@@ -29,7 +29,7 @@ export function source() {
         for (const testSection of specDocument.sections()) {
             const test = {
                 description: testSection.stringKey(),
-                input: testSection.field('input').requiredStringValue()
+                input: testSection.embed('input').requiredStringValue()
             };
             
             const errorSection = testSection.optionalSection('ParseError') ||
@@ -38,34 +38,34 @@ export function source() {
             if (errorSection) {
                 test.error = {
                     selection: errorSection.field('selection').optionalValue(selection),
-                    snippet: errorSection.field('snippet').optionalStringValue(),
-                    text: errorSection.field('text').optionalStringValue(),
+                    snippet: errorSection.embed('snippet').optionalStringValue(),
+                    text: errorSection.embed('text').optionalStringValue(),
                     type: errorSection.stringKey()
                 };
             }
             
             if (!test.error || test.error.type == 'ValidationError') {
-                test.javascript = testSection.field('javascript').requiredStringValue();
-                test.php = testSection.field('php').requiredStringValue();
-                test.python = testSection.field('python').requiredStringValue();
-                test.ruby = testSection.field('ruby').requiredStringValue();
+                test.javascript = testSection.embed('javascript').requiredStringValue();
+                test.php = testSection.embed('php').requiredStringValue();
+                test.python = testSection.embed('python').requiredStringValue();
+                test.ruby = testSection.embed('ruby').requiredStringValue();
             }
             
             const resultSection = testSection.optionalSection('Result');
             
             if (resultSection) {
-                const stringField = resultSection.optionalField('string');
+                const stringEmbed = resultSection.optionalEmbed('string');
                 
-                if (stringField) {
+                if (stringEmbed) {
                     test.result = {
-                        string: stringField.requiredStringValue()
+                        string: stringEmbed.requiredStringValue()
                     };
                 } else {
                     test.result = {
-                        javascript: resultSection.field('javascript').requiredStringValue(),
-                        php: resultSection.field('php').requiredStringValue(),
-                        python: resultSection.field('python').requiredStringValue(),
-                        ruby: resultSection.field('ruby').requiredStringValue(),
+                        javascript: resultSection.embed('javascript').requiredStringValue(),
+                        php: resultSection.embed('php').requiredStringValue(),
+                        python: resultSection.embed('python').requiredStringValue(),
+                        ruby: resultSection.embed('ruby').requiredStringValue(),
                     };
                 }
             }

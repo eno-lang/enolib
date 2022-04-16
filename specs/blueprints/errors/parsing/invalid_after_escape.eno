@@ -1,0 +1,18 @@
+# A valid escape sequence, continued invalidly
+
+-- input
+`key` value
+-- input
+
+## ParseError
+
+-- text
+The escape sequence in line 1 can only be followed by an attribute or field operator.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | `key` value
+-- snippet
+
+selection: [0,6] => [0,11]

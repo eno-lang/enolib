@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-describe 'A single field with an terminated escaped key' do
+describe 'A single field with an unterminated escaped key' do
   it 'raises the expected ParseError' do
     input = '`field: value'
 
     begin
       Enolib.parse(input)
     rescue Enolib::ParseError => error
-      text = 'In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.'
+      text = 'The key escape sequence in line 1 is not terminated before the end of the line.'
       
       expect(error.text).to eq(text)
       

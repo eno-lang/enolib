@@ -1,6 +1,6 @@
 import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
 
-describe('A single field with an terminated escaped key', () => {
+describe('A single field with an unterminated escaped key', () => {
     it('throws the expected ParseError', () => {
         let error = null;
         
@@ -18,7 +18,7 @@ describe('A single field with an terminated escaped key', () => {
         
         expect(error).toBeInstanceOf(ParseError);
         
-        const text = `In line 1 the key of an element is escaped, but the escape sequence is not terminated until the end of the line.`;
+        const text = `The key escape sequence in line 1 is not terminated before the end of the line.`;
         
         expect(error.text).toEqual(text);
         

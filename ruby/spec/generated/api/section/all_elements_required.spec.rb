@@ -74,14 +74,14 @@ describe 'Querying a missing but explicitly optional element on the document whe
   end
 end
 
-describe 'Querying a missing but explicitly optional empty on the document when requiring all elements is enabled' do
+describe 'Querying a missing but explicitly optional flag on the document when requiring all elements is enabled' do
   it 'produces the expected result' do
     input = ''
     
     document = Enolib.parse(input)
     
     document.all_elements_required
-    document.optional_empty('empty')
+    document.optional_flag('flag')
     
     expect('it passes').to be_truthy
   end

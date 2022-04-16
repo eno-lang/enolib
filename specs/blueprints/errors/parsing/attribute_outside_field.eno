@@ -1,0 +1,18 @@
+# Parsing an attribute without a field
+
+-- input
+attribute = value
+-- input
+
+## ParseError
+
+-- text
+The attribute in line 1 is not contained within a field.
+-- text
+
+-- snippet
+   Line | Content
+ >    1 | attribute = value
+-- snippet
+
+selection: [0,0] => [0,17]

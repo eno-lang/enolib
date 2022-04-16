@@ -1,14 +1,14 @@
 import { parse, ParseError, ValidationError } from '../../../../lib/esm/main.js';
 
-describe('Querying a fieldset entry for a required but missing value', () => {
+describe('Querying an attribute for a required but missing value', () => {
     it('throws the expected ValidationError', () => {
         let error = null;
         
-        const input = `fieldset:\n` +
-                      `entry =`;
+        const input = `field:\n` +
+                      `attribute =`;
         
         try {
-            parse(input).fieldset('fieldset').entry('entry').requiredStringValue();
+            parse(input).field('field').attribute('attribute').requiredStringValue();
         } catch(_error) {
             if (_error instanceof ValidationError) {
                 error = _error;
@@ -19,20 +19,20 @@ describe('Querying a fieldset entry for a required but missing value', () => {
         
         expect(error).toBeInstanceOf(ValidationError);
         
-        const text = `The fieldset entry 'entry' must contain a value.`;
+        const text = `The attribute 'attribute' must contain a value.`;
         
         expect(error.text).toEqual(text);
         
         const snippet = `   Line | Content\n` +
-                        `      1 | fieldset:\n` +
-                        ` >    2 | entry =`;
+                        `      1 | field:\n` +
+                        ` >    2 | attribute =`;
         
         expect(error.snippet).toEqual(snippet);
         
         expect(error.selection.from.line).toEqual(1);
-        expect(error.selection.from.column).toEqual(7);
+        expect(error.selection.from.column).toEqual(11);
         expect(error.selection.to.line).toEqual(1);
-        expect(error.selection.to.column).toEqual(7);
+        expect(error.selection.to.column).toEqual(11);
     });
 });
 
@@ -110,16 +110,16 @@ describe('Querying a field with empty line continuations for a required but miss
     });
 });
 
-describe('Querying a list with an empty item for required values', () => {
+describe('Querying a field with an empty item for required values', () => {
     it('throws the expected ValidationError', () => {
         let error = null;
         
-        const input = `list:\n` +
+        const input = `field:\n` +
                       `- item\n` +
                       `-`;
         
         try {
-            parse(input).list('list').requiredStringValues();
+            parse(input).field('field').requiredStringValues();
         } catch(_error) {
             if (_error instanceof ValidationError) {
                 error = _error;
@@ -130,12 +130,12 @@ describe('Querying a list with an empty item for required values', () => {
         
         expect(error).toBeInstanceOf(ValidationError);
         
-        const text = `The list 'list' may not contain empty items.`;
+        const text = `The field 'field' may not contain empty items.`;
         
         expect(error.text).toEqual(text);
         
         const snippet = `   Line | Content\n` +
-                        `      1 | list:\n` +
+                        `      1 | field:\n` +
                         `      2 | - item\n` +
                         ` >    3 | -`;
         

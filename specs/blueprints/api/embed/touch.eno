@@ -35,7 +35,7 @@ This element was not expected, make sure it is at the right place in the documen
  *    3 | -- embed
 -- snippet
 
-selection: [0,0] => [2,18]
+selection: [0,0] => [2,8]
 
 # Asserting everything was touched when the only present embed was touched
 
