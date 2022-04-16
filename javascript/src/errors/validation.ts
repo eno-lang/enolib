@@ -113,7 +113,7 @@ export const errors = {
         
         if (element.type === EMBED_BEGIN) {
             if (element.lines.length > 0) {
-                snippet = new context.reporter(context).reportMultilineValue(element).snippet();
+                snippet = new context.reporter(context).reportEmbedValue(element).snippet();
                 select = selection(element.lines[0], 'line', BEGIN, element.lines[element.lines.length - 1], 'line', END);
             } else {
                 snippet = new context.reporter(context).reportElement(element).snippet();

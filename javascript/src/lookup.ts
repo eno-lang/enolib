@@ -9,7 +9,7 @@ import {
     SECTION
 } from './constants.js';
 
-const checkMultilineFieldByLine = (field, line) => {
+const checkEmbedByLine = (field, line) => {
     if (line < field.line || line > field.end.line)
         return false;
     
@@ -22,7 +22,7 @@ const checkMultilineFieldByLine = (field, line) => {
     return { element: field, instruction: field.lines.find(valueLine => valueLine.line === line) };
 };
 
-const checkMultilineFieldByIndex = (field, index) => {
+const checkEmbedByIndex = (field, index) => {
     if (index < field.ranges.line[BEGIN] || index > field.end.ranges.line[END])
         return false;
     
@@ -198,8 +198,8 @@ const checkInSectionByLine = (section, line) => {
                 if (matchInField) return matchInField;
                 break;
             case EMBED_BEGIN:
-                const matchInMultilineField = checkMultilineFieldByLine(element, line);
-                if (matchInMultilineField) return matchInMultilineField;
+                const matchInEmbed = checkEmbedByLine(element, line);
+                if (matchInEmbed) return matchInEmbed;
                 break;
             case SECTION:
                 return checkInSectionByLine(element, line);
@@ -236,8 +236,8 @@ const checkInSectionByIndex = (section, index) => {
                 if (matchInField) return matchInField;
                 break;
             case EMBED_BEGIN:
-                const matchInMultilineField = checkMultilineFieldByIndex(element, index);
-                if (matchInMultilineField) return matchInMultilineField;
+                const matchInEmbed = checkEmbedByIndex(element, index);
+                if (matchInEmbed) return matchInEmbed;
                 break;
             case SECTION:
                 return checkInSectionByIndex(element, index);

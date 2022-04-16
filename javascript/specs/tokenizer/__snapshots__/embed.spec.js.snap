@@ -9,6 +9,10 @@ Object {
         "end": Object {
           "line": 2,
           "ranges": Object {
+            "embedOperator": Array [
+              13,
+              15,
+            ],
             "key": Array [
               16,
               19,
@@ -16,10 +20,6 @@ Object {
             "line": Array [
               13,
               19,
-            ],
-            "multilineFieldOperator": Array [
-              13,
-              15,
             ],
           },
           "type": Symbol(Embed End),
@@ -44,6 +44,10 @@ Object {
         ],
         "parent": [Circular],
         "ranges": Object {
+          "embedOperator": Array [
+            0,
+            2,
+          ],
           "key": Array [
             3,
             6,
@@ -52,10 +56,6 @@ Object {
             0,
             6,
           ],
-          "multilineFieldOperator": Array [
-            0,
-            2,
-          ],
         },
         "type": Symbol(Embed Begin),
       },
@@ -63,6 +63,10 @@ Object {
         "end": Object {
           "line": 8,
           "ranges": Object {
+            "embedOperator": Array [
+              43,
+              45,
+            ],
             "key": Array [
               46,
               49,
@@ -70,10 +74,6 @@ Object {
             "line": Array [
               39,
               49,
-            ],
-            "multilineFieldOperator": Array [
-              43,
-              45,
             ],
           },
           "type": Symbol(Embed End),
@@ -126,6 +126,10 @@ Object {
         ],
         "parent": [Circular],
         "ranges": Object {
+          "embedOperator": Array [
+            21,
+            23,
+          ],
           "key": Array [
             27,
             30,
@@ -134,10 +138,6 @@ Object {
             21,
             30,
           ],
-          "multilineFieldOperator": Array [
-            21,
-            23,
-          ],
         },
         "type": Symbol(Embed Begin),
       },
@@ -145,6 +145,10 @@ Object {
         "end": Object {
           "line": 14,
           "ranges": Object {
+            "embedOperator": Array [
+              90,
+              92,
+            ],
             "key": Array [
               93,
               96,
@@ -152,10 +156,6 @@ Object {
             "line": Array [
               82,
               96,
-            ],
-            "multilineFieldOperator": Array [
-              90,
-              92,
             ],
           },
           "type": Symbol(Embed End),
@@ -208,6 +208,10 @@ Object {
         ],
         "parent": [Circular],
         "ranges": Object {
+          "embedOperator": Array [
+            55,
+            57,
+          ],
           "key": Array [
             61,
             64,
@@ -215,10 +219,6 @@ Object {
           "line": Array [
             51,
             64,
-          ],
-          "multilineFieldOperator": Array [
-            55,
-            57,
           ],
         },
         "type": Symbol(Embed Begin),

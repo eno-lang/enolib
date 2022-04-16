@@ -358,7 +358,7 @@ export function analyze() {
             let operatorIndex = this._input.indexOf(operator, index);
             let keyIndex = this._input.indexOf(instruction.key, operatorIndex + operator.length);
             
-            instruction.ranges.multilineFieldOperator = [operatorIndex, operatorIndex + operator.length];
+            instruction.ranges.embedOperator = [operatorIndex, operatorIndex + operator.length];
             instruction.ranges.key = [keyIndex, keyIndex + instruction.key.length];
             
             index = matcherRegex.lastIndex + 1;
@@ -386,7 +386,7 @@ export function analyze() {
                         line: line,
                         ranges: {
                             line: [index, terminatorMatcher.lastIndex],
-                            multilineFieldOperator: [operatorIndex, operatorIndex + operator.length],
+                            embedOperator: [operatorIndex, operatorIndex + operator.length],
                             key: [keyIndex, keyIndex + instruction.key.length]
                         },
                         type: EMBED_END

@@ -220,16 +220,16 @@ export class Reporter {
         return this;
     }
     
-    reportLine(instruction) {
-        this._snippet[instruction.line] = EMPHASIZE;
+    reportEmbedValue(element) {
+        for (const line of element.lines) {
+            this._snippet[line.line] = EMPHASIZE;
+        }
         
         return this;
     }
     
-    reportMultilineValue(element) {
-        for (const line of element.lines) {
-            this._snippet[line.line] = EMPHASIZE;
-        }
+    reportLine(instruction) {
+        this._snippet[instruction.line] = EMPHASIZE;
         
         return this;
     }
