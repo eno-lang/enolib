@@ -22,9 +22,6 @@ import {
 
 // TODO: For each value store the representational type as well ? (e.g. string may come from "- foo" or -- foo\nxxx\n-- foo) and use that for precise error messages?
 
-// TODO: These things ->   case EMBED_BEGIN: /* handled in FIELD below */
-//       Maybe handle with a generic FIELD type and an additional .multiline flag on the instruction? (less queries but quite some restructuring)
-
 export class Section extends ElementBase {
     constructor(context, instruction, parent = null) {
         super(context, instruction, parent);

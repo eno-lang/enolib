@@ -9,34 +9,10 @@ export class MissingSectionElement extends MissingElementBase {
         return 'MissingSectionElement';
     }
     
-    toField() {
-        return new MissingField(this._key, this._parent);
-    }
-    
-    toFlag() {
-        return new MissingFlag(this._key, this._parent);
-    }
-    
-    toSection() {
-        return new MissingSection(this._key, this._parent);
-    }
-    
     toString() {
         if(this._key === null)
             return `[object MissingSectionElement]`;
         
         return `[object MissingSectionElement key=${this._key}]`;
-    }
-    
-    yieldsField() {
-        return true; // TODO: Throw instead?!
-    }
-    
-    yieldsFlag() {
-        return true; // TODO: Throw instead?!
-    }
-    
-    yieldsSection() {
-        return true; // TODO: Throw instead?!
     }
 }

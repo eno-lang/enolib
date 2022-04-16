@@ -5,11 +5,10 @@ import { TextReporter } from './reporters/text_reporter.js';
 import {
     ATTRIBUTE,
     DOCUMENT,
+    EMBED_BEGIN,
     FLAG,
     FIELD,
     ITEM,
-    EMBED_BEGIN,
-    PRETTY_TYPES,
     SECTION
 } from './constants.js';
 

@@ -185,12 +185,11 @@ export class Field extends ValueElementBase {
         return this._attribute(key);
     }
     
-    // TODO: Doc comment (and/or implementation) - shouldn't this return {Attribute[]} (?)
     /**
     * Returns the attributes of this {@link Field} as an array in the original document order.
     *
     * @param {string} [key] If provided only attributes with the specified key are returned.
-    * @return {Field[]} The attributes of this {@link Fieldset}.
+    * @return {Attribute[]} The attributes of this {@link Field}.
     */
     attributes(key = null) {
         this._touched = true;
@@ -204,11 +203,10 @@ export class Field extends ValueElementBase {
         return this._attributes(key);
     }
     
-    // TODO: Doc comment (and/or implementation) - shouldn't this return {Item[]} (?)
     /**
      * Returns the items in this {@link Field} as an array.
      *
-     * @return {Field[]} The items in this {@link Field}.
+     * @return {Item[]} The items in this {@link Field}.
      */
     items() {
       this._touched = true;

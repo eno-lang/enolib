@@ -18,14 +18,3 @@ export const EMBED_END = Symbol('Embed End');
 export const EMBED_VALUE = Symbol('Embed Value');
 export const SECTION = Symbol('Section');
 export const UNPARSED = Symbol('Unparsed');
-
-// Maps instruction type symbols to printable strings
-export const PRETTY_TYPES = {
-    [ATTRIBUTE]: 'attribute',
-    [DOCUMENT]: 'document',
-    [FLAG]: 'flag',
-    [FIELD]: 'field',
-    [ITEM]: 'item',
-    [EMBED_BEGIN]: 'field',
-    [SECTION]: 'section'
-};
