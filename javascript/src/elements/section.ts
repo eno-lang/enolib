@@ -203,8 +203,7 @@ export class Section extends ElementBase {
         
         const element = elements[0];
         
-        if (element._instruction.type !== FIELD &&
-            element._instruction.type !== EMBED_BEGIN) // TODO: Separate function to get Embed specifically (?!)
+        if (element._instruction.type !== FIELD)
             throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedField');
             
         return element;
@@ -370,8 +369,7 @@ export class Section extends ElementBase {
         }
         
         return elements.map(element => {
-            if (element._instruction.type !== FIELD &&
-                element._instruction.type !== EMBED_BEGIN)
+            if (element._instruction.type !== FIELD)
                 throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFields');
                 
             return element;

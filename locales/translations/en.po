@@ -62,8 +62,14 @@ msgstr "The continuation in line {line} is not contained within a field."
 msgid "The embed in line {line} has no key."
 msgstr "The embed in line {line} has no key."
 
+msgid "The escape sequence in line {line} specifies no key."
+msgstr "The escape sequence in line {line} specifies no key."
+
 msgid "The field in line {line} has no key."
 msgstr "The field in line {line} has no key."
+
+msgid "The escape sequence in line {line} can only be followed by an attribute or field operator."
+msgstr "The escape sequence in line {line} can only be followed by an attribute or field operator."
 
 msgid "The item in line {line} is not contained within a field."
 msgstr "The item in line {line} is not contained within a field."
@@ -91,8 +97,29 @@ msgstr "There is a problem with the comment of this element: {message}"
 msgid "An attribute was expected."
 msgstr "An attribute was expected."
 
+msgid "An attribute with the key '{key}' was expected."
+msgstr "An attribute with the key '{key}' was expected."
+
+msgid "This field was expected to contain only attributes."
+msgstr "This field was expected to contain only attributes."
+
+msgid "This field was expected to contain only attributes with the key '{key}'."
+msgstr "This field was expected to contain only attributes with the key '{key}'."
+
 msgid "The document was expected."
 msgstr "The document was expected."
+
+msgid "An embed was expected."
+msgstr "An embed was expected."
+
+msgid "An embed with the key '{key}' was expected."
+msgstr "An embed with the key '{key}' was expected."
+
+msgid "Only embeds were expected."
+msgstr "Only embeds were expected."
+
+msgid "Only embeds with the key '{key}' were expected."
+msgstr "Only embeds with the key '{key}' were expected."
 
 msgid "A field was expected."
 msgstr "A field was expected."
@@ -112,8 +139,14 @@ msgstr "A flag was expected."
 msgid "A flag with the key '{key}' was expected."
 msgstr "A flag with the key '{key}' was expected."
 
-msgid "An item was expected."
-msgstr "An item was expected."
+msgid "Only flags were expected."
+msgstr "Only flags were expected."
+
+msgid "Only flags with the key '{key}' were expected."
+msgstr "Only flags with the key '{key}' were expected."
+
+msgid "This field was expected to contain only items."
+msgstr "This field was expected to contain only items."
 
 msgid "A section was expected."
 msgstr "A section was expected."
@@ -127,17 +160,23 @@ msgstr "Only sections were expected."
 msgid "Only sections with the key '{key}' were expected."
 msgstr "Only sections with the key '{key}' were expected."
 
-msgid "Only a single attribute was expected."
-msgstr "Only a single attribute was expected."
+msgid "This field was expected to contain only a single attribute."
+msgstr "This field was expected to contain only a single attribute."
 
-msgid "Only a single attribute with the key '{key}' was expected."
-msgstr "Only a single attribute with the key '{key}' was expected."
+msgid "This field was expected to contain only a single attribute with the key '{key}'."
+msgstr "This field was expected to contain only a single attribute with the key '{key}'."
 
 msgid "Only a single element was expected."
 msgstr "Only a single element was expected."
 
 msgid "Only a single element with the key '{key}' was expected."
 msgstr "Only a single element with the key '{key}' was expected."
+
+msgid "Only a single embed was expected."
+msgstr "Only a single embed was expected."
+
+msgid "Only a single embed with the key '{key}' was expected."
+msgstr "Only a single embed with the key '{key}' was expected."
 
 msgid "Only a single field was expected."
 msgstr "Only a single field was expected."
@@ -151,11 +190,17 @@ msgstr "Only a single flag was expected."
 msgid "Only a single flag with the key '{key}' was expected."
 msgstr "Only a single flag with the key '{key}' was expected."
 
+msgid "This field was expected to contain only a single item."
+msgstr "This field was expected to contain only a single item."
+
 msgid "Only a single section was expected."
 msgstr "Only a single section was expected."
 
 msgid "Only a single section with the key '{key}' was expected."
 msgstr "Only a single section with the key '{key}' was expected."
+
+msgid "This field was expected to contain only a value."
+msgstr "This field was expected to contain only a value."
 
 msgid "There is a problem with the key of this element: {message}"
 msgstr "There is a problem with the key of this element: {message}"

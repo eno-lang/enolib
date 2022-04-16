@@ -5,17 +5,17 @@ import { ParseError } from '../error_types.js';
 // = value
 // : value
 const ATTRIBUTE_OR_FIELD_WITHOUT_KEY = /^\s*([:=]).*$/;
-const attributeOrFieldWithoutKey = (context, instruction, operator) => {
+const attributeOrFieldWithoutKey = (context, instruction, match) => {
     const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
-    const operatorColumn = line.indexOf(operator);
-    const message = `${operator === '=' ? 'attribute' : 'field'}WithoutKey`;
+    const operatorColumn = line.indexOf(match[1]);
+    const message = `${match[1] === '=' ? 'attribute' : 'field'}WithoutKey`;
     
     return new ParseError(
         context.messages[message](instruction.line + HUMAN_INDEXING),
         new context.reporter(context).reportLine(instruction).snippet(),
         {
             from: cursor(instruction, 'line', BEGIN),
-            to: { column: operatorColumn, index: instruction.ranges.line[0] + operatorColumn, line: instruction.line }
+            to: { column: operatorColumn, index: instruction.ranges.line[BEGIN] + operatorColumn, line: instruction.line }
         }
     );
 };
@@ -23,32 +23,66 @@ const attributeOrFieldWithoutKey = (context, instruction, operator) => {
 // --
 // #
 const EMBED_OR_SECTION_WITHOUT_KEY = /^\s*(--+|#+).*$/;
-const embedOrSectionWithoutKey = (context, instruction, operator) => {
+const embedOrSectionWithoutKey = (context, instruction, match) => {
     const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
-    const keyColumn = line.indexOf(operator) + operator.length;
-    const message = `${operator.startsWith('-') ? 'embed' : 'section'}WithoutKey`;
+    const keyColumn = line.indexOf(match[1]) + match[1].length;
+    const message = `${match[1].startsWith('-') ? 'embed' : 'section'}WithoutKey`;
     
     return new ParseError(
         context.messages[message](instruction.line + HUMAN_INDEXING),
         new context.reporter(context).reportLine(instruction).snippet(),
         {
-            from: { column: keyColumn, index: instruction.ranges.line[0] + keyColumn, line: instruction.line },
+            from: { column: keyColumn, index: instruction.ranges.line[BEGIN] + keyColumn, line: instruction.line },
             to: cursor(instruction, 'line', END),
+        }
+    );
+};
+
+// ` `
+const ESCAPE_WITHOUT_KEY = /^\s*(`+)(?!`)(\s+)\1.*$/;
+const escapeWithoutKey = (context, instruction, match) => {
+    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+    const gapBeginColumn = line.indexOf(match[1]) + match[1].length;
+    const gapEndColumn = line.indexOf(match[1], gapBeginColumn);
+    
+    return new ParseError(
+        context.messages.escapeWithoutKey(instruction.line + HUMAN_INDEXING),
+        new context.reporter(context).reportLine(instruction).snippet(),
+        {
+            from: { column: gapBeginColumn, index: instruction.ranges.line[BEGIN] + gapBeginColumn, line: instruction.line },
+            to: { column: gapEndColumn, index: instruction.ranges.line[BEGIN] + gapEndColumn, line: instruction.line },
+        }
+    );
+};
+
+// `key` value
+const INVALID_AFTER_ESCAPE = /^\s*(`+)(?!`)(?:(?!\1).)+\1\s*([^=:].*?)\s*$/;
+const invalidAfterEscape = (context, instruction, match) => {
+    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+    const invalidBeginColumn = line.lastIndexOf(match[2]);
+    const invalidEndColumn = invalidBeginColumn + match[2].length;
+    
+    return new ParseError(
+        context.messages.invalidAfterEscape(instruction.line + HUMAN_INDEXING),
+        new context.reporter(context).reportLine(instruction).snippet(),
+        {
+            from: { column: invalidBeginColumn, index: instruction.ranges.line[BEGIN] + invalidBeginColumn, line: instruction.line },
+            to: { column: invalidEndColumn, index: instruction.ranges.line[BEGIN] + invalidEndColumn, line: instruction.line },
         }
     );
 };
 
 // `key
 const UNTERMINATED_ESCAPED_KEY = /^\s*(`+)(?!`)(.*)$/;
-const unterminatedEscapedKey = (context, instruction, unterminated) => {
+const unterminatedEscapedKey = (context, instruction, match) => {
     const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
-    const selectionColumn = line.lastIndexOf(unterminated);
+    const selectionColumn = line.lastIndexOf(match[2]);
     
     return new ParseError(
         context.messages.unterminatedEscapedKey(instruction.line + HUMAN_INDEXING),
         new context.reporter(context).reportLine(instruction).snippet(),
         {
-            from: { column: selectionColumn, index: instruction.ranges.line[0] + selectionColumn, line: instruction.line },
+            from: { column: selectionColumn, index: instruction.ranges.line[BEGIN] + selectionColumn, line: instruction.line },
             to: cursor(instruction, 'line', END)
         }
     );
@@ -60,11 +94,15 @@ export const errors = {
         
         let match;
         if ( (match = ATTRIBUTE_OR_FIELD_WITHOUT_KEY.exec(line)) ) {
-            return attributeOrFieldWithoutKey(context, instruction, match[1]);
+            return attributeOrFieldWithoutKey(context, instruction, match);
         } else if ( (match = EMBED_OR_SECTION_WITHOUT_KEY.exec(line)) ) {
-            return embedOrSectionWithoutKey(context, instruction, match[1]);
+            return embedOrSectionWithoutKey(context, instruction, match);
+        } else if ( (match = ESCAPE_WITHOUT_KEY.exec(line)) ) {
+            return escapeWithoutKey(context, instruction, match);
+        } else if ( (match = INVALID_AFTER_ESCAPE.exec(line)) ) {
+            return invalidAfterEscape(context, instruction, match);
         } else if ( (match = UNTERMINATED_ESCAPED_KEY.exec(line)) ) {
-            return unterminatedEscapedKey(context, instruction, match[2]);
+            return unterminatedEscapedKey(context, instruction, match);
         }
         
         // TODO: This is a reoccurring pattern and can be DRYed up - line_error or something

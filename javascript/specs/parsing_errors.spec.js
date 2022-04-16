@@ -15,9 +15,15 @@ const ERROR_SCENARIOS = {
         '--',
         '-----'
     ],
+    'escape_without_key': [
+        '` `'
+    ],
     'field_without_key': [
         ':',
         ': value'
+    ],
+    'invalid_after_escape': [
+        '`key` value'
     ],
     'item_outside_field': [
         '-',

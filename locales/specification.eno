@@ -48,8 +48,14 @@ line = The continuation in line {line} is not contained within a field.
 embed_without_key:
 line = The embed in line {line} has no key.
 
+escape_without_key:
+line = The escape sequence in line {line} specifies no key.
+
 field_without_key:
 line = The field in line {line} has no key.
+
+invalid_after_escape:
+line = The escape sequence in line {line} can only be followed by an attribute or field operator.
 
 item_outside_field:
 line = The item in line {line} is not contained within a field.
@@ -75,8 +81,22 @@ comment_error:
 message = There is a problem with the comment of this element: {message}
 
 expected_attribute: An attribute was expected.
+expected_attribute_with_key:
+key = An attribute with the key '{key}' was expected.
+
+expected_attributes: This field was expected to contain only attributes.
+expected_attributes_with_key:
+key = This field was expected to contain only attributes with the key '{key}'.
 
 expected_document: The document was expected.
+
+expected_embed: An embed was expected.
+expected_embed_with_key:
+key = An embed with the key '{key}' was expected.
+
+expected_embeds: Only embeds were expected.
+expected_embeds_with_key:
+key = Only embeds with the key '{key}' were expected.
 
 expected_field: A field was expected.
 expected_field_with_key:
@@ -90,7 +110,11 @@ expected_flag: A flag was expected.
 expected_flag_with_key:
 key = A flag with the key '{key}' was expected.
 
-expected_item: An item was expected.
+expected_flags: Only flags were expected.
+expected_flags_with_key:
+key = Only flags with the key '{key}' were expected.
+
+expected_items: This field was expected to contain only items.
 
 expected_section: A section was expected.
 expected_section_with_key:
@@ -100,13 +124,17 @@ expected_sections: Only sections were expected.
 expected_sections_with_key:
 key = Only sections with the key '{key}' were expected.
 
-expected_single_attribute: Only a single attribute was expected.
+expected_single_attribute: This field was expected to contain only a single attribute.
 expected_single_attribute_with_key:
-key = Only a single attribute with the key '{key}' was expected.
+key = This field was expected to contain only a single attribute with the key '{key}'.
 
 expected_single_element: Only a single element was expected.
 expected_single_element_with_key:
 key = Only a single element with the key '{key}' was expected.
+
+expected_single_embed: Only a single embed was expected.
+expected_single_embed_with_key:
+key = Only a single embed with the key '{key}' was expected.
 
 expected_single_field: Only a single field was expected.
 expected_single_field_with_key:
@@ -116,9 +144,13 @@ expected_single_flag: Only a single flag was expected.
 expected_single_flag_with_key:
 key = Only a single flag with the key '{key}' was expected.
 
+expected_single_item: This field was expected to contain only a single item.
+
 expected_single_section: Only a single section was expected.
 expected_single_section_with_key:
 key = Only a single section with the key '{key}' was expected.
+
+expected_value: This field was expected to contain only a value.
 
 key_error:
 message = There is a problem with the key of this element: {message}

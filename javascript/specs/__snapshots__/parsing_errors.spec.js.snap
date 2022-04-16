@@ -42,6 +42,13 @@ exports[`Parsing errors embed_without_key (#11) builds and throws a proper error
  >    1 | -----"
 `;
 
+exports[`Parsing errors escape_without_key (#01) builds and throws a proper error 1`] = `
+"The escape sequence in line 1 specifies no key.
+
+   Line | Content
+ >    1 | \` \`"
+`;
+
 exports[`Parsing errors field_without_key (#01) builds and throws a proper error 1`] = `
 "The field in line 1 has no key.
 
@@ -54,6 +61,13 @@ exports[`Parsing errors field_without_key (#11) builds and throws a proper error
 
    Line | Content
  >    1 | : value"
+`;
+
+exports[`Parsing errors invalid_after_escape (#01) builds and throws a proper error 1`] = `
+"The escape sequence in line 1 can only be followed by an attribute or field operator.
+
+   Line | Content
+ >    1 | \`key\` value"
 `;
 
 exports[`Parsing errors item_outside_field (#01) builds and throws a proper error 1`] = `

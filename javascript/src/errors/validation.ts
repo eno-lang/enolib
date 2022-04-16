@@ -3,11 +3,11 @@ import { cursor, DOCUMENT_BEGIN, selection, selectComments, selectElement, selec
 import {
     ATTRIBUTE,
     BEGIN,
-    END,
     DOCUMENT,
+    EMBED_BEGIN,
+    END,
     FIELD,
-    ITEM,
-    EMBED_BEGIN
+    ITEM
 } from '../constants.js';
 
 // TODO: Here and prominently also elsewhere - consider replacing instruction.ranges.line with instruction[LINE_RANGE] (where LINE_RANGE = Symbol('descriptive'))
@@ -20,7 +20,6 @@ export const errors = {
             selectComments(element)
         );
     },
-    
     elementError: (context, message, element) => {
         return new ValidationError(
             message,
@@ -28,7 +27,6 @@ export const errors = {
             selectElement(element)
         );
     },
-    
     keyError: (context, message, element) => {
         return new ValidationError(
             context.messages.keyError(message),
@@ -36,7 +34,6 @@ export const errors = {
             selectKey(element)
         );
     },
-    
     missingComment: (context, element) => {
         return new ValidationError(
             context.messages.missingComment,
@@ -44,7 +41,6 @@ export const errors = {
             selection(element, 'line', BEGIN)
         );
     },
-    
     missingElement: (context, key, parent, message) => {
         return new ValidationError(
             key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
@@ -52,7 +48,6 @@ export const errors = {
             parent.type === DOCUMENT ? DOCUMENT_BEGIN : selection(parent, 'line', END)
         );
     },
-    
     missingValue: (context, element) => {
         let message;
         const selection = {};
@@ -83,7 +78,6 @@ export const errors = {
         
         return new ValidationError(message, snippet, selection);
     },
-    
     unexpectedElement: (context, message, element) => {
         return new ValidationError(
             message || context.messages.unexpectedElement,
@@ -91,7 +85,13 @@ export const errors = {
             selectElement(element)
         );
     },
-    
+    unexpectedFieldContent: (context, key, field, message) => {
+        return new ValidationError(
+            key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
+            new context.reporter(context).reportElement(field).snippet(),
+            selectElement(field)
+        );
+    },
     unexpectedMultipleElements: (context, key, elements, message) => {
         return new ValidationError(
             key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
@@ -99,7 +99,6 @@ export const errors = {
             selectElement(elements[0])
         );
     },
-    
     unexpectedElementType: (context, key, section, message) => {
         return new ValidationError(
             key === null ? context.messages[message] : context.messages[message + 'WithKey'](key),
@@ -107,7 +106,6 @@ export const errors = {
             selectElement(section)
         );
     },
-    
     valueError: (context, message, element) => {
         let snippet, select;
         

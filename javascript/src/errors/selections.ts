@@ -1,10 +1,10 @@
 import {
     ATTRIBUTE,
     BEGIN,
+    EMBED_BEGIN,
     END,
     FIELD,
     ITEM,
-    EMBED_BEGIN,
     SECTION
 } from '../constants.js';
 

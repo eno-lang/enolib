@@ -35,7 +35,7 @@ export class Field extends ValueElementBase {
             throw errors.unexpectedMultipleElements(
                 this._context,
                 key,
-                attributes.map(attribute => entry._instruction),
+                attributes.map(attribute => attribute._instruction),
                 'expectedSingleAttribute'
             );
         
@@ -111,7 +111,7 @@ export class Field extends ValueElementBase {
         
         if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
             this._instruction.hasOwnProperty('items')) {
-            throw errors.unexpectedFieldContent(this._context, this._instruction, 'expectedValue');
+            throw errors.unexpectedFieldContent(this._context, null, this._instruction, 'expectedValue');
         }
         
         const value = this._context.value(this._instruction);
@@ -215,7 +215,7 @@ export class Field extends ValueElementBase {
       if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
           this._instruction.hasOwnProperty('continuations') ||
           this._instruction.hasOwnProperty('value')) {
-          throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
+          throw errors.unexpectedFieldContent(this._context, null, this._instruction, 'expectedItems');
       }
 
       return this._items();
@@ -239,6 +239,8 @@ export class Field extends ValueElementBase {
     }
     
     optionalAttribute(key = null) {
+        // TODO: Error if this field has items/value
+        
         return this._attribute(key, false);
     }
     
@@ -249,6 +251,8 @@ export class Field extends ValueElementBase {
     * @return {?string} The value of this {@link Field} as a `string`, or `null`.
     */
     optionalStringValue() {
+        // TODO: Error if this field has attributes/items
+        
         return this._value(null, false);
     }
     
@@ -302,6 +306,11 @@ export class Field extends ValueElementBase {
     }
     
     requiredAttribute(key = null) {
+        if (this._instruction.hasOwnProperty('continuations') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
+            this._instruction.hasOwnProperty('items') ||
+            this._instruction.hasOwnProperty('value'))
+            throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedAttributes');
+        
         return this._attribute(key, true);
     }
     
@@ -319,7 +328,10 @@ export class Field extends ValueElementBase {
     requiredStringValues() {
         this._touched = true;
         
-        // TODO: Error if this field has attributes/value
+        if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
+            this._instruction.hasOwnProperty('continuations') ||
+            this._instruction.hasOwnProperty('value'))
+            throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
         
         return this._items().map(item => item.requiredStringValue());
     }
@@ -351,7 +363,10 @@ export class Field extends ValueElementBase {
     requiredValues(loader) {
         this._touched = true;
         
-        // TODO: Error if this field has attributes/value
+        if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
+            this._instruction.hasOwnProperty('continuations') ||
+            this._instruction.hasOwnProperty('value'))
+            throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
         
         return this._items().map(item => item.requiredValue(loader));
     }
