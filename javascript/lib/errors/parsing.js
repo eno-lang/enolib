@@ -5,8 +5,7 @@ import { ParseError } from '../error_types.js';
 // = value
 // : value
 const ATTRIBUTE_OR_FIELD_WITHOUT_KEY = /^\s*([:=]).*$/;
-const attributeOrFieldWithoutKey = (context, instruction, match) => {
-    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+const attributeOrFieldWithoutKey = (context, instruction, line, match) => {
     const operatorColumn = line.indexOf(match[1]);
     const message = `${match[1] === '=' ? 'attribute' : 'field'}WithoutKey`;
     
@@ -23,8 +22,7 @@ const attributeOrFieldWithoutKey = (context, instruction, match) => {
 // --
 // #
 const EMBED_OR_SECTION_WITHOUT_KEY = /^\s*(--+|#+).*$/;
-const embedOrSectionWithoutKey = (context, instruction, match) => {
-    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+const embedOrSectionWithoutKey = (context, instruction, line, match) => {
     const keyColumn = line.indexOf(match[1]) + match[1].length;
     const message = `${match[1].startsWith('-') ? 'embed' : 'section'}WithoutKey`;
     
@@ -40,8 +38,7 @@ const embedOrSectionWithoutKey = (context, instruction, match) => {
 
 // ` `
 const ESCAPE_WITHOUT_KEY = /^\s*(`+)(?!`)(\s+)\1.*$/;
-const escapeWithoutKey = (context, instruction, match) => {
-    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+const escapeWithoutKey = (context, instruction, line, match) => {
     const gapBeginColumn = line.indexOf(match[1]) + match[1].length;
     const gapEndColumn = line.indexOf(match[1], gapBeginColumn);
     
@@ -57,8 +54,7 @@ const escapeWithoutKey = (context, instruction, match) => {
 
 // `key` value
 const INVALID_AFTER_ESCAPE = /^\s*(`+)(?!`)(?:(?!\1).)+\1\s*([^=:].*?)\s*$/;
-const invalidAfterEscape = (context, instruction, match) => {
-    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+const invalidAfterEscape = (context, instruction, line, match) => {
     const invalidBeginColumn = line.lastIndexOf(match[2]);
     const invalidEndColumn = invalidBeginColumn + match[2].length;
     
@@ -74,8 +70,7 @@ const invalidAfterEscape = (context, instruction, match) => {
 
 // `key
 const UNTERMINATED_ESCAPED_KEY = /^\s*(`+)(?!`)(.*)$/;
-const unterminatedEscapedKey = (context, instruction, match) => {
-    const line = context._input.substring(instruction.ranges.line[BEGIN], instruction.ranges.line[END]);
+const unterminatedEscapedKey = (context, instruction, line, match) => {
     const selectionColumn = line.lastIndexOf(match[2]);
     
     return new ParseError(
@@ -94,24 +89,16 @@ export const errors = {
         
         let match;
         if ( (match = ATTRIBUTE_OR_FIELD_WITHOUT_KEY.exec(line)) ) {
-            return attributeOrFieldWithoutKey(context, instruction, match);
+            return attributeOrFieldWithoutKey(context, instruction, line, match);
         } else if ( (match = EMBED_OR_SECTION_WITHOUT_KEY.exec(line)) ) {
-            return embedOrSectionWithoutKey(context, instruction, match);
+            return embedOrSectionWithoutKey(context, instruction, line, match);
         } else if ( (match = ESCAPE_WITHOUT_KEY.exec(line)) ) {
-            return escapeWithoutKey(context, instruction, match);
+            return escapeWithoutKey(context, instruction, line, match);
         } else if ( (match = INVALID_AFTER_ESCAPE.exec(line)) ) {
-            return invalidAfterEscape(context, instruction, match);
+            return invalidAfterEscape(context, instruction, line, match);
         } else if ( (match = UNTERMINATED_ESCAPED_KEY.exec(line)) ) {
-            return unterminatedEscapedKey(context, instruction, match);
+            return unterminatedEscapedKey(context, instruction, line, match);
         }
-        
-        // TODO: This is a reoccurring pattern and can be DRYed up - line_error or something
-        //       (Also in other implementations)
-        return new ParseError(
-            context.messages.invalidLine(instruction.line + HUMAN_INDEXING),
-            new context.reporter(context).reportLine(instruction).snippet(),
-            selectLine(instruction)
-        );
     },
     instructionOutsideField: (context, instruction, type) => {
         return new ParseError(
@@ -140,11 +127,11 @@ export const errors = {
             selectLine(section)
         );
     },
-    unterminatedEmbed: (context, field) => {
+    unterminatedEmbed: (context, embed) => {
         return new ParseError(
-            context.messages.unterminatedEmbed(field.key, field.line + HUMAN_INDEXING),
-            new context.reporter(context).reportElement(field).snippet(),
-            selectLine(field)
+            context.messages.unterminatedEmbed(embed.key, embed.line + HUMAN_INDEXING),
+            new context.reporter(context).reportElement(embed).snippet(),
+            selectLine(embed)
         );
     }
 };
