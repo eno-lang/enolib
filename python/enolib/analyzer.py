@@ -6,7 +6,6 @@ from .constants import (
     BEGIN,
     COMMENT,
     CONTINUATION,
-    DOCUMENT,
     EMBED_BEGIN,
     EMBED_END,
     EMBED_VALUE,
@@ -194,7 +193,7 @@ class Analyzer:
                 operator = match.group(Grammar.CONTINUATION_OPERATOR_INDEX)
 
                 instruction['type'] = CONTINUATION
-                
+
                 if operator == '\\':
                     instruction['spaced'] = True
                     instruction['ranges']['spaced_continuation_operator'] = match.span(Grammar.CONTINUATION_OPERATOR_INDEX)

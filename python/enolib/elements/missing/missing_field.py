@@ -1,4 +1,5 @@
 from .missing_value_element_base import MissingValueElementBase
+from .missing_attribute import MissingAttribute
 
 class MissingField(MissingValueElementBase):
     def __repr__(self):

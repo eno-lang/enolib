@@ -165,7 +165,7 @@ class Field(ValueElementBase):
         self._touched = True
 
         if 'attributes' in self._instruction or 'continuations' in self._instruction or 'value' in self._instruction:
-            raise Validation.unexpected_field_content(self._context, key, self._instruction, 'expected_items')
+            raise Validation.unexpected_field_content(self._context, None, self._instruction, 'expected_items')
 
         return [item.required_string_value() for item in self._items()]
         
@@ -173,7 +173,7 @@ class Field(ValueElementBase):
         self._touched = True
 
         if 'attributes' in self._instruction or 'continuations' in self._instruction or 'value' in self._instruction:
-            raise Validation.unexpected_field_content(self._context, key, self._instruction, 'expected_items')
+            raise Validation.unexpected_field_content(self._context, None, self._instruction, 'expected_items')
 
         return [item.required_value(loader) for item in self._items()]        
         
