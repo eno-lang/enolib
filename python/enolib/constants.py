@@ -6,31 +6,15 @@ BEGIN = 0
 END = 1
 
 # Instruction types
+ATTRIBUTE = 'Attribute'
 COMMENT = 'Comment'
 CONTINUATION = 'Continuation'
 DOCUMENT = 'Document'
-EMPTY = 'Empty'
+EMBED_BEGIN = 'Embed Begin'
+EMBED_END = 'Embed End'
+EMBED_VALUE = 'Embed Value'
 FIELD = 'Field'
-FIELDSET = 'Fieldset'
-FIELDSET_ENTRY = 'Fieldset Entry'
-FIELD_OR_FIELDSET_OR_LIST = 'Field, Fieldset or List'
-LIST = 'List'
-LIST_ITEM = 'List Item'
-MULTILINE_FIELD_BEGIN = 'Multiline Field Begin'
-MULTILINE_FIELD_END = 'Multiline Field End'
-MULTILINE_FIELD_VALUE = 'Multiline Field Value'
+FLAG = 'Flag'
+ITEM = 'Item'
 SECTION = 'Section'
 UNPARSED = 'Unparsed'
-
-PRETTY_TYPES = {
-    DOCUMENT: 'document',
-    EMPTY: 'empty',
-    FIELD: 'field',
-    FIELDSET: 'fieldset',
-    FIELDSET_ENTRY: 'fieldset_entry',
-    FIELD_OR_FIELDSET_OR_LIST: 'field_or_fieldset_or_list',
-    LIST: 'list',
-    LIST_ITEM: 'list_item',
-    MULTILINE_FIELD_BEGIN: 'field',
-    SECTION: 'section'
-}

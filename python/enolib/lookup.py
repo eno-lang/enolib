@@ -2,15 +2,13 @@ from .context import Context
 from .elements.element import Element
 from .constants import (
     BEGIN,
+    EMBED_BEGIN,
     END,
     FIELD,
-    FIELDSET,
-    LIST,
-    MULTILINE_FIELD_BEGIN,
     SECTION
 )
 
-def check_multiline_field_by_line(field, line):
+def check_embed_by_line(field, line):
     if line < field['line'] or line > field['end']['line']:
         return False
 
@@ -25,7 +23,7 @@ def check_multiline_field_by_line(field, line):
         'instruction': next((l for l in field['lines'] if l['line'] == line), None)
     }
 
-def check_multiline_field_by_index(field, index):
+def check_embed_by_index(field, index):
     if index < field['ranges']['line'][BEGIN] or index > field['end']['ranges']['line'][END]:
         return False
 
@@ -47,14 +45,51 @@ def check_field_by_line(field, line):
     if line == field['line']:
         return { 'element': field, 'instruction': field }
 
-    if not 'continuations' in field or line > field['continuations'][-1]['line']:
-        return False
+    if 'attributes' in field:
+        if line <= field['attributes'][-1]['line']:
+            for attribute in field['attributes']:
+                if line == attribute['line']:
+                    return { 'element': attribute, 'instruction': attribute }
 
-    for continuation in field['continuations']:
-        if line == continuation['line']:
-            return { 'element': field, 'instruction': continuation }
-        if line < continuation['line']:
-            return { 'element': field, 'instruction': None }
+                if line < attribute['line']:
+                    if 'comments' in attribute and line >= attribute['comments'][0]['line']:
+                        for comment in attribute['comments']:
+                            if line == comment['line']:
+                                return { 'element': attribute, 'instruction': comment }
+
+                    return { 'element': field, 'instruction': None }
+
+                match_in_attribute = check_field_by_line(attribute, line) # TODO: check_attribute kinda really, although technically this works for now
+
+                if match_in_attribute:
+                    return match_in_attribute
+    elif 'continuations' in field:
+        if line <= field['continuations'][-1]['line']:
+            for continuation in field['continuations']:
+                if line == continuation['line']:
+                    return { 'element': field, 'instruction': continuation }
+                if line < continuation['line']:
+                    return { 'element': field, 'instruction': None }
+    elif 'items' in field:
+        if line <= field['items'][-1]['line']:
+            for item in field['items']:
+                if line == item['line']:
+                    return { 'element': item, 'instruction': item }
+
+                if line < item['line']:
+                    if 'comments' in item and line >= item['comments'][0]['line']:
+                        for comment in item['comments']:
+                            if line == comment['line']:
+                                return { 'element': item, 'instruction': comment }
+
+                    return { 'element': field, 'instruction': None }
+
+                match_in_item = check_field_by_line(item, line)
+
+                if match_in_item:
+                    return match_in_item
+
+    return False
 
 def check_field_by_index(field, index):
     if index < field['ranges']['line'][BEGIN]:
@@ -63,122 +98,51 @@ def check_field_by_index(field, index):
     if index <= field['ranges']['line'][END]:
         return { 'element': field, 'instruction': field }
 
-    if not 'continuations' in field or index > field['continuations'][-1]['ranges']['line'][END]:
-        return False
+    if 'attributes' in field:
+        if index <= field['attributes'][-1]['ranges']['line'][END]:
+            for attribute in field['attributes']:
+                if index < attribute['ranges']['line'][BEGIN]:
+                    if 'comments' in attribute and index >= attribute['comments'][0]['ranges']['line'][BEGIN]:
+                        for comment in attribute['comments']:
+                            if index <= comment['ranges']['line'][END]:
+                                return { 'element': attribute, 'instruction': comment }
 
-    for continuation in field['continuations']:
-        if index < continuation['ranges']['line'][BEGIN]:
-            return { 'element': field, 'instruction': None }
-        if index <= continuation['ranges']['line'][END]:
-            return { 'element': field, 'instruction': continuation }
+                    return { 'element': field, 'instruction': None }
 
-def check_fieldset_by_line(fieldset, line):
-    if line < fieldset['line']:
-        return False
+                if index <= attribute['ranges']['line'][END]:
+                    return { 'element': attribute, 'instruction': attribute }
 
-    if line == fieldset['line']:
-        return { 'element': fieldset, 'instruction': fieldset }
+                match_in_attribute = check_field_by_index(attribute, index)
 
-    if not 'entries' in fieldset or line > fieldset['entries'][-1]['line']:
-        return False
+                if match_in_attribute:
+                    return match_in_attribute
+    elif 'continuations' in field:
+        if index <= field['continuations'][-1]['ranges']['line'][END]:
+            for continuation in field['continuations']:
+                if index < continuation['ranges']['line'][BEGIN]:
+                    return { 'element': field, 'instruction': None }
+                if index <= continuation['ranges']['line'][END]:
+                    return { 'element': field, 'instruction': continuation }
+    elif 'items' in field:
+        if index <= field['items'][-1]['ranges']['line'][END]:
+            for item in field['items']:
+                if index < item['ranges']['line'][BEGIN]:
+                    if 'comments' in item and index >= item['comments'][0]['ranges']['line'][BEGIN]:
+                        for comment in item['comments']:
+                            if index <= comment['ranges']['line'][END]:
+                                return { 'element': item, 'instruction': comment }
 
-    for entry in fieldset['entries']:
-        if line == entry['line']:
-            return { 'element': entry, 'instruction': entry }
+                    return { 'element': field, 'instruction': None }
 
-        if line < entry['line']:
-            if 'comments' in entry and line >= entry['comments'][0]['line']:
-                for comment in entry['comments']:
-                    if line == comment['line']:
-                        return { 'element': entry, 'instruction': comment }
+                if index <= item['ranges']['line'][END]:
+                    return { 'element': item, 'instruction': item }
 
-            return { 'element': fieldset, 'instruction': None }
+                match_in_item = check_field_by_index(item, index)
 
-        match_in_entry = check_field_by_line(entry, line)
+                if match_in_item:
+                    return match_in_item
 
-        if match_in_entry:
-            return match_in_entry
-
-def check_fieldset_by_index(fieldset, index):
-    if index < fieldset['ranges']['line'][BEGIN]:
-        return False
-
-    if index <= fieldset['ranges']['line'][END]:
-        return { 'element': fieldset, 'instruction': fieldset }
-
-    if not 'entries' in fieldset or index > fieldset['entries'][-1]['ranges']['line'][END]:
-        return False
-
-    for entry in fieldset['entries']:
-        if index < entry['ranges']['line'][BEGIN]:
-            if 'comments' in entry and index >= entry['comments'][0]['ranges']['line'][BEGIN]:
-                for comment in entry['comments']:
-                    if index <= comment['ranges']['line'][END]:
-                        return { 'element': entry, 'instruction': comment }
-
-            return { 'element': fieldset, 'instruction': None }
-
-        if index <= entry['ranges']['line'][END]:
-            return { 'element': entry, 'instruction': entry }
-
-        match_in_entry = check_field_by_index(entry, index)
-
-        if match_in_entry:
-            return match_in_entry
-
-def check_list_by_line(list, line):
-    if line < list['line']:
-        return False
-
-    if line == list['line']:
-        return { 'element': list, 'instruction': list }
-
-    if not 'items' in list or line > list['items'][-1]['line']:
-        return False
-
-    for item in list['items']:
-        if line == item['line']:
-            return { 'element': item, 'instruction': item }
-
-        if line < item['line']:
-            if 'comments' in item and line >= item['comments'][0]['line']:
-                for comment in item['comments']:
-                    if line == comment['line']:
-                        return { 'element': item, 'instruction': comment }
-
-            return { 'element': list, 'instruction': None }
-
-        match_in_item = check_field_by_line(item, line)
-
-        if match_in_item:
-            return match_in_item
-
-def check_list_by_index(list, index):
-    if index < list['ranges']['line'][BEGIN]:
-        return False
-
-    if index <= list['ranges']['line'][END]:
-        return { 'element': list, 'instruction': list }
-
-    if not 'items' in list or index > list['items'][-1]['ranges']['line'][END]:
-        return False
-
-    for item in list['items']:
-        if index < item['ranges']['line'][BEGIN]:
-            if 'comments' in item and index >= item['comments'][0]['ranges']['line'][BEGIN]:
-                for comment in item['comments']:
-                    if index <= comment['ranges']['line'][END]:
-                        return { 'element': item, 'instruction': comment }
-
-            return { 'element': list, 'instruction': None }
-
-        if index <= item['ranges']['line'][END]:
-            return { 'element': item, 'instruction': item }
-
-        match_in_item = check_field_by_index(item, index)
-
-        if match_in_item:
-            return match_in_item
+    return False
 
 def check_in_section_by_line(section, line):
     for element in reversed(section['elements']):
@@ -200,18 +164,10 @@ def check_in_section_by_line(section, line):
             match_in_field = check_field_by_line(element, line)
             if match_in_field:
                 return match_in_field
-        elif element['type'] is FIELDSET:
-            match_in_fieldset = check_fieldset_by_line(element, line)
-            if match_in_fieldset:
-                return match_in_fieldset
-        elif element['type'] is LIST:
-            match_in_list = check_list_by_line(element, line)
-            if match_in_list:
-                return match_in_list
-        elif element['type'] is MULTILINE_FIELD_BEGIN:
-            match_in_multiline_field = check_multiline_field_by_line(element, line)
-            if match_in_multiline_field:
-                return match_in_multiline_field
+        elif element['type'] is EMBED_BEGIN:
+            match_in_embed = check_embed_by_line(element, line)
+            if match_in_embed:
+                return match_in_embed
         elif element['type'] is SECTION:
             return check_in_section_by_line(element, line)
 
@@ -239,18 +195,10 @@ def check_in_section_by_index(section, index):
             match_in_field = check_field_by_index(element, index)
             if match_in_field:
                 return match_in_field
-        elif element['type'] is FIELDSET:
-            match_in_fieldset = check_fieldset_by_index(element, index)
-            if match_in_fieldset:
-                return match_in_fieldset
-        elif element['type'] is LIST:
-            match_in_list = check_list_by_index(element, index)
-            if match_in_list:
-                return match_in_list
-        elif element['type'] is MULTILINE_FIELD_BEGIN:
-            match_in_multiline_field = check_multiline_field_by_index(element, index)
-            if match_in_multiline_field:
-                return match_in_multiline_field
+        elif element['type'] is EMBED_BEGIN:
+            match_in_embed = check_embed_by_index(element, index)
+            if match_in_embed:
+                return match_in_embed
         elif element['type'] is SECTION:
             return check_in_section_by_index(element, index)
 

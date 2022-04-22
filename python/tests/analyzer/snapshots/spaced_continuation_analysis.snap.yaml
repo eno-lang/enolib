@@ -6,7 +6,7 @@ document: &id001
         line: !!python/tuple
         - 8
         - 15
-        spaced_line_continuation_operator: !!python/tuple
+        spaced_continuation_operator: !!python/tuple
         - 8
         - 9
         value: !!python/tuple
@@ -20,7 +20,7 @@ document: &id001
         line: !!python/tuple
         - 16
         - 26
-        spaced_line_continuation_operator: !!python/tuple
+        spaced_continuation_operator: !!python/tuple
         - 16
         - 17
         value: !!python/tuple
@@ -34,7 +34,7 @@ document: &id001
         line: !!python/tuple
         - 27
         - 38
-        spaced_line_continuation_operator: !!python/tuple
+        spaced_continuation_operator: !!python/tuple
         - 31
         - 32
         value: !!python/tuple
@@ -48,7 +48,7 @@ document: &id001
         line: !!python/tuple
         - 39
         - 53
-        spaced_line_continuation_operator: !!python/tuple
+        spaced_continuation_operator: !!python/tuple
         - 43
         - 44
         value: !!python/tuple
@@ -62,7 +62,7 @@ document: &id001
         line: !!python/tuple
         - 54
         - 61
-        spaced_line_continuation_operator: !!python/tuple
+        spaced_continuation_operator: !!python/tuple
         - 54
         - 55
         value: !!python/tuple
@@ -75,7 +75,7 @@ document: &id001
     line: 0
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 5
       - 6
       key: !!python/tuple

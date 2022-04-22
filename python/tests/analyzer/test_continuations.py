@@ -3,35 +3,35 @@ from tests.util import match_object_snapshot
 
 input = """
 Field: Value
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 
-Fieldset:
+Field:
 Empty = Value
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 
-List:
+Field with item:
 - Value
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 
-Empty field:
-\\ Spaced line continuation
-| Direct line continuation
+Field:
+\\ Spaced continuation
+| Direct continuation
 
-Fieldset with empty entry:
-Empty entry =
-\\ Spaced line continuation
-| Direct line continuation
+Field with attribute:
+Attribute =
+\\ Spaced continuation
+| Direct continuation
 
-List with empty item:
+Field with item:
 -
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 """.strip()
 
 def test_continuations():
     analysis = analyze(input)
-
+    
     assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/continuations.snap.yaml')

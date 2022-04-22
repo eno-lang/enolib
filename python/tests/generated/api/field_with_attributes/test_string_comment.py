@@ -3,7 +3,7 @@ import enolib
 def test_querying_an_existing_single_line_required_string_comment_from_a_field_with_attributes_produces_the_expected_result():
     input = ("> comment\n"
              "field:\n"
-             "entry = value")
+             "attribute = value")
     
     output = enolib.parse(input).field('field').required_string_comment()
     
@@ -15,7 +15,7 @@ def test_querying_an_existing_two_line_required_string_comment_from_a_field_with
     input = (">comment\n"
              ">  comment\n"
              "field:\n"
-             "entry = value")
+             "attribute = value")
     
     output = enolib.parse(input).field('field').required_string_comment()
     
@@ -33,7 +33,7 @@ def test_querying_an_existing_required_string_comment_with_blank_lines_from_a_fi
              "> comment\n"
              ">\n"
              "field:\n"
-             "entry = value")
+             "attribute = value")
     
     output = enolib.parse(input).field('field').required_string_comment()
     
@@ -48,7 +48,7 @@ def test_querying_an_existing_required_string_comment_with_blank_lines_from_a_fi
 def test_querying_an_optional_existing_string_comment_from_a_field_with_attributes_produces_the_expected_result():
     input = ("> comment\n"
              "field:\n"
-             "entry = value")
+             "attribute = value")
     
     output = enolib.parse(input).field('field').optional_string_comment()
     
@@ -58,7 +58,7 @@ def test_querying_an_optional_existing_string_comment_from_a_field_with_attribut
 
 def test_querying_an_optional_missing_string_comment_from_a_field_with_attributes_produces_the_expected_result():
     input = ("field:\n"
-             "entry = value")
+             "attribute = value")
     
     output = enolib.parse(input).field('field').optional_string_comment()
     

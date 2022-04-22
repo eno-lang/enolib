@@ -1,5 +1,5 @@
 from ..errors.validation import Validation
-from ..constants import DOCUMENT, LIST_ITEM
+from ..constants import ATTRIBUTE, DOCUMENT, EMBED_BEGIN, FIELD, FLAG, ITEM, SECTION
 
 class ElementBase:
     def __init__(self, context, instruction, parent=None):
@@ -30,10 +30,14 @@ class ElementBase:
         if self._instruction['type'] is DOCUMENT:
             return None
 
-        if self._instruction['type'] is LIST_ITEM:
+        if self._instruction['type'] is ITEM:
             return self._instruction['parent']['key']
 
         return self._instruction['key']
+
+    def _untouched(self):
+        if not hasattr(self, '_touched'):
+            return self._instruction
 
     def comment_error(self, message):
         if callable(message):
@@ -46,6 +50,36 @@ class ElementBase:
             message = message(self)  # Revisit self in this context - problematic
 
         return Validation.element_error(self._context, message, self._instruction)
+
+    def has_attributes(self):
+        return 'attributes' in self._instruction
+
+    def has_items(self):
+        return 'items' in self._instruction
+
+    def has_value(self):
+        return 'continuations' in self._instruction or 'value' in self._instruction
+        
+    def is_attribute(self):
+        return self._instruction['type'] == ATTRIBUTE
+
+    def is_document(self):
+        return self._instruction['type'] == DOCUMENT
+        
+    def is_embed(self):
+        return self._instruction['type'] == EMBED_BEGIN
+        
+    def is_field(self):
+        return self._instruction['type'] == FIELD
+        
+    def is_flag(self):
+        return self._instruction['type'] == FLAG
+        
+    def is_item(self):
+        return self._instruction['type'] == ITEM
+        
+    def is_section(self):
+        return self._instruction['type'] == SECTION
 
     def key(self, loader):
         self._touched = True
@@ -66,9 +100,6 @@ class ElementBase:
 
     def optional_string_comment(self):
         return self._comment(required=False)
-
-    def raw(self):
-        return self._context.raw(self._instruction)
 
     def required_comment(self, loader):
         return self._comment(loader, required=True)

@@ -3,85 +3,85 @@ from enolib.grammar_regex import Grammar
 
 SCENARIOS = [
 
-    # DIRECT_LINE_CONTINUATION_SCENARIOS
+    # DIRECT_CONTINUATION_SCENARIOS
     {
         'captures': {
-            Grammar.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX: '|'
+            Grammar.CONTINUATION_OPERATOR_INDEX: '|'
         },
         'syntax': '|',
         'variants': space('|')
     },
     {
         'captures': {
-            Grammar.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX: '|',
-            Grammar.DIRECT_LINE_CONTINUATION_VALUE_INDEX: 'Value'
+            Grammar.CONTINUATION_OPERATOR_INDEX: '|',
+            Grammar.CONTINUATION_VALUE_INDEX: 'Value'
         },
         'syntax': '| Value',
         'variants': space('|', 'Value')
     },
     {
         'captures': {
-            Grammar.DIRECT_LINE_CONTINUATION_OPERATOR_INDEX: '|',
-            Grammar.DIRECT_LINE_CONTINUATION_VALUE_INDEX: '|'
+            Grammar.CONTINUATION_OPERATOR_INDEX: '|',
+            Grammar.CONTINUATION_VALUE_INDEX: '|'
         },
         'syntax': '| |',
         'variants': space('|', '|')
     },
 
-    # SPACED_LINE_CONTINUATION_SCENARIOS
+    # SPACED_CONTINUATION_SCENARIOS
     {
         'captures': {
-            Grammar.SPACED_LINE_CONTINUATION_OPERATOR_INDEX: '\\'
+            Grammar.CONTINUATION_OPERATOR_INDEX: '\\'
         },
         'syntax': '\\',
         'variants': space('\\')
     },
     {
         'captures': {
-            Grammar.SPACED_LINE_CONTINUATION_OPERATOR_INDEX: '\\',
-            Grammar.SPACED_LINE_CONTINUATION_VALUE_INDEX: 'Value'
+            Grammar.CONTINUATION_OPERATOR_INDEX: '\\',
+            Grammar.CONTINUATION_VALUE_INDEX: 'Value'
         },
         'syntax': '\\ Value',
         'variants': space('\\', 'Value')
     },
     {
         'captures': {
-            Grammar.SPACED_LINE_CONTINUATION_OPERATOR_INDEX: '\\',
-            Grammar.SPACED_LINE_CONTINUATION_VALUE_INDEX: '\\'
+            Grammar.CONTINUATION_OPERATOR_INDEX: '\\',
+            Grammar.CONTINUATION_VALUE_INDEX: '\\'
         },
         'syntax': '\\ \\',
         'variants': space('\\', '\\')
     },
 
-    # MULTILINE_FIELD_SCENARIOS
+    # EMBED_SCENARIOS
     {
         'captures': {
-            Grammar.MULTILINE_FIELD_OPERATOR_INDEX: '--',
-            Grammar.MULTILINE_FIELD_KEY_INDEX: 'Key'
+            Grammar.EMBED_OPERATOR_INDEX: '--',
+            Grammar.EMBED_KEY_INDEX: 'Key'
         },
         'syntax': '-- Key',
         'variants': space('--', 'Key')
     },
     {
         'captures': {
-            Grammar.MULTILINE_FIELD_OPERATOR_INDEX: '--',
-            Grammar.MULTILINE_FIELD_KEY_INDEX: '--'
+            Grammar.EMBED_OPERATOR_INDEX: '--',
+            Grammar.EMBED_KEY_INDEX: '--'
         },
         'syntax': '-- --',
         'variants': space('--', ' ', '--')
     },
     {
         'captures': {
-            Grammar.MULTILINE_FIELD_OPERATOR_INDEX: '---',
-            Grammar.MULTILINE_FIELD_KEY_INDEX: 'The Key'
+            Grammar.EMBED_OPERATOR_INDEX: '---',
+            Grammar.EMBED_KEY_INDEX: 'The Key'
         },
         'syntax': '--- The Key',
         'variants': space('---', 'The Key')
     },
     {
         'captures': {
-            Grammar.MULTILINE_FIELD_OPERATOR_INDEX: '---',
-            Grammar.MULTILINE_FIELD_KEY_INDEX: '---'
+            Grammar.EMBED_OPERATOR_INDEX: '---',
+            Grammar.EMBED_KEY_INDEX: '---'
         },
         'syntax': '--- ---',
         'variants': space('---', ' ', '---')
@@ -121,12 +121,12 @@ SCENARIOS = [
         'variants': ['>   Comment Value   ', ' >   Comment Value   ', '   >   Comment Value   ']
     },
 
-    # FIELDSET_ENTRY_SCENARIOS
+    # ATTRIBUTE_SCENARIOS
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: 'Value'
+            Grammar.ATTRIBUTE_OPERATOR_INDEX: '=',
+            Grammar.ATTRIBUTE_VALUE_INDEX: 'Value'
         },
         'syntax': 'Key = Value',
         'variants': space('Key', '=', 'Value')
@@ -134,8 +134,8 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'The Key',
-            Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: 'The Value'
+            Grammar.ATTRIBUTE_OPERATOR_INDEX: '=',
+            Grammar.ATTRIBUTE_VALUE_INDEX: 'The Value'
         },
         'syntax': 'The Key = The Value',
         'variants': space('The Key', '=', 'The Value')
@@ -143,8 +143,8 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '='
+            Grammar.ATTRIBUTE_OPERATOR_INDEX: '=',
+            Grammar.ATTRIBUTE_VALUE_INDEX: '='
         },
         'syntax': 'Key = =',
         'variants': space('Key', '=', ' ', '=')
@@ -152,8 +152,8 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: ':'
+            Grammar.ATTRIBUTE_OPERATOR_INDEX: '=',
+            Grammar.ATTRIBUTE_VALUE_INDEX: ':'
         },
         'syntax': 'Key = :',
         'variants': space('Key', '=', ' ', ':')
@@ -163,8 +163,8 @@ SCENARIOS = [
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
             Grammar.KEY_ESCAPED_INDEX: '=:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '`',
-            Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '`=:`'
+            Grammar.ATTRIBUTE_OPERATOR_INDEX: '=',
+            Grammar.ATTRIBUTE_VALUE_INDEX: '`=:`'
         },
         'syntax': '`=:` = `=:`',
         'variants': space('`', '=:', '`', '=', '`=:`')
@@ -174,8 +174,8 @@ SCENARIOS = [
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
             Grammar.KEY_ESCAPED_INDEX: '`=``:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '```',
-            Grammar.FIELDSET_ENTRY_OPERATOR_INDEX: '=',
-            Grammar.FIELDSET_ENTRY_VALUE_INDEX: '`=:`'
+            Grammar.ATTRIBUTE_OPERATOR_INDEX: '=',
+            Grammar.ATTRIBUTE_VALUE_INDEX: '`=:`'
         },
         'syntax': '``` `=``:``` = `=:`',
         'variants': space('```', ' ', '`=``:', '```', '=', '`=:`')
@@ -194,7 +194,7 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':',
+            Grammar.FIELD_OPERATOR_INDEX: ':',
             Grammar.FIELD_VALUE_INDEX: 'Value'
         },
         'syntax': 'Key: Value',
@@ -203,7 +203,7 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'The Key',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':',
+            Grammar.FIELD_OPERATOR_INDEX: ':',
             Grammar.FIELD_VALUE_INDEX: 'The Value'
         },
         'syntax': 'The Key: The Value',
@@ -212,7 +212,7 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':',
+            Grammar.FIELD_OPERATOR_INDEX: ':',
             Grammar.FIELD_VALUE_INDEX: ':'
         },
         'syntax': 'Key: :',
@@ -223,7 +223,7 @@ SCENARIOS = [
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
             Grammar.KEY_ESCAPED_INDEX: '=:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '`',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':',
+            Grammar.FIELD_OPERATOR_INDEX: ':',
             Grammar.FIELD_VALUE_INDEX: '`=:`'
         },
         'syntax': '`=:` : `=:`',
@@ -234,7 +234,7 @@ SCENARIOS = [
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
             Grammar.KEY_ESCAPED_INDEX: '`=``:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '```',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':',
+            Grammar.FIELD_OPERATOR_INDEX: ':',
             Grammar.FIELD_VALUE_INDEX: '`=:`'
         },
         'syntax': '``` `=``:``` : `=:`',
@@ -279,44 +279,44 @@ SCENARIOS = [
         'variants': space(':', 'Invalid', '\n', 'Valid', ':', 'Valid')
     },
 
-    # LIST_ITEM_SCENARIOS
+    # ITEM_SCENARIOS
     {
         'captures': {
-            Grammar.LIST_ITEM_OPERATOR_INDEX: '-'
+            Grammar.ITEM_OPERATOR_INDEX: '-'
         },
         'syntax': '-',
         'variants': space('-')
     },
     {
         'captures': {
-            Grammar.LIST_ITEM_OPERATOR_INDEX: '-',
-            Grammar.LIST_ITEM_VALUE_INDEX: 'Item'
+            Grammar.ITEM_OPERATOR_INDEX: '-',
+            Grammar.ITEM_VALUE_INDEX: 'Item'
         },
         'syntax': '- Item',
         'variants': space('-', 'Item')
     },
     {
         'captures': {
-            Grammar.LIST_ITEM_OPERATOR_INDEX: '-',
-            Grammar.LIST_ITEM_VALUE_INDEX: 'The Item'
+            Grammar.ITEM_OPERATOR_INDEX: '-',
+            Grammar.ITEM_VALUE_INDEX: 'The Item'
         },
         'syntax': '- The Item',
         'variants': space('-', 'The Item')
     },
     {
         'captures': {
-            Grammar.LIST_ITEM_OPERATOR_INDEX: '-',
-            Grammar.LIST_ITEM_VALUE_INDEX: '-'
+            Grammar.ITEM_OPERATOR_INDEX: '-',
+            Grammar.ITEM_VALUE_INDEX: '-'
         },
         'syntax': '- -',
         'variants': space('-', ' ', '-')
     },
 
-    # FIELD_OR_FIELDSET_OR_LIST_SCENARIOS
+    # EMPTY_FIELD_SCENARIOS
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'Key',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':'
+            Grammar.FIELD_OPERATOR_INDEX: ':'
         },
         'syntax': 'Key:',
         'variants': space('Key', ':')
@@ -324,7 +324,7 @@ SCENARIOS = [
     {
         'captures': {
             Grammar.KEY_UNESCAPED_INDEX: 'The Key',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':'
+            Grammar.FIELD_OPERATOR_INDEX: ':'
         },
         'syntax': 'The Key:',
         'variants': space('The Key', ':')
@@ -334,7 +334,7 @@ SCENARIOS = [
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '`',
             Grammar.KEY_ESCAPED_INDEX: '=:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '`',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':'
+            Grammar.FIELD_OPERATOR_INDEX: ':'
         },
         'syntax': '`=:`:',
         'variants': space('`', '=:', '`', ':')
@@ -344,7 +344,7 @@ SCENARIOS = [
             Grammar.KEY_ESCAPE_BEGIN_OPERATOR_INDEX: '```',
             Grammar.KEY_ESCAPED_INDEX: '`=``:',
             Grammar.KEY_ESCAPE_END_OPERATOR_INDEX: '```',
-            Grammar.ELEMENT_OPERATOR_INDEX: ':'
+            Grammar.FIELD_OPERATOR_INDEX: ':'
         },
         'syntax': '``` `=``:```:',
         'variants': space('```', ' ', '`=``:', '```', ':')

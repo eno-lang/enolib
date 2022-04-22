@@ -3,7 +3,7 @@ document: &id001
   - continuations:
     - line: 2
       ranges:
-        direct_line_continuation_operator: !!python/tuple
+        direct_continuation_operator: !!python/tuple
         - 8
         - 9
         line: !!python/tuple
@@ -16,7 +16,7 @@ document: &id001
       value: value
     - line: 3
       ranges:
-        direct_line_continuation_operator: !!python/tuple
+        direct_continuation_operator: !!python/tuple
         - 16
         - 17
         line: !!python/tuple
@@ -29,7 +29,7 @@ document: &id001
       value: value
     - line: 4
       ranges:
-        direct_line_continuation_operator: !!python/tuple
+        direct_continuation_operator: !!python/tuple
         - 31
         - 32
         line: !!python/tuple
@@ -42,7 +42,7 @@ document: &id001
       value: value
     - line: 5
       ranges:
-        direct_line_continuation_operator: !!python/tuple
+        direct_continuation_operator: !!python/tuple
         - 43
         - 44
         line: !!python/tuple
@@ -55,7 +55,7 @@ document: &id001
       value: value
     - line: 6
       ranges:
-        direct_line_continuation_operator: !!python/tuple
+        direct_continuation_operator: !!python/tuple
         - 54
         - 55
         line: !!python/tuple
@@ -70,7 +70,7 @@ document: &id001
     line: 0
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 5
       - 6
       key: !!python/tuple

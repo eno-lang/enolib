@@ -1,0 +1,6 @@
+my custom generated message for element 'embed'
+
+   Line | Content
+ >    1 | -- embed
+ *    2 | value
+ *    3 | -- embed

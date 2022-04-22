@@ -1,57 +1,57 @@
 {
-  "type": "document",
   "elements": [
     {
-      "type": "field",
       "key": "Field",
-      "value": "Value Spaced line continuationDirect line continuation"
-    },
-    {
-      "type": "fieldset",
-      "key": "Fieldset",
-      "entries": [
-        {
-          "type": "fieldset_entry",
-          "key": "Entry",
-          "value": "Value Spaced line continuationDirect line continuation"
-        }
-      ]
-    },
-    {
-      "type": "list",
-      "key": "List",
-      "items": [
-        {
-          "type": "list_item",
-          "value": "Value Spaced line continuationDirect line continuation"
-        }
-      ]
-    },
-    {
       "type": "field",
-      "key": "Empty field",
-      "value": "Spaced line continuationDirect line continuation"
+      "value": "Value Spaced continuationDirect continuation"
     },
     {
-      "type": "fieldset",
-      "key": "Fieldset with empty entry",
-      "entries": [
+      "key": "Field with attribute",
+      "type": "field",
+      "attributes": [
         {
-          "type": "fieldset_entry",
-          "key": "Empty entry",
-          "value": "Spaced line continuationDirect line continuation"
+          "key": "Attribute",
+          "type": "attribute",
+          "value": "Value Spaced continuationDirect continuation"
         }
       ]
     },
     {
-      "type": "list",
-      "key": "List with empty item",
+      "key": "Field with item",
+      "type": "field",
       "items": [
         {
-          "type": "list_item",
-          "value": "Spaced line continuationDirect line continuation"
+          "type": "item",
+          "value": "Value Spaced continuationDirect continuation"
+        }
+      ]
+    },
+    {
+      "key": "Field",
+      "type": "field",
+      "value": "Spaced continuationDirect continuation"
+    },
+    {
+      "key": "Field with attribute",
+      "type": "field",
+      "attributes": [
+        {
+          "key": "Attribute",
+          "type": "attribute",
+          "value": "Spaced continuationDirect continuation"
+        }
+      ]
+    },
+    {
+      "key": "Field with item",
+      "type": "field",
+      "items": [
+        {
+          "type": "item",
+          "value": "Spaced continuationDirect continuation"
         }
       ]
     }
-  ]
+  ],
+  "type": "document"
 }

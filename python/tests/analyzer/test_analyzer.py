@@ -22,7 +22,7 @@ json
 -- languages
 """.strip()
 
-def test_tokenizer():
+def test_analyzer():
     analysis = analyze(input)
 
     assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/analyzer.snap.yaml')

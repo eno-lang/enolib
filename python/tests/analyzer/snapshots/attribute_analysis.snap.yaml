@@ -1,0 +1,129 @@
+document: &id002
+  elements:
+  - &id001
+    attributes:
+    - key: attribute
+      line: 1
+      parent: *id001
+      ranges:
+        attribute_operator: !!python/tuple
+        - 17
+        - 18
+        key: !!python/tuple
+        - 7
+        - 16
+        line: !!python/tuple
+        - 7
+        - 24
+        value: !!python/tuple
+        - 19
+        - 24
+      type: Attribute
+      value: value
+    - key: attribute
+      line: 2
+      parent: *id001
+      ranges:
+        attribute_operator: !!python/tuple
+        - 38
+        - 39
+        key: !!python/tuple
+        - 25
+        - 34
+        line: !!python/tuple
+        - 25
+        - 45
+        value: !!python/tuple
+        - 40
+        - 45
+      type: Attribute
+      value: value
+    - key: attribute
+      line: 3
+      parent: *id001
+      ranges:
+        attribute_operator: !!python/tuple
+        - 60
+        - 61
+        key: !!python/tuple
+        - 50
+        - 59
+        line: !!python/tuple
+        - 46
+        - 67
+        value: !!python/tuple
+        - 62
+        - 67
+      type: Attribute
+      value: value
+    - key: attribute
+      line: 4
+      parent: *id001
+      ranges:
+        attribute_operator: !!python/tuple
+        - 85
+        - 86
+        key: !!python/tuple
+        - 72
+        - 81
+        line: !!python/tuple
+        - 68
+        - 92
+        value: !!python/tuple
+        - 87
+        - 92
+      type: Attribute
+      value: value
+    - key: attribute
+      line: 5
+      parent: *id001
+      ranges:
+        attribute_operator: !!python/tuple
+        - 110
+        - 111
+        key: !!python/tuple
+        - 97
+        - 106
+        line: !!python/tuple
+        - 93
+        - 120
+        value: !!python/tuple
+        - 115
+        - 120
+      type: Attribute
+      value: value
+    - key: attribute
+      line: 6
+      parent: *id001
+      ranges:
+        attribute_operator: !!python/tuple
+        - 131
+        - 132
+        key: !!python/tuple
+        - 121
+        - 130
+        line: !!python/tuple
+        - 121
+        - 138
+        value: !!python/tuple
+        - 133
+        - 138
+      type: Attribute
+      value: value
+    key: field
+    line: 0
+    parent: *id002
+    ranges:
+      field_operator: !!python/tuple
+      - 5
+      - 6
+      key: !!python/tuple
+      - 0
+      - 5
+      line: !!python/tuple
+      - 0
+      - 6
+    type: Field
+  type: Document
+line_count: 7
+meta: []

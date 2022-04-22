@@ -5,34 +5,34 @@ document: &id001
       ranges:
         line: !!python/tuple
         - 13
-        - 39
-        spaced_line_continuation_operator: !!python/tuple
+        - 34
+        spaced_continuation_operator: !!python/tuple
         - 13
         - 14
         value: !!python/tuple
         - 15
-        - 39
+        - 34
       spaced: true
       type: Continuation
-      value: Spaced line continuation
+      value: Spaced continuation
     - line: 2
       ranges:
-        direct_line_continuation_operator: !!python/tuple
-        - 40
-        - 41
+        direct_continuation_operator: !!python/tuple
+        - 35
+        - 36
         line: !!python/tuple
-        - 40
-        - 66
+        - 35
+        - 56
         value: !!python/tuple
-        - 42
-        - 66
+        - 37
+        - 56
       type: Continuation
-      value: Direct line continuation
+      value: Direct continuation
     key: Field
     line: 0
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 5
       - 6
       key: !!python/tuple
@@ -47,279 +47,279 @@ document: &id001
     type: Field
     value: Value
   - &id002
-    entries:
+    attributes:
     - continuations:
       - line: 6
         ranges:
           line: !!python/tuple
-          - 92
-          - 118
-          spaced_line_continuation_operator: !!python/tuple
-          - 92
-          - 93
+          - 79
+          - 100
+          spaced_continuation_operator: !!python/tuple
+          - 79
+          - 80
           value: !!python/tuple
-          - 94
-          - 118
+          - 81
+          - 100
         spaced: true
         type: Continuation
-        value: Spaced line continuation
+        value: Spaced continuation
       - line: 7
         ranges:
-          direct_line_continuation_operator: !!python/tuple
-          - 119
-          - 120
+          direct_continuation_operator: !!python/tuple
+          - 101
+          - 102
           line: !!python/tuple
-          - 119
-          - 145
+          - 101
+          - 122
           value: !!python/tuple
-          - 121
-          - 145
+          - 103
+          - 122
         type: Continuation
-        value: Direct line continuation
+        value: Direct continuation
       key: Empty
       line: 5
       parent: *id002
       ranges:
-        entry_operator: !!python/tuple
-        - 84
-        - 85
+        attribute_operator: !!python/tuple
+        - 71
+        - 72
         key: !!python/tuple
-        - 78
-        - 83
+        - 65
+        - 70
         line: !!python/tuple
+        - 65
         - 78
-        - 91
         value: !!python/tuple
-        - 86
-        - 91
-      type: Fieldset Entry
+        - 73
+        - 78
+      type: Attribute
       value: Value
-    key: Fieldset
+    key: Field
     line: 4
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
-      - 76
-      - 77
+      field_operator: !!python/tuple
+      - 63
+      - 64
       key: !!python/tuple
-      - 68
-      - 76
+      - 58
+      - 63
       line: !!python/tuple
-      - 68
-      - 77
-    type: Fieldset
+      - 58
+      - 64
+    type: Field
   - &id003
     items:
     - continuations:
       - line: 11
         ranges:
           line: !!python/tuple
-          - 161
-          - 187
-          spaced_line_continuation_operator: !!python/tuple
-          - 161
-          - 162
+          - 149
+          - 170
+          spaced_continuation_operator: !!python/tuple
+          - 149
+          - 150
           value: !!python/tuple
-          - 163
-          - 187
+          - 151
+          - 170
         spaced: true
         type: Continuation
-        value: Spaced line continuation
+        value: Spaced continuation
       - line: 12
         ranges:
-          direct_line_continuation_operator: !!python/tuple
-          - 188
-          - 189
+          direct_continuation_operator: !!python/tuple
+          - 171
+          - 172
           line: !!python/tuple
-          - 188
-          - 214
+          - 171
+          - 192
           value: !!python/tuple
-          - 190
-          - 214
+          - 173
+          - 192
         type: Continuation
-        value: Direct line continuation
+        value: Direct continuation
       line: 10
       parent: *id003
       ranges:
         item_operator: !!python/tuple
-        - 153
-        - 154
+        - 141
+        - 142
         line: !!python/tuple
-        - 153
-        - 160
+        - 141
+        - 148
         value: !!python/tuple
-        - 155
-        - 160
-      type: List Item
+        - 143
+        - 148
+      type: Item
       value: Value
-    key: List
+    key: Field with item
     line: 9
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
-      - 151
-      - 152
+      field_operator: !!python/tuple
+      - 139
+      - 140
       key: !!python/tuple
-      - 147
-      - 151
+      - 124
+      - 139
       line: !!python/tuple
-      - 147
-      - 152
-    type: List
+      - 124
+      - 140
+    type: Field
   - continuations:
     - line: 15
       ranges:
         line: !!python/tuple
-        - 229
-        - 255
-        spaced_line_continuation_operator: !!python/tuple
-        - 229
-        - 230
+        - 201
+        - 222
+        spaced_continuation_operator: !!python/tuple
+        - 201
+        - 202
         value: !!python/tuple
-        - 231
-        - 255
+        - 203
+        - 222
       spaced: true
       type: Continuation
-      value: Spaced line continuation
+      value: Spaced continuation
     - line: 16
       ranges:
-        direct_line_continuation_operator: !!python/tuple
-        - 256
-        - 257
+        direct_continuation_operator: !!python/tuple
+        - 223
+        - 224
         line: !!python/tuple
-        - 256
-        - 282
+        - 223
+        - 244
         value: !!python/tuple
-        - 258
-        - 282
+        - 225
+        - 244
       type: Continuation
-      value: Direct line continuation
-    key: Empty field
+      value: Direct continuation
+    key: Field
     line: 14
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
-      - 227
-      - 228
+      field_operator: !!python/tuple
+      - 199
+      - 200
       key: !!python/tuple
-      - 216
-      - 227
+      - 194
+      - 199
       line: !!python/tuple
-      - 216
-      - 228
+      - 194
+      - 200
     type: Field
   - &id004
-    entries:
+    attributes:
     - continuations:
       - line: 20
         ranges:
           line: !!python/tuple
-          - 325
-          - 351
-          spaced_line_continuation_operator: !!python/tuple
-          - 325
-          - 326
+          - 280
+          - 301
+          spaced_continuation_operator: !!python/tuple
+          - 280
+          - 281
           value: !!python/tuple
-          - 327
-          - 351
+          - 282
+          - 301
         spaced: true
         type: Continuation
-        value: Spaced line continuation
+        value: Spaced continuation
       - line: 21
         ranges:
-          direct_line_continuation_operator: !!python/tuple
-          - 352
-          - 353
+          direct_continuation_operator: !!python/tuple
+          - 302
+          - 303
           line: !!python/tuple
-          - 352
-          - 378
+          - 302
+          - 323
           value: !!python/tuple
-          - 354
-          - 378
+          - 304
+          - 323
         type: Continuation
-        value: Direct line continuation
-      key: Empty entry
+        value: Direct continuation
+      key: Attribute
       line: 19
       parent: *id004
       ranges:
-        entry_operator: !!python/tuple
-        - 323
-        - 324
+        attribute_operator: !!python/tuple
+        - 278
+        - 279
         key: !!python/tuple
-        - 311
-        - 322
+        - 268
+        - 277
         line: !!python/tuple
-        - 311
-        - 324
-      type: Fieldset Entry
-    key: Fieldset with empty entry
+        - 268
+        - 279
+      type: Attribute
+    key: Field with attribute
     line: 18
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
-      - 309
-      - 310
+      field_operator: !!python/tuple
+      - 266
+      - 267
       key: !!python/tuple
-      - 284
-      - 309
+      - 246
+      - 266
       line: !!python/tuple
-      - 284
-      - 310
-    type: Fieldset
+      - 246
+      - 267
+    type: Field
   - &id005
     items:
     - continuations:
       - line: 25
         ranges:
           line: !!python/tuple
-          - 404
-          - 430
-          spaced_line_continuation_operator: !!python/tuple
-          - 404
-          - 405
+          - 344
+          - 365
+          spaced_continuation_operator: !!python/tuple
+          - 344
+          - 345
           value: !!python/tuple
-          - 406
-          - 430
+          - 346
+          - 365
         spaced: true
         type: Continuation
-        value: Spaced line continuation
+        value: Spaced continuation
       - line: 26
         ranges:
-          direct_line_continuation_operator: !!python/tuple
-          - 431
-          - 432
+          direct_continuation_operator: !!python/tuple
+          - 366
+          - 367
           line: !!python/tuple
-          - 431
-          - 457
+          - 366
+          - 387
           value: !!python/tuple
-          - 433
-          - 457
+          - 368
+          - 387
         type: Continuation
-        value: Direct line continuation
+        value: Direct continuation
       line: 24
       parent: *id005
       ranges:
         item_operator: !!python/tuple
-        - 402
-        - 403
+        - 342
+        - 343
         line: !!python/tuple
-        - 402
-        - 403
-      type: List Item
-    key: List with empty item
+        - 342
+        - 343
+      type: Item
+    key: Field with item
     line: 23
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
-      - 400
-      - 401
+      field_operator: !!python/tuple
+      - 340
+      - 341
       key: !!python/tuple
-      - 380
-      - 400
+      - 325
+      - 340
       line: !!python/tuple
-      - 380
-      - 401
-    type: List
+      - 325
+      - 341
+    type: Field
   type: Document
 line_count: 27
 meta: []

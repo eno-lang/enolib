@@ -4,7 +4,7 @@ document: &id001
     line: 0
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 8
       - 9
       key: !!python/tuple
@@ -32,7 +32,7 @@ document: &id001
         value: !!python/tuple
         - 28
         - 31
-      type: List Item
+      type: Item
       value: eno
     - line: 4
       parent: *id002
@@ -46,7 +46,7 @@ document: &id001
         value: !!python/tuple
         - 34
         - 38
-      type: List Item
+      type: Item
       value: yaml
     - line: 5
       parent: *id002
@@ -57,12 +57,12 @@ document: &id001
         line: !!python/tuple
         - 39
         - 40
-      type: List Item
+      type: Item
     key: languages
     line: 2
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 24
       - 25
       key: !!python/tuple
@@ -71,14 +71,14 @@ document: &id001
       line: !!python/tuple
       - 15
       - 25
-    type: List
+    type: Field
   - &id003
-    entries:
+    attributes:
     - key: eno
       line: 8
       parent: *id003
       ranges:
-        entry_operator: !!python/tuple
+        attribute_operator: !!python/tuple
         - 57
         - 58
         key: !!python/tuple
@@ -90,13 +90,13 @@ document: &id001
         value: !!python/tuple
         - 59
         - 80
-      type: Fieldset Entry
+      type: Attribute
       value: eno notation language
     - key: json
       line: 9
       parent: *id003
       ranges:
-        entry_operator: !!python/tuple
+        attribute_operator: !!python/tuple
         - 86
         - 87
         key: !!python/tuple
@@ -108,13 +108,13 @@ document: &id001
         value: !!python/tuple
         - 88
         - 108
-      type: Fieldset Entry
+      type: Attribute
       value: json object notation
     key: languages
     line: 7
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 51
       - 52
       key: !!python/tuple
@@ -123,20 +123,20 @@ document: &id001
       line: !!python/tuple
       - 42
       - 52
-    type: Fieldset
+    type: Field
   - end:
       line: 17
       ranges:
+        embed_operator: !!python/tuple
+        - 139
+        - 141
         key: !!python/tuple
         - 142
         - 151
         line: !!python/tuple
         - 139
         - 151
-        multiline_field_operator: !!python/tuple
-        - 139
-        - 141
-      type: Multiline Field End
+      type: Embed End
     key: languages
     line: 11
     lines:
@@ -148,7 +148,7 @@ document: &id001
         value: !!python/tuple
         - 123
         - 126
-      type: Multiline Field Value
+      type: Embed Value
     - line: 13
       ranges:
         line: !!python/tuple
@@ -157,7 +157,7 @@ document: &id001
         value: !!python/tuple
         - 127
         - 131
-      type: Multiline Field Value
+      type: Embed Value
     - line: 14
       ranges:
         line: !!python/tuple
@@ -166,7 +166,7 @@ document: &id001
         value: !!python/tuple
         - 132
         - 132
-      type: Multiline Field Value
+      type: Embed Value
     - line: 15
       ranges:
         line: !!python/tuple
@@ -175,7 +175,7 @@ document: &id001
         value: !!python/tuple
         - 133
         - 137
-      type: Multiline Field Value
+      type: Embed Value
     - line: 16
       ranges:
         line: !!python/tuple
@@ -184,19 +184,19 @@ document: &id001
         value: !!python/tuple
         - 138
         - 138
-      type: Multiline Field Value
+      type: Embed Value
     parent: *id001
     ranges:
+      embed_operator: !!python/tuple
+      - 110
+      - 112
       key: !!python/tuple
       - 113
       - 122
       line: !!python/tuple
       - 110
       - 122
-      multiline_field_operator: !!python/tuple
-      - 110
-      - 112
-    type: Multiline Field Begin
+    type: Embed Begin
   type: Document
 line_count: 18
 meta: []

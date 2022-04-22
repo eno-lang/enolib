@@ -11,7 +11,7 @@ field:
 \\ value
 """.strip()
 
-def test_spaced_line_continuation_analysis():
+def test_spaced_continuation_analysis():
     analysis = analyze(input)
 
-    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/spaced_line_continuation_analysis.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/spaced_continuation_analysis.snap.yaml')

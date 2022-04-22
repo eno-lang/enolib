@@ -1,14 +1,13 @@
 from ..error_types import ValidationError
 from .selections import cursor, DOCUMENT_BEGIN, select_comments, select_element, select_key, selection
 from ..constants import (
+    ATTRIBUTE,
     BEGIN,
+    EMBED_BEGIN,
     END,
     DOCUMENT,
     FIELD,
-    FIELDSET_ENTRY,
-    FIELD_OR_FIELDSET_OR_LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN
+    ITEM
 )
 
 
@@ -60,19 +59,18 @@ class Validation:
         selection_data = {}
 
         if (element['type'] == FIELD or
-            element['type'] == FIELD_OR_FIELDSET_OR_LIST or
-            element['type'] == MULTILINE_FIELD_BEGIN):
+            element['type'] == EMBED_BEGIN):
             message = context.messages.missing_field_value(element['key'])
 
-            if 'element_operator' in element['ranges']:
-                selection_data['from'] = cursor(element, 'element_operator', END)
+            if 'field_operator' in element['ranges']:
+                selection_data['from'] = cursor(element, 'field_operator', END)
             else:
                 selection_data['from'] = cursor(element, 'line', END)
-        elif element['type'] == FIELDSET_ENTRY:
-            message = context.messages.missing_fieldset_entry_value(element['key'])
-            selection_data['from'] = cursor(element, 'entry_operator', END)
-        elif element['type'] == LIST_ITEM:
-            message = context.messages.missing_list_item_value(element['parent']['key'])
+        elif element['type'] == ATTRIBUTE:
+            message = context.messages.missing_attribute_value(element['key'])
+            selection_data['from'] = cursor(element, 'attribute_operator', END)
+        elif element['type'] == ITEM:
+            message = context.messages.missing_item_value(element['parent']['key'])
             selection_data['from'] = cursor(element, 'item_operator', END)
 
         snippet = context.reporter(context).report_element(element).snippet()
@@ -91,11 +89,19 @@ class Validation:
             context.reporter(context).report_element(element).snippet(),
             select_element(element)
         )
+        
+    @staticmethod
+    def unexpected_field_content(context, key, field, message):
+        message = getattr(context.messages, message if key is None else message + '_with_key')
+        return ValidationError(
+            message if key is None else message(key),
+            context.reporter(context).report_element(field).snippet(),
+            select_element(field)
+        )
 
     @staticmethod
     def unexpected_multiple_elements(context, key, elements, message):
         message = getattr(context.messages, message if key is None else message + '_with_key')
-
         return ValidationError(
             message if key is None else message(key),
             context.reporter(context).report_elements(elements).snippet(),
@@ -114,7 +120,7 @@ class Validation:
 
     @staticmethod
     def value_error(context, message, element):
-        if element['type'] == MULTILINE_FIELD_BEGIN:
+        if element['type'] == EMBED_BEGIN:
             if 'lines' in element:
                 snippet = context.reporter(context).report_multiline_value(element).snippet()
                 select = selection(element['lines'][0], 'line', BEGIN, element['lines'][-1], 'line', END)
@@ -127,11 +133,11 @@ class Validation:
 
             if 'value' in element['ranges']:
                 select['from'] = cursor(element, 'value', BEGIN)
-            elif 'element_operator' in element['ranges']:
-                select['from'] = cursor(element, 'element_operator', END)
-            elif 'entry_operator' in element['ranges']:
-                select['from'] = cursor(element, 'entry_operator', END)
-            elif element['type'] == LIST_ITEM:
+            elif 'field_operator' in element['ranges']:
+                select['from'] = cursor(element, 'field_operator', END)
+            elif 'attribute_operator' in element['ranges']:
+                select['from'] = cursor(element, 'attribute_operator', END)
+            elif element['type'] == ITEM:
                 select['from'] = cursor(element, 'item_operator', END)
             else:
                 # TODO: Possibly never reached - think through state permutations

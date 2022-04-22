@@ -7,17 +7,17 @@ input = '''
 
 field: value
 
-list:
+field_with_items:
 - item
 
 > comment
 - item
 
-fieldset:
-entry = value
+field_with_attributes:
+attribute = value
 
 > comment
-entry = value
+attribute = value
 
 # section
 
@@ -25,10 +25,10 @@ entry = value
 -- empty
 -- empty
 
--- multiline
+-- embed
 value
 value
--- multiline
+-- embed
 
 ## subsection
 '''.strip()

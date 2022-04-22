@@ -22,7 +22,7 @@ value
 -- key
 """.strip()
 
-def test_multiline_field_analysis():
+def test_embed_analysis():
     analysis = analyze(input)
 
-    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/multiline_field_analysis.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/embed_analysis.snap.yaml')

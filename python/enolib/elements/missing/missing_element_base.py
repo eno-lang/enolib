@@ -15,9 +15,6 @@ class MissingElementBase:
     def optional_string_comment(self):
         return None
 
-    def raw(self):
-        return None
-
     def required_comment(self, _loader):
         self._parent._missing_error(self)
 

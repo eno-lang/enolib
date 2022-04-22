@@ -16,6 +16,9 @@ class ValueElementBase(ElementBase):
 
     def _value(self, loader=None, *, required):
         self._touched = True
+        
+        if 'attributes' in self._instruction or 'items' in self._instruction:
+            raise Validation.unexpected_field_content(self._context, None, self._instruction, 'expected_value')
 
         value = self._context.value(self._instruction)
 
@@ -24,8 +27,6 @@ class ValueElementBase(ElementBase):
                 raise Validation.missing_value(self._context, self._instruction)
             else:
                 return None
-
-        # TODO: Check if ValueError is 1) a valid pythonic approach 2) the best choice
 
         if not loader:
             return value

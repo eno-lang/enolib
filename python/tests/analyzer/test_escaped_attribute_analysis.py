@@ -2,7 +2,7 @@ from tests.util import match_object_snapshot
 from tests.analyzer.util import analyze
 
 input = """
-fieldset:
+field:
 `key` =
 ``k`ey`` =
 ```ke``y```    =
@@ -10,7 +10,7 @@ fieldset:
 `key` =
 """.strip()
 
-def test_escaped_fieldset_entry_analysis():
+def test_escaped_attribute_analysis():
     analysis = analyze(input)
 
-    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/escaped_fieldset_entry_analysis.snap.yaml')
+    assert match_object_snapshot(analysis, 'tests/analyzer/snapshots/escaped_attribute_analysis.snap.yaml')

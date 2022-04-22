@@ -4,7 +4,7 @@ document: &id001
     line: 0
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 3
       - 4
       key: !!python/tuple
@@ -22,7 +22,7 @@ document: &id001
     line: 1
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 14
       - 15
       key: !!python/tuple
@@ -40,7 +40,7 @@ document: &id001
     line: 2
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 32
       - 33
       key: !!python/tuple
@@ -58,7 +58,7 @@ document: &id001
     line: 3
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 51
       - 52
       key: !!python/tuple
@@ -76,7 +76,7 @@ document: &id001
     line: 4
     parent: *id001
     ranges:
-      element_operator: !!python/tuple
+      field_operator: !!python/tuple
       - 65
       - 66
       key: !!python/tuple

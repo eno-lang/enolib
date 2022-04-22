@@ -1,12 +1,10 @@
 from ..constants import (
+    ATTRIBUTE,
     BEGIN,
     END,
     FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
+    ITEM,
+    EMBED_BEGIN,
     SECTION
 )
 
@@ -16,20 +14,21 @@ DOCUMENT_BEGIN = {
 }
 
 def last_in(element):
-    if ((element['type'] == FIELD or
-         element['type'] == LIST_ITEM or
-         element['type'] == FIELDSET_ENTRY) and 'continuations' in element):
+    if element['type'] == FIELD:
+        if 'attributes' in element:
+            return last_in(element['attributes'][-1])
+        elif 'items' in element:
+            return last_in(element['items'][-1])
+        elif 'continuations' in element:
+            return element['continuations'][-1]
+    elif ((element['type'] == ATTRIBUTE or element['type'] == ITEM) and 'continuations' in element):
         return element['continuations'][-1]
-    elif element['type'] == LIST and 'items' in element:
-        return last_in(element['items'][-1])
-    elif element['type'] == FIELDSET and 'entries' in element:
-        return last_in(element['entries'][-1])
-    elif element['type'] == MULTILINE_FIELD_BEGIN:
+    elif element['type'] == EMBED_BEGIN:
         return element['end']
     elif element['type'] == SECTION and len(element['elements']) > 0:
         return last_in(element['elements'][-1])
-    else:
-        return element
+    
+    return element
 
 def cursor(instruction, range, position):
     index = instruction['ranges'][range][position]

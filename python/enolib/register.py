@@ -1,9 +1,10 @@
 from .elements.element_base import ElementBase
-from .elements.list import List
-from .elements.value_element_base import ValueElementBase
+from .elements.field import Field
 from .elements.missing.missing_element_base import MissingElementBase
-from .elements.missing.missing_list import MissingList
+from .elements.missing.missing_field import MissingField
 from .elements.missing.missing_value_element_base import MissingValueElementBase
+from .elements.value_element_base import ValueElementBase
+
 
 def _register(name: str, function):
     if name == 'string':
@@ -14,17 +15,15 @@ def _register(name: str, function):
     setattr(ElementBase, f"required_{name}_comment",  lambda self: self.required_comment(function))
     setattr(ValueElementBase, f"optional_{name}_value", lambda self: self.optional_value(function))
     setattr(ValueElementBase, f"required_{name}_value", lambda self: self.required_value(function))
-    setattr(List, f"optional_{name}_values", lambda self: self.optional_values(function))
-    setattr(List, f"required_{name}_values", lambda self: self.required_values(function))
+    setattr(Field, f"optional_{name}_values", lambda self: self.optional_values(function))
+    setattr(Field, f"required_{name}_values", lambda self: self.required_values(function))
     setattr(MissingElementBase, f"{name}_key", MissingElementBase.string_key)
     setattr(MissingElementBase, f"optional_{name}_comment", MissingElementBase.optional_string_comment)
     setattr(MissingElementBase, f"required_{name}_comment", MissingElementBase.required_string_comment)
     setattr(MissingValueElementBase, f"optional_{name}_value", MissingValueElementBase.optional_string_value)
     setattr(MissingValueElementBase, f"required_{name}_value", MissingValueElementBase.required_string_value)
-    setattr(MissingList, f"optional_{name}_values", MissingList.optional_string_values)
-    setattr(MissingList, f"required_{name}_values", MissingList.required_string_values)
-
-# TODO: Specs for different register signatures (see below)
+    setattr(MissingField, f"optional_{name}_values", MissingField.optional_string_values)
+    setattr(MissingField, f"required_{name}_values", MissingField.required_string_values)
 
 def register(*definitions_list, **definitions_dict):
     for definition in definitions_list:

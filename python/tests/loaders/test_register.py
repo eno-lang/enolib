@@ -8,12 +8,12 @@ input = '''
 field: value
 
 > comment
-fieldset:
-entry = value
+field_with_attributes:
+attribute = value
 
 > comment
-list:
-- value
+field_with_items:
+- item
 
 > comment
 # section
@@ -24,13 +24,13 @@ enolib.register(custom=lambda value: f"custom {value}")
 document = enolib.parse(input)
 
 field = document.field('field')
-fieldset = document.fieldset('fieldset')
-list = document.list('list')
+field_with_attributes = document.field('field_with_attributes')
+field_with_items = document.field('field_with_items')
 section = document.section('section')
 
 missing_field = document.field('missing')
-missing_fieldset = document.fieldset('missing')
-missing_list = document.list('missing')
+missing_field_with_attributes = document.field('missing')
+missing_field_with_items = document.field('missing')
 missing_section = document.section('missing')
 
 # on field
@@ -50,33 +50,33 @@ def test_on_field_registers_an_optional_custom_value_accessor():
 def test_on_field_registers_a_required_custom_value_accessor():
     assert field.required_custom_value() == 'custom value'
 
-# on fieldset
+# on field_with_attributes
 
-def test_on_fieldset_registers_an_optional_custom_comment_accessor():
-    assert fieldset.optional_custom_comment() == 'custom comment'
+def test_on_field_with_attributes_registers_an_optional_custom_comment_accessor():
+    assert field_with_attributes.optional_custom_comment() == 'custom comment'
 
-def test_on_fieldset_registers_a_required_custom_comment_accessor():
-    assert fieldset.required_custom_comment() == 'custom comment'
+def test_on_field_with_attributes_registers_a_required_custom_comment_accessor():
+    assert field_with_attributes.required_custom_comment() == 'custom comment'
 
-def test_on_fieldset_registers_a_custom_key_accessor():
-    assert fieldset.custom_key() == 'custom fieldset'
+def test_on_field_with_attributes_registers_a_custom_key_accessor():
+    assert field_with_attributes.custom_key() == 'custom field_with_attributes'
 
-# on list
+# on field_with_items
 
-def test_on_list_registers_an_optional_custom_comment_accessor():
-    assert list.optional_custom_comment() == 'custom comment'
+def test_on_field_with_items_registers_an_optional_custom_comment_accessor():
+    assert field_with_items.optional_custom_comment() == 'custom comment'
 
-def test_on_list_registers_a_required_custom_comment_accessor():
-    assert list.required_custom_comment() == 'custom comment'
+def test_on_field_with_items_registers_a_required_custom_comment_accessor():
+    assert field_with_items.required_custom_comment() == 'custom comment'
 
-def test_on_list_registers_a_custom_key_accessor():
-    assert list.custom_key() == 'custom list'
+def test_on_field_with_items_registers_a_custom_key_accessor():
+    assert field_with_items.custom_key() == 'custom field_with_items'
 
-def test_on_list_registers_an_optional_custom_values_accessor():
-    assert list.optional_custom_values() == ['custom value']
+def test_on_field_with_items_registers_an_optional_custom_values_accessor():
+    assert field_with_items.optional_custom_values() == ['custom item']
 
-def test_on_list_registers_a_required_custom_values_accessor():
-    assert list.required_custom_values() == ['custom value']
+def test_on_field_with_items_registers_a_required_custom_values_accessor():
+    assert field_with_items.required_custom_values() == ['custom item']
 
 # on section
 
@@ -109,37 +109,37 @@ def test_on_missing_field_registers_a_required_custom_value_accessor():
     with pytest.raises(ValidationError) as excinfo:
         assert missing_field.required_custom_value()
 
-# on missing fieldset
+# on missing field_with_attributes
 
-def test_on_missing_fieldset_registers_an_optional_custom_comment_accessor():
-    assert missing_fieldset.optional_custom_comment() is None
+def test_on_missing_field_with_attributes_registers_an_optional_custom_comment_accessor():
+    assert missing_field_with_attributes.optional_custom_comment() is None
 
-def test_on_missing_fieldset_registers_a_required_custom_comment_accessor():
+def test_on_missing_field_with_attributes_registers_a_required_custom_comment_accessor():
     with pytest.raises(ValidationError) as excinfo:
-        assert missing_fieldset.required_custom_comment()
+        assert missing_field_with_attributes.required_custom_comment()
 
-def test_on_missing_fieldset_registers_a_custom_key_accessor():
+def test_on_missing_field_with_attributes_registers_a_custom_key_accessor():
     with pytest.raises(ValidationError) as excinfo:
-        assert missing_fieldset.custom_key()
+        assert missing_field_with_attributes.custom_key()
 
-# on missing list
+# on missing field_with_items
 
-def test_on_missing_list_registers_an_optional_custom_comment_accessor():
-    assert missing_list.optional_custom_comment() is None
+def test_on_missing_field_with_items_registers_an_optional_custom_comment_accessor():
+    assert missing_field_with_items.optional_custom_comment() is None
 
-def test_on_missing_list_registers_a_required_custom_comment_accessor():
+def test_on_missing_field_with_items_registers_a_required_custom_comment_accessor():
     with pytest.raises(ValidationError) as excinfo:
-        assert missing_list.required_custom_comment()
+        assert missing_field_with_items.required_custom_comment()
 
-def test_on_missing_list_registers_a_custom_key_accessor():
+def test_on_missing_field_with_items_registers_a_custom_key_accessor():
     with pytest.raises(ValidationError) as excinfo:
-        assert missing_list.custom_key()
+        assert missing_field_with_items.custom_key()
 
-def test_on_missing_list_registers_an_optional_custom_values_accessor():
-    assert missing_list.optional_custom_values() == []
+def test_on_missing_field_with_items_registers_an_optional_custom_values_accessor():
+    assert missing_field_with_items.optional_custom_values() == []
 
-def test_on_missing_list_registers_a_required_custom_values_accessor():
-    assert missing_list.required_custom_values() == []
+def test_on_missing_field_with_items_registers_a_required_custom_values_accessor():
+    assert missing_field_with_items.required_custom_values() == []
 
 # on missing section
 

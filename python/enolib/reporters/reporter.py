@@ -1,11 +1,9 @@
 from ..constants import (
+    ATTRIBUTE,
     DOCUMENT,
+    EMBED_BEGIN,
     FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
+    ITEM,
     SECTION
 )
 
@@ -40,19 +38,15 @@ class Reporter:
                 if element['type'] == SECTION:
                     traverse(element)
                 elif element['type'] == FIELD:
-                    if 'continuations' in element:
-                        for continuation in element['continuations']:
-                            self._index[continuation['line']] = continuation
-                elif element['type'] == MULTILINE_FIELD_BEGIN:
-                    # Missing when reporting an unterminated multiline field
-                    if 'end' in element:
-                        self._index[element['end']['line']] = element['end']
+                    if 'attributes' in element:
+                        for attribute in element['attributes']:
+                            index_comments(attribute)
 
-                    if 'lines' in element:
-                        for line in element['lines']:
-                            self._index[line['line']] = line
+                            self._index[attribute['line']] = attribute
 
-                elif element['type'] == LIST:
+                            if 'continuations' in attribute:
+                                for continuation in attribute['continuations']:
+                                    self._index[continuation['line']] = continuation
                     if 'items' in element:
                         for item in element['items']:
                             index_comments(item)
@@ -62,17 +56,17 @@ class Reporter:
                             if 'continuations' in item:
                                 for continuation in item['continuations']:
                                     self._index[continuation['line']] = continuation
+                    elif 'continuations' in element:
+                        for continuation in element['continuations']:
+                            self._index[continuation['line']] = continuation
+                elif element['type'] == EMBED_BEGIN:
+                    # Missing when reporting an unterminated embed
+                    if 'end' in element:
+                        self._index[element['end']['line']] = element['end']
 
-                elif element['type'] == FIELDSET:
-                    if 'entries' in element:
-                        for entry in element['entries']:
-                            index_comments(entry)
-
-                            self._index[entry['line']] = entry
-
-                            if 'continuations' in entry:
-                                for continuation in entry['continuations']:
-                                    self._index[continuation['line']] = continuation
+                    if 'lines' in element:
+                        for line in element['lines']:
+                            self._index[line['line']] = line
 
         traverse(self._context.document)
 
@@ -113,13 +107,16 @@ class Reporter:
         return scan_line
 
     def _tag_children(self, element, tag):
-        if element['type'] == FIELD or element['type'] == LIST_ITEM or element['type'] == FIELDSET_ENTRY:
+        if element['type'] == FIELD:
+            if 'attributes' in element:
+                return self._tag_continuables(element, 'attributes', tag)
+            elif 'items' in element:
+                return self._tag_continuables(element, 'items', tag)
+            
             return self._tag_continuations(element, tag)
-        elif element['type'] == LIST:
-            return self._tag_continuables(element, 'items', tag)
-        elif element['type'] == FIELDSET and 'entries' in element:
-            return self._tag_continuables(element, 'entries', tag)
-        elif element['type'] == MULTILINE_FIELD_BEGIN:
+        elif element['type'] == ATTRIBUTE or element['type'] == ITEM:
+            return self._tag_continuations(element, tag)
+        elif element['type'] == EMBED_BEGIN:
             if 'lines' in element:
                 for line in element['lines']:
                     self._snippet[line['line']] = tag
@@ -150,6 +147,12 @@ class Reporter:
             scan_line = self._tag_children(element, tag)
 
         return scan_line
+        
+    def indicate_element(self, element):
+        self._snippet[element['line']] = INDICATE
+        self._tag_children(element, INDICATE)
+
+        return self
 
     def indicate_line(self, element):
         self._snippet[element['line']] = INDICATE
@@ -206,16 +209,14 @@ class Reporter:
             for line in range(len(self._snippet)):
                 self._snippet[line] = QUESTION
         else:
-            # TODO: Possibly better algorithm for this
-
             for line, tag in enumerate(self._snippet):
                 if tag is not None:
                     continue
 
                 if(line + 2 < self._context.line_count and self._snippet[line + 2] is not None and self._snippet[line + 2] != DISPLAY or
-                   line - 2 > 0 and self._snippet[line - 2] is not None and self._snippet[line - 2] != DISPLAY or
+                   line - 2 >= 0 and self._snippet[line - 2] is not None and self._snippet[line - 2] != DISPLAY or
                    line + 1 < self._context.line_count and self._snippet[line + 1] is not None and self._snippet[line + 1] != DISPLAY or
-                   line - 1 > 0 and self._snippet[line - 1] is not None and self._snippet[line - 1] != DISPLAY):
+                   line - 1 >= 0 and self._snippet[line - 1] is not None and self._snippet[line - 1] != DISPLAY):
                     self._snippet[line] = DISPLAY
                 elif line + 3 < self._context.line_count and self._snippet[line + 3] is not None and self._snippet[line + 3] != DISPLAY:
                     self._snippet[line] = OMISSION

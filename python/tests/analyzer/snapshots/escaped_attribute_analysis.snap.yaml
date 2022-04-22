@@ -1,121 +1,121 @@
 document: &id002
   elements:
   - &id001
-    entries:
+    attributes:
     - key: key
       line: 1
       parent: *id001
       ranges:
-        entry_operator: !!python/tuple
-        - 16
-        - 17
+        attribute_operator: !!python/tuple
+        - 13
+        - 14
         escape_begin_operator: !!python/tuple
-        - 10
-        - 11
+        - 7
+        - 8
         escape_end_operator: !!python/tuple
-        - 14
-        - 15
-        key: !!python/tuple
         - 11
-        - 14
+        - 12
+        key: !!python/tuple
+        - 8
+        - 11
         line: !!python/tuple
-        - 10
-        - 17
-      type: Fieldset Entry
+        - 7
+        - 14
+      type: Attribute
     - key: k`ey
       line: 2
       parent: *id001
       ranges:
-        entry_operator: !!python/tuple
-        - 27
-        - 28
+        attribute_operator: !!python/tuple
+        - 24
+        - 25
         escape_begin_operator: !!python/tuple
-        - 18
-        - 20
+        - 15
+        - 17
         escape_end_operator: !!python/tuple
-        - 24
-        - 26
+        - 21
+        - 23
         key: !!python/tuple
-        - 20
-        - 24
+        - 17
+        - 21
         line: !!python/tuple
-        - 18
-        - 28
-      type: Fieldset Entry
+        - 15
+        - 25
+      type: Attribute
     - key: ke``y
       line: 3
       parent: *id001
       ranges:
-        entry_operator: !!python/tuple
-        - 44
-        - 45
+        attribute_operator: !!python/tuple
+        - 41
+        - 42
         escape_begin_operator: !!python/tuple
+        - 26
         - 29
-        - 32
         escape_end_operator: !!python/tuple
+        - 34
         - 37
-        - 40
         key: !!python/tuple
-        - 32
-        - 37
-        line: !!python/tuple
         - 29
-        - 45
-      type: Fieldset Entry
+        - 34
+        line: !!python/tuple
+        - 26
+        - 42
+      type: Attribute
     - key: '`key`'
       line: 4
       parent: *id001
       ranges:
-        entry_operator: !!python/tuple
-        - 65
-        - 66
+        attribute_operator: !!python/tuple
+        - 62
+        - 63
         escape_begin_operator: !!python/tuple
-        - 50
-        - 52
+        - 47
+        - 49
         escape_end_operator: !!python/tuple
-        - 59
-        - 61
-        key: !!python/tuple
-        - 53
+        - 56
         - 58
+        key: !!python/tuple
+        - 50
+        - 55
         line: !!python/tuple
-        - 46
-        - 66
-      type: Fieldset Entry
+        - 43
+        - 63
+      type: Attribute
     - key: key
       line: 5
       parent: *id001
       ranges:
-        entry_operator: !!python/tuple
-        - 73
-        - 74
+        attribute_operator: !!python/tuple
+        - 70
+        - 71
         escape_begin_operator: !!python/tuple
-        - 67
-        - 68
+        - 64
+        - 65
         escape_end_operator: !!python/tuple
-        - 71
-        - 72
-        key: !!python/tuple
         - 68
-        - 71
+        - 69
+        key: !!python/tuple
+        - 65
+        - 68
         line: !!python/tuple
-        - 67
-        - 74
-      type: Fieldset Entry
-    key: fieldset
+        - 64
+        - 71
+      type: Attribute
+    key: field
     line: 0
     parent: *id002
     ranges:
-      element_operator: !!python/tuple
-      - 8
-      - 9
+      field_operator: !!python/tuple
+      - 5
+      - 6
       key: !!python/tuple
       - 0
-      - 8
+      - 5
       line: !!python/tuple
       - 0
-      - 9
-    type: Fieldset
+      - 6
+    type: Field
   type: Document
 line_count: 6
 meta: []

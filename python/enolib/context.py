@@ -5,16 +5,7 @@ from .reporters.text_reporter import TextReporter
 from .constants import (
     BEGIN,
     DOCUMENT,
-    EMPTY,
-    FIELD,
-    FIELDSET,
-    FIELDSET_ENTRY,
-    FIELD_OR_FIELDSET_OR_LIST,
-    LIST,
-    LIST_ITEM,
-    MULTILINE_FIELD_BEGIN,
-    PRETTY_TYPES,
-    SECTION
+    EMBED_BEGIN
 )
 
 class Context:
@@ -73,76 +64,11 @@ class Context:
 
         return element['computed_comment']
 
-    def elements(self, section):
-        if not 'computed_elements' in section:
-            section['computed_elements_map'] = {}
-            section['computed_elements'] = section['elements']
-
-            for element in section['computed_elements']:
-                if element['key'] in section['computed_elements_map']:
-                    section['computed_elements_map'][element['key']].append(element)
-                else:
-                    section['computed_elements_map'][element['key']] = [element]
-
-        return section['computed_elements']
-
-    def entries(self, fieldset):
-        if not 'computed_entries' in fieldset:
-            fieldset['computed_entries_map'] = {}
-            fieldset['computed_entries'] = fieldset['entries']
-
-            for entry in fieldset['computed_entries']:
-                if entry['key'] in fieldset['computed_entries_map']:
-                    fieldset['computed_entries_map'][entry['key']].append(entry)
-                else:
-                    fieldset['computed_entries_map'][entry['key']] = [entry]
-
-        return fieldset['computed_entries']
-
-    def items(self, list):
-        if 'items' in list:
-            return list['items']
-
-        return []
-
-    def raw(self, element):
-        result = { 'type': PRETTY_TYPES[element['type']] }
-
-        if 'comments' in element:
-            result['comment'] = self.comment(element)
-
-        if element['type'] == FIELD_OR_FIELDSET_OR_LIST or element['type'] == EMPTY:
-            result['key'] = element['key']
-        elif element['type'] == FIELD:
-            result['key'] = element['key']
-            result['value'] = self.value(element)
-        elif element['type'] == LIST_ITEM:
-            result['value'] = self.value(element)
-        elif element['type'] == FIELDSET_ENTRY:
-            result['key'] = element['key']
-            result['value'] = self.value(element)
-        elif element['type'] == MULTILINE_FIELD_BEGIN:
-            result['key'] = element['key']
-            result['value'] = self.value(element)
-        elif element['type'] == LIST:
-            result['key'] = element['key']
-            result['items'] = [self.raw(item) for item in self.items(element)]
-        elif element['type'] == FIELDSET:
-            result['key'] = element['key']
-            result['entries'] = [self.raw(entry) for entry in self.entries(element)]
-        elif element['type'] == SECTION:
-            result['key'] = element['key']
-            result['elements'] = [self.raw(section_element) for section_element in self.elements(element)]
-        elif element['type'] == DOCUMENT:
-            result['elements'] = [self.raw(section_element) for section_element in self.elements(element)]
-
-        return result
-
     def value(self, element):
         if 'computed_value' not in element:
             element['computed_value'] = None
 
-            if element['type'] is MULTILINE_FIELD_BEGIN:
+            if element['type'] is EMBED_BEGIN:
                 if 'lines' in element:
                     element['computed_value'] = self.input[
                         element['lines'][0]['ranges']['line'][0]:element['lines'][-1]['ranges']['line'][1]

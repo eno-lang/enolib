@@ -23,14 +23,11 @@ def test_error_with_a_message_function_returns_a_custom_error():
     assert isinstance(error, ValidationError)
     assert str(error.message) == snapshot(str(error.message), 'tests/elements/snapshots/field_error_with_a_message_function_returns_a_custom_error.snap.txt')
 
-def test_raw_with_a_key_returns_native_representation():
-    assert field.raw() == { 'key': 'field', 'type': 'field', 'value': 'value' }
-
 def test_repr_with_key_and_value_returns_a_debug_representation():
     assert repr(field) == '<class Field key=field value=value>'
 
 def test_repr_with_key_and_no_value_returns_a_debug_representation():
-    assert repr(empty_field) == '<class Field key=field value=None>'
+    assert repr(empty_field) == '<class Field key=field>'
 
 def test_touch_touches_the_element():
     virgin_field = enolib.parse('field: value').field()
@@ -46,6 +43,12 @@ def test_required_string_value_touches_the_element():
     virgin_field.required_string_value()
 
     assert hasattr(virgin_field ,'_touched')
+    
+def test_touch_touches_the_field_itself():
+    virgin_field = enolib.parse('field:').field()
+    virgin_field.touch()
+
+    assert hasattr(virgin_field, '_touched')
 
 def test_value_with_a_loader_returns_the_processed_value():
     assert field.required_value(lambda value: value.upper()) == 'VALUE'
@@ -65,7 +68,6 @@ def test_required_value_with_invalid_value_raises_error():
         field.required_value(loader)
 
     assert excinfo.value.message == snapshot(excinfo.value.message, 'tests/elements/snapshots/required_value_with_invalid_value_raises_error.snap.txt')
-
 
 def test_optional_string_value_without_a_value_returns_none():
     assert empty_field.optional_string_value() == None

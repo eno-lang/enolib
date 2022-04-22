@@ -4,14 +4,17 @@ import yaml
 def cyclic_dict_safe_comparison(a, b):
     def compare(a, b, visited_dicts_a, visited_dicts_b, path):
         if isinstance(a, dict):
-            visited_dicts_a[id(a)] = path
-            visited_dicts_b[id(b)] = path
-
             if id(a) in visited_dicts_a:
                 return id(b) in visited_dicts_b and visited_dicts_a[id(a)] == visited_dicts_b[id(b)]
 
-            return (isinstance(b, dict) and
-                a.keys() == b.keys() and
+            visited_dicts_a[id(a)] = path
+            
+            if not isinstance(b, dict):
+                return False
+            
+            visited_dicts_b[id(b)] = path
+
+            return (a.keys() == b.keys() and
                 all([compare(a[k], b[k], visited_dicts_a, visited_dicts_b, path + [k]) for k in b.keys()]))
 
         if isinstance(a, list):

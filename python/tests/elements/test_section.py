@@ -60,13 +60,13 @@ def test_lookup_6(): # ' '
     lookup = enolib.lookup(lookup_input, index=6)
 
     assert lookup['element'].string_key() == 'color'
-    assert lookup['range'] == 'element_operator'
+    assert lookup['range'] == 'field_operator'
 
 def test_lookup_0_6(): # ' '
     lookup = enolib.lookup(lookup_input, line=0, column=6)
 
     assert lookup['element'].string_key() == 'color'
-    assert lookup['range'] == 'element_operator'
+    assert lookup['range'] == 'field_operator'
 
 def test_lookup_7(): # 'c'
     lookup = enolib.lookup(lookup_input, index=7)

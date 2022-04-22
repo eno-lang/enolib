@@ -6,85 +6,85 @@ document: &id002
       parent: *id001
       ranges:
         item_operator: !!python/tuple
-        - 6
         - 7
-        line: !!python/tuple
-        - 6
-        - 13
-        value: !!python/tuple
         - 8
-        - 13
+        line: !!python/tuple
+        - 7
+        - 14
+        value: !!python/tuple
+        - 9
+        - 14
       type: Item
       value: value
     - line: 2
       parent: *id001
       ranges:
         item_operator: !!python/tuple
-        - 14
         - 15
+        - 16
         line: !!python/tuple
-        - 14
-        - 24
+        - 15
+        - 25
         value: !!python/tuple
-        - 19
-        - 24
+        - 20
+        - 25
       type: Item
       value: value
     - line: 3
       parent: *id001
       ranges:
         item_operator: !!python/tuple
-        - 29
         - 30
-        line: !!python/tuple
-        - 25
-        - 36
-        value: !!python/tuple
         - 31
-        - 36
+        line: !!python/tuple
+        - 26
+        - 37
+        value: !!python/tuple
+        - 32
+        - 37
       type: Item
       value: value
     - line: 4
       parent: *id001
       ranges:
         item_operator: !!python/tuple
-        - 41
         - 42
+        - 43
         line: !!python/tuple
-        - 37
-        - 51
+        - 38
+        - 52
         value: !!python/tuple
-        - 46
-        - 51
+        - 47
+        - 52
       type: Item
       value: value
     - line: 5
       parent: *id001
       ranges:
         item_operator: !!python/tuple
-        - 52
         - 53
-        line: !!python/tuple
-        - 52
-        - 59
-        value: !!python/tuple
         - 54
-        - 59
+        line: !!python/tuple
+        - 53
+        - 60
+        value: !!python/tuple
+        - 55
+        - 60
       type: Item
       value: value
-    key: list
+    key: field
     line: 0
     parent: *id002
     ranges:
       field_operator: !!python/tuple
-      - 4
       - 5
+      - 6
       key: !!python/tuple
       - 0
-      - 4
+      - 5
       line: !!python/tuple
       - 0
-      - 5
+      - 6
     type: Field
   type: Document
 line_count: 6
