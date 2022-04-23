@@ -1,4 +1,0 @@
----
-"./spec/elements/fieldset_entry.spec.rb[1:1:3:1]": "The fieldset entry 'entry' must
-  contain a value.\n\n   Line | Content\n      1 | fieldset:\n >    2 | entry =\n
-  \     3 | "

@@ -27,16 +27,6 @@ describe Enolib::Field do
     end
   end
 
-  describe '#raw' do
-    it 'returns a debug representation' do
-      expect(@field.raw).to eq(
-        key: 'field',
-        type: :field,
-        value: 'value'
-      )
-    end
-  end
-
   describe '#touch' do
     it 'touches the element' do
       @field.touch
@@ -52,7 +42,7 @@ describe Enolib::Field do
     context 'with no value' do
       it 'returns a debug abstraction' do
         empty_field = Enolib.parse('field:').field('field')
-        expect(empty_field.to_s).to eq('#<Enolib::Field key=field value=nil>')
+        expect(empty_field.to_s).to eq('#<Enolib::Field key=field>')
       end
     end
   end

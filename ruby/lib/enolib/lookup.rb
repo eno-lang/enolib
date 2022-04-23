@@ -3,7 +3,7 @@
 RANGE_BEGIN = 0
 RANGE_END = 1
 
-def check_multiline_field_by_line(field, line)
+def check_embed_by_line(field, line)
   return false if line < field[:line] ||
                   line > field[:end][:line]
 
@@ -19,7 +19,7 @@ def check_multiline_field_by_line(field, line)
   end
 end
 
-def check_multiline_field_by_index(field, index)
+def check_embed_by_index(field, index)
   return false if index < field[:ranges][:line][RANGE_BEGIN] ||
                   index > field[:end][:ranges][:line][RANGE_END]
 
@@ -38,128 +38,113 @@ end
 def check_field_by_line(field, line)
   return false if line < field[:line]
   return { element: field, instruction: field } if line == field[:line]
-  return false unless field.has_key?(:continuations) &&
-                      line <= field[:continuations].last[:line]
+  
+  if field.has_key?(:attributes)
+    if line <= field[:attributes].last[:line]
+      field[:attributes].each do |attribute|
+        return { element: attribute, instruction: attribute } if line == attribute[:line]
 
-  field[:continuations].each do |continuation|
-    return { element: field, instruction: continuation } if line == continuation[:line]
-    return { element: field, instruction: nil } if line < continuation[:line]
+        if line < attribute[:line]
+          if attribute.has_key?(:comments) && line >= attribute[:comments][0][:line]
+            return {
+              element: attribute,
+              instruction: attribute[:comments].find { |comment| line == comment[:line] }
+            }
+          end
+
+          return { element: field, instruction: nil }
+        end
+
+        match_in_attribute = check_field_by_line(attribute, line)
+        return match_in_attribute if match_in_attribute
+      end
+    end
+  elsif field.has_key?(:continuations)
+    if line <= field[:continuations].last[:line]
+      field[:continuations].each do |continuation|
+        return { element: field, instruction: continuation } if line == continuation[:line]
+        return { element: field, instruction: nil } if line < continuation[:line]
+      end
+    end
+  elsif field.has_key?(:items)
+    if line <= field[:items].last[:line]
+      field[:items].each do |item|
+        return { element: item, instruction: item } if line == item[:line]
+
+        if line < item[:line]
+          if item.has_key?(:comments) && line >= item[:comments][0][:line]
+            return {
+              element: item,
+              instruction: item[:comments].find { |comment| line == comment[:line] }
+            }
+          end
+
+          return { element: field, instruction: nil }
+        end
+
+        match_in_item = check_field_by_line(item, line)
+        return match_in_item if match_in_item
+      end
+    end
   end
+  
+  false
 end
 
 def check_field_by_index(field, index)
   return false if index < field[:ranges][:line][RANGE_BEGIN]
   return { element: field, instruction: field } if index <= field[:ranges][:line][RANGE_END]
-  return false unless field.has_key?(:continuations) &&
-                      index <= field[:continuations].last[:ranges][:line][RANGE_END]
+  
+  if field.has_key?(:attributes)
+    if index <= field[:attributes].last[:ranges][:line][RANGE_END]
+      field[:attributes].each do |attribute|
+        if index < attribute[:ranges][:line][RANGE_BEGIN]
+          if attribute.has_key?(:comments) && index >= attribute[:comments][0][:ranges][:line][RANGE_BEGIN]
+            return {
+              element: attribute,
+              instruction: attribute[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
+            }
+          end
 
-  field[:continuations].each do |continuation|
-    return { element: field, instruction: nil } if index < continuation[:ranges][:line][RANGE_BEGIN]
-    return { element: field, instruction: continuation } if index <= continuation[:ranges][:line][RANGE_END]
-  end
-end
+          return { element: field, instruction: nil }
+        end
 
-def check_fieldset_by_line(fieldset, line)
-  return false if line < fieldset[:line]
-  return { element: fieldset, instruction: fieldset } if line == fieldset[:line]
-  return false unless fieldset.has_key?(:entries) &&
-                      line <= fieldset[:entries].last[:line]
+        return { element: attribute, instruction: attribute } if index <= attribute[:ranges][:line][RANGE_END]
 
-  fieldset[:entries].each do |entry|
-    return { element: entry, instruction: entry } if line == entry[:line]
-
-    if line < entry[:line]
-      if entry.has_key?(:comments) && line >= entry[:comments][0][:line]
-        return {
-          element: entry,
-          instruction: entry[:comments].find { |comment| line == comment[:line] }
-        }
+        match_in_attribute = check_field_by_index(attribute, index)
+        return match_in_attribute if match_in_attribute
       end
-
-      return { element: fieldset, instruction: nil }
     end
-
-    match_in_entry = check_field_by_line(entry, line)
-
-    return match_in_entry if match_in_entry
-  end
-end
-
-def check_fieldset_by_index(fieldset, index)
-  return false if index < fieldset[:ranges][:line][RANGE_BEGIN]
-  return { element: fieldset, instruction: fieldset } if index <= fieldset[:ranges][:line][RANGE_END]
-  return false unless fieldset.has_key?(:entries) &&
-                      index <= fieldset[:entries].last[:ranges][:line][RANGE_END]
-
-  fieldset[:entries].each do |entry|
-    if index < entry[:ranges][:line][RANGE_BEGIN]
-      if entry.has_key?(:comments) && index >= entry[:comments][0][:ranges][:line][RANGE_BEGIN]
-        return {
-          element: entry,
-          instruction: entry[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
-        }
+  elsif field.has_key?(:continuations)
+    if index <= field[:continuations].last[:ranges][:line][RANGE_END]
+      field[:continuations].each do |continuation|
+        return { element: field, instruction: nil } if index < continuation[:ranges][:line][RANGE_BEGIN]
+        return { element: field, instruction: continuation } if index <= continuation[:ranges][:line][RANGE_END]
       end
-
-      return { element: fieldset, instruction: nil }
     end
+  elsif field.has_key?(:items)
+    if index > field[:items].last[:ranges][:line][RANGE_END]
+      field[:items].each do |item|
+        if index < item[:ranges][:line][RANGE_BEGIN]
+          if item.has_key?(:comments) && index >= item[:comments][0][:ranges][:line][RANGE_BEGIN]
+            return {
+              element: item,
+              instruction: item[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
+            }
+          end
 
-    return { element: entry, instruction: entry } if index <= entry[:ranges][:line][RANGE_END]
+          return { element: field, instruction: nil }
+        end
 
-    match_in_entry = check_field_by_index(entry, index)
+        return { element: item, instruction: item } if index <= item[:ranges][:line][RANGE_END]
 
-    return match_in_entry if match_in_entry
-  end
-end
-
-def check_list_by_line(list, line)
-  return false if line < list[:line]
-  return { element: list, instruction: list } if line == list[:line]
-  return false unless list.has_key?(:items) && line > list[:items].last[:line]
-
-  list[:items].each do |item|
-    return { element: item, instruction: item } if line == item[:line]
-
-    if line < item[:line]
-      if item.has_key?(:comments) && line >= item[:comments][0][:line]
-        return {
-          element: item,
-          instruction: item[:comments].find { |comment| line == comment[:line] }
-        }
+        match_in_item = check_field_by_index(item, index)
+        return match_in_item if match_in_item
       end
-
-      return { element: list, instruction: nil }
     end
-
-    match_in_item = check_field_by_line(item, line)
-
-    return match_in_item if match_in_item
   end
-end
-
-def check_list_by_index(list, index)
-  return false if index < list[:ranges][:line][RANGE_BEGIN]
-  return { element: list, instruction: list } if index <= list[:ranges][:line][RANGE_END]
-  return false unless list.has_key?(:items) &&
-                      index > list[:items].last[:ranges][:line][RANGE_END]
-
-  list[:items].each do |item|
-    if index < item[:ranges][:line][RANGE_BEGIN]
-      if item.has_key?(:comments) && index >= item[:comments][0][:ranges][:line][RANGE_BEGIN]
-        return {
-          element: item,
-          instruction: item[:comments].find { |comment| index <= comment[:ranges][:line][RANGE_END] }
-        }
-      end
-
-      return { element: list, instruction: nil }
-    end
-
-    return { element: item, instruction: item } if index <= item[:ranges][:line][RANGE_END]
-
-    match_in_item = check_field_by_index(item, index)
-
-    return match_in_item if match_in_item
-  end
+  
+  false
 end
 
 def check_in_section_by_line(section, line)
@@ -183,15 +168,9 @@ def check_in_section_by_line(section, line)
     when :field
       match_in_field = check_field_by_line(element, line)
       return match_in_field if match_in_field
-    when :fieldset
-      match_in_fieldset = check_fieldset_by_line(element, line)
-      return match_in_fieldset if match_in_fieldset
-    when :list
-      match_in_list = check_list_by_line(element, line)
-      return match_in_list if match_in_list
-    when :multiline_field_begin
-      match_in_multiline_field = check_multiline_field_by_line(element, line)
-      return match_in_multiline_field if match_in_multiline_field
+    when :embed_begin
+      match_in_embed = check_embed_by_line(element, line)
+      return match_in_embed if match_in_embed
     when :section
       return check_in_section_by_line(element, line)
     end
@@ -223,15 +202,9 @@ def check_in_section_by_index(section, index)
     when :field
       match_in_field = check_field_by_index(element, index)
       return match_in_field if match_in_field
-    when :fieldset
-      match_in_fieldset = check_fieldset_by_index(element, index)
-      return match_in_fieldset if match_in_fieldset
-    when :list
-      match_in_list = check_list_by_index(element, index)
-      return match_in_list if match_in_list
-    when :multiline_field_begin
-      match_in_multiline_field = check_multiline_field_by_index(element, index)
-      return match_in_multiline_field if match_in_multiline_field
+    when :embed_begin
+      match_in_embed = check_embed_by_index(element, index)
+      return match_in_embed if match_in_embed
     when :section
       return check_in_section_by_index(element, index)
     end

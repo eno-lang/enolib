@@ -15,7 +15,7 @@ value
 DOC
 
 describe Enolib::Parser do
-  describe 'Multiline fields' do
+  describe 'Embeds' do
     context = Enolib::Context.new(input)
 
     it 'parses as expected' do

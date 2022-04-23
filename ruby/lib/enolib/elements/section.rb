@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# TODO: For each value store the representational type as well ? (e.g. string may come from "- foo" or -- foo\nxxx\n-- foo) and use that for precise error messages?
-
 module Enolib
   class Section < ElementBase
+    attr_reader :instruction
+    
     def initialize(context, instruction, parent = nil)
       super(context, instruction, parent)
 
@@ -12,12 +12,12 @@ module Enolib
 
     def _missing_error(element)
       case element
+      when MissingEmbed
+        raise Errors::Validation.missing_element(@context, element.instance_variable_get(:@key), @instruction, 'missing_embed')
       when MissingField
         raise Errors::Validation.missing_element(@context, element.instance_variable_get(:@key), @instruction, 'missing_field')
-      when MissingFieldset
-        raise Errors::Validation.missing_element(@context, element.instance_variable_get(:@key), @instruction, 'missing_fieldset')
-      when MissingList
-        raise Errors::Validation.missing_element(@context, element.instance_variable_get(:@key), @instruction, 'missing_list')
+      when MissingFlag
+        raise Errors::Validation.missing_element(@context, element.instance_variable_get(:@key), @instruction, 'missing_flag')
       when MissingSection
         raise Errors::Validation.missing_element(@context, element.instance_variable_get(:@key), @instruction, 'missing_section')
       else
@@ -40,10 +40,10 @@ module Enolib
       @all_elements_required = required
 
       _elements.each do |element|
-        if element.instruciton[:type] == :section && element.yielded?
-          element.to_section.all_elements_required(required)
-        elsif element.instruciton[:type] == :fieldset && element.yielded?
-          element.to_fieldset.all_entries_required(required)
+        if element.instruction[:type] == :section
+          element.all_elements_required(required)
+        elsif element.instruction[:type] == :field
+          element.all_attributes_required(required)
         end
       end
     end
@@ -86,9 +86,27 @@ module Enolib
         _elements
       end
     end
+    
+    def embed(key = nil)
+      _embed(key)
+    end
+    
+    def embeds(key = nil)
+      @touched = true
 
-    def empty(key = nil)
-      _empty(key)
+      if key
+        elements_map = _elements(map: true)
+        elements = elements_map.has_key?(key) ? elements_map[key] : []
+      else
+        elements = _elements
+      end
+
+      elements.each do |element|
+        next if element.is_a?(Embed)
+        raise Errors::Validation.unexpected_element_type(@context, key, element.instruction, 'expected_embeds')
+      end
+      
+      elements
     end
 
     def field(key = nil)
@@ -105,25 +123,19 @@ module Enolib
         elements = _elements
       end
 
-      elements.map do |element|
-        unless element.yields_field?
-          raise Errors::Validation.unexpected_element_type(
-            @context,
-            key,
-            element.instruction,
-            'expected_fields'
-          )
-        end
-
-        element.to_field
+      elements.each do |element|
+        next if element.is_a?(Field)
+        raise Errors::Validation.unexpected_element_type(@context, key, element.instruction, 'expected_fields')
       end
+      
+      elements
     end
-
-    def fieldset(key = nil)
-      _fieldset(key)
+    
+    def flag(key = nil)
+      _flag(key)
     end
-
-    def fieldsets(key = nil)
+    
+    def flags(key = nil)
       @touched = true
 
       if key
@@ -133,66 +145,28 @@ module Enolib
         elements = _elements
       end
 
-      elements.map do |element|
-        unless element.yields_fieldset?
-          raise Errors::Validation.unexpected_element_type(
-            @context,
-            key,
-            element.instruction,
-            'expected_fieldsets'
-          )
-        end
-
-        element.to_fieldset
+      elements.each do |element|
+        next if element.is_a?(Flag)
+        raise Errors::Validation.unexpected_element_type(@context, key, element.instruction, 'expected_flags')
       end
-    end
-
-    def list(key = nil)
-      _list(key)
-    end
-
-    def lists(key = nil)
-      @touched = true
-
-      if key
-        elements_map = _elements(map: true)
-        elements = elements_map.has_key?(key) ? elements_map[key] : []
-      else
-        elements = _elements
-      end
-
-      elements.map do |element|
-        unless element.yields_list?
-          raise Errors::Validation.unexpected_element_type(
-            @context,
-            key,
-            element.instruction,
-            'expected_lists'
-          )
-        end
-
-        element.to_list
-      end
+      
+      elements
     end
 
     def optional_element(key = nil)
       _element(key, required: false)
     end
 
-    def optional_empty(key = nil)
-      _empty(key, required: false)
+    def optional_embed(key = nil)
+      _embed(key, required: false)
     end
 
     def optional_field(key = nil)
       _field(key, required: false)
     end
 
-    def optional_fieldset(key = nil)
-      _fieldset(key, required: false)
-    end
-
-    def optional_list(key = nil)
-      _list(key, required: false)
+    def optional_flag(key = nil)
+      _flag(key, required: false)
     end
 
     def optional_section(key = nil)
@@ -211,20 +185,16 @@ module Enolib
       _element(key, required: true)
     end
 
-    def required_empty(key = nil)
-      _empty(key, required: true)
+    def required_embed(key = nil)
+      _embed(key, required: true)
     end
 
     def required_field(key = nil)
       _field(key, required: true)
     end
-
-    def required_fieldset(key = nil)
-      _fieldset(key, required: true)
-    end
-
-    def required_list(key = nil)
-      _list(key, required: true)
+    
+    def required_flag(key = nil)
+      _flag(key, required: true)
     end
 
     def required_section(key = nil)
@@ -245,18 +215,12 @@ module Enolib
         elements = _elements
       end
 
-      elements.map do |element|
-        unless element.yields_section?
-          raise Errors::Validation.unexpected_element_type(
-            @context,
-            key,
-            element.instruction,
-            'expected_sections'
-          )
-        end
-
-        element.to_section
+      elements.each do |element|
+        next if element.is_a?(Section)
+        raise Errors::Validation.unexpected_element_type(@context, key, element.instruction, 'expected_sections')
       end
+      
+      elements
     end
 
     def to_s
@@ -297,10 +261,7 @@ module Enolib
 
       if elements.length > 1
         raise Errors::Validation.unexpected_multiple_elements(
-          @context,
-          key,
-          elements.map(&:instruction),
-          'expected_single_element'
+          @context, key, elements.map(&:instruction), 'expected_single_element'
         )
       end
 
@@ -309,15 +270,30 @@ module Enolib
 
     def _elements(map: false)
       unless instance_variable_defined?(:@instantiated_elements)
-        @instantiated_elements = []
         @instantiated_elements_map = {}
-        instantiate_elements(@instruction)
+        @instantiated_elements = @instruction[:elements].map do |element|
+          instance =
+            case element[:type]
+            when :embed_begin then Embed.new(@context, element, self)
+            when :field then Field.new(@context, element, self)
+            when :flag then Flag.new(@context, element, self)
+            when :section then Section.new(@context, element, self)
+            end
+
+          if @instantiated_elements_map.has_key?(element[:key])
+            @instantiated_elements_map[element[:key]].push(instance)
+          else
+            @instantiated_elements_map[element[:key]] = [instance]
+          end
+
+          instance
+        end
       end
 
       map ? @instantiated_elements_map : @instantiated_elements
     end
 
-    def _empty(key = nil, required: nil)
+    def _embed(key = nil, required: nil)
       @touched = true
 
       if key
@@ -329,9 +305,9 @@ module Enolib
 
       if elements.empty?
         if required || required == nil && @all_elements_required
-          raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_empty')
+          raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_embed')
         elsif required == nil
-          return MissingEmpty.new(key, self)
+          return MissingEmbed.new(key, self)
         else
           return nil
         end
@@ -339,28 +315,19 @@ module Enolib
 
       if elements.length > 1
         raise Errors::Validation.unexpected_multiple_elements(
-          @context,
-          key,
-          elements.map(&:instruction),
-          'expected_single_empty'
+          @context, key, elements.map(&:instruction), 'expected_single_embed'
         )
       end
 
       element = elements[0]
 
-      # TODO: Other implementations use a direct check here (['type'] == :foo)
-      #       Should this be unified across implementations? Follow up.
-      #       (guess is that the main reason is stricter visibility in ruby currently)
-      unless element.yields_empty?
+      unless element.is_a?(Embed)
         raise Errors::Validation.unexpected_element_type(
-          @context,
-          key,
-          element.instruction,
-          'expected_empty'
+          @context, key, element.instruction, 'expected_embed'
         )
       end
 
-      element.to_empty
+      element
     end
 
     def _field(key = nil, required: nil)
@@ -385,28 +352,22 @@ module Enolib
 
       if elements.length > 1
         raise Errors::Validation.unexpected_multiple_elements(
-          @context,
-          key,
-          elements.map(&:instruction),
-          'expected_single_field'
+          @context, key, elements.map(&:instruction), 'expected_single_field'
         )
       end
 
       element = elements[0]
 
-      unless element.yields_field?
+      unless element.is_a?(Field)
         raise Errors::Validation.unexpected_element_type(
-          @context,
-          key,
-          element.instruction,
-          'expected_field'
+          @context, key, element.instruction, 'expected_field'
         )
       end
 
-      element.to_field
+      element
     end
-
-    def _fieldset(key = nil, required: nil)
+    
+    def _flag(key = nil, required: nil)
       @touched = true
 
       if key
@@ -418,9 +379,9 @@ module Enolib
 
       if elements.empty?
         if required || required == nil && @all_elements_required
-          raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_fieldset')
+          raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_flag')
         elsif required == nil
-          return MissingFieldset.new(key, self)
+          return MissingFlag.new(key, self)
         else
           return nil
         end
@@ -428,85 +389,19 @@ module Enolib
 
       if elements.length > 1
         raise Errors::Validation.unexpected_multiple_elements(
-          @context,
-          key,
-          elements.map(&:instruction),
-          'expected_single_fieldset'
+          @context, key, elements.map(&:instruction), 'expected_single_flag'
         )
       end
 
       element = elements[0]
 
-      unless element.yields_fieldset?
+      unless element.is_a?(Flag)
         raise Errors::Validation.unexpected_element_type(
-          @context,
-          key,
-          element.instruction,
-          'expected_fieldset'
+          @context, key, element.instruction, 'expected_flag'
         )
       end
 
-      element.to_fieldset
-    end
-
-    def instantiate_elements(section)
-      filtered = section[:elements].reject { |element| @instantiated_elements_map.has_key?(element[:key]) }
-      instantiated = filtered.map do |element|
-        instance = SectionElement.new(@context, element, self)
-
-        if @instantiated_elements_map.has_key?(element[:key])
-          @instantiated_elements_map[element[:key]].push(instance)
-        else
-          @instantiated_elements_map[element[:key]] = [instance]
-        end
-
-        instance
-      end
-
-      @instantiated_elements.concat(instantiated)
-    end
-
-    def _list(key = nil, required: nil)
-      @touched = true
-
-      if key
-        elements_map = _elements(map: true)
-        elements = elements_map.has_key?(key) ? elements_map[key] : []
-      else
-        elements = _elements
-      end
-
-      if elements.empty?
-        if required || required == nil && @all_elements_required
-          raise Errors::Validation.missing_element(@context, key, @instruction, 'missing_list')
-        elsif required == nil
-          return MissingList.new(key, self)
-        else
-          return nil
-        end
-      end
-
-      if elements.length > 1
-        raise Errors::Validation.unexpected_multiple_elements(
-          @context,
-          key,
-          elements.map(&:instruction),
-          'expected_single_list'
-        )
-      end
-
-      element = elements[0]
-
-      unless element.yields_list?
-        raise Errors::Validation.unexpected_element_type(
-          @context,
-          key,
-          element.instruction,
-          'expected_list'
-        )
-      end
-
-      element.to_list
+      element
     end
 
     def _section(key = nil, required: nil)
@@ -531,25 +426,19 @@ module Enolib
 
       if elements.length > 1
         raise Errors::Validation.unexpected_multiple_elements(
-          @context,
-          key,
-          elements.map(&:instruction),
-          'expected_single_section'
+          @context, key, elements.map(&:instruction), 'expected_single_section'
         )
       end
 
       element = elements[0]
 
-      unless element.yields_section?
+      unless element.is_a?(Section)
         raise Errors::Validation.unexpected_element_type(
-          @context,
-          key,
-          element.instruction,
-          'expected_section'
+          @context, key, element.instruction, 'expected_section'
         )
       end
 
-      element.to_section
+      element
     end
   end
 end

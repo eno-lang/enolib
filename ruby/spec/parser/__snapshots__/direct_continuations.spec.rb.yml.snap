@@ -1,5 +1,5 @@
 ---
-"./spec/parser/spaced_line_continuations.spec.rb[1:1:1]": &1
+"./spec/parser/direct_continuations.spec.rb[1:1:1]": &1
   :elements:
   - :index: 0
     :line: 0
@@ -7,7 +7,7 @@
       :line:
       - 0
       - 6
-      :element_operator:
+      :field_operator:
       - 5
       - 6
       :key:
@@ -23,10 +23,9 @@
         :line:
         - 7
         - 8
-        :spaced_line_continuation_operator:
+        :direct_continuation_operator:
         - 7
         - 8
-      :spaced: true
       :type: :continuation
     - :index: 9
       :line: 2
@@ -34,13 +33,12 @@
         :line:
         - 9
         - 16
-        :spaced_line_continuation_operator:
+        :direct_continuation_operator:
         - 9
         - 10
         :value:
         - 11
         - 16
-      :spaced: true
       :type: :continuation
       :value: value
     - :index: 17
@@ -49,13 +47,12 @@
         :line:
         - 17
         - 27
-        :spaced_line_continuation_operator:
+        :direct_continuation_operator:
         - 17
         - 18
         :value:
         - 22
         - 27
-      :spaced: true
       :type: :continuation
       :value: value
     - :index: 28
@@ -64,13 +61,12 @@
         :line:
         - 28
         - 44
-        :spaced_line_continuation_operator:
+        :direct_continuation_operator:
         - 32
         - 33
         :value:
         - 34
         - 44
-      :spaced: true
       :type: :continuation
       :value: more value
     - :index: 45
@@ -79,13 +75,12 @@
         :line:
         - 45
         - 59
-        :spaced_line_continuation_operator:
+        :direct_continuation_operator:
         - 49
         - 50
         :value:
         - 54
         - 59
-      :spaced: true
       :type: :continuation
       :value: value
     - :index: 60
@@ -94,9 +89,8 @@
         :line:
         - 60
         - 65
-        :spaced_line_continuation_operator:
+        :direct_continuation_operator:
         - 64
         - 65
-      :spaced: true
       :type: :continuation
   :type: :document

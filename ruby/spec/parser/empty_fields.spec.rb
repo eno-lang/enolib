@@ -8,7 +8,7 @@ long key:
 DOC
 
 describe Enolib::Parser do
-  describe 'Ambiguous elements' do
+  describe 'Empty fields' do
     context = Enolib::Context.new(input)
 
     it 'parses as expected' do

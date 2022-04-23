@@ -1,11 +1,11 @@
 ---
 "./spec/locales/require_file.spec.rb[1:1:1]": |-
-  Zeile 1 folgt keinem spezifierten Muster.
+  Das Feld in Zeile 1 hat keinen Key.
 
     Zeile | Inhalt
    >    1 | :invalid
 "./spec/locales/require_file.spec.rb[1:2:1]": |-
-  Línea 1 no sigue un patrón especificado.
+  La casilla en línea 1 no tiene clave.
 
     Línea | Contenido
    >    1 | :invalid

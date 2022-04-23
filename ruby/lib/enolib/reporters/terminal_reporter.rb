@@ -28,16 +28,16 @@ GUTTER_STYLE = {
 }.freeze
 
 RANGE_STYLE = {
-  'element_operator': WHITE,
+  'attribute_operator': WHITE,
+  'direct_continuation_operator': WHITE,
+  'embed_operator': WHITE,
   'escape_begin_operator': WHITE,
   'escape_end_operator': WHITE,
+  'field_operator': WHITE,
   'item_operator': WHITE,
-  'entry_operator': WHITE,
-  'section_operator': WHITE,
-  'multiline_field_operator': WHITE,
-  'direct_line_continuation_operator': WHITE,
-  'spaced_line_continuation_operator': WHITE,
   'key': BOLD + BRIGHT_WHITE,
+  'section_operator': WHITE,
+  'spaced_continuation_operator': WHITE,
   'value': DIM + WHITE
 }.freeze
 

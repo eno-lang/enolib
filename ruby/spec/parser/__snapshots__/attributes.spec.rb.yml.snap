@@ -1,0 +1,97 @@
+---
+"./spec/parser/attributes.spec.rb[1:1:1]": &1
+  :elements:
+  - &2
+    :index: 0
+    :line: 0
+    :ranges:
+      :line:
+      - 0
+      - 6
+      :field_operator:
+      - 5
+      - 6
+      :key:
+      - 0
+      - 5
+    :key: field
+    :type: :field
+    :parent: *1
+    :attributes:
+    - :index: 7
+      :line: 1
+      :ranges:
+        :line:
+        - 7
+        - 16
+        :key:
+        - 7
+        - 10
+        :attribute_operator:
+        - 10
+        - 11
+        :value:
+        - 11
+        - 16
+      :type: :attribute
+      :key: key
+      :value: value
+      :parent: *2
+    - :index: 17
+      :line: 2
+      :ranges:
+        :line:
+        - 17
+        - 28
+        :key:
+        - 17
+        - 20
+        :attribute_operator:
+        - 21
+        - 22
+        :value:
+        - 23
+        - 28
+      :type: :attribute
+      :key: key
+      :value: value
+      :parent: *2
+    - :index: 29
+      :line: 3
+      :ranges:
+        :line:
+        - 29
+        - 45
+        :key:
+        - 29
+        - 32
+        :attribute_operator:
+        - 33
+        - 34
+        :value:
+        - 35
+        - 45
+      :type: :attribute
+      :key: key
+      :value: more value
+      :parent: *2
+    - :index: 46
+      :line: 4
+      :ranges:
+        :line:
+        - 46
+        - 72
+        :key:
+        - 50
+        - 58
+        :attribute_operator:
+        - 62
+        - 63
+        :value:
+        - 67
+        - 72
+      :type: :attribute
+      :key: more key
+      :value: value
+      :parent: *2
+  :type: :document

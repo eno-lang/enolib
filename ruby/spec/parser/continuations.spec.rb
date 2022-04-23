@@ -1,33 +1,33 @@
 # frozen_string_literal: true
 
 input = <<~DOC.strip
-Field: Value
-\\ Spaced line continuation
-| Direct line continuation
+field: value
+\\ spaced continuation
+| direct continuation
 
-Fieldset:
-Entry = Value
-\\ Spaced line continuation
-| Direct line continuation
+field_with_attribute:
+attribute = value
+\\ spaced continuation
+| direct continuation
 
-List:
-- Value
-\\ Spaced line continuation
-| Direct line continuation
+field_with_item:
+- value
+\\ spaced continuation
+| direct continuation
 
-Empty field:
-\\ Spaced line continuation
-| Direct line continuation
+field:
+\\ spaced continuation
+| direct continuation
 
-Fieldset with empty entry:
-Empty entry =
-\\ Spaced line continuation
-| Direct line continuation
+field_with_attribute:
+attribute =
+\\ spaced continuation
+| direct continuation
 
-List with empty item:
+field_with_item:
 -
-\\ Spaced line continuation
-| Direct line continuation
+\\ spaced continuation
+| direct continuation
 DOC
 
 describe Enolib::Parser do

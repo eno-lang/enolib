@@ -10,15 +10,13 @@ module Enolib
     }.freeze
 
     def self.last_in(element)
-      if (element[:type] == :field ||
-          element[:type] == :list_item ||
-          element[:type] == :fieldset_entry) && element.has_key?(:continuations)
+      if element.has_key?(:attributes)
+        last_in(element[:attributes].last)
+      elsif element.has_key?(:continuations)
         element[:continuations].last
-      elsif element[:type] == :list && element.has_key?(:items)
+      elsif element.has_key?(:items)
         last_in(element[:items].last)
-      elsif element[:type] == :fieldset && element.has_key?(:entries)
-        last_in(element[:entries].last)
-      elsif element[:type] == :multiline_field_begin
+      elsif element[:type] == :embed_begin
         element[:end]
       elsif element[:type] == :section && !element[:elements].empty?
         last_in(element[:elements].last)

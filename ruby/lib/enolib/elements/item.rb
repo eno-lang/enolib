@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module Enolib
-  class ListItem < ValueElementBase
+  class Item < ValueElementBase
     def parent
       @parent || List.new(@context, @instruction[:parent])
     end
 
     def to_s
-      "#<Enolib::ListItem value=#{print_value}>"
+      "#<Enolib::Item value=#{print_value}>"
     end
   end
 end

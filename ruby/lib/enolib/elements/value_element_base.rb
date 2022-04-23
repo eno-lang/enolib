@@ -59,6 +59,11 @@ module Enolib
     def _value(loader = nil, required:)
       @touched = true
 
+      # TODO: This is checked for embeds as well, which makes no sense - follow up.
+      if @instruction.has_key?(:attributes) || @instruction.has_key?(:items)
+        raise Errors::Validation.unexpected_field_content(@context, nil, @instruction, 'expected_value')
+      end
+      
       value = @context.value(@instruction)
 
       if value

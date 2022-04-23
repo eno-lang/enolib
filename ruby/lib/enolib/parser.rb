@@ -17,7 +17,7 @@ module Enolib
 
       comments = nil
       last_continuable_element = nil
-      last_non_section_element = nil
+      last_field = nil
       last_section = @context.document
 
       while @index < @context.input.length
@@ -36,7 +36,7 @@ module Enolib
           }
         }
 
-        multiline_field = false
+        embed = false
 
         if match[Grammar::EMPTY_LINE_INDEX]
 
@@ -45,7 +45,7 @@ module Enolib
             comments = nil
           end
 
-        elsif match[Grammar::ELEMENT_OPERATOR_INDEX]
+        elsif match[Grammar::FIELD_OPERATOR_INDEX]
 
           if comments
             instruction[:comments] = comments
@@ -53,13 +53,14 @@ module Enolib
           end
 
           instruction[:key] = match[Grammar::KEY_UNESCAPED_INDEX]
+          instruction[:type] = :field
 
           if instruction[:key]
-            instruction[:ranges][:element_operator] = match.offset(Grammar::ELEMENT_OPERATOR_INDEX)
+            instruction[:ranges][:field_operator] = match.offset(Grammar::FIELD_OPERATOR_INDEX)
             instruction[:ranges][:key] = match.offset(Grammar::KEY_UNESCAPED_INDEX)
           else
             instruction[:key] = match[Grammar::KEY_ESCAPED_INDEX]
-            instruction[:ranges][:element_operator] = match.offset(Grammar::ELEMENT_OPERATOR_INDEX)
+            instruction[:ranges][:field_operator] = match.offset(Grammar::FIELD_OPERATOR_INDEX)
             instruction[:ranges][:escape_begin_operator] = match.offset(Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
             instruction[:ranges][:escape_end_operator] = match.offset(Grammar::KEY_ESCAPE_END_OPERATOR_INDEX)
             instruction[:ranges][:key] = match.offset(Grammar::KEY_ESCAPED_INDEX)
@@ -69,152 +70,120 @@ module Enolib
 
           if value
             instruction[:ranges][:value] = match.offset(Grammar::FIELD_VALUE_INDEX)
-            instruction[:type] = :field
             instruction[:value] = value
-          else
-            instruction[:type] = :field_or_fieldset_or_list
           end
 
           instruction[:parent] = last_section
           last_section[:elements].push(instruction)
           last_continuable_element = instruction
-          last_non_section_element = instruction
+          last_field = instruction
 
-        elsif match[Grammar::LIST_ITEM_OPERATOR_INDEX]
+        elsif match[Grammar::ITEM_OPERATOR_INDEX]
 
           if comments
             instruction[:comments] = comments
             comments = nil
           end
 
-          instruction[:ranges][:item_operator] = match.offset(Grammar::LIST_ITEM_OPERATOR_INDEX)
-          instruction[:type] = :list_item
+          instruction[:ranges][:item_operator] = match.offset(Grammar::ITEM_OPERATOR_INDEX)
+          instruction[:type] = :item
 
-          value = match[Grammar::LIST_ITEM_VALUE_INDEX]
+          value = match[Grammar::ITEM_VALUE_INDEX]
 
           if value
-            instruction[:ranges][:value] = match.offset(Grammar::LIST_ITEM_VALUE_INDEX)
+            instruction[:ranges][:value] = match.offset(Grammar::ITEM_VALUE_INDEX)
             instruction[:value] = value
           end
 
-          if !last_non_section_element
+          if !last_field
             parse_after_error(instruction)
-            raise Errors::Parsing.missing_list_for_list_item(@context, instruction)
-          elsif last_non_section_element[:type] == :list
-            last_non_section_element[:items].push(instruction)
-          elsif last_non_section_element[:type] == :field_or_fieldset_or_list
-            last_non_section_element[:items] = [instruction]
-            last_non_section_element[:type] = :list
+            raise Errors::Parsing.instruction_outside_field(@context, instruction, 'item')
+          elsif last_field.has_key?(:items)
+            last_field[:items].push(instruction)
+          elsif last_field.has_key?(:attributes) ||
+                last_field.has_key?(:continuations) ||
+                last_field.has_key?(:value)
+            parse_after_error(instruction)
+            raise Errors::Parsing.mixed_field_content(@context, last_field, instruction)
           else
-            parse_after_error(instruction)
-            raise Errors::Parsing.missing_list_for_list_item(@context, instruction)
+            last_field[:items] = [instruction]
           end
 
-          instruction[:parent] = last_non_section_element
+          instruction[:parent] = last_field
           last_continuable_element = instruction
 
-        elsif match[Grammar::FIELDSET_ENTRY_OPERATOR_INDEX]
+        elsif match[Grammar::ATTRIBUTE_OPERATOR_INDEX]
 
           if comments
             instruction[:comments] = comments
             comments = nil
           end
 
-          instruction[:type] = :fieldset_entry
+          instruction[:type] = :attribute
 
           instruction[:key] = match[Grammar::KEY_UNESCAPED_INDEX]
 
           if instruction[:key]
             instruction[:ranges][:key] = match.offset(Grammar::KEY_UNESCAPED_INDEX)
-            instruction[:ranges][:entry_operator] = match.offset(Grammar::FIELDSET_ENTRY_OPERATOR_INDEX)
+            instruction[:ranges][:attribute_operator] = match.offset(Grammar::ATTRIBUTE_OPERATOR_INDEX)
           else
             instruction[:key] = match[Grammar::KEY_ESCAPED_INDEX]
-            instruction[:ranges][:entry_operator] = match.offset(Grammar::FIELDSET_ENTRY_OPERATOR_INDEX)
+            instruction[:ranges][:attribute_operator] = match.offset(Grammar::ATTRIBUTE_OPERATOR_INDEX)
             instruction[:ranges][:escape_begin_operator] = match.offset(Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
             instruction[:ranges][:escape_end_operator] = match.offset(Grammar::KEY_ESCAPE_END_OPERATOR_INDEX)
             instruction[:ranges][:key] = match.offset(Grammar::KEY_ESCAPED_INDEX)
           end
 
-          value = match[Grammar::FIELDSET_ENTRY_VALUE_INDEX]
+          value = match[Grammar::ATTRIBUTE_VALUE_INDEX]
 
           if value
-            instruction[:ranges][:value] = match.offset(Grammar::FIELDSET_ENTRY_VALUE_INDEX)
+            instruction[:ranges][:value] = match.offset(Grammar::ATTRIBUTE_VALUE_INDEX)
             instruction[:value] = value
           end
-
-          if !last_non_section_element
+          
+          if !last_field
             parse_after_error(instruction)
-            raise Errors::Parsing.missing_fieldset_for_fieldset_entry(@context, instruction)
-          elsif last_non_section_element[:type] == :fieldset
-            last_non_section_element[:entries].push(instruction)
-          elsif last_non_section_element[:type] == :field_or_fieldset_or_list
-            last_non_section_element[:entries] = [instruction]
-            last_non_section_element[:type] = :fieldset
+            raise Errors::Parsing.instruction_outside_field(@context, instruction, 'attribute')
+          elsif last_field.has_key?(:attributes)
+            last_field[:attributes].push(instruction)
+          elsif last_field.has_key?(:continuations) ||
+                last_field.has_key?(:items) ||
+                last_field.has_key?(:value)
+            parse_after_error(instruction)
+            raise Errors::Parsing.mixed_field_content(@context, last_field, instruction)
           else
-            parse_after_error(instruction)
-            raise Errors::Parsing.missing_fieldset_for_fieldset_entry(@context, instruction)
+            last_field[:attributes] = [instruction]
           end
 
-          instruction[:parent] = last_non_section_element
+          instruction[:parent] = last_field
           last_continuable_element = instruction
 
-        elsif match[Grammar::SPACED_LINE_CONTINUATION_OPERATOR_INDEX]
+        elsif match[Grammar::CONTINUATION_OPERATOR_INDEX]
 
-          instruction[:spaced] = true
-          instruction[:ranges][:spaced_line_continuation_operator] = match.offset(Grammar::SPACED_LINE_CONTINUATION_OPERATOR_INDEX)
+          if match[Grammar::CONTINUATION_OPERATOR_INDEX] == '\\'
+            instruction[:spaced] = true
+            instruction[:ranges][:spaced_continuation_operator] = match.offset(Grammar::CONTINUATION_OPERATOR_INDEX)
+          else
+            instruction[:ranges][:direct_continuation_operator] = match.offset(Grammar::CONTINUATION_OPERATOR_INDEX)
+          end
+
           instruction[:type] = :continuation
 
-          value = match[Grammar::SPACED_LINE_CONTINUATION_VALUE_INDEX]
+          value = match[Grammar::CONTINUATION_VALUE_INDEX]
 
           if value
-            instruction[:ranges][:value] = match.offset(Grammar::SPACED_LINE_CONTINUATION_VALUE_INDEX)
+            instruction[:ranges][:value] = match.offset(Grammar::CONTINUATION_VALUE_INDEX)
             instruction[:value] = value
           end
 
           unless last_continuable_element
             parse_after_error(instruction)
-            raise Errors::Parsing.missing_element_for_continuation(@context, instruction)
+            raise Errors::Parsing.instruction_outside_field(@context, instruction, 'continuation')
           end
 
           if last_continuable_element.has_key?(:continuations)
             last_continuable_element[:continuations].push(instruction)
           else
-            if last_continuable_element[:type] == :field_or_fieldset_or_list
-              last_continuable_element[:type] = :field
-            end
-
-            last_continuable_element[:continuations] = [instruction]
-          end
-
-          if comments
-            @context.meta.concat(comments)
-            comments = nil
-          end
-
-        elsif match[Grammar::DIRECT_LINE_CONTINUATION_OPERATOR_INDEX]
-
-          instruction[:ranges][:direct_line_continuation_operator] = match.offset(Grammar::DIRECT_LINE_CONTINUATION_OPERATOR_INDEX)
-          instruction[:type] = :continuation
-
-          value = match[Grammar::DIRECT_LINE_CONTINUATION_VALUE_INDEX]
-
-          if value
-            instruction[:ranges][:value] = match.offset(Grammar::DIRECT_LINE_CONTINUATION_VALUE_INDEX)
-            instruction[:value] = value
-          end
-
-          unless last_continuable_element
-            parse_after_error(instruction)
-            raise Errors::Parsing.missing_element_for_continuation(@context, instruction)
-          end
-
-          if last_continuable_element.has_key?(:continuations)
-            last_continuable_element[:continuations].push(instruction)
-          else
-            if last_continuable_element[:type] == :field_or_fieldset_or_list
-              last_continuable_element[:type] = :field
-            end
-
             last_continuable_element[:continuations] = [instruction]
           end
 
@@ -253,36 +222,36 @@ module Enolib
             instruction[:parent] = last_section[:parent]
           else
             parse_after_error(instruction)
-            raise Errors::Parsing.section_hierarchy_layer_skip(@context, instruction, last_section)
+            raise Errors::Parsing.section_level_skip(@context, instruction, last_section)
           end
 
           instruction[:parent][:elements].push(instruction)
 
           last_section = instruction
           last_continuable_element = nil
-          last_non_section_element = nil
+          last_field = nil
 
-        elsif match[Grammar::MULTILINE_FIELD_OPERATOR_INDEX]
+        elsif match[Grammar::EMBED_OPERATOR_INDEX]
 
           if comments
             instruction[:comments] = comments
             comments = nil
           end
 
-          operator = match[Grammar::MULTILINE_FIELD_OPERATOR_INDEX]
-          key = match[Grammar::MULTILINE_FIELD_KEY_INDEX]
+          operator = match[Grammar::EMBED_OPERATOR_INDEX]
+          key = match[Grammar::EMBED_KEY_INDEX]
 
           instruction[:key] = key
           instruction[:parent] = last_section
-          instruction[:ranges][:multiline_field_operator] = match.offset(Grammar::MULTILINE_FIELD_OPERATOR_INDEX)
-          instruction[:ranges][:key] = match.offset(Grammar::MULTILINE_FIELD_KEY_INDEX)
-          instruction[:type] = :multiline_field_begin
+          instruction[:ranges][:embed_operator] = match.offset(Grammar::EMBED_OPERATOR_INDEX)
+          instruction[:ranges][:key] = match.offset(Grammar::EMBED_KEY_INDEX)
+          instruction[:type] = :embed_begin
 
           @index = match.end(0)
 
           last_section[:elements].push(instruction)
           last_continuable_element = nil
-          last_non_section_element = instruction
+          begin_instruction = instruction
 
           terminator_regex = /\n[^\S\n]*(#{operator})(?!-)[^\S\n]*(#{Regexp.escape(key)})[^\S\n]*(?=\n|$)/
           terminator_match = terminator_regex.match(@context.input, @index)
@@ -292,39 +261,39 @@ module Enolib
 
           unless terminator_match
             parse_after_error
-            raise Errors::Parsing.unterminated_multiline_field(@context, instruction)
+            raise Errors::Parsing.unterminated_embed(@context, instruction)
           end
 
-          end_of_multiline_field_index = terminator_match.begin(0)
+          end_of_embed_index = terminator_match.begin(0)
 
-          if end_of_multiline_field_index != @index - 1
+          if end_of_embed_index != @index - 1
             instruction[:lines] = []
 
             loop do
               end_of_line_index = @context.input.index("\n", @index)
 
-              if !end_of_line_index || end_of_line_index >= end_of_multiline_field_index
-                last_non_section_element[:lines].push(
+              if !end_of_line_index || end_of_line_index >= end_of_embed_index
+                begin_instruction[:lines].push(
                   line: @line,
                   ranges: {
-                    line: [@index, end_of_multiline_field_index],
-                    value: [@index, end_of_multiline_field_index]
+                    line: [@index, end_of_embed_index],
+                    value: [@index, end_of_embed_index]
                   },
-                  type: :multiline_field_value
+                  type: :embed_value
                 )
 
-                @index = end_of_multiline_field_index + 1
+                @index = end_of_embed_index + 1
                 @line += 1
 
                 break
               else
-                last_non_section_element[:lines].push(
+                begin_instruction[:lines].push(
                   line: @line,
                   ranges: {
                     line: [@index, end_of_line_index],
                     value: [@index, end_of_line_index]
                   },
-                  type: :multiline_field_value
+                  type: :embed_value
                 )
 
                 @index = end_of_line_index + 1
@@ -339,18 +308,18 @@ module Enolib
             ranges: {
               key: terminator_match.offset(2),
               line: [@index, terminator_match.end(0)],
-              multiline_field_operator: terminator_match.offset(1)
+              embed_operator: terminator_match.offset(1)
             },
-            type: :multiline_field_end
+            type: :embed_end
           }
 
-          last_non_section_element[:end] = instruction
-          last_non_section_element = nil
+          begin_instruction[:end] = instruction
+          last_field = nil
 
           @index = terminator_match.end(0) + 1
           @line += 1
 
-          multiline_field = true
+          embed = true
 
         elsif match[Grammar::COMMENT_OPERATOR_INDEX]
 
@@ -379,12 +348,12 @@ module Enolib
 
           instruction[:key] = match[Grammar::KEY_UNESCAPED_INDEX]
           instruction[:ranges][:key] = match.offset(Grammar::KEY_UNESCAPED_INDEX)
-          instruction[:type] = :empty
+          instruction[:type] = :flag
 
           instruction[:parent] = last_section
           last_section[:elements].push(instruction)
           last_continuable_element = nil
-          last_non_section_element = instruction
+          last_field = instruction
 
         elsif match[Grammar::KEY_ESCAPED_INDEX]
 
@@ -397,16 +366,16 @@ module Enolib
           instruction[:ranges][:escape_begin_operator] = match.offset(Grammar::KEY_ESCAPE_BEGIN_OPERATOR_INDEX)
           instruction[:ranges][:escape_end_operator] = match.offset(Grammar::KEY_ESCAPE_END_OPERATOR_INDEX)
           instruction[:ranges][:key] = match.offset(Grammar::KEY_ESCAPED_INDEX)
-          instruction[:type] = :empty
+          instruction[:type] = :flag
 
           instruction[:parent] = last_section
           last_section[:elements].push(instruction)
           last_continuable_element = nil
-          last_non_section_element = instruction
+          last_field = instruction
 
         end
 
-        unless multiline_field
+        unless embed
           @index = match.end(0) + 1
           @line += 1
         end

@@ -47,21 +47,20 @@ module Enolib
         selection = {}
 
         if element[:type] == :field ||
-           element[:type] == :field_or_fieldset_or_list ||
-           element[:type] == :multiline_field_begin
+           element[:type] == :embed_begin
           message = context.messages.missing_field_value(element[:key])
 
           selection[:from] =
-            if element[:ranges].has_key?(:element_operator)
-              Selections.cursor(element, :element_operator, RANGE_END)
+            if element[:ranges].has_key?(:field_operator)
+              Selections.cursor(element, :field_operator, RANGE_END)
             else
               Selections.cursor(element, :line, RANGE_END)
             end
-        elsif element[:type] == :fieldset_entry
-          message = context.messages.missing_fieldset_entry_value(element[:key])
-          selection[:from] = Selections.cursor(element, :entry_operator, RANGE_END)
-        elsif element[:type] == :list_item
-          message = context.messages.missing_list_item_value(element[:parent][:key])
+        elsif element[:type] == :attribute
+          message = context.messages.missing_attribute_value(element[:key])
+          selection[:from] = Selections.cursor(element, :attribute_operator, RANGE_END)
+        elsif element[:type] == :item
+          message = context.messages.missing_item_value(element[:parent][:key])
           selection[:from] = Selections.cursor(element, :item_operator, RANGE_END)
         end
 
@@ -84,6 +83,14 @@ module Enolib
           Selections.select_element(element)
         )
       end
+      
+      def self.unexpected_field_content(context, key, field, message)
+        ValidationError.new(
+          key ? context.messages.send(message + '_with_key', key) : context.messages.const_get(message.upcase), # TODO: Solve the upcase rather through a different generated message type, e.g. method instead of constant
+          context.reporter.new(context).report_element(field).snippet,
+          Selections.select_element(field)
+        )
+      end
 
       def self.unexpected_multiple_elements(context, key, elements, message)
         ValidationError.new(
@@ -102,7 +109,7 @@ module Enolib
       end
 
       def self.value_error(context, message, element)
-        if element[:type] == :multiline_field_begin
+        if element[:type] == :embed_begin
           if element.has_key?(:lines)
             snippet = context.reporter.new(context).report_multiline_value(element).snippet
             select = Selections.selection(element[:lines][0], :line, RANGE_BEGIN, element[:lines][-1], :line, RANGE_END)
@@ -116,11 +123,11 @@ module Enolib
             from:
               if element[:ranges].has_key?(:value)
                 Selections.cursor(element, :value, RANGE_BEGIN)
-              elsif element[:ranges].has_key?(:element_operator)
-                Selections.cursor(element, :element_operator, RANGE_END)
-              elsif element[:ranges].has_key?(:entry_operator)
-                Selections.cursor(element, :entry_operator, RANGE_END)
-              elsif element[:type] == :list_item
+              elsif element[:ranges].has_key?(:field_operator)
+                Selections.cursor(element, :field_operator, RANGE_END)
+              elsif element[:ranges].has_key?(:attribute_operator)
+                Selections.cursor(element, :attribute_operator, RANGE_END)
+              elsif element[:type] == :item
                 Selections.cursor(element, :item_operator, RANGE_END)
               else
                 # TODO: Possibly never reached - think through state permutations

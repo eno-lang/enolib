@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.7
 
 Layout/EmptyComment:
   Enabled: false
@@ -10,13 +10,13 @@ Layout/EmptyLineBetweenDefs:
 Layout/ExtraSpacing:
   Enabled: false
 
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Enabled: false
 
 Layout/MultilineOperationIndentation:
   Enabled: false
 
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: false
 
 Layout/TrailingWhitespace:

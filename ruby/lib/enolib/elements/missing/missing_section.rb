@@ -10,31 +10,27 @@ module Enolib
       []
     end
 
-    def empty(key = nil)
-      MissingEmpty.new(key, self)
+    def embed(key = nil)
+      MissingEmbed.new(key, self)
     end
-
+    
+    def embeds(_key = nil)
+      []
+    end
+    
     def field(key = nil)
       MissingField.new(key, self)
     end
-
+    
     def fields(_key = nil)
       []
     end
 
-    def fieldset(key = nil)
-      MissingFieldset.new(key, self)
+    def flag(key = nil)
+      MissingFlag.new(key, self)
     end
-
-    def fieldsets(_key = nil)
-      []
-    end
-
-    def list(key = nil)
-      MissingList.new(key, self)
-    end
-
-    def lists(_key = nil)
+    
+    def flags(_key = nil)
       []
     end
 
@@ -42,19 +38,15 @@ module Enolib
       nil
     end
 
-    def optional_empty(_key = nil)
+    def optional_embed(_key = nil)
       nil
     end
-
+    
     def optional_field(_key = nil)
       nil
     end
-
-    def optional_fieldset(_key = nil)
-      nil
-    end
-
-    def optional_list(_key = nil)
+    
+    def optional_flag(_key = nil)
       nil
     end
 
@@ -66,19 +58,15 @@ module Enolib
       @parent._missing_error(self)
     end
 
-    def required_empty(_key = nil)
+    def required_embed(_key = nil)
       @parent._missing_error(self)
     end
-
+    
     def required_field(_key = nil)
       @parent._missing_error(self)
     end
-
-    def required_fieldset(_key = nil)
-      @parent._missing_error(self)
-    end
-
-    def required_list(_key = nil)
+  
+    def required_flag(_key = nil)
       @parent._missing_error(self)
     end
 

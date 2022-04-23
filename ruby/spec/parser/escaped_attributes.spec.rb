@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 input = <<~DOC.strip
-fieldset:
-key=value
-key = value
-key = more value
-    more key    =    value
+field:
+`key`=value
+``k`ey`` = value
+```ke``y```     = more value
+    `` `key` ``     =
 DOC
 
 describe Enolib::Parser do
-  describe 'Fieldset entries' do
+  describe 'Escaped attributes' do
     context = Enolib::Context.new(input)
 
     it 'parses as expected' do

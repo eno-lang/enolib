@@ -25,10 +25,6 @@ module Enolib
       nil
     end
 
-    def raw
-      nil
-    end
-
     def required_comment(_loader)
       @parent._missing_error(self)
     end

@@ -23,12 +23,12 @@ scenarios = [
   {
     arguments: [6], # ' '
     key: 'color',
-    range: :element_operator
+    range: :field_operator
   },
   {
     arguments: [0, 6], # ' '
     key: 'color',
-    range: :element_operator
+    range: :field_operator
   },
   {
     arguments: [7], # 'c'

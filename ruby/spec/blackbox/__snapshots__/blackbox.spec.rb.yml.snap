@@ -1,10 +1,4 @@
 ---
-"./spec/blackbox/blackbox.spec.rb[1:1:1]":
-  :type: :document
-  :elements:
-  - :type: :field
-    :key: language
-    :value: eno
 "./spec/blackbox/blackbox.spec.rb[1:2:1]":
   :type: :document
   :elements:

@@ -24,26 +24,6 @@ describe Enolib::Section do
     expect(@section.all_elements_required?).to be false
   end
 
-  describe '#raw' do
-    it 'returns a native representation' do
-      expect(@section.raw).to eq(
-        elements: [
-          {
-            key: 'field',
-            type: :field,
-            value: 'value'
-          },
-          {
-            key: 'other',
-            type: :field,
-            value: 'value'
-          }
-        ],
-        type: :document
-      )
-    end
-  end
-
   describe '#touch' do
     it 'touches the section' do
       @section.touch

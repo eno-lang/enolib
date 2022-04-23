@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 input = <<~DOC.strip
-list:
+field_with_items:
 -
 - value
 -    value
@@ -11,7 +11,7 @@ list:
 DOC
 
 describe Enolib::Parser do
-  describe 'List items' do
+  describe 'Items' do
     context = Enolib::Context.new(input)
 
     it 'parses as expected' do

@@ -2,37 +2,38 @@
 
 input = <<~DOC.strip
 Field: Value
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 
-Fieldset:
-Entry = Value
-\\ Spaced line continuation
-| Direct line continuation
+Field:
+Attribute = Value
+\\ Spaced continuation
+| Direct continuation
 
 List:
 - Value
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 
-Empty field:
-\\ Spaced line continuation
-| Direct line continuation
+Field:
+\\ Spaced continuation
+| Direct continuation
 
-Fieldset with empty entry:
-Empty entry =
-\\ Spaced line continuation
-| Direct line continuation
+Field with attribute:
+Attribute =
+\\ Spaced continuation
+| Direct continuation
 
-List with empty item:
+Field with item:
 -
-\\ Spaced line continuation
-| Direct line continuation
+\\ Spaced continuation
+| Direct continuation
 DOC
 
 describe 'Blackbox test' do
   describe 'Continuations' do
     it 'performs as expected' do
+      # TODO: Replace .raw with custom spec helper
       expect(Enolib.parse(input).raw).to match_snapshot
     end
   end

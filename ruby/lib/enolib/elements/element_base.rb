@@ -2,10 +2,16 @@
 
 module Enolib
   class ElementBase
+    attr_reader :instruction
+    
     def initialize(context, instruction, parent = nil)
       @context = context
       @instruction = instruction
       @parent = parent
+    end
+    
+    def _untouched
+      return @instruction unless instance_variable_defined?(:@touched)
     end
 
     def comment_error(message = nil)
@@ -84,10 +90,6 @@ module Enolib
       _comment(required: false)
     end
 
-    def raw
-      @context.raw(@instruction)
-    end
-
     def required_comment(loader = nil, &block)
       loader = Proc.new(&block) if block_given?
 
@@ -136,7 +138,7 @@ module Enolib
 
     def _key
       return nil if @instruction[:type] == :document
-      return @instruction[:parent][:key] if @instruction[:type] == :list_item
+      return @instruction[:parent][:key] if @instruction[:type] == :item
 
       @instruction[:key]
     end

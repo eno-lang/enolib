@@ -63,91 +63,11 @@ module Enolib
       element[:computed_comment]
     end
 
-    def elements(section)
-      unless section.has_key?(:computed_elements)
-        section[:computed_elements] = section[:elements]
-        section[:computed_elements_map] = {}
-
-        section[:computed_elements].each do |element|
-          if section[:computed_elements_map].has_key?(element[:key])
-            section[:computed_elements_map][element[:key]].push(element)
-          else
-            section[:computed_elements_map][element[:key]] = [element]
-          end
-        end
-      end
-
-      section[:computed_elements]
-    end
-
-    def entries(fieldset)
-      unless fieldset.has_key?(:computed_entries)
-        fieldset[:computed_entries] = fieldset[:entries]
-        fieldset[:computed_entries_map] = {}
-
-        fieldset[:computed_entries].each do |entry|
-          if fieldset[:computed_entries_map].has_key?(entry[:key])
-            fieldset[:computed_entries_map][entry[:key]].push(entry)
-          else
-            fieldset[:computed_entries_map][entry[:key]] = [entry]
-          end
-        end
-      end
-
-      fieldset[:computed_entries]
-    end
-
-    def items(list)
-      if list.has_key?(:items)
-        list[:items]
-      else
-        []
-      end
-    end
-
-    def raw(element)
-      # TODO: In other implementations there is only one 'field' type
-      #       here we get a) symbols, b) including :multiline_field_begin
-      result = { type: element[:type] }
-
-      # TODO: Revisit to think through the case of a present but empty comment
-      result[:comment] = comment(element) if element.has_key?(:comments)
-
-      case element[:type]
-      when :field_or_fieldset_or_list, :empty
-        result[:key] = element[:key]
-      when :field
-        result[:key] = element[:key]
-        result[:value] = value(element)
-      when :list_item
-        result[:value] = value(element)
-      when :fieldset_entry
-        result[:key] = element[:key]
-        result[:value] = value(element)
-      when :multiline_field_begin
-        result[:key] = element[:key]
-        result[:value] = value(element)
-      when :list
-        result[:key] = element[:key]
-        result[:items] = items(element).map { |item| raw(item) }
-      when :fieldset
-        result[:key] = element[:key]
-        result[:entries] = entries(element).map { |entry| raw(entry) }
-      when :section
-        result[:key] = element[:key]
-        result[:elements] = elements(element).map { |section_element| raw(section_element) }
-      when :document
-        result[:elements] = elements(element).map { |section_element| raw(section_element) }
-      end
-
-      result
-    end
-
     def value(element)
       unless element.has_key?(:computed_value)
         element[:computed_value] = nil
 
-        if element[:type] == :multiline_field_begin
+        if element[:type] == :embed_begin
           if element.has_key?(:lines)
             element[:computed_value] = @input[
               element[:lines][0][:ranges][:line][0]...element[:lines][-1][:ranges][:line][1]

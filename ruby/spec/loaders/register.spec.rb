@@ -5,11 +5,7 @@ input = <<~DOC
 field: value
 
 > comment
-fieldset:
-entry = value
-
-> comment
-list:
+field_with_item:
 - value
 
 > comment
@@ -24,13 +20,10 @@ describe 'register' do
   let(:document) { Enolib.parse(input) }
 
   let(:field) { document.field('field') }
-  let(:fieldset) { document.fieldset('fieldset') }
-  let(:list) { document.list('list') }
+  let(:field_with_item) { document.field('field_with_item') }
   let(:section) { document.section('section') }
 
   let(:missing_field) { document.field('missing') }
-  let(:missing_fieldset) { document.fieldset('missing') }
-  let(:missing_list) { document.list('missing') }
   let(:missing_section) { document.section('missing') }
 
   describe Enolib::Field do
@@ -53,41 +46,13 @@ describe 'register' do
     it 'registers a required_custom_value accessor' do
       expect(field.required_custom_value).to eq('custom value')
     end
-  end
-
-  describe Enolib::Fieldset do
-    it 'registers an optional_custom_comment accessor' do
-      expect(fieldset.optional_custom_comment).to eq('custom comment')
-    end
-
-    it 'registers a required_custom_comment accessor' do
-      expect(fieldset.required_custom_comment).to eq('custom comment')
-    end
-
-    it 'registers a custom_key accessor' do
-      expect(fieldset.custom_key).to eq('custom fieldset')
-    end
-  end
-
-  describe Enolib::List do
-    it 'registers an optional_custom_comment accessor' do
-      expect(list.optional_custom_comment).to eq('custom comment')
-    end
-
-    it 'registers a required_custom_comment accessor' do
-      expect(list.required_custom_comment).to eq('custom comment')
-    end
-
-    it 'registers a custom_key accessor' do
-      expect(list.custom_key).to eq('custom list')
-    end
 
     it 'registers an optional_custom_values accessor' do
-      expect(list.optional_custom_values).to eq(['custom value'])
+      expect(field_with_item.optional_custom_values).to eq(['custom value'])
     end
 
     it 'registers a required_custom_values accessor' do
-      expect(list.required_custom_values).to eq(['custom value'])
+      expect(field_with_item.required_custom_values).to eq(['custom value'])
     end
   end
 
@@ -125,41 +90,13 @@ describe 'register' do
     it 'registers a required_custom_value accessor' do
       expect { missing_field.required_custom_value }.to raise_error(Enolib::ValidationError)
     end
-  end
-
-  describe Enolib::MissingFieldset do
-    it 'registers an optional_custom_comment accessor' do
-      expect(missing_fieldset.optional_custom_comment).to be nil
-    end
-
-    it 'registers a required_custom_comment accessor' do
-      expect { missing_fieldset.required_custom_comment }.to raise_error(Enolib::ValidationError)
-    end
-
-    it 'registers a custom_key accessor' do
-      expect { missing_fieldset.custom_key }.to raise_error(Enolib::ValidationError)
-    end
-  end
-
-  describe Enolib::MissingList do
-    it 'registers an optional_custom_comment accessor' do
-      expect(missing_list.optional_custom_comment).to be nil
-    end
-
-    it 'registers a required_custom_comment accessor' do
-      expect { missing_list.required_custom_comment }.to raise_error(Enolib::ValidationError)
-    end
-
-    it 'registers a custom_key accessor' do
-      expect { missing_list.custom_key }.to raise_error(Enolib::ValidationError)
-    end
 
     it 'registers an optional_custom_values accessor' do
-      expect(missing_list.optional_custom_values).to eq([])
+      expect(missing_field.optional_custom_values).to eq([])
     end
 
     it 'registers a required_custom_values accessor' do
-      expect(missing_list.required_custom_values).to eq([])
+      expect(missing_field.required_custom_values).to eq([])
     end
   end
 

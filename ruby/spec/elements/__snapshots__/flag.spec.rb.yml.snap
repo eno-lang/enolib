@@ -1,0 +1,11 @@
+---
+"./spec/elements/flag.spec.rb[1:2:1:1]": |-
+  my custom error
+
+     Line | Content
+   >    1 | flag
+"./spec/elements/flag.spec.rb[1:2:2:1]": |-
+  my custom generated message for flag 'flag'
+
+     Line | Content
+   >    1 | flag

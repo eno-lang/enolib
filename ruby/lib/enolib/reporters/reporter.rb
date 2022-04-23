@@ -9,6 +9,13 @@ module Enolib
 
       build_index
     end
+    
+    def indicate_element(element)
+      @snippet[element[:line]] = :indicate
+      tag_children(element, :indicate)
+
+      self
+    end
 
     def indicate_line(element)
       @snippet[element[:line]] = :indicate
@@ -77,14 +84,13 @@ module Enolib
           @snippet[line] = :question
         end
       else
-        # TODO: Possibly better algorithm for this
         @snippet.each_with_index do |tag, line|
           next if tag
 
           if line + 2 < @context.line_count && @snippet[line + 2] && @snippet[line + 2] != :display ||
-             line - 2 > 0 && @snippet[line - 2] && @snippet[line - 2] != :display ||
+             line - 2 >= 0 && @snippet[line - 2] && @snippet[line - 2] != :display ||
              line + 1 < @context.line_count && @snippet[line + 1] && @snippet[line + 1] != :display ||
-             line - 1 > 0 && @snippet[line - 1] && @snippet[line - 1] != :display
+             line - 1 >= 0 && @snippet[line - 1] && @snippet[line - 1] != :display
             @snippet[line] = :display
           elsif line + 3 < @context.line_count && @snippet[line + 3] && @snippet[line + 3] != :display
             @snippet[line] = :omission
@@ -116,24 +122,23 @@ module Enolib
         if element[:type] == :section
           traverse(element)
         elsif element[:type] == :field
-          if element.has_key?(:continuations)
+          if element.has_key?(:attributes)
+            element[:attributes].each do |attribute|
+              index_comments(attribute)
+
+              @index[attribute[:line]] = attribute
+
+              next unless attribute.has_key?(:continuations)
+
+              attribute[:continuations].each do |continuation|
+                @index[continuation[:line]] = continuation
+              end
+            end
+          elsif element.has_key?(:continuations)
             element[:continuations].each do |continuation|
               @index[continuation[:line]] = continuation
             end
-          end
-        elsif element[:type] == :multiline_field_begin
-          # Missing when reporting an unterminated multiline field
-          if element.has_key?(:end)
-            @index[element[:end][:line]] = element[:end]
-          end
-
-          if element.has_key?(:lines)
-            element[:lines].each do |line|
-              @index[line[:line]] = line
-            end
-          end
-        elsif element[:type] == :list
-          if element.has_key?(:items)
+          elsif element.has_key?(:items)
             element[:items].each do |item|
               index_comments(item)
 
@@ -146,18 +151,15 @@ module Enolib
               end
             end
           end
-        elsif element[:type] == :fieldset
-          if element.has_key?(:entries)
-            element[:entries].each do |entry|
-              index_comments(entry)
+        elsif element[:type] == :embed_begin
+          # Missing when reporting an unterminated embed
+          if element.has_key?(:end)
+            @index[element[:end][:line]] = element[:end]
+          end
 
-              @index[entry[:line]] = entry
-
-              next unless entry.has_key?(:continuations)
-
-              entry[:continuations].each do |continuation|
-                @index[continuation[:line]] = continuation
-              end
+          if element.has_key?(:lines)
+            element[:lines].each do |line|
+              @index[line[:line]] = line
             end
           end
         end
@@ -211,13 +213,17 @@ module Enolib
 
     def tag_children(element, tag)
       case element[:type]
-      when :field, :list_item, :fieldset_entry
+      when :field
+        if element.has_key?(:attributes)
+          return tag_continuables(element, :attributes, tag)
+        elsif element.has_key?(:items)
+          return tag_continuables(element, :items, tag)
+        end
+        
         return tag_continuations(element, tag)
-      when :list
-        return tag_continuables(element, :items, tag)
-      when :fieldset
-        return tag_continuables(element, :entries, tag)
-      when :multiline_field_begin
+      when :attribute, :item
+        return tag_continuations(element, tag)
+      when :embed_begin
         if element.has_key?(:lines)
           element[:lines].each do |line|
             @snippet[line[:line]] = tag
