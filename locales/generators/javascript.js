@@ -7,7 +7,7 @@ import { interpolatify } from '../../utilities.js';
 const camelCase = string => string.replace(/_[a-z]/g, boundary => boundary.charAt(1).toUpperCase());
 
 export function javascript(meta, locales) {
-    const defaultMessages = path.resolve('javascript/src/messages.ts');
+    const defaultMessages = path.resolve('javascript/lib/messages.js');
     const localesDirectory = path.resolve('javascript/locales');
     
     fsExtra.emptyDirSync(localesDirectory);

@@ -1,12 +1,16 @@
 import { errors } from '../errors/validation.js';
 import {
-    ATTRIBUTE,
-    DOCUMENT,
-    EMBED_BEGIN,
-    FIELD,
-    FLAG,
-    ITEM,
-    SECTION
+    ID_CONTAINS_ATTRIBUTES,
+    ID_CONTAINS_CONTINUATIONS,
+    ID_CONTAINS_ITEMS,
+    ID_CONTAINS_VALUE,
+    ID_TYPE_ATTRIBUTE,
+    ID_TYPE_DOCUMENT,
+    ID_TYPE_EMBED,
+    ID_TYPE_FIELD,
+    ID_TYPE_FLAG,
+    ID_TYPE_ITEM,
+    ID_TYPE_SECTION
 } from '../constants.js';
 
 export class ElementBase {
@@ -39,11 +43,12 @@ export class ElementBase {
     }
     
     _key() {
-        switch (this._instruction.type) {
-            case DOCUMENT: return null;
-            case ITEM: return this._instruction.parent.key;
-            default: return this._instruction.key;
-        }
+        if (this._instruction.id & ID_TYPE_DOCUMENT)
+            return null;
+        if (this._instruction.id & ID_TYPE_ITEM)
+            return this._instruction.parent.key;
+        
+        return this._instruction.key;
     }
     
     _untouched() {
@@ -93,7 +98,7 @@ export class ElementBase {
     * @return {bool} Whether the element has attributes.
     */
     hasAttributes() {
-        return this._instruction.hasOwnProperty('attributes');
+        return this._instruction.id & ID_CONTAINS_ATTRIBUTES;
     }
     
     /**
@@ -102,7 +107,7 @@ export class ElementBase {
     * @return {bool} Whether the element has items.
     */
     hasItems() {
-        return this._instruction.hasOwnProperty('items');
+        return this._instruction.id & ID_CONTAINS_ITEMS;
     }
     
     /**
@@ -111,36 +116,35 @@ export class ElementBase {
     * @return {bool} Whether the element has a value.
     */
     hasValue() {
-        // TODO: Not fully correct actually, it could have empty continuations only, which is not entirely a value.
-        return this._instruction.hasOwnProperty('continuations') || this._instruction.hasOwnProperty('value');
+        return this._instruction.id & ID_CONTAINS_VALUE;
     }
     
     isAttribute() {
-        return this._instruction.type === ATTRIBUTE;
+        return this._instruction.id & ID_TYPE_ATTRIBUTE;
     }
     
     isDocument() {
-        return this._instruction.type === DOCUMENT;
+        return this._instruction.id & ID_TYPE_DOCUMENT;
     }
     
     isEmbed() {
-        return this._instruction.type === EMBED_BEGIN;
+        return this._instruction.id & ID_TYPE_EMBED;
     }
     
     isField() {
-        return this._instruction.type === FIELD;
+        return this._instruction.id & ID_TYPE_FIELD;
     }
     
     isFlag() {
-        return this._instruction.type === FLAG;
+        return this._instruction.id & ID_TYPE_FLAG;
     }
     
     isItem() {
-        return this._instruction.type === ITEM;
+        return this._instruction.id & ID_TYPE_ITEM;
     }
     
     isSection() {
-        return this._instruction.type === SECTION;
+        return this._instruction.id & ID_TYPE_SECTION;
     }
     
     /**

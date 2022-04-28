@@ -1,19 +1,19 @@
 import { inspectTokenization } from './util.js';
 
 const input = `
-fieldset:
+field:
 
-entry = value
+attribute = value
 
-entry    = value
+attribute    = value
 
-    entry = value
+    attribute = value
 
-    entry    = value
+    attribute    = value
 
-    entry    =    value
+    attribute    =    value
 
-entry = value
+attribute = value
 `.trim();
 
 describe('Attribute tokenization', () => {

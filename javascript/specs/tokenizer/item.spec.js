@@ -1,7 +1,7 @@
 import { inspectTokenization } from './util.js';
 
 const input = `
-list:
+field:
 
 - value
 

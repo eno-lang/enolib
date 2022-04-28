@@ -8,6 +8,7 @@ Object {
       Object {
         "continuations": Array [
           Object {
+            "id": 64,
             "line": 2,
             "ranges": Object {
               "directContinuationOperator": Array [
@@ -23,10 +24,10 @@ Object {
                 15,
               ],
             },
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 4,
             "ranges": Object {
               "directContinuationOperator": Array [
@@ -42,10 +43,10 @@ Object {
                 27,
               ],
             },
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 6,
             "ranges": Object {
               "directContinuationOperator": Array [
@@ -61,10 +62,10 @@ Object {
                 40,
               ],
             },
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 8,
             "ranges": Object {
               "directContinuationOperator": Array [
@@ -80,10 +81,10 @@ Object {
                 56,
               ],
             },
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 10,
             "ranges": Object {
               "directContinuationOperator": Array [
@@ -99,10 +100,10 @@ Object {
                 65,
               ],
             },
-            "type": Symbol(Continuation),
             "value": "value",
           },
         ],
+        "id": 2058,
         "key": "field",
         "line": 0,
         "parent": [Circular],
@@ -120,10 +121,16 @@ Object {
             6,
           ],
         },
-        "type": Symbol(Field),
       },
     ],
-    "type": Symbol(Document),
+    "id": 128,
+    "line": 0,
+    "ranges": Object {
+      "line": Array [
+        0,
+        0,
+      ],
+    },
   },
   "_lineCount": 11,
   "_meta": Array [],

@@ -22,7 +22,7 @@ export class Embed extends ValueElementBase {
     * @return {string} A debug representation of this {@link Embed}.
     */
     toString() {
-        if (this._instruction.hasOwnProperty('continuations') || this._instruction.hasOwnProperty('value'))
+        if (this._instruction.id & ID_CONTAINS_VALUE)
             return `[object Embed key=${this._instruction.key} value=${this._printValue()}]`;
         
         return `[object Embed key=${this._instruction.key}]`;

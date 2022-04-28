@@ -1,4 +1,4 @@
-import { COMMENT, HUMAN_INDEXING, UNPARSED } from '../constants.js';
+import { HUMAN_INDEXING, ID_TYPE_COMMENT, ID_TYPE_UNPARSED } from '../constants.js';
 import { DISPLAY, EMPHASIZE, INDICATE, OMISSION, QUESTION, Reporter } from './reporter.js';
 
 const RESET = '\x1b[0m';
@@ -72,7 +72,7 @@ export class TerminalReporter extends Reporter {
         
         let content = '';
         if (instruction !== undefined) {
-            if (instruction.type === COMMENT || instruction.type === UNPARSED) {
+            if (instruction.id & (ID_TYPE_COMMENT | ID_TYPE_UNPARSED)) {
                 content = BRIGHT_BLACK + this._context._input.substring(instruction.ranges.line[0], instruction.ranges.line[1]) + RESET;
             } else {
                 content = this._context._input.substring(instruction.ranges.line[0], instruction.ranges.line[1]);

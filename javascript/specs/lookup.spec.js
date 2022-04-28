@@ -8,28 +8,28 @@ const input = `
 
 field: value
 
-list:
+field_with_items:
 - item
 
 > comment
 - item
 
-fieldset:
-entry = value
+field_with_attributes:
+attribute = value
 
 > comment
-entry = value
+attribute = value
 
 # section
 
 > comment
--- empty
--- empty
+-- embed
+-- embed
 
--- multiline
+-- embed
 value
 value
--- multiline
+-- embed
 
 ## subsection
 `.trim();

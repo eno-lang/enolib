@@ -6,7 +6,7 @@ const input = `
 
 field: value
 
-list:
+field_with_items:
 - item
 - item
 
@@ -15,11 +15,11 @@ list:
 
 ## subsection
 
-fieldset:
-entry = value
+field_with_attributes:
+attribute = value
 
 > comment
-entry = value
+attribute = value
 
 `.trim()
 

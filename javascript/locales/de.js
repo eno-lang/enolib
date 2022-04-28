@@ -1,4 +1,4 @@
-//  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 export default {
     contentHeader: 'Inhalt',
@@ -25,6 +25,7 @@ export default {
     gutterHeader: 'Zeile',
     missingAttribute: '',
     missingComment: 'Ein erforderlicher Kommentar zu diesem Feld fehlt.',
+    missingDocumentComment: '',
     missingElement: 'Ein einzelnes Element ist erforderlich - es kann einen beliebigen Schlüssel haben.',
     missingEmbed: '',
     missingField: 'Ein einzelnes Feld ist erforderlich - es kann einen beliebigen Schlüssel haben.',

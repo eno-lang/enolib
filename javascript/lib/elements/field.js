@@ -4,6 +4,12 @@ import { Item } from './item.js';
 import { MissingAttribute } from './missing/missing_attribute.js';
 import { Section } from './section.js';
 import { ValueElementBase } from './value_element_base.js';
+import { 
+    ID_CONTAINS_ATTRIBUTES,
+    ID_CONTAINS_CONTINUATIONS,
+    ID_CONTAINS_ITEMS,
+    ID_CONTAINS_VALUE
+ } from '../constants.js';
 
 export class Field extends ValueElementBase {
     constructor(context, instruction, parent = null) {
@@ -46,7 +52,7 @@ export class Field extends ValueElementBase {
         if (!this.hasOwnProperty('_instantiatedAttributes')) {
             this._instantiatedAttributesMap = {};
             
-            if (this._instruction.hasOwnProperty('attributes')) {
+            if (this._instruction.id & ID_CONTAINS_ATTRIBUTES) {
                 this._instantiatedAttributes = this._instruction.attributes.map(attribute => {
                     const instance = new Attribute(this._context, attribute, this);
                     
@@ -74,7 +80,7 @@ export class Field extends ValueElementBase {
     
     _items() {
         if (!this.hasOwnProperty('_instantiatedItems')) {
-            if (this._instruction.hasOwnProperty('items')) {
+            if (this._instruction.id & ID_CONTAINS_ITEMS) {
                 this._instantiatedItems = this._instruction.items.map(item => new Item(this._context, item, this));
             } else {
                 this._instantiatedItems = [];
@@ -93,11 +99,11 @@ export class Field extends ValueElementBase {
         if (!this._touched)
             return this._instruction;
         
-        if (this._instruction.hasOwnProperty('attributes')) {
+        if (this._instruction.id & ID_CONTAINS_ATTRIBUTES) {
             const untouchedAttribute = this._attributes().find(attribute => !attribute._touched);
             if (untouchedAttribute)
                 return untouchedAttribute;
-        } else if (this._instruction.hasOwnProperty('items')) {
+        } else if (this._instruction.id & ID_CONTAINS_ITEMS) {
             const untouchedItem = this._items().find(item => !item._touched);
             if (untouchedItem)
                 return untouchedItem;
@@ -109,8 +115,7 @@ export class Field extends ValueElementBase {
     _value(loader, required) {
         this._touched = true;
         
-        if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
-            this._instruction.hasOwnProperty('items')) {
+        if (this._instruction.id & (ID_CONTAINS_ATTRIBUTES | ID_CONTAINS_ITEMS)) {
             throw errors.unexpectedFieldContent(this._context, null, this._instruction, 'expectedValue');
         }
         
@@ -194,9 +199,7 @@ export class Field extends ValueElementBase {
     attributes(key = null) {
         this._touched = true;
         
-        if (this._instruction.hasOwnProperty('continuations') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
-            this._instruction.hasOwnProperty('items') ||
-            this._instruction.hasOwnProperty('value')) {
+        if (this._instruction.id & (ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_ITEMS | ID_CONTAINS_VALUE)) {
             throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedAttributes');
         }
         
@@ -212,9 +215,7 @@ export class Field extends ValueElementBase {
       this._touched = true;
       
       // TODO: Here and elsewhere move this into this._items() rather (?)
-      if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
-          this._instruction.hasOwnProperty('continuations') ||
-          this._instruction.hasOwnProperty('value')) {
+      if (this._instruction.id & (ID_CONTAINS_ATTRIBUTES | ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_VALUE)) {
           throw errors.unexpectedFieldContent(this._context, null, this._instruction, 'expectedItems');
       }
 
@@ -229,10 +230,10 @@ export class Field extends ValueElementBase {
     length() {
         this._touched = true;
         
-        if (this._instruction.hasOwnProperty('attributes'))
+        if (this._instruction.id & ID_CONTAINS_ATTRIBUTES)
             return this._attributes().length;
 
-        if (this._instruction.hasOwnProperty('items'))
+        if (this._instruction.id & ID_CONTAINS_ITEMS)
             return this._items().length;
             
         return 0;
@@ -306,9 +307,7 @@ export class Field extends ValueElementBase {
     }
     
     requiredAttribute(key = null) {
-        if (this._instruction.hasOwnProperty('continuations') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
-            this._instruction.hasOwnProperty('items') ||
-            this._instruction.hasOwnProperty('value'))
+        if (this._instruction.id & (ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_ITEMS | ID_CONTAINS_VALUE))
             throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedAttributes');
         
         return this._attribute(key, true);
@@ -328,9 +327,7 @@ export class Field extends ValueElementBase {
     requiredStringValues() {
         this._touched = true;
         
-        if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
-            this._instruction.hasOwnProperty('continuations') ||
-            this._instruction.hasOwnProperty('value'))
+        if (this._instruction.id & (ID_CONTAINS_ATTRIBUTES | ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_VALUE))
             throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
         
         return this._items().map(item => item.requiredStringValue());
@@ -363,9 +360,7 @@ export class Field extends ValueElementBase {
     requiredValues(loader) {
         this._touched = true;
         
-        if (this._instruction.hasOwnProperty('attributes') || // TODO: Bitmask-based query to clean this up here and elsewhere (?)
-            this._instruction.hasOwnProperty('continuations') ||
-            this._instruction.hasOwnProperty('value'))
+        if (this._instruction.id & (ID_CONTAINS_ATTRIBUTES | ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_VALUE))
             throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
         
         return this._items().map(item => item.requiredValue(loader));
@@ -380,11 +375,11 @@ export class Field extends ValueElementBase {
     * @return {string} A debug representation of this {@link Field}.
     */
     toString() {
-        if (this._instruction.hasOwnProperty('attributes'))
+        if (this._instruction.id & ID_CONTAINS_ATTRIBUTES)
             return `[object Field key=${this._instruction.key} attributes=${this._instruction.attributes.length}]`;
-        if (this._instruction.hasOwnProperty('items'))
+        if (this._instruction.id & ID_CONTAINS_ITEMS)
             return `[object Field key=${this._instruction.key} items=${this._instruction.items.length}]`;
-        if (this._instruction.hasOwnProperty('continuations') || this._instruction.hasOwnProperty('value'))
+        if (this._instruction.id & ID_CONTAINS_VALUE)
             return `[object Field key=${this._instruction.key} value=${this._printValue()}]`;
         
         return `[object Field key=${this._instruction.key}]`;
@@ -398,11 +393,11 @@ export class Field extends ValueElementBase {
         
         this._touched = true;
         
-        if (this._instruction.hasOwnProperty('attributes')) {
+        if (this._instruction.id & ID_CONTAINS_ATTRIBUTES) {
             for (const attribute of this.attributes()) {
                 attribute._touched = true;
             }
-        } else if (this._instruction.hasOwnProperty('items')) {
+        } else if (this._instruction.id & ID_CONTAINS_ITEMS) {
             for (const item of this.items()) {
                 item._touched = true;
             }

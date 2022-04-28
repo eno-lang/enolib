@@ -1,4 +1,4 @@
-//  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 export default {
     contentHeader: 'Content',
@@ -25,6 +25,7 @@ export default {
     gutterHeader: 'Line',
     missingAttribute: 'A single attribute is required - it can have any key.',
     missingComment: 'A required comment for this element is missing.',
+    missingDocumentComment: 'A required comment for the document is missing.',
     missingElement: 'A single element is required - it can have any key.',
     missingEmbed: 'A single embed is required - it can have any key.',
     missingField: 'A single field is required - it can have any key.',

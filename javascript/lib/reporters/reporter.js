@@ -1,10 +1,13 @@
 import {
-    ATTRIBUTE,
-    DOCUMENT,
-    FIELD,
-    ITEM,
-    EMBED_BEGIN,
-    SECTION
+    ID_CONTAINS_ATTRIBUTES,
+    ID_CONTAINS_CONTINUATIONS,
+    ID_CONTAINS_ITEMS,
+    ID_TYPE_ATTRIBUTE,
+    ID_TYPE_DOCUMENT,
+    ID_TYPE_EMBED,
+    ID_TYPE_FIELD,
+    ID_TYPE_ITEM,
+    ID_TYPE_SECTION
 } from '../constants.js';
 
 // TODO: Better simple lastIn() / lastMissingIn() utility function usage to get m...n range for tagging?
@@ -39,39 +42,39 @@ export class Reporter {
                 
                 this._index[element.line] = element;
                 
-                if (element.type === SECTION) {
+                if (element.id & ID_TYPE_SECTION) {
                     traverse(element);
-                } else if (element.type === FIELD) {
-                    if (element.hasOwnProperty('items')) {
+                } else if (element.id & ID_TYPE_FIELD) {
+                    if (element.id & ID_CONTAINS_ITEMS) {
                         for (const item of element.items) {
                             indexComments(item);
                             
                             this._index[item.line] = item;
                             
-                            if (item.hasOwnProperty('continuations')) {
+                            if (item.id & ID_CONTAINS_CONTINUATIONS) {
                                 for (const continuation of item.continuations) {
                                     this._index[continuation.line] = continuation;
                                 }
                             }
                         }
-                    } else if (element.hasOwnProperty('attributes')) {
+                    } else if (element.id & ID_CONTAINS_ATTRIBUTES) {
                         for (const attribute of element.attributes) {
                             indexComments(attribute);
                             
                             this._index[attribute.line] = attribute;
                             
-                            if (attribute.hasOwnProperty('continuations')) {
+                            if (attribute.id & ID_CONTAINS_CONTINUATIONS) {
                                 for (const continuation of attribute.continuations) {
                                     this._index[continuation.line] = continuation;
                                 }
                             }
                         }
-                    } else if (element.hasOwnProperty('continuations')) {
+                    } else if (element.id & ID_CONTAINS_CONTINUATIONS) {
                         for (const continuation of element.continuations) {
                             this._index[continuation.line] = continuation;
                         }
                     }
-                } else if (element.type === EMBED_BEGIN) {
+                } else if (element.id & ID_TYPE_EMBED) {
                     // Missing when reporting an unterminated embed
                     if (element.hasOwnProperty('end')) {
                         this._index[element.end.line] = element.end;
@@ -94,7 +97,7 @@ export class Reporter {
     _tagContinuations(element, tag) {
         let scanLine = element.line + 1;
         
-        if (!element.hasOwnProperty('continuations'))
+        if (!(element.id & ID_CONTAINS_CONTINUATIONS))
             return scanLine;
         
         for (const continuation of element.continuations) {
@@ -131,17 +134,17 @@ export class Reporter {
     }
     
     _tagChildren(element, tag) {
-        if (element.type === FIELD) {
-            if (element.hasOwnProperty('items')) {
+        if (element.id & ID_TYPE_FIELD) {
+            if (element.id & ID_CONTAINS_ITEMS) {
                 return this._tagContinuables(element, 'items', tag);
-            } else if (element.hasOwnProperty('attributes')) {
+            } else if (element.id & ID_CONTAINS_ATTRIBUTES) {
                 return this._tagContinuables(element, 'attributes', tag);
             } else {
                 return this._tagContinuations(element, tag);
             }
-        } else if (element.type === ITEM || element.type === ATTRIBUTE) {
+        } else if (element.id & (ID_TYPE_ATTRIBUTE | ID_TYPE_ITEM)) {
             return this._tagContinuations(element, tag);
-        } else if (element.type === EMBED_BEGIN) {
+        } else if (element.id & ID_TYPE_EMBED) {
             for (const line of element.lines) {
                 this._snippet[line.line] = tag;
             }
@@ -154,7 +157,7 @@ export class Reporter {
             } else {
                 return element.line + 1;
             }
-        } else if (element.type === SECTION) {
+        } else if (element.id & ID_TYPE_SECTION) {
             return this._tagSection(element, tag);
         }
     }
@@ -168,7 +171,7 @@ export class Reporter {
                 scanLine++;
             }
             
-            if (!recursive && element.type === SECTION) break;
+            if (!recursive && element.id & ID_TYPE_SECTION) break;
             
             this._snippet[element.line] = tag;
             
@@ -235,11 +238,11 @@ export class Reporter {
     }
     
     reportMissingElement(parent) {
-        if (parent.type !== DOCUMENT) {
+        if (!(parent.id & ID_TYPE_DOCUMENT)) {
             this._snippet[parent.line] = INDICATE;
         }
         
-        if (parent.type === SECTION) {
+        if (parent.id & ID_TYPE_SECTION) {
             this._tagSection(parent, QUESTION, false);
         } else {
             this._tagChildren(parent, QUESTION);

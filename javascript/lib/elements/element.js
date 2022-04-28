@@ -4,7 +4,7 @@ import { ElementBase } from  './element_base.js';
 
 export class Element extends ElementBase {
     /**
-    * Returns a debug representation of this {@link Element} in the form of `[object Element key=foo yields=field]`.
+    * Returns a debug representation of this {@link Element} in the form of `[object Element key=foo]`.
     *
     * @return {string} A debug representation of this {@link Element}.
     */

@@ -1,4 +1,4 @@
-//  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+//  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 export default {
     contentHeader: 'Contenido',
@@ -25,6 +25,7 @@ export default {
     gutterHeader: 'Línea',
     missingAttribute: '',
     missingComment: 'Falta un comentario necesario para este elemento.',
+    missingDocumentComment: '',
     missingElement: 'Se requiere un único elemento - puede tener cualquier clave.',
     missingEmbed: '',
     missingField: 'Se requiere una sola casilla - puede tener cualquier clave.',

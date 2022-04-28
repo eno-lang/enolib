@@ -3,13 +3,15 @@ import messages from './messages.js';
 import { TextReporter } from './reporters/text_reporter.js';
 
 import {
-    ATTRIBUTE,
-    DOCUMENT,
-    EMBED_BEGIN,
-    FLAG,
-    FIELD,
-    ITEM,
-    SECTION
+    ID_CONTAINS_CONTINUATIONS,
+    ID_CONTAINS_VALUE,
+    ID_TYPE_ATTRIBUTE,
+    ID_TYPE_DOCUMENT,
+    ID_TYPE_EMBED,
+    ID_TYPE_FIELD,
+    ID_TYPE_FLAG,
+    ID_TYPE_ITEM,
+    ID_TYPE_SECTION
 } from './constants.js';
 
 export class Context {
@@ -33,8 +35,8 @@ export class Context {
                     let lastNonEmptyLineIndex = null;
                     
                     for (const [index, comment] of element.comments.entries()) {
-                        if (comment.comment !== null) {
-                            if (firstNonEmptyLineIndex == null) {
+                        if (comment.hasOwnProperty('comment')) {
+                            if (firstNonEmptyLineIndex === null) {
                                 firstNonEmptyLineIndex = index;
                             }
                             
@@ -54,7 +56,7 @@ export class Context {
                         );
                         
                         element.computedComment = nonEmptyLines.map(comment => {
-                            if (comment.comment === null) {
+                            if (!comment.hasOwnProperty('comment')) {
                                 return '';
                             } else if (comment.ranges.comment[0] - comment.ranges.line[0] === sharedIndent) {
                                 return comment.comment;
@@ -78,7 +80,7 @@ export class Context {
         if (!element.hasOwnProperty('computedValue')) {
             element.computedValue = null;
             
-            if (element.type === EMBED_BEGIN) {
+            if (element.id & ID_TYPE_EMBED) {
                 if (element.lines.length > 0) {
                     element.computedValue = this._input.substring(
                         element.lines[0].ranges.line[0],
@@ -90,7 +92,7 @@ export class Context {
                     element.computedValue = element.value;
                 }
                 
-                if (element.hasOwnProperty('continuations')) {
+                if (element.id & ID_CONTAINS_CONTINUATIONS) {
                     let unappliedSpacing = false;
                     
                     for (const continuation of element.continuations) {

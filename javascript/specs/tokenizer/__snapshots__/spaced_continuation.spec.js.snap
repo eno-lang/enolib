@@ -8,6 +8,7 @@ Object {
       Object {
         "continuations": Array [
           Object {
+            "id": 64,
             "line": 2,
             "ranges": Object {
               "line": Array [
@@ -24,10 +25,10 @@ Object {
               ],
             },
             "spaced": true,
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 4,
             "ranges": Object {
               "line": Array [
@@ -44,10 +45,10 @@ Object {
               ],
             },
             "spaced": true,
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 6,
             "ranges": Object {
               "line": Array [
@@ -64,10 +65,10 @@ Object {
               ],
             },
             "spaced": true,
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 8,
             "ranges": Object {
               "line": Array [
@@ -84,10 +85,10 @@ Object {
               ],
             },
             "spaced": true,
-            "type": Symbol(Continuation),
             "value": "value",
           },
           Object {
+            "id": 64,
             "line": 10,
             "ranges": Object {
               "line": Array [
@@ -104,10 +105,10 @@ Object {
               ],
             },
             "spaced": true,
-            "type": Symbol(Continuation),
             "value": "value",
           },
         ],
+        "id": 2058,
         "key": "field",
         "line": 0,
         "parent": [Circular],
@@ -125,10 +126,16 @@ Object {
             6,
           ],
         },
-        "type": Symbol(Field),
       },
     ],
-    "type": Symbol(Document),
+    "id": 128,
+    "line": 0,
+    "ranges": Object {
+      "line": Array [
+        0,
+        0,
+      ],
+    },
   },
   "_lineCount": 11,
   "_meta": Array [],

@@ -13,14 +13,12 @@ import { errors } from '../errors/validation.js';
 import { ElementBase } from './element_base.js';
 
 import {
-    DOCUMENT,
-    FIELD,
-    FLAG,
-    EMBED_BEGIN,
-    SECTION
+    ID_TYPE_DOCUMENT,
+    ID_TYPE_EMBED,
+    ID_TYPE_FIELD,
+    ID_TYPE_FLAG,
+    ID_TYPE_SECTION
 } from '../constants.js';
-
-// TODO: For each value store the representational type as well ? (e.g. string may come from "- foo" or -- foo\nxxx\n-- foo) and use that for precise error messages?
 
 export class Section extends ElementBase {
     constructor(context, instruction, parent = null) {
@@ -70,19 +68,14 @@ export class Section extends ElementBase {
             this._instantiatedElementsMap = {};
             this._instantiatedElements = this._instruction.elements.map(element => {
                 let instance;
-                switch (element.type) {
-                    case EMBED_BEGIN:
-                        instance = new Embed(this._context, element, this);
-                        break;
-                    case FIELD:
-                        instance = new Field(this._context, element, this);
-                        break;
-                    case FLAG:
-                        instance = new Flag(this._context, element, this);
-                        break;
-                    case SECTION:
-                        instance = new Section(this._context, element, this);
-                        break;
+                if (element.id & ID_TYPE_EMBED) {
+                    instance = new Embed(this._context, element, this);
+                } else if (element.id & ID_TYPE_FIELD) {
+                    instance = new Field(this._context, element, this);
+                } else if (element.id & ID_TYPE_FLAG) {
+                    instance = new Flag(this._context, element, this);
+                } else /* if (element.id & ID_TYPE_SECTION) */ {
+                    instance = new Section(this._context, element, this);
                 }
                 
                 if (this._instantiatedElementsMap.hasOwnProperty(element.key)) {
@@ -129,7 +122,7 @@ export class Section extends ElementBase {
         
         const element = elements[0];
         
-        if (element._instruction.type !== EMBED_BEGIN)
+        if (!(element._instruction.id & ID_TYPE_EMBED))
             throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedEmbed');
         
         return element;
@@ -166,7 +159,7 @@ export class Section extends ElementBase {
         
         const element = elements[0];
         
-        if (element._instruction.type !== FLAG)
+        if (!(element._instruction.id & ID_TYPE_FLAG))
             throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFlag');
         
         return element;
@@ -203,7 +196,7 @@ export class Section extends ElementBase {
         
         const element = elements[0];
         
-        if (element._instruction.type !== FIELD)
+        if (!(element._instruction.id & ID_TYPE_FIELD))
             throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedField');
             
         return element;
@@ -255,7 +248,7 @@ export class Section extends ElementBase {
         
         const element = elements[0];
         
-        if (element._instruction.type !== SECTION)
+        if (!(element._instruction.id & ID_TYPE_SECTION))
             throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedSection');
         
         return element;
@@ -278,10 +271,10 @@ export class Section extends ElementBase {
         this._allElementsRequired = required;
         
         for (const element of this._elements()) {
-            if (element._instruction.type === SECTION) {
-                element.allElementsRequired(required);
-            } else if (element._instruction.type === FIELD) {
+            if (element._instruction.id & ID_TYPE_FIELD) {
                 element.allAttributesRequired(required);
+            } else if (element._instruction.id & ID_TYPE_SECTION) {
+                element.allElementsRequired(required);
             }
         }
     }
@@ -365,7 +358,7 @@ export class Section extends ElementBase {
         }
         
         return elements.map(element => {
-            if (element._instruction.type !== EMBED_BEGIN)
+            if (!(element._instruction.id & ID_TYPE_EMBED))
                 throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedEmbeds');
                 
             return element;
@@ -388,7 +381,7 @@ export class Section extends ElementBase {
         }
         
         return elements.map(element => {
-            if (element._instruction.type !== FIELD)
+            if (!(element._instruction.id & ID_TYPE_FIELD))
                 throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFields');
                 
             return element;
@@ -411,7 +404,7 @@ export class Section extends ElementBase {
         }
         
         return elements.map(element => {
-            if (element._instruction.type !== FLAG)
+            if (!(element._instruction.id & ID_TYPE_FLAG))
                 throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedFlags');
                 
             return element;
@@ -444,7 +437,7 @@ export class Section extends ElementBase {
     * @return {?Section} The parent instance or null.
     */
     parent() {
-        if (this._instruction.type === DOCUMENT)
+        if (this._instruction.id & ID_TYPE_DOCUMENT)
             return null;
         
         return this._parent || new Section(this._context, this._instruction.parent);
@@ -486,7 +479,7 @@ export class Section extends ElementBase {
         }
         
         return elements.map(element => {
-            if (element._instruction.type !== SECTION)
+            if (!(element._instruction.id & ID_TYPE_SECTION))
                 throw errors.unexpectedElementType(this._context, key, element._instruction, 'expectedSections');
             
             return element;
@@ -499,7 +492,7 @@ export class Section extends ElementBase {
     * @return {string} A debug representation of this {@link Section}.
     */
     toString() {
-        if (this._instruction.type === DOCUMENT)
+        if (this._instruction.id & ID_TYPE_DOCUMENT)
             return `[object Section document elements=${this._elements().length}]`;
         
         return `[object Section key=${this._instruction.key} elements=${this._elements().length}]`;

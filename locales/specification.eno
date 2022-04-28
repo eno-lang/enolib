@@ -165,6 +165,8 @@ key = The attribute '{key}' is missing - in case it has been specified look for 
 
 missing_comment: A required comment for this element is missing.
 
+missing_document_comment: A required comment for the document is missing.
+
 missing_element: A single element is required - it can have any key.
 
 missing_element_with_key:

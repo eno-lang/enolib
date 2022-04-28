@@ -6,12 +6,12 @@ export class MissingField extends MissingValueElementBase {
         return 'MissingField';
     }
     
-    entries(_key = null) {
-        return [];
+    attribute(key = null) {
+        return new MissingAttribute(key, this);
     }
     
-    entry(key = null) {
-        return new MissingAttribute(key, this);
+    attributes(_key = null) {
+        return [];
     }
     
     items() {

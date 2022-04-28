@@ -5,7 +5,14 @@ Object {
   "_document": Object {
     "depth": 0,
     "elements": Array [],
-    "type": Symbol(Document),
+    "id": 128,
+    "line": 0,
+    "ranges": Object {
+      "line": Array [
+        0,
+        0,
+      ],
+    },
   },
   "_lineCount": 1,
   "_meta": Array [],
@@ -17,7 +24,14 @@ Object {
   "_document": Object {
     "depth": 0,
     "elements": Array [],
-    "type": Symbol(Document),
+    "id": 128,
+    "line": 0,
+    "ranges": Object {
+      "line": Array [
+        0,
+        0,
+      ],
+    },
   },
   "_lineCount": 9,
   "_meta": Array [],

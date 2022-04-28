@@ -217,6 +217,9 @@ msgstr "The attribute '{key}' is missing - in case it has been specified look fo
 msgid "A required comment for this element is missing."
 msgstr "A required comment for this element is missing."
 
+msgid "A required comment for the document is missing."
+msgstr "A required comment for the document is missing."
+
 msgid "A single element is required - it can have any key."
 msgstr "A single element is required - it can have any key."
 

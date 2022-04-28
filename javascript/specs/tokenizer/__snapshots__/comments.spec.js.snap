@@ -5,12 +5,20 @@ Object {
   "_document": Object {
     "depth": 0,
     "elements": Array [],
-    "type": Symbol(Document),
+    "id": 128,
+    "line": 0,
+    "ranges": Object {
+      "line": Array [
+        0,
+        0,
+      ],
+    },
   },
   "_lineCount": 4,
   "_meta": Array [
     Object {
       "comment": "value",
+      "id": 32,
       "line": 0,
       "ranges": Object {
         "comment": Array [
@@ -26,10 +34,10 @@ Object {
           7,
         ],
       },
-      "type": Symbol(Comment),
     },
     Object {
       "comment": "more value",
+      "id": 32,
       "line": 1,
       "ranges": Object {
         "comment": Array [
@@ -45,10 +53,10 @@ Object {
           22,
         ],
       },
-      "type": Symbol(Comment),
     },
     Object {
       "comment": "value",
+      "id": 32,
       "line": 2,
       "ranges": Object {
         "comment": Array [
@@ -64,10 +72,9 @@ Object {
           37,
         ],
       },
-      "type": Symbol(Comment),
     },
     Object {
-      "comment": null,
+      "id": 32,
       "line": 3,
       "ranges": Object {
         "commentOperator": Array [
@@ -79,7 +86,6 @@ Object {
           47,
         ],
       },
-      "type": Symbol(Comment),
     },
   ],
 }

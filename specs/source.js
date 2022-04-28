@@ -44,7 +44,7 @@ export function source() {
                 };
             }
             
-            if (!test.error || test.error.type == 'ValidationError') {
+            if (!test.error || test.error.type === 'ValidationError') {
                 test.javascript = testSection.embed('javascript').requiredStringValue();
                 test.php = testSection.embed('php').requiredStringValue();
                 test.python = testSection.embed('python').requiredStringValue();

@@ -7,6 +7,7 @@ Object {
     "elements": Array [
       Object {
         "end": Object {
+          "id": 512,
           "line": 2,
           "ranges": Object {
             "embedOperator": Array [
@@ -22,12 +23,13 @@ Object {
               19,
             ],
           },
-          "type": Symbol(Embed End),
         },
+        "id": 264,
         "key": "key",
         "line": 0,
         "lines": Array [
           Object {
+            "id": 1024,
             "line": 1,
             "ranges": Object {
               "line": Array [
@@ -39,7 +41,6 @@ Object {
                 12,
               ],
             },
-            "type": Symbol(Embed Value),
           },
         ],
         "parent": [Circular],
@@ -57,10 +58,10 @@ Object {
             6,
           ],
         },
-        "type": Symbol(Embed Begin),
       },
       Object {
         "end": Object {
+          "id": 512,
           "line": 8,
           "ranges": Object {
             "embedOperator": Array [
@@ -76,12 +77,13 @@ Object {
               49,
             ],
           },
-          "type": Symbol(Embed End),
         },
+        "id": 264,
         "key": "key",
         "line": 4,
         "lines": Array [
           Object {
+            "id": 1024,
             "line": 5,
             "ranges": Object {
               "line": Array [
@@ -93,9 +95,9 @@ Object {
                 31,
               ],
             },
-            "type": Symbol(Embed Value),
           },
           Object {
+            "id": 1024,
             "line": 6,
             "ranges": Object {
               "line": Array [
@@ -107,9 +109,9 @@ Object {
                 37,
               ],
             },
-            "type": Symbol(Embed Value),
           },
           Object {
+            "id": 1024,
             "line": 7,
             "ranges": Object {
               "line": Array [
@@ -121,7 +123,6 @@ Object {
                 38,
               ],
             },
-            "type": Symbol(Embed Value),
           },
         ],
         "parent": [Circular],
@@ -139,10 +140,10 @@ Object {
             30,
           ],
         },
-        "type": Symbol(Embed Begin),
       },
       Object {
         "end": Object {
+          "id": 512,
           "line": 14,
           "ranges": Object {
             "embedOperator": Array [
@@ -158,12 +159,13 @@ Object {
               96,
             ],
           },
-          "type": Symbol(Embed End),
         },
+        "id": 264,
         "key": "key",
         "line": 10,
         "lines": Array [
           Object {
+            "id": 1024,
             "line": 11,
             "ranges": Object {
               "line": Array [
@@ -175,9 +177,9 @@ Object {
                 70,
               ],
             },
-            "type": Symbol(Embed Value),
           },
           Object {
+            "id": 1024,
             "line": 12,
             "ranges": Object {
               "line": Array [
@@ -189,9 +191,9 @@ Object {
                 71,
               ],
             },
-            "type": Symbol(Embed Value),
           },
           Object {
+            "id": 1024,
             "line": 13,
             "ranges": Object {
               "line": Array [
@@ -203,7 +205,6 @@ Object {
                 81,
               ],
             },
-            "type": Symbol(Embed Value),
           },
         ],
         "parent": [Circular],
@@ -221,10 +222,16 @@ Object {
             64,
           ],
         },
-        "type": Symbol(Embed Begin),
       },
     ],
-    "type": Symbol(Document),
+    "id": 128,
+    "line": 0,
+    "ranges": Object {
+      "line": Array [
+        0,
+        0,
+      ],
+    },
   },
   "_lineCount": 15,
   "_meta": Array [],

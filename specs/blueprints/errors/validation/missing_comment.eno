@@ -32,3 +32,38 @@ A required comment for this element is missing.
 -- snippet
 
 selection: [0,0] => [0,0]
+
+# Querying the document for a required but missing comment 
+
+-- input
+field: value
+-- input
+
+-- javascript
+parse(input).requiredStringComment();
+-- javascript
+
+-- php
+Enolib\Parser::parse($input)->requiredStringComment();
+-- php
+
+-- python
+enolib.parse(input).required_string_comment()
+-- python
+
+-- ruby
+Enolib.parse(input).required_string_comment
+-- ruby
+
+## ValidationError
+
+-- text
+A required comment for the document is missing.
+-- text
+
+-- snippet
+   Line | Content
+ ?    1 | field: value
+-- snippet
+
+selection: [0,0] => [0,0]
