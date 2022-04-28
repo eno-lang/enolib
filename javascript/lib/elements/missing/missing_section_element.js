@@ -1,7 +1,3 @@
-import { MissingFlag } from './missing_flag.js';
-import { MissingField } from './missing_field.js';
-import { MissingSection } from './missing_section.js';
-
 import { MissingElementBase } from './missing_element_base.js';
 
 export class MissingSectionElement extends MissingElementBase {

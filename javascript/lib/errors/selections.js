@@ -2,10 +2,8 @@ import {
     ID_CONTAINS_ATTRIBUTES,
     ID_CONTAINS_CONTINUATIONS,
     ID_CONTAINS_ITEMS,
-    ID_TYPE_ATTRIBUTE,
     ID_TYPE_EMBED,
     ID_TYPE_FIELD,
-    ID_TYPE_ITEM,
     ID_TYPE_SECTION,
     RANGE_BEGIN,
     RANGE_END
@@ -39,7 +37,7 @@ export function cursor(instruction, range, position) {
         index: index,
         line: instruction.line
     };
-};
+}
 
 export function selection(instruction, range, position, ...to) {
     const toInstruction = to.find(argument => typeof argument === 'object') || instruction;
@@ -50,7 +48,7 @@ export function selection(instruction, range, position, ...to) {
         from: cursor(instruction, range, position),
         to: cursor(toInstruction, toRange, toPosition)
     };
-};
+}
 
 export function selectComments(element) {
     const { comments } = element;
@@ -66,7 +64,7 @@ export function selectComments(element) {
     } else {
         return selection(element, 'line', RANGE_BEGIN);
     }
-};
+}
 
 export const selectElement = element => selection(element, 'line', RANGE_BEGIN, lastIn(element), 'line', RANGE_END);
 export const selectKey = element => selection(element, 'key', RANGE_BEGIN, RANGE_END);

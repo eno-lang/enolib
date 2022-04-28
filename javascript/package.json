@@ -3,6 +3,7 @@
   "devDependencies": {
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^8.14.0",
     "jest": "^27.5.1"
   },
   "files": [
@@ -14,6 +15,7 @@
   "license": "MIT",
   "scripts": {
     "docs": "esdoc",
+    "lint": "eslint lib/",
     "performance": "node performance/benchmark.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },

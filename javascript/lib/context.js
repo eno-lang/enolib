@@ -4,14 +4,7 @@ import { TextReporter } from './reporters/text_reporter.js';
 
 import {
     ID_CONTAINS_CONTINUATIONS,
-    ID_CONTAINS_VALUE,
-    ID_TYPE_ATTRIBUTE,
-    ID_TYPE_DOCUMENT,
     ID_TYPE_EMBED,
-    ID_TYPE_FIELD,
-    ID_TYPE_FLAG,
-    ID_TYPE_ITEM,
-    ID_TYPE_SECTION
 } from './constants.js';
 
 export class Context {

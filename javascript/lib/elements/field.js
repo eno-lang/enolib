@@ -328,7 +328,7 @@ export class Field extends ValueElementBase {
         this._touched = true;
         
         if (this._instruction.id & (ID_CONTAINS_ATTRIBUTES | ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_VALUE))
-            throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
+            throw errors.unexpectedFieldContent(this._context, null, this._instruction, 'expectedItems');
         
         return this._items().map(item => item.requiredStringValue());
     }
@@ -361,7 +361,7 @@ export class Field extends ValueElementBase {
         this._touched = true;
         
         if (this._instruction.id & (ID_CONTAINS_ATTRIBUTES | ID_CONTAINS_CONTINUATIONS | ID_CONTAINS_VALUE))
-            throw errors.unexpectedFieldContent(this._context, key, this._instruction, 'expectedItems');
+            throw errors.unexpectedFieldContent(this._context, null, this._instruction, 'expectedItems');
         
         return this._items().map(item => item.requiredValue(loader));
     }

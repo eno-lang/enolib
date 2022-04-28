@@ -11,4 +11,4 @@ export function parse(input, options = {}) {
     const context = new Context(input, options);
 
     return new Section(context, context._document);
-};
+}

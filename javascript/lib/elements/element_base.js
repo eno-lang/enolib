@@ -1,7 +1,6 @@
 import { errors } from '../errors/validation.js';
 import {
     ID_CONTAINS_ATTRIBUTES,
-    ID_CONTAINS_CONTINUATIONS,
     ID_CONTAINS_ITEMS,
     ID_CONTAINS_VALUE,
     ID_TYPE_ATTRIBUTE,

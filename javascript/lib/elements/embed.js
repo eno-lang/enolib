@@ -1,3 +1,4 @@
+import { ID_CONTAINS_VALUE } from '../constants.js';
 import { Section } from './section.js';
 import { ValueElementBase } from './value_element_base.js';
 

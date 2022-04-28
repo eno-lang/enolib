@@ -497,4 +497,4 @@ export function analyze() {
     if (comments.length > 0) {
         this._meta.push(...comments.splice(0));
     }
-};
+}
