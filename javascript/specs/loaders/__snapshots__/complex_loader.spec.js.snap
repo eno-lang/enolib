@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Complex loader throws with bad input 1`] = `
-"There is a problem with the value of this element: The value should include a latitude and longitude!
-
-   Line | Content
- >    1 | bad coordinates: Mickey Mouse
-      2 | good coordinates: 48.211180, 16.371514"
-`;

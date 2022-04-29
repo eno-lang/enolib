@@ -1,8 +1,0 @@
-{
-  "destination": "./docs",
-  "outputAST": false,
-  "plugins": [
-    { "name": "esdoc-standard-plugin" }
-  ],
-  "source": "./lib/"
-}

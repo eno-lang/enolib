@@ -10,7 +10,7 @@ Available at [eno-lang.org](https://eno-lang.org/).
 
 | Language | Status |
 |  -- | -- |
-| [Javascript](https://github.com/eno-lang/enolib/tree/master/javascript) | Released |
+| JavaScript  | *Moved to https://codeberg.org/simonrepp/enolib-js* |
 | [Python](https://github.com/eno-lang/enolib/tree/master/python) | Released |
 | [Ruby](https://github.com/eno-lang/enolib/tree/master/ruby)  | Released |
 | Rust  | *Moved to https://codeberg.org/simonrepp/enolib-rs* |
