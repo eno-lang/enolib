@@ -1,4 +1,0 @@
----
-"./spec/elements/attribute.spec.rb[1:1:3:1]": "The attribute 'attribute' must contain
-  a value.\n\n   Line | Content\n      1 | field:\n >    2 | attribute =\n      3
-  | "
