@@ -1,12 +1,10 @@
 # enolib
 
-The eno standard library.
+An eno parsing library.
 
 ## Installation
 
-### Bundler
-
-Add `enolib` to your `Gemfile`:
+Add enolib to your `Gemfile`:
 
 ```ruby
 gem 'enolib'
@@ -16,8 +14,6 @@ Then let bundler install it for you:
 ```
 bundle
 ```
-
-### Manually
 
 Alternatively you can also install it manually:
 
@@ -40,3 +36,11 @@ puts document.field('Greeting').required_string_value  #=> 'Hello World!'
 ## Documentation
 
 Available at [eno-lang.org/ruby](https://eno-lang.org/ruby/).
+
+## Development tools
+
+First run `bundle install` to install all development dependencies, then you can:
+
+- Execute the testsuite: `rspec`
+- Lint the codebase: `rubocop`
+- Obtain performance metrics before/after changes: `ruby performance/benchmark.rb`
