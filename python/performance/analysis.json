@@ -1,29 +1,23 @@
 {
   "reference": {
-    "_evaluated": "2022-03-31 13:59:03.305246",
+    "_evaluated": "2022-04-29 13:11:56.311915",
     "configuration": {
-      "change": "~0 ips (same)",
-      "ips": 6042
+      "ips": 6600
     },
     "content": {
-      "change": "~0 ips (same)",
-      "ips": 10825
+      "ips": 10900
     },
     "hierarchy": {
-      "change": "~0 ips (same)",
-      "ips": 10269
+      "ips": 10902
     },
     "invoice": {
-      "change": "~0 ips (same)",
-      "ips": 5978
+      "ips": 6921
     },
     "journey": {
-      "change": "~0 ips (same)",
-      "ips": 4599
+      "ips": 4949
     },
     "post": {
-      "change": "~0 ips (same)",
-      "ips": 23040
+      "ips": 22055
     }
   }
 }

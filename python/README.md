@@ -29,5 +29,8 @@ First run `pip -r requirements-dev.txt` to install the development dependencies,
 
 - Run the testsuite: `pytest`
 - Lint the codebase: `pylint enolib/`
+- Benchmark performance:
+  - `python performance/benchmark.py reset` (before changes)
+  - `python performance/benchmark.py` (after changes)
 
 
