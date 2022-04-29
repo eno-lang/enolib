@@ -1,4 +1,0 @@
-my custom generated message for element field
-
-   Line | Content
- >    1 | field: value

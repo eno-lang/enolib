@@ -1,4 +1,0 @@
-my custom generated message for element 'empty'
-
-   Line | Content
- >    1 | empty

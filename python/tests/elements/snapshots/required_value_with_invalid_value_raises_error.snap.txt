@@ -1,4 +1,0 @@
-There is a problem with the value of this element: value cannot be 'value'
-
-   Line | Content
- >    1 | field: value

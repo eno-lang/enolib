@@ -1,4 +1,0 @@
-The field 'field' must contain a value.
-
-   Line | Content
- >    1 | field:
