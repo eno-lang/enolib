@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
@@ -29,6 +29,7 @@ module Enolib
       GUTTER_HEADER = 'Línea'
       MISSING_ATTRIBUTE = ''
       MISSING_COMMENT = 'Falta un comentario necesario para este elemento.'
+      MISSING_DOCUMENT_COMMENT = ''
       MISSING_ELEMENT = 'Se requiere un único elemento - puede tener cualquier clave.'
       MISSING_EMBED = ''
       MISSING_FIELD = 'Se requiere una sola casilla - puede tener cualquier clave.'

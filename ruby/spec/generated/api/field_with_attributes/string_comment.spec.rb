@@ -4,7 +4,7 @@ describe 'Querying an existing, single-line, required string comment from a fiel
   it 'produces the expected result' do
     input = "> comment\n" \
             "field:\n" \
-            'attribute = value'
+            'entry = value'
     
     output = Enolib.parse(input).field('field').required_string_comment
     
@@ -19,7 +19,7 @@ describe 'Querying an existing, two-line, required string comment from a field w
     input = ">comment\n" \
             ">  comment\n" \
             "field:\n" \
-            'attribute = value'
+            'entry = value'
     
     output = Enolib.parse(input).field('field').required_string_comment
     
@@ -40,7 +40,7 @@ describe 'Querying an existing, required string comment with blank lines from a 
             "> comment\n" \
             ">\n" \
             "field:\n" \
-            'attribute = value'
+            'entry = value'
     
     output = Enolib.parse(input).field('field').required_string_comment
     
@@ -58,7 +58,7 @@ describe 'Querying an optional, existing string comment from a field with attrib
   it 'produces the expected result' do
     input = "> comment\n" \
             "field:\n" \
-            'attribute = value'
+            'entry = value'
     
     output = Enolib.parse(input).field('field').optional_string_comment
     
@@ -71,7 +71,7 @@ end
 describe 'Querying an optional, missing string comment from a field with attributes' do
   it 'produces the expected result' do
     input = "field:\n" \
-            'attribute = value'
+            'entry = value'
     
     output = Enolib.parse(input).field('field').optional_string_comment
     

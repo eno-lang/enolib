@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 module Enolib
   module Locales
@@ -29,6 +29,7 @@ module Enolib
       GUTTER_HEADER = 'Line'
       MISSING_ATTRIBUTE = 'A single attribute is required - it can have any key.'
       MISSING_COMMENT = 'A required comment for this element is missing.'
+      MISSING_DOCUMENT_COMMENT = 'A required comment for the document is missing.'
       MISSING_ELEMENT = 'A single element is required - it can have any key.'
       MISSING_EMBED = 'A single embed is required - it can have any key.'
       MISSING_FIELD = 'A single field is required - it can have any key.'
