@@ -2,7 +2,7 @@
 
 An eno parsing library available for multiple languages.
 
-**All released implementations** (JavaScript, Python, Ruby, Rust) have been **migrated
+All implementations (JavaScript, Python, Ruby, Rust) have been **migrated
 into separate repositories**, please check the table below.
 
 | Language | New location |
@@ -11,4 +11,3 @@ into separate repositories**, please check the table below.
 | Python | *Moved to https://codeberg.org/simonrepp/enolib-py* |
 | Ruby | *Moved to https://codeberg.org/simonrepp/enolib-rb* |
 | Rust | *Moved to https://codeberg.org/simonrepp/enolib-rs* |
-| PHP | *Migration pending* |
