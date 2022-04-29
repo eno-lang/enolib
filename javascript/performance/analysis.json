@@ -27,30 +27,30 @@
     }
   },
   "modifications": {
-    "_evaluated": "2022-04-09T22:07:09.134Z",
+    "_evaluated": "2022-04-29T07:59:31.153Z",
     "configuration": {
-      "change": "+8829 ips (1.17× faster)",
-      "ips": 62338
+      "change": "+15066 ips (1.28× faster)",
+      "ips": 68575
     },
     "content": {
-      "change": "+30356 ips (1.22× faster)",
-      "ips": 165513
+      "change": "+33706 ips (1.25× faster)",
+      "ips": 168863
     },
     "hierarchy": {
-      "change": "+17115 ips (1.20× faster)",
-      "ips": 101276
+      "change": "+24267 ips (1.29× faster)",
+      "ips": 108428
     },
     "invoice": {
-      "change": "+13807 ips (1.31× faster)",
-      "ips": 57661
+      "change": "+18342 ips (1.42× faster)",
+      "ips": 62196
     },
     "journey": {
-      "change": "+985 ips (1.03× faster)",
-      "ips": 38083
+      "change": "+5272 ips (1.14× faster)",
+      "ips": 42370
     },
     "post": {
-      "change": "+40280 ips (1.25× faster)",
-      "ips": 203612
+      "change": "+58434 ips (1.36× faster)",
+      "ips": 221766
     }
   }
 }

@@ -14,9 +14,10 @@
   "exports": "./lib/main.js",
   "license": "MIT",
   "scripts": {
+    "benchmark-compare": "node performance/benchmark.js",
+    "benchmark-reset": "node performance/benchmark.js reset",
     "docs": "esdoc",
     "lint": "eslint lib/",
-    "performance": "node performance/benchmark.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "type": "module",
