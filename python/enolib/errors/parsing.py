@@ -7,8 +7,9 @@ from .selections import cursor, select_line
 # : value
 ATTRIBUTE_OR_FIELD_WITHOUT_KEY = re.compile(r'^\s*([:=]).*$')
 def attribute_or_field_without_key(context, instruction, match):
+    operator = match.group(1)
     operator_column = match.start(1)
-    message = getattr(context.messages, 'attribute_without_key' if match.group(1) == '=' else 'field_without_key')
+    message = getattr(context.messages, 'attribute_without_key' if operator == '=' else 'field_without_key')
     return ParseError(
         message(instruction['line'] + HUMAN_INDEXING),
         context.reporter(context).report_line(instruction).snippet(),
@@ -18,8 +19,8 @@ def attribute_or_field_without_key(context, instruction, match):
         }
     )
 
-# = value
-# : value
+# --
+# #
 EMBED_OR_SECTION_WITHOUT_KEY = re.compile(r'^\s*(--+|#+).*$')
 def embed_or_section_without_key(context, instruction, match):
     key_column = match.end(1)
