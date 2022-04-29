@@ -18,7 +18,8 @@
     "benchmark-reset": "node performance/benchmark.js reset",
     "docs": "esdoc",
     "lint": "eslint lib/",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "test-coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "type": "module",
   "version": "0.8.2"

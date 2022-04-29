@@ -28,7 +28,8 @@ Available at [eno-lang.org/javascript](https://eno-lang.org/javascript/).
 
 First run `npm i` to install all development dependencies, then you can:
 
-- Run the testsuite (interactive/watchmode): `npm test`
+- Run tests interactively in watchmode: `npm test`
+- Run tests and generate coverage report: `npm test-coverage`
 - Lint the codebase: `npm run lint`
 - Generate documentation: `npm run docs`
 - Benchmark performance:
