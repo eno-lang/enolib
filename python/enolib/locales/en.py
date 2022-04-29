@@ -1,4 +1,4 @@
-#  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 content_header = 'Content'
 expected_attribute = 'An attribute was expected.'
@@ -24,6 +24,7 @@ expected_value = 'This field was expected to contain only a value.'
 gutter_header = 'Line'
 missing_attribute = 'A single attribute is required - it can have any key.'
 missing_comment = 'A required comment for this element is missing.'
+missing_document_comment = 'A required comment for the document is missing.'
 missing_element = 'A single element is required - it can have any key.'
 missing_embed = 'A single embed is required - it can have any key.'
 missing_field = 'A single field is required - it can have any key.'

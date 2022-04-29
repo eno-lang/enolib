@@ -8,6 +8,24 @@ from .constants import (
     SECTION
 )
 
+def check_document_by_line(document, line):
+    if 'comments' in document:
+        if line <= document['comments'][-1]['line']:
+            for comment in document['comments']:
+                if line == comment['line']:
+                    return { 'element': document, 'instruction': comment }
+                        
+    return check_in_section_by_line(document, line)
+
+def check_document_by_index(document, index):
+    if 'comments' in document:
+        if index <= document['comments'][-1]['ranges']['line'][END]:
+            for comment in document['comments']:
+                if index <= comment['ranges']['line'][END]:
+                    return { 'element': document, 'instruction': comment }
+                        
+    return check_in_section_by_index(document, index)
+
 def check_embed_by_line(field, line):
     if line < field['line'] or line > field['end']['line']:
         return False
@@ -215,12 +233,12 @@ def lookup(input: str, *, column=None, index=None, line=None, **options):
         if line < 0 or line >= context.line_count:
             raise IndexError(f"You are trying to look up a line ({line}) outside of the document's line range (0-{context.line_count - 1})")
 
-        match = check_in_section_by_line(context.document, line)
+        match = check_document_by_line(context.document, line)
     else:
         if index < 0 or index > len(context.input):
             raise IndexError(f"You are trying to look up an index ({index}) outside of the document's index range (0-{len(context.input)})")
 
-        match = check_in_section_by_index(context.document, index)
+        match = check_document_by_index(context.document, index)
 
     result = {
         'element': Element(context, match['element']),

@@ -80,6 +80,11 @@ document: &id001
       - 0
       - 6
     type: Field
+  line: 0
+  ranges:
+    line: !!python/tuple
+    - 0
+    - 0
   type: Document
 line_count: 7
 meta: []

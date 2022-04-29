@@ -17,6 +17,8 @@ class Context:
 
         self.document = {
             'elements': [],
+            'line': 0,
+            'ranges': { 'line': (0, 0) },
             'type': DOCUMENT
         }
 

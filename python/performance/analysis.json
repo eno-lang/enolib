@@ -1,23 +1,23 @@
 {
   "reference": {
-    "_evaluated": "2022-04-29 13:11:56.311915",
+    "_evaluated": "2022-04-29 13:45:29.524963",
     "configuration": {
-      "ips": 6600
+      "ips": 6713
     },
     "content": {
-      "ips": 10900
+      "ips": 11018
     },
     "hierarchy": {
-      "ips": 10902
+      "ips": 11219
     },
     "invoice": {
-      "ips": 6921
+      "ips": 7256
     },
     "journey": {
-      "ips": 4949
+      "ips": 5100
     },
     "post": {
-      "ips": 22055
+      "ips": 24831
     }
   }
 }

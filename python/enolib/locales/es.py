@@ -1,4 +1,4 @@
-#  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 content_header = 'Contenido'
 expected_attribute = ''
@@ -24,6 +24,7 @@ expected_value = ''
 gutter_header = 'Línea'
 missing_attribute = ''
 missing_comment = 'Falta un comentario necesario para este elemento.'
+missing_document_comment = ''
 missing_element = 'Se requiere un único elemento - puede tener cualquier clave.'
 missing_embed = ''
 missing_field = 'Se requiere una sola casilla - puede tener cualquier clave.'

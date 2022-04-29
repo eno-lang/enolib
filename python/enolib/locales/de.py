@@ -1,4 +1,4 @@
-#  GENERATED ON 2022-04-16T08:31:09 - DO NOT EDIT MANUALLY
+#  GENERATED ON 2022-04-28T21:22:56 - DO NOT EDIT MANUALLY
 
 content_header = 'Inhalt'
 expected_attribute = ''
@@ -24,6 +24,7 @@ expected_value = ''
 gutter_header = 'Zeile'
 missing_attribute = ''
 missing_comment = 'Ein erforderlicher Kommentar zu diesem Feld fehlt.'
+missing_document_comment = ''
 missing_element = 'Ein einzelnes Element ist erforderlich - es kann einen beliebigen Schlüssel haben.'
 missing_embed = ''
 missing_field = 'Ein einzelnes Feld ist erforderlich - es kann einen beliebigen Schlüssel haben.'

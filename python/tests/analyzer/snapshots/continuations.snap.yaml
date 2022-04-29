@@ -320,6 +320,11 @@ document: &id001
       - 325
       - 341
     type: Field
+  line: 0
+  ranges:
+    line: !!python/tuple
+    - 0
+    - 0
   type: Document
 line_count: 27
 meta: []

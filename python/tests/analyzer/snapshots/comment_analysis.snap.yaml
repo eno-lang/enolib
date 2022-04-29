@@ -1,5 +1,10 @@
 document:
   elements: []
+  line: 0
+  ranges:
+    line: !!python/tuple
+    - 0
+    - 0
   type: Document
 line_count: 4
 meta:

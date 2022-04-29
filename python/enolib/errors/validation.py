@@ -38,11 +38,18 @@ class Validation:
 
     @staticmethod
     def missing_comment(context, element):
-        return ValidationError(
-            context.messages.missing_comment,
-            context.reporter(context).report_line(element).snippet(), # TODO: Question-tag an empty line before an element with missing comment
-            selection(element, 'line', BEGIN)
-        )
+        if element['type'] == DOCUMENT:
+            return ValidationError(
+                context.messages.missing_document_comment,
+                context.reporter(context).question_line(element).snippet(),
+                selection(element, 'line', BEGIN)
+            )
+        else:
+            return ValidationError(
+                context.messages.missing_comment,
+                context.reporter(context).report_line(element).snippet(), # TODO: Question-tag an empty line before an element with missing comment
+                selection(element, 'line', BEGIN)
+            )
 
     @staticmethod
     def missing_element(context, key, parent, message):
