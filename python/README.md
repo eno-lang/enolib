@@ -1,6 +1,6 @@
 # enolib
 
-The eno standard library.
+An eno parsing library.
 
 ## Installation
 
@@ -22,3 +22,12 @@ A minimal example to read an eno document directly from a string with `enolib`:
 ## Documentation
 
 Available at [eno-lang.org/python](https://eno-lang.org/python/).
+
+## Development tools
+
+First run `pip -r requirements-dev.txt` to install the development dependencies, then you can:
+
+- Run the testsuite: `pytest`
+- Lint the codebase: `pylint enolib/`
+
+
